@@ -1,0 +1,16 @@
+Package: checkmate
+Type: Package
+Title: checkmate
+Description: Fast and versatile argument checks
+Version: 0.1
+Authors: Michel Lang <michellang@gmail.com>
+Maintainer: Michel Lang <michellang@gmail.com>
+URL: https://github.com/tudo-r/checkmate
+NeedsCompilation: yes
+ByteCompile: yes
+Encoding: UTF-8
+Depends:
+    R (>= 2.15.0)
+Suggests:
+    testthat
+License: BSD_3_clause + file LICENSE

@@ -1,0 +1,7 @@
+src/*.o
+src/*.so
+^.*tar.gz$
+^.*\.swp$
+.gitignore
+.travis.yml
+README.md
