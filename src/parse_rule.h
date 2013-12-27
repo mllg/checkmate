@@ -1,5 +1,5 @@
-#ifndef MAKECHECKER_H_
-#define MAKECHECKER_H_
+#ifndef PARSE_RULE_H_
+#define PARSE_RULE_H_
 
 #include "typedefs.h"
 
