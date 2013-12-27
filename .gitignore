@@ -1,1 +1,2 @@
-src/*.(so|o)
+src/*.so
+src/*.o
