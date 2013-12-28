@@ -1,6 +1,6 @@
 #' Check if an object contains missing values.
 #'
-#' Supported are atomic types (see \code{\link[base]{is.atomic}}) and lists.
+#' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 #' Missingness is defined as values being \code{NA} or \code{NaN} for atomic types and
 #' \code{NULL} for lists.
 #'
@@ -9,6 +9,6 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} if at least one element of \code{x} is missing (see details).
 #' @useDynLib checkmate c_any_missing
 #' @export
-any.missing = function(x) {
+any_missing = function(x) {
   .Call("c_any_missing", x, PACKAGE = "checkmate")
 }

@@ -3,7 +3,7 @@ Type: Package
 Title: checkmate
 Description: Fast and versatile argument checks
 Version: 0.1
-Authors: Michel Lang <michellang@gmail.com>
+Author: Michel Lang <michellang@gmail.com>
 Maintainer: Michel Lang <michellang@gmail.com>
 URL: https://github.com/tudo-r/checkmate
 NeedsCompilation: yes

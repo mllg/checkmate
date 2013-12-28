@@ -11,7 +11,6 @@ qassertr = function(x, rules) {
         paste(strwrap(res, prefix = " * "), collapse = "\n"))
     }
     stop("Error checking '", varname, "': ", res)
-      assert_to_error(res, deparse(substitute(x)))
   }
   invisible(TRUE)
 }
