@@ -12,7 +12,7 @@
 #' @useDynLib checkmate c_qcheck
 #' @examples
 #' qcheckr(as.list(1:10), "i+")
-#' qassert(iris, "n")
+#' qcheck(iris, "n")
 qcheckr = function(x, rules) {
   .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
 }

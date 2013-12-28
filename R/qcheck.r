@@ -54,9 +54,9 @@
 #' @useDynLib checkmate c_qcheck
 #' @export
 #' @examples
-#' qcheck(TRUE, "b1")
-#' qassert(NA, "b1")
-#' qassert(NA, "B1")
+#' qcheck(NA, "b1")
+#' qcheck(NA, "B1")
+#' qcheck(TRUE, "B?")
 #' qcheck(runif(10), "n+")
 qcheck = function(x, rules) {
   .Call("c_qcheck", x, rules, FALSE, PACKAGE = "checkmate")

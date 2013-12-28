@@ -26,7 +26,7 @@ Check list elements or data frame columns against rules
 }
 \examples{
 qcheckr(as.list(1:10), "i+")
-qassert(iris, "n")
+qcheck(iris, "n")
 }
 \seealso{
 \code{\link{qcheck}}, \code{\link{qassert}}

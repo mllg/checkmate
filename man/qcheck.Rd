@@ -62,9 +62,9 @@ check more types. The implementation is written in \code{C}
 to minimize the overhead.
 }
 \examples{
-qcheck(TRUE, "b1")
-qassert(NA, "b1")
-qassert(NA, "B1")
+qcheck(NA, "b1")
+qcheck(NA, "B1")
+qcheck(TRUE, "B?")
 qcheck(runif(10), "n+")
 }
 \seealso{

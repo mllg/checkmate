@@ -6,6 +6,7 @@ Version: 0.1
 Author: Michel Lang <michellang@gmail.com>
 Maintainer: Michel Lang <michellang@gmail.com>
 URL: https://github.com/tudo-r/checkmate
+BugReports: https://github.com/tudo-r/checkmate/issues
 NeedsCompilation: yes
 ByteCompile: yes
 Encoding: UTF-8
