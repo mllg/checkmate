@@ -39,7 +39,7 @@ SEXP c_qcheck(SEXP x, SEXP rules, SEXP recursive) {
         tmp = STRING_ELT(rules, i);
         if (tmp == NA_STRING)
             error("Rule may not be NA");
-        parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)), FALSE);
+        parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 
     if (LOGICAL(recursive)[0])

@@ -5,35 +5,39 @@
 #include <Rinternals.h>
 
 #define MSGLEN 255
-#define CLASSLEN 15
-#define OPLEN 3
 
-/*  typedef enum { LT, LE, EQ, GE, GT, NONE } comp_t; */
+typedef enum { LT, LE, EQ, GE, GT, NONE } comp_t;
+typedef enum {
+    CL_LOGICAL, CL_INTEGER, CL_NUMERIC, CL_DOUBLE,
+    CL_STRING, CL_LIST, CL_COMPLEX, CL_ATOMIC, CL_MATRIX,
+    CL_DATAFRAME, CL_ENVIRONMENT, CL_FUNCTION, CL_NULL,
+    CL_NONE } class_t;
 
 typedef Rboolean(*dd_cmp)(double, double);
+typedef Rboolean(*ll_cmp)(R_len_t, R_len_t);
 
 typedef struct {
     struct {
         Rboolean(*fun)(SEXP);
-        char phony[CLASSLEN];
+        class_t name;
     } class;
     struct {
         Rboolean(*fun)(SEXP);
     } missing;
     struct {
-        Rboolean(*fun)(R_len_t, R_len_t);
+        ll_cmp fun;
         R_len_t cmp;
-        char phony[OPLEN];
+        comp_t op;
     } len;
     struct {
         dd_cmp fun;
         double cmp;
-        char phony[OPLEN];
+        comp_t op;
     } lower;
     struct {
         dd_cmp fun;
         double cmp;
-        char phony[OPLEN];
+        comp_t op;
     } upper;
 } checker_t;
 

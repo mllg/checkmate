@@ -38,7 +38,7 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
         tmp = STRING_ELT(rules, i);
         if (tmp == NA_STRING)
             error("Rule may not be NA");
-        parse_rule(&checker[i], CHAR(tmp), TRUE);
+        parse_rule(&checker[i], CHAR(tmp));
         result[i].ok = TRUE;
     }
 

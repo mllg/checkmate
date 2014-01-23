@@ -10,3 +10,4 @@ inline Rboolean dd_lt(const double x, const double y) { return x < y; }
 inline Rboolean dd_gt(const double x, const double y) { return x > y; }
 inline Rboolean dd_le(const double x, const double y) { return x <= y; }
 inline Rboolean dd_ge(const double x, const double y) { return x >= y; }
+inline Rboolean dd_neq(const double x, const double y) { return x != y; }

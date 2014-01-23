@@ -13,5 +13,6 @@ Rboolean dd_lt(const double, const double);
 Rboolean dd_le(const double, const double);
 Rboolean dd_gt(const double, const double);
 Rboolean dd_ge(const double, const double);
+Rboolean dd_neq(const double, const double);
 
 #endif

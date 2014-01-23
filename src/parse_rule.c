@@ -6,7 +6,7 @@
 #include "any_missing.h"
 #include "compare.h"
 
-static int parse_class(checker_t *checker, const char *rule, const Rboolean phony) {
+static int parse_class(checker_t *checker, const char *rule) {
     checker->missing.fun = NULL;
 
     switch(rule[0]) {
@@ -14,89 +14,77 @@ static int parse_class(checker_t *checker, const char *rule, const Rboolean phon
             checker->missing.fun = &any_missing_logical;
         case 'b':
             checker->class.fun = &is_class_logical;
-            if (phony)
-                strncpy(checker->class.phony, "logical", CLASSLEN);
+            checker->class.name = CL_LOGICAL;
             break;
         case 'I':
             checker->missing.fun = &any_missing_integer;
         case 'i':
             checker->class.fun = &is_class_integer;
-            if (phony)
-                strncpy(checker->class.phony, "integer", CLASSLEN);
+            checker->class.name = CL_INTEGER;
             break;
         case 'N':
             checker->missing.fun = &any_missing_numeric;
         case 'n':
             checker->class.fun = &is_class_numeric;
-            if (phony)
-                strncpy(checker->class.phony, "numeric", CLASSLEN);
+            checker->class.name = CL_NUMERIC;
             break;
         case 'R':
             checker->missing.fun = &any_missing_double;
         case 'r':
             checker->class.fun = &is_class_double;
-            if (phony)
-                strncpy(checker->class.phony, "double", CLASSLEN);
+            checker->class.name = CL_DOUBLE;
             break;
         case 'S':
             checker->missing.fun = &any_missing_string;
         case 's':
             checker->class.fun = &is_class_string;
-            if (phony)
-                strncpy(checker->class.phony, "string", CLASSLEN);
+            checker->class.name = CL_STRING;
             break;
         case 'L':
             checker->missing.fun = &any_missing_list;
         case 'l':
             checker->class.fun = &is_class_list;
-            if (phony)
-                strncpy(checker->class.phony, "list", CLASSLEN);
+            checker->class.name = CL_LIST;
             break;
         case 'C':
             checker->missing.fun = &any_missing_complex;
         case 'c':
             checker->class.fun = &is_class_complex;
-            if (phony)
-                strncpy(checker->class.phony, "complex", CLASSLEN);
+            checker->class.name = CL_COMPLEX;
             break;
         case 'A':
             checker->missing.fun = &any_missing_atomic;
         case 'a':
             checker->class.fun = &is_class_atomic;
-            if (phony)
-                strncpy(checker->class.phony, "atomic", CLASSLEN);
+            checker->class.name = CL_ATOMIC;
             break;
         case 'M':
             checker->missing.fun = &any_missing_matrix;
         case 'm':
             checker->class.fun = &is_class_matrix;
-            if (phony)
-                strncpy(checker->class.phony, "matrix", CLASSLEN);
+            checker->class.name = CL_MATRIX;
             break;
         case 'D':
             checker->missing.fun = &any_missing_frame;
         case 'd':
             checker->class.fun = &is_class_frame;
-            if (phony)
-                strncpy(checker->class.phony, "data.frame", CLASSLEN);
+            checker->class.name = CL_DATAFRAME;
             break;
         case 'e':
             checker->class.fun = &is_class_environment;
-            if (phony)
-                strncpy(checker->class.phony, "environment", CLASSLEN);
+            checker->class.name = CL_ENVIRONMENT;
             break;
         case 'f':
             checker->class.fun = &is_class_function;
-            if (phony)
-                strncpy(checker->class.phony, "function", CLASSLEN);
+            checker->class.name = CL_FUNCTION;
             break;
         case '0':
             checker->class.fun = &is_class_null;
-            if (phony)
-                strncpy(checker->class.phony, "NULL", CLASSLEN);
+            checker->class.name = CL_NULL;
             break;
         case '*':
             checker->class.fun = NULL;
+            checker->class.name = CL_NONE;
             break;
         default:
             error("Unknown class identifier '%c'", rule[0]);
@@ -104,26 +92,25 @@ static int parse_class(checker_t *checker, const char *rule, const Rboolean phon
     return 1;
 }
 
-static int parse_length(checker_t *checker, const char *rule, const Rboolean phony) {
+static int parse_length(checker_t *checker, const char *rule) {
     switch(rule[0]) {
         case '*':
             return 1;
         case '?':
-            checker->len.fun= &ii_le;
+            checker->len.fun = &ii_le;
             checker->len.cmp = 1;
-            if (phony)
-                strncpy(checker->len.phony, "<=", OPLEN);
+            checker->len.op = LE;
             return 1;
         case '+':
             checker->len.fun = &ii_ge;
             checker->len.cmp = 1;
-            if (phony)
-                strncpy(checker->len.phony, ">=", OPLEN);
+            checker->len.op = GE;
             return 1;
         case '(':
         case '[':
         case '\0':
             checker->len.fun = NULL;
+            checker->len.op = NONE;
             return 0;
     }
 
@@ -131,40 +118,34 @@ static int parse_length(checker_t *checker, const char *rule, const Rboolean pho
     switch(rule[0]) {
         case '=':
             checker->len.fun = &ii_eq;
-            if (phony)
-                strncpy(checker->len.phony, "<", OPLEN);
+            checker->len.op = EQ;
             start += 1 + (rule[1] == '=');
             break;
         case '<':
             if (rule[1] == '=') {
                 checker->len.fun = &ii_le;
-                if (phony)
-                    strncpy(checker->len.phony, "<", OPLEN);
+                checker->len.op = LE;
                 start += 2;
             } else {
                 checker->len.fun = &ii_lt;
-                if (phony)
-                    strncpy(checker->len.phony, "<=", OPLEN);
+                checker->len.op = LE;
                 start += 1;
             }
             break;
         case '>':
             if (rule[1] == '=') {
                 checker->len.fun = &ii_ge;
-                if (phony)
-                    strncpy(checker->len.phony, ">", OPLEN);
+                checker->len.op = GE;
                 start += 2;
             } else {
                 checker->len.fun = &ii_gt;
-                if (phony)
-                    strncpy(checker->len.phony, ">=", OPLEN);
+                checker->len.op = GT;
                 start += 1;
             }
             break;
         default:
             checker->len.fun = &ii_eq;
-            if (phony)
-                strncpy(checker->len.phony, "==", OPLEN);
+            checker->len.op = EQ;
             break;
     }
 
@@ -181,21 +162,20 @@ static int parse_length(checker_t *checker, const char *rule, const Rboolean pho
     return end - rule;
 }
 
-static int parse_bounds(checker_t *checker, const char *rule, const Rboolean phony) {
+static int parse_bounds(checker_t *checker, const char *rule) {
     checker->lower.fun = NULL;
     checker->upper.fun = NULL;
+
     switch(rule[0]) {
         case '\0':
             return 0;
         case '(':
             checker->lower.fun = &dd_gt;
-            if (phony)
-                strncpy(checker->lower.phony, ">", OPLEN);
+            checker->lower.op = GT;
             break;
         case '[':
             checker->lower.fun = &dd_ge;
-            if (phony)
-                strncpy(checker->lower.phony, ">=", OPLEN);
+            checker->lower.op = GE;
             break;
         default:
             error("Invalid bound definition, missing opening '(' or '[': %s", rule);
@@ -210,7 +190,12 @@ static int parse_bounds(checker_t *checker, const char *rule, const Rboolean pho
         error("Invalid bound definition, error parsing lower bound or missing separator ',': %s", rule);
     }
     if (start == end) {
-        checker->lower.fun = NULL;
+        if (checker->lower.op == GT) {
+            checker->lower.fun = &dd_neq;
+            checker->lower.cmp = R_NegInf;
+        } else {
+            checker->lower.fun = NULL;
+        }
     } else {
         checker->lower.cmp = cmp;
     }
@@ -218,20 +203,20 @@ static int parse_bounds(checker_t *checker, const char *rule, const Rboolean pho
     start = end + 1;
     cmp = strtod(start, &end);
 
-    if (*end == ')' || *end == ']') {
+    if (*end == ')') {
+        checker->upper.op = LT;
+        if (start == end) {
+            checker->upper.fun = &dd_neq;
+            checker->upper.cmp = R_PosInf;
+        } else {
+            checker->upper.fun = &dd_lt;
+            checker->upper.cmp = cmp;
+        }
+    } else if (*end == ']') {
         if (start == end) {
             checker->upper.fun = NULL;
         } else {
-            if (*end == ')') {
-                checker->upper.fun = &dd_lt;
-                if (phony)
-                    strncpy(checker->upper.phony, "<", OPLEN);
-            } else {
-                checker->upper.fun = &dd_le;
-                if (phony)
-                    strncpy(checker->upper.phony, "<=", OPLEN);
-            }
-
+            checker->upper.fun = &dd_le;
             checker->upper.cmp = cmp;
         }
     } else {
@@ -241,14 +226,14 @@ static int parse_bounds(checker_t *checker, const char *rule, const Rboolean pho
     return rule - end;
 }
 
-void parse_rule(checker_t *checker, const char *rule, const Rboolean phony) {
+void parse_rule(checker_t *checker, const char *rule) {
     const R_len_t nchars = strlen(rule);
     if (nchars == 0)
         error("Empty rule");
 
-    rule += parse_class(checker, rule, phony);
-    rule += parse_length(checker, rule, phony);
-    rule += parse_bounds(checker, rule, phony);
+    rule += parse_class(checker, rule);
+    rule += parse_length(checker, rule);
+    rule += parse_bounds(checker, rule);
     if (rule[0] == '\0')
         return;
     error("Additional chars found!");

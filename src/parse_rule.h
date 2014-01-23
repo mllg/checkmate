@@ -3,6 +3,6 @@
 
 #include "typedefs.h"
 
-void parse_rule(checker_t *, const char *, const Rboolean);
+void parse_rule(checker_t *, const char *);
 
 #endif
