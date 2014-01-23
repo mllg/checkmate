@@ -55,7 +55,6 @@ test_that("type and missingness", {
 })
 
 test_that("length", {
-  # test length
   expect_succ(xb, "b+")
   expect_succ(xb, "b10")
   expect_succ(logical(1), "b+")
@@ -68,6 +67,19 @@ test_that("length", {
   expect_succ(xe, "e1")
   expect_fail(xe, "e>=2")
   expect_fail(xe, "f+")
+})
+
+test_that("bounds", {
+  xx = 1:3
+  expect_succ(xx, "i+[1,3]")
+  expect_succ(xx, "i+(0,4)")
+  expect_succ(xx, "i+(0.9999,3.0001)")
+  expect_succ(xx, "i+(0,1e2)")
+  expect_fail(xx, "i+(1,3]")
+  expect_fail(xx, "i+[1,3)")
+
+  expect_succ(xx, "i[1,)")
+  expect_succ(xx, "i[,3]")
 })
 
 test_that("non-atomic types", {
@@ -121,6 +133,13 @@ test_that("malformated pattern", {
   expect_error(qassert(1, "n>"))
   expect_error(qassert(1, "nö"))
   expect_error(qassert(1, "n\n"))
+  expect_error(qassert(1, "n+a"), "opening")
+  expect_error(qassert(1, "n+["), "bound")
+  expect_error(qassert(1, "n+[1"), "lower")
+  expect_error(qassert(1, "n+[x,]"), "lower")
+  expect_error(qassert(1, "n+[,y]"), "upper")
+  expect_error(qassert(1, "n*("), "bound definition")
+  expect_error(qassert(1, "n*]"), "bound definition")
 })
 
 test_that("we get some output", {

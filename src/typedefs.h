@@ -5,14 +5,17 @@
 #include <Rinternals.h>
 
 #define MSGLEN 255
-#define PHONYLEN 15
+#define CLASSLEN 15
+#define OPLEN 3
 
-//typedef Rboolean(*compfun)(double, double);
+/*  typedef enum { LT, LE, EQ, GE, GT, NONE } comp_t; */
+
+typedef Rboolean(*dd_cmp)(double, double);
 
 typedef struct {
     struct {
         Rboolean(*fun)(SEXP);
-        char phony[PHONYLEN];
+        char phony[CLASSLEN];
     } class;
     struct {
         Rboolean(*fun)(SEXP);
@@ -20,15 +23,17 @@ typedef struct {
     struct {
         Rboolean(*fun)(R_len_t, R_len_t);
         R_len_t cmp;
-        char phony[PHONYLEN];
+        char phony[OPLEN];
     } len;
     struct {
-        Rboolean(*fun)(double, double);
+        dd_cmp fun;
         double cmp;
+        char phony[OPLEN];
     } lower;
     struct {
-        Rboolean(*fun)(double, double);
+        dd_cmp fun;
         double cmp;
+        char phony[OPLEN];
     } upper;
 } checker_t;
 
