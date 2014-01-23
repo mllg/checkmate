@@ -81,7 +81,6 @@ qcheckr = function(x, rules) {
   .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
 }
 
-
 #' @export
 #' @rdname qcheck
 #' @useDynLib checkmate c_qassert

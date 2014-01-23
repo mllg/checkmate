@@ -111,13 +111,13 @@ test_that("optional chars", {
 
 test_that("malformated pattern", {
   expect_error(qassert(1, ""), "[Ee]mpty")
-  #expect_warning(expect_error(qassert(1, "ä")), "locale")
-  expect_error(qassert(1, "ä"))
+  expect_warning(expect_error(qassert(1, "ä")), "locale")
+  #expect_error(qassert(1, "ä"))
   expect_error(qassert(1, "nn"), "length definition")
   expect_error(qassert(1, "n="), "length definition")
   expect_error(qassert(1, "n=="), "length definition")
   expect_error(qassert(1, "n==="), "length definition")
-  expect_error(qassert(1, "n?1"), "length definition")
+  expect_error(qassert(1, "n?1"), "bound definition")
   expect_error(qassert(1, "n>"))
   expect_error(qassert(1, "nö"))
   expect_error(qassert(1, "n\n"))

@@ -7,13 +7,29 @@
 #define MSGLEN 255
 #define PHONYLEN 15
 
+//typedef Rboolean(*compfun)(double, double);
+
 typedef struct {
-    Rboolean(*class)(SEXP);
-    Rboolean(*missing)(SEXP);
-    Rboolean(*len)(SEXP, R_len_t);
-    R_len_t cmp;
-    char phony_class[PHONYLEN];
-    char phony_len[PHONYLEN];
+    struct {
+        Rboolean(*fun)(SEXP);
+        char phony[PHONYLEN];
+    } class;
+    struct {
+        Rboolean(*fun)(SEXP);
+    } missing;
+    struct {
+        Rboolean(*fun)(R_len_t, R_len_t);
+        R_len_t cmp;
+        char phony[PHONYLEN];
+    } len;
+    struct {
+        Rboolean(*fun)(double, double);
+        double cmp;
+    } lower;
+    struct {
+        Rboolean(*fun)(double, double);
+        double cmp;
+    } upper;
 } checker_t;
 
 typedef struct {
