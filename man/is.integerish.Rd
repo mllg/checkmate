@@ -1,6 +1,6 @@
 \name{is.integerish}
 \alias{is.integerish}
-\title{Converts a numeric object to a integer, if possible}
+\title{Checks if an object is convertible to an integer.}
 \usage{
 is.integerish(x, tolerance = .Machine$double.eps^0.5)
 }
@@ -8,10 +8,10 @@ is.integerish(x, tolerance = .Machine$double.eps^0.5)
   \item{x}{[\code{ANY}]\cr Object to check.}
 
   \item{tolerance}{[\code{double(1)}]\cr Numerical
-  tolerance to check if a double could be an integer.
-  Default is \code{sqrt(.Machine$double.eps)}.}
+  tolerance to check if a double can be converted.  Default
+  is \code{sqrt(.Machine$double.eps)}.}
 }
 \description{
-Converts a numeric object to a integer, if possible
+Checks if an object is convertible to an integer.
 }
 

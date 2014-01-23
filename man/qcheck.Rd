@@ -1,11 +1,11 @@
-\name{qassert}
+\name{qcheck}
 \alias{qassert}
 \alias{qcheck}
 \title{Check arguments against rules}
 \usage{
-qassert(x, rules)
-
 qcheck(x, rules)
+
+qassert(x, rules)
 }
 \arguments{
   \item{x}{[ANY]\cr Object the check.}

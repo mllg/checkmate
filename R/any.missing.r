@@ -9,6 +9,6 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} if at least one element of \code{x} is missing (see details).
 #' @useDynLib checkmate c_any_missing
 #' @export
-any_missing = function(x) {
+any.missing = function(x) {
   .Call("c_any_missing", x, PACKAGE = "checkmate")
 }

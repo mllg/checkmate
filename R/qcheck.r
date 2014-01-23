@@ -61,3 +61,57 @@
 qcheck = function(x, rules) {
   .Call("c_qcheck", x, rules, FALSE, PACKAGE = "checkmate")
 }
+
+#' Check list elements or data frame columns against rules
+#'
+#' @param x [\code{list} or \code{data.frame}]\cr
+#'   List elements or data frame columns to check against \code{rules}.
+#'   See \code{\link{qcheck}} for rule explanation.
+#' @param rules [\code{character}]\cr
+#'   Set of rules. See \code{\link{qcheck}}
+#' @return [logical(1)]: \code{TRUE} if each element of \code{x} complies
+#'   at least one rule. Otherwise \code{FALSE} or an exception is thrown.
+#' @seealso \code{\link{qcheck}}, \code{\link{qassert}}
+#' @export
+#' @useDynLib checkmate c_qcheck
+#' @examples
+#' qcheckr(as.list(1:10), "i+")
+#' qcheck(iris, "n")
+qcheckr = function(x, rules) {
+  .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
+}
+
+
+#' @export
+#' @rdname qcheck
+#' @useDynLib checkmate c_qassert
+qassert = function(x, rules) {
+  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
+  if (!isTRUE(res)) {
+    varname = deparse(substitute(x))
+    if (length(res) > 1L) {
+      stop("error checking argument '", varname, "'.\n",
+        "One of the following must apply:\n",
+        paste(strwrap(res, prefix = " * "), collapse = "\n"))
+    }
+    stop("Error checking '", varname, "': ", res)
+  }
+  invisible(TRUE)
+}
+
+#' @export
+#' @rdname qcheckr
+#' @useDynLib checkmate c_qassert
+qassertr = function(x, rules) {
+  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
+  if (!isTRUE(res)) {
+    varname = deparse(substitute(x))
+    if (length(res) > 1L) {
+      stop("error checking argument '", varname, "'.\n",
+        "One of the following must apply:\n",
+        paste(strwrap(res, prefix = " * "), collapse = "\n"))
+    }
+    stop("Error checking '", varname, "': ", res)
+  }
+  invisible(TRUE)
+}

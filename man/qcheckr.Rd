@@ -1,11 +1,11 @@
-\name{qassertr}
+\name{qcheckr}
 \alias{qassertr}
 \alias{qcheckr}
 \title{Check list elements or data frame columns against rules}
 \usage{
-qassertr(x, rules)
-
 qcheckr(x, rules)
+
+qassertr(x, rules)
 }
 \arguments{
   \item{x}{[\code{list} or \code{data.frame}]\cr List
