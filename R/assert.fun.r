@@ -11,7 +11,7 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} if at least one element of \code{x} is missing (see details).
 #' @useDynLib checkmate c_any_missing
 #' @export
-check.fun = function(fun, args, ordered = FALSE) {
+assert.fun = function(fun, args, ordered = FALSE) {
   fun = match.fun(fun)
 
   if (!missing(args)) {

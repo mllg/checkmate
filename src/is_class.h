@@ -16,5 +16,6 @@ Rboolean is_class_frame(SEXP);
 Rboolean is_class_function(SEXP);
 Rboolean is_class_environment(SEXP);
 Rboolean is_class_null(SEXP);
+Rboolean is_class_factor(SEXP);
 
 #endif

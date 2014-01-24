@@ -80,6 +80,13 @@ test_that("bounds", {
 
   expect_succ(xx, "i[1,)")
   expect_succ(xx, "i[,3]")
+  expect_succ(Inf, "n(1,]")
+  expect_succ(-Inf, "n[,1]")
+  expect_succ(c(-Inf, 0, Inf), "n[,]")
+  expect_fail(Inf, "n(1,)")
+  expect_fail(-Inf, "n(,0]")
+  expect_fail(c(-Inf, 0, Inf), "n(,]")
+  expect_fail(c(-Inf, 0, Inf), "n(,)")
 })
 
 test_that("non-atomic types", {
@@ -124,7 +131,6 @@ test_that("optional chars", {
 test_that("malformated pattern", {
   expect_error(qassert(1, ""), "[Ee]mpty")
   expect_warning(expect_error(qassert(1, "ä")), "locale")
-  #expect_error(qassert(1, "ä"))
   expect_error(qassert(1, "nn"), "length definition")
   expect_error(qassert(1, "n="), "length definition")
   expect_error(qassert(1, "n=="), "length definition")

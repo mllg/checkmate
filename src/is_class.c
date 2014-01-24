@@ -39,3 +39,6 @@ inline Rboolean is_class_environment(SEXP x) {
 inline Rboolean is_class_null(SEXP x) {
     return isNull(x);
 }
+inline Rboolean is_class_factor(SEXP x) {
+    return isFactor(x);
+}

@@ -47,6 +47,7 @@ error_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
         result.ok = FALSE;
         if (err_msg) {
             snprintf(result.msg, MSGLEN, "Must be of class '%s', not '%s'",
+                    /* FIXME factors are printed as integers */
                     getClassString(checker->class.name), type2char(TYPEOF(x)));
         }
         return result;

@@ -1,7 +1,7 @@
-#' Check if an object contains missing values.
+#' Checks if an object contains missing values.
 #'
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
-#' Missingness is defined as values being \code{NA} or \code{NaN} for atomic types and
+#' Missingness is defined ias \code{NA} or \code{NaN} for atomic types and
 #' \code{NULL} for lists.
 #'
 #' @param x [\code{ANY}]\cr

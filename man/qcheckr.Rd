@@ -1,7 +1,7 @@
 \name{qcheckr}
 \alias{qassertr}
 \alias{qcheckr}
-\title{Check list elements or data frame columns against rules}
+\title{Check lists against rules}
 \usage{
 qcheckr(x, rules)
 
@@ -9,20 +9,19 @@ qassertr(x, rules)
 }
 \arguments{
   \item{x}{[\code{list} or \code{data.frame}]\cr List
-  elements or data frame columns to check against
-  \code{rules}.  See \code{\link{qcheck}} for rule
-  explanation.}
+  elements or data frame columns to check for compliance
+  with \code{rules}.  See details of \code{\link{qcheck}}
+  for rule explanation.}
 
   \item{rules}{[\code{character}]\cr Set of rules. See
   \code{\link{qcheck}}}
 }
 \value{
-[logical(1)]: \code{TRUE} if each element of \code{x}
-complies at least one rule. Otherwise \code{FALSE} or an
-exception is thrown.
+[logical(1)]: \code{TRUE} on success, \code{FALSE} (or a
+thrown exception) otherwise.
 }
 \description{
-Check list elements or data frame columns against rules
+Check lists against rules
 }
 \examples{
 qcheckr(as.list(1:10), "i+")
