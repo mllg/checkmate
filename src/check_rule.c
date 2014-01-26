@@ -1,15 +1,5 @@
 #include "check_rule.h"
 
-static Rboolean in_bounds(SEXP x, const dd_cmp fun, const double cmp) {
-    const double *xp = REAL(x);
-    const double * const xend = xp + length(x);
-    for (; xp != xend; xp++) {
-        if (!ISNAN(*xp) && !fun(*xp, cmp))
-            return FALSE;
-    }
-    return TRUE;
-}
-
 static const char* getClassString(const class_t name) {
     switch(name) {
         case CL_LOGICAL     : return "logical";
@@ -38,6 +28,28 @@ static const char* getOperatorString(const comp_t op) {
         case GT: return ">";
         default: error("Internal error dispatching comparison operator");
     }
+}
+
+static Rboolean check_bound(SEXP x, bound_t bound) {
+    if (isReal(x)) {
+        const double *xp = REAL(x);
+        const double * const xend = xp + length(x);
+        for (; xp != xend; xp++) {
+            if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
+                return FALSE;
+        }
+    } else if (isInteger(x)) {
+        const int *xp = INTEGER(x);
+        const int * const xend = xp + length(x);
+        for (; xp != xend; xp++) {
+            if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
+                return FALSE;
+        }
+    } else {
+        error("Bound checks only possible for numeric variables");
+    }
+
+    return TRUE;
 }
 
 error_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
@@ -70,29 +82,22 @@ error_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
         return result;
     }
 
-    if (checker->lower.fun != NULL || checker->upper.fun != NULL) {
-        SEXP y = PROTECT(coerceVector(x, REALSXP));
-
-        if (checker->lower.fun != NULL && !in_bounds(y, checker->lower.fun, checker->lower.cmp)) {
-            result.ok = FALSE;
-            if (err_msg) {
-                snprintf(result.msg, MSGLEN, "All elements must be %s %f",
-                        getOperatorString(checker->lower.op), checker->lower.cmp);
-            }
-            UNPROTECT(1);
-            return result;
+    if (checker->lower.fun != NULL && !check_bound(x, checker->lower)) {
+        result.ok = FALSE;
+        if (err_msg) {
+            snprintf(result.msg, MSGLEN, "All elements must be %s %f",
+                    getOperatorString(checker->lower.op), checker->lower.cmp);
         }
+        return result;
+    }
 
-        if (checker->upper.fun != NULL && !in_bounds(y, checker->upper.fun, checker->upper.cmp)) {
-            result.ok = FALSE;
-            if (err_msg) {
-                snprintf(result.msg, MSGLEN, "All elements must be %s %f",
-                        getOperatorString(checker->upper.op), checker->upper.cmp);
-            }
-            UNPROTECT(1);
-            return result;
+    if (checker->upper.fun != NULL && !check_bound(x, checker->upper)) {
+        result.ok = FALSE;
+        if (err_msg) {
+            snprintf(result.msg, MSGLEN, "All elements must be %s %f",
+                    getOperatorString(checker->upper.op), checker->upper.cmp);
         }
-        UNPROTECT(1);
+        return result;
     }
 
     result.ok = TRUE;

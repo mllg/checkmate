@@ -1,30 +1,30 @@
 #include "any_missing.h"
 
 inline Rboolean any_missing_logical(SEXP x) {
-    const R_len_t nx = length(x);
-    const int *xp = LOGICAL(x);
-    for (R_len_t i = 0; i < nx; i++) {
-        if (xp[i] == NA_LOGICAL)
+    const int * xp = LOGICAL(x);
+    const int * const xe = xp + length(x);
+    for (; xp != xe; xp++) {
+        if (*xp == NA_LOGICAL)
             return TRUE;
     }
     return FALSE;
 }
 
 inline Rboolean any_missing_integer(SEXP x) {
-    const R_len_t nx = length(x);
-    const int *xp = INTEGER(x);
-    for (R_len_t i = 0; i < nx; i++) {
-        if (xp[i] == NA_INTEGER)
+    const int * xp = INTEGER(x);
+    const int * const xe = xp + length(x);
+    for (; xp != xe; xp++) {
+        if (*xp == NA_INTEGER)
             return TRUE;
     }
     return FALSE;
 }
 
 inline Rboolean any_missing_double(SEXP x) {
-    const R_len_t nx = length(x);
-    const double *xp = REAL(x);
-    for (R_len_t i = 0; i < nx; i++) {
-        if (ISNAN(xp[i]))
+    const double * xp = REAL(x);
+    const double * const xe = xp + length(x);
+    for (; xp != xe; xp++) {
+        if (ISNAN(*xp))
             return TRUE;
     }
     return FALSE;
@@ -39,10 +39,10 @@ inline Rboolean any_missing_numeric(SEXP x) {
 }
 
 inline Rboolean any_missing_complex(SEXP x) {
-    const R_len_t nx = length(x);
-    const Rcomplex *xp = COMPLEX(x);
-    for (R_len_t i = 0; i < nx; i++) {
-        if (ISNAN(xp[i].r) || ISNAN(xp[i].i))
+    const Rcomplex * xp = COMPLEX(x);
+    const Rcomplex * const xe = xp + length(x);
+    for (; xp != xe; xp++) {
+        if (ISNAN((*xp).r) || ISNAN((*xp).i))
             return TRUE;
     }
     return FALSE;

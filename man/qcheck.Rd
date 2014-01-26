@@ -1,7 +1,7 @@
 \name{qcheck}
 \alias{qassert}
 \alias{qcheck}
-\title{Fast and versatile check arguments}
+\title{Argument checks on (builtin) R types}
 \usage{
 qcheck(x, rules)
 

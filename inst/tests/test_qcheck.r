@@ -77,6 +77,7 @@ test_that("bounds", {
   expect_succ(xx, "i+(0,1e2)")
   expect_fail(xx, "i+(1,3]")
   expect_fail(xx, "i+[1,3)")
+  expect_succ(1, "n[0, 100]")
 
   expect_succ(xx, "i[1,)")
   expect_succ(xx, "i[,3]")
@@ -118,6 +119,7 @@ test_that("atomic types", {
 })
 
 test_that("optional chars", {
+  expect_succ(TRUE, "b*")
   expect_succ(TRUE, "b=1")
   expect_succ(TRUE, "b>=0")
   expect_succ(TRUE, "b>0")
@@ -152,4 +154,12 @@ test_that("we get some output", {
   expect_error(qassert(1, "b"), "logical")
   expect_error(qassert(1, "l"), "list")
   expect_error(qassert(1:2, "n?"), "length <=")
+})
+
+test_that("empty vectors", {
+  expect_succ(integer(0), "i*")
+  expect_succ(integer(0), "i*[0,0]")
+  expect_succ(integer(0), "n[0,0]")
+  expect_fail(integer(0), "r[0,0]")
+  expect_fail(integer(0), "*+")
 })

@@ -1,17 +1,17 @@
 \name{qcheckr}
 \alias{qassertr}
 \alias{qcheckr}
-\title{Check lists against rules}
+\title{Recursive arguments checks on lists and data frames.}
 \usage{
 qcheckr(x, rules)
 
 qassertr(x, rules)
 }
 \arguments{
-  \item{x}{[\code{list} or \code{data.frame}]\cr List
-  elements or data frame columns to check for compliance
-  with \code{rules}.  See details of \code{\link{qcheck}}
-  for rule explanation.}
+  \item{x}{[\code{list} or \code{data.frame}]\cr List or
+  data frame to check for compliance with at least one of
+  \code{rules}.  See details of \code{\link{qcheck}} for
+  rule explanation.}
 
   \item{rules}{[\code{character}]\cr Set of rules. See
   \code{\link{qcheck}}}
@@ -21,7 +21,9 @@ qassertr(x, rules)
 thrown exception) otherwise.
 }
 \description{
-Check lists against rules
+These functions are the tuned counterparts of
+\code{\link{qcheck}} and \code{\link{qassert}} tailored for
+recursive checks of list elements or data frame columns.
 }
 \examples{
 qcheckr(as.list(1:10), "i+")

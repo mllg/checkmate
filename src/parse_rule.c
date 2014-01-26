@@ -95,6 +95,7 @@ static int parse_class(checker_t *checker, const char *rule) {
 static int parse_length(checker_t *checker, const char *rule) {
     switch(rule[0]) {
         case '*':
+            checker->len.fun = NULL;
             return 1;
         case '?':
             checker->len.fun = &ii_le;
@@ -191,7 +192,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
     }
     if (start == end) {
         if (checker->lower.op == GT) {
-            checker->lower.fun = &dd_neq;
+            checker->lower.fun = &dd_ne;
             checker->lower.cmp = R_NegInf;
         } else {
             checker->lower.fun = NULL;
@@ -206,7 +207,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
     if (*end == ')') {
         checker->upper.op = LT;
         if (start == end) {
-            checker->upper.fun = &dd_neq;
+            checker->upper.fun = &dd_ne;
             checker->upper.cmp = R_PosInf;
         } else {
             checker->upper.fun = &dd_lt;

@@ -1,5 +1,5 @@
 S3method(any,missing)
-export(check.fun)
+export(assert.fun)
 export(is.integerish)
 export(qassert)
 export(qassertr)

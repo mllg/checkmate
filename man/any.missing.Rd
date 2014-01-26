@@ -1,6 +1,6 @@
 \name{any.missing}
 \alias{any.missing}
-\title{Check if an object contains missing values.}
+\title{Checks if an object contains missing values.}
 \usage{
 \method{any}{missing}(x)
 }
@@ -14,7 +14,7 @@ element of \code{x} is missing (see details).
 \description{
 Supported are atomic types (see
 \code{\link[base]{is.atomic}}), lists and data frames.
-Missingness is defined as values being \code{NA} or
-\code{NaN} for atomic types and \code{NULL} for lists.
+Missingness is defined ias \code{NA} or \code{NaN} for
+atomic types and \code{NULL} for lists.
 }
 
