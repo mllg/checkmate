@@ -224,7 +224,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
         error("Invalid bound definition, error parsing upper bound or missing closing ')'/']': %s", rule);
     }
 
-    return rule - end;
+    return end-rule+1;
 }
 
 void parse_rule(checker_t *checker, const char *rule) {
