@@ -1,7 +1,8 @@
-src/*.o
-src/*.so
-^.*tar.gz$
-^.*\.swp$
-.gitignore
-.travis.yml
-README.md
+src/.+\.o$
+src/.+\.so$
+tar.gz$
+\.swp$
+^\.gitignore$
+^\.travis
+\.yml$
+^README.md$
