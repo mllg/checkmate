@@ -1,5 +1,4 @@
 #include <limits.h>
-#include <float.h>
 #include <string.h>
 #include "parse_rule.h"
 #include "is_class.h"

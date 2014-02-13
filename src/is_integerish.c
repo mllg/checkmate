@@ -3,10 +3,10 @@
 #include <limits.h>
 
 SEXP c_is_integerish(SEXP x, SEXP tolerance) {
-    if (isInteger(x) || isLogical(x))
+    if (isLogical(x) || isInteger(x))
         return ScalarLogical(TRUE);
     if (! isReal(x))
-        error("Only logical and numeric values supported");
+        return ScalarLogical(FALSE);
 
     const double *xr = REAL(x);
     const double * const xend = xr + length(x);

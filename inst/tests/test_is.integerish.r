@@ -18,8 +18,8 @@ test_that("is.integerish", {
   expect_false(is.integerish(-Inf))
   expect_false(is.integerish(Inf))
 
-  expect_error(is.integerish(3+2i))
-  expect_error(is.integerish(list()))
+  expect_false(is.integerish(3+2i))
+  expect_false(is.integerish(list()))
 
   max = as.double(.Machine$integer.max)
   min = as.double(-.Machine$integer.max)
