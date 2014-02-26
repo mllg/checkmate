@@ -1,8 +1,8 @@
-\name{is.integerish}
-\alias{is.integerish}
+\name{isIntegerish}
+\alias{isIntegerish}
 \title{Checks if an object is convertible to an integer.}
 \usage{
-is.integerish(x, tolerance = .Machine$double.eps^0.5)
+isIntegerish(x, tolerance = .Machine$double.eps^0.5)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

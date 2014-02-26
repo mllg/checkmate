@@ -1,8 +1,8 @@
-\name{assert.fun}
-\alias{assert.fun}
+\name{assertFun}
+\alias{assertFun}
 \title{Matches and checks a function's signature}
 \usage{
-assert.fun(fun, args, ordered = FALSE)
+assertFun(fun, args, ordered = FALSE)
 }
 \arguments{
   \item{fun}{[\code{character} or \code{function}]\cr

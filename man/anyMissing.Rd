@@ -1,8 +1,8 @@
-\name{any.missing}
-\alias{any.missing}
+\name{anyMissing}
+\alias{anyMissing}
 \title{Checks if an object contains missing values.}
 \usage{
-\method{any}{missing}(x)
+anyMissing(x)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

@@ -8,6 +8,6 @@
 #' @export
 #' @useDynLib checkmate c_is_integerish
 #' @export
-is.integerish = function(x, tolerance = .Machine$double.eps^.5) {
+isIntegerish = function(x, tolerance = .Machine$double.eps^.5) {
   .Call("c_is_integerish", x, as.double(tolerance), PACKAGE = "checkmate")
 }
