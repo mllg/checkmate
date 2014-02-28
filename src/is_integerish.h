@@ -1,5 +1,5 @@
-#ifndef DOUBLE_TO_INT_H_
-#define DOUBLE_TO_INT_H_
+#ifndef IS_INTEGERISH_H_
+#define IS_INTEGERISH_H_
 
 #include "typedefs.h"
 
