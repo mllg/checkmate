@@ -31,6 +31,6 @@ isConstant = function(x, tol=.Machine$double.eps^0.5) {
   } else if (is.atomic(x)) {
     all(tail(x, -1L) == x[[1L]])
   } else {
-    all(vlapply(tail(x, -1L), identical, y=x[[1L]]))
+    all(vapply(tail(x, -1L), identical, NA, y=x[[1L]]))
   }
 }
