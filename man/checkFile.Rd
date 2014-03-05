@@ -5,13 +5,13 @@
 \alias{checkFile}
 \title{Check or assert  existance and access rights of files and directories}
 \usage{
-checkFile(fn, access)
+checkFile(fn, access = "")
 
-assertFile(fn, access)
+assertFile(fn, access = "")
 
-checkDirectory(fn, access)
+checkDirectory(fn, access = "")
 
-assertDirectory(fn, access)
+assertDirectory(fn, access = "")
 }
 \arguments{
   \item{fn}{[\code{character}\code{function}]\cr Vector of

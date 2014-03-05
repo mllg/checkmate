@@ -1,8 +1,11 @@
-\name{isIntegerish}
-\alias{isIntegerish}
+\name{checkIntegerish}
+\alias{assertIntegerish}
+\alias{checkIntegerish}
 \title{Checks if an object is convertible to an integer.}
 \usage{
-isIntegerish(x, tol = .Machine$double.eps^0.5)
+checkIntegerish(x, tol = .Machine$double.eps^0.5)
+
+assertIntegerish(x, tol = .Machine$double.eps^0.5)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -13,7 +16,7 @@ isIntegerish(x, tol = .Machine$double.eps^0.5)
 }
 \value{
 [logical(1)]: \code{TRUE} if \code{x} can be converted
-safely, \code{FALSE} otherwise.
+safely, \code{FALSE} (or an error) otherwise.
 }
 \description{
 Checks if an object is convertible to an integer.

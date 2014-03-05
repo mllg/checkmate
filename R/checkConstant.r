@@ -33,11 +33,11 @@ testConstant = function(x, tol) {
 #' @export
 #' @useDynLib checkmate c_is_constant
 #' @examples
-#' print(isConstant(c(1, NA)))
+#' print(checkConstant(c(1, NA)))
 #'
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
-#' print(isConstant(x))
+#' print(checkConstant(x))
 checkConstant = function(x, tol=.Machine$double.eps^0.5) {
   testConstant(x, tol)
 }
