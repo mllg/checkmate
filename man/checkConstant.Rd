@@ -1,8 +1,8 @@
-\name{isConstant}
-\alias{isConstant}
+\name{checkConstant}
+\alias{checkConstant}
 \title{Checks if all elements are constant}
 \usage{
-isConstant(x, tol = .Machine$double.eps^0.5)
+checkConstant(x, tol = .Machine$double.eps^0.5)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -12,8 +12,8 @@ isConstant(x, tol = .Machine$double.eps^0.5)
   Default is \code{sqrt(.Machine$double.eps)}.}
 }
 \value{
-[logical(1)]: \code{TRUE} if \code{x} is constant,
-\code{FALSE} otherwise.
+[\code{logical(1)}] Returns \code{TRUE} on success and
+throws an exception on failure for assertion.
 }
 \description{
 Checks if all elements are constant

@@ -1,12 +1,15 @@
-\name{assertFun}
-\alias{assertFun}
-\title{Matches and checks a function's signature}
+\name{checkFun}
+\alias{asssertFun}
+\alias{checkFun}
+\title{Check or assert an argument to be a function}
 \usage{
-assertFun(fun, args, ordered = FALSE)
+checkFun(fun, args, ordered = FALSE)
+
+asssertFun(fun, args, ordered = FALSE)
 }
 \arguments{
   \item{fun}{[\code{character} or \code{function}]\cr
-  Function to match or check.}
+  Function to check.}
 
   \item{args}{[\code{character}]\cr Expected formal
   arguments.}
@@ -17,10 +20,10 @@ assertFun(fun, args, ordered = FALSE)
   Default is \code{FALSE}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} if at least one
-element of \code{x} is missing (see details).
+[\code{logical(1)}] Returns \code{TRUE} on success and
+throws an exception on failure for assertion.
 }
 \description{
-Matches and checks a function's signature
+Check or assert an argument to be a function
 }
 

@@ -1,17 +1,4 @@
-#' Matches and checks a function's signature
-#'
-#' @param fun [\code{character} or \code{function}]\cr
-#'  Function to match or check.
-#' @param args [\code{character}]\cr
-#'  Expected formal arguments.
-#' @param ordered [\code{logical(1)}]\cr
-#'  Flag whether the arguments provided in \code{args} must be the first
-#'  arguments of the function and occur in the given order.
-#'  Default is \code{FALSE}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} if at least one element of \code{x} is missing (see details).
-#' @useDynLib checkmate c_any_missing
-#' @export
-assertFun = function(fun, args, ordered = FALSE) {
+testFun = function(fun, args, ordered = FALSE) {
   fun = match.fun(fun)
 
   if (!missing(args)) {
@@ -23,13 +10,37 @@ assertFun = function(fun, args, ordered = FALSE) {
 
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
-        stop("Function must have first formal arguments (ordered): ", paste(args, collapse=","))
+        return(paste0("Function must have first formal arguments (ordered): ", paste(args, collapse=",")))
       }
     } else {
       tmp = setdiff(args, fargs)
       if (length(tmp))
-        stop("Function is missing formal arguments: ", paste(tmp, collapse=","))
+        return(paste0("Function is missing formal arguments: ", paste(tmp, collapse=",")))
     }
   }
-  fun
+  return("")
+}
+
+
+#' Check or assert an argument to be a function
+#'
+#' @param fun [\code{character} or \code{function}]\cr
+#'  Function to check.
+#' @param args [\code{character}]\cr
+#'  Expected formal arguments.
+#' @param ordered [\code{logical(1)}]\cr
+#'  Flag whether the arguments provided in \code{args} must be the first
+#'  arguments of the function and occur in the given order.
+#'  Default is \code{FALSE}.
+#' @return [\code{logical(1)}] Returns \code{TRUE} on success and
+#'  throws an exception on failure for assertion.
+#' @export
+checkFun = function(fun, args, ordered = FALSE) {
+  makeCheckReturn(testFun(fun, args, ordered))
+}
+
+#' @rdname checkFun
+#' @export
+asssertFun = function(fun, args, ordered = FALSE) {
+  makeAssertReturn(testFun(fun, args, ordered))
 }
