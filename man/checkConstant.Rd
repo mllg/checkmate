@@ -19,10 +19,10 @@ throws an exception on failure for assertion.
 Checks if all elements are constant
 }
 \examples{
-print(isConstant(c(1, NA)))
+print(checkConstant(c(1, NA)))
 
 x = c(0, 1 - 0.9 - 0.1)
 print(identical(x[1], x[2]))
-print(isConstant(x))
+print(checkConstant(x))
 }
 
