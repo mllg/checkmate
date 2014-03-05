@@ -1,4 +1,4 @@
-.testAccess = function(fn, access) {
+testAccess = function(fn, access) {
   qassert(access, "S1")
   if (nzchar(access)) {
     access = strsplit(access, "")[[1L]]
@@ -22,7 +22,7 @@
   return("")
 }
 
-.testFile = function(fn, access="") {
+testFile = function(fn, access="") {
   qassert(fn, "S")
 
   w = which(!file.exists(fn))
@@ -30,22 +30,22 @@
     return(paste0("File does not exist: ", fn[w[1L]]))
   w = which(file.info(fn)$isdir)
   if (length(w))
-    return(paste0(stop("File expected, directory in place: ", fn[w[1L]])))
+    return(paste0("File expected, directory in place: ", fn[w[1L]]))
 
-  return(.testkAccess(fn, access))
+  return(testAccess(fn, access))
 }
 
-.testDirectory = function(fn, access="") {
+testDirectory = function(fn, access="") {
   qassert(fn, "S")
 
-  w = !file.exists(fn)
+  w = which(!file.exists(fn))
   if (length(w))
-    return(pate0("Directory does not exist: ", fn[w[1L]]))
+    return(paste0("Directory does not exist: ", fn[w[1L]]))
   w = which(!file.info(fn)$isdir)
   if (length(w))
     return(paste0("Directory expected, file in place: ", fn[w[1L]]))
 
-  return(.testkAccess(fn, access))
+  return(testAccess(fn, access))
 }
 
 
@@ -59,25 +59,25 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success and
 #'  throws an exception on failure for assertion.
 #' @export
-checkFile = function(fn, access) {
-  makeCheckReturn(.testFile(fn, access))
+checkFile = function(fn, access="") {
+  makeCheckReturn(testFile(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
-assertFile = function(fn, access) {
-  makeAssertReturn(.testFile(fn, access))
+assertFile = function(fn, access="") {
+  makeAssertReturn(testFile(fn, access))
 }
 
 
 #' @rdname checkFile
 #' @export
-checkDirectory = function(fn, access) {
-  makeCheckReturn(.checkAccess(fn, access))
+checkDirectory = function(fn, access="") {
+  makeCheckReturn(testDirectory(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
-assertDirectory = function(fn, access) {
-  makeAssertReturn(.testDir(fn, access))
+assertDirectory = function(fn, access="") {
+  makeAssertReturn(testDirectory(fn, access))
 }
