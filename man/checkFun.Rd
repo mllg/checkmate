@@ -20,8 +20,8 @@ asssertFun(fun, args, ordered = FALSE)
   Default is \code{FALSE}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success and
-throws an exception on failure for assertion.
+[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
+an exception on failure for assertion.
 }
 \description{
 Check or assert an argument to be a function

@@ -49,15 +49,15 @@ testDirectory = function(fn, access="") {
 }
 
 
-#' Check or assert  existance and access rights of files and directories
+#' Check or assert existance and access rights of files and directories
 #'
 #' @param fn [\code{character}\code{function}]\cr
-#'  Vector of file or directory names names
+#'  Vector of file or directory names
 #' @param access [\code{character}]\cr
 #'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success and
-#'  throws an exception on failure for assertion.
+#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
+#'  Throws an exception on failure for assertion.
 #' @export
 checkFile = function(fn, access="") {
   isTRUE(testFile(fn, access))

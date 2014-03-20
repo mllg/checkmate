@@ -28,8 +28,8 @@ testConstant = function(x, tol) {
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used if \code{x} is of type \code{double} or \code{complex}.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success and
-#'  throws an exception on failure for assertion.
+#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
+#'  Throws an exception on failure for assertion.
 #' @export
 #' @useDynLib checkmate c_is_constant
 #' @examples
@@ -42,8 +42,8 @@ checkVariable = function(x, tol=.Machine$double.eps^0.5) {
   !testConstant(x, tol)
 }
 
-# #' @rdname checkVariable
-# #' @export
+#' @rdname checkVariable
+#' @export
 asssertVariable = function(x, tol=.Machine$double.eps^0.5) {
   if (testConstant(x, tol))
     amsg("Values of '%s' must vary", deparse(substitute(x)))

@@ -5,8 +5,8 @@
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used to check if a double can be converted.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
-#' @return [logical(1)]: \code{TRUE} if \code{x} can be converted safely,
-#'    \code{FALSE} (or an error) otherwise.
+#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
+#'  Throws an exception on failure for assertion.
 #' @export
 #' @useDynLib checkmate c_is_integerish
 #' @export

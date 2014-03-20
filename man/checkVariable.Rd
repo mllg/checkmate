@@ -1,8 +1,11 @@
 \name{checkVariable}
+\alias{asssertVariable}
 \alias{checkVariable}
 \title{Checks if all elements are constant}
 \usage{
 checkVariable(x, tol = .Machine$double.eps^0.5)
+
+asssertVariable(x, tol = .Machine$double.eps^0.5)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -12,8 +15,8 @@ checkVariable(x, tol = .Machine$double.eps^0.5)
   Default is \code{sqrt(.Machine$double.eps)}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success and
-throws an exception on failure for assertion.
+[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
+an exception on failure for assertion.
 }
 \description{
 Checks if all elements are constant

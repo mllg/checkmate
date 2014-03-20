@@ -15,8 +15,8 @@ assertIntegerish(x, tol = .Machine$double.eps^0.5)
   \code{sqrt(.Machine$double.eps)}.}
 }
 \value{
-[logical(1)]: \code{TRUE} if \code{x} can be converted
-safely, \code{FALSE} (or an error) otherwise.
+[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
+an exception on failure for assertion.
 }
 \description{
 Checks if an object is convertible to an integer.

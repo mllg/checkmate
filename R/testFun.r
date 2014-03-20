@@ -32,8 +32,8 @@ testFun = function(fun, args, ordered = FALSE) {
 #'  Flag whether the arguments provided in \code{args} must be the first
 #'  arguments of the function and occur in the given order.
 #'  Default is \code{FALSE}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success and
-#'  throws an exception on failure for assertion.
+#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
+#'  Throws an exception on failure for assertion.
 #' @export
 checkFun = function(fun, args, ordered = FALSE) {
   isTRUE(testFun(fun, args, ordered))
