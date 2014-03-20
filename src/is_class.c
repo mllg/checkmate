@@ -1,7 +1,9 @@
 #include "is_class.h"
+#include "is_integerish.h"
 
 inline Rboolean is_class_logical(SEXP x) { return isLogical(x); }
 inline Rboolean is_class_integer(SEXP x) { return isInteger(x); }
+inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, DEFAULT_TOL); }
 inline Rboolean is_class_double(SEXP x) { return isReal(x); }
 inline Rboolean is_class_numeric(SEXP x) { return isInteger(x) || isReal(x); }
 inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }

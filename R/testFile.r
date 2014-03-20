@@ -5,32 +5,32 @@ testAccess = function(fn, access) {
 
     if ("r" %in% access) {
       w = which(file.access(fn, 4L) != 0L)
-      if (length(w))
-        return(paste0("File not readable: ", fn[w[1L]]))
+      if (length(w) > 0L)
+        return(sprintf("File not readable: '%s'", fn[w[1L]]))
     }
     if ("w" %in% access) {
       w = which(file.access(fn, 2L) != 0L)
-      if (length(w))
-        return(paste0("File not writeable: ", fn[w[1L]]))
+      if (length(w) > 0L)
+        return(sprintf("File not writeable: '%s'", fn[w[1L]]))
     }
     if ("x" %in% access) {
       w = which(file.access(fn, 1L) != 0L)
-      if (length(w))
-        return(paste0("File not executeable: ", fn[w[1L]]))
+      if (length(w) > 0L)
+        return(sprintf("File not executeable: '%s'", fn[w[1L]]))
     }
   }
-  return("")
+  return(TRUE)
 }
 
 testFile = function(fn, access="") {
   qassert(fn, "S")
 
   w = which(!file.exists(fn))
-  if (length(w))
-    return(paste0("File does not exist: ", fn[w[1L]]))
+  if (length(w) > 0L)
+    return(sprintf("File does not exist: '%s'", fn[w[1L]]))
   w = which(file.info(fn)$isdir)
-  if (length(w))
-    return(paste0("File expected, directory in place: ", fn[w[1L]]))
+  if (length(w) > 0L)
+    return(sprintf("File expected, directory in place: '%s'", fn[w[1L]]))
 
   return(testAccess(fn, access))
 }
@@ -39,11 +39,11 @@ testDirectory = function(fn, access="") {
   qassert(fn, "S")
 
   w = which(!file.exists(fn))
-  if (length(w))
-    return(paste0("Directory does not exist: ", fn[w[1L]]))
+  if (length(w) > 0L)
+    return(sprintf("Directory does not exist: '%s'", fn[w[1L]]))
   w = which(!file.info(fn)$isdir)
-  if (length(w))
-    return(paste0("Directory expected, file in place: ", fn[w[1L]]))
+  if (length(w) > 0L)
+    return(sprintf("Directory expected, file in place: '%s'", fn[w[1L]]))
 
   return(testAccess(fn, access))
 }
@@ -60,24 +60,24 @@ testDirectory = function(fn, access="") {
 #'  throws an exception on failure for assertion.
 #' @export
 checkFile = function(fn, access="") {
-  makeCheckReturn(testFile(fn, access))
+  isTRUE(testFile(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
 assertFile = function(fn, access="") {
-  makeAssertReturn(testFile(fn, access))
+  amsg(testFile(fn, access))
 }
 
 
 #' @rdname checkFile
 #' @export
 checkDirectory = function(fn, access="") {
-  makeCheckReturn(testDirectory(fn, access))
+  isTRUE(testDirectory(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
 assertDirectory = function(fn, access="") {
-  makeAssertReturn(testDirectory(fn, access))
+  amsg(testDirectory(fn, access))
 }

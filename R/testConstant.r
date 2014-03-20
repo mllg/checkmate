@@ -38,13 +38,13 @@ testConstant = function(x, tol) {
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
 #' print(checkConstant(x))
-checkConstant = function(x, tol=.Machine$double.eps^0.5) {
-  testConstant(x, tol)
+checkVariable = function(x, tol=.Machine$double.eps^0.5) {
+  !testConstant(x, tol)
 }
 
 # #' @rdname checkConstant
 # #' @export
-# asssertConstant = function(x, tol) {
-#   if (!testConstant(x, tol))
-#   makeAssertReturn(testConstant(x, tol))
-# }
+asssertVariable = function(x, tol=.Machine$double.eps^0.5) {
+  if (testConstant(x, tol))
+    amsg("Values of '%s' must vary", deparse(substitute(x)))
+}

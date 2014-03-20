@@ -21,6 +21,12 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.fun = &is_class_integer;
             checker->class.name = CL_INTEGER;
             break;
+        case 'X':
+            checker->missing.fun = &any_missing_integerish;
+        case 'x':
+            checker->class.fun = &is_class_integerish;
+            checker->class.name = CL_INTEGERISH;
+            break;
         case 'N':
             checker->missing.fun = &any_missing_numeric;
         case 'n':

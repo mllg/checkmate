@@ -20,6 +20,15 @@ inline Rboolean any_missing_integer(SEXP x) {
     return FALSE;
 }
 
+inline Rboolean any_missing_integerish(SEXP x) {
+    switch(TYPEOF(x)) {
+        case LGLSXP: return any_missing_logical(x);
+        case INTSXP: return any_missing_integer(x);
+        case REALSXP: return any_missing_double(x);
+        default: error("Error in any_missing_logical: x is not logical or numeric");
+    }
+}
+
 inline Rboolean any_missing_double(SEXP x) {
     const double * xp = REAL(x);
     const double * const xe = xp + length(x);
@@ -37,6 +46,7 @@ inline Rboolean any_missing_numeric(SEXP x) {
         default: error("Error in any_missing_numeric: x is not integer or real");
     }
 }
+
 
 inline Rboolean any_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);

@@ -5,6 +5,7 @@
 
 Rboolean any_missing_logical(SEXP);
 Rboolean any_missing_integer(SEXP);
+Rboolean any_missing_integerish(SEXP);
 Rboolean any_missing_double(SEXP);
 Rboolean any_missing_numeric(SEXP);
 Rboolean any_missing_complex(SEXP);

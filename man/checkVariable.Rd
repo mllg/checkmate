@@ -1,8 +1,8 @@
-\name{checkConstant}
-\alias{checkConstant}
+\name{checkVariable}
+\alias{checkVariable}
 \title{Checks if all elements are constant}
 \usage{
-checkConstant(x, tol = .Machine$double.eps^0.5)
+checkVariable(x, tol = .Machine$double.eps^0.5)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

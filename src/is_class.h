@@ -5,6 +5,7 @@
 
 Rboolean is_class_logical(SEXP);
 Rboolean is_class_integer(SEXP);
+Rboolean is_class_integerish(SEXP);
 Rboolean is_class_double(SEXP);
 Rboolean is_class_numeric(SEXP);
 Rboolean is_class_complex(SEXP);

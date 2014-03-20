@@ -4,6 +4,7 @@ static const char* getClassString(const class_t name) {
     switch(name) {
         case CL_LOGICAL     : return "logical";
         case CL_INTEGER     : return "integer";
+        case CL_INTEGERISH  : return "integerish";
         case CL_NUMERIC     : return "numeric";
         case CL_DOUBLE      : return "double";
         case CL_STRING      : return "string";

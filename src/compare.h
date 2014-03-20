@@ -1,5 +1,5 @@
-#ifndef COMPARE_H
-#define COMPARE_H
+#ifndef COMPARE_H_
+#define COMPARE_H_
 
 #include "typedefs.h"
 

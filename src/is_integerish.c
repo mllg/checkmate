@@ -2,19 +2,21 @@
 #include <math.h>
 #include <limits.h>
 
-SEXP c_is_integerish(SEXP x, SEXP tolerance) {
-    if (isLogical(x) || isInteger(x))
-        return ScalarLogical(TRUE);
+Rboolean isIntegerish(SEXP x, const double tol) {
+    if (isInteger(x) || isLogical(x))
+        return TRUE;
     if (! isReal(x))
-        return ScalarLogical(FALSE);
-
+        return FALSE;
     const double *xr = REAL(x);
     const double * const xend = xr + length(x);
-    const double tol = REAL(tolerance)[0];
 
     for (; xr != xend; xr++) {
         if (!ISNAN(*xr) && (*xr <= INT_MIN || *xr > INT_MAX || fabs(*xr - nearbyint(*xr)) >= tol))
-            return ScalarLogical(FALSE);
+            return FALSE;
     }
-    return ScalarLogical(TRUE);
+    return TRUE;
+}
+
+SEXP c_is_integerish(SEXP x, SEXP tolerance) {
+    return ScalarLogical(isIntegerish(x, REAL(tolerance)[0]));
 }

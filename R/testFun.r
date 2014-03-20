@@ -18,7 +18,7 @@ testFun = function(fun, args, ordered = FALSE) {
         return(paste0("Function is missing formal arguments: ", paste(tmp, collapse=",")))
     }
   }
-  return("")
+  return(TRUE)
 }
 
 
@@ -36,11 +36,11 @@ testFun = function(fun, args, ordered = FALSE) {
 #'  throws an exception on failure for assertion.
 #' @export
 checkFun = function(fun, args, ordered = FALSE) {
-  makeCheckReturn(testFun(fun, args, ordered))
+  isTRUE(testFun(fun, args, ordered))
 }
 
 #' @rdname checkFun
 #' @export
 asssertFun = function(fun, args, ordered = FALSE) {
-  makeAssertReturn(testFun(fun, args, ordered))
+  amsg(testFun(fun, args, ordered))
 }
