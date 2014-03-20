@@ -33,16 +33,16 @@ testConstant = function(x, tol) {
 #' @export
 #' @useDynLib checkmate c_is_constant
 #' @examples
-#' print(checkConstant(c(1, NA)))
+#' print(checkVariable(c(1, NA)))
 #'
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
-#' print(checkConstant(x))
+#' print(checkVariable(x))
 checkVariable = function(x, tol=.Machine$double.eps^0.5) {
   !testConstant(x, tol)
 }
 
-# #' @rdname checkConstant
+# #' @rdname checkVariable
 # #' @export
 asssertVariable = function(x, tol=.Machine$double.eps^0.5) {
   if (testConstant(x, tol))
