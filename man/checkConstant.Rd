@@ -1,8 +1,14 @@
-\name{checkVariable}
+\name{checkConstant}
+\alias{asssertConstant}
 \alias{asssertVariable}
+\alias{checkConstant}
 \alias{checkVariable}
-\title{Checks if all elements are constant}
+\title{Checks if all elements of a vector are constant}
 \usage{
+checkConstant(x, tol = .Machine$double.eps^0.5)
+
+asssertConstant(x, tol = .Machine$double.eps^0.5)
+
 checkVariable(x, tol = .Machine$double.eps^0.5)
 
 asssertVariable(x, tol = .Machine$double.eps^0.5)
@@ -19,7 +25,7 @@ asssertVariable(x, tol = .Machine$double.eps^0.5)
 an exception on failure for assertion.
 }
 \description{
-Checks if all elements are constant
+Checks if all elements of a vector are constant
 }
 \examples{
 print(checkVariable(c(1, NA)))

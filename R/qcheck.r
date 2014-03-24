@@ -101,7 +101,7 @@ qcheck = function(x, rules) {
 #' @useDynLib checkmate c_qassert
 qassert = function(x, rules) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
-  qamsg(res, deparse(substitute(x)))
+  qamsg(res, dps(x))
 }
 
 
@@ -133,6 +133,5 @@ qcheckr = function(x, rules) {
 #' @useDynLib checkmate c_qassert
 qassertr = function(x, rules) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
-  qamsg(res, deparse(substitute(x)))
+  qamsg(res, dps(x))
 }
-

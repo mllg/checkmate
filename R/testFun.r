@@ -10,12 +10,12 @@ testFun = function(fun, args, ordered = FALSE) {
 
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
-        return(paste0("Function must have first formal arguments (ordered): ", paste(args, collapse=",")))
+        return(paste0("Function '%s' must have first formal arguments (ordered): ", paste(args, collapse=",")))
       }
     } else {
       tmp = setdiff(args, fargs)
       if (length(tmp))
-        return(paste0("Function is missing formal arguments: ", paste(tmp, collapse=",")))
+        return(paste0("Function '%s' is missing formal arguments: ", paste(tmp, collapse=",")))
     }
   }
   return(TRUE)
@@ -42,5 +42,5 @@ checkFun = function(fun, args, ordered = FALSE) {
 #' @rdname checkFun
 #' @export
 asssertFun = function(fun, args, ordered = FALSE) {
-  amsg(testFun(fun, args, ordered))
+  amsg(testFun(fun, args, ordered), dps(fun))
 }
