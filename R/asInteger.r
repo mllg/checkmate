@@ -2,7 +2,7 @@
 #'
 #' Supported are logical, interger and numeric types.
 #' Unlike \code{\link[base]{as.integer}}, an exception is thrown if
-#' \code{x} cannot be converted safely (without generating \code{NA}s).
+#' \code{x} cannot be converted safely.
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to convert.

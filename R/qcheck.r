@@ -118,6 +118,9 @@ qcheck = function(x, rules) {
 #'   See details of \code{\link{qcheck}} for rule explanation.
 #' @param rules [\code{character}]\cr
 #'   Set of rules. See \code{\link{qcheck}}
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
 #' @seealso \code{\link{qcheck}}, \code{\link{qassert}}
 #' @export
@@ -132,9 +135,6 @@ qassertr = function(x, rules, .var.name) {
 
 
 #' @export
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @rdname qassertr
 #' @useDynLib checkmate c_qcheck
 qcheckr = function(x, rules) {

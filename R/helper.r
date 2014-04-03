@@ -1,3 +1,4 @@
+# getter for variable name
 vname = function(x, var.name, n = 1L) {
   if (!missing(var.name))
     return(var.name)
