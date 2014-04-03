@@ -29,7 +29,7 @@ testString = function(x, pattern, ignore.case=FALSE, perl=FALSE, fixed=FALSE) {
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}
-#'  or \code{\link{assertVector}}.
+#'  or \code{\link{checkVector}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export

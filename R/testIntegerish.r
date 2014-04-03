@@ -12,7 +12,7 @@ testIntegerish = function(x, tol = .Machine$double.eps^.5) {
 #'  Default is \code{sqrt(.Machine$double.eps)}.
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}
-#'  or \code{\link{assertVector}}.
+#'  or \code{\link{checkVector}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export

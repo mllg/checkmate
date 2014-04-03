@@ -18,7 +18,7 @@ testNumeric = function(x, lower, upper) {
 #'  Upper value all elements of \code{x} must be lower than.
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}
-#'  or \code{\link{assertVector}}.
+#'  or \code{\link{checkVector}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export

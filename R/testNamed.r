@@ -1,6 +1,5 @@
 testNamed = function(x, dups.ok, strict) {
   assertFlag(dups.ok)
-  assertFlag(speical.ok)
   nn = names(x)
   if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn)))
     return("'%s' must be named")
@@ -25,11 +24,11 @@ testNamed = function(x, dups.ok, strict) {
 #'  Throws an exception on failure for assertion.
 #' @export
 checkNamed = function(x, dups.ok=TRUE, strict=FALSE) {
-  isTRUE(testNamed(x, dups.ok, special.ok))
+  isTRUE(testNamed(x, dups.ok, strict))
 }
 
 #' @rdname checkNamed
 #' @export
 assertNamed = function(x, dups.ok=TRUE, strict=FALSE) {
-  amsg(testNamed(x, dups.ok, special.ok), dps(x))
+  amsg(testNamed(x, dups.ok, strict), dps(x))
 }
