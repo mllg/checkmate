@@ -1,9 +1,3 @@
-testCount = function(x) {
-  if (length(x) != 1L || !checkIntegerish(x) || is.na(x) || x < 0)
-    return("'%s' must be a count")
-  return(TRUE)
-}
-
 #' Checks if an argument is a count
 #'
 #' A count a a single integerish numeric >= 0 which is not missing.
@@ -24,4 +18,10 @@ assertCount = function(x, .var.name) {
 #' @export
 checkCount = function(x) {
   isTRUE(testCount(x))
+}
+
+testCount = function(x) {
+  if (length(x) != 1L || !checkIntegerish(x) || is.na(x) || x < 0)
+    return("'%s' must be a count")
+  return(TRUE)
 }

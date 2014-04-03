@@ -1,9 +1,3 @@
-testFlag = function(x, na.ok = FALSE) {
-  if(length(x) != 1L || !is.logical(x) || (!na.ok && is.na(x)))
-    return("'%s' must be a flag")
-  return(TRUE)
-}
-
 #' Checks if an argument is a flag
 #'
 #' A flag a a single logical value which is not missing.
@@ -28,4 +22,10 @@ assertFlag = function(x, na.ok = FALSE, .var.name) {
 checkFlag = function(x, na.ok = FALSE) {
   amsg(testFlag(na.ok, FALSE), "na.ok")
   isTRUE(testFlag(x, na.ok))
+}
+
+testFlag = function(x, na.ok = FALSE) {
+  if(length(x) != 1L || !is.logical(x) || (!na.ok && is.na(x)))
+    return("'%s' must be a flag")
+  return(TRUE)
 }

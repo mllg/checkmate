@@ -1,14 +1,3 @@
-testNamed = function(x, dups.ok, strict) {
-  nn = names(x)
-  if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn)))
-    return("'%s' must be named")
-  if (assertFlag(dups.ok) && !dups.ok && anyDuplicated(nn) > 0L)
-    return("'%s' contains duplicated names")
-  if (assertFlag(strict) && strict && (any(nn != make.names(nn) | grepl("^\\.\\.[0-9]$", nn))))
-    return("Names of '%s' are not compatible with R's variable naming rules")
-  return(TRUE)
-}
-
 #' Check or assert that an argument is named
 #'
 #' @param x [\code{ANY}]\cr
@@ -34,3 +23,15 @@ assertNamed = function(x, dups.ok = TRUE, strict = FALSE, .var.name) {
 checkNamed = function(x, dups.ok = TRUE, strict = FALSE) {
   isTRUE(testNamed(x, dups.ok, strict))
 }
+
+testNamed = function(x, dups.ok, strict) {
+  nn = names(x)
+  if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn)))
+    return("'%s' must be named")
+  if (assertFlag(dups.ok) && !dups.ok && anyDuplicated(nn) > 0L)
+    return("'%s' contains duplicated names")
+  if (assertFlag(strict) && strict && (any(nn != make.names(nn) | grepl("^\\.\\.[0-9]$", nn))))
+    return("Names of '%s' are not compatible with R's variable naming rules")
+  return(TRUE)
+}
+

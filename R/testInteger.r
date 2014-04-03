@@ -1,13 +1,3 @@
-testInteger = function(x, lower, upper) {
-  if (!is.integer(x))
-    return("'%s' must be integer")
-  if (!missing(lower) && qassert(lower, "N1") && any(x < lower))
-    return(sprintf("All elements of '%%s' must be >= %s", lower))
-  if (!missing(upper) && qassert(upper, "N1") && any(x > upper))
-    return(sprintf("All elements of '%%s' must be <= %s", upper))
-  return(TRUE)
-}
-
 #' Checks if an argument is an integer
 #'
 #' @param x [\code{ANY}]\cr
@@ -34,4 +24,14 @@ assertInteger = function(x, lower, upper, ..., .var.name) {
 #' @export
 checkInteger = function(x, lower, upper, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testInteger(x, lower, upper))
+}
+
+testInteger = function(x, lower, upper) {
+  if (!is.integer(x))
+    return("'%s' must be integer")
+  if (!missing(lower) && qassert(lower, "N1") && any(x < lower))
+    return(sprintf("All elements of '%%s' must be >= %s", lower))
+  if (!missing(upper) && qassert(upper, "N1") && any(x > upper))
+    return(sprintf("All elements of '%%s' must be <= %s", upper))
+  return(TRUE)
 }

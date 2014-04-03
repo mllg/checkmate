@@ -1,8 +1,3 @@
-testIntegerish = function(x, tol = .Machine$double.eps^.5) {
-  if (!.Call("c_is_integerish", x, as.double(tol), PACKAGE = "checkmate"))
-    return("'%s' must be integer-ish")
-  return(TRUE)
-}
 #' Checks if an object is convertible to an integer.
 #'
 #' @param x [\code{ANY}]\cr
@@ -30,4 +25,10 @@ assertIntegerish = function(x, tol = .Machine$double.eps^.5, ..., .var.name) {
 #' @export
 checkIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testIntegerish(x, tol))
+}
+
+testIntegerish = function(x, tol = .Machine$double.eps^.5) {
+  if (!.Call("c_is_integerish", x, as.double(tol), PACKAGE = "checkmate"))
+    return("'%s' must be integer-ish")
+  return(TRUE)
 }

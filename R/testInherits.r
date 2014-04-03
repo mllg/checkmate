@@ -1,11 +1,3 @@
-testInherits = function(x, classes) {
-  qassert(classes, "S")
-  w = which.first(inherits(x, classes, TRUE) == 0L)
-  if (length(w) > 0L)
-    return(sprintf("'%%s' must be of class '%s'", classes[w]))
-  return(TRUE)
-}
-
 #' Checks argument inheritance
 #'
 #' @param x [\code{ANY}]\cr
@@ -27,4 +19,12 @@ assertInherits = function(x, classes, .var.name) {
 #' @export
 checkInherits = function(x, classes) {
   isTRUE(testInherits(x, classes))
+}
+
+testInherits = function(x, classes) {
+  qassert(classes, "S")
+  w = which.first(inherits(x, classes, TRUE) == 0L)
+  if (length(w) > 0L)
+    return(sprintf("'%%s' must be of class '%s'", classes[w]))
+  return(TRUE)
 }

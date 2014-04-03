@@ -1,19 +1,3 @@
-testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE) {
-  if (!is.character(x))
-    return("'%s' must be a string")
-
-  if (!missing(pattern)) {
-    qassert(pattern, "S1")
-    ok = grepl(pattern, x, ignore.case=ignore.case, perl=perl, fixed=fixed)
-    if(!all(ok))
-      return(sprintf("%s'%%s' must comply to pattern '%s",
-          if(length(x) > 1L) "All elements of " else "",
-          pattern))
-  }
-  return(TRUE)
-}
-
-
 #' Checks if an argument is a string
 #'
 #' @param x [\code{ANY}]\cr
@@ -45,4 +29,19 @@ assertString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = F
 #' @export
 checkString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testString(x, pattern, ignore.case, perl, fixed))
+}
+
+testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE) {
+  if (!is.character(x))
+    return("'%s' must be a string")
+
+  if (!missing(pattern)) {
+    qassert(pattern, "S1")
+    ok = grepl(pattern, x, ignore.case=ignore.case, perl=perl, fixed=fixed)
+    if(!all(ok))
+      return(sprintf("%s'%%s' must comply to pattern '%s",
+          if(length(x) > 1L) "All elements of " else "",
+          pattern))
+  }
+  return(TRUE)
 }

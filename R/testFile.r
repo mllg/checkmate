@@ -1,56 +1,3 @@
-testAccess = function(fn, access) {
-  qassert(access, "S1")
-  if (nzchar(access)) {
-    access = strsplit(access, "")[[1L]]
-
-    if ("r" %in% access) {
-      w = which.first(file.access(fn, 4L) != 0L)
-      if (length(w) > 0L)
-        return(sprintf("File in '%%s' not readable: '%s'", fn[w]))
-    }
-    if ("w" %in% access) {
-      w = which.first(file.access(fn, 2L) != 0L)
-      if (length(w) > 0L)
-        return(sprintf("File in '%%s' not writeable: '%s'", fn[w]))
-    }
-    if ("x" %in% access) {
-      w = which.first(file.access(fn, 1L) != 0L)
-      if (length(w) > 0L)
-        return(sprintf("File in '%%s' not executeable: '%s'", fn[w]))
-    }
-  }
-  return(TRUE)
-}
-
-testFile = function(fn, access = "") {
-  qassert(fn, "S")
-
-  isdir = file.info(fn)$isdir
-  w = which.first(is.na(isdir))
-  if (length(w) > 0L)
-    return(sprintf("File in '%%s' does not exist: '%s'", fn[w]))
-  w = which.first(isdir)
-  if (length(w) > 0L)
-    return(sprintf("File in '%%s' expected, directory in place: '%s'", fn[w]))
-
-  return(testAccess(fn, access))
-}
-
-testDirectory = function(fn, access = "") {
-  qassert(fn, "S")
-
-  isdir = file.info(fn)$isdir
-  w = which.first(is.na(isdir))
-  if (length(w) > 0L)
-    return(sprintf("Directory in '%%s' does not exist: '%s'", fn[w]))
-  w = which.first(!isdir)
-  if (length(w) > 0L)
-    return(sprintf("Directory in '%%s' expected, file in place: '%s'", fn[w]))
-
-  return(testAccess(fn, access))
-}
-
-
 #' Check or assert existance and access rights of files and directories
 #'
 #' @param fn [\code{character}\code{function}]\cr
@@ -86,3 +33,56 @@ checkDirectory = function(fn, access = "") {
 assertDirectory = function(fn, access = "", .var.name) {
   amsg(testDirectory(fn, access), vname(fn, .var.name))
 }
+
+testFile = function(fn, access = "") {
+  qassert(fn, "S")
+
+  isdir = file.info(fn)$isdir
+  w = which.first(is.na(isdir))
+  if (length(w) > 0L)
+    return(sprintf("File in '%%s' does not exist: '%s'", fn[w]))
+  w = which.first(isdir)
+  if (length(w) > 0L)
+    return(sprintf("File in '%%s' expected, directory in place: '%s'", fn[w]))
+
+  return(testAccess(fn, access))
+}
+
+testDirectory = function(fn, access = "") {
+  qassert(fn, "S")
+
+  isdir = file.info(fn)$isdir
+  w = which.first(is.na(isdir))
+  if (length(w) > 0L)
+    return(sprintf("Directory in '%%s' does not exist: '%s'", fn[w]))
+  w = which.first(!isdir)
+  if (length(w) > 0L)
+    return(sprintf("Directory in '%%s' expected, file in place: '%s'", fn[w]))
+
+  return(testAccess(fn, access))
+}
+
+testAccess = function(fn, access) {
+  qassert(access, "S1")
+  if (nzchar(access)) {
+    access = strsplit(access, "")[[1L]]
+
+    if ("r" %in% access) {
+      w = which.first(file.access(fn, 4L) != 0L)
+      if (length(w) > 0L)
+        return(sprintf("File in '%%s' not readable: '%s'", fn[w]))
+    }
+    if ("w" %in% access) {
+      w = which.first(file.access(fn, 2L) != 0L)
+      if (length(w) > 0L)
+        return(sprintf("File in '%%s' not writeable: '%s'", fn[w]))
+    }
+    if ("x" %in% access) {
+      w = which.first(file.access(fn, 1L) != 0L)
+      if (length(w) > 0L)
+        return(sprintf("File in '%%s' not executeable: '%s'", fn[w]))
+    }
+  }
+  return(TRUE)
+}
+
