@@ -6,7 +6,7 @@ testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FAL
     qassert(pattern, "S1")
     ok = grepl(pattern, x, ignore.case=ignore.case, perl=perl, fixed=fixed)
     if(!all(ok))
-      return(sprintf("%s'%s' must comply to pattern '%s",
+      return(sprintf("%s'%%s' must comply to pattern '%s",
           if(length(x) > 1L) "All elements of " else "",
           pattern))
   }
@@ -29,7 +29,7 @@ testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FAL
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}
-#'  or \code{\link{checkVector}}.
+#'  or \code{\link{assertVector}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export

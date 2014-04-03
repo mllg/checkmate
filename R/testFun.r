@@ -43,6 +43,6 @@ checkFun = function(fun, args, ordered = FALSE) {
 
 #' @rdname checkFun
 #' @export
-asssertFun = function(fun, args, ordered = FALSE) {
+assertFun = function(fun, args, ordered = FALSE) {
   amsg(testFun(fun, args, ordered), dps(fun))
 }

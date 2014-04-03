@@ -1,11 +1,11 @@
 testCount = function(x) {
-  if (length(x) != 1L || !checkIntegerish(x) || is.na(x))
+  if (length(x) != 1L || !checkIntegerish(x) || is.na(x) || x < 0)
     return("'%s' must be a count")
   return(TRUE)
 }
 #' Checks if an argument is a count
 #'
-#' A count a a single integerish numeric which is not missing.
+#' A count a a single integerish numeric >= 0 which is not missing.
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to check.

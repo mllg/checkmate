@@ -16,7 +16,7 @@ assertIntegerish(x, tol = .Machine$double.eps^0.5, ...)
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{checkVector}} or
-  \code{\link{checkVector}}.}
+  \code{\link{assertVector}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws

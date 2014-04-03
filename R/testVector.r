@@ -1,4 +1,6 @@
 testVector = function(x, na.ok = TRUE, len, min.len, max.len) {
+  if (!is.atomic(x))
+    return("'%%s' must be an atomic vector")
   if (!missing(len) && assertCount(len) && length(x) != len)
     return(sprintf("'%%s' must have length %i", len))
   if (!missing(min.len) && assertCount(min.len) && length(x) < min.len)

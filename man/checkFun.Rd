@@ -1,11 +1,11 @@
 \name{checkFun}
-\alias{asssertFun}
+\alias{assertFun}
 \alias{checkFun}
 \title{Check or assert an argument to be a function}
 \usage{
 checkFun(fun, args, ordered = FALSE)
 
-asssertFun(fun, args, ordered = FALSE)
+assertFun(fun, args, ordered = FALSE)
 }
 \arguments{
   \item{fun}{[\code{character} or \code{function}]\cr

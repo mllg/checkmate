@@ -15,6 +15,7 @@ assertCount(x)
 an exception on failure for assertion.
 }
 \description{
-A count a a single integerish numeric which is not missing.
+A count a a single integerish numeric >= 0 which is not
+missing.
 }
 

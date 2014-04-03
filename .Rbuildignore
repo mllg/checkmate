@@ -6,4 +6,3 @@ tar.gz$
 ^\.travis
 \.yml$
 ^README.md$
-^benchmark.R$

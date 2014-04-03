@@ -21,7 +21,7 @@ assertNumeric(x, lower, upper, ...)
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{checkVector}} or
-  \code{\link{checkVector}}.}
+  \code{\link{assertVector}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws
