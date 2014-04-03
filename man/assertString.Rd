@@ -1,12 +1,12 @@
-\name{checkString}
+\name{assertString}
 \alias{assertString}
 \alias{checkString}
 \title{Checks if an argument is a string}
 \usage{
-checkString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
-  ...)
-
 assertString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
+  ..., .var.name)
+
+checkString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   ...)
 }
 \arguments{
@@ -28,6 +28,10 @@ assertString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{checkVector}} or
   \code{\link{assertVector}}.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws

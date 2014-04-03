@@ -1,4 +1,6 @@
-dps = function(x, n = 1L) {
+vname = function(x, var.name, n = 1L) {
+  if (!missing(var.name))
+    return(var.name)
   deparse(substitute(x, parent.frame(n)))
 }
 

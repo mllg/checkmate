@@ -28,15 +28,18 @@ testVector = function(x, na.ok = TRUE, len, min.len, max.len) {
 #'  Minimal length of \code{x}.
 #' @param max.len [\code{integer(1)}]\cr
 #'  Maximal length of \code{x}.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkVector = function(x, na.ok = TRUE, len, min.len, max.len) {
-  isTRUE(testVector(x, na.ok, len, min.len, max.len))
+assertVector = function(x, na.ok = TRUE, len, min.len, max.len, .var.name) {
+  amsg(testVector(x, na.ok, len, min.len, max.len), vname(x, .var.name))
 }
 
-#' @rdname checkVector
+#' @rdname assertVector
 #' @export
-assertVector = function(x, na.ok = TRUE, len, min.len, max.len) {
-  amsg(testVector(x, na.ok, len, min.len, max.len), dps(x))
+checkVector = function(x, na.ok = TRUE, len, min.len, max.len) {
+  isTRUE(testVector(x, na.ok, len, min.len, max.len))
 }

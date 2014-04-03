@@ -1,17 +1,21 @@
-\name{qcheck}
+\name{qassert}
 \alias{qassert}
 \alias{qcheck}
 \title{Argument checks on (builtin) R types}
 \usage{
-qcheck(x, rules)
+qassert(x, rules, .var.name)
 
-qassert(x, rules)
+qcheck(x, rules)
 }
 \arguments{
   \item{x}{[ANY]\cr Object the check.}
 
   \item{rules}{[\code{character}]\cr Set of rules. See
   details.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
 [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a

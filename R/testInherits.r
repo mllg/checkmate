@@ -12,16 +12,19 @@ testInherits = function(x, classes) {
 #'  Object to check.
 #' @param classes [\code{character}]\cr
 #'  Class names to check for inheritance.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} if \code{x}
 #'  inherits from all \code{classes}.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkInherits = function(x, classes) {
-  isTRUE(testInherits(x, classes))
+assertInherits = function(x, classes, .var.name) {
+  amsg(testInherits(x, classes), vname(x, .var.name))
 }
 
-#' @rdname checkInherits
+#' @rdname assertInherits
 #' @export
-assertInherits = function(x, classes) {
-  amsg(testInherits(x, classes), dps(x))
+checkInherits = function(x, classes) {
+  isTRUE(testInherits(x, classes))
 }

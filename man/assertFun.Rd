@@ -1,11 +1,11 @@
-\name{checkFun}
+\name{assertFun}
 \alias{assertFun}
 \alias{checkFun}
 \title{Check or assert an argument to be a function}
 \usage{
-checkFun(fun, args, ordered = FALSE)
+assertFun(fun, args, ordered = FALSE, .var.name)
 
-assertFun(fun, args, ordered = FALSE)
+checkFun(fun, args, ordered = FALSE)
 }
 \arguments{
   \item{fun}{[\code{character} or \code{function}]\cr
@@ -18,6 +18,10 @@ assertFun(fun, args, ordered = FALSE)
   arguments provided in \code{args} must be the first
   arguments of the function and occur in the given order.
   Default is \code{FALSE}.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws

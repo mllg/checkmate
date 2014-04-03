@@ -11,7 +11,7 @@ testNamed = function(x, dups.ok, strict) {
 
 #' Check or assert that an argument is named
 #'
-#' @param x [ANY]\cr
+#' @param x [\code{ANY}]\cr
 #'  Object to check.
 #' @param dups.ok [logical(1)]\cr
 #'  Are duplicated names okay?
@@ -19,15 +19,18 @@ testNamed = function(x, dups.ok, strict) {
 #' @param strict [logical(1)]\cr
 #'  Enables a check for compability with R's variable naming rules.
 #'  Default is \code{FALSE}.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkNamed = function(x, dups.ok = TRUE, strict = FALSE) {
-  isTRUE(testNamed(x, dups.ok, strict))
+assertNamed = function(x, dups.ok = TRUE, strict = FALSE, .var.name) {
+  amsg(testNamed(x, dups.ok, strict), vname(x, .var.name))
 }
 
-#' @rdname checkNamed
+#' @rdname assertNamed
 #' @export
-assertNamed = function(x, dups.ok = TRUE, strict = FALSE) {
-  amsg(testNamed(x, dups.ok, strict), dps(x))
+checkNamed = function(x, dups.ok = TRUE, strict = FALSE) {
+  isTRUE(testNamed(x, dups.ok, strict))
 }

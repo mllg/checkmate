@@ -34,15 +34,19 @@ testFun = function(fun, args, ordered = FALSE) {
 #'  Flag whether the arguments provided in \code{args} must be the first
 #'  arguments of the function and occur in the given order.
 #'  Default is \code{FALSE}.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkFun = function(fun, args, ordered = FALSE) {
-  isTRUE(testFun(fun, args, ordered))
+assertFun = function(fun, args, ordered = FALSE, .var.name) {
+  amsg(testFun(fun, args, ordered), vname(fun, .var.name))
 }
 
-#' @rdname checkFun
+
+#' @rdname assertFun
 #' @export
-assertFun = function(fun, args, ordered = FALSE) {
-  amsg(testFun(fun, args, ordered), dps(fun))
+checkFun = function(fun, args, ordered = FALSE) {
+  isTRUE(testFun(fun, args, ordered))
 }

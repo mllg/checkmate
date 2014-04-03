@@ -1,11 +1,11 @@
-\name{checkVector}
+\name{assertVector}
 \alias{assertVector}
 \alias{checkVector}
 \title{Checks vector properties}
 \usage{
-checkVector(x, na.ok = TRUE, len, min.len, max.len)
+assertVector(x, na.ok = TRUE, len, min.len, max.len, .var.name)
 
-assertVector(x, na.ok = TRUE, len, min.len, max.len)
+checkVector(x, na.ok = TRUE, len, min.len, max.len)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Vector to check.}
@@ -21,6 +21,10 @@ assertVector(x, na.ok = TRUE, len, min.len, max.len)
 
   \item{max.len}{[\code{integer(1)}]\cr Maximal length of
   \code{x}.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws

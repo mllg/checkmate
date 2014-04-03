@@ -42,6 +42,10 @@ testVariable = function(x, tol = .Machine$double.eps^0.5) {
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used if \code{x} is of type \code{double} or \code{complex}.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
+#' @inheritParams shared-params
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
@@ -52,24 +56,24 @@ testVariable = function(x, tol = .Machine$double.eps^0.5) {
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
 #' print(checkVariable(x))
+assertConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  amsg(testConstant(x, tol), vname(x, .var.name))
+}
+
+#' @rdname assertConstant
+#' @export
 checkConstant = function(x, tol = .Machine$double.eps^0.5) {
   isTRUE(testConstant(x, tol))
 }
 
-#' @rdname checkConstant
-#' @export
-asssertConstant = function(x, tol = .Machine$double.eps^0.5) {
-  amsg(testConstant(x, tol), dps(x))
-}
-
-#' @rdname checkConstant
+#' @rdname assertConstant
 #' @export
 checkVariable = function(x, tol = .Machine$double.eps^0.5) {
   isTRUE(testVariable(x, tol))
 }
 
-#' @rdname checkConstant
+#' @rdname assertConstant
 #' @export
-asssertVariable = function(x, tol = .Machine$double.eps^0.5) {
-  amsg(testVariable, dps(x))
+assertVariable = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  amsg(testVariable, vname(x, .var.name))
 }

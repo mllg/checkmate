@@ -7,6 +7,9 @@
 #'  Object the check.
 #' @param rules [\code{character}]\cr
 #'   Set of rules. See details.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
 #'
 #' @details
@@ -69,7 +72,7 @@
 #' The implementation is written in \code{C} to minimize the overhead.
 #' @seealso \code{\link{qcheckr}} and \code{\link{qassertr}} for efficient checks
 #' of list elements and data frame columns.
-#' @useDynLib checkmate c_qcheck
+#' @useDynLib checkmate c_qassert
 #' @export
 #' @examples
 #' # logical of length 1
@@ -91,19 +94,18 @@
 #' qcheck(1, c("l0", "s<=5"))
 #' # data frame with at least one column, no NA in any column
 #' qcheck(iris, "D+")
-qcheck = function(x, rules) {
-  .Call("c_qcheck", x, rules, FALSE, PACKAGE = "checkmate")
+qassert = function(x, rules, .var.name) {
+  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
+  qamsg(res, vname(x, .var.name))
 }
 
 
 #' @export
-#' @rdname qcheck
-#' @useDynLib checkmate c_qassert
-qassert = function(x, rules) {
-  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
-  qamsg(res, dps(x))
+#' @rdname qassert
+#' @useDynLib checkmate c_qcheck
+qcheck = function(x, rules) {
+  .Call("c_qcheck", x, rules, FALSE, PACKAGE = "checkmate")
 }
-
 
 #' Recursive arguments checks on lists and data frames.
 #'
@@ -119,19 +121,22 @@ qassert = function(x, rules) {
 #' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
 #' @seealso \code{\link{qcheck}}, \code{\link{qassert}}
 #' @export
-#' @useDynLib checkmate c_qcheck
+#' @useDynLib checkmate c_qassert
 #' @examples
 #' qcheckr(as.list(1:10), "i+")
 #' qcheck(iris, "n")
-qcheckr = function(x, rules) {
-  .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
+qassertr = function(x, rules, .var.name) {
+  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
+  qamsg(res, vname(x, .var.name))
 }
 
 
 #' @export
-#' @rdname qcheckr
-#' @useDynLib checkmate c_qassert
-qassertr = function(x, rules) {
-  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
-  qamsg(res, dps(x))
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
+#' @rdname qassertr
+#' @useDynLib checkmate c_qcheck
+qcheckr = function(x, rules) {
+  .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
 }

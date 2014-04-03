@@ -1,14 +1,18 @@
-\name{checkCount}
+\name{assertCount}
 \alias{assertCount}
 \alias{checkCount}
 \title{Checks if an argument is a count}
 \usage{
-checkCount(x)
+assertCount(x, .var.name)
 
-assertCount(x)
+checkCount(x)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
 [\code{logical(1)}] Returns \code{TRUE} on success.  Throws

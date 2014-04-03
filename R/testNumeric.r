@@ -19,16 +19,19 @@ testNumeric = function(x, lower, upper) {
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}
 #'  or \code{\link{assertVector}}.
+#' @param .var.name [\code{logical(1)}]\cr
+#'  Argument name to print in error message. If missing,
+#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkNumeric = function(x, lower, upper, ...) {
-  isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
+assertNumeric = function(x, lower, upper, ..., .var.name) {
+  amsg(testVectorProps(x), vname(x, .var.name))
+  amsg(testNumeric(x), vname(x, .var.name))
 }
 
-#' @rdname checkInteger
+#' @rdname assertNumeric
 #' @export
-assertNumeric = function(x, lower, upper, ...) {
-  amsg(testVectorProps(x), dps(x))
-  amsg(testNumeric(x), dps(x))
+checkNumeric = function(x, lower, upper, ...) {
+  isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
 }
