@@ -4,46 +4,48 @@ testAccess = function(fn, access) {
     access = strsplit(access, "")[[1L]]
 
     if ("r" %in% access) {
-      w = which(file.access(fn, 4L) != 0L)
+      w = which.first(file.access(fn, 4L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File not readable: '%s'", fn[w[1L]]))
+        return(sprintf("File not readable: '%s'", fn[w]))
     }
     if ("w" %in% access) {
-      w = which(file.access(fn, 2L) != 0L)
+      w = which.first(file.access(fn, 2L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File not writeable: '%s'", fn[w[1L]]))
+        return(sprintf("File not writeable: '%s'", fn[w]))
     }
     if ("x" %in% access) {
-      w = which(file.access(fn, 1L) != 0L)
+      w = which.first(file.access(fn, 1L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File not executeable: '%s'", fn[w[1L]]))
+        return(sprintf("File not executeable: '%s'", fn[w]))
     }
   }
   return(TRUE)
 }
 
-testFile = function(fn, access="") {
+testFile = function(fn, access = "") {
   qassert(fn, "S")
 
-  w = which(!file.exists(fn))
+  isdir = file.info(fn)$isdir
+  w = which.first(is.na(isdir))
   if (length(w) > 0L)
-    return(sprintf("File does not exist: '%s'", fn[w[1L]]))
-  w = which(file.info(fn)$isdir)
+    return(sprintf("File does not exist: '%s'", fn[w]))
+  w = which.first(isdir)
   if (length(w) > 0L)
-    return(sprintf("File expected, directory in place: '%s'", fn[w[1L]]))
+    return(sprintf("File expected, directory in place: '%s'", fn[w]))
 
   return(testAccess(fn, access))
 }
 
-testDirectory = function(fn, access="") {
+testDirectory = function(fn, access = "") {
   qassert(fn, "S")
 
-  w = which(!file.exists(fn))
+  isdir = file.info(fn)$isdir
+  w = which.first(is.na(isdir))
   if (length(w) > 0L)
-    return(sprintf("Directory does not exist: '%s'", fn[w[1L]]))
-  w = which(!file.info(fn)$isdir)
+    return(sprintf("Directory does not exist: '%s'", fn[w]))
+  w = which.first(!isdir)
   if (length(w) > 0L)
-    return(sprintf("Directory expected, file in place: '%s'", fn[w[1L]]))
+    return(sprintf("Directory expected, file in place: '%s'", fn[w]))
 
   return(testAccess(fn, access))
 }
@@ -59,25 +61,25 @@ testDirectory = function(fn, access="") {
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkFile = function(fn, access="") {
+checkFile = function(fn, access = "") {
   isTRUE(testFile(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
-assertFile = function(fn, access="") {
+assertFile = function(fn, access = "") {
   amsg(testFile(fn, access))
 }
 
 
 #' @rdname checkFile
 #' @export
-checkDirectory = function(fn, access="") {
+checkDirectory = function(fn, access = "") {
   isTRUE(testDirectory(fn, access))
 }
 
 #' @rdname checkFile
 #' @export
-assertDirectory = function(fn, access="") {
+assertDirectory = function(fn, access = "") {
   amsg(testDirectory(fn, access))
 }

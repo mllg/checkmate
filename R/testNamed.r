@@ -23,12 +23,12 @@ testNamed = function(x, dups.ok, strict) {
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-checkNamed = function(x, dups.ok=TRUE, strict=FALSE) {
+checkNamed = function(x, dups.ok = TRUE, strict = FALSE) {
   isTRUE(testNamed(x, dups.ok, strict))
 }
 
 #' @rdname checkNamed
 #' @export
-assertNamed = function(x, dups.ok=TRUE, strict=FALSE) {
+assertNamed = function(x, dups.ok = TRUE, strict = FALSE) {
   amsg(testNamed(x, dups.ok, strict), dps(x))
 }

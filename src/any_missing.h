@@ -1,7 +1,8 @@
 #ifndef ANY_MISSING_H_
 #define ANY_MISSING_H_
 
-#include "typedefs.h"
+#include <R.h>
+#include <Rinternals.h>
 
 Rboolean any_missing_logical(SEXP);
 Rboolean any_missing_integer(SEXP);

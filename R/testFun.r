@@ -1,5 +1,7 @@
 testFun = function(fun, args, ordered = FALSE) {
-  fun = match.fun(fun)
+  fun = try(match.fun(fun), silent=TRUE)
+  if (inherits(fun, "try-error"))
+    return("Function '%s' not found")
 
   if (!missing(args)) {
     qassert(args, "S")

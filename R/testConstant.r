@@ -3,7 +3,6 @@ testConstantHelper = function(x, tol) {
     .Call("c_is_constant", x, as.double(tol), PACKAGE="checkmate")
   }
 
-  qassert(tol, "R1")
   if (length(x) <= 1L)
     return(TRUE)
 
@@ -12,8 +11,10 @@ testConstantHelper = function(x, tol) {
     return(n.na == length(x))
 
   if (is.double(x)) {
+    qassert(tol, "N1")
     callConstant(x, tol)
   } else if (is.complex(x)) {
+    qassert(tol, "N1")
     callConstant(Re(x), tol) && callConstant(Im(x), tol)
   } else if (is.atomic(x)) {
     all(x == x[[1L]])
@@ -22,13 +23,13 @@ testConstantHelper = function(x, tol) {
   }
 }
 
-testConstant = function(x, tol=.Machine$double.eps^0.5) {
+testConstant = function(x, tol = .Machine$double.eps^0.5) {
   if (!testConstantHelper(x, tol))
     return("'%s' must have constant elements")
   return(TRUE)
 }
 
-testVariable = function(x, tol=.Machine$double.eps^0.5) {
+testVariable = function(x, tol = .Machine$double.eps^0.5) {
   if (testConstantHelper(x, tol))
     return("'%s' must have variable elements")
   return(TRUE)
@@ -51,25 +52,24 @@ testVariable = function(x, tol=.Machine$double.eps^0.5) {
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
 #' print(checkVariable(x))
-checkConstant = function(x, tol=.Machine$double.eps^0.5) {
+checkConstant = function(x, tol = .Machine$double.eps^0.5) {
   isTRUE(testConstant(x, tol))
 }
 
 #' @rdname checkConstant
 #' @export
-asssertConstant = function(x, tol=.Machine$double.eps^0.5) {
+asssertConstant = function(x, tol = .Machine$double.eps^0.5) {
   amsg(testConstant(x, tol), dps(x))
 }
 
 #' @rdname checkConstant
 #' @export
-checkVariable = function(x, tol=.Machine$double.eps^0.5) {
+checkVariable = function(x, tol = .Machine$double.eps^0.5) {
   isTRUE(testVariable(x, tol))
 }
 
 #' @rdname checkConstant
 #' @export
-asssertVariable = function(x, tol=.Machine$double.eps^0.5) {
+asssertVariable = function(x, tol = .Machine$double.eps^0.5) {
   amsg(testVariable, dps(x))
 }
-
