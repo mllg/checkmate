@@ -23,12 +23,12 @@ testNumeric = function(x, lower, upper) {
 #'  Throws an exception on failure for assertion.
 #' @export
 checkNumeric = function(x, lower, upper, ...) {
-  isTRUE(testVector(x, ...)) && isTRUE(testNumeric(x, lower, upper))
+  isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
 }
 
 #' @rdname checkInteger
 #' @export
 assertNumeric = function(x, lower, upper, ...) {
-  amsg(testVector(x), dps(x))
+  amsg(testVectorProps(x), dps(x))
   amsg(testNumeric(x), dps(x))
 }

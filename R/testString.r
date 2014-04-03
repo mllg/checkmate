@@ -34,12 +34,12 @@ testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FAL
 #'  Throws an exception on failure for assertion.
 #' @export
 checkString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ...) {
-  isTRUE(testVector(x, ...)) && isTRUE(testString(x, pattern, ignore.case, perl, fixed))
+  isTRUE(testVectorProps(x, ...)) && isTRUE(testString(x, pattern, ignore.case, perl, fixed))
 }
 
 #' @rdname checkString
 #' @export
 assertString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ...) {
-  amsg(testVector(x, ...), dps(x))
+  amsg(testVectorProps(x, ...), dps(x))
   amsg(testString(x, pattern, ignore.case, perl, fixed), dps(x))
 }

@@ -1,6 +1,4 @@
-testVector = function(x, na.ok = TRUE, len, min.len, max.len) {
-  if (!is.atomic(x))
-    return("'%%s' must be an atomic vector")
+testVectorProps = function(x, na.ok = TRUE, len, min.len, max.len) {
   if (!missing(len) && assertCount(len) && length(x) != len)
     return(sprintf("'%%s' must have length %i", len))
   if (!missing(min.len) && assertCount(min.len) && length(x) < min.len)
@@ -10,6 +8,12 @@ testVector = function(x, na.ok = TRUE, len, min.len, max.len) {
   if (assertFlag(na.ok) && !na.ok && anyMissing(x))
     return("'%s' contains missing values")
   return(TRUE)
+}
+
+testVector = function(x, na.ok = TRUE, len, min.len, max.len) {
+  if (!is.atomic(x))
+    return("'%%s' must be an atomic vector")
+  return(testVectorProps(x, na.ok, len, min.len, max.len))
 }
 
 #' Checks vector properties

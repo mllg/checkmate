@@ -19,12 +19,12 @@ testIntegerish = function(x, tol = .Machine$double.eps^.5) {
 #' @useDynLib checkmate c_is_integerish
 #' @export
 checkIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
-  isTRUE(testVector(x, ...)) && isTRUE(testIntegerish(x, tol))
+  isTRUE(testVectorProps(x, ...)) && isTRUE(testIntegerish(x, tol))
 }
 
 #' @rdname checkIntegerish
 #' @export
 assertIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
-  amsg(testVector(x, ...), dps(x))
+  amsg(testVectorProps(x, ...), dps(x))
   amsg(testIntegerish(x, tol), dps(x))
 }
