@@ -1,8 +1,12 @@
 \name{checkString}
+\alias{assertString}
 \alias{checkString}
 \title{Checks if an argument is a string}
 \usage{
 checkString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
+  ...)
+
+assertString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   ...)
 }
 \arguments{

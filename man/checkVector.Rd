@@ -1,8 +1,11 @@
 \name{checkVector}
+\alias{assertVector}
 \alias{checkVector}
 \title{Checks vector properties}
 \usage{
 checkVector(x, na.ok = TRUE, len, min.len, max.len)
+
+assertVector(x, na.ok = TRUE, len, min.len, max.len)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Vector to check.}
