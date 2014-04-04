@@ -20,23 +20,23 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-assertVector = function(x, na.ok = TRUE, len, min.len, max.len, named = NA, .var.name) {
+assertVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name) {
   amsg(testVector(x, na.ok, len, min.len, max.len), vname(x, .var.name))
 }
 
 #' @rdname assertVector
 #' @export
-checkVector = function(x, na.ok = TRUE, len, min.len, max.len, named = NA) {
+checkVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
   isTRUE(testVector(x, na.ok, len, min.len, max.len))
 }
 
-testVector = function(x, na.ok = TRUE, len, min.len, max.len, named = NA) {
+testVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
   if (!is.vector(x))
     return("'%%s' must be a vector")
   return(testVectorProps(x, na.ok, len, min.len, max.len))
 }
 
-testVectorProps = function(x, na.ok = TRUE, len, min.len, max.len, named = NA) {
+testVectorProps = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
   if (!missing(len) && assertCount(len) && length(x) != len)
     return(sprintf("'%%s' must have length %i", len))
   if (!missing(min.len) && assertCount(min.len) && length(x) < min.len)
@@ -45,10 +45,11 @@ testVectorProps = function(x, na.ok = TRUE, len, min.len, max.len, named = NA) {
     return(sprintf("'%%s' must have length <= %i", max.len))
   if (assertFlag(na.ok) && !na.ok && anyMissing(x))
     return("'%s' contains missing values")
-
-  qassert(named, c("b1", "S1"))
-  if (!is.na(named)) {
-    tmp = testNamed(x, dups.ok = (named != "unique"), strict = (named == "strict"))
+  if (qassert(names, "S1") && names != "any") {
+    tmp = testNamed(x, type = names)
+    if (!isTRUE(tmp))
+      return(tmp)
   }
+
   return(TRUE)
 }

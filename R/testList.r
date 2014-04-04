@@ -12,7 +12,7 @@
 #'  Throws an exception on failure for assertion.
 #' @export
 assertList = function(x, ..., .var.name) {
-  amsg(testVectorProps(x), vname(x, .var.name))
+  amsg(testVectorProps(x, ...), vname(x, .var.name))
   amsg(testList(x), vname(x, .var.name))
 }
 

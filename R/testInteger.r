@@ -16,7 +16,7 @@
 #'  Throws an exception on failure for assertion.
 #' @export
 assertInteger = function(x, lower, upper, ..., .var.name) {
-  amsg(testVectorProps(x), vname(x, .var.name))
+  amsg(testVectorProps(x, ...), vname(x, .var.name))
   amsg(testInteger(x), vname(x, .var.name))
 }
 
