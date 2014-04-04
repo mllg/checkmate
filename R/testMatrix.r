@@ -12,10 +12,10 @@
 #'  Exact number of columns.
 #' @param row.names [\code{logical(1)}]\cr
 #'  Check for row names. Default is \dQuote{any} (no check).
-#'  See \code{\link{checkNames}} for possible values.
+#'  See \code{\link{checkNamed}} for possible values.
 #' @param col.names [\code{logical(1)}]\cr
 #'  Check for column names. Default is \dQuote{any} (no check).
-#'  See \code{\link{checkNames}} for possible values.
+#'  See \code{\link{checkNamed}} for possible values.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
@@ -27,7 +27,7 @@ assertMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", 
   amsg(testMatrix(x), vname(x, .var.name))
 }
 
-#' @rdname assertList
+#' @rdname assertMatrix
 #' @export
 checkMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
   isTRUE(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)) && isTRUE(testMatrix(x))

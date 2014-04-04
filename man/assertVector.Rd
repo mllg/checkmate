@@ -3,9 +3,10 @@
 \alias{checkVector}
 \title{Check vector properties}
 \usage{
-assertVector(x, na.ok = TRUE, len, min.len, max.len, named = NA, .var.name)
+assertVector(x, na.ok = TRUE, len, min.len, max.len, names = "any",
+  .var.name)
 
-checkVector(x, na.ok = TRUE, len, min.len, max.len, named = NA)
+checkVector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Vector to check.}
@@ -22,7 +23,7 @@ checkVector(x, na.ok = TRUE, len, min.len, max.len, named = NA)
   \item{max.len}{[\code{integer(1)}]\cr Maximal length of
   \code{x}.}
 
-  \item{named}{[\code{character(1)}]\cr Check for names
+  \item{names}{[\code{character(1)}]\cr Check for names
   attribute.  See also \code{\link{checkNamed}} for
   possible values.  Default is \dQuote{none} which performs
   no check at all.}

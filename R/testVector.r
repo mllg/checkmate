@@ -10,7 +10,7 @@
 #'  Minimal length of \code{x}.
 #' @param max.len [\code{integer(1)}]\cr
 #'  Maximal length of \code{x}.
-#' @param named [\code{character(1)}]\cr
+#' @param names [\code{character(1)}]\cr
 #'  Check for names attribute.
 #'  See also \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{none} which performs no check at all.

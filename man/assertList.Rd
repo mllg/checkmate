@@ -1,15 +1,11 @@
 \name{assertList}
 \alias{assertList}
 \alias{checkList}
-\alias{checkMatrix}
 \title{Checks if an argument is a list}
 \usage{
 assertList(x, ..., .var.name)
 
 checkList(x, ...)
-
-checkMatrix(x, min.rows, min.cols, nrows, ncols, row.names = FALSE,
-  col.names = FALSE)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
