@@ -9,20 +9,25 @@ file.create(fn)
 dir.create(dn)
 
 test_that("checkFile", {
+  expect_false(checkFile(character(0)))
+  expect_error(checkFile(NULL))
   expect_false(checkFile(ff))
   expect_false(checkFile(dn))
   expect_true(checkFile(fn))
 
+  expect_error(assertFile(character(0)), "provided")
   expect_error(assertFile(ff), "exist")
   expect_error(assertFile(dn), "directory")
   expect_true(assertFile(fn))
 })
 
 test_that("checkDirectory", {
+  expect_false(checkDirectory(character(0)))
   expect_false(checkDirectory(ff))
   expect_false(checkDirectory(fn))
   expect_true(checkDirectory(dn))
 
+  expect_error(assertDirectory(character(0)), "provided")
   expect_error(assertDirectory(ff), "exist")
   expect_error(assertDirectory(fn), "file")
   expect_true(assertDirectory(dn))

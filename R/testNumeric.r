@@ -35,4 +35,3 @@ testNumeric = function(x, lower, upper) {
     return(sprintf("All elements of '%%s' must be <= %s", upper))
   return(TRUE)
 }
-

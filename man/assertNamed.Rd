@@ -3,19 +3,23 @@
 \alias{checkNamed}
 \title{Check or assert that an argument is named}
 \usage{
-assertNamed(x, dups.ok = TRUE, strict = FALSE, .var.name)
+assertNamed(x, type = "existing", .var.name)
 
-checkNamed(x, dups.ok = TRUE, strict = FALSE)
+checkNamed(x, type = "existing")
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
 
-  \item{dups.ok}{[logical(1)]\cr Are duplicated names okay?
-  Default is \code{TRUE}.}
-
-  \item{strict}{[logical(1)]\cr Enables a check for
-  compability with R's variable naming rules.  Default is
-  \code{FALSE}.}
+  \item{type}{[character]\cr Select the checks to perform.
+  \dQuote{off} performs no check at all.  \dQuote{unnamed}
+  checks \code{x} to be unnamed.  \dQuote{existing}
+  (default) checks \code{x} to be named, this includes
+  names to be not \code{NA} or emtpy (\code{""}).
+  \dQuote{unique} checks tests for non-duplicated names and
+  \code{strict} tests the names to comply to R's variable
+  naming rules.  These later three arguments can be mixed
+  together.  Note that for zero-length \code{x} every name
+  check is \code{TRUE}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

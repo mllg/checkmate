@@ -43,10 +43,9 @@ inline Rboolean any_missing_numeric(SEXP x) {
     switch(TYPEOF(x)) {
         case INTSXP: return any_missing_integer(x);
         case REALSXP: return any_missing_double(x);
-        default: error("Error in any_missing_numeric: x is not integer or real");
+        default: error("Error in any_missing_numeric: x is not integer or double");
     }
 }
-
 
 inline Rboolean any_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);
@@ -77,7 +76,6 @@ inline Rboolean any_missing_atomic(SEXP x) {
         case RAWSXP: return FALSE;
         default: error("Object of type '%s' not atomic", type2char(TYPEOF(x)));
     }
-    return FALSE;
 }
 
 inline Rboolean any_missing_list(SEXP x) {

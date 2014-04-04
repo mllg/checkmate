@@ -4,6 +4,7 @@ context("checkFun")
 myfun = function(x, y, ...) x + y
 
 test_that("checkFun", {
+  expect_false(checkFun(NULL))
   expect_true(checkFun(identity))
   expect_true(checkFun(myfun))
   # FIXME this does not work ... is this a testthat issue?

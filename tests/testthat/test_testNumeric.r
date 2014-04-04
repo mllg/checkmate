@@ -1,6 +1,8 @@
 context("checkNumeric")
 
 test_that("checkNumeric", {
+  expect_true(checkNumeric(integer(0)))
+  expect_false(checkNumeric(NULL))
   expect_false(checkNumeric(TRUE))
   expect_false(checkNumeric(NA))
   expect_true(checkNumeric(1L))

@@ -1,7 +1,7 @@
 context("checkInherits")
 
 test_that("checkInherits", {
-
+  expect_true(checkInherits(NULL, "NULL"))
   expect_true(checkInherits(1, "numeric"))
   expect_true(checkInherits(1L, "integer"))
   expect_false(checkInherits(1, "integer"))

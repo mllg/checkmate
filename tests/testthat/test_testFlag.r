@@ -1,6 +1,8 @@
 context("checkFlag")
 
 test_that("checkFlag", {
+  expect_false(checkFlag(logical(0)))
+  expect_false(checkFlag(NULL))
   expect_true(checkFlag(TRUE))
   expect_true(checkFlag(FALSE))
   expect_false(checkFlag(NA))

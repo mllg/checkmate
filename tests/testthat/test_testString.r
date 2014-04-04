@@ -1,6 +1,8 @@
 context("checkString")
 
 test_that("checkString", {
+  expect_true(checkString(character(0)))
+  expect_false(checkString(NULL))
   expect_true(checkString("a"))
   expect_false(checkString(1))
 

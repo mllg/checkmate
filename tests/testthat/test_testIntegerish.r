@@ -1,6 +1,8 @@
 context("checkIntegerish")
 
 test_that("checkIntegerish", {
+  expect_true(checkIntegerish(integer(0)))
+  expect_false(checkIntegerish(NULL))
   expect_true(checkIntegerish(TRUE))
   expect_true(checkIntegerish(FALSE))
   expect_true(checkIntegerish(1L))

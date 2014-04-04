@@ -1,6 +1,8 @@
 context("checkVector")
 
 test_that("checkVector", {
+  expect_true(checkVector(integer(0)))
+  expect_false(checkVector(NULL))
   expect_true(checkVector(1))
   expect_true(checkVector(integer(0)))
 

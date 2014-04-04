@@ -1,6 +1,9 @@
 context("checkCount")
 
 test_that("checkCount", {
+  expect_false(checkCount(integer(0)))
+  expect_false(checkCount(NULL))
+
   expect_true(checkCount(1L))
   expect_true(checkCount(1))
   expect_true(checkCount(0))

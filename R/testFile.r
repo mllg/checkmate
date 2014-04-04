@@ -36,6 +36,8 @@ assertDirectory = function(fn, access = "", .var.name) {
 
 testFile = function(fn, access = "") {
   qassert(fn, "S")
+  if (length(fn) == 0L)
+    return("No files provided in '%s'")
 
   isdir = file.info(fn)$isdir
   w = which.first(is.na(isdir))
@@ -50,6 +52,8 @@ testFile = function(fn, access = "") {
 
 testDirectory = function(fn, access = "") {
   qassert(fn, "S")
+  if (length(fn) == 0L)
+    return("No diretory provided in '%%s'")
 
   isdir = file.info(fn)$isdir
   w = which.first(is.na(isdir))
@@ -85,4 +89,3 @@ testAccess = function(fn, access) {
   }
   return(TRUE)
 }
-

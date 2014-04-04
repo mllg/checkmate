@@ -27,3 +27,4 @@ qamsg = function(msg, vname) {
   }
   invisible(TRUE)
 }
+
