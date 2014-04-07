@@ -1,10 +1,12 @@
 #include "first_last.h"
 
 static inline SEXP named_return(R_len_t ind, SEXP names) {
+    if (isNull(names))
+        return ScalarInteger(ind + 1);
+
     SEXP res;
     PROTECT(res = ScalarInteger(ind + 1));
-    if (!isNull(names))
-        SET_NAMES(res, ScalarString(STRING_ELT(names, ind)));
+    SET_NAMES(res, ScalarString(STRING_ELT(names, ind)));
     UNPROTECT(1);
     return res;
 }
