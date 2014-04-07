@@ -1,18 +1,9 @@
-\name{assertDirectory}
-\alias{asDirectory}
+\name{assertFile}
 \alias{asFile}
-\alias{assertDirectory}
 \alias{assertFile}
-\alias{isDirectory}
 \alias{isFile}
 \title{Check or assert existance and access rights of files and directories}
 \usage{
-assertDirectory(x, access = "", .var.name)
-
-isDirectory(x, access = "")
-
-asDirectory(x, access = "", .var.name)
-
 assertFile(x, access = "", .var.name)
 
 isFile(x, access = "")
@@ -20,23 +11,29 @@ isFile(x, access = "")
 asFile(x, access = "", .var.name)
 }
 \arguments{
-  \item{x}{[\code{character}\code{function}]\cr Vector of
-  file or directory names.}
-
-  \item{access}{[\code{character}]\cr Single string with
-  characters \sQuote{r}, \sQuote{w} and \sQuote{x} to force
-  a check for read, write or execute access rights.}
+  \item{x}{[\code{ANY}]\cr Object to check.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}
   will be retrieved via \code{\link[base]{substitute}}.}
+
+  \item{access}{[\code{character}]\cr Single string with
+  characters \sQuote{r}, \sQuote{w} and \sQuote{x} to force
+  a check for read, write or execute access rights.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isFile}:}{Single logical value indicating
+success.} \item{\code{assertFile}:}{\code{TRUE} on success.
+An exception is thrown otherwise.}
+\item{\code{asFile}:}{The (possibly converted) object
+itself on success. An exception is thrown otherwise.} }
 }
 \description{
 Check or assert existance and access rights of files and
 directories
+}
+\seealso{
+\code{link{assertDirectory}}
 }
 

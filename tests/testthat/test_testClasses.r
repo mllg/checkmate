@@ -11,9 +11,16 @@ test_that("isClasses", {
   expect_true(isClasses(foo, "a"))
   expect_true(isClasses(foo, "b"))
   expect_false(isClasses(foo, "c"))
+  expect_true(isClasses(foo, "a", ordered=TRUE))
+  expect_false(isClasses(foo, "b", ordered=TRUE))
+  expect_true(isClasses(foo, c("a", "b"), ordered=TRUE))
+  expect_false(isClasses(foo, c("b", "a"), ordered=TRUE))
 })
 
 test_that("assertInherits", {
-  expect_true(assertClasses(1L, "integer"))
-  expect_error(assertClasses(1, "integer"), "class 'integer'")
+  foo = 1
+  class(foo) = c("a", "b")
+  expect_true(assertClasses(foo, "a"))
+  expect_error(assertClasses(foo, "c"), "class 'c'")
+  expect_error(assertClasses(foo, "b", ordered=TRUE), "position 1")
 })

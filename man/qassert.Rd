@@ -60,16 +60,16 @@ or\cr \code{[0-9]+} \tab exact length specified as integer.
 } Preceeding the exact length with one of the comparison
 operators \code{=}/\code{==}, \code{<}, \code{<=},
 \code{>=} or \code{>} is also supported.  } \item{ Range
-check as two real numbers separated by a comma, enclosed by
+check as two numbers separated by a comma, enclosed by
 square brackets (endpoint included) or parentheses
-(endpoint excluded). Mixture of both is allowed.  For
-example, \dQuote{[0, 3)} would trigger the check
-\code{all(x >= 0 & x < 3)}.  Endpoints may be omitted which
-is the equivalent of an infinite endpoint.  By definition
-\code{[0,]} contains \code{Inf}, while \code{[0,)} does
-not.  The same holds for the left (lower) endpoint and
-\code{-Inf}.  E.g., the rule \dQuote{N1(,)} checks for a
-single finite numeric which is not NA.  } }
+(endpoint excluded).  For example, \dQuote{[0, 3)} would
+trigger the check \code{all(x >= 0 & x < 3)}.  Endpoints
+may be omitted which is the equivalent of an infinite
+endpoint.  By definition \code{[0,]} contains \code{Inf},
+while \code{[0,)} does not.  The same holds for the left
+(lower) endpoint and \code{-Inf}.  E.g., the rule
+\dQuote{N1()} checks for a single finite numeric which is
+not NA, while \dQuote{N1[)} would allow \code{-Inf}.  } }
 }
 \note{
 The functions are inspired by the blog post of Bogumił

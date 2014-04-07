@@ -1,16 +1,21 @@
-#' @rdname assertFile
+#' Check or assert existance and access rights of directories
+#'
+#' @templateVar id Directory
+#' @template testfuns
+#' @inheritParams assertFile
+#' @seealso \code{link{assertFile}}
 #' @export
 assertDirectory = function(x, access = "", .var.name) {
   amsg(testDirectory(x, access), vname(x, .var.name))
 }
 
-#' @rdname assertFile
+#' @rdname assertDirectory
 #' @export
 isDirectory = function(x, access = "") {
   isTRUE(testDirectory(x, access))
 }
 
-#' @rdname assertFile
+#' @rdname assertDirectory
 #' @export
 asDirectory = function(x, access = "", .var.name) {
   assertDirectory(x, access = access, .var.name = vname(x, .var.name))

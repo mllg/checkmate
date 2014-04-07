@@ -1,15 +1,11 @@
 #' Check or assert existance and access rights of files and directories
 #'
-#' @param x [\code{character}\code{function}]\cr
-#'  Vector of file or directory names.
+#' @templateVar id File
+#' @template testfuns
 #' @param access [\code{character}]\cr
 #'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
+#' @seealso \code{link{assertDirectory}}
 #' @export
 assertFile = function(x, access = "", .var.name) {
   amsg(testFile(x, access), vname(x, .var.name))
@@ -43,4 +39,3 @@ testFile = function(x, access = "") {
 
   return(testAccess(x, access))
 }
-

@@ -13,6 +13,10 @@ asNamed(x, type = "named", .var.name)
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
 
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
+
   \item{type}{[character(1)]\cr Select the check(s) to
   perform.  \dQuote{unnamed} checks \code{x} to be unnamed.
   \dQuote{named} (default) checks \code{x} to be named,
@@ -22,14 +26,14 @@ asNamed(x, type = "named", .var.name)
   comply to R's variable naming rules on top of
   \dQuote{unique}.  Note that for zero-length \code{x}
   every name check evalutes to \code{TRUE}.}
-
-  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
-  print in error message. If missing, the name of \code{x}
-  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isNamed}:}{Single logical value indicating
+success.} \item{\code{assertNamed}:}{\code{TRUE} on
+success. An exception is thrown otherwise.}
+\item{\code{asNamed}:}{The (possibly converted) object
+itself on success. An exception is thrown otherwise.} }
 }
 \description{
 Check or assert that an argument is named

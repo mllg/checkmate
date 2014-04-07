@@ -12,7 +12,11 @@ isVector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
 asVector(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Vector to check.}
+  \item{x}{[\code{ANY}]\cr Object to check.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 
   \item{na.ok}{[\code{logical(1)}]\cr Are missing values
   allowed? Default is \code{TRUE}.}
@@ -30,14 +34,14 @@ asVector(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name)
   attribute.  See also \code{\link{isNamed}} for possible
   values.  Default is \dQuote{none} which performs no check
   at all.}
-
-  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
-  print in error message. If missing, the name of \code{x}
-  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isVector}:}{Single logical value indicating
+success.} \item{\code{assertVector}:}{\code{TRUE} on
+success. An exception is thrown otherwise.}
+\item{\code{asVector}:}{The (possibly converted) object
+itself on success. An exception is thrown otherwise.} }
 }
 \description{
 Check vector properties

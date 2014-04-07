@@ -4,15 +4,18 @@
 \alias{isFun}
 \title{Check or assert an argument to be a function}
 \usage{
-assertFun(fun, args, ordered = FALSE, .var.name)
+assertFun(x, args, ordered = FALSE, .var.name)
 
-isFun(fun, args, ordered = FALSE)
+isFun(x, args, ordered = FALSE)
 
-asFun(fun, args, ordered = FALSE, .var.name)
+asFun(x, args, ordered = FALSE, .var.name)
 }
 \arguments{
-  \item{fun}{[\code{character} or \code{function}]\cr
-  Function to check.}
+  \item{x}{[\code{ANY}]\cr Object to check.}
+
+  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
+  print in error message. If missing, the name of \code{x}
+  will be retrieved via \code{\link[base]{substitute}}.}
 
   \item{args}{[\code{character}]\cr Expected formal
   arguments.}
@@ -21,14 +24,14 @@ asFun(fun, args, ordered = FALSE, .var.name)
   arguments provided in \code{args} must be the first
   arguments of the function and occur in the given order.
   Default is \code{FALSE}.}
-
-  \item{.var.name}{[\code{logical(1)}]\cr Argument name to
-  print in error message. If missing, the name of \code{x}
-  will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isFun}:}{Single logical value indicating
+success.} \item{\code{assertFun}:}{\code{TRUE} on success.
+An exception is thrown otherwise.} \item{\code{asFun}:}{The
+(possibly converted) object itself on success. An exception
+is thrown otherwise.} }
 }
 \description{
 Check or assert an argument to be a function

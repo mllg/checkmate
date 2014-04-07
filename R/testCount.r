@@ -2,13 +2,8 @@
 #'
 #' A count a a single integerish numeric >= 0 which is not missing.
 #'
-#' @param x [\code{ANY}]\cr
-#'  Object to check.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
+#' @templateVar id Count
+#' @template testfuns
 #' @export
 assertCount = function(x, .var.name) {
   amsg(testCount(x), vname(x, .var.name))

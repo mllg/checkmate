@@ -18,8 +18,12 @@ asCount(x, .var.name)
   will be retrieved via \code{\link[base]{substitute}}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isCount}:}{Single logical value indicating
+success.} \item{\code{assertCount}:}{\code{TRUE} on
+success. An exception is thrown otherwise.}
+\item{\code{asCount}:}{The (possibly converted) object
+itself on success. An exception is thrown otherwise.} }
 }
 \description{
 A count a a single integerish numeric >= 0 which is not

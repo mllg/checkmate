@@ -1,47 +1,40 @@
 \name{assertConstantVector}
 \alias{asConstant}
-\alias{asVariableVector}
 \alias{assertConstantVector}
-\alias{assertVariableVector}
 \alias{isConstantVector}
-\alias{isVariableVector}
-\title{Checks if all elements of a vector are constant}
+\title{Checks if all elements of a vector are equal}
 \usage{
 assertConstantVector(x, tol = .Machine$double.eps^0.5, .var.name)
 
 isConstantVector(x, tol = .Machine$double.eps^0.5)
 
 asConstant(x, tol = .Machine$double.eps^0.5, .var.name)
-
-assertVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
-
-isVariableVector(x, tol = .Machine$double.eps^0.5)
-
-asVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
 
-  \item{tol}{[\code{double(1)}]\cr Numerical tolerance used
-  if \code{x} is of type \code{double} or \code{complex}.
-  Default is \code{sqrt(.Machine$double.eps)}.}
-
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}
   will be retrieved via \code{\link[base]{substitute}}.}
+
+  \item{tol}{[\code{double(1)}]\cr Numerical tolerance used
+  if \code{x} is of type \code{double} or \code{complex}.
+  Default is \code{sqrt(.Machine$double.eps)}.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} on success.  Throws
-an exception on failure for assertion.
+Depending on the prefix: \describe{
+\item{\code{isConstantVector}:}{Single logical value
+indicating success.}
+\item{\code{assertConstantVector}:}{\code{TRUE} on success.
+An exception is thrown otherwise.}
+\item{\code{asConstantVector}:}{The (possibly converted)
+object itself on success. An exception is thrown
+otherwise.} }
 }
 \description{
-Checks if all elements of a vector are constant
+Checks if all elements of a vector are equal
 }
-\examples{
-print(isVariableVector(c(1, NA)))
-
-x = c(0, 1 - 0.9 - 0.1)
-print(identical(x[1], x[2]))
-print(isVariableVector(x))
+\seealso{
+\code{link{assertVariableVector}}
 }
 

@@ -6,3 +6,4 @@ tar.gz$
 ^\.travis
 \.yml$
 ^README.md$
+^man-roxygen

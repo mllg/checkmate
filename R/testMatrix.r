@@ -1,7 +1,7 @@
 #' Check if an argument is a matrix
 #'
-#' @param x [\code{ANY}]\cr
-#'  Object to check.
+#' @templateVar id Matrix
+#' @template testfuns
 #' @param min.rows [\code{integer(1)}]\cr
 #'  Minimum number of rows.
 #' @param min.cols [\code{integer(1)}]\cr
@@ -16,11 +16,7 @@
 #' @param col.names [\code{logical(1)}]\cr
 #'  Check for column names. Default is \dQuote{any} (no check).
 #'  See \code{\link{isNamed}} for possible values.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
+#' @family basetypes
 #' @export
 assertMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any", .var.name) {
   amsg(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names), vname(x, .var.name))

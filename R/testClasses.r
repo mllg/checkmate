@@ -1,31 +1,35 @@
 #' Checks argument inheritance
 #'
-#' @param x [\code{ANY}]\cr
-#'  Object to check.
+#' @templateVar id Classes
+#' @template testfuns
 #' @param classes [\code{character}]\cr
 #'  Class names to check for inheritance.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} if \code{x}
-#'  inherits from all \code{classes}.
-#'  Throws an exception on failure for assertion.
+#' @param ordered [\code{logical(1)}]\cr
+#'  Expect \code{x} to be specialized in provided order.
+#'  Default is \code{FALSE}.
 #' @export
-assertClasses = function(x, classes, .var.name) {
-  amsg(testClasses(x, classes), vname(x, .var.name))
+assertClasses = function(x, classes, ordered = FALSE, .var.name) {
+  amsg(testClasses(x, classes, ordered), vname(x, .var.name))
 }
 
 #' @rdname assertClasses
 #' @export
-isClasses = function(x, classes) {
+isClasses = function(x, classes, ordered = FALSE) {
   # FIXME: isClass is in methods, this name is fugly
-  isTRUE(testClasses(x, classes))
+  isTRUE(testClasses(x, classes, ordered))
 }
 
-testClasses = function(x, classes) {
+testClasses = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")
-  w = which.first(inherits(x, classes, TRUE) == 0L)
+  qassert(ordered, "B1")
+  ord = inherits(x, classes, TRUE)
+  w = which.first(ord == 0L)
   if (length(w) > 0L)
     return(sprintf("'%%s' must be of class '%s'", classes[w]))
+  if (ordered) {
+    w = which.first(ord != seq_along(ord))
+    if (length(w) > 0L)
+      return(sprintf("'%%s' must have class '%s' in position %i", classes[w], w))
+  }
   return(TRUE)
 }

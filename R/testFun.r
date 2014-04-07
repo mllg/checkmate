@@ -1,45 +1,40 @@
 #' Check or assert an argument to be a function
 #'
-#' @param fun [\code{character} or \code{function}]\cr
-#'  Function to check.
+#' @templateVar id Fun
+#' @template testfuns
 #' @param args [\code{character}]\cr
 #'  Expected formal arguments.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Flag whether the arguments provided in \code{args} must be the first
 #'  arguments of the function and occur in the given order.
 #'  Default is \code{FALSE}.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
 #' @export
-assertFun = function(fun, args, ordered = FALSE, .var.name) {
-  amsg(testFun(fun, args, ordered), vname(fun, .var.name))
+assertFun = function(x, args, ordered = FALSE, .var.name) {
+  amsg(testFun(x, args, ordered), vname(x, .var.name))
 }
 
 #' @rdname assertFun
 #' @export
-isFun = function(fun, args, ordered = FALSE) {
-  isTRUE(testFun(fun, args, ordered))
+isFun = function(x, args, ordered = FALSE) {
+  isTRUE(testFun(x, args, ordered))
 }
 
 #' @rdname assertFun
 #' @export
-asFun = function(fun, args, ordered = FALSE, .var.name) {
-  assertFun(fun, args, ordered, .var.name = vname(fun, .var.name))
-  fun
+asFun = function(x, args, ordered = FALSE, .var.name) {
+  assertFun(x, args, ordered, .var.name = vname(x, .var.name))
+  x
 }
 
-testFun = function(fun, args, ordered = FALSE) {
+testFun = function(x, args, ordered = FALSE) {
   qassert(ordered, "B1")
-  fun = try(match.fun(fun), silent=TRUE)
-  if (inherits(fun, "try-error"))
+  x = try(match.fun(x), silent=TRUE)
+  if (inherits(x, "try-error"))
     return("Function '%s' not found")
 
   if (!missing(args)) {
     qassert(args, "S")
-    fargs = names(formals(fun))
+    fargs = names(formals(x))
     if (is.null(fargs))
       fargs = character(0L)
 

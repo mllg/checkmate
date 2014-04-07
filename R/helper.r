@@ -5,14 +5,10 @@ vname = function(x, var.name, n = 1L) {
   deparse(substitute(x, parent.frame(n)))
 }
 
-vlapply = function(x, fun, ..., use.names = TRUE) {
-  vapply(X = x, FUN = fun, USE.NAMES = use.names, FUN.VALUE = NA, ...)
-}
-
 # assert* message helper
 amsg = function(msg, ...) {
   if (!isTRUE(msg))
-    stop(simpleError(sprintf(msg, ...), call=sys.call(1L)))
+    stop(simpleError(sprintf(msg, ...), call = sys.call(1L)))
   invisible(TRUE)
 }
 

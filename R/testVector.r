@@ -1,7 +1,7 @@
 #' Check vector properties
 #'
-#' @param x [\code{ANY}]\cr
-#'  Vector to check.
+#' @templateVar id Vector
+#' @template testfuns
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param len [\code{integer(1)}]\cr
@@ -14,11 +14,6 @@
 #'  Check for names attribute.
 #'  See also \code{\link{isNamed}} for possible values.
 #'  Default is \dQuote{none} which performs no check at all.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
 #' @export
 assertVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name) {
   amsg(testVector(x, na.ok, len, min.len, max.len, names), vname(x, .var.name))

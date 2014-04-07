@@ -1,24 +1,13 @@
-#' Checks if all elements of a vector are constant
+#' Checks if all elements of a vector are equal
 #'
-#' @param x [\code{ANY}]\cr
-#'  Object to check.
+#' @templateVar id ConstantVector
+#' @template testfuns
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used if \code{x} is of type \code{double} or \code{complex}.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @inheritParams shared-params
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
 #' @export
+#' @seealso \code{link{assertVariableVector}}
 #' @useDynLib checkmate c_is_constant
-#' @examples
-#' print(isVariableVector(c(1, NA)))
-#'
-#' x = c(0, 1 - 0.9 - 0.1)
-#' print(identical(x[1], x[2]))
-#' print(isVariableVector(x))
 assertConstantVector = function(x, tol = .Machine$double.eps^0.5, .var.name) {
   amsg(testConstantVector(x, tol), vname(x, .var.name))
 }
@@ -63,6 +52,6 @@ testConstantVectorHelper = function(x, tol) {
   } else if (is.atomic(x)) {
     all(x == x[[1L]])
   } else {
-    all(vlapply(tail(x, -1L), identical, y=x[[1L]]))
+    all(vapply(tail(x, -1L), identical, y=x[[1L]], FUN.VALUE=NA))
   }
 }

@@ -1,15 +1,11 @@
 #' Checks if an argument is a list
 #'
-#' @param x [\code{ANY}]\cr
-#'  Object to check.
+#' @templateVar id List
+#' @template testfuns
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [\code{logical(1)}] Returns \code{TRUE} on success.
-#'  Throws an exception on failure for assertion.
+#' @family basetypes
 #' @export
 assertList = function(x, ..., .var.name) {
   amsg(testVectorProps(x, ...), vname(x, .var.name))
