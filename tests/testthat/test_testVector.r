@@ -20,5 +20,5 @@ test_that("isVector", {
 
 test_that("assertString", {
   expect_true(assertVector(1))
-  expect_error(assertString(NA, "string"))
+  expect_error(assertCharacter(NA, "string"))
 })

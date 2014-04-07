@@ -8,14 +8,12 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
 assertFlag = function(x, na.ok = FALSE, .var.name) {
-  amsg(testFlag(na.ok, FALSE), "na.ok")
   amsg(testFlag(x, na.ok), vname(x, .var.name))
 }
 
 #' @rdname assertFlag
 #' @export
 isFlag = function(x, na.ok = FALSE) {
-  amsg(testFlag(na.ok, FALSE), "na.ok")
   isTRUE(testFlag(x, na.ok))
 }
 
@@ -27,7 +25,10 @@ asFlag = function(x, na.ok = FALSE, .var.name) {
 }
 
 testFlag = function(x, na.ok = FALSE) {
-  if(length(x) != 1L || !is.logical(x) || (!na.ok && is.na(x)))
+  qassert(na.ok, "B1")
+  if(length(x) != 1L || !is.logical(x))
     return("'%s' must be a flag")
+  if (!na.ok && is.na(x))
+    return("'%s' may not be NA")
   return(TRUE)
 }

@@ -52,13 +52,13 @@ itself on success. An exception is thrown otherwise.} }
 Check if an argument is a matrix
 }
 \seealso{
-Other basetypes: \code{\link{asIntegerish}},
-\code{\link{assertIntegerish}}, \code{\link{isIntegerish}};
-\code{\link{asInteger}}, \code{\link{assertInteger}},
-\code{\link{isInteger}}; \code{\link{asList}},
-\code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}; \code{\link{asString}},
-\code{\link{assertString}}, \code{\link{isString}}
+Other basetypes: \code{\link{asCharacter}},
+\code{\link{assertCharacter}}, \code{\link{isCharacter}};
+\code{\link{asIntegerish}}, \code{\link{assertIntegerish}},
+\code{\link{isIntegerish}}; \code{\link{asInteger}},
+\code{\link{assertInteger}}, \code{\link{isInteger}};
+\code{\link{asList}}, \code{\link{assertList}},
+\code{\link{isList}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 

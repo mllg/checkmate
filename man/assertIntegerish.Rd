@@ -36,13 +36,13 @@ itself on success. An exception is thrown otherwise.} }
 Checks if an object is convertible to an integer.
 }
 \seealso{
-Other basetypes: \code{\link{asInteger}},
-\code{\link{assertInteger}}, \code{\link{isInteger}};
-\code{\link{asList}}, \code{\link{assertList}},
-\code{\link{isList}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}; \code{\link{asString}},
-\code{\link{assertString}}, \code{\link{isString}}
+Other basetypes: \code{\link{asCharacter}},
+\code{\link{assertCharacter}}, \code{\link{isCharacter}};
+\code{\link{asInteger}}, \code{\link{assertInteger}},
+\code{\link{isInteger}}; \code{\link{asList}},
+\code{\link{assertList}}, \code{\link{isList}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 
