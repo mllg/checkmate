@@ -17,7 +17,7 @@ assertFile = function(fn, access = "", .var.name) {
 
 #' @rdname assertFile
 #' @export
-checkFile = function(fn, access = "") {
+isFile = function(fn, access = "") {
   isTRUE(testFile(fn, access))
 }
 

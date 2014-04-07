@@ -1,28 +1,28 @@
-context("checkFun")
+context("isFun")
 
 
 myfun = function(x, y, ...) x + y
 
-test_that("checkFun", {
-  expect_false(checkFun(NULL))
-  expect_true(checkFun(identity))
-  expect_true(checkFun(myfun))
+test_that("isFun", {
+  expect_false(isFun(NULL))
+  expect_true(isFun(identity))
+  expect_true(isFun(myfun))
   # FIXME this does not work ... is this a testthat issue?
-  # expect_true(checkFun("myfun"))
-  expect_false(checkFun(fff))
-  expect_false(checkFun("fff"))
+  # expect_true(isFun("myfun"))
+  expect_false(isFun(fff))
+  expect_false(isFun("fff"))
 
-  expect_true(checkFun(myfun, args = "x"))
-  expect_true(checkFun(myfun, args = "..."))
-  expect_true(checkFun(myfun, args = "x", ordered=TRUE))
-  expect_true(checkFun(myfun, args = "y"))
-  expect_true(checkFun(myfun, args = c("x", "y")))
-  expect_true(checkFun(myfun, args = c("x", "y", "...")))
-  expect_true(checkFun(myfun, args = c("y", "x")))
-  expect_true(checkFun(myfun, args = c("x", "y"), ordered=TRUE))
-  expect_false(checkFun(myfun, args = "z"))
-  expect_false(checkFun(myfun, args = c("y"), ordered=TRUE))
-  expect_false(checkFun(myfun, args = c("y", "x"), ordered=TRUE))
+  expect_true(isFun(myfun, args = "x"))
+  expect_true(isFun(myfun, args = "..."))
+  expect_true(isFun(myfun, args = "x", ordered=TRUE))
+  expect_true(isFun(myfun, args = "y"))
+  expect_true(isFun(myfun, args = c("x", "y")))
+  expect_true(isFun(myfun, args = c("x", "y", "...")))
+  expect_true(isFun(myfun, args = c("y", "x")))
+  expect_true(isFun(myfun, args = c("x", "y"), ordered=TRUE))
+  expect_false(isFun(myfun, args = "z"))
+  expect_false(isFun(myfun, args = c("y"), ordered=TRUE))
+  expect_false(isFun(myfun, args = c("y", "x"), ordered=TRUE))
 })
 
 test_that("assertFun", {

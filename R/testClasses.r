@@ -11,17 +11,18 @@
 #'  inherits from all \code{classes}.
 #'  Throws an exception on failure for assertion.
 #' @export
-assertInherits = function(x, classes, .var.name) {
-  amsg(testInherits(x, classes), vname(x, .var.name))
+assertClasses = function(x, classes, .var.name) {
+  amsg(testClasses(x, classes), vname(x, .var.name))
 }
 
-#' @rdname assertInherits
+#' @rdname assertClasses
 #' @export
-checkInherits = function(x, classes) {
-  isTRUE(testInherits(x, classes))
+isClasses = function(x, classes) {
+  # FIXME: isClass is in methods, this name is fugly
+  isTRUE(testClasses(x, classes))
 }
 
-testInherits = function(x, classes) {
+testClasses = function(x, classes) {
   qassert(classes, "S")
   w = which.first(inherits(x, classes, TRUE) == 0L)
   if (length(w) > 0L)

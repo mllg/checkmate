@@ -19,7 +19,7 @@ assertFlag = function(x, na.ok = FALSE, .var.name) {
 
 #' @rdname assertFlag
 #' @export
-checkFlag = function(x, na.ok = FALSE) {
+isFlag = function(x, na.ok = FALSE) {
   amsg(testFlag(na.ok, FALSE), "na.ok")
   isTRUE(testFlag(x, na.ok))
 }

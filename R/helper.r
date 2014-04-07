@@ -24,7 +24,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
 
     if (recursive) {
       pos = attr(msg, "pos")
-      if (checkNamed(x)) {
+      if (isNamed(x)) {
         item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
       } else {
         item = sprintf(", element %i", pos)

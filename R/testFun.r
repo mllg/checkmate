@@ -20,7 +20,7 @@ assertFun = function(fun, args, ordered = FALSE, .var.name) {
 
 #' @rdname assertFun
 #' @export
-checkFun = function(fun, args, ordered = FALSE) {
+isFun = function(fun, args, ordered = FALSE) {
   isTRUE(testFun(fun, args, ordered))
 }
 
@@ -32,13 +32,13 @@ asFun = function(fun, args, ordered = FALSE, .var.name) {
 }
 
 testFun = function(fun, args, ordered = FALSE) {
+  qassert(ordered, "B1")
   fun = try(match.fun(fun), silent=TRUE)
   if (inherits(fun, "try-error"))
     return("Function '%s' not found")
 
   if (!missing(args)) {
     qassert(args, "S")
-    qassert(ordered, "B1")
     fargs = names(formals(fun))
     if (is.null(fargs))
       fargs = character(0L)

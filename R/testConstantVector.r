@@ -19,30 +19,30 @@
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
 #' print(checkVariable(x))
-assertConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
-  amsg(testConstant(x, tol), vname(x, .var.name))
+assertConstantVector = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  amsg(testConstantVector(x, tol), vname(x, .var.name))
 }
 
 #' @rdname assertConstant
 #' @export
-checkConstant = function(x, tol = .Machine$double.eps^0.5) {
-  isTRUE(testConstant(x, tol))
+isConstantVector = function(x, tol = .Machine$double.eps^0.5) {
+  isTRUE(testConstantVector(x, tol))
 }
 
 #' @rdname assertConstant
 #' @export
 asConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
-  assertConstant(x, tol = tol, .var.name = vname(x, .var.name))
+  assertConstantVector(x, tol = tol, .var.name = vname(x, .var.name))
   x
 }
 
-testConstant = function(x, tol = .Machine$double.eps^0.5) {
+testConstantVector = function(x, tol = .Machine$double.eps^0.5) {
   if (!testConstantHelper(x, tol))
     return("'%s' must have constant elements")
   return(TRUE)
 }
 
-testConstantHelper = function(x, tol) {
+testConstantVectorHelper = function(x, tol) {
   callConstant = function(x, tol) {
     .Call("c_is_constant", x, as.double(tol), PACKAGE="checkmate")
   }

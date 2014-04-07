@@ -1,13 +1,13 @@
 #' @rdname assertFile
 #' @export
-checkDirectory = function(fn, access = "") {
-  isTRUE(testDirectory(fn, access))
+assertDirectory = function(fn, access = "", .var.name) {
+  amsg(testDirectory(fn, access), vname(fn, .var.name))
 }
 
 #' @rdname assertFile
 #' @export
-assertDirectory = function(fn, access = "", .var.name) {
-  amsg(testDirectory(fn, access), vname(fn, .var.name))
+isDirectory = function(fn, access = "") {
+  isTRUE(testDirectory(fn, access))
 }
 
 #' @rdname assertFile

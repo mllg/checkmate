@@ -1,10 +1,10 @@
-context("checkList")
+context("isList")
 
-test_that("checkList", {
-  expect_true(checkList(list()))
-  expect_false(checkList(NULL))
-  expect_true(checkList(list(1)))
-  expect_false(checkList(iris))
+test_that("isList", {
+  expect_true(isList(list()))
+  expect_false(isList(NULL))
+  expect_true(isList(list(1)))
+  expect_false(isList(iris))
 })
 
 test_that("assertList", {

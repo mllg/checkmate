@@ -1,31 +1,31 @@
-context("checkNamed")
+context("isNamed")
 
-test_that("checkNamed", {
-  expect_true(checkNamed(integer(0)))
-  expect_true(checkNamed(NULL))
-  expect_true(checkNamed(setNames(integer(0), character(0))))
+test_that("isNamed", {
+  expect_true(isNamed(integer(0)))
+  expect_true(isNamed(NULL))
+  expect_true(isNamed(setNames(integer(0), character(0))))
 
   x = setNames(1:2, c("a", ".a"))
-  expect_true(checkNamed(x))
-  expect_true(checkNamed(x, "unique"))
-  expect_true(checkNamed(x, "strict"))
+  expect_true(isNamed(x))
+  expect_true(isNamed(x, "unique"))
+  expect_true(isNamed(x, "strict"))
 
-  expect_false(checkNamed(1))
-  expect_false(checkNamed(setNames(x, NA_character_)))
-  expect_false(checkNamed(setNames(x, NA_integer_)))
-  expect_false(checkNamed(setNames(x, "")))
+  expect_false(isNamed(1))
+  expect_false(isNamed(setNames(x, NA_character_)))
+  expect_false(isNamed(setNames(x, NA_integer_)))
+  expect_false(isNamed(setNames(x, "")))
 
   x = setNames(1:2, c("a", "a"))
-  expect_true(checkNamed(x))
-  expect_false(checkNamed(x, "unique"))
+  expect_true(isNamed(x))
+  expect_false(isNamed(x, "unique"))
 
   x = setNames(1:2, c("a", "1"))
-  expect_true(checkNamed(x))
-  expect_false(checkNamed(x, "strict"))
+  expect_true(isNamed(x))
+  expect_false(isNamed(x, "strict"))
 
   x = setNames(1:2, c("a", "..1"))
-  expect_true(checkNamed(x))
-  expect_false(checkNamed(x, "strict"))
+  expect_true(isNamed(x))
+  expect_false(isNamed(x, "strict"))
 })
 
 test_that("assertNamed", {

@@ -1,4 +1,4 @@
-context("checkFile")
+context("isFile")
 
 td = tempfile()
 dir.create(td, recursive=TRUE)
@@ -8,12 +8,12 @@ ff = file.path(td, "xxx")
 file.create(fn)
 dir.create(dn)
 
-test_that("checkFile", {
-  expect_false(checkFile(character(0)))
-  expect_error(checkFile(NULL))
-  expect_false(checkFile(ff))
-  expect_false(checkFile(dn))
-  expect_true(checkFile(fn))
+test_that("isFile", {
+  expect_false(isFile(character(0)))
+  expect_error(isFile(NULL))
+  expect_false(isFile(ff))
+  expect_false(isFile(dn))
+  expect_true(isFile(fn))
 
   expect_error(assertFile(character(0)), "provided")
   expect_error(assertFile(ff), "exist")
@@ -21,11 +21,11 @@ test_that("checkFile", {
   expect_true(assertFile(fn))
 })
 
-test_that("checkDirectory", {
-  expect_false(checkDirectory(character(0)))
-  expect_false(checkDirectory(ff))
-  expect_false(checkDirectory(fn))
-  expect_true(checkDirectory(dn))
+test_that("isDirectory", {
+  expect_false(isDirectory(character(0)))
+  expect_false(isDirectory(ff))
+  expect_false(isDirectory(fn))
+  expect_true(isDirectory(dn))
 
   expect_error(assertDirectory(character(0)), "provided")
   expect_error(assertDirectory(ff), "exist")

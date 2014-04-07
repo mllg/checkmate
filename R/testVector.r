@@ -26,7 +26,7 @@ assertVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any", .
 
 #' @rdname assertVector
 #' @export
-checkVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
+isVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
   isTRUE(testVector(x, na.ok, len, min.len, max.len, names))
 }
 

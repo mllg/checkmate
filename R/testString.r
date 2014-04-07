@@ -12,7 +12,7 @@
 #' @param fixed [\code{logical(1)}]\cr
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}
+#'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
@@ -27,7 +27,7 @@ assertString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = F
 
 #' @rdname assertString
 #' @export
-checkString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ...) {
+isString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testString(x, pattern, ignore.case, perl, fixed))
 }
 

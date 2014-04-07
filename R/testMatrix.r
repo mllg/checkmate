@@ -29,7 +29,7 @@ assertMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", 
 
 #' @rdname assertMatrix
 #' @export
-checkMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
+isMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
   isTRUE(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)) && isTRUE(testMatrix(x))
 }
 

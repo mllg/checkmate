@@ -16,7 +16,7 @@ assertCount = function(x, .var.name) {
 
 #' @rdname assertCount
 #' @export
-checkCount = function(x) {
+isCount = function(x) {
   isTRUE(testCount(x))
 }
 
@@ -28,7 +28,7 @@ asCount = function(x, .var.name) {
 }
 
 testCount = function(x) {
-  if (length(x) != 1L || !checkIntegerish(x) || is.na(x) || x < 0)
+  if (length(x) != 1L || !isIntegerish(x) || is.na(x) || x < 0)
     return("'%s' must be a count")
   return(TRUE)
 }

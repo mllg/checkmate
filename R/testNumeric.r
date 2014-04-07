@@ -7,7 +7,7 @@
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than.
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}
+#'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
@@ -22,7 +22,7 @@ assertNumeric = function(x, lower, upper, ..., .var.name) {
 
 #' @rdname assertNumeric
 #' @export
-checkNumeric = function(x, lower, upper, ...) {
+isNumeric = function(x, lower, upper, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
 }
 

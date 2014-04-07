@@ -20,7 +20,7 @@ assertNamed = function(x, type = "named", .var.name) {
 
 #' @rdname assertNamed
 #' @export
-checkNamed = function(x, type = "named") {
+isNamed = function(x, type = "named") {
   isTRUE(testNamed(x, type))
 }
 

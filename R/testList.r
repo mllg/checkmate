@@ -3,7 +3,7 @@
 #' @param x [\code{ANY}]\cr
 #'  Object to check.
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}
+#'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
@@ -18,7 +18,7 @@ assertList = function(x, ..., .var.name) {
 
 #' @rdname assertList
 #' @export
-checkList = function(x, ...) {
+isList = function(x, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testList(x))
 }
 
