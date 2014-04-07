@@ -15,7 +15,7 @@
 #' @details
 #' \code{qassert} throws an \code{R} exception if object \code{x} does
 #' not comply to at least one of the \code{rules} and returns \code{TRUE}
-#' invisibly otherwise.
+#' otherwise.
 #' \code{qcheck} behaves the same way but returns \code{FALSE} if none of the
 #' \code{rules} comply.
 #'
@@ -23,12 +23,13 @@
 #' \enumerate{
 #'  \item{
 #'    Class and missingness check.
-#'    The first letter is an abbreviation for the class and if it is
+#'    The first letter is an abbreviation for the class. If it is
 #'    provided uppercase, missing values are prohibited.
-#'    Known abbreviations:
+#'    Supported abbreviations:
 #'    \tabular{rl}{
 #'      \code{[bB]} \tab Bool / logical.\cr
 #'      \code{[iI]} \tab Integer.\cr
+#'      \code{[xX]} \tab Integerish (numeric convertible to integer, see \code{\link{isIntegerish}}).\cr
 #'      \code{[rR]} \tab Real / double.\cr
 #'      \code{[cC]} \tab Complex.\cr
 #'      \code{[nN]} \tab Numeric (integer or double).\cr
@@ -43,7 +44,7 @@
 #'      \code{[*]}  \tab placeholder to allow any type.
 #'    }
 #'    Note that the check for missingness does not distinguish between
-#'    \code{NaN} and \code{NA}. Infinite values are treated as missing, but
+#'    \code{NaN} and \code{NA}. Infinite values are not treated as missing, but
 #'    can be catched using boundary checks (part 3).
 #'    }
 #'  \item{
@@ -54,8 +55,8 @@
 #'      \code{[+]} \tab length of at least one, or\cr
 #'      \code{[0-9]+} \tab exact length specified as integer.
 #'    }
-#'    Alternatively you may provide one of the comparison operators \code{=}/\code{==},
-#'    \code{<}, \code{<=}, \code{>=} or \code{>} followed by an integer.
+#'    Preceeding the exact length with one of the comparison operators \code{=}/\code{==},
+#'    \code{<}, \code{<=}, \code{>=} or \code{>} is also supported.
 #'  }
 #'  \item{
 #'    Range check as two real numbers separated by a comma, enclosed by square brackets
@@ -64,6 +65,7 @@
 #'    Endpoints may be omitted which is the equivalent of an infinite endpoint.
 #'    By definition \code{[0,]} contains \code{Inf}, while \code{[0,)} does not.
 #'    The same holds for the left (lower) endpoint and \code{-Inf}.
+#'    E.g., the rule \dQuote{N1(,)} checks for a single finite numeric which is not NA.
 #'  }
 #' }
 #' @note

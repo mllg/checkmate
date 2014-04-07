@@ -54,6 +54,14 @@ test_that("type and missingness", {
   expect_fail(xl, "f")
 })
 
+test_that("integerish", {
+  expect_succ(xb, "x")
+  expect_succ(xi, "x")
+  expect_succ(xr, "x")
+  expect_fail(1:3+.0001, "x")
+  expect_fail(xd, "x")
+})
+
 test_that("length", {
   expect_succ(xb, "b+")
   expect_succ(xb, "b10")
@@ -88,6 +96,15 @@ test_that("bounds", {
   expect_fail(-Inf, "n(,0]")
   expect_fail(c(-Inf, 0, Inf), "n(,]")
   expect_fail(c(-Inf, 0, Inf), "n(,)")
+
+  expect_succ(1, "n+()")
+  expect_succ(1, "n+[]")
+  expect_succ(Inf, "n+[]")
+  expect_succ(Inf, "n+(]")
+  expect_succ(-Inf, "n+[)")
+  expect_fail(Inf, "n+()")
+  expect_fail(Inf, "n+[)")
+  expect_fail(-Inf, "n+(]")
 })
 
 test_that("non-atomic types", {
