@@ -24,6 +24,13 @@ checkFlag = function(x, na.ok = FALSE) {
   isTRUE(testFlag(x, na.ok))
 }
 
+#' @rdname asFlag
+#' @export
+asFlag = function(x, na.ok = FALSE, .var.name) {
+  qassert(x, na.ok = na.ok, .var.name = vname(x, .var.name))
+  x
+}
+
 testFlag = function(x, na.ok = FALSE) {
   if(length(x) != 1L || !is.logical(x) || (!na.ok && is.na(x)))
     return("'%s' must be a flag")

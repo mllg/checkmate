@@ -26,6 +26,13 @@ checkInteger = function(x, lower, upper, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testInteger(x, lower, upper))
 }
 
+#' @rdname assertInteger
+#' @export
+asInteger = function(x, ..., .var.name) {
+  assertInteger(x, ..., .var.name = vname(x, .var.name))
+  x
+}
+
 testInteger = function(x, lower, upper) {
   if (!is.integer(x))
     return("'%s' must be integer")

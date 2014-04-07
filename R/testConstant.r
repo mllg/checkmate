@@ -31,25 +31,14 @@ checkConstant = function(x, tol = .Machine$double.eps^0.5) {
 
 #' @rdname assertConstant
 #' @export
-checkVariable = function(x, tol = .Machine$double.eps^0.5) {
-  isTRUE(testVariable(x, tol))
-}
-
-#' @rdname assertConstant
-#' @export
-assertVariable = function(x, tol = .Machine$double.eps^0.5, .var.name) {
-  amsg(testVariable, vname(x, .var.name))
+asConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  assertConstant(x, tol = tol, .var.name = vname(x, .var.name))
+  x
 }
 
 testConstant = function(x, tol = .Machine$double.eps^0.5) {
   if (!testConstantHelper(x, tol))
     return("'%s' must have constant elements")
-  return(TRUE)
-}
-
-testVariable = function(x, tol = .Machine$double.eps^0.5) {
-  if (testConstantHelper(x, tol))
-    return("'%s' must have variable elements")
   return(TRUE)
 }
 

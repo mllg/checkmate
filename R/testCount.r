@@ -20,6 +20,13 @@ checkCount = function(x) {
   isTRUE(testCount(x))
 }
 
+#' @rdname assertCount
+#' @export
+asCount = function(x, .var.name) {
+  assertCount(x, .var.name = vname(x, .var.name))
+  x
+}
+
 testCount = function(x) {
   if (length(x) != 1L || !checkIntegerish(x) || is.na(x) || x < 0)
     return("'%s' must be a count")

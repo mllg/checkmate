@@ -24,6 +24,13 @@ checkNamed = function(x, type = "named") {
   isTRUE(testNamed(x, type))
 }
 
+#' @rdname assertNamed
+#' @export
+asNamed = function(x, type = "named", .var.name) {
+  assertNamed(x, type, .var.name = vname(x, .var.name))
+  x
+}
+
 testNamed = function(x, type = "named") {
   if (length(x) == 0L)
     return(TRUE)

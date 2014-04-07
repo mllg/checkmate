@@ -27,6 +27,13 @@ checkIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testIntegerish(x, tol))
 }
 
+#' @rdname assertIntegerish
+#' @export
+asIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
+  assertIntegerish(x, tol = tol, ..., .var.name = vname(x, .var.name))
+  as.integer(x)
+}
+
 testIntegerish = function(x, tol = .Machine$double.eps^.5) {
   if (!.Call("c_is_integerish", x, as.double(tol), PACKAGE = "checkmate"))
     return("'%s' must be integer-ish")

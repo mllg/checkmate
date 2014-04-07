@@ -21,13 +21,19 @@
 #'  Throws an exception on failure for assertion.
 #' @export
 assertVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name) {
-  amsg(testVector(x, na.ok, len, min.len, max.len), vname(x, .var.name))
+  amsg(testVector(x, na.ok, len, min.len, max.len, names), vname(x, .var.name))
 }
 
 #' @rdname assertVector
 #' @export
 checkVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
-  isTRUE(testVector(x, na.ok, len, min.len, max.len))
+  isTRUE(testVector(x, na.ok, len, min.len, max.len, names))
+}
+
+#' @rdname assertVector
+#' @export
+asVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name) {
+  assertVector(x, na.ok, len, min.len, max.len, names, .var.name = vname(x, .var.name))
 }
 
 testVector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {

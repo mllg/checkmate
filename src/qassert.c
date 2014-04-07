@@ -3,29 +3,30 @@
 #include "check_rule.h"
 #include "any_missing.h"
 
-static inline Rboolean qassert1(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
+static inline R_len_t qassert1(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
     for (R_len_t i = 0; i < nrules; i++) {
         result[i] = check_rule(x, &checker[i], result[i].ok);
         if (result[i].ok)
-            return TRUE;
+            return 0;
     }
-    return FALSE;
+    return 1;
 }
 
-static inline Rboolean qassert_list(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
+static inline R_len_t qassert_list(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
     if (!isNewList(x))
         error("Argument 'x' must be a list or data.frame");
 
     const R_len_t nx = length(x);
     for (R_len_t i = 0; i < nx; i++) {
-        if (!qassert1(VECTOR_ELT(x, i), checker, result, nrules))
-            return FALSE;
+        if (qassert1(VECTOR_ELT(x, i), checker, result, nrules) != 0)
+            return i + 1;
     }
-    return TRUE;
+    return 0;
 }
 
 SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     const Rboolean nrules = length(rules);
+    R_len_t failed;
     if (!isString(rules))
         error("Argument 'rules' must be a string");
     if (nrules == 0)
@@ -43,16 +44,18 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     }
 
     if (LOGICAL(recursive)[0]) {
-        if (qassert_list(x, checker, result, nrules))
-            return ScalarLogical(TRUE);
+        failed = qassert_list(x, checker, result, nrules);
     } else {
-        if (qassert1(x, checker, result, nrules))
-            return ScalarLogical(TRUE);
+        failed = qassert1(x, checker, result, nrules);
     }
+    if (failed == 0)
+        return ScalarLogical(TRUE);
 
     SEXP msgs = PROTECT(allocVector(STRSXP, nrules));
+    SEXP pos = PROTECT(ScalarInteger(failed));
+    setAttrib(msgs, install("pos"), pos);
     for (R_len_t i = 0; i < nrules; i++)
         SET_STRING_ELT(msgs, i, mkChar(result[i].msg));
-    UNPROTECT(1);
+    UNPROTECT(2);
     return msgs;
 }

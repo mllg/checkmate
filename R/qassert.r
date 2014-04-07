@@ -69,9 +69,9 @@
 #'  }
 #' }
 #' @note
-#' The functions are inspired by the original blog post of Bogumił Kamiński:
+#' The functions are inspired by the blog post of Bogumił Kamiński:
 #' \url{http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html}.
-#' The implementation is written in \code{C} to minimize the overhead.
+#' The implementation is mostly written in \code{C} to minimize the overhead.
 #' @seealso \code{\link{qcheckr}} and \code{\link{qassertr}} for efficient checks
 #' of list elements and data frame columns.
 #' @useDynLib checkmate c_qassert
@@ -98,7 +98,7 @@
 #' qcheck(iris, "D+")
 qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
-  qamsg(res, vname(x, .var.name))
+  qamsg(x, res, vname(x, .var.name))
 }
 
 

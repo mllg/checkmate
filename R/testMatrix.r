@@ -33,6 +33,13 @@ checkMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", c
   isTRUE(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)) && isTRUE(testMatrix(x))
 }
 
+#' @rdname asMatrix
+#' @export
+asMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
+  assertMatrix(x, min.rows, min.cols, nrows, ncols, row.names, col.names, .var.name = vname(x, .var.name))
+  x
+}
+
 testMatrix = function(x) {
   if (!is.matrix(x))
     return("'%s' must be a matrix")

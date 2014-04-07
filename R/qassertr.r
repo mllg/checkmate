@@ -21,7 +21,7 @@
 #' qcheck(iris, "n")
 qassertr = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
-  qamsg(res, vname(x, .var.name))
+  qamsg(x, res, vname(x, .var.name), recursive = TRUE)
 }
 
 

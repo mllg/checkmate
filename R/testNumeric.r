@@ -26,6 +26,13 @@ checkNumeric = function(x, lower, upper, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
 }
 
+#' @rdname assertNumeric
+#' @export
+asNumeric = function(x, lower, upper, ..., .var.name) {
+  assertNumeric(x, lower, upper, ... , .var.name = vname(x, .var.name))
+  x
+}
+
 testNumeric = function(x, lower, upper) {
   if (!is.numeric(x))
     return("'%s' must be numeric")

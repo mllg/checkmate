@@ -31,6 +31,13 @@ checkString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FA
   isTRUE(testVectorProps(x, ...)) && isTRUE(testString(x, pattern, ignore.case, perl, fixed))
 }
 
+#' @rdname assertString
+#' @export
+asString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, ..., .var.name) {
+  assertString(x, pattern, ignore.case, perl, fixed, ..., .var.name = vname(x, .var.name))
+  x
+}
+
 testString = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE) {
   if (!is.character(x))
     return("'%s' must be a string")

@@ -22,6 +22,13 @@ checkList = function(x, ...) {
   isTRUE(testVectorProps(x, ...)) && isTRUE(testList(x))
 }
 
+#' @rdname assertList
+#' @export
+asList = function(x, ..., .var.name) {
+  assertList(x, ..., .var.name = vname(x, .var.name))
+  x
+}
+
 testList = function(x) {
   if (!is.vector(x, "list"))
     return("'%s' must be a list")

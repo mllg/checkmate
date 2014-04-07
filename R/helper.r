@@ -17,14 +17,23 @@ amsg = function(msg, ...) {
 }
 
 # qassert and qassertr message helper
-qamsg = function(msg, vname) {
+qamsg = function(x, msg, vname, recursive=FALSE) {
   if (!isTRUE(msg)) {
     if (length(msg) > 1L)
       msg = paste(c("One of the following must apply:", strwrap(msg, prefix = " * ")), collapse = "\n")
 
-    msg = sprintf("Error checking argument '%s': %s", vname, msg)
+    if (recursive) {
+      pos = attr(msg, "pos")
+      if (checkNamed(x)) {
+        item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
+      } else {
+        item = sprintf(", element %i", pos)
+      }
+    } else {
+      item = ""
+    }
+    msg = sprintf("Error checking argument '%s'%s: %s", vname, item, msg)
     stop(simpleError(msg, call = sys.call(1L)))
   }
   invisible(TRUE)
 }
-

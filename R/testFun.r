@@ -24,6 +24,13 @@ checkFun = function(fun, args, ordered = FALSE) {
   isTRUE(testFun(fun, args, ordered))
 }
 
+#' @rdname asFun
+#' @export
+asFun = function(fun, args, ordered = FALSE, .var.name) {
+  assertFun(fun, args, ordered, .var.name = vname(x, .var.name))
+  x
+}
+
 testFun = function(fun, args, ordered = FALSE) {
   fun = try(match.fun(fun), silent=TRUE)
   if (inherits(fun, "try-error"))
