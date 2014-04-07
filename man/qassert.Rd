@@ -40,7 +40,7 @@ missing values are prohibited.  Supported abbreviations:
 \tabular{rl}{ \code{[bB]} \tab Bool / logical.\cr
 \code{[iI]} \tab Integer.\cr \code{[xX]} \tab Integerish
 (numeric convertible to integer, see
-\code{\link{isIntegerish}}).\cr \code{[rR]} \tab Real /
+\code{\link{assertIntegerish}}).\cr \code{[rR]} \tab Real /
 double.\cr \code{[cC]} \tab Complex.\cr \code{[nN]} \tab
 Numeric (integer or double).\cr \code{[sS]} \tab String /
 character.\cr \code{[aA]} \tab Atomic.\cr \code{[lL]} \tab
