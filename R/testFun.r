@@ -24,11 +24,11 @@ isFun = function(fun, args, ordered = FALSE) {
   isTRUE(testFun(fun, args, ordered))
 }
 
-#' @rdname asFun
+#' @rdname assertFun
 #' @export
 asFun = function(fun, args, ordered = FALSE, .var.name) {
-  assertFun(fun, args, ordered, .var.name = vname(x, .var.name))
-  x
+  assertFun(fun, args, ordered, .var.name = vname(fun, .var.name))
+  fun
 }
 
 testFun = function(fun, args, ordered = FALSE) {

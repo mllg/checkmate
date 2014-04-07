@@ -1,13 +1,17 @@
 \name{assertMatrix}
+\alias{asMatrix}
 \alias{assertMatrix}
-\alias{checkMatrix}
+\alias{isMatrix}
 \title{Check if an argument is a matrix}
 \usage{
 assertMatrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
   col.names = "any", .var.name)
 
-checkMatrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
+isMatrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
   col.names = "any")
+
+asMatrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
+  col.names = "any", .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -26,11 +30,11 @@ checkMatrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
 
   \item{row.names}{[\code{logical(1)}]\cr Check for row
   names. Default is \dQuote{any} (no check).  See
-  \code{\link{checkNamed}} for possible values.}
+  \code{\link{isNamed}} for possible values.}
 
   \item{col.names}{[\code{logical(1)}]\cr Check for column
   names. Default is \dQuote{any} (no check).  See
-  \code{\link{checkNamed}} for possible values.}
+  \code{\link{isNamed}} for possible values.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

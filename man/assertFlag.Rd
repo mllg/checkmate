@@ -1,11 +1,14 @@
 \name{assertFlag}
+\alias{asFlag}
 \alias{assertFlag}
-\alias{checkFlag}
+\alias{isFlag}
 \title{Checks if an argument is a flag}
 \usage{
 assertFlag(x, na.ok = FALSE, .var.name)
 
-checkFlag(x, na.ok = FALSE)
+isFlag(x, na.ok = FALSE)
+
+asFlag(x, na.ok = FALSE, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

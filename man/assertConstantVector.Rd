@@ -1,17 +1,23 @@
-\name{assertConstant}
-\alias{assertConstant}
-\alias{assertVariable}
-\alias{checkConstant}
-\alias{checkVariable}
+\name{assertConstantVector}
+\alias{asConstant}
+\alias{asVariableVector}
+\alias{assertConstantVector}
+\alias{assertVariableVector}
+\alias{isConstantVector}
+\alias{isVariableVector}
 \title{Checks if all elements of a vector are constant}
 \usage{
-assertConstant(x, tol = .Machine$double.eps^0.5, .var.name)
+assertConstantVector(x, tol = .Machine$double.eps^0.5, .var.name)
 
-checkConstant(x, tol = .Machine$double.eps^0.5)
+isConstantVector(x, tol = .Machine$double.eps^0.5)
 
-checkVariable(x, tol = .Machine$double.eps^0.5)
+asConstant(x, tol = .Machine$double.eps^0.5, .var.name)
 
-assertVariable(x, tol = .Machine$double.eps^0.5, .var.name)
+assertVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
+
+isVariableVector(x, tol = .Machine$double.eps^0.5)
+
+asVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -32,10 +38,10 @@ an exception on failure for assertion.
 Checks if all elements of a vector are constant
 }
 \examples{
-print(checkVariable(c(1, NA)))
+print(isVariableVector(c(1, NA)))
 
 x = c(0, 1 - 0.9 - 0.1)
 print(identical(x[1], x[2]))
-print(checkVariable(x))
+print(isVariableVector(x))
 }
 

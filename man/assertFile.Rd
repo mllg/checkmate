@@ -1,21 +1,27 @@
-\name{assertFile}
+\name{assertDirectory}
+\alias{asDirectory}
+\alias{asFile}
 \alias{assertDirectory}
 \alias{assertFile}
-\alias{checkDirectory}
-\alias{checkFile}
+\alias{isDirectory}
+\alias{isFile}
 \title{Check or assert existance and access rights of files and directories}
 \usage{
-assertFile(fn, access = "", .var.name)
+assertDirectory(x, access = "", .var.name)
 
-checkFile(fn, access = "")
+isDirectory(x, access = "")
 
-checkDirectory(fn, access = "")
+asDirectory(x, access = "", .var.name)
 
-assertDirectory(fn, access = "", .var.name)
+assertFile(x, access = "", .var.name)
+
+isFile(x, access = "")
+
+asFile(x, access = "", .var.name)
 }
 \arguments{
-  \item{fn}{[\code{character}\code{function}]\cr Vector of
-  file or directory names}
+  \item{x}{[\code{character}\code{function}]\cr Vector of
+  file or directory names.}
 
   \item{access}{[\code{character}]\cr Single string with
   characters \sQuote{r}, \sQuote{w} and \sQuote{x} to force

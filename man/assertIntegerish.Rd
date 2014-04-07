@@ -1,11 +1,14 @@
 \name{assertIntegerish}
+\alias{asIntegerish}
 \alias{assertIntegerish}
-\alias{checkIntegerish}
+\alias{isIntegerish}
 \title{Checks if an object is convertible to an integer.}
 \usage{
 assertIntegerish(x, tol = .Machine$double.eps^0.5, ..., .var.name)
 
-checkIntegerish(x, tol = .Machine$double.eps^0.5, ...)
+isIntegerish(x, tol = .Machine$double.eps^0.5, ...)
+
+asIntegerish(x, tol = .Machine$double.eps^0.5, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -15,8 +18,7 @@ checkIntegerish(x, tol = .Machine$double.eps^0.5, ...)
   \code{sqrt(.Machine$double.eps)}.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
-  of \code{\link{checkVector}} or
-  \code{\link{assertVector}}.}
+  of \code{\link{isVector}} or \code{\link{assertVector}}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

@@ -12,7 +12,7 @@
 #'  Maximal length of \code{x}.
 #' @param names [\code{character(1)}]\cr
 #'  Check for names attribute.
-#'  See also \code{\link{checkNamed}} for possible values.
+#'  See also \code{\link{isNamed}} for possible values.
 #'  Default is \dQuote{none} which performs no check at all.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,

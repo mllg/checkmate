@@ -1,11 +1,14 @@
 \name{assertNumeric}
+\alias{asNumeric}
 \alias{assertNumeric}
-\alias{checkNumeric}
+\alias{isNumeric}
 \title{Checks if an argument is a numeric}
 \usage{
 assertNumeric(x, lower, upper, ..., .var.name)
 
-checkNumeric(x, lower, upper, ...)
+isNumeric(x, lower, upper, ...)
+
+asNumeric(x, lower, upper, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -17,8 +20,7 @@ checkNumeric(x, lower, upper, ...)
   elements of \code{x} must be lower than.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
-  of \code{\link{checkVector}} or
-  \code{\link{assertVector}}.}
+  of \code{\link{isVector}} or \code{\link{assertVector}}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

@@ -24,10 +24,10 @@ isFlag = function(x, na.ok = FALSE) {
   isTRUE(testFlag(x, na.ok))
 }
 
-#' @rdname asFlag
+#' @rdname assertFlag
 #' @export
 asFlag = function(x, na.ok = FALSE, .var.name) {
-  qassert(x, na.ok = na.ok, .var.name = vname(x, .var.name))
+  assertFlag(x, na.ok = na.ok, .var.name = vname(x, .var.name))
   x
 }
 

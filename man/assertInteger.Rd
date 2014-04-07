@@ -1,11 +1,14 @@
 \name{assertInteger}
+\alias{asInteger}
 \alias{assertInteger}
-\alias{checkInteger}
+\alias{isInteger}
 \title{Checks if an argument is an integer}
 \usage{
 assertInteger(x, lower, upper, ..., .var.name)
 
-checkInteger(x, lower, upper, ...)
+isInteger(x, lower, upper, ...)
+
+asInteger(x, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -17,8 +20,7 @@ checkInteger(x, lower, upper, ...)
   elements of \code{x} must be lower than.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
-  of \code{\link{checkVector}} or
-  \code{\link{assertVector}}.}
+  of \code{\link{isVector}} or \code{\link{assertVector}}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

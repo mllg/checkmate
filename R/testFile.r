@@ -1,7 +1,7 @@
 #' Check or assert existance and access rights of files and directories
 #'
-#' @param fn [\code{character}\code{function}]\cr
-#'  Vector of file or directory names
+#' @param x [\code{character}\code{function}]\cr
+#'  Vector of file or directory names.
 #' @param access [\code{character}]\cr
 #'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights.
@@ -11,36 +11,36 @@
 #' @return [\code{logical(1)}] Returns \code{TRUE} on success.
 #'  Throws an exception on failure for assertion.
 #' @export
-assertFile = function(fn, access = "", .var.name) {
-  amsg(testFile(fn, access), vname(fn, .var.name))
+assertFile = function(x, access = "", .var.name) {
+  amsg(testFile(x, access), vname(x, .var.name))
 }
 
 #' @rdname assertFile
 #' @export
-isFile = function(fn, access = "") {
-  isTRUE(testFile(fn, access))
+isFile = function(x, access = "") {
+  isTRUE(testFile(x, access))
 }
 
 #' @rdname assertFile
 #' @export
-asFile = function(fn, access = "", .var.name) {
-  assertFile(fn, access = access, .var.name = vname(x, .var.name))
-  fn
+asFile = function(x, access = "", .var.name) {
+  assertFile(x, access = access, .var.name = vname(x, .var.name))
+  x
 }
 
-testFile = function(fn, access = "") {
-  qassert(fn, "S")
-  if (length(fn) == 0L)
+testFile = function(x, access = "") {
+  qassert(x, "S")
+  if (length(x) == 0L)
     return("No files provided in '%s'")
 
-  isdir = file.info(fn)$isdir
+  isdir = file.info(x)$isdir
   w = which.first(is.na(isdir))
   if (length(w) > 0L)
-    return(sprintf("File in '%%s' does not exist: '%s'", fn[w]))
+    return(sprintf("File in '%%s' does not exist: '%s'", x[w]))
   w = which.first(isdir)
   if (length(w) > 0L)
-    return(sprintf("File in '%%s' expected, directory in place: '%s'", fn[w]))
+    return(sprintf("File in '%%s' expected, directory in place: '%s'", x[w]))
 
-  return(testAccess(fn, access))
+  return(testAccess(x, access))
 }
 

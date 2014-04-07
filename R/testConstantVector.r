@@ -14,22 +14,22 @@
 #' @export
 #' @useDynLib checkmate c_is_constant
 #' @examples
-#' print(checkVariable(c(1, NA)))
+#' print(isVariableVector(c(1, NA)))
 #'
 #' x = c(0, 1 - 0.9 - 0.1)
 #' print(identical(x[1], x[2]))
-#' print(checkVariable(x))
+#' print(isVariableVector(x))
 assertConstantVector = function(x, tol = .Machine$double.eps^0.5, .var.name) {
   amsg(testConstantVector(x, tol), vname(x, .var.name))
 }
 
-#' @rdname assertConstant
+#' @rdname assertConstantVector
 #' @export
 isConstantVector = function(x, tol = .Machine$double.eps^0.5) {
   isTRUE(testConstantVector(x, tol))
 }
 
-#' @rdname assertConstant
+#' @rdname assertConstantVector
 #' @export
 asConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
   assertConstantVector(x, tol = tol, .var.name = vname(x, .var.name))
@@ -37,7 +37,7 @@ asConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
 }
 
 testConstantVector = function(x, tol = .Machine$double.eps^0.5) {
-  if (!testConstantHelper(x, tol))
+  if (!testConstantVectorHelper(x, tol))
     return("'%s' must have constant elements")
   return(TRUE)
 }

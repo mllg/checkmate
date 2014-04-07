@@ -1,18 +1,20 @@
 \name{assertList}
+\alias{asList}
 \alias{assertList}
-\alias{checkList}
+\alias{isList}
 \title{Checks if an argument is a list}
 \usage{
 assertList(x, ..., .var.name)
 
-checkList(x, ...)
+isList(x, ...)
+
+asList(x, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
-  of \code{\link{checkVector}} or
-  \code{\link{assertVector}}.}
+  of \code{\link{isVector}} or \code{\link{assertVector}}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

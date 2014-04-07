@@ -1,12 +1,15 @@
 \name{assertVector}
+\alias{asVector}
 \alias{assertVector}
-\alias{checkVector}
+\alias{isVector}
 \title{Check vector properties}
 \usage{
 assertVector(x, na.ok = TRUE, len, min.len, max.len, names = "any",
   .var.name)
 
-checkVector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
+isVector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
+
+asVector(x, na.ok = TRUE, len, min.len, max.len, names = "any", .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Vector to check.}
@@ -24,9 +27,9 @@ checkVector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
   \code{x}.}
 
   \item{names}{[\code{character(1)}]\cr Check for names
-  attribute.  See also \code{\link{checkNamed}} for
-  possible values.  Default is \dQuote{none} which performs
-  no check at all.}
+  attribute.  See also \code{\link{isNamed}} for possible
+  values.  Default is \dQuote{none} which performs no check
+  at all.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

@@ -1,11 +1,11 @@
-\name{anyMissing}
+\name{allMissing}
 \alias{allMissing}
 \alias{anyMissing}
 \title{Checks if an object contains missing values.}
 \usage{
-anyMissing(x)
-
 allMissing(x)
+
+anyMissing(x)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

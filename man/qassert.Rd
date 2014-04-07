@@ -72,11 +72,11 @@ not.  The same holds for the left (lower) endpoint and
 single finite numeric which is not NA.  } }
 }
 \note{
-The functions are inspired by the original blog post of
-Bogumił Kamiński:
+The functions are inspired by the blog post of Bogumił
+Kamiński:
 \url{http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html}.
-The implementation is written in \code{C} to minimize the
-overhead.
+The implementation is mostly written in \code{C} to
+minimize the overhead.
 }
 \examples{
 # logical of length 1

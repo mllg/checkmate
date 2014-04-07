@@ -1,11 +1,14 @@
 \name{assertCount}
+\alias{asCount}
 \alias{assertCount}
-\alias{checkCount}
+\alias{isCount}
 \title{Checks if an argument is a count}
 \usage{
 assertCount(x, .var.name)
 
-checkCount(x)
+isCount(x)
+
+asCount(x, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

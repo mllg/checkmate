@@ -1,11 +1,11 @@
-\name{assertInherits}
-\alias{assertInherits}
-\alias{checkInherits}
+\name{assertClasses}
+\alias{assertClasses}
+\alias{isClasses}
 \title{Checks argument inheritance}
 \usage{
-assertInherits(x, classes, .var.name)
+assertClasses(x, classes, .var.name)
 
-checkInherits(x, classes)
+isClasses(x, classes)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

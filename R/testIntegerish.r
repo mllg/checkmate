@@ -29,7 +29,7 @@ isIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
 
 #' @rdname assertIntegerish
 #' @export
-asIntegerish = function(x, tol = .Machine$double.eps^.5, ...) {
+asIntegerish = function(x, tol = .Machine$double.eps^.5, ..., .var.name) {
   assertIntegerish(x, tol = tol, ..., .var.name = vname(x, .var.name))
   as.integer(x)
 }

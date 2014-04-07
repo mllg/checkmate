@@ -1,11 +1,14 @@
 \name{assertNamed}
+\alias{asNamed}
 \alias{assertNamed}
-\alias{checkNamed}
+\alias{isNamed}
 \title{Check or assert that an argument is named}
 \usage{
 assertNamed(x, type = "named", .var.name)
 
-checkNamed(x, type = "named")
+isNamed(x, type = "named")
+
+asNamed(x, type = "named", .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}

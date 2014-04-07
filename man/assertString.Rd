@@ -1,13 +1,17 @@
 \name{assertString}
+\alias{asString}
 \alias{assertString}
-\alias{checkString}
+\alias{isString}
 \title{Checks if an argument is a string}
 \usage{
 assertString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   ..., .var.name)
 
-checkString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
+isString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   ...)
+
+asString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
+  ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -26,8 +30,7 @@ checkString(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE,
   \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
-  of \code{\link{checkVector}} or
-  \code{\link{assertVector}}.}
+  of \code{\link{isVector}} or \code{\link{assertVector}}.}
 
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}

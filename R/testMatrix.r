@@ -12,10 +12,10 @@
 #'  Exact number of columns.
 #' @param row.names [\code{logical(1)}]\cr
 #'  Check for row names. Default is \dQuote{any} (no check).
-#'  See \code{\link{checkNamed}} for possible values.
+#'  See \code{\link{isNamed}} for possible values.
 #' @param col.names [\code{logical(1)}]\cr
 #'  Check for column names. Default is \dQuote{any} (no check).
-#'  See \code{\link{checkNamed}} for possible values.
+#'  See \code{\link{isNamed}} for possible values.
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
@@ -33,9 +33,9 @@ isMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.
   isTRUE(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)) && isTRUE(testMatrix(x))
 }
 
-#' @rdname asMatrix
+#' @rdname assertMatrix
 #' @export
-asMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
+asMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any", .var.name) {
   assertMatrix(x, min.rows, min.cols, nrows, ncols, row.names, col.names, .var.name = vname(x, .var.name))
   x
 }
