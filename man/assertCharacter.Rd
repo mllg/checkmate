@@ -56,8 +56,10 @@ Other basetypes: \code{\link{asIntegerish}},
 \code{\link{asInteger}}, \code{\link{assertInteger}},
 \code{\link{isInteger}}; \code{\link{asList}},
 \code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asMatrix}}, \code{\link{assertMatrix}},
-\code{\link{isMatrix}}; \code{\link{asNumeric}},
-\code{\link{assertNumeric}}, \code{\link{isNumeric}}
+\code{\link{asLogical}}, \code{\link{assertLogical}},
+\code{\link{isLogical}}; \code{\link{asMatrix}},
+\code{\link{assertMatrix}}, \code{\link{isMatrix}};
+\code{\link{asNumeric}}, \code{\link{assertNumeric}},
+\code{\link{isNumeric}}
 }
 

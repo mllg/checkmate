@@ -20,7 +20,7 @@ isFile = function(x, access = "") {
 #' @rdname assertFile
 #' @export
 asFile = function(x, access = "", .var.name) {
-  assertFile(x, access = access, .var.name = vname(x, .var.name))
+  assertFile(x, access, .var.name = vname(x, .var.name))
   x
 }
 
@@ -35,7 +35,7 @@ testFile = function(x, access = "") {
     return(sprintf("File in '%%s' does not exist: '%s'", x[w]))
   w = which.first(isdir)
   if (length(w) > 0L)
-    return(sprintf("File in '%%s' expected, directory in place: '%s'", x[w]))
+    return(sprintf("'%%s' expected to contain files, directory in place: '%s'", x[w]))
 
   return(testAccess(x, access))
 }

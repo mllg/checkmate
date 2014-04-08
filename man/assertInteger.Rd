@@ -8,7 +8,7 @@ assertInteger(x, lower, upper, ..., .var.name)
 
 isInteger(x, lower, upper, ...)
 
-asInteger(x, ..., .var.name)
+asInteger(x, lower, upper, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -43,8 +43,10 @@ Other basetypes: \code{\link{asCharacter}},
 \code{\link{asIntegerish}}, \code{\link{assertIntegerish}},
 \code{\link{isIntegerish}}; \code{\link{asList}},
 \code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asMatrix}}, \code{\link{assertMatrix}},
-\code{\link{isMatrix}}; \code{\link{asNumeric}},
-\code{\link{assertNumeric}}, \code{\link{isNumeric}}
+\code{\link{asLogical}}, \code{\link{assertLogical}},
+\code{\link{isLogical}}; \code{\link{asMatrix}},
+\code{\link{assertMatrix}}, \code{\link{isMatrix}};
+\code{\link{asNumeric}}, \code{\link{assertNumeric}},
+\code{\link{isNumeric}}
 }
 

@@ -30,7 +30,7 @@ asString = function(x, na.ok = FALSE, ..., .var.name) {
 testString = function(x, na.ok = FALSE, ...) {
   qassert(na.ok, "B1")
   if(length(x) != 1L || !is.character(x))
-    return("'%s' must be a string")
+    return("'%s' must be a scalar string")
   if (!na.ok && is.na(x))
     return("'%s' may not be NA")
   testCharacterProps(x, ...)

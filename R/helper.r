@@ -33,3 +33,10 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
   }
   invisible(TRUE)
 }
+
+"%and%" = function(lhs, rhs) {
+  if (isTRUE(lhs))
+    return(rhs)
+  else
+    lhs
+}

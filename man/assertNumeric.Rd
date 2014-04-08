@@ -44,7 +44,9 @@ Other basetypes: \code{\link{asCharacter}},
 \code{\link{isIntegerish}}; \code{\link{asInteger}},
 \code{\link{assertInteger}}, \code{\link{isInteger}};
 \code{\link{asList}}, \code{\link{assertList}},
-\code{\link{isList}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}}
+\code{\link{isList}}; \code{\link{asLogical}},
+\code{\link{assertLogical}}, \code{\link{isLogical}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}
 }
 

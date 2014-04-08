@@ -18,7 +18,7 @@ isDirectory = function(x, access = "") {
 #' @rdname assertDirectory
 #' @export
 asDirectory = function(x, access = "", .var.name) {
-  assertDirectory(x, access = access, .var.name = vname(x, .var.name))
+  assertDirectory(x, access, .var.name = vname(x, .var.name))
   x
 }
 
@@ -33,7 +33,7 @@ testDirectory = function(x, access = "") {
     return(sprintf("Directory in '%%s' does not exist: '%s'", x[w]))
   w = which.first(!isdir)
   if (length(w) > 0L)
-    return(sprintf("Directory in '%%s' expected, file in place: '%s'", x[w]))
+    return(sprintf("'%%s' expected to contain directories, file in place: '%s'", x[w]))
 
   return(testAccess(x, access))
 }

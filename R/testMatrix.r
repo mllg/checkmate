@@ -19,14 +19,13 @@
 #' @family basetypes
 #' @export
 assertMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any", .var.name) {
-  amsg(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names), vname(x, .var.name))
-  amsg(testMatrix(x), vname(x, .var.name))
+  amsg(testMatrix(x, min.rows, min.cols, nrows, ncols, row.names, col.names), vname(x, .var.name))
 }
 
 #' @rdname assertMatrix
 #' @export
 isMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
-  isTRUE(testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)) && isTRUE(testMatrix(x))
+  isTRUE(testMatrix(x, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }
 
 #' @rdname assertMatrix
@@ -36,10 +35,10 @@ asMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.
   x
 }
 
-testMatrix = function(x) {
+testMatrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
     return("'%s' must be a matrix")
-  return(TRUE)
+  testMatrixProps(x, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
 testMatrixProps = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {

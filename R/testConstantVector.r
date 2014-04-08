@@ -21,7 +21,7 @@ isConstantVector = function(x, tol = .Machine$double.eps^0.5) {
 #' @rdname assertConstantVector
 #' @export
 asConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
-  assertConstantVector(x, tol = tol, .var.name = vname(x, .var.name))
+  assertConstantVector(x, tol, .var.name = vname(x, .var.name))
   x
 }
 

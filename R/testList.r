@@ -8,14 +8,13 @@
 #' @family basetypes
 #' @export
 assertList = function(x, ..., .var.name) {
-  amsg(testVectorProps(x, ...), vname(x, .var.name))
-  amsg(testList(x), vname(x, .var.name))
+  amsg(testList(x, ...), vname(x, .var.name))
 }
 
 #' @rdname assertList
 #' @export
 isList = function(x, ...) {
-  isTRUE(testVectorProps(x, ...)) && isTRUE(testList(x))
+  isTRUE(testList(x, ...))
 }
 
 #' @rdname assertList
@@ -25,8 +24,8 @@ asList = function(x, ..., .var.name) {
   x
 }
 
-testList = function(x) {
+testList = function(x, ...) {
   if (!is.vector(x, "list"))
     return("'%s' must be a list")
-  return(TRUE)
+  testVectorProps(x, ...)
 }

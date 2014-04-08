@@ -12,29 +12,24 @@
 #' @family basetypes
 #' @export
 assertInteger = function(x, lower, upper, ..., .var.name) {
-  amsg(testVectorProps(x, ...), vname(x, .var.name))
-  amsg(testInteger(x), vname(x, .var.name))
+  amsg(testInteger(x, lower, upper, ...), vname(x, .var.name))
 }
 
 #' @rdname assertInteger
 #' @export
 isInteger = function(x, lower, upper, ...) {
-  isTRUE(testVectorProps(x, ...)) && isTRUE(testInteger(x, lower, upper))
+  isTRUE(testInteger(x, lower, upper, ...))
 }
 
 #' @rdname assertInteger
 #' @export
-asInteger = function(x, ..., .var.name) {
-  assertInteger(x, ..., .var.name = vname(x, .var.name))
+asInteger = function(x, lower, upper, ..., .var.name) {
+  assertInteger(x, lower, upper, ..., .var.name = vname(x, .var.name))
   x
 }
 
-testInteger = function(x, lower, upper) {
+testInteger = function(x, lower, upper, ...) {
   if (!is.integer(x))
     return("'%s' must be integer")
-  if (!missing(lower) && qassert(lower, "N1") && any(x < lower))
-    return(sprintf("All elements of '%%s' must be >= %s", lower))
-  if (!missing(upper) && qassert(upper, "N1") && any(x > upper))
-    return(sprintf("All elements of '%%s' must be <= %s", upper))
-  return(TRUE)
+  testVectorProps(x, ...) %and% testBounds(x, lower, upper)
 }

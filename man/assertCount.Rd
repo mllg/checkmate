@@ -4,11 +4,11 @@
 \alias{isCount}
 \title{Checks if an argument is a count}
 \usage{
-assertCount(x, .var.name)
+assertCount(x, na.ok = FALSE, .var.name)
 
-isCount(x)
+isCount(x, na.ok = FALSE)
 
-asCount(x, .var.name)
+asCount(x, na.ok = FALSE, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -16,6 +16,9 @@ asCount(x, .var.name)
   \item{.var.name}{[\code{logical(1)}]\cr Argument name to
   print in error message. If missing, the name of \code{x}
   will be retrieved via \code{\link[base]{substitute}}.}
+
+  \item{na.ok}{[\code{logical(1)}]\cr Are missing values
+  allowed? Default is \code{FALSE}.}
 }
 \value{
 Depending on the prefix: \describe{

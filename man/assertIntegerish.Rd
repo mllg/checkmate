@@ -4,11 +4,12 @@
 \alias{isIntegerish}
 \title{Checks if an object is convertible to an integer.}
 \usage{
-assertIntegerish(x, tol = .Machine$double.eps^0.5, ..., .var.name)
+assertIntegerish(x, lower, upper, tol = .Machine$double.eps^0.5, ...,
+  .var.name)
 
-isIntegerish(x, tol = .Machine$double.eps^0.5, ...)
+isIntegerish(x, lower, upper, tol = .Machine$double.eps^0.5, ...)
 
-asIntegerish(x, tol = .Machine$double.eps^0.5, ..., .var.name)
+asIntegerish(x, lower, upper, tol = .Machine$double.eps^0.5, ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -23,6 +24,12 @@ asIntegerish(x, tol = .Machine$double.eps^0.5, ..., .var.name)
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{isVector}} or \code{\link{assertVector}}.}
+
+  \item{lower}{[\code{numeric(1)}]\cr Lower value all
+  elements of \code{x} must be greater than.}
+
+  \item{upper}{[\code{numeric(1)}]\cr Upper value all
+  elements of \code{x} must be lower than.}
 }
 \value{
 Depending on the prefix: \describe{
@@ -41,8 +48,10 @@ Other basetypes: \code{\link{asCharacter}},
 \code{\link{asInteger}}, \code{\link{assertInteger}},
 \code{\link{isInteger}}; \code{\link{asList}},
 \code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asMatrix}}, \code{\link{assertMatrix}},
-\code{\link{isMatrix}}; \code{\link{asNumeric}},
-\code{\link{assertNumeric}}, \code{\link{isNumeric}}
+\code{\link{asLogical}}, \code{\link{assertLogical}},
+\code{\link{isLogical}}; \code{\link{asMatrix}},
+\code{\link{assertMatrix}}, \code{\link{isMatrix}};
+\code{\link{asNumeric}}, \code{\link{assertNumeric}},
+\code{\link{isNumeric}}
 }
 

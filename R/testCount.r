@@ -4,26 +4,36 @@
 #'
 #' @templateVar id Count
 #' @template testfuns
+#' @param na.ok [\code{logical(1)}]\cr
+#'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
-assertCount = function(x, .var.name) {
-  amsg(testCount(x), vname(x, .var.name))
+assertCount = function(x, na.ok = FALSE, .var.name) {
+  amsg(testCount(x, na.ok), vname(x, .var.name))
 }
 
 #' @rdname assertCount
 #' @export
-isCount = function(x) {
+isCount = function(x, na.ok = FALSE) {
   isTRUE(testCount(x))
 }
 
 #' @rdname assertCount
 #' @export
-asCount = function(x, .var.name) {
+asCount = function(x, na.ok = FALSE, .var.name) {
   assertCount(x, .var.name = vname(x, .var.name))
   x
 }
 
-testCount = function(x) {
-  if (length(x) != 1L || !isIntegerish(x) || is.na(x) || x < 0)
-    return("'%s' must be a count")
+testCount = function(x, na.ok = FALSE) {
+  if (length(x) != 1L)
+    return("'%s' must have length 1")
+  if (!isIntegerish(x))
+    return("'%s' must be integerish")
+  if (is.na(x)) {
+    if (!na.ok)
+      return("'%s' may not be NA")
+  } else if (x < 0) {
+    return("'%s' must be >= 0")
+  }
   return(TRUE)
 }

@@ -19,39 +19,38 @@
 #' @family basetypes
 #' @export
 assertCharacter = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ..., .var.name) {
-  amsg(testVectorProps(x, ...), vname(x, .var.name))
-  amsg(testCharacter(x, pattern, ignore.case, perl, fixed), vname(x, .var.name))
+  amsg(testCharacter(x, pattern, ignore.case, perl, fixed, min.chars, ...), vname(x, .var.name))
 }
 
 #' @rdname assertCharacter
 #' @export
 isCharacter = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
-  isTRUE(testVectorProps(x, ...)) && isTRUE(testCharacter(x, pattern, ignore.case, perl, fixed))
+  isTRUE(testCharacter(x, pattern, ignore.case, perl, fixed, min.chars, ...))
 }
 
 #' @rdname assertCharacter
 #' @export
 asCharacter = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ..., .var.name) {
-  assertCharacter(x, pattern, ignore.case, perl, fixed, ..., .var.name = vname(x, .var.name))
+  assertCharacter(x, pattern, ignore.case, perl, fixed, min.chars, ..., .var.name = vname(x, .var.name))
   x
 }
 
 testCharacter = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
   if (!is.character(x))
     return("'%s' must be a character")
-  testCharacterProps(x, pattern, ignore.case, perl, fixed)
+  testVectorProps(x, ...) %and% testCharacterProps(x, pattern, ignore.case, perl, fixed, min.chars)
 }
 
 testCharacterProps = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L) {
   if (!missing(pattern)) {
     qassert(pattern, "S1")
-    ok = grepl(pattern, x, ignore.case=ignore.case, perl=perl, fixed=fixed)
+    ok = grepl(pattern, x, ignore.case = ignore.case, perl = perl, fixed = fixed)
     if(!all(ok))
       return(sprintf("%s'%%s' must comply to pattern '%s",
           if(length(x) > 1L) "All elements of " else "",
           pattern))
   }
-  min.chars = asCount(min.chars)
+  qassert(min.chars, "N1")
   if (min.chars > 0L) {
     w = which.first(nchar(x) < min.chars)
     if (length(w) > 0L)

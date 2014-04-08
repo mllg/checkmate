@@ -26,8 +26,10 @@ asFlag = function(x, na.ok = FALSE, .var.name) {
 
 testFlag = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
-  if(length(x) != 1L || !is.logical(x))
-    return("'%s' must be a flag")
+  if(length(x) != 1L)
+    return("'%s' must have length 1")
+  if(!is.logical(x))
+    return("'%s' must be logical")
   if (!na.ok && is.na(x))
     return("'%s' may not be NA")
   return(TRUE)

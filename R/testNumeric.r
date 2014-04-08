@@ -12,14 +12,13 @@
 #' @family basetypes
 #' @export
 assertNumeric = function(x, lower, upper, ..., .var.name) {
-  amsg(testVectorProps(x, ...), vname(x, .var.name))
-  amsg(testNumeric(x), vname(x, .var.name))
+  amsg(testNumeric(x, lower, upper, ...), vname(x, .var.name))
 }
 
 #' @rdname assertNumeric
 #' @export
 isNumeric = function(x, lower, upper, ...) {
-  isTRUE(testVectorProps(x, ...)) && isTRUE(testNumeric(x, lower, upper))
+  isTRUE(testNumeric(x, lower, upper, ...))
 }
 
 #' @rdname assertNumeric
@@ -29,12 +28,8 @@ asNumeric = function(x, lower, upper, ..., .var.name) {
   x
 }
 
-testNumeric = function(x, lower, upper) {
+testNumeric = function(x, lower, upper, ...) {
   if (!is.numeric(x))
     return("'%s' must be numeric")
-  if (!missing(lower) && qassert(lower, "N1") && any(x < lower))
-    return(sprintf("All elements of '%%s' must be >= %s", lower))
-  if (!missing(upper) && qassert(upper, "N1") && any(x > upper))
-    return(sprintf("All elements of '%%s' must be <= %s", upper))
-  return(TRUE)
+  testVectorProps(x, ...) %and% testBounds(x, lower, upper)
 }
