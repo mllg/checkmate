@@ -35,8 +35,5 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
 }
 
 "%and%" = function(lhs, rhs) {
-  if (isTRUE(lhs))
-    return(rhs)
-  else
-    lhs
+  if (isTRUE(lhs)) rhs else lhs
 }
