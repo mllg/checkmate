@@ -4,11 +4,11 @@
 \alias{isList}
 \title{Checks if an argument is a list}
 \usage{
-assertList(x, ..., .var.name)
+assertList(x, types = character(0L), ..., .var.name)
 
-isList(x, ...)
+isList(x, types = character(0L), ...)
 
-asList(x, ..., .var.name)
+asList(x, types = character(0L), ..., .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -19,6 +19,12 @@ asList(x, ..., .var.name)
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{isVector}} or \code{\link{assertVector}}.}
+
+  \item{types}{[\code{character}]\cr Restrict elements to
+  be atomic. Tests for \dQuote{logical}, \dQuote{integer},
+  \dQuote{double}, \dQuote{numeric}, \dQuote{character},
+  \dQuote{factor} or \dQuote{NULL}.  Defaults to
+  \code{character(0)} (no type check).}
 }
 \value{
 Depending on the prefix: \describe{
@@ -34,13 +40,14 @@ Checks if an argument is a list
 \seealso{
 Other basetypes: \code{\link{asCharacter}},
 \code{\link{assertCharacter}}, \code{\link{isCharacter}};
-\code{\link{asIntegerish}}, \code{\link{assertIntegerish}},
-\code{\link{isIntegerish}}; \code{\link{asInteger}},
-\code{\link{assertInteger}}, \code{\link{isInteger}};
-\code{\link{asLogical}}, \code{\link{assertLogical}},
-\code{\link{isLogical}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}
+\code{\link{asDataFrame}}, \code{\link{assertDataFrame}},
+\code{\link{isDataFrame}}; \code{\link{asIntegerish}},
+\code{\link{assertIntegerish}}, \code{\link{isIntegerish}};
+\code{\link{asInteger}}, \code{\link{assertInteger}},
+\code{\link{isInteger}}; \code{\link{asLogical}},
+\code{\link{assertLogical}}, \code{\link{isLogical}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 

@@ -51,15 +51,16 @@ itself on success. An exception is thrown otherwise.} }
 Checks if an argument is a character
 }
 \seealso{
-Other basetypes: \code{\link{asIntegerish}},
-\code{\link{assertIntegerish}}, \code{\link{isIntegerish}};
-\code{\link{asInteger}}, \code{\link{assertInteger}},
-\code{\link{isInteger}}; \code{\link{asList}},
-\code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asLogical}}, \code{\link{assertLogical}},
-\code{\link{isLogical}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}
+Other basetypes: \code{\link{asDataFrame}},
+\code{\link{assertDataFrame}}, \code{\link{isDataFrame}};
+\code{\link{asIntegerish}}, \code{\link{assertIntegerish}},
+\code{\link{isIntegerish}}; \code{\link{asInteger}},
+\code{\link{assertInteger}}, \code{\link{isInteger}};
+\code{\link{asList}}, \code{\link{assertList}},
+\code{\link{isList}}; \code{\link{asLogical}},
+\code{\link{assertLogical}}, \code{\link{isLogical}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 

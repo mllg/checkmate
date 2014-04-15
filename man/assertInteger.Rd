@@ -40,13 +40,14 @@ Checks if an argument is an integer
 \seealso{
 Other basetypes: \code{\link{asCharacter}},
 \code{\link{assertCharacter}}, \code{\link{isCharacter}};
-\code{\link{asIntegerish}}, \code{\link{assertIntegerish}},
-\code{\link{isIntegerish}}; \code{\link{asList}},
-\code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asLogical}}, \code{\link{assertLogical}},
-\code{\link{isLogical}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}
+\code{\link{asDataFrame}}, \code{\link{assertDataFrame}},
+\code{\link{isDataFrame}}; \code{\link{asIntegerish}},
+\code{\link{assertIntegerish}}, \code{\link{isIntegerish}};
+\code{\link{asList}}, \code{\link{assertList}},
+\code{\link{isList}}; \code{\link{asLogical}},
+\code{\link{assertLogical}}, \code{\link{isLogical}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 

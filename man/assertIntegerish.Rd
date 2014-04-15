@@ -42,16 +42,20 @@ itself on success. An exception is thrown otherwise.} }
 \description{
 Checks if an object is convertible to an integer.
 }
+\note{
+\code{asIntegerish} converts the input to an integer.
+}
 \seealso{
 Other basetypes: \code{\link{asCharacter}},
 \code{\link{assertCharacter}}, \code{\link{isCharacter}};
-\code{\link{asInteger}}, \code{\link{assertInteger}},
-\code{\link{isInteger}}; \code{\link{asList}},
-\code{\link{assertList}}, \code{\link{isList}};
-\code{\link{asLogical}}, \code{\link{assertLogical}},
-\code{\link{isLogical}}; \code{\link{asMatrix}},
-\code{\link{assertMatrix}}, \code{\link{isMatrix}};
-\code{\link{asNumeric}}, \code{\link{assertNumeric}},
-\code{\link{isNumeric}}
+\code{\link{asDataFrame}}, \code{\link{assertDataFrame}},
+\code{\link{isDataFrame}}; \code{\link{asInteger}},
+\code{\link{assertInteger}}, \code{\link{isInteger}};
+\code{\link{asList}}, \code{\link{assertList}},
+\code{\link{isList}}; \code{\link{asLogical}},
+\code{\link{assertLogical}}, \code{\link{isLogical}};
+\code{\link{asMatrix}}, \code{\link{assertMatrix}},
+\code{\link{isMatrix}}; \code{\link{asNumeric}},
+\code{\link{assertNumeric}}, \code{\link{isNumeric}}
 }
 

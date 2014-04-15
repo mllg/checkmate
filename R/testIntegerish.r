@@ -9,6 +9,7 @@
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
+#' @note \code{asIntegerish} converts the input to an integer.
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_is_integerish

@@ -1,14 +1,14 @@
-\name{assertVariableVector}
-\alias{asVariableVector}
-\alias{assertVariableVector}
-\alias{isVariableVector}
+\name{assertInconstantVector}
+\alias{asInconstantVector}
+\alias{assertInconstantVector}
+\alias{isInconstantVector}
 \title{Checks if elements of a vector are variable}
 \usage{
-assertVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
+assertInconstantVector(x, tol = .Machine$double.eps^0.5, .var.name)
 
-isVariableVector(x, tol = .Machine$double.eps^0.5)
+isInconstantVector(x, tol = .Machine$double.eps^0.5)
 
-asVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
+asInconstantVector(x, tol = .Machine$double.eps^0.5, .var.name)
 }
 \arguments{
   \item{x}{[\code{ANY}]\cr Object to check.}
@@ -23,11 +23,11 @@ asVariableVector(x, tol = .Machine$double.eps^0.5, .var.name)
 }
 \value{
 Depending on the prefix: \describe{
-\item{\code{isVariableVector}:}{Single logical value
+\item{\code{isInconstantVector}:}{Single logical value
 indicating success.}
-\item{\code{assertVariableVector}:}{\code{TRUE} on success.
-An exception is thrown otherwise.}
-\item{\code{asVariableVector}:}{The (possibly converted)
+\item{\code{assertInconstantVector}:}{\code{TRUE} on
+success. An exception is thrown otherwise.}
+\item{\code{asInconstantVector}:}{The (possibly converted)
 object itself on success. An exception is thrown
 otherwise.} }
 }
@@ -35,11 +35,11 @@ otherwise.} }
 Checks if elements of a vector are variable
 }
 \examples{
-print(isVariableVector(c(1, NA)))
+print(isInconstantVector(c(1, NA)))
 
 x = c(0, 1 - 0.9 - 0.1)
 print(identical(x[1], x[2]))
-print(isVariableVector(x))
+print(isInconstantVector(x))
 }
 \seealso{
 \code{link{assertConstantVector}}
