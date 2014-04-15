@@ -21,7 +21,7 @@ isCount = function(x, na.ok = FALSE) {
 #' @export
 asCount = function(x, na.ok = FALSE, .var.name) {
   assertCount(x, .var.name = vname(x, .var.name))
-  x
+  as.integer(x)
 }
 
 testCount = function(x, na.ok = FALSE) {

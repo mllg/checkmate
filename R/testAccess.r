@@ -1,7 +1,9 @@
 testAccess = function(fn, access) {
   qassert(access, "S1")
   if (nzchar(access)) {
-    access = strsplit(access, "")[[1L]]
+    access = factor(strsplit(access, "")[[1L]], levels = c("r", "w", "x"))
+    if (anyMissing(access) || anyDuplicated(access) > 0L)
+      stop("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
     if ("r" %in% access) {
       w = which.first(file.access(fn, 4L) != 0L)

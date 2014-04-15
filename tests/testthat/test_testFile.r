@@ -19,6 +19,7 @@ test_that("isFile", {
   expect_error(assertFile(ff), "exist")
   expect_error(assertFile(dn), "directory")
   expect_true(assertFile(fn))
+
 })
 
 test_that("isDirectory", {
@@ -51,5 +52,8 @@ test_that("testAccess", {
     expect_true(isTRUE(testAccess(fn, "rw")))
     expect_false(isTRUE(testAccess(fn, "rx")))
     expect_false(isTRUE(testAccess(fn, "wx")))
+
+    expect_error(testAccess(fn, "a"))
+    expect_error(testAccess(fn, "rrr"))
   }
 })

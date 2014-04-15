@@ -23,7 +23,7 @@ isFun = function(x, args, ordered = FALSE) {
 #' @export
 asFun = function(x, args, ordered = FALSE, .var.name) {
   assertFun(x, args, ordered, .var.name = vname(x, .var.name))
-  x
+  match.fun(x, silent=TRUE)
 }
 
 testFun = function(x, args, ordered = FALSE) {
