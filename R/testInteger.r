@@ -1,4 +1,4 @@
-#' Checks if an argument is an integer
+#' Checks if an argument is an integer vector
 #'
 #' @templateVar id Integer
 #' @template testfuns

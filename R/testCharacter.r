@@ -1,4 +1,4 @@
-#' Checks if an argument is a character
+#' Checks if an argument is a character vector
 #'
 #' @templateVar id Character
 #' @template testfuns

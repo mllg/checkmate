@@ -1,4 +1,4 @@
-#' Checks if an object is convertible to an integer.
+#' Checks if an object is convertible to an integer vector
 #'
 #' @templateVar id Integerish
 #' @template testfuns

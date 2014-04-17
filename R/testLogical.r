@@ -1,4 +1,4 @@
-#' Checks if an argument is an logical vector
+#' Checks if an argument is a logical vector
 #'
 #' @templateVar id Logical
 #' @template testfuns

@@ -1,4 +1,4 @@
-#' Checks if an argument is a numeric
+#' Checks if an argument is a numeric vector
 #'
 #' @templateVar id Numeric
 #' @template testfuns
