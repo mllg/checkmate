@@ -40,12 +40,12 @@ testFun = function(x, args, ordered = FALSE) {
 
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
-        return(paste0("Function '%s' must have first formal arguments (ordered): ", paste(args, collapse=",")))
+        return(sprintf("Function '%%s' must have first formal arguments (ordered): %s", collapse(args)))
       }
     } else {
       tmp = setdiff(args, fargs)
       if (length(tmp))
-        return(paste0("Function '%s' is missing formal arguments: ", paste(tmp, collapse=",")))
+        return(sprintf("Function '%%s' is missing formal arguments: %s", collapse(tmp)))
     }
   }
   return(TRUE)

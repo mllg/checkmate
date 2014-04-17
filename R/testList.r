@@ -48,5 +48,5 @@ testListProps = function(x, types = character(0L)) {
     if (all(ok))
       return(TRUE)
   }
-  return(sprintf("'%%s' may only contain the following atomic types: %s", paste0(types, collapse = ",")))
+  return(sprintf("'%%s' may only contain the following atomic types: %s", collapse(types)))
 }
