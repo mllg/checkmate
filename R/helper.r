@@ -16,7 +16,7 @@ amsg = function(msg, ...) {
 qamsg = function(x, msg, vname, recursive=FALSE) {
   if (!isTRUE(msg)) {
     if (length(msg) > 1L)
-      msg = paste(c("One of the following must apply:", strwrap(msg, prefix = " * ")), collapse = "\n")
+      msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")))
 
     if (recursive) {
       pos = attr(msg, "pos")
@@ -36,4 +36,12 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
 
 "%and%" = function(lhs, rhs) {
   if (isTRUE(lhs)) rhs else lhs
+}
+
+collapse = function(x, sep = ",") {
+  paste0(x, collapse = sep)
+}
+
+"%nin%" = function(x, y) {
+  match(x, y, nomatch = 0L) == 0L
 }
