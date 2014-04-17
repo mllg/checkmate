@@ -4,13 +4,13 @@
 #' @template testfuns
 #' @param levels [\code{character}]\cr
 #'  Vector of allowed factor levels.
-#' @param empty.levels.ok [\code{logical(1)}]\cr
-#'  Are empty levels allowed?
-#'  Default is \code{TRUE}.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Check for an ordered factor? If \code{FALSE}, checks explicitly
 #'  for an unordered factor.
 #'  Default is \code{NA} which disables this check.
+#' @param empty.levels.ok [\code{logical(1)}]\cr
+#'  Are empty levels allowed?
+#'  Default is \code{TRUE}.
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{isVector}}
 #'  or \code{\link{assertVector}}.
