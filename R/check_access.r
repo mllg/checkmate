@@ -1,4 +1,13 @@
-# TODO: document and export
+#' Check file system access rights
+#'
+#' @template checker
+#' @param access [\code{character}]\cr
+#'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
+#'  force a check for read, write or execute access rights.
+#' @family checker
+#' @export
+#' @examples
+#'  assert(R.home(), "access", "r")
 check_access = function(fn, access) {
   qassert(access, "S1")
   if (nzchar(access)) {

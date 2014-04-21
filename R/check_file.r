@@ -1,9 +1,7 @@
 #' Check existance and access rights of files
 #'
 #' @template checker
-#' @param access [\code{character}]\cr
-#'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
-#'  force a check for read, write or execute access rights.
+#' @inheritParams check_access
 #' @family checker
 #' @export
 check_file = function(x, access = "") {

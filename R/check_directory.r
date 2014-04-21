@@ -1,6 +1,7 @@
 #' Check for existance and access rights of directories
 #'
 #' @template checker
+#' @inheritParams check_access
 #' @inheritParams check_file
 #' @family checker
 #' @export
