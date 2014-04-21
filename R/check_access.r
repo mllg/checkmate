@@ -8,27 +8,27 @@
 #' @export
 #' @examples
 #'  assert(R.home(), "access", "r")
-check_access = function(fn, access) {
+check_access = function(x, access) {
   qassert(access, "S1")
   if (nzchar(access)) {
-    access = factor(strsplit(access, "")[[1L]], levels = c("r", "w", "x"))
+    access = match(strsplit(access, "")[[1L]], c("r", "w", "x"))
     if (anyMissing(access) || anyDuplicated(access) > 0L)
       stop("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
-    if ("r" %in% access) {
-      w = which.first(file.access(fn, 4L) != 0L)
+    if (1L %in% access) {
+      w = which.first(file.access(x, 4L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not readable: '%s'", fn[w]))
+        return(sprintf("File in '%%s' not readable: '%s'", x[w]))
     }
-    if ("w" %in% access) {
-      w = which.first(file.access(fn, 2L) != 0L)
+    if (2L %in% access) {
+      w = which.first(file.access(x, 2L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not writeable: '%s'", fn[w]))
+        return(sprintf("File in '%%s' not writeable: '%s'", x[w]))
     }
-    if ("x" %in% access) {
-      w = which.first(file.access(fn, 1L) != 0L)
+    if (3L %in% access) {
+      w = which.first(file.access(x, 1L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not executeable: '%s'", fn[w]))
+        return(sprintf("File in '%%s' not executeable: '%s'", x[w]))
     }
   }
   return(TRUE)
