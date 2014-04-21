@@ -30,6 +30,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument is a factor
 }
+\examples{
+test(factor("x", levels = c("x", "y")), "factor", ordered = FALSE)
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

@@ -18,6 +18,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument is a logical vector
 }
+\examples{
+test(TRUE, "logical", min.len = 1)
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

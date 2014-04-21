@@ -7,6 +7,9 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(TRUE, "flag")
+#'  test(1, "flag")
 check_flag = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
   if(length(x) != 1L)

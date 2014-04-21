@@ -35,6 +35,11 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument is a character vector
 }
+\examples{
+test(letters, "character", min.len = 1, na.ok = FALSE)
+ test(letters, "character", min.chars = 2)
+ test("example", "character", pattern = "ple")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_class}}; \code{\link{check_constant}};

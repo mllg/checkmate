@@ -5,6 +5,8 @@
 #' @inheritParams check_file
 #' @family checker
 #' @export
+#' @examples
+#'  test(R.home(), "directory", access = "r")
 check_directory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)

@@ -21,4 +21,8 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 A string a character vector of length 1.
 }
+\examples{
+test("a", "string")
+ test(letters, "string")
+}
 

@@ -19,7 +19,7 @@ otherwise.  Intended to be used with \code{\link{test}},
 Check if object is a subset of a set
 }
 \examples{
-assert(c("a", "z"), "subset", letters)
+test(c("a", "z"), "subset", letters)
 }
 \seealso{
 Other checker: \code{\link{check_access}};

@@ -10,6 +10,9 @@
 #' @family checker
 #' @export
 #' @useDynLib checkmate c_is_integerish
+#' @examples
+#'  test(1L, "integerish")
+#'  test(1., "integerish")
 check_integerish = function(x, lower, upper, tol = .Machine$double.eps^.5, ...) {
   if (!.Call("c_is_integerish", x, as.double(tol), PACKAGE = "checkmate"))
     return("'%s' must be integer-ish")

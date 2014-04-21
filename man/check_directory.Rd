@@ -19,6 +19,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check for existance and access rights of directories
 }
+\examples{
+test(R.home(), "directory", access = "r")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

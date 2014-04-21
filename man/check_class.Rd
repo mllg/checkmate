@@ -22,6 +22,14 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check argument inheritance
 }
+\examples{
+x = 1
+ class(x) = c("foo", "bar")
+ test(letters, "character", min.chars = 2)
+ test(x, "class", "foo")
+ test(x, "class", "bar")
+ test(x, "class", "bar", ordered = TRUE)
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}};

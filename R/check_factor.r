@@ -15,6 +15,8 @@
 #'  or \code{\link{check_vector}}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(factor("x", levels = c("x", "y")), "factor", ordered = FALSE)
 check_factor = function(x, levels, ordered = NA, empty.levels.ok = TRUE, ...) {
   qassert(ordered, "b1")
   qassert(empty.levels.ok, "B1")

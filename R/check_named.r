@@ -9,6 +9,11 @@
 #'  Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.
 #' @family checker
 #' @export
+#' @examples
+#'  x = 1:3
+#'  test(x, "named", "unnamed")
+#'  names(x) = letters[1:3]
+#'  test(x, "named", "unique")
 check_named = function(x, type = "named") {
   if (length(x) == 0L)
     return(TRUE)

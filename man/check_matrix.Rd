@@ -36,6 +36,11 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument is a matrix
 }
+\examples{
+x = matrix(1:9, 3)
+ colnames(x) = letters[1:3]
+ test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

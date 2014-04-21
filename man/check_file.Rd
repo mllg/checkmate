@@ -19,6 +19,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check existance and access rights of files
 }
+\examples{
+test(file.path(R.home(), "NEWS"), "file", access = "r")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

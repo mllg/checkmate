@@ -17,6 +17,10 @@
 #'  See \code{\link{check_named}} for possible values.
 #' @family checker
 #' @export
+#' @examples
+#'  x = matrix(1:9, 3)
+#'  colnames(x) = letters[1:3]
+#'  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
 check_matrix = function(x, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
     return("'%s' must be a matrix")

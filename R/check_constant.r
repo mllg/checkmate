@@ -7,6 +7,9 @@
 #' @family checker
 #' @export
 #' @useDynLib checkmate c_is_constant
+#' @examples
+#'  test(c(0, 1-0.9-0.1), "constant")
+#'  test(c(0, 1-0.9-0.1), "constant", tol = 0)
 check_constant = function(x, tol = .Machine$double.eps^0.5) {
   if (!check_constant_helper(x, tol))
     return("'%s' must have constant elements")

@@ -7,6 +7,9 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(1, "count")
+#'  test(Inf, "count")
 check_count = function(x, na.ok = FALSE) {
   if (!qcheck(x, "x1"))
     return("'%s' must be integerish")

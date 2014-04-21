@@ -7,7 +7,7 @@
 #' @family checker
 #' @export
 #' @examples
-#'  assert(R.home(), "access", "r")
+#'  test(R.home(), "access", "r")
 check_access = function(x, access) {
   qassert(access, "S1")
   if (nzchar(access)) {

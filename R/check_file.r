@@ -4,6 +4,8 @@
 #' @inheritParams check_access
 #' @family checker
 #' @export
+#' @examples
+#'  test(file.path(R.home(), "NEWS"), "file", access = "r")
 check_file = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)

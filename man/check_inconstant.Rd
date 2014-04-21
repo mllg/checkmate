@@ -21,10 +21,8 @@ Check if elements of a vector are variable
 }
 \examples{
 test(c(1, NA), "inconstant")
-
-x = c(0, 1 - 0.9 - 0.1)
-print(identical(x[1], x[2]))
-print(test(x, "inconstant"))
+ test(c(0, 1-0.9-0.1), "inconstant")
+ test(c(0, 1-0.9-0.1), "inconstant", tol = 0)
 }
 \seealso{
 Other checker: \code{\link{check_access}};

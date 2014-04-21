@@ -23,6 +23,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument to is a function
 }
+\examples{
+test(median, "fun", args = c("x", "na.rm"))
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

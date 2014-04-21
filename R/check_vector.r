@@ -15,6 +15,8 @@
 #'  Default is \dQuote{none} which performs no check at all.
 #' @family checker
 #' @export
+#' @examples
+#'  test(letters, "vector", min.len = 1L, na.ok = FALSE)
 check_vector = function(x, na.ok = TRUE, len, min.len, max.len, names = "any") {
   if (!is.vector(x))
     return("'%%s' must be a vector")

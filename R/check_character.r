@@ -16,6 +16,10 @@
 #'  Additional parameters used in a call of \code{\link{check_vector}}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(letters, "character", min.len = 1, na.ok = FALSE)
+#'  test(letters, "character", min.chars = 2)
+#'  test("example", "character", pattern = "ple")
 check_character = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
   if (!is.character(x))
     return("'%s' must be a character")

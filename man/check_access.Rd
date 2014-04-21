@@ -2,7 +2,7 @@
 \alias{check_access}
 \title{Check file system access rights}
 \usage{
-check_access(fn, access)
+check_access(x, access)
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
@@ -20,7 +20,7 @@ otherwise.  Intended to be used with \code{\link{test}},
 Check file system access rights
 }
 \examples{
-assert(R.home(), "access", "r")
+test(R.home(), "access", "r")
 }
 \seealso{
 Other checker: \code{\link{check_character}};

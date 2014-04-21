@@ -32,6 +32,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check vector properties
 }
+\examples{
+test(letters, "vector", min.len = 1L, na.ok = FALSE)
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

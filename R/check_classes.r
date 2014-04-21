@@ -8,6 +8,13 @@
 #'  Default is \code{FALSE}.
 #' @family checker
 #' @export
+#' @examples
+#'  x = 1
+#'  class(x) = c("foo", "bar")
+#'  test(letters, "character", min.chars = 2)
+#'  test(x, "class", "foo")
+#'  test(x, "class", "bar")
+#'  test(x, "class", "bar", ordered = TRUE)
 check_class = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")
   qassert(ordered, "B1")

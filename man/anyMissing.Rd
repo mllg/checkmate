@@ -21,4 +21,10 @@ Supported are atomic types (see
 Missingness is defined as \code{NA} or \code{NaN} for
 atomics and \code{NULL} for lists.
 }
+\examples{
+anyMissing(c(1, NA))
+ allMissing(c(1, NA))
+ anyMissing(NA)
+ allMissing(NA)
+}
 

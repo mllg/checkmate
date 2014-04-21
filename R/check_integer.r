@@ -9,6 +9,9 @@
 #'  Additional parameters used in a call of \code{\link{check_vector}}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(1L, "integer")
+#'  test(1., "integer")
 check_integer = function(x, lower, upper, ...) {
   if (!is.integer(x))
     return("'%s' must be integer")

@@ -19,7 +19,7 @@ otherwise.  Intended to be used with \code{\link{test}},
 Check if object is element of a set
 }
 \examples{
-assert("x", "elementOf", letters)
+test("x", "elementOf", letters)
 }
 \seealso{
 Other checker: \code{\link{check_access}};

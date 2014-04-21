@@ -24,6 +24,10 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if an argument is an integer vector
 }
+\examples{
+test(1L, "integer")
+ test(1., "integer")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

@@ -9,6 +9,8 @@
 #'  Default is \code{FALSE}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(median, "fun", args = c("x", "na.rm"))
 check_fun = function(x, args, ordered = FALSE) {
   qassert(ordered, "B1")
   x = try(match.fun(x), silent=TRUE)

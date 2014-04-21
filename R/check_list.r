@@ -10,6 +10,9 @@
 #'  Defaults to \code{character(0)} (no type check).
 #' @family checker
 #' @export
+#' @examples
+#'  test(list(), "list")
+#'  test(as.list(iris), "list", types = c("numeric", "factor"))
 check_list = function(x, types = character(0L), ...) {
   if (!is.vector(x, "list"))
     return("'%s' must be a list")

@@ -9,6 +9,9 @@
 #'  Additional parameters used in a call of \code{\link{check_vector}}.
 #' @family checker
 #' @export
+#' @examples
+#'  test(1L, "numeric")
+#'  test(1., "numeric")
 check_numeric = function(x, lower, upper, ...) {
   if (!is.numeric(x))
     return("'%s' must be numeric")

@@ -10,6 +10,11 @@
 #'  elements of \code{x} are missing (see details), \code{FALSE} otherwise.
 #' @useDynLib checkmate c_any_missing
 #' @export
+#' @examples
+#'  anyMissing(c(1, NA))
+#'  allMissing(c(1, NA))
+#'  anyMissing(NA)
+#'  allMissing(NA)
 anyMissing = function(x) {
   .Call("c_any_missing", x, PACKAGE = "checkmate")
 }

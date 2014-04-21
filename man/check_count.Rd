@@ -19,6 +19,10 @@ otherwise.  Intended to be used with \code{\link{test}},
 A count a a single integerish numeric >= 0 which is not
 missing.
 }
+\examples{
+test(1, "count")
+ test(Inf, "count")
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};

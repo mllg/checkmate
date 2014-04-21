@@ -19,6 +19,10 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 Check if all elements of a vector are equal
 }
+\examples{
+test(c(0, 1-0.9-0.1), "constant")
+ test(c(0, 1-0.9-0.1), "constant", tol = 0)
+}
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};
