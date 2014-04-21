@@ -5,7 +5,7 @@
 check_integerish(x, lower, upper, tol = .Machine$double.eps^0.5, ...)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{tol}{[\code{double(1)}]\cr Numerical tolerance used
   to check if a double can be converted.  Default is

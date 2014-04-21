@@ -5,7 +5,7 @@
 check_integer(x, lower, upper, ...)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{lower}{[\code{numeric(1)}]\cr Lower value all
   elements of \code{x} must be greater than.}

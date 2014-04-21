@@ -5,7 +5,7 @@
 check_factor(x, levels, ordered = NA, empty.levels.ok = TRUE, ...)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{levels}{[\code{character}]\cr Vector of allowed
   factor levels.}

@@ -5,7 +5,7 @@
 check_list(x, types = character(0L), ...)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{check_vector}}.}

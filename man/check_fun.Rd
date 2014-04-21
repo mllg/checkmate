@@ -5,7 +5,7 @@
 check_fun(x, args, ordered = FALSE)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{args}{[\code{character}]\cr Expected formal
   arguments.}

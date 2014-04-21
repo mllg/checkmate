@@ -5,7 +5,7 @@
 check_inconstant(x, tol = .Machine$double.eps^0.5)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{tol}{[\code{double(1)}]\cr Numerical tolerance used
   if \code{x} is of type \code{double} or \code{complex}.

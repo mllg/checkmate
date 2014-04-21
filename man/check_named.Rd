@@ -5,7 +5,7 @@
 check_named(x, type = "named")
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{type}{[character(1)]\cr Select the check(s) to
   perform.  \dQuote{unnamed} checks \code{x} to be unnamed.

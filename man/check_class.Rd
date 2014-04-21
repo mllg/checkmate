@@ -5,7 +5,7 @@
 check_class(x, classes, ordered = FALSE)
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{classes}{[\code{character}]\cr Class names to check
   for inheritance.}

@@ -5,7 +5,7 @@
 check_file(x, access = "")
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{access}{[\code{character}]\cr Single string with
   characters \sQuote{r}, \sQuote{w} and \sQuote{x} to force

@@ -6,7 +6,7 @@ check_data.frame(x, types = character(0L), min.rows, min.cols, nrows, ncols,
   row.names = "any", col.names = "any")
 }
 \arguments{
-  \item{x}{[\code{ANY}]\cr Object to check.}
+  \item{x}{[ANY]\cr Object to check.}
 
   \item{min.rows}{[\code{integer(1)}]\cr Minimum number of
   rows.}
