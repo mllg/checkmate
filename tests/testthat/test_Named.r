@@ -1,43 +1,42 @@
-context("isNamed")
+context("check_named")
 
-test_that("isNamed", {
-  expect_true(isNamed(integer(0)))
-  expect_true(isNamed(NULL))
-  expect_true(isNamed(setNames(integer(0), character(0))))
+test_that("check_named", {
+  expect_true(test(integer(0), "named"))
+  expect_true(test(NULL, "named"))
+  expect_true(test(setNames(integer(0), character(0)), "named"))
 
   x = setNames(1:2, c("a", ".a"))
-  expect_true(isNamed(x))
-  expect_true(isNamed(x, "unique"))
-  expect_true(isNamed(x, "strict"))
+  expect_true(test(x, "named"))
+  expect_true(test(x, "named", "unique"))
+  expect_true(test(x, "named", "strict"))
 
-  expect_false(isNamed(1))
-  expect_false(isNamed(setNames(x, NA_character_)))
-  expect_false(isNamed(setNames(x, NA_integer_)))
-  expect_false(isNamed(setNames(x, "")))
+  expect_false(test(1, "named"))
+  expect_false(test(setNames(x, NA_character_), "named"))
+  expect_false(test(setNames(x, NA_integer_), "named"))
+  expect_false(test(setNames(x, ""), "named"))
 
   x = setNames(1:2, c("a", "a"))
-  expect_true(isNamed(x))
-  expect_false(isNamed(x, "unique"))
+  expect_true(test(x, "named"))
+  expect_false(test(x, "named", "unique"))
 
   x = setNames(1:2, c("a", "1"))
-  expect_true(isNamed(x))
-  expect_false(isNamed(x, "strict"))
+  expect_true(test(x, "named"))
+  expect_false(test(x, "named", "strict"))
 
   x = setNames(1:2, c("a", "..1"))
-  expect_true(isNamed(x))
-  expect_false(isNamed(x, "strict"))
-})
+  expect_true(test(x, "named"))
+  expect_false(test(x, "named", "strict"))
 
-test_that("assertNamed", {
+
   x = setNames(1:2, c("a", ".a"))
-  expect_true(assertNamed(x))
+  expect_true(assert(x, "named"))
 
   x = setNames(1, "")
-  expect_error(assertNamed(x), "named")
+  expect_error(assert(x, "named"), "named")
 
   x = setNames(1:2, c("a", "a"))
-  expect_error(assertNamed(x, "unique"), "duplicated")
+  expect_error(assert(x, "named", "unique"), "duplicated")
 
   x = setNames(1:2, c("a", "1"))
-  expect_error(assertNamed(x, "strict"), "naming rules")
+  expect_error(assert(x, "named", "strict"), "naming rules")
 })

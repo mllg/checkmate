@@ -1,18 +1,17 @@
-context("isString")
+context("check_string")
 
-test_that("isString", {
-  expect_false(isString(character(0)))
-  expect_false(isString(NULL))
-  expect_true(isString(""))
-  expect_true(isString("foo"))
-  expect_false(isString(NA))
-  expect_false(isString(NA_character_))
-  expect_true(isString(NA_character_, na.ok=TRUE))
-})
+test_that("check_string", {
+  expect_false(test(character(0), "string"))
+  expect_false(test(NULL, "string"))
+  expect_true(test("", "string"))
+  expect_true(test("foo", "string"))
+  expect_false(test(NA, "string"))
+  expect_false(test(NA_character_, "string"))
+  expect_true(test(NA_character_, "string", na.ok=TRUE))
 
-test_that("assertString", {
-  expect_true(assertString("a"))
-  expect_error(assertString(1, "string"))
-  expect_error(assertString("a", pattern="b"), "pattern")
-  expect_error(assertString("a", min.chars=10), "at least 10")
+
+  expect_true(assert("a", "string"))
+  expect_error(assert(1, "string", "string"))
+  expect_error(assert("a", "string", pattern="b"), "pattern")
+  expect_error(assert("a", "string", min.chars=10), "at least 10")
 })

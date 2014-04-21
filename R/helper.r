@@ -5,13 +5,6 @@ vname = function(x, var.name, n = 1L) {
   deparse(substitute(x, parent.frame(n)))
 }
 
-# assert* message helper
-amsg = function(msg, ...) {
-  if (!isTRUE(msg))
-    stop(simpleError(sprintf(msg, ...), call = sys.call(1L)))
-  invisible(TRUE)
-}
-
 # qassert and qassertr message helper
 qamsg = function(x, msg, vname, recursive=FALSE) {
   if (!isTRUE(msg)) {
@@ -20,7 +13,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
 
     if (recursive) {
       pos = attr(msg, "pos")
-      if (isNamed(x)) {
+      if (test(x, "named")) {
         item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
       } else {
         item = sprintf(", element %i", pos)

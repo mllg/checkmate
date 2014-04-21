@@ -1,24 +1,23 @@
-context("isVector")
+context("check_vector")
 
-test_that("isVector", {
-  expect_true(isVector(integer(0)))
-  expect_false(isVector(NULL))
-  expect_true(isVector(1))
-  expect_true(isVector(integer(0)))
+test_that("check_vector", {
+  expect_true(test(integer(0), "vector"))
+  expect_false(test(NULL, "vector"))
+  expect_true(test(1, "vector"))
+  expect_true(test(integer(0), "vector"))
 
-  expect_true(isVector(NA, na.ok=TRUE))
-  expect_false(isVector(NA, na.ok=FALSE))
+  expect_true(test(NA, "vector", na.ok=TRUE))
+  expect_false(test(NA, "vector", na.ok=FALSE))
 
-  expect_true(isVector(1, len=1))
-  expect_false(isVector(1, len=0))
+  expect_true(test(1, "vector", len=1))
+  expect_false(test(1, "vector", len=0))
 
-  expect_true(isVector(1, min.len=0))
-  expect_false(isVector(1, min.len=2))
-  expect_true(isVector(1, max.len=1))
-  expect_false(isVector(1, max.len=0))
-})
+  expect_true(test(1, "vector", min.len=0))
+  expect_false(test(1, "vector", min.len=2))
+  expect_true(test(1, "vector", max.len=1))
+  expect_false(test(1, "vector", max.len=0))
 
-test_that("assertString", {
-  expect_true(assertVector(1))
-  expect_error(assertCharacter(NA, "string"))
+
+  expect_true(assert(1, "vector"))
+  expect_error(assert(NA, "vector", "string"))
 })

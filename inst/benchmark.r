@@ -1,6 +1,6 @@
 library(microbenchmark)
 library(devtools)
-load_all(".")
+load_all("..")
 
 
 bm = function(...) {
@@ -13,4 +13,4 @@ bm(qcheck(x, "i+"), is.integer(x) && length(x))
 bm(qcheck(x, "i+[1,)"), is.integer(x) && length(x) && all(x >= 1L))
 
 x = 1.
-bm(qcheck(x, "N1"), checkNumeric(x, len=1L, na.ok=FALSE), unit="ns")
+bm(qcheck(x, "N1"), test(numeric, x, len=1L))

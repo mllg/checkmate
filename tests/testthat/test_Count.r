@@ -1,18 +1,16 @@
-context("isCount")
+context("check_count")
 
-test_that("isCount", {
-  expect_false(isCount(integer(0)))
-  expect_false(isCount(NULL))
+test_that("check_count", {
+  expect_false(test(integer(0), "count"))
+  expect_false(test(NULL, "count"))
 
-  expect_true(isCount(1L))
-  expect_true(isCount(1))
-  expect_true(isCount(0))
-  expect_false(isCount(-1))
-  expect_false(isCount(0.5))
-  expect_false(isCount(NA_integer_))
-})
+  expect_true(test(1L, "count"))
+  expect_true(test(1, "count"))
+  expect_true(test(0, "count"))
+  expect_false(test(-1, "count"))
+  expect_false(test(0.5, "count"))
+  expect_false(test(NA_integer_, "count"))
 
-test_that("assertFlag", {
-  expect_true(assertCount(1))
-  expect_error(assertCount(NA, "count"))
+  expect_true(assert(1, "count"))
+  expect_error(assert(-1, "count"), ">= 0")
 })

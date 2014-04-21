@@ -1,18 +1,18 @@
-context("isInteger")
+context("check_integer")
 
-test_that("isInteger", {
-  expect_true(isInteger(integer(0)))
-  expect_false(isInteger(NULL))
-  expect_false(isInteger(TRUE))
-  expect_false(isInteger(NA))
-  expect_true(isInteger(1L))
-  expect_true(isInteger(1:3, na.ok=FALSE, min.len=1L, max.len=3L))
-  expect_false(isInteger(1:3, na.ok=FALSE, len=5))
-  expect_true(isInteger(1:3, lower = 1L, upper = 3L))
-  expect_false(isInteger(1:3, lower = 5))
+test_that("check_integer", {
+  expect_true(test(integer(0), "integer"))
+  expect_false(test(NULL, "integer"))
+  expect_false(test(TRUE, "integer"))
+  expect_false(test(NA, "integer"))
+  expect_true(test(1L, "integer"))
+  expect_true(test(1:3, "integer", na.ok=FALSE, min.len=1L, max.len=3L))
+  expect_false(test(1:3, "integer", na.ok=FALSE, len=5))
+  expect_true(test(1:3, "integer", lower = 1L, upper = 3L))
+  expect_false(test(1:3, "integer", lower = 5))
 })
 
 test_that("assertInteger", {
-  expect_true(assertInteger(1L))
-  expect_error(assertInteger(NA, "integer"))
+  expect_true(assert(1L, "integer"))
+  expect_error(assert(NA, "integer"), "integer")
 })
