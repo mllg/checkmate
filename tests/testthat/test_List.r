@@ -19,7 +19,6 @@ test_that("check_list", {
   expect_true(assert(list(TRUE), "list"))
   expect_error(assert(1, "list"), "list")
 
-  x = as.list(iris)
   expect_true(assert(x, "list", types = c("numeric", "factor")))
   expect_error(assert(x, "list", types = "numeric"), "atomic types: numeric")
 })
