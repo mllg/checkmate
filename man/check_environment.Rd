@@ -1,14 +1,15 @@
-\name{check_elementOf}
-\alias{check_elementOf}
-\title{Check if object is element of a set}
+\name{check_environment}
+\alias{check_environment}
+\title{Check if an argument is an environment}
 \usage{
-check_elementOf(x, choices)
+check_environment(x, contains = character(0L), ...)
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
 
-  \item{choices}{[\code{atomic}]\cr Set of possible
-  values.}
+  \item{contains}{[\code{character}]\cr Vector of object
+  names expected in the environment.  Defaults to
+  \code{character(0)}.}
 }
 \value{
 Returns \code{TRUE} on success and an error message
@@ -16,10 +17,11 @@ otherwise.  Intended to be used with \code{\link{test}},
 \code{\link{assert}} or \code{\link{pass}}.
 }
 \description{
-Check if object is element of a set
+Check if an argument is an environment
 }
 \examples{
-test("x", "elementOf", letters)
+ee = as.environment(list(a = 1))
+ test(ee, "environment", contains = "a")
 }
 \seealso{
 Other checker: \code{\link{check_access}};
@@ -27,10 +29,9 @@ Other checker: \code{\link{check_access}};
 \code{\link{check_constant}}; \code{\link{check_count}};
 \code{\link{check_data.frame}};
 \code{\link{check_directory}};
-\code{\link{check_environment}};
-\code{\link{check_factor}}; \code{\link{check_file}};
-\code{\link{check_flag}}; \code{\link{check_fun}};
-\code{\link{check_inconstant}};
+\code{\link{check_elementOf}}; \code{\link{check_factor}};
+\code{\link{check_file}}; \code{\link{check_flag}};
+\code{\link{check_fun}}; \code{\link{check_inconstant}};
 \code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
 \code{\link{check_logical}}; \code{\link{check_matrix}};
