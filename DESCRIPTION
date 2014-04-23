@@ -2,7 +2,7 @@ Package: checkmate
 Type: Package
 Title: checkmate
 Description: Fast and versatile argument checks
-Version: 1.0
+Version: 0.9
 Author: Michel Lang <michellang@gmail.com>
 Maintainer: Michel Lang <michellang@gmail.com>
 URL: https://github.com/tudo-r/checkmate
