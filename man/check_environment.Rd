@@ -26,8 +26,8 @@ ee = as.environment(list(a = 1))
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};
-\code{\link{check_constant}}; \code{\link{check_count}};
-\code{\link{check_data.frame}};
+\code{\link{check_complex}}; \code{\link{check_constant}};
+\code{\link{check_count}}; \code{\link{check_data.frame}};
 \code{\link{check_directory}};
 \code{\link{check_elementOf}}; \code{\link{check_factor}};
 \code{\link{check_file}}; \code{\link{check_flag}};

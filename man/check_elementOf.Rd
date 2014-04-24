@@ -24,27 +24,13 @@ test("x", "elementOf", letters)
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};
-<<<<<<< HEAD
 \code{\link{check_complex}}; \code{\link{check_constant}};
 \code{\link{check_count}}; \code{\link{check_data.frame}};
-\code{\link{check_directory}}; \code{\link{check_factor}};
-\code{\link{check_file}}; \code{\link{check_flag}};
-\code{\link{check_fun}}; \code{\link{check_inconstant}};
-||||||| merged common ancestors
-\code{\link{check_constant}}; \code{\link{check_count}};
-\code{\link{check_data.frame}};
-\code{\link{check_directory}}; \code{\link{check_factor}};
-\code{\link{check_file}}; \code{\link{check_flag}};
-\code{\link{check_fun}}; \code{\link{check_inconstant}};
-=======
-\code{\link{check_constant}}; \code{\link{check_count}};
-\code{\link{check_data.frame}};
 \code{\link{check_directory}};
 \code{\link{check_environment}};
 \code{\link{check_factor}}; \code{\link{check_file}};
 \code{\link{check_flag}}; \code{\link{check_fun}};
 \code{\link{check_inconstant}};
->>>>>>> d4e193be6a3025a6c1b6e2bb1559a9fbd1d1f3cc
 \code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
 \code{\link{check_logical}}; \code{\link{check_matrix}};
