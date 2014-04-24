@@ -34,6 +34,8 @@ test_that("check_directory", {
 })
 
 test_that("check_access", {
+  expect_true(test(R.home(), "access", "r"))
+
   if (.Platform$OS.type != "windows") {
     Sys.chmod(fn, "0000")
     expect_true(test(fn, "access", ""))
