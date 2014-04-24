@@ -8,8 +8,8 @@ check_integerish(x, lower, upper, tol = .Machine$double.eps^0.5, ...)
   \item{x}{[ANY]\cr Object to check.}
 
   \item{tol}{[\code{double(1)}]\cr Numerical tolerance used
-  to check if a double can be converted.  Default is
-  \code{sqrt(.Machine$double.eps)}.}
+  to check if a double or complex can be converted.
+  Default is \code{sqrt(.Machine$double.eps)}.}
 
   \item{...}{[ANY]\cr Additional parameters used in a call
   of \code{\link{check_vector}}.}
@@ -35,8 +35,8 @@ test(1L, "integerish")
 \seealso{
 Other checker: \code{\link{check_access}};
 \code{\link{check_character}}; \code{\link{check_class}};
-\code{\link{check_constant}}; \code{\link{check_count}};
-\code{\link{check_data.frame}};
+\code{\link{check_complex}}; \code{\link{check_constant}};
+\code{\link{check_count}}; \code{\link{check_data.frame}};
 \code{\link{check_directory}};
 \code{\link{check_elementOf}}; \code{\link{check_factor}};
 \code{\link{check_file}}; \code{\link{check_flag}};

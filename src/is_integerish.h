@@ -6,7 +6,7 @@
 #include <math.h>
 #define DEFAULT_TOL DOUBLE_EPS
 
-Rboolean isIntegerish(SEXP, double);
+Rboolean is_integerish(SEXP, double);
 SEXP c_is_integerish(SEXP, SEXP);
 
 #endif

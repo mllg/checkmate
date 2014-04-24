@@ -20,6 +20,8 @@ test_that("test", {
   expect_false(test(-Inf, "integerish"))
   expect_false(test(Inf, "integerish"))
 
+  expect_true(test(3+0i, "integerish"))
+  expect_true(test(as.complex(NA), "integerish"))
   expect_false(test(3+2i, "integerish"))
   expect_false(test(list(), "integerish"))
 

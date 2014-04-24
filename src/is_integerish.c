@@ -2,21 +2,41 @@
 #include <math.h>
 #include <limits.h>
 
-Rboolean isIntegerish(SEXP x, const double tol) {
-    if (isInteger(x) || isLogical(x))
-        return TRUE;
-    if (! isReal(x))
-        return FALSE;
+static inline Rboolean is_unconvertible(const double x, const double tol) {
+    return (!ISNAN(x) && (x <= INT_MIN || x > INT_MAX || fabs(x - nearbyint(x)) >= tol));
+}
+
+static inline Rboolean is_integerish_double(SEXP x, const double tol) {
     const double *xr = REAL(x);
     const double * const xend = xr + length(x);
 
     for (; xr != xend; xr++) {
-        if (!ISNAN(*xr) && (*xr <= INT_MIN || *xr > INT_MAX || fabs(*xr - nearbyint(*xr)) >= tol))
+        if (is_unconvertible(*xr, tol))
             return FALSE;
     }
     return TRUE;
 }
 
+static inline Rboolean is_integerish_complex(SEXP x, const double tol) {
+    const Rcomplex * xc = COMPLEX(x);
+    const Rcomplex * const xe = xc + length(x);
+    for (; xc != xe; xc++) {
+        if ((*xc).i >= tol || is_unconvertible((*xc).r, tol))
+            return FALSE;
+    }
+    return TRUE;
+}
+
+Rboolean is_integerish(SEXP x, double tol) {
+    switch(TYPEOF(x)) {
+        case LGLSXP: return TRUE;
+        case INTSXP: return TRUE;
+        case REALSXP: return is_integerish_double(x, tol);
+        case CPLXSXP: return is_integerish_complex(x, tol);
+    }
+    return FALSE;
+}
+
 SEXP c_is_integerish(SEXP x, SEXP tolerance) {
-    return ScalarLogical(isIntegerish(x, REAL(tolerance)[0]));
+    return ScalarLogical(is_integerish(x, REAL(tolerance)[0]));
 }

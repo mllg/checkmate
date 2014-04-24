@@ -6,7 +6,6 @@
 #'  Default is \code{sqrt(.Machine$double.eps)}.
 #' @family checker
 #' @export
-#' @useDynLib checkmate c_is_constant
 #' @examples
 #'  test(c(0, 1-0.9-0.1), "constant")
 #'  test(c(0, 1-0.9-0.1), "constant", tol = 0)
@@ -16,11 +15,7 @@ check_constant = function(x, tol = .Machine$double.eps^0.5) {
   return(TRUE)
 }
 
-check_constant_helper = function(x, tol) {
-  callConstant = function(x, tol) {
-    .Call("c_is_constant", x, as.double(tol), PACKAGE="checkmate")
-  }
-
+check_constant_helper = function(x, tol = .Machine$double.eps^0.5) {
   if (length(x) <= 1L)
     return(TRUE)
 
@@ -28,15 +23,15 @@ check_constant_helper = function(x, tol) {
   if (n.na > 0L)
     return(n.na == length(x))
 
-  if (is.double(x)) {
-    qassert(tol, "N1")
-    callConstant(x, tol)
-  } else if (is.complex(x)) {
-    qassert(tol, "N1")
-    callConstant(Re(x), tol) && callConstant(Im(x), tol)
-  } else if (is.atomic(x)) {
-    all(x == x[[1L]])
-  } else {
-    all(vapply(tail(x, -1L), identical, y=x[[1L]], FUN.VALUE=NA))
+  if (is.atomic(x)) {
+    if (is.numeric(x)) {
+      return(all(abs(x - x[1L]) < tol))
+    } else if(is.complex(x)) {
+      d = abs(x - x[1L])
+      return(all(Re(d) < tol & Im(d) < tol))
+    }
+    # logical, character, integer, ...
+    return(all(x == x[[1L]]))
   }
+  all(vapply(tail(x, -1L), identical, y=x[[1L]], FUN.VALUE=NA))
 }
