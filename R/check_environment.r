@@ -9,7 +9,7 @@
 #' @examples
 #'  ee = as.environment(list(a = 1))
 #'  test(ee, "environment", contains = "a")
-check_environment = function(x, contains = character(0L), ...) {
+check_environment = function(x, contains = character(0L)) {
   qassert(contains, "S")
   if (!is.environment(x))
     return("'%s' must be an environment")
