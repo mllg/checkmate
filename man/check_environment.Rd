@@ -2,7 +2,7 @@
 \alias{check_environment}
 \title{Check if an argument is an environment}
 \usage{
-check_environment(x, contains = character(0L), ...)
+check_environment(x, contains = character(0L))
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
