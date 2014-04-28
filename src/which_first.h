@@ -1,5 +1,5 @@
-#ifndef FIRST_LAST_H
-#define FIRST_LAST_H
+#ifndef WHICH_FIRST_H
+#define WHICH_FIRST_H
 
 #include <R.h>
 #include <Rinternals.h>
