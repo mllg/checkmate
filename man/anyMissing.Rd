@@ -1,7 +1,7 @@
 \name{allMissing}
 \alias{allMissing}
 \alias{anyMissing}
-\title{Checks if an object contains missing values}
+\title{Check if an object contains missing values}
 \usage{
 allMissing(x)
 
@@ -19,11 +19,13 @@ anyMissing(x)
 Supported are atomic types (see
 \code{\link[base]{is.atomic}}), lists and data frames.
 Missingness is defined as \code{NA} or \code{NaN} for
-atomics and \code{NULL} for lists.
+atomic types and data frame columns, \code{NULL} is defined
+as missing for lists.
 }
 \examples{
 anyMissing(c(1, NA))
  allMissing(c(1, NA))
+ anyMissing(list(1, NULL))
  anyMissing(NA)
  allMissing(NA)
 }

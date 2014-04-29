@@ -6,14 +6,19 @@
 #' @param ordered [\code{logical(1)}]\cr
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.
-#' @family checker
 #' @export
 #' @examples
+#'  # Create an object with classes "foo" and "bar"
 #'  x = 1
 #'  class(x) = c("foo", "bar")
-#'  test(letters, "character", min.chars = 2)
+#'
+#'  # is x of class "foo"?
 #'  test(x, "class", "foo")
-#'  test(x, "class", "bar")
+#'
+#'  # is x of class "foo" and "bar"?
+#'  test(x, "class", c("foo", "bar"))
+#'
+#'  # is x most specialized as "bar"?
 #'  test(x, "class", "bar", ordered = TRUE)
 check_class = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")

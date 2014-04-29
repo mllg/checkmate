@@ -1,6 +1,6 @@
 context("check_inconstant")
 
-test_that("hceck_inconstant", {
+test_that("check_inconstant", {
   expect_false(test(rep(NA, 2), "inconstant"))
   expect_false(test(c(1-0.9-0.1, 0), "inconstant"))
   expect_false(test(c(), "inconstant"))

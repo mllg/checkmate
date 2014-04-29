@@ -7,7 +7,6 @@
 #'  \dQuote{named} (default) checks \code{x} to be named, this includes names to be not \code{NA} or emtpy (\code{""}).
 #'  \dQuote{unique} additionally tests for non-duplicated names and \code{strict} tests the names to comply to R's variable naming rules on top of \dQuote{unique}.
 #'  Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.
-#' @family checker
 #' @export
 #' @examples
 #'  x = 1:3
@@ -21,23 +20,22 @@ check_named = function(x, type = "named") {
 }
 
 check_names = function(nn, type = "named") {
-  types = c("unnamed", "named", "unique", "strict")
-  type = factor(match.arg(type, types), levels = types, ordered = TRUE)
+  type = match.arg(type, c("unnamed", "named", "unique", "strict"))
 
   if (type == "unnamed") {
     if (!is.null(nn))
       return("'%s' must be unnamed")
     return(TRUE)
-  } else { # >= named
-    if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn)))
-      return("'%s' must be named")
-
-    if (type >= "unique") {
-      if (anyDuplicated(nn) > 0L)
-        return("'%s' contains duplicated names")
-      if (type >= "strict" && any(nn != make.names(nn) | grepl("^\\.\\.[0-9]$", nn)))
-          return("Names of '%s' are not compatible with R's variable naming rules")
-    }
+  } else if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn))) {
+    return("'%s' must be named")
   }
-  return (TRUE)
+
+  if (type %in% c("unique", "strict")) {
+    if (anyDuplicated(nn) > 0L)
+      return("'%s' contains duplicated names")
+    if (type == "strict" && any(nn != make.names(nn) | grepl("^\\.\\.[0-9]$", nn)))
+      return("Names of '%s' are not compatible with R's variable naming rules")
+  }
+
+  return(TRUE)
 }

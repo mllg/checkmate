@@ -21,6 +21,11 @@ otherwise.  Intended to be used with \code{\link{test}},
 \description{
 A string a character vector of length 1.
 }
+\note{
+This function does not distinguish between \code{NA},
+\code{NA_integer_}, \code{NA_real_}, \code{NA_complex_} and
+\code{NA_character_}.
+}
 \examples{
 test("a", "string")
  test(letters, "string")

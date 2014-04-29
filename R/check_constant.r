@@ -1,13 +1,16 @@
-#' Check if all elements of a vector are equal
+#' Check if all elements of a vector are equal / constant
+#'
+#' Note that zero-length input is treated as constant.
 #'
 #' @template checker
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used if \code{x} is of type \code{double} or \code{complex}.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
-#' @family checker
+#' @family constant
 #' @export
 #' @examples
 #'  test(c(0, 1-0.9-0.1), "constant")
+#'  # should be FALSE due to rounding errors
 #'  test(c(0, 1-0.9-0.1), "constant", tol = 0)
 check_constant = function(x, tol = .Machine$double.eps^0.5) {
   if (!check_constant_helper(x, tol))
@@ -26,7 +29,7 @@ check_constant_helper = function(x, tol = .Machine$double.eps^0.5) {
   if (is.atomic(x)) {
     if (is.numeric(x)) {
       return(all(abs(x - x[1L]) < tol))
-    } else if(is.complex(x)) {
+    } else if (is.complex(x)) {
       d = abs(x - x[1L])
       return(all(Re(d) < tol & Im(d) < tol))
     }

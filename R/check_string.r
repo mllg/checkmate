@@ -2,6 +2,10 @@
 #'
 #' A string a character vector of length 1.
 #'
+#' @note This function does not distinguish between
+#' \code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
+#' and \code{NA_character_}.
+#'
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
@@ -13,9 +17,11 @@
 #'  test(letters, "string")
 check_string = function(x, na.ok = FALSE, ...) {
   qassert(na.ok, "B1")
-  if(length(x) != 1L || !is.character(x))
-    return("'%s' must be a scalar string")
-  if (!na.ok && is.na(x))
-    return("'%s' may not be NA")
+  if (length(x) != 1L)
+    return("'%s' must have length 1")
+  if (is.na(x))
+    return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
+  if (!is.character(x))
+    return("'%s' must be character")
   check_character_props(x, ...)
 }

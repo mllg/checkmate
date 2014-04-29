@@ -2,13 +2,18 @@
 \alias{check_vector}
 \title{Check vector properties}
 \usage{
-check_vector(x, na.ok = TRUE, len, min.len, max.len, names = "any")
+check_vector(x, any.missing = TRUE, all.missing = TRUE, len, min.len,
+  max.len, names = "any")
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
 
-  \item{na.ok}{[\code{logical(1)}]\cr Are missing values
-  allowed? Default is \code{TRUE}.}
+  \item{any.missing}{[\code{logical(1)}]\cr Are vectors
+  with missing values allowed? Default is \code{TRUE}.}
+
+  \item{all.missing}{[\code{logical(1)}]\cr Are vectors
+  with only missing values allowed? Default is
+  \code{TRUE}.}
 
   \item{len}{[\code{integer(1)}]\cr Exact expected length
   of \code{x}.}
@@ -33,23 +38,17 @@ otherwise.  Intended to be used with \code{\link{test}},
 Check vector properties
 }
 \examples{
-test(letters, "vector", min.len = 1L, na.ok = FALSE)
+test(letters, "vector", min.len = 1L, any.missing = FALSE)
 }
 \seealso{
-Other checker: \code{\link{check_access}};
-\code{\link{check_character}}; \code{\link{check_class}};
-\code{\link{check_complex}}; \code{\link{check_constant}};
-\code{\link{check_count}}; \code{\link{check_data.frame}};
-\code{\link{check_directory}};
-\code{\link{check_elementOf}};
+Other basetypes: \code{\link{check_character}};
+\code{\link{check_complex}};
+\code{\link{check_data.frame}};
 \code{\link{check_environment}};
-\code{\link{check_factor}}; \code{\link{check_file}};
-\code{\link{check_flag}}; \code{\link{check_fun}};
-\code{\link{check_inconstant}};
+\code{\link{check_factor}}; \code{\link{check_fun}};
 \code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
 \code{\link{check_logical}}; \code{\link{check_matrix}};
-\code{\link{check_named}}; \code{\link{check_numeric}};
-\code{\link{check_subset}}
+\code{\link{check_numeric}}
 }
 

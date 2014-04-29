@@ -38,3 +38,7 @@ collapse = function(x, sep = ",") {
 "%nin%" = function(x, y) {
   match(x, y, nomatch = 0L) == 0L
 }
+
+allMissingAtomic = function(x) {
+  is.atomic(x) && allMissing(x)
+}

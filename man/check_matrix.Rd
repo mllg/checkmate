@@ -2,11 +2,14 @@
 \alias{check_matrix}
 \title{Check if an argument is a matrix}
 \usage{
-check_matrix(x, min.rows, min.cols, nrows, ncols, row.names = "any",
-  col.names = "any")
+check_matrix(x, any.missing = TRUE, min.rows, min.cols, nrows, ncols,
+  row.names = "any", col.names = "any")
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
+
+  \item{any.missing}{[\code{integer(1)}]\cr Are missing
+  values allowed? Default is \code{TRUE}.}
 
   \item{min.rows}{[\code{integer(1)}]\cr Minimum number of
   rows.}
@@ -42,20 +45,14 @@ x = matrix(1:9, 3)
  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
 }
 \seealso{
-Other checker: \code{\link{check_access}};
-\code{\link{check_character}}; \code{\link{check_class}};
-\code{\link{check_complex}}; \code{\link{check_constant}};
-\code{\link{check_count}}; \code{\link{check_data.frame}};
-\code{\link{check_directory}};
-\code{\link{check_elementOf}};
+Other basetypes: \code{\link{check_character}};
+\code{\link{check_complex}};
+\code{\link{check_data.frame}};
 \code{\link{check_environment}};
-\code{\link{check_factor}}; \code{\link{check_file}};
-\code{\link{check_flag}}; \code{\link{check_fun}};
-\code{\link{check_inconstant}};
+\code{\link{check_factor}}; \code{\link{check_fun}};
 \code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
-\code{\link{check_logical}}; \code{\link{check_named}};
-\code{\link{check_numeric}}; \code{\link{check_subset}};
+\code{\link{check_logical}}; \code{\link{check_numeric}};
 \code{\link{check_vector}}
 }
 

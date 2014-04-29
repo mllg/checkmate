@@ -8,7 +8,7 @@
 #'  \dQuote{double}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor} or
 #'  \dQuote{NULL}.
 #'  Defaults to \code{character(0)} (no type check).
-#' @family checker
+#' @family basetypes
 #' @export
 #' @examples
 #'  test(list(), "list")
@@ -26,11 +26,12 @@ check_list_props = function(x, types = character(0L)) {
   types = unique(match.arg(types, choices = allowed.types, several.ok = TRUE))
 
   ok = logical(length(x))
-  for (type in types) {
-    fun = match.fun(sprintf("is.%s", tolower(type)))
+  for (type in tolower(types)) {
+    fun = match.fun(sprintf("is.%s", type))
     ok = ok | vapply(x, fun, FUN.VALUE = NA, USE.NAMES = FALSE)
     if (all(ok))
       return(TRUE)
   }
+
   return(sprintf("'%%s' may only contain the following atomic types: %s", collapse(types)))
 }

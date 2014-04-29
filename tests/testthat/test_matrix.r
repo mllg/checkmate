@@ -5,6 +5,9 @@ test_that("check_matrix", {
   expect_true(test(x, "matrix"))
   expect_true(test(matrix(nrow=0, ncol=0), "matrix"))
   expect_false(test(NULL, "matrix"))
+  x[2,2] = NA
+  expect_true(test(x, "matrix"))
+  expect_false(test(x, "matrix", any.missing = FALSE))
 
   expect_true(test(x, "matrix", min.rows = 1, min.cols = 1))
   expect_true(test(x, "matrix", nrows = 3, ncols = 3))

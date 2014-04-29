@@ -10,6 +10,6 @@ test_that("check_elementOf", {
   expect_error(test(1:2, "elementOf", 1:10), "length")
 
   expect_true(assert(1L, "elementOf", 1:2))
-  expect_error(assert(-1, "elementOf", 1:2), "element of set")
+  expect_error(assert(-1, "elementOf", 1:2), "element of")
   expect_error(assert(1L, "elementOf", list()), "atomic")
 })

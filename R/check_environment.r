@@ -4,10 +4,11 @@
 #' @param contains [\code{character}]\cr
 #'  Vector of object names expected in the environment.
 #'  Defaults to \code{character(0)}.
-#' @family checker
+#' @family basetypes
 #' @export
 #' @examples
 #'  ee = as.environment(list(a = 1))
+#'  test(ee, "environment")
 #'  test(ee, "environment", contains = "a")
 check_environment = function(x, contains = character(0L)) {
   qassert(contains, "S")

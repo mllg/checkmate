@@ -1,8 +1,8 @@
-#' Checks if an object contains missing values
+#' Check if an object contains missing values
 #'
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
-#' Missingness is defined as \code{NA} or \code{NaN} for atomics and
-#' \code{NULL} for lists.
+#' Missingness is defined as \code{NA} or \code{NaN} for atomic types and data frame columns,
+#' \code{NULL} is defined as missing for lists.
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to check.
@@ -13,6 +13,7 @@
 #' @examples
 #'  anyMissing(c(1, NA))
 #'  allMissing(c(1, NA))
+#'  anyMissing(list(1, NULL))
 #'  anyMissing(NA)
 #'  allMissing(NA)
 anyMissing = function(x) {

@@ -8,7 +8,6 @@ getChecker = function(checker) {
   fun
 }
 
-
 #' Evaluate a check function and throw exception on failure
 #'
 #' @param x [ANY]\cr

@@ -1,16 +1,18 @@
-#' Check if an argument to is a function
+#' Check if an argument is a function
 #'
 #' @template checker
 #' @param args [\code{character}]\cr
 #'  Expected formal arguments.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Flag whether the arguments provided in \code{args} must be the first
-#'  arguments of the function and occur in the given order.
+#'  \code{length(args)} arguments of the function.
 #'  Default is \code{FALSE}.
-#' @family checker
+#' @family basetypes
 #' @export
 #' @examples
-#'  test(median, "fun", args = c("x", "na.rm"))
+#'  test(mean, "fun")
+#'  test(check_fun, "fun", args = c("x", "ordered"))
+#'  test(check_fun, "fun", args = "i.do.not.exist")
 check_fun = function(x, args, ordered = FALSE) {
   qassert(ordered, "B1")
   x = try(match.fun(x), silent=TRUE)

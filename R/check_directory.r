@@ -3,10 +3,14 @@
 #' @template checker
 #' @inheritParams check_access
 #' @inheritParams check_file
-#' @family checker
+#' @family filesystem
 #' @export
 #' @examples
-#'  test(R.home(), "directory", access = "r")
+#'  # Is R's home directory readable?
+#'  test(R.home(), "access", "r")
+#'
+#'  # Is R's home directory writeable?
+#'  test(R.home(), "access", "w")
 check_directory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)

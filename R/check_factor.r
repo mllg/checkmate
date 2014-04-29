@@ -4,8 +4,8 @@
 #' @param levels [\code{character}]\cr
 #'  Vector of allowed factor levels.
 #' @param ordered [\code{logical(1)}]\cr
-#'  Check for an ordered factor? If \code{FALSE}, checks explicitly
-#'  for an unordered factor.
+#'  Check for an ordered factor? If \code{FALSE} or \code{TRUE}, checks explicitly
+#'  for an unordered or ordered factor, respectively.
 #'  Default is \code{NA} which disables this check.
 #' @param empty.levels.ok [\code{logical(1)}]\cr
 #'  Are empty levels allowed?
@@ -13,10 +13,12 @@
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{check_vector}}
 #'  or \code{\link{check_vector}}.
-#' @family checker
+#' @family basetypes
 #' @export
 #' @examples
-#'  test(factor("x", levels = c("x", "y")), "factor", ordered = FALSE)
+#'  x = factor("a", levels = c("a", "b"))
+#'  test(x, "factor")
+#'  test(x, "factor", empty.levels.ok = FALSE)
 check_factor = function(x, levels, ordered = NA, empty.levels.ok = TRUE, ...) {
   qassert(ordered, "b1")
   qassert(empty.levels.ok, "B1")

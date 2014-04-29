@@ -4,10 +4,14 @@
 #' @param access [\code{character}]\cr
 #'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights.
-#' @family checker
+#' @family filesystem
 #' @export
 #' @examples
+#'  # Is R's home directory readable?
 #'  test(R.home(), "access", "r")
+#'
+#'  # Is R's home directory writeable?
+#'  test(R.home(), "access", "w")
 check_access = function(x, access) {
   qassert(access, "S1")
   if (nzchar(access)) {

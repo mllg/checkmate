@@ -6,8 +6,9 @@ test_that("check_vector", {
   expect_true(test(1, "vector"))
   expect_true(test(integer(0), "vector"))
 
-  expect_true(test(NA, "vector", na.ok=TRUE))
-  expect_false(test(NA, "vector", na.ok=FALSE))
+  expect_true(test(NA, "vector", any.missing = TRUE))
+  expect_false(test(NA, "vector", any.missing = FALSE))
+  expect_false(test(NA, "vector", all.missing = FALSE))
 
   expect_true(test(1, "vector", len=1))
   expect_false(test(1, "vector", len=0))
