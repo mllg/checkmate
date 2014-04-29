@@ -3,7 +3,7 @@
 \title{Check vector properties}
 \usage{
 check_vector(x, any.missing = TRUE, all.missing = TRUE, len, min.len,
-  max.len, names = "any")
+  max.len, unique = FALSE, names = "any")
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
@@ -23,6 +23,9 @@ check_vector(x, any.missing = TRUE, all.missing = TRUE, len, min.len,
 
   \item{max.len}{[\code{integer(1)}]\cr Maximal length of
   \code{x}.}
+
+  \item{unique}{[\code{logical(1)}]\cr Must all values be
+  unique? Default is \code{FALSE}.}
 
   \item{names}{[\code{character(1)}]\cr Check for names
   attribute.  See also \code{\link{check_named}} for

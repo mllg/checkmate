@@ -7,24 +7,23 @@ vname = function(x, var.name, n = 1L) {
 
 # qassert and qassertr message helper
 qamsg = function(x, msg, vname, recursive=FALSE) {
-  if (!isTRUE(msg)) {
-    if (length(msg) > 1L)
-      msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")))
+  if (isTRUE(msg))
+    return(invisible(TRUE))
 
-    if (recursive) {
-      pos = attr(msg, "pos")
-      if (test(x, "named")) {
-        item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
-      } else {
-        item = sprintf(", element %i", pos)
-      }
+  if (length(msg) > 1L)
+    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")))
+  if (recursive) {
+    pos = attr(msg, "pos")
+    if (test(x, "named")) {
+      item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
     } else {
-      item = ""
+      item = sprintf(", element %i", pos)
     }
-    msg = sprintf("Error checking argument '%s'%s: %s", vname, item, msg)
-    stop(simpleError(msg, call = sys.call(1L)))
+  } else {
+    item = ""
   }
-  invisible(TRUE)
+  msg = sprintf("Error checking argument '%s'%s: %s", vname, item, msg)
+  stop(simpleError(msg, call = sys.call(1L)))
 }
 
 "%and%" = function(lhs, rhs) {

@@ -11,6 +11,8 @@
 #'  Minimal length of \code{x}.
 #' @param max.len [\code{integer(1)}]\cr
 #'  Maximal length of \code{x}.
+#' @param unique [\code{logical(1)}]\cr
+#'  Must all values be unique? Default is \code{FALSE}.
 #' @param names [\code{character(1)}]\cr
 #'  Check for names attribute.
 #'  See also \code{\link{check_named}} for possible values.
@@ -19,13 +21,13 @@
 #' @export
 #' @examples
 #'  test(letters, "vector", min.len = 1L, any.missing = FALSE)
-check_vector = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, names = "any") {
+check_vector = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
   if (!is.vector(x))
     return("'%%s' must be a vector")
-  return(check_vector_props(x, any.missing, all.missing, len, min.len, max.len))
+  return(check_vector_props(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
 
-check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, names = "any") {
+check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
   if (!missing(len) && qassert(len, "X1[0,)") && length(x) != len)
     return(sprintf("'%%s' must have length %i", len))
   if (!missing(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
@@ -36,6 +38,8 @@ check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, mi
     return("'%s' contains missing values")
   if (qassert(all.missing, "B1") && !all.missing && allMissing(x))
     return("'%s' contains only missing values")
+  if (qassert(unique, "B1") && unique && anyDuplicated(x) > 0L)
+    return("All elements of '%s' must be unique")
   if (qassert(names, "S1") && names != "any") {
     return(check_named(x, type = names))
   }
