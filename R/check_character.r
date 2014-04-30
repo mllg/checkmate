@@ -25,7 +25,7 @@
 #'  test(letters, "character", min.chars = 2)
 #'  test("example", "character", pattern = "ple")
 check_character = function(x, pattern, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
-  if (! (is.character(x) || (is.atomic(x) && allMissing(x))))
+  if (!is.character(x) && !allMissingAtomic(x))
     return("'%s' must be a character")
   check_vector_props(x, ...) %and% check_character_props(x, pattern, ignore.case, perl, fixed, min.chars)
 }

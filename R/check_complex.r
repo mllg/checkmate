@@ -13,7 +13,7 @@
 #'  test(1L, "complex")
 #'  test(1., "complex")
 check_complex = function(x, ...) {
-  if (! (is.complex(x) || (is.atomic(x) && allMissing(x))))
+  if (!is.complex(x) && !allMissingAtomic(x))
     return("'%s' must be complex")
   check_vector_props(x, ...)
 }

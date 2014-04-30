@@ -1,8 +1,8 @@
 getChecker = function(checker) {
   if (is.function(checker))
     return(checker)
-  fn = paste0("check_", checker)
-  fun = mget(fn, inherits = TRUE, ifnotfound = NA)[[1L]]
+  ee = as.environment("package:checkmate")
+  fun = ee[[paste0("check_", checker)]]
   if (!is.function(fun))
     stop(sprintf("Checker function '%s' not found", fn))
   fun
