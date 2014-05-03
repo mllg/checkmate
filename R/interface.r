@@ -1,8 +1,7 @@
 getChecker = function(checker) {
   if (is.function(checker))
     return(checker)
-  ee = as.environment("package:checkmate")
-  fun = ee[[paste0("check_", checker)]]
+  fun = match.fun(paste0("check_", checker))
   if (!is.function(fun))
     stop(sprintf("Checker function '%s' not found", fn))
   fun
