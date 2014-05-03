@@ -10,10 +10,10 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(mean, "fun")
-#'  test(check_fun, "fun", args = c("x", "ordered"))
-#'  test(check_fun, "fun", args = "i.do.not.exist")
-check_fun = function(x, args, ordered = FALSE) {
+#'  test(mean, "function")
+#'  test(check_function, "function", args = c("x", "ordered"))
+#'  test(check_function, "function", args = "i.do.not.exist")
+check_function = function(x, args, ordered = FALSE) {
   qassert(ordered, "B1")
   x = try(match.fun(x), silent=TRUE)
   if (inherits(x, "try-error"))

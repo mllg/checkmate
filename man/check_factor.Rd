@@ -40,7 +40,8 @@ x = factor("a", levels = c("a", "b"))
 Other basetypes: \code{\link{check_character}};
 \code{\link{check_complex}};
 \code{\link{check_data.frame}};
-\code{\link{check_environment}}; \code{\link{check_fun}};
+\code{\link{check_environment}};
+\code{\link{check_function}};
 \code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
 \code{\link{check_logical}}; \code{\link{check_matrix}};

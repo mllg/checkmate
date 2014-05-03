@@ -28,7 +28,8 @@ ee = as.environment(list(a = 1))
 Other basetypes: \code{\link{check_character}};
 \code{\link{check_complex}};
 \code{\link{check_data.frame}}; \code{\link{check_factor}};
-\code{\link{check_fun}}; \code{\link{check_integerish}};
+\code{\link{check_function}};
+\code{\link{check_integerish}};
 \code{\link{check_integer}}; \code{\link{check_list}};
 \code{\link{check_logical}}; \code{\link{check_matrix}};
 \code{\link{check_numeric}}; \code{\link{check_vector}}

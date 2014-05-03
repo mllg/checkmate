@@ -1,8 +1,8 @@
-\name{check_fun}
-\alias{check_fun}
+\name{check_function}
+\alias{check_function}
 \title{Check if an argument is a function}
 \usage{
-check_fun(x, args, ordered = FALSE)
+check_function(x, args, ordered = FALSE)
 }
 \arguments{
   \item{x}{[ANY]\cr Object to check.}
@@ -24,9 +24,9 @@ otherwise.  Intended to be used with \code{\link{test}},
 Check if an argument is a function
 }
 \examples{
-test(mean, "fun")
- test(check_fun, "fun", args = c("x", "ordered"))
- test(check_fun, "fun", args = "i.do.not.exist")
+test(mean, "function")
+ test(check_function, "function", args = c("x", "ordered"))
+ test(check_function, "function", args = "i.do.not.exist")
 }
 \seealso{
 Other basetypes: \code{\link{check_character}};
