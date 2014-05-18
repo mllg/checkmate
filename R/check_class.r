@@ -25,7 +25,7 @@ check_class = function(x, classes, ordered = FALSE) {
   qassert(ordered, "B1")
   ord = inherits(x, classes, TRUE)
   w = which.first(ord == 0L)
-  FIXME: error? w can be longer than 1!
+  # FIXME: error? w can be longer than 1!
   if (length(w) > 0L)
     return(sprintf("'%%s' must be of class '%s'", classes[w]))
   if (ordered) {
