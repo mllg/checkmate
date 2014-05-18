@@ -33,7 +33,7 @@ astring(x)
 
 afun(x, args)
 
-aobj(x, cl)
+aobj(x, classes)
 
 achoice(x, choices)
 
@@ -66,6 +66,9 @@ See \code{\link{check_choice}}.}
 
 \item{upper}{[\code{numeric} | \code{integer}]\cr
 See \code{\link{check_numeric}} and \code{\link{check_integerish}}.}
+
+\item{classes}{[\code{character}]\cr
+See \code{\link{check_class}}.}
 }
 \value{
 If the assertion is not passed, an exception is thrown with an informative error message.

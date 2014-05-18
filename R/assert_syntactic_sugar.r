@@ -8,8 +8,10 @@
 #'   See \code{\link{check_list}}.
 #' @param choices [\code{atomic}]\cr
 #'   See \code{\link{check_choice}}.
-#' @param upper [\code{numeric} | \code{integer}]\cr 
+#' @param upper [\code{numeric} | \code{integer}]\cr
 #'   See \code{\link{check_numeric}} and \code{\link{check_integerish}}.
+#' @param classes [\code{character}]\cr
+#'   See \code{\link{check_class}}.
 #' @return If the assertion is not passed, an exception is thrown with an informative error message.
 #'   Other \code{x} is returned, possibly SLIGHTLY converted to a correct class.
 #'   Currently this means to convert integerish numbers to true integers.
@@ -18,7 +20,7 @@
 #' @rdname assert_syntactic_sugar
 NULL
 
-########## scalars
+########## scalars / single objects
 
 #FIXME: flag might be a bad name
 
@@ -41,7 +43,7 @@ aint = function(x) {
   assert(x, "integerish")
 }
 
-#FIXME: both acount functions need check_count to be improved first1
+#FIXME: both acount functions need check_count to be improved first
 
 #' @rdname assert_syntactic_sugar
 #' @export
@@ -74,8 +76,8 @@ afun = function(x, args) {
 
 #' @rdname assert_syntactic_sugar
 #' @export
-aobj = function(x, cl) {
-  assert(x, "class", classes = cl)
+aobj = function(x, classes) {
+  assert(x, "class", classes = classes)
 }
 
 #' @rdname assert_syntactic_sugar
