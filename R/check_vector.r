@@ -1,3 +1,5 @@
+#FIXME: names arg is wrongly documented. at least default val!
+
 #' Check vector properties
 #'
 #' @template checker
@@ -23,7 +25,7 @@
 #'  test(letters, "vector", min.len = 1L, any.missing = FALSE)
 check_vector = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
   if (!is.vector(x))
-    return("'%%s' must be a vector")
+    return(mustBeClass("vector"))
   return(check_vector_props(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
 

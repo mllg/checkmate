@@ -41,3 +41,6 @@ collapse = function(x, sep = ",") {
 allMissingAtomic = function(x) {
   is.atomic(x) && allMissing(x)
 }
+
+mustBeClass = function(cl)
+  sprintf("'%%s' must be of class '%s'", cl)

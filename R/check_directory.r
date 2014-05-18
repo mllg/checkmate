@@ -1,4 +1,4 @@
-#' Check for existance and access rights of directories
+#' Check for existence and access rights of directories
 #'
 #' @template checker
 #' @inheritParams check_access
@@ -9,12 +9,12 @@
 #'  # Is R's home directory readable?
 #'  test(R.home(), "access", "r")
 #'
-#'  # Is R's home directory writeable?
+#'  # Is R's home directory writable?
 #'  test(R.home(), "access", "w")
 check_directory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)
-    return("No diretory provided in '%%s'")
+    return("'%%s' has length 0, no directories were provided")
 
   isdir = file.info(x)$isdir
   w = which.first(is.na(isdir))

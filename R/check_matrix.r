@@ -25,7 +25,7 @@
 #'  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
 check_matrix = function(x, any.missing = TRUE, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
-    return("'%s' must be a matrix")
+    return(mustBeClass("matrix"))
   check_matrix_props(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 

@@ -13,7 +13,7 @@
 check_environment = function(x, contains = character(0L)) {
   qassert(contains, "S")
   if (!is.environment(x))
-    return("'%s' must be an environment")
+    return(mustBeClass("environment"))
   if (length(contains) > 0L) {
     w = which.first(contains %nin% ls(x, all.names = TRUE))
     if (length(w) > 0L)

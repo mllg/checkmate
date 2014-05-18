@@ -1,4 +1,4 @@
-#' Check existance and access rights of files
+#' Check existence and access rights of files
 #'
 #' @template checker
 #' @inheritParams check_access
@@ -8,12 +8,12 @@
 #'  # Check if R's COPYING file is readable
 #'  test(file.path(R.home(), "COPYING"), "file", access = "r")
 #'
-#'  # Check if R's COPYING file is writeable
+#'  # Check if R's COPYING file is writable
 #'  test(file.path(R.home(), "COPYING"), "file", access = "w")
 check_file = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)
-    return("No files provided in '%s'")
+    return("'%%s' has length 0, no files were provided")
 
   isdir = file.info(x)$isdir
   not.ok = which.first(is.na(isdir))

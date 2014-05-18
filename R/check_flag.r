@@ -20,6 +20,6 @@ check_flag = function(x, na.ok = FALSE) {
   if (is.na(x))
     return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
   if(!is.logical(x))
-    return("'%s' must be logical")
+    return(mustBeClass("logical"))
   return(TRUE)
 }

@@ -15,7 +15,7 @@
 #'  test(as.list(iris), "list", types = c("numeric", "factor"))
 check_list = function(x, types = character(0L), ...) {
   if (!is.vector(x, "list"))
-    return("'%s' must be a list")
+    return(mustBeClass("list"))
   check_vector_props(x, ...) %and% check_list_props(x, types)
 }
 

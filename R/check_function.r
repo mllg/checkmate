@@ -15,6 +15,7 @@
 #'  test(check_function, "function", args = "i.do.not.exist")
 check_function = function(x, args, ordered = FALSE) {
   qassert(ordered, "B1")
+  #FIXME: this check and the error message look a bit strange?
   x = try(match.fun(x), silent=TRUE)
   if (inherits(x, "try-error"))
     return("Function '%s' not found")

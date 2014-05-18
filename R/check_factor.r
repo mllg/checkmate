@@ -23,7 +23,7 @@ check_factor = function(x, levels, ordered = NA, empty.levels.ok = TRUE, ...) {
   qassert(ordered, "b1")
   qassert(empty.levels.ok, "B1")
   if (!is.factor(x))
-    return("'%s' must be a factor")
+    return(mustBeClass("factor"))
   if (!missing(levels)) {
     qassert(levels, "S")
     if (!setequal(levels(x), levels))
