@@ -44,3 +44,12 @@ allMissingAtomic = function(x) {
 
 mustBeClass = function(cl)
   sprintf("'%%s' must be of class '%s'", cl)
+
+mustLength = function(len) {
+  sprintf("'%%s' must have length %i", len)
+}
+
+# could be a constant, maybe function more consitant....
+mustLength1 = function() {
+  mustLength(1L)
+}

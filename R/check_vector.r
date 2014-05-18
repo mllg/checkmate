@@ -31,7 +31,7 @@ check_vector = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len,
 
 check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
   if (!missing(len) && qassert(len, "X1[0,)") && length(x) != len)
-    return(sprintf("'%%s' must have length %i", len))
+    return(mustLength(len))
   if (!missing(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
     return(sprintf("'%%s' must have length >= %i", min.len))
   if (!missing(max.len) && qassert(max.len, "X1[0,)") && length(x) > max.len)

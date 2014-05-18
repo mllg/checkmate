@@ -18,7 +18,7 @@
 check_string = function(x, na.ok = FALSE, ...) {
   qassert(na.ok, "B1")
   if (length(x) != 1L)
-    return("'%s' must have length 1")
+    return(mustLength1())
   if (is.na(x))
     return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
   if (!is.character(x))
