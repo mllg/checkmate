@@ -20,7 +20,7 @@ Returns \code{TRUE} on success and an error message otherwise.
 Check if an object is an element of a given set
 }
 \examples{
-test("x", "elementOf", letters)
+test("x", "choice", letters)
 }
 \seealso{
 Other set: \code{\link{check_subset}}

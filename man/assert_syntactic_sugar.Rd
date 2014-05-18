@@ -51,6 +51,27 @@ afile(x)
 
 adir(x)
 }
+\arguments{
+\item{x}{[any]\cr
+The object we assert something about.}
+
+\item{args}{[\code{character}]\cr
+See \code{\link{check_function}}.}
+
+\item{types}{[\code{character}]\cr
+See \code{\link{check_list}}.}
+
+\item{choices}{[\code{atomic}]\cr
+See \code{\link{check_choice}}.}
+
+\item{upper}{[\code{numeric} | \code{integer}]\cr
+See \code{\link{check_numeric}} and \code{\link{check_integerish}}.}
+}
+\value{
+If the assertion is not passed, an exception is thrown with an informative error message.
+  Other \code{x} is returned, possibly SLIGHTLY converted to a correct class.
+  Currently this means to convert integerish numbers to true integers.
+}
 \description{
 Syntactic sugar to make the most common asserts as simple as possible.
 }
