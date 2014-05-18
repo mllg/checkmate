@@ -6,7 +6,7 @@
 #' @family set
 #' @export
 #' @examples
-#'  test("x", "elementOf", letters)
+#'  test("x", "choice", letters)
 check_choice = function(x, choices) {
   qassert(x, "a1")
   qassert(choices, "a+")
