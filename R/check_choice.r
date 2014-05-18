@@ -1,4 +1,4 @@
-#' Check if an object is element of a given set
+#' Check if an object is an element of a given set
 #'
 #' @template checker
 #' @param choices [\code{atomic}]\cr
@@ -7,7 +7,7 @@
 #' @export
 #' @examples
 #'  test("x", "elementOf", letters)
-check_elementOf = function(x, choices) {
+check_choice = function(x, choices) {
   qassert(x, "a1")
   qassert(choices, "a+")
   if (x %nin% choices)
