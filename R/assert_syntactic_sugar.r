@@ -24,12 +24,21 @@ NULL
 
 #FIXME: flag might be a bad name
 
+#' \code{aflag}: Assert a boolean non-NA flag.
 #' @rdname assert_syntactic_sugar
 #' @export
 aflag = function(x) {
   assert(x, "flag")
 }
 
+#' \code{anum}: Assert a numeric non-NA scalar.
+#' @rdname assert_syntactic_sugar
+#' @export
+anum = function(x, upper = Inf) {
+  assert(x, "numeric", upper = upper)
+}
+
+#' \code{anump}: Assert a positive numeric non-NA scalar.
 #' @rdname assert_syntactic_sugar
 #' @export
 anump = function(x, upper = Inf) {
@@ -37,6 +46,7 @@ anump = function(x, upper = Inf) {
 }
 
 
+#' \code{aint}: Assert a integerish non-NA scalar.
 #' @rdname assert_syntactic_sugar
 #' @export
 aint = function(x) {
@@ -45,24 +55,28 @@ aint = function(x) {
 
 #FIXME: both acount functions need check_count to be improved first
 
+#' \code{acount0}: Assert a non-NA count >= 0.
 #' @rdname assert_syntactic_sugar
 #' @export
 acount0 = function(x, upper) {
   assert(x, "count")
 }
 
+#' \code{acount1}: Assert a non-NA count >= 1.
 #' @rdname assert_syntactic_sugar
 #' @export
 acount1 = function(x, upper) {
   assert(x, "count")
 }
 
+#' \code{astring}: Assert a non-NA string.
 #' @rdname assert_syntactic_sugar
 #' @export
 astring = function(x) {
   assert(x, "string")
 }
 
+#' \code{afun}: Assert a function.
 #' @rdname assert_syntactic_sugar
 #' @export
 afun = function(x, args) {
@@ -74,12 +88,14 @@ afun = function(x, args) {
 }
 
 
+#' \code{aobj}: Assert an object that is of at least one of the given classes.
 #' @rdname assert_syntactic_sugar
 #' @export
 aobj = function(x, classes) {
   assert(x, "class", classes = classes)
 }
 
+#' \code{achoice}: Assert an object that matches exactly one of the given atomic choices.
 #' @rdname assert_syntactic_sugar
 #' @export
 achoice = function(x, choices) {
@@ -89,26 +105,30 @@ achoice = function(x, choices) {
 
 ########## vectors
 
+#' \code{anumvec}: Assert an non-NA numeric vector.
 #' @rdname assert_syntactic_sugar
 #' @export
 anumvec = function(x) {
   assert(x, "numeric")
 }
 
+#' \code{aintvec}: Assert an non-NA integerish vector.
 #' @rdname assert_syntactic_sugar
 #' @export
 aintvec = function(x) {
-  assert(x, "numeric")
+  assert(x, "integerish")
 }
 
 ########## lists
 
+#' \code{alist}: Assert a list.
 #' @rdname assert_syntactic_sugar
 #' @export
 alist = function(x, types) {
   assert(x, "list", types = types)
 }
 
+#' \code{alistn}: Assert a list, named.
 #' @rdname assert_syntactic_sugar
 #' @export
 alistn = function(x, types) {
@@ -119,6 +139,7 @@ alistn = function(x, types) {
     assert(x, "list", types = types, names = "named")
 }
 
+#' \code{alistnu}: Assert a list, uniquely named.
 #' @rdname assert_syntactic_sugar
 #' @export
 alistnu = function(x, types) {
@@ -130,12 +151,14 @@ alistnu = function(x, types) {
 
 ########## file io
 
+#' \code{afile}: Assert an existing file path.
 #' @rdname assert_syntactic_sugar
 #' @export
 afile = function(x) {
   assert(x, "file")
 }
 
+#' \code{adir}: Assert an existing directory path.
 #' @rdname assert_syntactic_sugar
 #' @export
 adir = function(x) {

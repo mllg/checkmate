@@ -12,6 +12,7 @@
 \alias{alist}
 \alias{alistn}
 \alias{alistnu}
+\alias{anum}
 \alias{anump}
 \alias{anumvec}
 \alias{aobj}
@@ -20,6 +21,8 @@
 \title{Syntactic sugar to make the most common asserts as simple as possible.}
 \usage{
 aflag(x)
+
+anum(x, upper = Inf)
 
 anump(x, upper = Inf)
 
@@ -77,5 +80,39 @@ If the assertion is not passed, an exception is thrown with an informative error
 }
 \description{
 Syntactic sugar to make the most common asserts as simple as possible.
+
+\code{aflag}: Assert a boolean non-NA flag.
+
+\code{anum}: Assert a numeric non-NA scalar.
+
+\code{anump}: Assert a positive numeric non-NA scalar.
+
+\code{aint}: Assert a integerish non-NA scalar.
+
+\code{acount0}: Assert a non-NA count >= 0.
+
+\code{acount1}: Assert a non-NA count >= 1.
+
+\code{astring}: Assert a non-NA string.
+
+\code{afun}: Assert a function.
+
+\code{aobj}: Assert an object that is of at least one of the given classes.
+
+\code{achoice}: Assert an object that matches exactly one of the given atomic choices.
+
+\code{anumvec}: Assert an non-NA numeric vector.
+
+\code{aintvec}: Assert an non-NA integerish vector.
+
+\code{alist}: Assert a list.
+
+\code{alistn}: Assert a list, named.
+
+\code{alistnu}: Assert a list, uniquely named.
+
+\code{afile}: Assert an existing file path.
+
+\code{adir}: Assert an existing directory path.
 }
 
