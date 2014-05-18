@@ -12,7 +12,6 @@ test_that("check_list", {
   expect_false(test(x, "list", types = c("numeric", "character")))
   expect_true(test(list(NULL), "list", types = "NULL"))
 
-  expect_error(test(list(), "list", types = c("xxx")), "one of")
   expect_true(test(list(), "list", types = "numeric"))
 
 
@@ -20,5 +19,5 @@ test_that("check_list", {
   expect_error(assert(1, "list"), "list")
 
   expect_true(assert(x, "list", types = c("numeric", "factor")))
-  expect_error(assert(x, "list", types = "numeric"), "atomic types: numeric")
+  expect_error(assert(x, "list", types = "numeric"), "types: numeric")
 })

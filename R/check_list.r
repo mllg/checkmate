@@ -4,10 +4,9 @@
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{check_vector}}.
 #' @param types [\code{character}]\cr
-#'  Restrict elements to be atomic. Tests for \dQuote{logical}, \dQuote{integer},
-#'  \dQuote{double}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor} or
-#'  \dQuote{NULL}.
-#'  Defaults to \code{character(0)} (no type check).
+#'  Character vector of class names. Each list element must inherit
+#'  from at least one of the provided types.
+#'  Defaults to \code{character(0)} (no check).
 #' @family basetypes
 #' @export
 #' @examples
@@ -22,16 +21,9 @@ check_list = function(x, types = character(0L), ...) {
 check_list_props = function(x, types = character(0L)) {
   if (length(types) == 0L)
     return(TRUE)
-  allowed.types = c("logical", "integer", "double", "numeric", "character", "factor", "NULL")
-  types = unique(match.arg(types, choices = allowed.types, several.ok = TRUE))
-
-  ok = logical(length(x))
-  for (type in tolower(types)) {
-    fun = match.fun(sprintf("is.%s", type))
-    ok = ok | vapply(x, fun, FUN.VALUE = NA, USE.NAMES = FALSE)
-    if (all(ok))
-      return(TRUE)
-  }
-
-  return(sprintf("'%%s' may only contain the following atomic types: %s", collapse(types)))
+  qassert(types, "S")
+  ok = vapply(x, inherits, what = types, FUN.VALUE = NA, USE.NAMES = FALSE)
+  if (all(ok))
+    return(TRUE)
+  return(sprintf("'%%s' may only contain the following types: %s", collapse(types)))
 }
