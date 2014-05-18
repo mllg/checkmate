@@ -3,7 +3,7 @@ getChecker = function(checker) {
     return(checker)
   fun = match.fun(paste0("check_", checker))
   if (!is.function(fun))
-    stop(sprintf("Checker function '%s' not found", fn))
+    stop(sprintf("Checker function '%s' not found", fun))
   fun
 }
 
