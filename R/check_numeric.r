@@ -1,9 +1,6 @@
 #' Check that an argument is a vector of type numeric
 #'
-#' @note This function does not distinguish between
-#' \code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
-#' and \code{NA_character_}.
-#'
+#' @template na-handling
 #' @template checker
 #' @param lower [\code{numeric(1)}]\cr
 #'  Lower value all elements of \code{x} must be greater than.

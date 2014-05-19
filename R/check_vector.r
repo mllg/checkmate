@@ -1,5 +1,3 @@
-#FIXME: names arg is wrongly documented. at least default val!
-
 #' Check vector properties
 #'
 #' @template checker
@@ -16,9 +14,8 @@
 #' @param unique [\code{logical(1)}]\cr
 #'  Must all values be unique? Default is \code{FALSE}.
 #' @param names [\code{character(1)}]\cr
-#'  Check for names attribute.
-#'  See also \code{\link{check_named}} for possible values.
-#'  Default is \dQuote{none} which performs no check at all.
+#'  Check for names. See \code{\link{check_named}} for possible values.
+#'  Default is \dQuote{any} which performs no check at all.
 #' @family basetypes
 #' @export
 #' @examples
