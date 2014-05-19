@@ -43,7 +43,7 @@ The rule is specified in up to three parts.
    \tabular{rl}{
      \code{[bB]} \tab Bool / logical.\cr
      \code{[iI]} \tab Integer.\cr
-     \code{[xX]} \tab Integerish (numeric convertible to integer, see \code{\link{check_integerish}}).\cr
+     \code{[xX]} \tab Integerish (numeric convertible to integer, see \code{\link{checkIntegerish}}).\cr
      \code{[rR]} \tab Real / double.\cr
      \code{[cC]} \tab Complex.\cr
      \code{[nN]} \tab Numeric (integer or double).\cr
