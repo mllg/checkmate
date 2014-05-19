@@ -8,6 +8,8 @@
 #'   See \code{\link{check_list}}.
 #' @param choices [\code{atomic}]\cr
 #'   See \code{\link{check_choice}}.
+#' @param lower [\code{numeric} | \code{integer}]\cr
+#'   See \code{\link{check_numeric}} and \code{\link{check_integerish}}.
 #' @param upper [\code{numeric} | \code{integer}]\cr
 #'   See \code{\link{check_numeric}} and \code{\link{check_integerish}}.
 #' @param classes [\code{character}]\cr
@@ -22,27 +24,25 @@ NULL
 
 ########## scalars / single objects
 
-#FIXME: flag might be a bad name
-
-#' \code{aflag}: Assert a boolean non-NA flag.
+#' \code{aflag, alog}: Assert a boolean non-NA flag.
 #' @rdname assert_syntactic_sugar
 #' @export
-aflag = function(x) {
+alog = aflag = function(x) {
   assert(x, "flag")
 }
 
 #' \code{anum}: Assert a numeric non-NA scalar.
 #' @rdname assert_syntactic_sugar
 #' @export
-anum = function(x, upper = Inf) {
-  assert(x, "numeric", upper = upper)
+anum = function(x, lower = -Inf, upper = Inf) {
+  assert(x, "numeric", len = 1L, any.missing = FALSE, lower = lower, upper = upper)
 }
 
 #' \code{anump}: Assert a positive numeric non-NA scalar.
 #' @rdname assert_syntactic_sugar
 #' @export
 anump = function(x, upper = Inf) {
-  assert(x, "numeric", upper = upper)
+  assert(x, "numeric", len = 1L, any.missing = FALSE, lower = 0, upper = upper)
 }
 
 
@@ -50,31 +50,70 @@ anump = function(x, upper = Inf) {
 #' @rdname assert_syntactic_sugar
 #' @export
 aint = function(x) {
-  assert(x, "integerish")
+  assert(x, "integerish", len = 1L, any.missing = FALSE)
 }
 
-#FIXME: both acount functions need check_count to be improved first
+# FIXME:  maybe aintp is more consistent?
 
 #' \code{acount0}: Assert a non-NA count >= 0.
 #' @rdname assert_syntactic_sugar
 #' @export
 acount0 = function(x, upper) {
-  assert(x, "count")
+  assert(x, "integerish" , lower = 0L, len = 1L, any.missing = FALSE)
 }
 
 #' \code{acount1}: Assert a non-NA count >= 1.
 #' @rdname assert_syntactic_sugar
 #' @export
 acount1 = function(x, upper) {
-  assert(x, "count")
+  assert(x, "integerish" , lower = 1L, len = 1L, any.missing = FALSE)
 }
 
-#' \code{astring}: Assert a non-NA string.
+#' \code{astring, achar}: Assert a non-NA string.
 #' @rdname assert_syntactic_sugar
 #' @export
-astring = function(x) {
+achar = astring = function(x) {
   assert(x, "string")
 }
+
+########## vectors
+
+#' \code{alogvec}: Assert an non-NA logical vector.
+#' @rdname assert_syntactic_sugar
+#' @export
+alogvec = function(x) {
+  assert(x, "logical", any.missing = FALSE)
+}
+
+#' \code{anumvec}: Assert an non-NA numeric vector.
+#' @rdname assert_syntactic_sugar
+#' @export
+anumvec = function(x, lower = -Inf, upper = Inf) {
+  assert(x, "numeric", lower = lower, upper = upper, any.missing = FALSE)
+}
+
+#' \code{aintvec}: Assert an non-NA integerish vector.
+#' @rdname assert_syntactic_sugar
+#' @export
+aintvec = function(x, lower = -Inf, upper = Inf) {
+  assert(x, "integerish", lower = lower, upper = upper, any.missing = FALSE)
+}
+
+#' \code{acharvec}: Assert an non-NA character vector.
+#' @rdname assert_syntactic_sugar
+#' @export
+acharvec = function(x) {
+  assert(x, "character", any.missing = FALSE)
+}
+
+#' \code{afactor}: Assert an non-NA factor.
+#' @rdname assert_syntactic_sugar
+#' @export
+afactor = function(x) {
+  assert(x, "factor", any.missing = FALSE)
+}
+
+########## object and function
 
 #' \code{afun}: Assert a function.
 #' @rdname assert_syntactic_sugar
@@ -87,13 +126,14 @@ afun = function(x, args) {
     assert(x, "function", args = args)
 }
 
-
 #' \code{aobj}: Assert an object that is of at least one of the given classes.
 #' @rdname assert_syntactic_sugar
 #' @export
 aobj = function(x, classes) {
   assert(x, "class", classes = classes)
 }
+
+########## choice and subset
 
 #' \code{achoice}: Assert an object that matches exactly one of the given atomic choices.
 #' @rdname assert_syntactic_sugar
@@ -102,21 +142,13 @@ achoice = function(x, choices) {
   assert(x, "choice", choices = choices)
 }
 
+#FIXME: allow empty subset? specialiazation?
 
-########## vectors
-
-#' \code{anumvec}: Assert an non-NA numeric vector.
+#' \code{asubset}: Assert that we have a subset of some atomic choices.
 #' @rdname assert_syntactic_sugar
 #' @export
-anumvec = function(x) {
-  assert(x, "numeric")
-}
-
-#' \code{aintvec}: Assert an non-NA integerish vector.
-#' @rdname assert_syntactic_sugar
-#' @export
-aintvec = function(x) {
-  assert(x, "integerish")
+asubset = function(x, choices) {
+  assert(x, "subset", choices = choices)
 }
 
 ########## lists
