@@ -1,5 +1,6 @@
 #' Check if an argument is a vector of type character
 #'
+#' @templateVar fn Character
 #' @template na-handling
 #' @template checker
 #' @param pattern [\code{character(1L)}]\cr

@@ -1,5 +1,6 @@
 #' Check if an argument is named
 #'
+#' @templateVar fn Named
 #' @template checker
 #' @param type [character(1)]\cr
 #'  Select the check(s) to perform.

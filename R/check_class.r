@@ -1,5 +1,6 @@
 #' Check argument inheritance
 #'
+#' @templateVar fn Class
 #' @template checker
 #' @param classes [\code{character}]\cr
 #'  Class names to check for inheritance.

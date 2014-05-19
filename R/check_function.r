@@ -1,5 +1,6 @@
 #' Check if an argument is a function
 #'
+#' @templateVar fn Function
 #' @template checker
 #' @param args [\code{character}]\cr
 #'  Expected formal arguments.

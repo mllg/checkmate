@@ -2,6 +2,7 @@
 #'
 #' Note that zero-length input is treated as constant.
 #'
+#' @templateVar fn Constant
 #' @template checker
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used if \code{x} is of type \code{double} or \code{complex}.

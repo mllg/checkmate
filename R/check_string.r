@@ -2,6 +2,7 @@
 #'
 #' A string a character vector of length 1.
 #'
+#' @templateVar fn String
 #' @template na-handling
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr

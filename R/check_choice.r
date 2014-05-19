@@ -1,5 +1,6 @@
 #' Check if an object is an element of a given set
 #'
+#' @templateVar fn Choice
 #' @template checker
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.

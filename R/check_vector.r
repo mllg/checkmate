@@ -1,5 +1,6 @@
 #' Check vector properties
 #'
+#' @templateVar fn Vector
 #' @template checker
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are vectors with missing values allowed? Default is \code{TRUE}.

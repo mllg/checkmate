@@ -1,5 +1,6 @@
 #' Check if an object is an integerish vector
 #'
+#' @templateVar fn Integerish
 #' @template na-handling
 #' @template checker
 #' @inheritParams checkInteger

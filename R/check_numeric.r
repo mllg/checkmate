@@ -1,5 +1,6 @@
 #' Check that an argument is a vector of type numeric
 #'
+#' @templateVar fn Numeric
 #' @template na-handling
 #' @template checker
 #' @param lower [\code{numeric(1)}]\cr

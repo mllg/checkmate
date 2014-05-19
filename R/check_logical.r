@@ -1,5 +1,6 @@
 #' Check if an argument is a vector of type logical
 #'
+#' @templateVar fn Logical
 #' @template na-handling
 #' @template checker
 #' @param ... [ANY]\cr

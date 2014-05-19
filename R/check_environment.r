@@ -1,5 +1,6 @@
 #' Check if an argument is an environment
 #'
+#' @templateVar fn Environment
 #' @template checker
 #' @param contains [\code{character}]\cr
 #'  Vector of object names expected in the environment.

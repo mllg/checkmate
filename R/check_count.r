@@ -2,6 +2,7 @@
 #'
 #' A count is a non-negative integer.
 #'
+#' @templateVar fn Count
 #' @template na-handling
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr

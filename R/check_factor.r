@@ -1,5 +1,6 @@
 #' Check if an argument is a factor
 #'
+#' @templateVar fn Factor
 #' @template checker
 #' @param levels [\code{character}]\cr
 #'  Vector of allowed factor levels.

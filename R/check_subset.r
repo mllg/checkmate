@@ -1,5 +1,6 @@
 #' Check if object is a subset of a given set
 #'
+#' @templateVar fn Subset
 #' @template checker
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.

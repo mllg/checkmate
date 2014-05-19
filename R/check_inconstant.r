@@ -2,6 +2,7 @@
 #'
 #' Note that zero-length input is treated as constant.
 #'
+#' @templateVar fn Inconstant
 #' @template checker
 #' @inheritParams checkConstant
 #' @export

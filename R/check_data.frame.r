@@ -1,5 +1,6 @@
 #' Check if an argument is a \code{data.frame}
 #'
+#' @templateVar fn DataFrame
 #' @template checker
 #' @inheritParams checkMatrix
 #' @inheritParams checkList

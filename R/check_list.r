@@ -1,5 +1,6 @@
 #' Check if an argument is a list
 #'
+#' @templateVar fn List
 #' @template checker
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}.

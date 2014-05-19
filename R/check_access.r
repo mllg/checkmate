@@ -1,5 +1,6 @@
 #' Check file system access rights
 #'
+#' @templateVar fn Access
 #' @template checker
 #' @param access [\code{character}]\cr
 #'  Single string with characters \sQuote{r}, \sQuote{w} and \sQuote{x} to

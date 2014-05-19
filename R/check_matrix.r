@@ -1,5 +1,6 @@
 #' Check if an argument is a matrix
 #'
+#' @templateVar fn Matrix
 #' @template checker
 #' @param any.missing [\code{integer(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.

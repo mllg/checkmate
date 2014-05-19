@@ -1,5 +1,6 @@
 #' Check existence and access rights of files
 #'
+#' @templateVar fn File
 #' @template checker
 #' @inheritParams checkAccess
 #' @family filesystem

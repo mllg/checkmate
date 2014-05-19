@@ -2,6 +2,7 @@
 #'
 #' A flag a a single logical value.
 #'
+#' @templateVar fn Flag
 #' @template na-handling
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr

@@ -1,5 +1,6 @@
 #' Check if an argument is a vector of type complex
 #'
+#' @templateVar fn Complex
 #' @template na-handling
 #' @template checker
 #' @param ... [ANY]\cr
