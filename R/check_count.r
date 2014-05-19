@@ -1,9 +1,8 @@
 #' Check if an argument is a count
 #'
-#' @note This function does not distinguish between
-#' \code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
-#' and \code{NA_character_}.
+#' A count is a non-negative integer.
 #'
+#' @template na-handling
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
