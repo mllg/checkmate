@@ -1,18 +1,18 @@
-context("check_count")
+context("checkCount")
 
-test_that("check_count", {
-  expect_false(test(integer(0), "count"))
-  expect_false(test(NULL, "count"))
+test_that("checkCount", {
+  expect_false(testCount(integer(0)))
+  expect_false(testCount(NULL))
 
-  expect_true(test(1L, "count"))
-  expect_true(test(1, "count"))
-  expect_true(test(0, "count"))
-  expect_false(test(-1, "count"))
-  expect_false(test(0.5, "count"))
-  expect_false(test(NA_integer_, "count"))
-  expect_true(test(NA, "count", na.ok = TRUE))
-  expect_true(test(NA_integer_, "count", na.ok = TRUE))
+  expect_true(testCount(1L))
+  expect_true(testCount(1))
+  expect_true(testCount(0))
+  expect_false(testCount(-1))
+  expect_false(testCount(0.5))
+  expect_false(testCount(NA_integer_))
+  expect_true(testCount(NA, na.ok = TRUE))
+  expect_true(testCount(NA_integer_, na.ok = TRUE))
 
-  expect_true(assert(1, "count"))
-  expect_error(assert(-1, "count"), ">= 0")
+  expect_true(assertCount(1))
+  expect_error(assertCount(-1), ">= 0")
 })

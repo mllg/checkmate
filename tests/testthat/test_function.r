@@ -1,32 +1,31 @@
-context("check_function")
+context("checkFunction")
 
+test_that("checkFunction", {
+  myfun = function(x, y, ...) x + y
 
-myfun = function(x, y, ...) x + y
-
-test_that("check_function", {
-  expect_false(test(NULL, "function"))
-  expect_true(test(identity, "function"))
-  expect_true(test(myfun, "function"))
+  expect_false(testFunction(NULL))
+  expect_true(testFunction(identity))
+  expect_true(testFunction(myfun))
   # FIXME this does not work ... is this a testthat issue?
-  # expect_true(test("myfun"))
-  expect_false(test(fff, "function"))
-  expect_false(test("fff", "function"))
+  # expect_true(testFunction("myfun"))
+  expect_false(testFunction(fff))
+  expect_false(testFunction("fff"))
 
-  expect_true(test(myfun, "function", args = "x"))
-  expect_true(test(myfun, "function", args = "..."))
-  expect_true(test(myfun, "function", args = "x", ordered=TRUE))
-  expect_true(test(myfun, "function", args = "y"))
-  expect_true(test(myfun, "function", args = c("x", "y")))
-  expect_true(test(myfun, "function", args = c("x", "y", "...")))
-  expect_true(test(myfun, "function", args = c("y", "x")))
-  expect_true(test(myfun, "function", args = c("x", "y"), ordered=TRUE))
-  expect_false(test(myfun, "function", args = "z"))
-  expect_false(test(myfun, "function", args = c("y"), ordered=TRUE))
-  expect_false(test(myfun, "function", args = c("y", "x"), ordered=TRUE))
+  expect_true(testFunction(myfun, args = "x"))
+  expect_true(testFunction(myfun, args = "..."))
+  expect_true(testFunction(myfun, args = "x", ordered=TRUE))
+  expect_true(testFunction(myfun, args = "y"))
+  expect_true(testFunction(myfun, args = c("x", "y")))
+  expect_true(testFunction(myfun, args = c("x", "y", "...")))
+  expect_true(testFunction(myfun, args = c("y", "x")))
+  expect_true(testFunction(myfun, args = c("x", "y"), ordered=TRUE))
+  expect_false(testFunction(myfun, args = "z"))
+  expect_false(testFunction(myfun, args = c("y"), ordered=TRUE))
+  expect_false(testFunction(myfun, args = c("y", "x"), ordered=TRUE))
 
 
-  expect_true(assert(myfun, "function"))
-  expect_error(assert(fff, "function"), "not found")
-  expect_error(assert(myfun, "function", "z"), "formal arguments")
-  expect_error(assert(myfun, "function", "y", ordered=TRUE), "first formal arguments")
+  expect_true(assertFunction(myfun))
+  expect_error(assertFunction(fff), "not found")
+  expect_error(assertFunction(myfun, "z"), "formal arguments")
+  expect_error(assertFunction(myfun, "y", ordered=TRUE), "first formal arguments")
 })

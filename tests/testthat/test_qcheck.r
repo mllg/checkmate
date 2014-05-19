@@ -20,7 +20,7 @@ expect_succ = function(x, rules) {
 expect_fail = function(x, rules) {
   expect_false(qcheck(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_error(qassert(x, rules),
+  expect_true(inherits(try(qassert(x, rules), silent=TRUE), "try-error"),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 

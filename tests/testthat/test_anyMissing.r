@@ -1,6 +1,5 @@
 context("anyMissing")
 
-
 test_that("anyMissing", {
   xb = logical(10)
   xi = integer(10)

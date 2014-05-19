@@ -1,15 +1,15 @@
-context("check_subset")
+context("checkSubset")
 
-test_that("check_subset", {
-  expect_true(test(character(0), "subset", letters))
-  expect_true(test(NULL, "subset", letters))
+test_that("checkSubset", {
+  expect_true(testSubset(character(0), letters))
+  expect_true(testSubset(NULL, letters))
 
-  expect_true(test(1L, "subset", 1:10))
-  expect_true(test(3:4, "subset", 1:10))
-  expect_false(test("ab", "subset", letters))
-  expect_false(test(NA_integer_, "subset", 1:10))
+  expect_true(testSubset(1L, 1:10))
+  expect_true(testSubset(3:4, 1:10))
+  expect_false(testSubset("ab", letters))
+  expect_false(testSubset(NA_integer_, 1:10))
 
-  expect_true(assert(1L, "subset", 1:2))
-  expect_error(assert(-1, "subset", 1:2), "All elements of")
-  expect_error(assert(1L, "subset", list()), "atomic")
+  expect_true(assertSubset(1L, 1:2))
+  expect_error(assertSubset(-1, 1:2), "All elements of")
+  expect_error(assertSubset(1L, list()), "atomic")
 })

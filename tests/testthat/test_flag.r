@@ -1,15 +1,15 @@
-context("check_flag")
+context("checkFlag")
 
-test_that("check_flag", {
-  expect_false(test(logical(0), "flag"))
-  expect_false(test(NULL, "flag"))
-  expect_true(test(TRUE, "flag"))
-  expect_true(test(FALSE, "flag"))
-  expect_false(test(NA, "flag"))
-  expect_true(test(NA, "flag", na.ok = TRUE))
-  expect_true(test(NA_character_, "flag", na.ok = TRUE))
-  expect_false(test(iris, "flag"))
+test_that("checkFlag", {
+  expect_false(testFlag(logical(0)))
+  expect_false(testFlag(NULL))
+  expect_true(testFlag(TRUE))
+  expect_true(testFlag(FALSE))
+  expect_false(testFlag(NA))
+  expect_true(testFlag(NA, na.ok = TRUE))
+  expect_true(testFlag(NA_character_, na.ok = TRUE))
+  expect_false(testFlag(iris))
 
-  expect_true(assert(TRUE, "flag"))
-  expect_error(assert(1, "flag", "flag"))
+  expect_true(assertFlag(TRUE))
+  expect_error(assertFlag(1), "logical")
 })

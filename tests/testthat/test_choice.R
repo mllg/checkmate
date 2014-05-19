@@ -1,15 +1,15 @@
-context("check_choice")
+context("checkChoice")
 
-test_that("check_choice", {
-  expect_error(test(character(0), "choice", letters), "length")
-  expect_error(test(NULL, "choice", letters), "atomic")
+test_that("checkChoice", {
+  expect_error(testChoice(character(0), letters), "length")
+  expect_error(testChoice(NULL, letters), "atomic")
 
-  expect_true(test(1L, "choice", 1:10))
-  expect_false(test("ab", "choice", letters))
-  expect_false(test(NA_integer_, "choice", 1:10))
-  expect_error(test(1:2, "choice", 1:10), "length")
+  expect_true(testChoice(1L, 1:10))
+  expect_false(testChoice("ab", letters))
+  expect_false(testChoice(NA_integer_, 1:10))
+  expect_error(testChoice(1:2, 1:10), "length")
 
-  expect_true(assert(1L, "choice", 1:2))
-  expect_error(assert(-1, "choice", 1:2), "element of")
-  expect_error(assert(1L, "choice", list()), "atomic")
+  expect_true(assertChoice(1L, 1:2))
+  expect_error(assertChoice(-1, 1:2), "element of")
+  expect_error(assertChoice(1L, list()), "atomic")
 })

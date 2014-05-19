@@ -1,23 +1,23 @@
-context("check_list")
+context("checkList")
 
-test_that("check_list", {
-  expect_true(test(list(), "list"))
-  expect_false(test(NULL, "list"))
-  expect_true(test(list(1), "list"))
-  expect_false(test(iris, "list"))
+test_that("checkList", {
+  expect_true(testList(list()))
+  expect_false(testList(NULL))
+  expect_true(testList(list(1)))
+  expect_false(testList(iris))
 
   x = as.list(iris)
-  expect_true(test(x, "list", types = c("numeric", "factor")))
-  expect_false(test(x, "list", types = c("integer", "factor")))
-  expect_false(test(x, "list", types = c("numeric", "character")))
-  expect_true(test(list(NULL), "list", types = "NULL"))
+  expect_true(testList(x, types = c("numeric", "factor")))
+  expect_false(testList(x, types = c("integer", "factor")))
+  expect_false(testList(x, types = c("numeric", "character")))
+  expect_true(testList(list(NULL), types = "NULL"))
 
-  expect_true(test(list(), "list", types = "numeric"))
+  expect_true(testList(list(), types = "numeric"))
 
 
-  expect_true(assert(list(TRUE), "list"))
-  expect_error(assert(1, "list"), "list")
+  expect_true(assertList(list(TRUE)))
+  expect_error(assertList(1))
 
-  expect_true(assert(x, "list", types = c("numeric", "factor")))
-  expect_error(assert(x, "list", types = "numeric"), "types: numeric")
+  expect_true(assertList(x, types = c("numeric", "factor")))
+  expect_error(assertList(x, types = "numeric"), "types: numeric")
 })
