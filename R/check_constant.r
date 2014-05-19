@@ -12,13 +12,13 @@
 #'  test(c(0, 1-0.9-0.1), "constant")
 #'  # should be FALSE due to rounding errors
 #'  test(c(0, 1-0.9-0.1), "constant", tol = 0)
-check_constant = function(x, tol = .Machine$double.eps^0.5) {
-  if (!check_constant_helper(x, tol))
+checkConstant = function(x, tol = .Machine$double.eps^0.5) {
+  if (!checkConstantHelper(x, tol))
     return("'%s' must have constant elements")
   return(TRUE)
 }
 
-check_constant_helper = function(x, tol = .Machine$double.eps^0.5) {
+checkConstantHelper = function(x, tol = .Machine$double.eps^0.5) {
   if (length(x) <= 1L)
     return(TRUE)
 
@@ -37,4 +37,16 @@ check_constant_helper = function(x, tol = .Machine$double.eps^0.5) {
     return(all(x == x[[1L]]))
   }
   all(vapply(tail(x, -1L), identical, y=x[[1L]], FUN.VALUE=NA))
+}
+
+#' @rdname checkConstant
+#' @export
+assertConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  makeAssertion(checkConstant(x, tol), vname(x, .var.name))
+}
+
+#' @rdname checkConstant
+#' @export
+testConstant = function(x, tol = .Machine$double.eps^0.5) {
+  makeTest(checkConstant(x, tol))
 }

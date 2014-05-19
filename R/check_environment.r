@@ -10,7 +10,7 @@
 #'  ee = as.environment(list(a = 1))
 #'  test(ee, "environment")
 #'  test(ee, "environment", contains = "a")
-check_environment = function(x, contains = character(0L)) {
+checkEnvironment = function(x, contains = character(0L)) {
   qassert(contains, "S")
   if (!is.environment(x))
     return(mustBeClass("environment"))
@@ -20,4 +20,16 @@ check_environment = function(x, contains = character(0L)) {
       return(sprintf("Environment '%%s' must contain an object named '%s'", contains[w]))
   }
   return(TRUE)
+}
+
+#' @rdname checkEnvironment
+#' @export
+assertEnvironment = function(x, contains = character(0L), .var.name) {
+  makeAssertion(checkEnvironment(x, contains), vname(x, .var.name))
+}
+
+#' @rdname checkEnvironment
+#' @export
+testEnvironment = function(x, contains = character(0L)) {
+  makeTest(checkEnvironment(x, contains))
 }

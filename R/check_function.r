@@ -10,17 +10,15 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(mean, "function")
-#'  test(check_function, "function", args = c("x", "ordered"))
-#'  test(check_function, "function", args = "i.do.not.exist")
-check_function = function(x, args, ordered = FALSE) {
+#'  testFunction(mean)
+#'  testFunction(mean, args = "x")
+checkFunction = function(x, args = NULL, ordered = FALSE) {
   qassert(ordered, "B1")
-  #FIXME: this check and the error message look a bit strange?
   x = try(match.fun(x), silent=TRUE)
   if (inherits(x, "try-error"))
     return("Function '%s' not found")
 
-  if (!missing(args)) {
+  if (!is.null(args)) {
     qassert(args, "S")
     fargs = names(formals(x))
     if (is.null(fargs))
@@ -37,4 +35,16 @@ check_function = function(x, args, ordered = FALSE) {
     }
   }
   return(TRUE)
+}
+
+#' @rdname checkFunction
+#' @export
+assertFunction = function(x, args = NULL, ordered = FALSE, .var.name) {
+  makeAssertion(checkFunction(x, args, ordered), vname(x, .var.name))
+}
+
+#' @rdname checkFunction
+#' @export
+testFunction = function(x, args = NULL, ordered = FALSE) {
+  makeTest(checkFunction(x, args, ordered))
 }

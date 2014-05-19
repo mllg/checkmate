@@ -1,3 +1,13 @@
+makeAssertion = function(msg, var.name) {
+  if (!isTRUE(msg))
+    stop(simpleError(sprintf(msg, var.name), call = sys.call(1L)))
+  invisible(TRUE)
+}
+
+makeTest = function(msg) {
+  isTRUE(msg)
+}
+
 # getter for variable name
 vname = function(x, var.name, n = 1L) {
   if (!missing(var.name))
@@ -47,9 +57,4 @@ mustBeClass = function(cl)
 
 mustLength = function(len) {
   sprintf("'%%s' must have length %i", len)
-}
-
-# could be a constant, maybe function more consitant....
-mustLength1 = function() {
-  mustLength(1L)
 }

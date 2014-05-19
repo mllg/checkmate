@@ -13,46 +13,58 @@
 #'  Exact number of columns.
 #' @param row.names [\code{logical(1)}]\cr
 #'  Check for row names. Default is \dQuote{any} (no check).
-#'  See \code{\link{check_named}} for possible values.
+#'  See \code{\link{checkNamed}} for possible values.
 #' @param col.names [\code{logical(1)}]\cr
 #'  Check for column names. Default is \dQuote{any} (no check).
-#'  See \code{\link{check_named}} for possible values.
+#'  See \code{\link{checkNamed}} for possible values.
 #' @family basetypes
 #' @export
 #' @examples
 #'  x = matrix(1:9, 3)
 #'  colnames(x) = letters[1:3]
 #'  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
-check_matrix = function(x, any.missing = TRUE, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
+checkMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
     return(mustBeClass("matrix"))
-  check_matrix_props(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
+  checkMatrixProps(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
-check_matrix_props = function(x, any.missing = TRUE, min.rows, min.cols, nrows, ncols, row.names = "any", col.names = "any") {
+checkMatrixProps = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   dims = dim(x)
   if (length(dims) != 2L)
     return("'%s' must have two dimensions")
   if (qassert(any.missing, "B1") && !any.missing && anyMissing(x))
     return("'%%s' may not contain missing values")
-  if (!missing(min.rows) && qassert(min.rows, "X1[0,)") && min.rows > dims[1L])
+  if (!is.null(min.rows) && qassert(min.rows, "X1[0,)") && min.rows > dims[1L])
     return(sprintf("'%%s' must have at least %i rows", dims[1L]))
-  if (!missing(min.cols) && qassert(min.cols, "X1[0,)") && min.cols > dims[2L])
+  if (!is.null(min.cols) && qassert(min.cols, "X1[0,)") && min.cols > dims[2L])
     return(sprintf("'%%s' must have at least %i columns", dims[2L]))
-  if (!missing(nrows) && qassert(nrows, "X1[0,)") && nrows != dims[1L])
+  if (!is.null(nrows) && qassert(nrows, "X1[0,)") && nrows != dims[1L])
     return(sprintf("'%%s' must have at exactly %i rows", dims[1L]))
-  if (!missing(ncols) && qassert(ncols, "X1[0,)") && ncols != dims[2L])
+  if (!is.null(ncols) && qassert(ncols, "X1[0,)") && ncols != dims[2L])
     return(sprintf("'%%s' must have at exactly %i columns", dims[2L]))
   if (qassert(row.names, "S1") && row.names != "any") {
-    tmp = check_names(rownames(x), type = row.names)
+    tmp = checkNames(rownames(x), type = row.names)
     if (!isTRUE(tmp))
       return(sprintf("Rows of %s", tmp))
   }
   if (qassert(col.names, "S1") && col.names != "any") {
-    tmp = check_names(colnames(x), type = col.names)
+    tmp = checkNames(colnames(x), type = col.names)
     if (!isTRUE(tmp))
       return(sprintf("Columns of %s", tmp))
   }
 
   return(TRUE)
+}
+
+#' @rdname checkMatrix
+#' @export
+assertMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any", .var.name) {
+  makeAssertion(checkMatrix(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names), vname(x, .var.name))
+}
+
+#' @rdname checkMatrix
+#' @export
+testMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
+  makeTest(checkMatrix(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }

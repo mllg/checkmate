@@ -10,13 +10,25 @@
 #' @examples
 #'  test(TRUE, "flag")
 #'  test(1, "flag")
-check_flag = function(x, na.ok = FALSE) {
+checkFlag = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
   if(length(x) != 1L)
-    return(mustLength1())
+    return(mustLength(1L))
   if (is.na(x))
     return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
   if(!is.logical(x))
     return(mustBeClass("logical"))
   return(TRUE)
+}
+
+#' @rdname checkFlag
+#' @export
+assertFlag = function(x, na.ok = FALSE, .var.name) {
+  makeAssertion(checkFlag(x, na.ok), vname(x, .var.name))
+}
+
+#' @rdname checkFlag
+#' @export
+testFlag = function(x, na.ok = FALSE) {
+  makeTest(checkFlag(x, na.ok))
 }

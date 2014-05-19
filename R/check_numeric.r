@@ -7,14 +7,26 @@
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than.
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{check_vector}}.
+#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
 #' @export
 #' @examples
 #'  test(1, "numeric")
 #'  test(1, "numeric", min.len = 1, lower = 0)
-check_numeric = function(x, lower, upper, ...) {
+checkNumeric = function(x, lower = -Inf, upper = Inf, ...) {
   if (!is.numeric(x) && !allMissingAtomic(x))
     return(mustBeClass("numeric"))
-  check_vector_props(x, ...) %and% check_bounds(x, lower, upper)
+  checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
+}
+
+#' @rdname checkNumeric
+#' @export
+assertNumeric = function(x, lower = -Inf, upper = Inf, ..., .var.name) {
+  makeAssertion(checkNumeric(x, lower, upper, ...), vname(x, .var.name))
+}
+
+#' @rdname checkNumeric
+#' @export
+testNumeric = function(x, lower = -Inf, upper = Inf, ...) {
+  makeTest(checkNumeric(x, lower, upper, ...))
 }

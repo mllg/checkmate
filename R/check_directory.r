@@ -1,8 +1,8 @@
 #' Check for existence and access rights of directories
 #'
 #' @template checker
-#' @inheritParams check_access
-#' @inheritParams check_file
+#' @inheritParams checkAccess
+#' @inheritParams checkFile
 #' @family filesystem
 #' @export
 #' @examples
@@ -11,7 +11,7 @@
 #'
 #'  # Is R's home directory writable?
 #'  test(R.home(), "access", "w")
-check_directory = function(x, access = "") {
+checkDirectory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)
     return("'%%s' has length 0, no directories were provided")
@@ -24,5 +24,17 @@ check_directory = function(x, access = "") {
   if (length(w) > 0L)
     return(sprintf("'%%s' expected to contain directories, file in place: '%s'", x[w]))
 
-  return(check_access(x, access))
+  return(checkAccess(x, access))
+}
+
+#' @rdname checkDirectory
+#' @export
+assertDirectory = function(x, access = "", .var.name) {
+  makeAssertion(checkDirectory(x, access), vname(x, .var.name))
+}
+
+#' @rdname checkDirectory
+#' @export
+testDirectory = function(x, access = "", .var.name) {
+  makeTest(checkDirectory(x, access))
 }

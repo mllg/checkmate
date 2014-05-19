@@ -20,7 +20,7 @@
 #'
 #'  # is x most specialized as "bar"?
 #'  test(x, "class", "bar", ordered = TRUE)
-check_class = function(x, classes, ordered = FALSE) {
+checkClass = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")
   qassert(ordered, "B1")
   ord = inherits(x, classes, TRUE)
@@ -33,4 +33,16 @@ check_class = function(x, classes, ordered = FALSE) {
       return(sprintf("'%%s' must have class '%s' in position %i", classes[w], w))
   }
   return(TRUE)
+}
+
+#' @rdname checkClass
+#' @export
+assertClass = function(x, classes, ordered = FALSE, .var.name) {
+  makeAssertion(checkClass(x, classes, ordered), vname(x, .var.name))
+}
+
+#' @rdname checkClass
+#' @export
+testClass = function(x, classes, ordered = FALSE) {
+  makeTest(checkClass(x, classes, ordered))
 }

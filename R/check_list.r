@@ -2,7 +2,7 @@
 #'
 #' @template checker
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{check_vector}}.
+#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
 #'  Character vector of class names. Each list element must inherit
 #'  from at least one of the provided types.
@@ -12,13 +12,13 @@
 #' @examples
 #'  test(list(), "list")
 #'  test(as.list(iris), "list", types = c("numeric", "factor"))
-check_list = function(x, types = character(0L), ...) {
+checkList = function(x, types = character(0L), ...) {
   if (!is.vector(x, "list"))
     return(mustBeClass("list"))
-  check_vector_props(x, ...) %and% check_list_props(x, types)
+  checkVectorProps(x, ...) %and% checkListProps(x, types)
 }
 
-check_list_props = function(x, types = character(0L)) {
+checkListProps = function(x, types = character(0L)) {
   if (length(types) == 0L)
     return(TRUE)
   qassert(types, "S")
@@ -26,4 +26,16 @@ check_list_props = function(x, types = character(0L)) {
   if (all(ok))
     return(TRUE)
   return(sprintf("'%%s' may only contain the following types: %s", collapse(types)))
+}
+
+#' @rdname checkList
+#' @export
+assertList = function(x, types = character(0L), ..., .var.name) {
+  makeAssertion(checkList(x, types, ...), vname(x, .var.name))
+}
+
+#' @rdname checkList
+#' @export
+testList = function(x, types = character(0L), ...) {
+  makeTest(checkList(x, types, ...))
 }

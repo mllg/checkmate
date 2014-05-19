@@ -14,24 +14,24 @@
 #' @param unique [\code{logical(1)}]\cr
 #'  Must all values be unique? Default is \code{FALSE}.
 #' @param names [\code{character(1)}]\cr
-#'  Check for names. See \code{\link{check_named}} for possible values.
+#'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
 #' @family basetypes
 #' @export
 #' @examples
 #'  test(letters, "vector", min.len = 1L, any.missing = FALSE)
-check_vector = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
+checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
   if (!is.vector(x))
     return(mustBeClass("vector"))
-  return(check_vector_props(x, any.missing, all.missing, len, min.len, max.len, unique, names))
+  return(checkVectorProps(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
 
-check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, min.len, max.len, unique = FALSE, names = "any") {
-  if (!missing(len) && qassert(len, "X1[0,)") && length(x) != len)
+checkVectorProps = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
+  if (!is.null(len) && qassert(len, "X1[0,)") && length(x) != len)
     return(mustLength(len))
-  if (!missing(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
+  if (!is.null(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
     return(sprintf("'%%s' must have length >= %i", min.len))
-  if (!missing(max.len) && qassert(max.len, "X1[0,)") && length(x) > max.len)
+  if (!is.null(max.len) && qassert(max.len, "X1[0,)") && length(x) > max.len)
     return(sprintf("'%%s' must have length <= %i", max.len))
   if (qassert(any.missing, "B1") && !any.missing && anyMissing(x))
     return("'%s' contains missing values")
@@ -40,7 +40,19 @@ check_vector_props = function(x, any.missing = TRUE, all.missing = TRUE, len, mi
   if (qassert(unique, "B1") && unique && anyDuplicated(x) > 0L)
     return("All elements of '%s' must be unique")
   if (qassert(names, "S1") && names != "any") {
-    return(check_named(x, type = names))
+    return(checkNamed(x, type = names))
   }
   return(TRUE)
+}
+
+#' @rdname checkVector
+#' @export
+assertVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any", .var.name) {
+  makeAssertion(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names), vname(x, .var.name))
+}
+
+#' @rdname checkVector
+#' @export
+testVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
+  makeTest(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }

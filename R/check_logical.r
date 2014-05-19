@@ -3,14 +3,26 @@
 #' @template na-handling
 #' @template checker
 #' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{check_vector}}.
+#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
 #' @export
 #' @examples
 #'  test(TRUE, "logical")
 #'  test(TRUE, "logical", min.len = 1)
-check_logical = function(x, ...) {
+checkLogical = function(x, ...) {
   if (!is.logical(x) && !allMissingAtomic(x))
     return(mustBeClass("logical"))
-  check_vector_props(x, ...)
+  checkVectorProps(x, ...)
+}
+
+#' @rdname checkLogical
+#' @export
+assertLogical = function(x, ..., .var.name) {
+  makeAssertion(checkLogical(x, ...), vname(x, .var.name))
+}
+
+#' @rdname checkLogical
+#' @export
+testLogical = function(x, ...) {
+  makeTest(checkLogical(x, ...))
 }

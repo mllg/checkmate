@@ -13,13 +13,13 @@
 #'  test(x, "named", "unnamed")
 #'  names(x) = letters[1:3]
 #'  test(x, "named", "unique")
-check_named = function(x, type = "named") {
+checkNamed = function(x, type = "named") {
   if (length(x) == 0L)
     return(TRUE)
-  return(check_names(names(x), type))
+  return(checkNames(names(x), type))
 }
 
-check_names = function(nn, type = "named") {
+checkNames = function(nn, type = "named") {
   type = match.arg(type, c("unnamed", "named", "unique", "strict"))
 
   if (type == "unnamed") {
@@ -38,4 +38,17 @@ check_names = function(nn, type = "named") {
   }
 
   return(TRUE)
+}
+
+
+#' @rdname checkNamed
+#' @export
+assertNamed = function(x, type = "named", .var.name) {
+  makeAssertion(checkNamed(x, type), vname(x, .var.name))
+}
+
+#' @rdname checkNamed
+#' @export
+testNamed = function(x, type = "named") {
+  makeTest(checkNamed(x, type))
 }

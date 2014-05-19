@@ -12,7 +12,7 @@
 #'
 #'  # Is R's home directory writeable?
 #'  test(R.home(), "access", "w")
-check_access = function(x, access) {
+checkAccess = function(x, access = "") {
   qassert(access, "S1")
   if (nzchar(access)) {
     access = match(strsplit(access, "")[[1L]], c("r", "w", "x"))
@@ -36,4 +36,16 @@ check_access = function(x, access) {
     }
   }
   return(TRUE)
+}
+
+#' @rdname checkAccess
+#' @export
+assertAccess = function(x, access = "", .var.name) {
+  makeAssertion(checkAccess(x, access), vname(x, .var.name))
+}
+
+#' @rdname checkAccess
+#' @export
+testAccess = function(x, access = "") {
+  makeTest(checkAccess(x, access))
 }

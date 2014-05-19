@@ -3,17 +3,29 @@
 #' Note that zero-length input is treated as constant.
 #'
 #' @template checker
-#' @inheritParams check_constant
+#' @inheritParams checkConstant
 #' @export
 #' @family constant
 #' @examples
 #'  test(c(1, NA), "inconstant")
 #'  test(c(0, 1-0.9-0.1), "inconstant")
 #'  test(c(0, 1-0.9-0.1), "inconstant", tol = 0)
-check_inconstant = function(x, tol = .Machine$double.eps^0.5) {
+checkInconstant = function(x, tol = .Machine$double.eps^0.5) {
   if (length(x) == 0L)
     return(FALSE)
-  if (check_constant_helper(x, tol))
+  if (checkConstantHelper(x, tol))
     return("'%s' must have inconstant (varying) elements")
   return(TRUE)
+}
+
+#' @rdname checkInconstant
+#' @export
+assertInconstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
+  makeAssertion(checkInconstant(x, tol), vname(x, .var.name))
+}
+
+#' @rdname checkInconstant
+#' @export
+testInconstant = function(x, tol = .Machine$double.eps^0.5) {
+  makeTest(checkInconstant(x, tol))
 }
