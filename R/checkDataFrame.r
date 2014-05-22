@@ -11,7 +11,7 @@
 #'  test(iris, "data.frame", min.rows = 1, col.names = "named")
 checkDataFrame = function(x, types = character(0L), any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   if (!is.data.frame(x))
-    return(mustBeClass("data.frame"))
+    return("Must be a data.frame")
   checkMatrixProps(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names) %and% checkListProps(x, types)
 }
 

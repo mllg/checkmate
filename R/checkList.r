@@ -15,7 +15,7 @@
 #'  test(as.list(iris), "list", types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), ...) {
   if (!is.vector(x, "list"))
-    return(mustBeClass("list"))
+    return("Must be a list")
   checkVectorProps(x, ...) %and% checkListProps(x, types)
 }
 
@@ -26,7 +26,7 @@ checkListProps = function(x, types = character(0L)) {
   ok = vapply(x, inherits, what = types, FUN.VALUE = NA, USE.NAMES = FALSE)
   if (all(ok))
     return(TRUE)
-  return(sprintf("'%%s' may only contain the following types: %s", collapse(types)))
+  return(sprintf("May only contain the following types: %s", collapse(types)))
 }
 
 #' @rdname checkList

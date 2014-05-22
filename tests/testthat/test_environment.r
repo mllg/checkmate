@@ -15,5 +15,5 @@ test_that("checkEnvironment", {
 
   expect_true(assertEnvironment(ee))
   expect_error(assertEnvironment(list()))
-  expect_error(assertEnvironment(ee, "xxx"), "named")
+  expect_error(assertEnvironment(ee, "xxx"), "with name")
 })

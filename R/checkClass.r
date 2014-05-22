@@ -27,11 +27,11 @@ checkClass = function(x, classes, ordered = FALSE) {
   ord = inherits(x, classes, TRUE)
   w = which.first(ord == 0L)
   if (length(w) > 0L)
-    return(sprintf("'%%s' must be of class '%s'", classes[w]))
+    return(sprintf("Must have class '%s'", classes[w]))
   if (ordered) {
     w = which.first(ord != seq_along(ord))
     if (length(w) > 0L)
-      return(sprintf("'%%s' must have class '%s' in position %i", classes[w], w))
+      return(sprintf("Must have class '%s' in position %i", classes[w], w))
   }
   return(TRUE)
 }

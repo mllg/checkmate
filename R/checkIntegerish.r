@@ -19,7 +19,7 @@
 checkIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
   qassert(tol, "N1")
   if (!isIntegerish(x, tol) && !allMissingAtomic(x))
-    return("'%s' must be integer-ish")
+    return("Must be integerish")
   checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
 }
 

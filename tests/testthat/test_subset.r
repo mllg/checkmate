@@ -10,6 +10,6 @@ test_that("checkSubset", {
   expect_false(testSubset(NA_integer_, 1:10))
 
   expect_true(assertSubset(1L, 1:2))
-  expect_error(assertSubset(-1, 1:2), "All elements of")
+  expect_error(assertSubset(-1, 1:2), "subset of")
   expect_error(assertSubset(1L, list()), "atomic")
 })

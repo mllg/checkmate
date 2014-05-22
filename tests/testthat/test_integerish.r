@@ -38,5 +38,5 @@ test_that("checkIntegerish", {
 
 
   expect_true(assertIntegerish(x))
-  expect_error(assertIntegerish(x, tol=0), "integer-ish")
+  expect_error(assertIntegerish(x, tol=0), "integerish")
 })

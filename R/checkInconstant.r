@@ -15,7 +15,7 @@ checkInconstant = function(x, tol = .Machine$double.eps^0.5) {
   if (length(x) == 0L)
     return(FALSE)
   if (checkConstantHelper(x, tol))
-    return("'%s' must have inconstant (varying) elements")
+    return("Must have inconstant (varying) elements")
   return(TRUE)
 }
 

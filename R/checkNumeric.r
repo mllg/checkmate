@@ -16,7 +16,7 @@
 #'  test(1, "numeric", min.len = 1, lower = 0)
 checkNumeric = function(x, lower = -Inf, upper = Inf, ...) {
   if (!is.numeric(x) && !allMissingAtomic(x))
-    return(mustBeClass("numeric"))
+    return("Must be numeric")
   checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
 }
 

@@ -23,23 +23,23 @@
 #'  test(letters, "vector", min.len = 1L, any.missing = FALSE)
 checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
   if (!is.vector(x))
-    return(mustBeClass("vector"))
+    return("Must be a vector")
   return(checkVectorProps(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
 
 checkVectorProps = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
   if (!is.null(len) && qassert(len, "X1[0,)") && length(x) != len)
-    return(mustLength(len))
+    return("Must have length 1")
   if (!is.null(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
-    return(sprintf("'%%s' must have length >= %i", min.len))
+    return(sprintf("Must have length >= %i", min.len))
   if (!is.null(max.len) && qassert(max.len, "X1[0,)") && length(x) > max.len)
-    return(sprintf("'%%s' must have length <= %i", max.len))
+    return(sprintf("Must have length <= %i", max.len))
   if (qassert(any.missing, "B1") && !any.missing && anyMissing(x))
-    return("'%s' contains missing values")
+    return("Contains missing values")
   if (qassert(all.missing, "B1") && !all.missing && allMissing(x))
-    return("'%s' contains only missing values")
+    return("Contains only missing values")
   if (qassert(unique, "B1") && unique && anyDuplicated(x) > 0L)
-    return("All elements of '%s' must be unique")
+    return("Must be unique")
   if (qassert(names, "S1") && names != "any") {
     return(checkNamed(x, type = names))
   }

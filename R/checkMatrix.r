@@ -26,24 +26,24 @@
 #'  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
 checkMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
-    return(mustBeClass("matrix"))
+    return("Must be a matrix")
   checkMatrixProps(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
 checkMatrixProps = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   dims = dim(x)
   if (length(dims) != 2L)
-    return("'%s' must have two dimensions")
+    return("Must have two dimensions")
   if (qassert(any.missing, "B1") && !any.missing && anyMissing(x))
-    return("'%%s' may not contain missing values")
+    return("May not contain missing values")
   if (!is.null(min.rows) && qassert(min.rows, "X1[0,)") && min.rows > dims[1L])
-    return(sprintf("'%%s' must have at least %i rows", dims[1L]))
+    return(sprintf("Must have at least %i rows", dims[1L]))
   if (!is.null(min.cols) && qassert(min.cols, "X1[0,)") && min.cols > dims[2L])
-    return(sprintf("'%%s' must have at least %i columns", dims[2L]))
+    return(sprintf("Must have at least %i columns", dims[2L]))
   if (!is.null(nrows) && qassert(nrows, "X1[0,)") && nrows != dims[1L])
-    return(sprintf("'%%s' must have at exactly %i rows", dims[1L]))
+    return(sprintf("Must have at exactly %i rows", dims[1L]))
   if (!is.null(ncols) && qassert(ncols, "X1[0,)") && ncols != dims[2L])
-    return(sprintf("'%%s' must have at exactly %i columns", dims[2L]))
+    return(sprintf("Must have at exactly %i columns", dims[2L]))
   if (qassert(row.names, "S1") && row.names != "any") {
     tmp = checkNames(rownames(x), type = row.names)
     if (!isTRUE(tmp))

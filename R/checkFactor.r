@@ -24,23 +24,23 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, .
   qassert(ordered, "b1")
   qassert(empty.levels.ok, "B1")
   if (!is.factor(x))
-    return(mustBeClass("factor"))
+    return("Must be a factor")
   if (!is.null(levels)) {
     qassert(levels, "S")
     if (!setequal(levels(x), levels))
-      return(sprintf("'%%s' must have levels: %s", collapse(levels)))
+      return(sprintf("Must have levels: %s", collapse(levels)))
   }
   if (!is.na(ordered)) {
     x.ordered = is.ordered(x)
     if (ordered && !x.ordered)
-      return("'%s' must be an ordered factor")
+      return("Must be an ordered factor")
     else if (!ordered && x.ordered)
-      return("'%s' must be an unordered factor")
+      return("Must be an unordered factor")
   }
   if (!empty.levels.ok) {
     not.ok = which.first(table(x) == 0L)
     if (length(not.ok) > 0L)
-      return(sprintf("'%%s' has empty level '%s'", names(not.ok)))
+      return(sprintf("Has has empty level '%s'", names(not.ok)))
   }
   checkVectorProps(x, ...)
 }

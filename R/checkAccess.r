@@ -23,17 +23,17 @@ checkAccess = function(x, access = "") {
     if (1L %in% access) {
       w = which.first(file.access(x, 4L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not readable: '%s'", x[w]))
+        return(sprintf("'%s' not readable", x[w]))
     }
     if (2L %in% access) {
       w = which.first(file.access(x, 2L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not writeable: '%s'", x[w]))
+        return(sprintf("'%s' not writeable", x[w]))
     }
     if (3L %in% access) {
       w = which.first(file.access(x, 1L) != 0L)
       if (length(w) > 0L)
-        return(sprintf("File in '%%s' not executeable: '%s'", x[w]))
+        return(sprintf("'%s' not executeable", x[w]))
     }
   }
   return(TRUE)

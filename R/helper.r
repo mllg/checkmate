@@ -1,6 +1,7 @@
 makeAssertion = function(msg, var.name) {
+  # FIXME test default for var.name
   if (!isTRUE(msg))
-    stop(simpleError(sprintf(msg, var.name), call = sys.call(1L)))
+    stop(simpleError(sprintf("Assertion on '%s' failed: %s", var.name, msg), call = sys.call(1L)))
   invisible(TRUE)
 }
 
@@ -24,15 +25,15 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
     msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")))
   if (recursive) {
     pos = attr(msg, "pos")
-    if (test(x, "named")) {
-      item = sprintf(", element '%s' (%i)", names(x)[pos], pos)
+    if (testNamed(x)) {
+      item = sprintf(", element '%s' (%i),", names(x)[pos], pos)
     } else {
-      item = sprintf(", element %i", pos)
+      item = sprintf(", element %i,", pos)
     }
   } else {
     item = ""
   }
-  msg = sprintf("Error checking argument '%s'%s: %s", vname, item, msg)
+  msg = sprintf("Assertion on '%s'%s failed: %s", vname, item, msg)
   stop(simpleError(msg, call = sys.call(1L)))
 }
 
@@ -50,11 +51,4 @@ collapse = function(x, sep = ",") {
 
 allMissingAtomic = function(x) {
   is.atomic(x) && allMissing(x)
-}
-
-mustBeClass = function(cl)
-  sprintf("'%%s' must be of class '%s'", cl)
-
-mustLength = function(len) {
-  sprintf("'%%s' must have length %i", len)
 }

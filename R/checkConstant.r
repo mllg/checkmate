@@ -15,7 +15,7 @@
 #'  test(c(0, 1-0.9-0.1), "constant", tol = 0)
 checkConstant = function(x, tol = .Machine$double.eps^0.5) {
   if (!checkConstantHelper(x, tol))
-    return("'%s' must have constant elements")
+    return("Must have only constant elements")
   return(TRUE)
 }
 

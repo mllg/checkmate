@@ -14,11 +14,11 @@
 checkEnvironment = function(x, contains = character(0L)) {
   qassert(contains, "S")
   if (!is.environment(x))
-    return(mustBeClass("environment"))
+    return("Must be an environment")
   if (length(contains) > 0L) {
     w = which.first(contains %nin% ls(x, all.names = TRUE))
     if (length(w) > 0L)
-      return(sprintf("Environment '%%s' must contain an object named '%s'", contains[w]))
+      return(sprintf("Must contain an object with name '%s'", contains[w]))
   }
   return(TRUE)
 }

@@ -17,7 +17,7 @@ checkFunction = function(x, args = NULL, ordered = FALSE) {
   qassert(ordered, "B1")
   x = try(match.fun(x), silent=TRUE)
   if (inherits(x, "try-error"))
-    return("Function '%s' not found")
+    return("Function not found")
 
   if (!is.null(args)) {
     qassert(args, "S")
@@ -27,12 +27,12 @@ checkFunction = function(x, args = NULL, ordered = FALSE) {
 
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
-        return(sprintf("Function '%%s' must have first formal arguments (ordered): %s", collapse(args)))
+        return(sprintf("Must have first formal arguments (ordered): %s", collapse(args)))
       }
     } else {
       tmp = setdiff(args, fargs)
       if (length(tmp))
-        return(sprintf("Function '%%s' is missing formal arguments: %s", collapse(tmp)))
+        return(sprintf("Must have formal arguments: %s", collapse(tmp)))
     }
   }
   return(TRUE)

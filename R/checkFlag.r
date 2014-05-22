@@ -14,11 +14,11 @@
 checkFlag = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
   if(length(x) != 1L)
-    return(mustLength(1L))
+    return("Must have length 1")
   if (is.na(x))
-    return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
+    return(ifelse(na.ok, TRUE, "May not be NA"))
   if(!is.logical(x))
-    return(mustBeClass("logical"))
+    return("Must be a logical")
   return(TRUE)
 }
 

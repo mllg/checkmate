@@ -15,13 +15,13 @@
 checkCount = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
   if (length(x) != 1L)
-    return(mustLength(1L))
+    return("Must have length 1")
   if (is.na(x))
-    return(ifelse(na.ok, TRUE, "'%s' may not be NA"))
+    return(ifelse(na.ok, TRUE, "May not be NA"))
   if (!qcheck(x, "x1"))
-    return("'%s' must be integerish")
+    return("Must be integerish")
   if (x < 0)
-    return("'%s' must be >= 0")
+    return("Must be >= 0")
   return(TRUE)
 }
 

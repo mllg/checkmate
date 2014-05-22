@@ -15,15 +15,15 @@
 checkDirectory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)
-    return("'%%s' has length 0, no directories were provided")
+    return("No directory provided")
 
   isdir = file.info(x)$isdir
   w = which.first(is.na(isdir))
   if (length(w) > 0L)
-    return(sprintf("Directory in '%%s' does not exist: '%s'", x[w]))
+    return(sprintf("Directory '%s' does not exists", x[w]))
   w = which.first(!isdir)
   if (length(w) > 0L)
-    return(sprintf("'%%s' expected to contain directories, file in place: '%s'", x[w]))
+    return(sprintf("Directory extected, but file in place: '%s'", x[w]))
 
   return(checkAccess(x, access))
 }

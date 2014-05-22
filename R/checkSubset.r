@@ -12,7 +12,7 @@ checkSubset = function(x, choices) {
   qassert(choices, "a+")
   not.ok = which.first(x %nin% choices)
   if (length(not.ok) > 0L)
-    return(sprintf("All elements of '%%s' must be in {'%s'}", collapse(choices, "','")))
+    return(sprintf("Must be subset of {'%s'}", collapse(choices, "','")))
   return(TRUE)
 }
 

@@ -12,7 +12,7 @@
 #'  test(1., "complex")
 checkComplex = function(x, ...) {
   if (!is.complex(x) && !allMissingAtomic(x))
-    return(mustBeClass("complex"))
+    return("Must be complex")
   checkVectorProps(x, ...)
 }
 

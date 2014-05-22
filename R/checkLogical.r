@@ -12,7 +12,7 @@
 #'  test(TRUE, "logical", min.len = 1)
 checkLogical = function(x, ...) {
   if (!is.logical(x) && !allMissingAtomic(x))
-    return(mustBeClass("logical"))
+    return("Must be a logical")
   checkVectorProps(x, ...)
 }
 

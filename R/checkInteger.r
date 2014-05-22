@@ -17,7 +17,7 @@
 #'  test(1:2, "integer", lower = 1, upper = 2, any.missing = FALSE)
 checkInteger = function(x, lower = -Inf, upper = Inf, ...) {
   if (!is.integer(x) && !allMissingAtomic(x))
-    return(mustBeClass("integer"))
+    return("Must be integer")
   checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
 }
 

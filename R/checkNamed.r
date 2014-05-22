@@ -22,22 +22,19 @@ checkNamed = function(x, type = "named") {
 
 checkNames = function(nn, type = "named") {
   type = match.arg(type, c("unnamed", "named", "unique", "strict"))
-
   if (type == "unnamed") {
     if (!is.null(nn))
-      return("'%s' must be unnamed")
+      return("Must be unnamed")
     return(TRUE)
-  } else if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn))) {
-    return("'%s' must be named")
   }
-
+  if (is.null(nn) || anyMissing(nn) || !all(nzchar(nn)))
+    return("Must be named")
   if (type %in% c("unique", "strict")) {
     if (anyDuplicated(nn) > 0L)
-      return("'%s' contains duplicated names")
+      return("Contains duplicated names")
     if (type == "strict" && any(nn != make.names(nn) | grepl("^\\.\\.[0-9]$", nn)))
-      return("Names of '%s' are not compatible with R's variable naming rules")
+      return("Names not compatible with R's variable naming rules")
   }
-
   return(TRUE)
 }
 
