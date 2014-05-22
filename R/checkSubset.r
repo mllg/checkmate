@@ -25,5 +25,5 @@ assertSubset = function(x, choices, .var.name) {
 #' @rdname checkSubset
 #' @export
 testSubset = function(x, choices) {
-  makeTest(checkSubset(x, choices))
+  isTRUE(checkSubset(x, choices))
 }

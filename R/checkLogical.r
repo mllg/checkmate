@@ -25,5 +25,5 @@ assertLogical = function(x, ..., .var.name) {
 #' @rdname checkLogical
 #' @export
 testLogical = function(x, ...) {
-  makeTest(checkLogical(x, ...))
+  isTRUE(checkLogical(x, ...))
 }

@@ -30,5 +30,5 @@ assertInteger = function(x, lower = -Inf, upper = Inf, ..., .var.name) {
 #' @rdname checkInteger
 #' @export
 testInteger = function(x, lower = -Inf, upper = Inf, ...) {
-  makeTest(checkInteger(x, lower, upper, ...))
+  isTRUE(checkInteger(x, lower, upper, ...))
 }

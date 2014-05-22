@@ -49,5 +49,5 @@ assertConstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
 #' @rdname checkConstant
 #' @export
 testConstant = function(x, tol = .Machine$double.eps^0.5) {
-  makeTest(checkConstant(x, tol))
+  isTRUE(checkConstant(x, tol))
 }

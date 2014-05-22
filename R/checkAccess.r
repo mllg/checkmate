@@ -48,5 +48,5 @@ assertAccess = function(x, access = "", .var.name) {
 #' @rdname checkAccess
 #' @export
 testAccess = function(x, access = "") {
-  makeTest(checkAccess(x, access))
+  isTRUE(checkAccess(x, access))
 }

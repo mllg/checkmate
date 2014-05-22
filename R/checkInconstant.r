@@ -28,5 +28,5 @@ assertInconstant = function(x, tol = .Machine$double.eps^0.5, .var.name) {
 #' @rdname checkInconstant
 #' @export
 testInconstant = function(x, tol = .Machine$double.eps^0.5) {
-  makeTest(checkInconstant(x, tol))
+  isTRUE(checkInconstant(x, tol))
 }

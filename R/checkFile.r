@@ -36,5 +36,5 @@ assertFile = function(x, access = "", .var.name) {
 #' @rdname checkFile
 #' @export
 testFile = function(x, access = "") {
-  makeTest(checkFile(x, access))
+  isTRUE(checkFile(x, access))
 }

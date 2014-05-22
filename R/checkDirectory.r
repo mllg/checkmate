@@ -37,5 +37,5 @@ assertDirectory = function(x, access = "", .var.name) {
 #' @rdname checkDirectory
 #' @export
 testDirectory = function(x, access = "", .var.name) {
-  makeTest(checkDirectory(x, access))
+  isTRUE(checkDirectory(x, access))
 }

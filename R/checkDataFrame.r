@@ -24,5 +24,5 @@ assertDataFrame = function(x, types = character(0L), any.missing = TRUE, min.row
 #' @rdname checkDataFrame
 #' @export
 testDataFrame = function(x, types = character(0L), any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
-  makeTest(checkDataFrame(x, types, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
+  isTRUE(checkDataFrame(x, types, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }

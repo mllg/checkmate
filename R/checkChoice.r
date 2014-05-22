@@ -25,5 +25,5 @@ assertChoice = function(x, choices, .var.name) {
 #' @rdname checkChoice
 #' @export
 testChoice = function(x, choices) {
-  makeTest(checkChoice(x, choices))
+  isTRUE(checkChoice(x, choices))
 }

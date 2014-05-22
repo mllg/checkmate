@@ -25,5 +25,5 @@ assertComplex = function(x, ..., .var.name) {
 #' @rdname checkComplex
 #' @export
 testComplex = function(x, ...) {
-  makeTest(checkComplex(x, ...))
+  isTRUE(checkComplex(x, ...))
 }

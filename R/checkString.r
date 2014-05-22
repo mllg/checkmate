@@ -33,5 +33,5 @@ assertString = function(x, na.ok = FALSE, ..., .var.name) {
 #' @rdname checkString
 #' @export
 testString = function(x, na.ok = FALSE, ...) {
-  makeTest(checkString(x, na.ok, ...))
+  isTRUE(checkString(x, na.ok, ...))
 }

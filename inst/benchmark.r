@@ -14,7 +14,7 @@ pr(microbenchmark(
     # 2nd, with useful error messages
     qassert(x, "B1"),
     # 4rd
-    assert(x, "flag", na.ok = FALSE),
+    assertFlag(x, na.ok = FALSE),
     # 5th
     checkArg(x, "logical", len = 1, na.ok = FALSE)
 ))
@@ -23,8 +23,9 @@ x = 1:10
 pr(microbenchmark(
     if (!is.integer(x) || length(x) == 0 || any(x < 0)) stop("error"),
     qassert(x, "i+[1,)"),
+    isTRUE(checkInteger(x, min.len=1L, lower=1)),
     stopifnot(is.integer(x) && length(x) >= 1 && all(x >= 1)),
-    assert(x, "integer", min.len = 1, lower = 1),
+    assertInteger(x, min.len = 1, lower = 1),
     checkArg(x, "integer", min.len = 1, lower = 1)
 ))
 
@@ -33,7 +34,7 @@ pr(microbenchmark(
     if (!is.character(x) || length(x) < 10 || any(is.na(x))) stop("error"),
     qassert(x, "S>=10"),
     stopifnot(is.character(x) && length(x) >= 10 && all(!is.na(x))),
-    assert(x, "character", min.len = 10, any.missing = FALSE),
+    assertCharacter(x, min.len = 10, any.missing = FALSE),
     checkArg(x, "character", min.len = 10, na.ok = FALSE)
 ))
 
@@ -43,7 +44,7 @@ pr(microbenchmark(
     if (!is.numeric(x) || any(is.na(x))) stop("error"),
     qassert(x, "N"),
     stopifnot(is.numeric(x) && all(!is.na(x))),
-    assert(x, "numeric", any.missing = FALSE),
+    assertNumeric(x, any.missing = FALSE),
     checkArg(x, "numeric", na.ok = FALSE)
 ))
 
@@ -53,6 +54,6 @@ pr(microbenchmark(
     if (!is.numeric(x) || any(x < 0)) stop("error"),
     qassert(x, "N[0,]"),
     stopifnot(is.numeric(x) && all(x >= 0)),
-    assert(x, "numeric", lower = 0),
+    assertNumeric(x, lower = 0),
     checkArg(x, "numeric", lower = 0)
 ))

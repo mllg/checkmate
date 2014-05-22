@@ -13,13 +13,12 @@
 #'  test(-1, "count")
 #'  test(Inf, "count")
 checkCount = function(x, na.ok = FALSE) {
-  qassert(na.ok, "B1")
   if (length(x) != 1L)
     return("Must have length 1")
-  if (is.na(x))
-    return(ifelse(na.ok, TRUE, "May not be NA"))
   if (!qcheck(x, "x1"))
     return("Must be integerish")
+  if (is.na(x))
+    return(if(isTRUE(na.ok)) TRUE else "May not be NA")
   if (x < 0)
     return("Must be >= 0")
   return(TRUE)
@@ -34,5 +33,5 @@ assertCount = function(x, na.ok = FALSE, .var.name) {
 #' @rdname checkCount
 #' @export
 testCount = function(x, na.ok = FALSE) {
-  makeTest(checkCount(x, na.ok))
+  isTRUE(checkCount(x, na.ok))
 }

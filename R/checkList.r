@@ -38,5 +38,5 @@ assertList = function(x, types = character(0L), ..., .var.name) {
 #' @rdname checkList
 #' @export
 testList = function(x, types = character(0L), ...) {
-  makeTest(checkList(x, types, ...))
+  isTRUE(checkList(x, types, ...))
 }

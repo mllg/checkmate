@@ -31,5 +31,5 @@ assertFlag = function(x, na.ok = FALSE, .var.name) {
 #' @rdname checkFlag
 #' @export
 testFlag = function(x, na.ok = FALSE) {
-  makeTest(checkFlag(x, na.ok))
+  isTRUE(checkFlag(x, na.ok))
 }

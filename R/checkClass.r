@@ -45,5 +45,5 @@ assertClass = function(x, classes, ordered = FALSE, .var.name) {
 #' @rdname checkClass
 #' @export
 testClass = function(x, classes, ordered = FALSE) {
-  makeTest(checkClass(x, classes, ordered))
+  isTRUE(checkClass(x, classes, ordered))
 }

@@ -55,5 +55,5 @@ assertVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 #' @rdname checkVector
 #' @export
 testVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
-  makeTest(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names))
+  isTRUE(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }

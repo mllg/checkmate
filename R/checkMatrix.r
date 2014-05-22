@@ -67,5 +67,5 @@ assertMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
 #' @rdname checkMatrix
 #' @export
 testMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
-  makeTest(checkMatrix(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
+  isTRUE(checkMatrix(x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }

@@ -5,10 +5,6 @@ makeAssertion = function(msg, var.name) {
   invisible(TRUE)
 }
 
-makeTest = function(msg) {
-  isTRUE(msg)
-}
-
 # getter for variable name
 vname = function(x, var.name, n = 1L) {
   if (!missing(var.name))

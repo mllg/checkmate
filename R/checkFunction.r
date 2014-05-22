@@ -47,5 +47,5 @@ assertFunction = function(x, args = NULL, ordered = FALSE, .var.name) {
 #' @rdname checkFunction
 #' @export
 testFunction = function(x, args = NULL, ordered = FALSE) {
-  makeTest(checkFunction(x, args, ordered))
+  isTRUE(checkFunction(x, args, ordered))
 }

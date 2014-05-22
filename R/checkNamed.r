@@ -48,5 +48,5 @@ assertNamed = function(x, type = "named", .var.name) {
 #' @rdname checkNamed
 #' @export
 testNamed = function(x, type = "named") {
-  makeTest(checkNamed(x, type))
+  isTRUE(checkNamed(x, type))
 }

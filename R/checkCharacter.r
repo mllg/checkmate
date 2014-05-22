@@ -53,5 +53,5 @@ assertCharacter = function(x, pattern = NULL, ignore.case = FALSE, perl = FALSE,
 #' @rdname checkCharacter
 #' @export
 testCharacter = function(x, pattern = NULL, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
-  makeTest(checkCharacter(x, pattern, ignore.case, perl, fixed, min.chars, ...))
+  isTRUE(checkCharacter(x, pattern, ignore.case, perl, fixed, min.chars, ...))
 }

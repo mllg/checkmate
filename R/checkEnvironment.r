@@ -32,5 +32,5 @@ assertEnvironment = function(x, contains = character(0L), .var.name) {
 #' @rdname checkEnvironment
 #' @export
 testEnvironment = function(x, contains = character(0L)) {
-  makeTest(checkEnvironment(x, contains))
+  isTRUE(checkEnvironment(x, contains))
 }

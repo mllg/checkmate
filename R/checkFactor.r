@@ -54,5 +54,5 @@ assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, 
 #' @rdname checkFactor
 #' @export
 testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...) {
-  makeTest(checkFactor(x, levels, ordered, empty.levels.ok, ...))
+  isTRUE(checkFactor(x, levels, ordered, empty.levels.ok, ...))
 }

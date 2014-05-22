@@ -32,5 +32,5 @@ assertIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.
 #' @rdname checkIntegerish
 #' @export
 testIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
-  makeTest(checkIntegerish(x, lower, upper, tol, ...))
+  isTRUE(checkIntegerish(x, lower, upper, tol, ...))
 }

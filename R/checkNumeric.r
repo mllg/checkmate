@@ -29,5 +29,5 @@ assertNumeric = function(x, lower = -Inf, upper = Inf, ..., .var.name) {
 #' @rdname checkNumeric
 #' @export
 testNumeric = function(x, lower = -Inf, upper = Inf, ...) {
-  makeTest(checkNumeric(x, lower, upper, ...))
+  isTRUE(checkNumeric(x, lower, upper, ...))
 }
