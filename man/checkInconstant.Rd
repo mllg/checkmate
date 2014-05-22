@@ -28,8 +28,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertInconstant} throws an error message,
  \code{testInconstant} returns \code{FALSE} and \code{checkInconstant} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Note that zero-length input is treated as constant.

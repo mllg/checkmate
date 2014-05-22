@@ -27,8 +27,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertChoice} throws an error message,
  \code{testChoice} returns \code{FALSE} and \code{checkChoice} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check if an object is an element of a given set

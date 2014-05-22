@@ -40,8 +40,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertIntegerish} throws an error message,
  \code{testIntegerish} returns \code{FALSE} and \code{checkIntegerish} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check if an object is an integerish vector

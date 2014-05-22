@@ -27,8 +27,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertFlag} throws an error message,
  \code{testFlag} returns \code{FALSE} and \code{checkFlag} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 A flag a a single logical value.

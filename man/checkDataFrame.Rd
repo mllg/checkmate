@@ -58,8 +58,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertDataFrame} throws an error message,
  \code{testDataFrame} returns \code{FALSE} and \code{checkDataFrame} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check if an argument is a \code{data.frame}

@@ -28,8 +28,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertFile} throws an error message,
  \code{testFile} returns \code{FALSE} and \code{checkFile} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check existence and access rights of files

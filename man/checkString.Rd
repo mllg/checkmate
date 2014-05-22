@@ -30,8 +30,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertString} throws an error message,
  \code{testString} returns \code{FALSE} and \code{checkString} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 A string a character vector of length 1.

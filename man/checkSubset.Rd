@@ -27,8 +27,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertSubset} throws an error message,
  \code{testSubset} returns \code{FALSE} and \code{checkSubset} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check if object is a subset of a given set

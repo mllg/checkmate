@@ -28,8 +28,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertAccess} throws an error message,
  \code{testAccess} returns \code{FALSE} and \code{checkAccess} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check file system access rights

@@ -51,8 +51,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertMatrix} throws an error message,
  \code{testMatrix} returns \code{FALSE} and \code{checkMatrix} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 Check if an argument is a matrix

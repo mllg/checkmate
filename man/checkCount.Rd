@@ -27,8 +27,7 @@ Depending on the function prefix:
  If the check is successfull, all functions return \code{TRUE}.
  If the check is not successfull, \code{assertCount} throws an error message,
  \code{testCount} returns \code{FALSE} and \code{checkCount} returns
- a \code{\link[base]{sprintf}} suitable message template with a placeholder
- for the variable name.
+ a string with the error message.
 }
 \description{
 A count is a non-negative integer.
