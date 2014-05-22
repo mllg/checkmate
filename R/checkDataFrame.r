@@ -7,8 +7,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(iris, "data.frame")
-#'  test(iris, "data.frame", min.rows = 1, col.names = "named")
+#'  testDataFrame(iris, "data.frame")
+#'  testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
 checkDataFrame = function(x, types = character(0L), any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   if (!is.data.frame(x))
     return("Must be a data.frame")

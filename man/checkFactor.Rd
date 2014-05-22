@@ -48,8 +48,8 @@ Check if an argument is a factor
 }
 \examples{
 x = factor("a", levels = c("a", "b"))
- test(x, "factor")
- test(x, "factor", empty.levels.ok = FALSE)
+ testFactor(x)
+ testFactor(x, empty.levels.ok = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

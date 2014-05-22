@@ -9,9 +9,9 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
 #' @examples
-#'  test(1, "count")
-#'  test(-1, "count")
-#'  test(Inf, "count")
+#'  testCount(1)
+#'  testCount(-1)
+#'  testCount(Inf)
 checkCount = function(x, na.ok = FALSE) {
   if (length(x) != 1L)
     return("Must have length 1")

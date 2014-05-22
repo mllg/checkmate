@@ -20,9 +20,9 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(letters, "character", min.len = 1, any.missing = FALSE)
-#'  test(letters, "character", min.chars = 2)
-#'  test("example", "character", pattern = "ple")
+#'  testCharacter(letters, min.len = 1, any.missing = FALSE)
+#'  testCharacter(letters, min.chars = 2)
+#'  testCharacter("example", pattern = "xa")
 checkCharacter = function(x, pattern = NULL, ignore.case = FALSE, perl = FALSE, fixed = FALSE, min.chars = 0L, ...) {
   if (!is.character(x) && !allMissingAtomic(x))
     return("Must be a character")

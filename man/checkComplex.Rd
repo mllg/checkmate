@@ -38,8 +38,8 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(1L, "complex")
- test(1., "complex")
+testComplex(1)
+ testComplex(1+1i)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

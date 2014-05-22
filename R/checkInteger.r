@@ -10,11 +10,12 @@
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
+#' @seealso \code{\link{asInteger}}
 #' @export
 #' @examples
-#'  test(1L, "integer")
-#'  test(1., "integer")
-#'  test(1:2, "integer", lower = 1, upper = 2, any.missing = FALSE)
+#'  testInteger(1L)
+#'  testInteger(1.)
+#'  testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
 checkInteger = function(x, lower = -Inf, upper = Inf, ...) {
   if (!is.integer(x) && !allMissingAtomic(x))
     return("Must be integer")

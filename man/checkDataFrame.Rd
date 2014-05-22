@@ -64,8 +64,8 @@ Depending on the function prefix:
 Check if an argument is a \code{data.frame}
 }
 \examples{
-test(iris, "data.frame")
- test(iris, "data.frame", min.rows = 1, col.names = "named")
+testDataFrame(iris, "data.frame")
+ testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

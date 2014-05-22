@@ -58,9 +58,9 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(letters, "character", min.len = 1, any.missing = FALSE)
- test(letters, "character", min.chars = 2)
- test("example", "character", pattern = "ple")
+testCharacter(letters, min.len = 1, any.missing = FALSE)
+ testCharacter(letters, min.chars = 2)
+ testCharacter("example", pattern = "xa")
 }
 \seealso{
 Other basetypes: \code{\link{assertComplex}},

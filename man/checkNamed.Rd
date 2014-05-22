@@ -38,8 +38,8 @@ Check if an argument is named
 }
 \examples{
 x = 1:3
- test(x, "named", "unnamed")
+ testNamed(x, "unnamed")
  names(x) = letters[1:3]
- test(x, "named", "unique")
+ testNamed(x, "unique")
 }
 

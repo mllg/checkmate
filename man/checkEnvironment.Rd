@@ -35,8 +35,8 @@ Check if an argument is an environment
 }
 \examples{
 ee = as.environment(list(a = 1))
- test(ee, "environment")
- test(ee, "environment", contains = "a")
+ testEnvironment(ee)
+ testEnvironment(ee, contains = "a")
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

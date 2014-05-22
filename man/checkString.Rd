@@ -41,7 +41,7 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test("a", "string")
- test(letters, "string")
+testString("a")
+ testString(letters)
 }
 

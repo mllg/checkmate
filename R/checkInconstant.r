@@ -8,9 +8,9 @@
 #' @export
 #' @family constant
 #' @examples
-#'  test(c(1, NA), "inconstant")
-#'  test(c(0, 1-0.9-0.1), "inconstant")
-#'  test(c(0, 1-0.9-0.1), "inconstant", tol = 0)
+#'  testInconstant(c(1, NA))
+#'  testInconstant(c(0, 1-0.9-0.1))
+#'  testInconstant(c(0, 1-0.9-0.1), tol = 0)
 checkInconstant = function(x, tol = .Machine$double.eps^0.5) {
   if (length(x) == 0L)
     return(FALSE)

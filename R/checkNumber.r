@@ -1,15 +1,14 @@
-#' Check if an argument is single numeric
+#' Check if an argument is a single numeric
 #'
-#' @templateVar fn Count
+#' @templateVar fn Number
 #' @template na-handling
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
 #' @examples
-#'  test(1, "count")
-#'  test(-1, "count")
-#'  test(Inf, "count")
+#'  testNumber(1)
+#'  testNumber(1:2)
 checkNumber = function(x, na.ok = FALSE) {
   if (length(x) != 1L || !is.numeric(x))
     return("Must be a number")
@@ -18,13 +17,13 @@ checkNumber = function(x, na.ok = FALSE) {
   return(TRUE)
 }
 
-#' @rdname checkCount
+#' @rdname checkNumber
 #' @export
 assertNumber = function(x, na.ok = FALSE, .var.name) {
   makeAssertion(checkNumber(x, na.ok), vname(x, .var.name))
 }
 
-#' @rdname checkCount
+#' @rdname checkNumber
 #' @export
 testNumber = function(x, na.ok = FALSE) {
   isTRUE(checkNumber(x, na.ok))

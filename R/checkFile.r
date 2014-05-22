@@ -7,10 +7,10 @@
 #' @export
 #' @examples
 #'  # Check if R's COPYING file is readable
-#'  test(file.path(R.home(), "COPYING"), "file", access = "r")
+#'  testFile(file.path(R.home(), "COPYING"), access = "r")
 #'
 #'  # Check if R's COPYING file is writable
-#'  test(file.path(R.home(), "COPYING"), "file", access = "w")
+#'  testFile(file.path(R.home(), "COPYING"), access = "w")
 checkFile = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)

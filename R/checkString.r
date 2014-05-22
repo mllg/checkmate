@@ -11,8 +11,8 @@
 #'  Additional parameters used in a call of \code{\link{checkCharacter}}.
 #' @export
 #' @examples
-#'  test("a", "string")
-#'  test(letters, "string")
+#'  testString("a")
+#'  testString(letters)
 checkString = function(x, na.ok = FALSE, ...) {
   qassert(na.ok, "B1")
   if (length(x) != 1L)

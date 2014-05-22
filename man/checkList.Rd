@@ -38,8 +38,8 @@ Depending on the function prefix:
 Check if an argument is a list
 }
 \examples{
-test(list(), "list")
- test(as.list(iris), "list", types = c("numeric", "factor"))
+testList(list())
+ testList(as.list(iris), types = c("numeric", "factor"))
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

@@ -14,13 +14,13 @@
 #'  class(x) = c("foo", "bar")
 #'
 #'  # is x of class "foo"?
-#'  test(x, "class", "foo")
+#'  testClass(x, "foo")
 #'
 #'  # is x of class "foo" and "bar"?
-#'  test(x, "class", c("foo", "bar"))
+#'  testClass(x, c("foo", "bar"))
 #'
 #'  # is x most specialized as "bar"?
-#'  test(x, "class", "bar", ordered = TRUE)
+#'  testClass(x, "bar", ordered = TRUE)
 checkClass = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")
   qassert(ordered, "B1")

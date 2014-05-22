@@ -44,11 +44,13 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(1L, "integer")
- test(1., "integer")
- test(1:2, "integer", lower = 1, upper = 2, any.missing = FALSE)
+testInteger(1L)
+ testInteger(1.)
+ testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
 }
 \seealso{
+\code{\link{asInteger}}
+
 Other basetypes: \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},

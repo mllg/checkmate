@@ -38,8 +38,8 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(TRUE, "logical")
- test(TRUE, "logical", min.len = 1)
+testLogical(TRUE)
+ testLogical(TRUE, min.len = 1)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

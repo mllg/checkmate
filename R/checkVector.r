@@ -20,7 +20,7 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(letters, "vector", min.len = 1L, any.missing = FALSE)
+#'  testVector(letters, min.len = 1L, any.missing = FALSE)
 checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
   if (!is.vector(x))
     return("Must be a vector")

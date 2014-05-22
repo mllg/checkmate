@@ -33,7 +33,7 @@ Depending on the function prefix:
 Check if an object is an element of a given set
 }
 \examples{
-test("x", "choice", letters)
+testChoice("x", letters)
 }
 \seealso{
 Other set: \code{\link{assertSubset}},

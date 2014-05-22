@@ -38,7 +38,7 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(TRUE, "flag")
- test(1, "flag")
+testFlag(TRUE)
+ testFlag(1)
 }
 

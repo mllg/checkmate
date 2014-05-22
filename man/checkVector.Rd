@@ -56,7 +56,7 @@ Depending on the function prefix:
 Check vector properties
 }
 \examples{
-test(letters, "vector", min.len = 1L, any.missing = FALSE)
+testVector(letters, min.len = 1L, any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

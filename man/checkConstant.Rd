@@ -34,9 +34,8 @@ Depending on the function prefix:
 Note that zero-length input is treated as constant.
 }
 \examples{
-test(c(0, 1-0.9-0.1), "constant")
- # should be FALSE due to rounding errors
- test(c(0, 1-0.9-0.1), "constant", tol = 0)
+testConstant(c(0, 1-0.9-0.1))
+ testConstant(c(0, 1-0.9-0.1), tol = 0)
 }
 \seealso{
 Other constant: \code{\link{assertInconstant}},

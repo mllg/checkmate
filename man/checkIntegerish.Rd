@@ -51,9 +51,9 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(1L, "integerish")
- test(1., "integerish")
- test(1:2, "integerish", lower = 1L, upper = 2L, any.missing = FALSE)
+testIntegerish(1L)
+ testIntegerish(1.)
+ testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

@@ -44,8 +44,8 @@ This function does not distinguish between
 and \code{NA_character_}.
 }
 \examples{
-test(1, "numeric")
- test(1, "numeric", min.len = 1, lower = 0)
+testNumeric(1)
+ testNumeric(1, min.len = 1, lower = 0)
 }
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},

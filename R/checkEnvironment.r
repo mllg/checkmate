@@ -9,8 +9,8 @@
 #' @export
 #' @examples
 #'  ee = as.environment(list(a = 1))
-#'  test(ee, "environment")
-#'  test(ee, "environment", contains = "a")
+#'  testEnvironment(ee)
+#'  testEnvironment(ee, contains = "a")
 checkEnvironment = function(x, contains = character(0L)) {
   qassert(contains, "S")
   if (!is.environment(x))

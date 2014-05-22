@@ -11,8 +11,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(list(), "list")
-#'  test(as.list(iris), "list", types = c("numeric", "factor"))
+#'  testList(list())
+#'  testList(as.list(iris), types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), ...) {
   if (!is.vector(x, "list"))
     return("Must be a list")

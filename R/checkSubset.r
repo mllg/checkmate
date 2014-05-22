@@ -7,7 +7,7 @@
 #' @family set
 #' @export
 #' @examples
-#'  test(c("a", "z"), "subset", letters)
+#'  testSubset(c("a", "z"), letters)
 checkSubset = function(x, choices) {
   qassert(choices, "a+")
   not.ok = which.first(x %nin% choices)

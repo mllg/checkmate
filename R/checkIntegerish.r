@@ -13,9 +13,9 @@
 #' @export
 #' @useDynLib checkmate c_is_integerish
 #' @examples
-#'  test(1L, "integerish")
-#'  test(1., "integerish")
-#'  test(1:2, "integerish", lower = 1L, upper = 2L, any.missing = FALSE)
+#'  testIntegerish(1L)
+#'  testIntegerish(1.)
+#'  testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
 checkIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
   if (!isIntegerish(x, tol) && !allMissingAtomic(x))
     return("Must be integerish")

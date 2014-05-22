@@ -12,8 +12,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(1, "numeric")
-#'  test(1, "numeric", min.len = 1, lower = 0)
+#'  testNumeric(1)
+#'  testNumeric(1, min.len = 1, lower = 0)
 checkNumeric = function(x, lower = -Inf, upper = Inf, ...) {
   if (!is.numeric(x) && !allMissingAtomic(x))
     return("Must be numeric")

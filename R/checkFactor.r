@@ -18,8 +18,8 @@
 #' @export
 #' @examples
 #'  x = factor("a", levels = c("a", "b"))
-#'  test(x, "factor")
-#'  test(x, "factor", empty.levels.ok = FALSE)
+#'  testFactor(x)
+#'  testFactor(x, empty.levels.ok = FALSE)
 checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...) {
   qassert(ordered, "b1")
   qassert(empty.levels.ok, "B1")

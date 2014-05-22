@@ -8,8 +8,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(TRUE, "logical")
-#'  test(TRUE, "logical", min.len = 1)
+#'  testLogical(TRUE)
+#'  testLogical(TRUE, min.len = 1)
 checkLogical = function(x, ...) {
   if (!is.logical(x) && !allMissingAtomic(x))
     return("Must be a logical")

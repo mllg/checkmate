@@ -35,10 +35,10 @@ Check existence and access rights of files
 }
 \examples{
 # Check if R's COPYING file is readable
- test(file.path(R.home(), "COPYING"), "file", access = "r")
+ testFile(file.path(R.home(), "COPYING"), access = "r")
 
  # Check if R's COPYING file is writable
- test(file.path(R.home(), "COPYING"), "file", access = "w")
+ testFile(file.path(R.home(), "COPYING"), access = "w")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},

@@ -11,9 +11,9 @@
 #' @export
 #' @examples
 #'  x = 1:3
-#'  test(x, "named", "unnamed")
+#'  testNamed(x, "unnamed")
 #'  names(x) = letters[1:3]
-#'  test(x, "named", "unique")
+#'  testNamed(x, "unique")
 checkNamed = function(x, type = "named") {
   if (length(x) == 0L)
     return(TRUE)

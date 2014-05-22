@@ -23,7 +23,7 @@
 #' @examples
 #'  x = matrix(1:9, 3)
 #'  colnames(x) = letters[1:3]
-#'  test(x, "matrix", nrows = 3, min.cols = 1, col.names = "named")
+#'  testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
 checkMatrix = function(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = "any", col.names = "any") {
   if (!is.matrix(x))
     return("Must be a matrix")

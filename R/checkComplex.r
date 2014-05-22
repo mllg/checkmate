@@ -8,8 +8,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  test(1L, "complex")
-#'  test(1., "complex")
+#'  testComplex(1)
+#'  testComplex(1+1i)
 checkComplex = function(x, ...) {
   if (!is.complex(x) && !allMissingAtomic(x))
     return("Must be complex")

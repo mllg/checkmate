@@ -8,10 +8,10 @@
 #' @export
 #' @examples
 #'  # Is R's home directory readable?
-#'  test(R.home(), "access", "r")
+#'  testDirectory(R.home(), "r")
 #'
 #'  # Is R's home directory writable?
-#'  test(R.home(), "access", "w")
+#'  testDirectory(R.home(), "w")
 checkDirectory = function(x, access = "") {
   qassert(x, "S")
   if (length(x) == 0L)

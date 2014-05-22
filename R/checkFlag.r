@@ -9,8 +9,8 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
 #' @examples
-#'  test(TRUE, "flag")
-#'  test(1, "flag")
+#'  testFlag(TRUE)
+#'  testFlag(1)
 checkFlag = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
   if(length(x) != 1L)
