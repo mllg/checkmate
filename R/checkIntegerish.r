@@ -17,7 +17,6 @@
 #'  test(1., "integerish")
 #'  test(1:2, "integerish", lower = 1L, upper = 2L, any.missing = FALSE)
 checkIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
-  qassert(tol, "N1")
   if (!isIntegerish(x, tol) && !allMissingAtomic(x))
     return("Must be integerish")
   checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
