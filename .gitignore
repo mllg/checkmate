@@ -1,5 +1,2 @@
 src/*.so
 src/*.o
-checkmate.Rcheck
-checkmate_*.tar.gz
-src/symbols.rds

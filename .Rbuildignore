@@ -7,4 +7,3 @@ tar.gz$
 \.yml$
 ^README.md$
 ^man-roxygen
-^makeR
