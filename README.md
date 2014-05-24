@@ -9,7 +9,7 @@ Ever used an R function that produced a not-very-helpful error message,
 just to discover after minutes of debugging that you simply passed a wrong argument?
 
 Blaming the laziness of the package author for not doing such standard checks
-(in a weakly typed language such as R) is at least partially unfair, as R makes theses types of checks
+(in a dynamically typed language such as R) is at least partially unfair, as R makes theses types of checks
 cumbersome and annoying. Well, that's how it was in the past.
 
 Enter checkmate.
