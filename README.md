@@ -14,9 +14,9 @@ cumbersome and annoying. Well, that's how it was in the past.
 
 Enter checkmate.
 
-Virtually *every standard type of user error* when passing arguments into function can be
-caught with a simple, readable line which produces an *informative error message* in case.
-A substantial part of the package was written in C to *minimize any worries about execution time overhead*.
+Virtually **every standard type of user error** when passing arguments into function can be
+caught with a simple, readable line which produces an **informative error message** in case.
+A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 
 Here is an overview of the most useful functions for argument checking:
 
