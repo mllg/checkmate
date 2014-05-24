@@ -1,3 +1,4 @@
+^makeR
 src/.+\.o$
 src/.+\.so$
 tar.gz$
