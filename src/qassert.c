@@ -1,6 +1,5 @@
 #include "qassert.h"
-#include "parse_rule.h"
-#include "check_rule.h"
+#include "rules.h"
 #include "any_missing.h"
 
 static inline R_len_t qassert1(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
