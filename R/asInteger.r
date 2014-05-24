@@ -18,7 +18,7 @@
 #' @export
 asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
   if (!allMissingAtomic(x) && !isIntegerish(x, tol))
-    mstop("Error converting '%s' to an integer", vname(x, .var.name), n = 0L)
+    mstop("Error converting '%s' to an integer", vname(x, .var.name))
 
   x = as.integer(x)
   assertInteger(x, ..., .var.name = .var.name)

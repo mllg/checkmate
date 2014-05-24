@@ -1,7 +1,7 @@
 makeAssertion = function(msg, var.name) {
   # FIXME test default for var.name
   if (!isTRUE(msg))
-    mstop("Assertion on '%s' failed: %s", var.name, msg)
+    mstop("Assertion on '%s' failed: %s", var.name, msg, n = 1L)
   invisible(TRUE)
 }
 
@@ -29,7 +29,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
   } else {
     item = ""
   }
-  mstop("Assertion on '%s'%s failed: %s", vname, item, msg)
+  mstop("Assertion on '%s'%s failed: %s", vname, item, msg, n = 1L)
 }
 
 "%and%" = function(lhs, rhs) {
@@ -48,6 +48,6 @@ allMissingAtomic = function(x) {
   is.atomic(x) && allMissing(x)
 }
 
-mstop = function(msg, ..., n = 1L) {
+mstop = function(msg, ..., n = 0L) {
   stop(simpleError(sprintf(msg, ...), call = sys.call(n + 1L)))
 }
