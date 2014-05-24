@@ -1,2 +1,5 @@
+checkmate_*.tar.gz
+checkmate.Rcheck
+
 src/*.so
 src/*.o
