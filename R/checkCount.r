@@ -15,7 +15,7 @@
 checkCount = function(x, na.ok = FALSE) {
   if (length(x) != 1L)
     return("Must have length 1")
-  if (!qcheck(x, "x1"))
+  if (!qtest(x, "x1"))
     return("Must be integerish")
   if (is.na(x))
     return(if(isTRUE(na.ok)) TRUE else "May not be NA")

@@ -1,4 +1,4 @@
-context("qcheck")
+context("qtest")
 
 xb = logical(10); xb[5] = NA
 xi = integer(10); xi[5] = NA
@@ -11,14 +11,14 @@ xe = new.env(); xe$foo = 1
 xf = function(x) x
 
 expect_succ = function(x, rules) {
-  expect_true(qcheck(x, rules),
+  expect_true(qtest(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(qassert(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 
 expect_fail = function(x, rules) {
-  expect_false(qcheck(x, rules),
+  expect_false(qtest(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(inherits(try(qassert(x, rules), silent=TRUE), "try-error"),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))

@@ -16,7 +16,7 @@
 #' \code{qassert} throws an \code{R} exception if object \code{x} does
 #' not comply to at least one of the \code{rules} and returns \code{TRUE}
 #' otherwise.
-#' \code{qcheck} behaves the same way but returns \code{FALSE} if none of the
+#' \code{qtest} behaves the same way but returns \code{FALSE} if none of the
 #' \code{rules} comply.
 #'
 #' The rule is specified in up to three parts.
@@ -73,30 +73,30 @@
 #' The functions are inspired by the blog post of Bogumił Kamiński:
 #' \url{http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html}.
 #' The implementation is mostly written in \code{C} to minimize the overhead.
-#' @seealso \code{\link{qcheckr}} and \code{\link{qassertr}} for efficient checks
+#' @seealso \code{\link{qtestr}} and \code{\link{qassertr}} for efficient checks
 #' of list elements and data frame columns.
 #' @useDynLib checkmate c_qassert
 #' @export
 #' @examples
 #' # logical of length 1
-#' qcheck(NA, "b1")
+#' qtest(NA, "b1")
 #'
 #' # logical of length 1, NA not allowed
-#' qcheck(NA, "B1")
+#' qtest(NA, "B1")
 #'
 #' # logical of length 0 or 1, NA not allowed
-#' qcheck(TRUE, "B?")
+#' qtest(TRUE, "B?")
 #'
 #' # numeric with length > 0
-#' qcheck(runif(10), "n+")
+#' qtest(runif(10), "n+")
 #'
 #' # integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
-#' qcheck(1:3, "I+[0,)")
+#' qtest(1:3, "I+[0,)")
 #'
 #' # either an emtpy list or a character vector with <=5 elements
-#' qcheck(1, c("l0", "s<=5"))
+#' qtest(1, c("l0", "s<=5"))
 #' # data frame with at least one column, no NA in any column
-#' qcheck(iris, "D+")
+#' qtest(iris, "D+")
 qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
   qamsg(x, res, vname(x, .var.name))
@@ -105,7 +105,7 @@ qassert = function(x, rules, .var.name) {
 
 #' @export
 #' @rdname qassert
-#' @useDynLib checkmate c_qcheck
-qcheck = function(x, rules) {
-  .Call("c_qcheck", x, rules, FALSE, PACKAGE = "checkmate")
+#' @useDynLib checkmate c_qtest
+qtest = function(x, rules) {
+  .Call("c_qtest", x, rules, FALSE, PACKAGE = "checkmate")
 }

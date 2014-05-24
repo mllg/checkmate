@@ -1,24 +1,24 @@
 #' Recursive arguments checks on lists and data frames.
 #'
-#' These functions are the tuned counterparts of \code{\link{qcheck}} and
+#' These functions are the tuned counterparts of \code{\link{qtest}} and
 #' \code{\link{qassert}} tailored for recursive checks of list
 #' elements or data frame columns.
 #'
 #' @param x [\code{list} or \code{data.frame}]\cr
 #'   List or data frame to check for compliance with at least one of \code{rules}.
-#'   See details of \code{\link{qcheck}} for rule explanation.
+#'   See details of \code{\link{qtest}} for rule explanation.
 #' @param rules [\code{character}]\cr
-#'   Set of rules. See \code{\link{qcheck}}
+#'   Set of rules. See \code{\link{qtest}}
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
-#' @seealso \code{\link{qcheck}}, \code{\link{qassert}}
+#' @seealso \code{\link{qtest}}, \code{\link{qassert}}
 #' @export
 #' @useDynLib checkmate c_qassert
 #' @examples
-#' qcheckr(as.list(1:10), "i+")
-#' qcheck(iris, "n")
+#' qtestr(as.list(1:10), "i+")
+#' qtestr(iris, "n")
 qassertr = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
   qamsg(x, res, vname(x, .var.name), recursive = TRUE)
@@ -27,7 +27,7 @@ qassertr = function(x, rules, .var.name) {
 
 #' @export
 #' @rdname qassertr
-#' @useDynLib checkmate c_qcheck
-qcheckr = function(x, rules) {
-  .Call("c_qcheck", x, rules, TRUE, PACKAGE = "checkmate")
+#' @useDynLib checkmate c_qtest
+qtestr = function(x, rules) {
+  .Call("c_qtest", x, rules, TRUE, PACKAGE = "checkmate")
 }

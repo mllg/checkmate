@@ -1,8 +1,8 @@
-#include "qcheck.h"
+#include "qtest.h"
 #include "rules.h"
 #include "any_missing.h"
 
-static inline Rboolean qcheck1(SEXP x, const checker_t *checker, const R_len_t nrules) {
+static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nrules) {
     error_t result;
     for (R_len_t i = 0; i < nrules; i++) {
         result = check_rule(x, &checker[i], FALSE);
@@ -12,19 +12,19 @@ static inline Rboolean qcheck1(SEXP x, const checker_t *checker, const R_len_t n
     return FALSE;
 }
 
-static inline Rboolean qcheck_list(SEXP x, const checker_t *checker, const R_len_t nrules) {
+static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules) {
     if (!isNewList(x))
         error("Argument 'x' must be a list or data.frame");
 
     const R_len_t nx = length(x);
     for (R_len_t i = 0; i < nx; i++) {
-        if (!qcheck1(VECTOR_ELT(x, i), checker, nrules))
+        if (!qtest1(VECTOR_ELT(x, i), checker, nrules))
             return FALSE;
     }
     return TRUE;
 }
 
-SEXP c_qcheck(SEXP x, SEXP rules, SEXP recursive) {
+SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
     const R_len_t nrules = length(rules);
 
     if (!isString(rules))
@@ -42,6 +42,6 @@ SEXP c_qcheck(SEXP x, SEXP rules, SEXP recursive) {
     }
 
     if (LOGICAL(recursive)[0])
-        return ScalarLogical(qcheck_list(x, checker, nrules));
-    return ScalarLogical(qcheck1(x, checker, nrules));
+        return ScalarLogical(qtest_list(x, checker, nrules));
+    return ScalarLogical(qtest1(x, checker, nrules));
 }
