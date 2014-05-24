@@ -1,4 +1,6 @@
 #include "capitalize.h"
+#include <ctype.h>
+#include <string.h>
 
 SEXP c_capitalize(SEXP x) {
     if (!isString(x))

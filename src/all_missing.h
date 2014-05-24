@@ -1,5 +1,5 @@
-#ifndef ALL_MISSING_H_
-#define ALL_MISSING_H_
+#ifndef CHECKMATE_ALL_MISSING_H_
+#define CHECKMATE_ALL_MISSING_H_
 
 #include <R.h>
 #include <Rinternals.h>

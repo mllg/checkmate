@@ -1,5 +1,5 @@
-#ifndef WHICH_FIRST_H
-#define WHICH_FIRST_H
+#ifndef CHECKMATE_WHICH_FIRST_H
+#define CHECKMATE_WHICH_FIRST_H
 
 #include <R.h>
 #include <Rinternals.h>

@@ -1,6 +1,8 @@
-#ifndef QASSERT_H_
-#define QASSERT_H_
+#ifndef CHECKMATE_QASSERT_H_
+#define CHECKMATE_QASSERT_H_
 
+#include <R.h>
+#include <Rinternals.h>
 #include "typedefs.h"
 
 SEXP c_qassert(SEXP, SEXP, SEXP);
