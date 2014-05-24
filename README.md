@@ -66,7 +66,7 @@ What can be checked: length, element type, names.
 ### File IO:
 
 * [checkFile](http://mllg.github.io/checkmate/man/checkFile.html)
-* [checkDir](http://mllg.github.io/checkmate/man/checkDir.html)
+* [checkDirectory](http://mllg.github.io/checkmate/man/checkDirectory.html)
 
 What can be checked: Path exists, is accessible.
 
