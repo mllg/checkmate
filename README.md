@@ -22,51 +22,51 @@ Here is an overview of the most useful functions for argument checking:
 
 ### Scalars / Single Objects:
 
-* checkFlag
-* checkNumber
-* checkCount
-* checkString
-* checkClass
+* [checkFlag](http://mllg.github.io/checkmate/man/checkFlag.html)
+* [checkNumber](http://mllg.github.io/checkmate/man/checkNumber.html)
+* [checkCount](http://mllg.github.io/checkmate/man/checkCount.html)
+* [checkString](http://mllg.github.io/checkmate/man/checkString.html)
+* [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
 
 What can be checked: Simple, non-NA scalars and objects of a specific class.
 
 ### Choices and Subsets
 
-* checkChoice
-* checkSubset
+* [checkChoice](http://mllg.github.io/checkmate/man/checkChoice.html)
+* [checkSubset](http://mllg.github.io/checkmate/man/checkSubset.html)
 
 What can be checked: Choices like "A", "B" or "C" or a subet of those.
 
 ### Vectors and factors:
 
-* checkLogical
-* checkNumeric
-* checkInteger
-* checkIntegerish
-* checkComplex
-* checkCharacter
-* checkFactor
+* [checkLogical](http://mllg.github.io/checkmate/man/checkLogical.html)
+* [checkNumeric](http://mllg.github.io/checkmate/man/checkNumeric.html)
+* [checkInteger](http://mllg.github.io/checkmate/man/checkInteger.html)
+* [checkIntegerish](http://mllg.github.io/checkmate/man/checkIntegerish.html)
+* [checkComplex](http://mllg.github.io/checkmate/man/checkComplex.html)
+* [checkCharacter](http://mllg.github.io/checkmate/man/checkCharacter.html)
+* [checkFactor](http://mllg.github.io/checkmate/man/checkFactor.html)
 
 What can be checked: Length, upper and lower bounds, NAs.
 
 ### Matrices and Data Frame:
 
-* checkMatrix
-* checkDataFrame
+* [checkMatrix](http://mllg.github.io/checkmate/man/checkMatrix.html)
+* [checkDataFrame](http://mllg.github.io/checkmate/man/checkDataFrame.html)
 
 What can be checked: Number of rows, cols, NAs, names.
 
 ### List / Environments:
 
-* checkList
-* checkEnvironment
+* [checkList](http://mllg.github.io/checkmate/man/checkList.html)
+* [checkEnvironment](http://mllg.github.io/checkmate/man/checkEnvironment.html)
 
 What can be checked: length, element type, names.
 
 ### File IO:
 
-* checkDir
-* checkFile
+* [checkFile](http://mllg.github.io/checkmate/man/checkFile.html)
+* [checkDir](http://mllg.github.io/checkmate/man/checkDir.html)
 
 What can be checked: Path exists, is accessible.
 
