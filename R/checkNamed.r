@@ -21,7 +21,9 @@ checkNamed = function(x, type = "named") {
 }
 
 checkNames = function(nn, type = "named") {
-  type = match.arg(type, c("unnamed", "named", "unique", "strict"))
+  type = match.arg(type, c("any", "unnamed", "named", "unique", "strict"))
+  if (type == "any")
+    return(TRUE)
   if (type == "unnamed") {
     if (!is.null(nn))
       return("Must be unnamed")

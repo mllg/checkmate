@@ -40,6 +40,5 @@ and \code{NA_character_}.
 \examples{
 testCount(1)
  testCount(-1)
- testCount(Inf)
 }
 

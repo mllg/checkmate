@@ -1,6 +1,6 @@
 #include "all_missing.h"
 
-static inline Rboolean all_missing_logical(SEXP x) {
+inline Rboolean all_missing_logical(SEXP x) {
     const int * xp = LOGICAL(x);
     const int * const xe = xp + length(x);
     for (; xp != xe; xp++) {
@@ -10,7 +10,7 @@ static inline Rboolean all_missing_logical(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_integer(SEXP x) {
+inline Rboolean all_missing_integer(SEXP x) {
     const int * xp = INTEGER(x);
     const int * const xe = xp + length(x);
     for (; xp != xe; xp++) {
@@ -20,7 +20,7 @@ static inline Rboolean all_missing_integer(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_double(SEXP x) {
+inline Rboolean all_missing_double(SEXP x) {
     const double * xp = REAL(x);
     const double * const xe = xp + length(x);
     for (; xp != xe; xp++) {
@@ -30,7 +30,7 @@ static inline Rboolean all_missing_double(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_complex(SEXP x) {
+inline Rboolean all_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);
     const Rcomplex * const xe = xp + length(x);
     for (; xp != xe; xp++) {
@@ -40,7 +40,7 @@ static inline Rboolean all_missing_complex(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_string(SEXP x) {
+inline Rboolean all_missing_string(SEXP x) {
     const R_len_t nx = length(x);
     for (R_len_t i = 0; i < nx; i++) {
         if (STRING_ELT(x, i) != NA_STRING)
@@ -49,7 +49,7 @@ static inline Rboolean all_missing_string(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_atomic(SEXP x) {
+inline Rboolean all_missing_atomic(SEXP x) {
     switch(TYPEOF(x)) {
         case LGLSXP: return all_missing_logical(x);
         case INTSXP: return all_missing_integer(x);
@@ -61,7 +61,7 @@ static inline Rboolean all_missing_atomic(SEXP x) {
     }
 }
 
-static inline Rboolean all_missing_list(SEXP x) {
+inline Rboolean all_missing_list(SEXP x) {
     const R_len_t nx = length(x);
     for (R_len_t i = 0; i < nx; i++) {
         if (!isNull(VECTOR_ELT(x, i)))
@@ -70,7 +70,7 @@ static inline Rboolean all_missing_list(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing_frame(SEXP x) {
+inline Rboolean all_missing_frame(SEXP x) {
     const R_len_t nc = length(x);
     for (R_len_t i = 0; i < nc; i++) {
         if (!all_missing_atomic(VECTOR_ELT(x, i)))
@@ -79,7 +79,7 @@ static inline Rboolean all_missing_frame(SEXP x) {
     return TRUE;
 }
 
-static inline Rboolean all_missing(SEXP x) {
+inline Rboolean all_missing(SEXP x) {
     switch(TYPEOF(x)) {
         case LGLSXP: return all_missing_logical(x);
         case INTSXP: return all_missing_integer(x);

@@ -11,17 +11,8 @@
 #' @examples
 #'  testCount(1)
 #'  testCount(-1)
-#'  testCount(Inf)
 checkCount = function(x, na.ok = FALSE) {
-  if (length(x) != 1L)
-    return("Must have length 1")
-  if (!qtest(x, "x1"))
-    return("Must be integerish")
-  if (is.na(x))
-    return(if(isTRUE(na.ok)) TRUE else "May not be NA")
-  if (x < 0)
-    return("Must be >= 0")
-  return(TRUE)
+  .Call("c_check_count", x, na.ok, PACKAGE = "checkmate")
 }
 
 #' @rdname checkCount

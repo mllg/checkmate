@@ -1,5 +1,5 @@
 #ifndef CHECKMATE_QTEST_H_
-#define CHECKMATE_QTEST_H
+#define CHECKMATE_QTEST_H_
 
 #include <R.h>
 #include <Rinternals.h>

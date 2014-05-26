@@ -7,10 +7,10 @@
 /*********************************************************************************************************************/
 /* functions around R's class check macros                                                                           */
 /*********************************************************************************************************************/
-static const DEFAULT_TOL = sqrt(DOUBLE_EPS);
+#define DEFAULT_TOL sqrt(DOUBLE_EPS)
 static inline Rboolean is_class_logical(SEXP x) { return isLogical(x); }
 static inline Rboolean is_class_integer(SEXP x) { return isInteger(x); }
-static inline Rboolean is_class_integerish(SEXP x) { return is_integerish(x, DOUBLE_EPS); }
+static inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, DEFAULT_TOL); }
 static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
 static inline Rboolean is_class_numeric(SEXP x) { return isInteger(x) || isReal(x); }
 static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }

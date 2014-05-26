@@ -7,31 +7,22 @@
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkCharacter}}.
 #' @export
 #' @examples
 #'  testString("a")
 #'  testString(letters)
-checkString = function(x, na.ok = FALSE, ...) {
-  qassert(na.ok, "B1")
-  if (length(x) != 1L)
-    return("Must have length 1")
-  if (is.na(x))
-    return(ifelse(na.ok, TRUE, "May not be NA"))
-  if (!is.character(x))
-    return("Must be a character")
-  checkCharacterProps(x, ...)
+checkString = function(x, na.ok = FALSE) {
+  .Call("c_check_string", x, na.ok, PACKAGE = "checkmate")
 }
 
 #' @rdname checkString
 #' @export
-assertString = function(x, na.ok = FALSE, ..., .var.name) {
-  makeAssertion(checkString(x, na.ok, ...), vname(x, .var.name))
+assertString = function(x, na.ok = FALSE, var.name) {
+  makeAssertion(checkString(x, na.ok), vname(x, .var.name))
 }
 
 #' @rdname checkString
 #' @export
-testString = function(x, na.ok = FALSE, ...) {
-  isTRUE(checkString(x, na.ok, ...))
+testString = function(x, na.ok = FALSE) {
+  isTRUE(checkString(x, na.ok))
 }

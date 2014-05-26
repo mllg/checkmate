@@ -8,11 +8,8 @@ test_that("checkString", {
   expect_true(testString(NA, na.ok = TRUE))
   expect_false(testString(NA_character_))
   expect_true(testString(NA_character_, na.ok = TRUE))
-  expect_false(testString(NA_character_, all.missing = TRUE))
   expect_true(testString(NA, na.ok = TRUE))
 
   expect_true(assertString("a"))
   expect_error(assertString(1))
-  expect_error(assertString("a", pattern="b"), "pattern")
-  expect_error(assertString("a", min.chars=10), "at least 10")
 })

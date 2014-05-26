@@ -5,11 +5,11 @@
 \alias{testString}
 \title{Check if an argument is a string}
 \usage{
-checkString(x, na.ok = FALSE, ...)
+checkString(x, na.ok = FALSE)
 
-assertString(x, na.ok = FALSE, ..., .var.name)
+assertString(x, na.ok = FALSE, var.name)
 
-testString(x, na.ok = FALSE, ...)
+testString(x, na.ok = FALSE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -21,9 +21,6 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
-
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkCharacter}}.}
 }
 \value{
 Depending on the function prefix:

@@ -20,5 +20,5 @@ SEXP c_capitalize(SEXP x) {
     }
 
     UNPROTECT(1);
-    return(res);
+    return res;
 }

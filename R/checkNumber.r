@@ -10,11 +10,7 @@
 #'  testNumber(1)
 #'  testNumber(1:2)
 checkNumber = function(x, na.ok = FALSE) {
-  if (length(x) != 1L || !is.numeric(x))
-    return("Must be a number")
-  if (!isTRUE(na.ok) && is.na(x))
-    return("May not be NA")
-  return(TRUE)
+  .Call("c_check_number", x, na.ok, PACKAGE = "checkmate")
 }
 
 #' @rdname checkNumber

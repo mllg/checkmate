@@ -12,14 +12,7 @@
 #'  testFlag(TRUE)
 #'  testFlag(1)
 checkFlag = function(x, na.ok = FALSE) {
-  qassert(na.ok, "B1")
-  if(length(x) != 1L)
-    return("Must have length 1")
-  if (is.na(x))
-    return(ifelse(na.ok, TRUE, "May not be NA"))
-  if(!is.logical(x))
-    return("Must be a logical")
-  return(TRUE)
+  .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
 }
 
 #' @rdname checkFlag

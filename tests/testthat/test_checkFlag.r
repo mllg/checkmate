@@ -11,5 +11,5 @@ test_that("checkFlag", {
   expect_false(testFlag(iris))
 
   expect_true(assertFlag(TRUE))
-  expect_error(assertFlag(1), "logical")
+  expect_error(assertFlag(1), "logical flag")
 })
