@@ -2,6 +2,7 @@
 #'
 #' @templateVar fn Factor
 #' @template checker
+#' @inheritParams checkVector
 #' @param levels [\code{character}]\cr
 #'  Vector of allowed factor levels.
 #' @param ordered [\code{logical(1)}]\cr
@@ -11,25 +12,25 @@
 #' @param empty.levels.ok [\code{logical(1)}]\cr
 #'  Are empty levels allowed?
 #'  Default is \code{TRUE}.
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}
-#'  or \code{\link{checkVector}}.
 #' @family basetypes
+#' @useDynLib checkmate c_check_factor
 #' @export
 #' @examples
 #'  x = factor("a", levels = c("a", "b"))
 #'  testFactor(x)
 #'  testFactor(x, empty.levels.ok = FALSE)
-checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...) {
-  qassert(ordered, "b1")
-  qassert(empty.levels.ok, "B1")
-  if (!is.factor(x))
-    return("Must be a factor")
+checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+  checkFactorProps(x, levels, ordered, empty.levels.ok)
+}
+
+checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE) {
   if (!is.null(levels)) {
     qassert(levels, "S")
     if (!setequal(levels(x), levels))
       return(sprintf("Must have levels: %s", collapse(levels)))
   }
+  qassert(ordered, "b1")
   if (!is.na(ordered)) {
     x.ordered = is.ordered(x)
     if (ordered && !x.ordered)
@@ -37,22 +38,31 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, .
     else if (!ordered && x.ordered)
       return("Must be an unordered factor")
   }
+  qassert(empty.levels.ok, "B1")
   if (!empty.levels.ok) {
     not.ok = which.first(table(x) == 0L)
     if (length(not.ok) > 0L)
       return(sprintf("Has has empty level '%s'", names(not.ok)))
   }
-  checkVectorProps(x, ...)
+  return(TRUE)
 }
 
 #' @rdname checkFactor
+#' @useDynLib checkmate c_check_factor
 #' @export
-assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ..., .var.name) {
-  makeAssertion(checkFactor(x, levels, ordered, empty.levels.ok, ...), vname(x, .var.name))
+assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+    checkFactorProps(x, levels, ordered, empty.levels.ok)
+  , vname(x, .var.name))
 }
 
 #' @rdname checkFactor
+#' @useDynLib checkmate c_check_factor
 #' @export
-testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...) {
-  isTRUE(checkFactor(x, levels, ordered, empty.levels.ok, ...))
+testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+    checkFactorProps(x, levels, ordered, empty.levels.ok)
+  )
 }

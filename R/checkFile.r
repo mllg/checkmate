@@ -27,8 +27,8 @@ checkFile = function(x, access = "") {
   return(checkAccess(x, access))
 }
 
-#' @rdname checkFile
 #' @export
+#' @rdname checkFile
 assertFile = function(x, access = "", .var.name) {
   makeAssertion(checkFile(x, access), vname(x, .var.name))
 }

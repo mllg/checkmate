@@ -8,6 +8,7 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
+#' @useDynLib checkmate c_check_string
 #' @examples
 #'  testString("a")
 #'  testString(letters)
@@ -17,7 +18,7 @@ checkString = function(x, na.ok = FALSE) {
 
 #' @rdname checkString
 #' @export
-assertString = function(x, na.ok = FALSE, var.name) {
+assertString = function(x, na.ok = FALSE, .var.name) {
   makeAssertion(checkString(x, na.ok), vname(x, .var.name))
 }
 

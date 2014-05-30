@@ -103,9 +103,9 @@ qassert = function(x, rules, .var.name) {
 }
 
 
-#' @export
-#' @rdname qassert
 #' @useDynLib checkmate c_qtest
+#' @rdname qassert
+#' @export
 qtest = function(x, rules) {
   .Call("c_qtest", x, rules, FALSE, PACKAGE = "checkmate")
 }

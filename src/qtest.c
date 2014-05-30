@@ -1,9 +1,10 @@
 #include "qtest.h"
 #include "rules.h"
 #include "any_missing.h"
+#include "cmessages.h"
 
 static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nrules) {
-    error_t result;
+    msg_t result;
     for (R_len_t i = 0; i < nrules; i++) {
         result = check_rule(x, &checker[i], FALSE);
         if (result.ok)

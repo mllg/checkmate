@@ -7,12 +7,13 @@
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
+#' @useDynLib checkmate c_check_flag
 #' @export
 #' @examples
 #'  testFlag(TRUE)
 #'  testFlag(1)
 checkFlag = function(x, na.ok = FALSE) {
-  .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
+  .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate", .PACKAGE = "checkmate")
 }
 
 #' @rdname checkFlag

@@ -3,31 +3,35 @@
 #' @templateVar fn Numeric
 #' @template na-handling
 #' @template checker
+#' @inheritParams checkVector
 #' @param lower [\code{numeric(1)}]\cr
 #'  Lower value all elements of \code{x} must be greater than.
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than.
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
+#' @useDynLib checkmate c_check_numeric
 #' @export
 #' @examples
 #'  testNumeric(1)
 #'  testNumeric(1, min.len = 1, lower = 0)
-checkNumeric = function(x, lower = -Inf, upper = Inf, ...) {
-  if (!is.numeric(x) && !allMissingAtomic(x))
-    return("Must be numeric")
-  checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
+checkNumeric = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_numeric", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkNumeric
+#' @useDynLib checkmate c_check_numeric
 #' @export
-assertNumeric = function(x, lower = -Inf, upper = Inf, ..., .var.name) {
-  makeAssertion(checkNumeric(x, lower, upper, ...), vname(x, .var.name))
+assertNumeric = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_numeric", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkNumeric
+#' @useDynLib checkmate c_check_numeric
 #' @export
-testNumeric = function(x, lower = -Inf, upper = Inf, ...) {
-  isTRUE(checkNumeric(x, lower, upper, ...))
+testNumeric = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_numeric", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  )
 }

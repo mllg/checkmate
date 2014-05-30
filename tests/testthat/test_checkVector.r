@@ -32,5 +32,5 @@ test_that("checkVector", {
   expect_false(testVector(1, names="unique"))
 
   expect_true(assertVector(1))
-  expect_error(assertVector(NA, "string"))
+  expect_error(assertVector(iris), "vector")
 })

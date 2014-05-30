@@ -4,8 +4,9 @@
 #include <R.h>
 #include <Rinternals.h>
 #include "typedefs.h"
+#include "cmessages.h"
 
 void parse_rule(checker_t *, const char *);
-error_t check_rule(SEXP, const checker_t *, const Rboolean);
+msg_t check_rule(SEXP, const checker_t *, const Rboolean);
 
 #endif

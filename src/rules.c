@@ -340,54 +340,26 @@ static Rboolean check_bound(SEXP x, bound_t bound) {
     return TRUE;
 }
 
-error_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
-    error_t result;
-
+msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        result.ok = FALSE;
-        if (err_msg) {
-            snprintf(result.msg, MSGLEN, "Must be of class '%s', not '%s'",
-                    /* FIXME factors are printed as integers */
-                    getClassString(checker->class.name), type2char(TYPEOF(x)));
-        }
-        return result;
+        return err_msg ? newMsgf("Must be of class '%s', not '%s'", getClassString(checker->class.name), type2char(TYPEOF(x))) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
-        result.ok = FALSE;
-        if (err_msg) {
-            snprintf(result.msg, MSGLEN, "May not contain missing values");
-        }
-        return result;
+        return err_msg ? newMsg("May not contain missing values") : MSGF;
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        result.ok = FALSE;
-        if (err_msg) {
-            snprintf(result.msg, MSGLEN, "Must be of length %s %i, but has length %i",
-                     getOperatorString(checker->len.op), checker->len.cmp, length(x));
-        }
-        return result;
+        return err_msg ? newMsgf("Must be of length %s %i, but has length %i", getOperatorString(checker->len.op), checker->len.cmp, length(x)) : MSGF;
     }
 
     if (checker->lower.fun != NULL && !check_bound(x, checker->lower)) {
-        result.ok = FALSE;
-        if (err_msg) {
-            snprintf(result.msg, MSGLEN, "All elements must be %s %f",
-                    getOperatorString(checker->lower.op), checker->lower.cmp);
-        }
-        return result;
+        return err_msg ? newMsgf("All elements must be %s %f", getOperatorString(checker->lower.op), checker->lower.cmp) : MSGF;
     }
 
     if (checker->upper.fun != NULL && !check_bound(x, checker->upper)) {
-        result.ok = FALSE;
-        if (err_msg) {
-            snprintf(result.msg, MSGLEN, "All elements must be %s %f",
-                    getOperatorString(checker->upper.op), checker->upper.cmp);
-        }
-        return result;
+        return err_msg ? newMsgf("All elements must be %s %f", getOperatorString(checker->upper.op), checker->upper.cmp) : MSGF;
     }
 
-    result.ok = TRUE;
-    return result;
+    return MSGT;
 }

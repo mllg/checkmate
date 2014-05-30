@@ -1,8 +1,9 @@
 #include "qassert.h"
 #include "rules.h"
 #include "any_missing.h"
+#include "cmessages.h"
 
-static inline R_len_t qassert1(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
+static inline R_len_t qassert1(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
     for (R_len_t i = 0; i < nrules; i++) {
         result[i] = check_rule(x, &checker[i], result[i].ok);
         if (result[i].ok)
@@ -11,7 +12,7 @@ static inline R_len_t qassert1(SEXP x, const checker_t *checker, error_t *result
     return 1;
 }
 
-static inline R_len_t qassert_list(SEXP x, const checker_t *checker, error_t *result, const R_len_t nrules) {
+static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
     if (!isNewList(x))
         error("Argument 'x' must be a list or data.frame");
 
@@ -31,7 +32,7 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     if (nrules == 0)
         return ScalarLogical(TRUE);
 
-    error_t result[nrules];
+    msg_t result[nrules];
     checker_t checker[nrules];
     SEXP tmp;
     for (R_len_t i = 0; i < nrules; i++) {

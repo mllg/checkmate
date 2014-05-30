@@ -73,8 +73,7 @@ inline Rboolean any_missing_atomic(SEXP x) {
         case REALSXP: return any_missing_double(x);
         case CPLXSXP: return any_missing_complex(x);
         case STRSXP: return any_missing_string(x);
-        case RAWSXP: return FALSE;
-        default: error("Object of type '%s' not atomic", type2char(TYPEOF(x)));
+        default: return(FALSE);
     }
 }
 

@@ -3,27 +3,31 @@
 #' @templateVar fn Logical
 #' @template na-handling
 #' @template checker
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
+#' @inheritParams checkVector
 #' @family basetypes
+#' @useDynLib checkmate c_check_logical
 #' @export
 #' @examples
 #'  testLogical(TRUE)
 #'  testLogical(TRUE, min.len = 1)
-checkLogical = function(x, ...) {
-  if (!is.logical(x) && !allMissingAtomic(x))
-    return("Must be a logical")
-  checkVectorProps(x, ...)
+checkLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_logical", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkLogical
+#' @useDynLib checkmate c_check_logical
 #' @export
-assertLogical = function(x, ..., .var.name) {
-  makeAssertion(checkLogical(x, ...), vname(x, .var.name))
+assertLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_logical", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkLogical
+#' @useDynLib checkmate c_check_logical
 #' @export
-testLogical = function(x, ...) {
-  isTRUE(checkLogical(x, ...))
+testLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_logical", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  )
 }

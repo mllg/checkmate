@@ -18,42 +18,28 @@
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
 #' @family basetypes
+#' @useDynLib checkmate c_check_vector
 #' @export
 #' @examples
 #'  testVector(letters, min.len = 1L, any.missing = FALSE)
-checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
-  if (!is.vector(x))
-    return("Must be a vector")
-  return(checkVectorProps(x, any.missing, all.missing, len, min.len, max.len, unique, names))
-}
-
-checkVectorProps = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
-  if (!is.null(len) && qassert(len, "X1[0,)") && length(x) != len)
-    return("Must have length 1")
-  if (!is.null(min.len) && qassert(min.len, "X1[0,)") && length(x) < min.len)
-    return(sprintf("Must have length >= %i", min.len))
-  if (!is.null(max.len) && qassert(max.len, "X1[0,)") && length(x) > max.len)
-    return(sprintf("Must have length <= %i", max.len))
-  if (qassert(any.missing, "B1") && !any.missing && anyMissing(x))
-    return("Contains missing values")
-  if (qassert(all.missing, "B1") && !all.missing && allMissing(x))
-    return("Contains only missing values")
-  if (qassert(unique, "B1") && unique && anyDuplicated(x) > 0L)
-    return("Must be unique")
-  if (qassert(names, "S1") && names != "any") {
-    return(checkNamed(x, type = names))
-  }
-  return(TRUE)
+checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate")
 }
 
 #' @rdname checkVector
+#' @useDynLib checkmate c_check_vector
 #' @export
-assertVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any", .var.name) {
-  makeAssertion(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names), vname(x, .var.name))
+assertVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkVector
+#' @useDynLib checkmate c_check_vector
 #' @export
-testVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = "any") {
-  isTRUE(checkVector(x, any.missing, all.missing, len, min.len, max.len, unique, names))
+testVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate")
+  )
 }

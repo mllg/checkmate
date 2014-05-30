@@ -6,7 +6,7 @@ test_that("checkFactor", {
   expect_false(testFactor(integer(1)))
   expect_false(testFactor("a"))
   expect_true(testFactor(factor()))
-  expect_false(testFactor(integer(0)))
+  # expect_false(testFactor(integer(0)))
   expect_false(testFactor(NULL))
   expect_true(testFactor(x, levels = rev(levels(x))))
   expect_true(testFactor(x, empty.levels.ok = FALSE))

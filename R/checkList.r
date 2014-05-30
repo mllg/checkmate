@@ -10,13 +10,13 @@
 #'  Defaults to \code{character(0)} (no check).
 #' @family basetypes
 #' @export
+#' @useDynLib checkmate c_check_list
 #' @examples
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
-checkList = function(x, types = character(0L), ...) {
-  if (!is.vector(x, "list"))
-    return("Must be a list")
-  checkVectorProps(x, ...) %and% checkListProps(x, types)
+checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+  checkListProps(x, types)
 }
 
 checkListProps = function(x, types = character(0L)) {
@@ -30,13 +30,21 @@ checkListProps = function(x, types = character(0L)) {
 }
 
 #' @rdname checkList
+#' @useDynLib checkmate c_check_list
 #' @export
-assertList = function(x, types = character(0L), ..., .var.name) {
-  makeAssertion(checkList(x, types, ...), vname(x, .var.name))
+assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+    checkListProps(x, types)
+  , vname(x, .var.name))
 }
 
 #' @rdname checkList
+#' @useDynLib checkmate c_check_list
 #' @export
-testList = function(x, types = character(0L), ...) {
-  isTRUE(checkList(x, types, ...))
+testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+    checkListProps(x, types)
+  )
 }

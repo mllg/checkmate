@@ -5,8 +5,8 @@
 #' @templateVar fn Inconstant
 #' @template checker
 #' @inheritParams checkConstant
-#' @export
 #' @family constant
+#' @export
 #' @examples
 #'  testInconstant(c(1, NA))
 #'  testInconstant(c(0, 1-0.9-0.1))

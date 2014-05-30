@@ -4,32 +4,35 @@
 #' @template na-handling
 #' @template checker
 #' @inheritParams checkInteger
+#' @inheritParams checkVector
 #' @param tol [\code{double(1)}]\cr
 #'  Numerical tolerance used to check if a double or complex can be converted.
 #'  Default is \code{sqrt(.Machine$double.eps)}.
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
-#' @export
 #' @useDynLib checkmate c_is_integerish
+#' @export
 #' @examples
 #'  testIntegerish(1L)
 #'  testIntegerish(1.)
 #'  testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
-checkIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
-  if (!isIntegerish(x, tol) && !allMissingAtomic(x))
-    return("Must be integerish")
-  checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
+checkIntegerish = function(x, tol = .Machine$double.eps^.5, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, named = NULL) {
+  .Call("c_check_integerish", x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, named, PACKAGE = "checkmate")
 }
 
 #' @rdname checkIntegerish
+#' @useDynLib checkmate c_is_integerish
 #' @export
-assertIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ..., .var.name) {
-  makeAssertion(checkIntegerish(x, lower, upper, tol, ...), vname(x, .var.name))
+assertIntegerish = function(x, tol = .Machine$double.eps^.5, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, named = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_integerish", x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, named, PACKAGE = "checkmate")
+    , vname(x, .var.name))
 }
 
 #' @rdname checkIntegerish
+#' @useDynLib checkmate c_is_integerish
 #' @export
-testIntegerish = function(x, lower = -Inf, upper = Inf, tol = .Machine$double.eps^.5, ...) {
-  isTRUE(checkIntegerish(x, lower, upper, tol, ...))
+testIntegerish = function(x, tol = .Machine$double.eps^.5, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, named = NULL) {
+  isTRUE(
+    .Call("c_check_integerish", x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, named, PACKAGE = "checkmate")
+  )
 }

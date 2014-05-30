@@ -1,7 +1,6 @@
-makeAssertion = function(msg, var.name) {
-  # FIXME test default for var.name
+makeAssertion = function(msg, var.name, n = 0L) {
   if (!isTRUE(msg))
-    mstop("Assertion on '%s' failed: %s", var.name, msg, n = 1L)
+    mstop("Assertion on '%s' failed: %s", var.name, msg, n = n)
   invisible(TRUE)
 }
 

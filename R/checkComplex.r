@@ -3,27 +3,31 @@
 #' @templateVar fn Complex
 #' @template na-handling
 #' @template checker
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
+#' @inheritParams checkVector
 #' @family basetypes
+#' @useDynLib checkmate c_check_complex
 #' @export
 #' @examples
 #'  testComplex(1)
 #'  testComplex(1+1i)
-checkComplex = function(x, ...) {
-  if (!is.complex(x) && !allMissingAtomic(x))
-    return("Must be complex")
-  checkVectorProps(x, ...)
+checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_complex", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkComplex
+#' @useDynLib checkmate c_check_complex
 #' @export
-assertComplex = function(x, ..., .var.name) {
-  makeAssertion(checkComplex(x, ...), vname(x, .var.name))
+assertComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_complex", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkComplex
+#' @useDynLib checkmate c_check_complex
 #' @export
-testComplex = function(x, ...) {
-  isTRUE(checkComplex(x, ...))
+testComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_complex", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  )
 }

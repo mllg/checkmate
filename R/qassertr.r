@@ -14,8 +14,8 @@
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
 #' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
 #' @seealso \code{\link{qtest}}, \code{\link{qassert}}
-#' @export
 #' @useDynLib checkmate c_qassert
+#' @export
 #' @examples
 #' qtestr(as.list(1:10), "i+")
 #' qtestr(iris, "n")
@@ -25,9 +25,9 @@ qassertr = function(x, rules, .var.name) {
 }
 
 
-#' @export
 #' @rdname qassertr
 #' @useDynLib checkmate c_qtest
+#' @export
 qtestr = function(x, rules) {
   .Call("c_qtest", x, rules, TRUE, PACKAGE = "checkmate")
 }

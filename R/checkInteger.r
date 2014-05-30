@@ -3,33 +3,37 @@
 #' @templateVar fn Integer
 #' @template na-handling
 #' @template checker
+#' @inheritParams checkVector
 #' @param lower [\code{numeric(1)}]\cr
 #'  Lower value all elements of \code{x} must be greater than or equal.
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than or equal.
-#' @param ... [ANY]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @family basetypes
 #' @seealso \code{\link{asInteger}}
+#' @useDynLib checkmate c_check_integer
 #' @export
 #' @examples
 #'  testInteger(1L)
 #'  testInteger(1.)
 #'  testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
-checkInteger = function(x, lower = -Inf, upper = Inf, ...) {
-  if (!is.integer(x) && !allMissingAtomic(x))
-    return("Must be integer")
-  checkVectorProps(x, ...) %and% checkBounds(x, lower, upper)
+checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkInteger
+#' @useDynLib checkmate c_check_integer
 #' @export
-assertInteger = function(x, lower = -Inf, upper = Inf, ..., .var.name) {
-  makeAssertion(checkInteger(x, lower, upper, ...), vname(x, .var.name))
+assertInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  makeAssertion(
+    .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkInteger
+#' @useDynLib checkmate c_check_integer
 #' @export
-testInteger = function(x, lower = -Inf, upper = Inf, ...) {
-  isTRUE(checkInteger(x, lower, upper, ...))
+testInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(
+    .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  )
 }

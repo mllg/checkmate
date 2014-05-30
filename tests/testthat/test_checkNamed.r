@@ -35,7 +35,19 @@ test_that("checkNamed", {
   expect_error(assertNamed(x))
 
   x = setNames(1:2, c("a", "a"))
-  expect_error(assertNamed(x, "unique"), "duplicated")
+  expect_error(assertNamed(x, "unique"), "uniquely")
+
+  expect_true(testNamed(setNames(1, "x"), type = "strict"))
+  expect_true(testNamed(setNames(1, "..x"), type = "strict"))
+  expect_true(testNamed(setNames(1, "x_1"), type = "strict"))
+  expect_true(testNamed(setNames(1, "x."), type = "strict"))
+  expect_false(testNamed(setNames(1, "1"), type = "strict"))
+  expect_false(testNamed(setNames(1, ".1"), type = "strict"))
+  expect_false(testNamed(setNames(1, "..1"), type = "strict"))
+  expect_false(testNamed(setNames(1, "x "), type = "strict"))
+  expect_false(testNamed(setNames(1, "ä"), type = "strict"))
+
+  expect_error(assertNamed(x, "unique"), "uniquely")
 
   x = setNames(1:2, c("a", "1"))
   expect_error(assertNamed(x, "strict"), "naming rules")
