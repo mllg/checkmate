@@ -23,7 +23,7 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 Select the check(s) to perform.
 \dQuote{unnamed} checks \code{x} to be unnamed.
 \dQuote{named} (default) checks \code{x} to be named, this includes names to be not \code{NA} or emtpy (\code{""}).
-\dQuote{unique} additionally tests for non-duplicated names and \code{strict} tests the names to comply to R's variable naming rules on top of \dQuote{unique}.
+\dQuote{unique} additionally tests for non-duplicated names.
 Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.}
 }
 \value{

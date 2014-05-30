@@ -5,11 +5,15 @@
 \alias{testComplex}
 \title{Check if an argument is a vector of type complex}
 \usage{
-checkComplex(x, ...)
+checkComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
-assertComplex(x, ..., .var.name)
+assertComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
+  .var.name)
 
-testComplex(x, ...)
+testComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -19,8 +23,27 @@ Object to check.}
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkVector}}.}
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:

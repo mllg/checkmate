@@ -5,11 +5,11 @@
 \alias{testNumber}
 \title{Check if an argument is a single numeric}
 \usage{
-checkNumber(x, na.ok = FALSE)
+checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf)
 
-assertNumber(x, na.ok = FALSE, .var.name)
+assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name)
 
-testNumber(x, na.ok = FALSE)
+testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -21,6 +21,12 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{lower}{[\code{numeric(1)}]\cr
+Lower value all elements of \code{x} must be greater than.}
+
+\item{upper}{[\code{numeric(1)}]\cr
+Upper value all elements of \code{x} must be lower than.}
 }
 \value{
 Depending on the function prefix:

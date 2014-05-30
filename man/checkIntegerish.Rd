@@ -5,14 +5,18 @@
 \alias{testIntegerish}
 \title{Check if an object is an integerish vector}
 \usage{
-checkIntegerish(x, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5, ...)
+checkIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
-assertIntegerish(x, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5, ..., .var.name)
+assertIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
+  .var.name)
 
-testIntegerish(x, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5, ...)
+testIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -26,14 +30,33 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 Numerical tolerance used to check if a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
 
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkVector}}.}
-
 \item{lower}{[\code{numeric(1)}]\cr
 Lower value all elements of \code{x} must be greater than or equal.}
 
 \item{upper}{[\code{numeric(1)}]\cr
 Upper value all elements of \code{x} must be lower than or equal.}
+
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:

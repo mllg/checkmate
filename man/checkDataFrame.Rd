@@ -7,15 +7,15 @@
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = "any", col.names = "any")
+  row.names = NULL, col.names = NULL)
 
 assertDataFrame(x, types = character(0L), any.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = "any", col.names = "any", .var.name)
+  row.names = NULL, col.names = NULL, .var.name)
 
 testDataFrame(x, types = character(0L), any.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = "any", col.names = "any")
+  row.names = NULL, col.names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr

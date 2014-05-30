@@ -5,14 +5,20 @@
 \alias{testCharacter}
 \title{Check if an argument is a vector of type character}
 \usage{
-checkCharacter(x, pattern = NULL, ignore.case = FALSE, perl = FALSE,
-  fixed = FALSE, min.chars = 0L, ...)
+checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
 
-assertCharacter(x, pattern = NULL, ignore.case = FALSE, perl = FALSE,
-  fixed = FALSE, min.chars = 0L, ..., .var.name)
+assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL, .var.name)
 
-testCharacter(x, pattern = NULL, ignore.case = FALSE, perl = FALSE,
-  fixed = FALSE, min.chars = 0L, ...)
+testCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -23,14 +29,11 @@ Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{pattern}{[\code{character(1L)}]\cr
-Regular expression as used to use in \code{\link[base]{grepl}}.
+Regular expression as used in \code{\link[base]{grepl}}.
 All elements of \code{x} must comply to this pattern.
-Defaults to \code{NA}.}
+Defaults to \code{NULL}.}
 
 \item{ignore.case}{[\code{logical(1)}]\cr
-See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
-
-\item{perl}{[\code{logical(1)}]\cr
 See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 
 \item{fixed}{[\code{logical(1)}]\cr
@@ -39,8 +42,27 @@ See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 \item{min.chars}{[\code{integer(1)}]\cr
 Minimum number of characters in each element of \code{x}.}
 
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkVector}}.}
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:

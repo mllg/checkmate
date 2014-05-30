@@ -7,7 +7,7 @@
 \usage{
 checkString(x, na.ok = FALSE)
 
-assertString(x, na.ok = FALSE, var.name)
+assertString(x, na.ok = FALSE, .var.name)
 
 testString(x, na.ok = FALSE)
 }

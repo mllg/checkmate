@@ -6,14 +6,14 @@
 \title{Check vector properties}
 \usage{
 checkVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = "any")
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
 assertVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = "any",
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
   .var.name)
 
 testVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = "any")
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr

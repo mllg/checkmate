@@ -12,10 +12,10 @@ typedef struct {
 
 extern const msg_t MSGT;
 extern const msg_t MSGF;
-msg_t newMsg(const char *);
-msg_t newMsgf(const char *, ...);
-void setMsgf(msg_t *, const char *, ...);
-void setMsg(msg_t *, const char *);
+msg_t Msg(const char *);
+msg_t Msgf(const char *, ...);
+SEXP CRes(const char *);
+SEXP CResf(const char *, ...);
 SEXP mwrap(msg_t);
 
 #endif

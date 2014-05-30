@@ -5,11 +5,11 @@
 \alias{testCount}
 \title{Check if an argument is a count}
 \usage{
-checkCount(x, na.ok = FALSE)
+checkCount(x, na.ok = FALSE, positive = FALSE)
 
-assertCount(x, na.ok = FALSE, .var.name)
+assertCount(x, na.ok = FALSE, positive = FALSE, .var.name)
 
-testCount(x, na.ok = FALSE)
+testCount(x, na.ok = FALSE, positive = FALSE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -21,6 +21,10 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{positive}{[\code{logical(1)}]\cr
+Must \code{x} be positive (> 0)?
+Default is \code{FALSE}.}
 }
 \value{
 Depending on the function prefix:

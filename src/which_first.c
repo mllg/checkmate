@@ -1,4 +1,5 @@
 #include "which_first.h"
+#include "assertions.h"
 
 static inline SEXP named_return(R_len_t ind, SEXP names) {
     if (isNull(names))
@@ -14,8 +15,7 @@ static inline SEXP named_return(R_len_t ind, SEXP names) {
 SEXP c_which_first(SEXP x, SEXP use_names) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
-    if (!isLogical(use_names) || length(use_names) != 1)
-        error("Argument 'use_names' must be single logical value");
+    assertFlag(use_names, "use.names");
     const R_len_t n = length(x);
     int *xp = LOGICAL(x);
 
@@ -33,8 +33,7 @@ SEXP c_which_first(SEXP x, SEXP use_names) {
 SEXP c_which_last(SEXP x, SEXP use_names) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
-    if (!isLogical(use_names) || length(use_names) != 1)
-        error("Argument 'use_names' must be single logical value");
+    assertFlag(use_names, "use.names");
     int *xp = LOGICAL(x);
 
     for (R_len_t i = length(x) - 1; i >= 0; i--) {

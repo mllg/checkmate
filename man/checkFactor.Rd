@@ -5,12 +5,17 @@
 \alias{testFactor}
 \title{Check if an argument is a factor}
 \usage{
-checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...)
+checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL)
 
-assertFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...,
-  .var.name)
+assertFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL, .var.name)
 
-testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, ...)
+testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -32,9 +37,27 @@ Default is \code{NA} which disables this check.}
 Are empty levels allowed?
 Default is \code{TRUE}.}
 
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkVector}}
-or \code{\link{checkVector}}.}
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:

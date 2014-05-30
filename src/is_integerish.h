@@ -3,7 +3,7 @@
 
 #include <R.h>
 #include <Rinternals.h>
-#define DEFAULT_TOL sqrt(DOUBLE_EPS)
+#define INTEGERISH_DEFAULT_TOL sqrt(DOUBLE_EPS)
 
 Rboolean isIntegerish(SEXP, double);
 SEXP c_is_integerish(SEXP, SEXP);

@@ -8,3 +8,4 @@ tar.gz$
 \.yml$
 ^README.md$
 ^man-roxygen
+^Makefile

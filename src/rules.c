@@ -1,18 +1,18 @@
 #include "rules.h"
 #include <limits.h>
 #include <string.h>
+#include "bounds.h"
 #include "any_missing.h"
 #include "is_integerish.h"
 
 /*********************************************************************************************************************/
 /* functions around R's class check macros                                                                           */
 /*********************************************************************************************************************/
-#define DEFAULT_TOL sqrt(DOUBLE_EPS)
 static inline Rboolean is_class_logical(SEXP x) { return isLogical(x); }
 static inline Rboolean is_class_integer(SEXP x) { return isInteger(x); }
-static inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, DEFAULT_TOL); }
+static inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, INTEGERISH_DEFAULT_TOL); }
 static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
-static inline Rboolean is_class_numeric(SEXP x) { return isInteger(x) || isReal(x); }
+static inline Rboolean is_class_numeric(SEXP x) { return isNumeric(x); }
 static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
 static inline Rboolean is_class_atomic(SEXP x) { return isVectorAtomic(x); }
@@ -32,13 +32,15 @@ static inline Rboolean ii_lt(const R_len_t x, const R_len_t y) { return x <  y; 
 static inline Rboolean ii_gt(const R_len_t x, const R_len_t y) { return x >  y; }
 static inline Rboolean ii_le(const R_len_t x, const R_len_t y) { return x <= y; }
 static inline Rboolean ii_ge(const R_len_t x, const R_len_t y) { return x >= y; }
-static inline Rboolean ii_ne(const R_len_t x, const R_len_t y) { return x != y; }
-static inline Rboolean dd_eq(const double x, const double y) { return x == y; }
-static inline Rboolean dd_lt(const double x, const double y) { return x <  y; }
-static inline Rboolean dd_gt(const double x, const double y) { return x >  y; }
-static inline Rboolean dd_le(const double x, const double y) { return x <= y; }
-static inline Rboolean dd_ge(const double x, const double y) { return x >= y; }
-static inline Rboolean dd_ne(const double x, const double y) { return x != y; }
+
+
+/*********************************************************************************************************************/
+/* Class strings                                                                                                     */
+/*********************************************************************************************************************/
+static const char * CLSTR[] = {
+     "logical", "integer", "integerish", "numeric", "double", "string", "list", "complex",
+     "atomic", "matrix", "data frame", "environment", "function", "NULL"
+};
 
 /*********************************************************************************************************************/
 /* First step: Parse string and built checker_t object                                                               */
@@ -287,78 +289,25 @@ void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 /* Second step: check SEXP using a checker_t object                                                                  */
 /*********************************************************************************************************************/
-static const char* getClassString(const class_t name) {
-    switch(name) {
-        case CL_LOGICAL     : return "logical";
-        case CL_INTEGER     : return "integer";
-        case CL_INTEGERISH  : return "integerish";
-        case CL_NUMERIC     : return "numeric";
-        case CL_DOUBLE      : return "double";
-        case CL_STRING      : return "string";
-        case CL_LIST        : return "list";
-        case CL_COMPLEX     : return "complex";
-        case CL_ATOMIC      : return "atomic";
-        case CL_MATRIX      : return "matrix";
-        case CL_DATAFRAME   : return "data frame";
-        case CL_ENVIRONMENT : return "environment";
-        case CL_FUNCTION    : return "function";
-        case CL_NULL        : return "NULL";
-        default             : error("Internal error dispatching class");
-    }
-}
-
-static const char* getOperatorString(const comp_t op) {
-    switch(op) {
-        case LT: return "<";
-        case LE: return "<=";
-        case EQ: return "==";
-        case GE: return ">=";
-        case GT: return ">";
-        default: error("Internal error dispatching comparison operator");
-    }
-}
-
-static Rboolean check_bound(SEXP x, bound_t bound) {
-    if (isReal(x)) {
-        const double *xp = REAL(x);
-        const double * const xend = xp + length(x);
-        for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
-                return FALSE;
-        }
-    } else if (isInteger(x)) {
-        const int *xp = INTEGER(x);
-        const int * const xend = xp + length(x);
-        for (; xp != xend; xp++) {
-            if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
-                return FALSE;
-        }
-    } else {
-        error("Bound checks only possible for numeric variables");
-    }
-
-    return TRUE;
-}
-
 msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        return err_msg ? newMsgf("Must be of class '%s', not '%s'", getClassString(checker->class.name), type2char(TYPEOF(x))) : MSGF;
+        return err_msg ? Msgf("Must be of class '%s', not '%s'", CLSTR[checker->class.name], type2char(TYPEOF(x))) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
-        return err_msg ? newMsg("May not contain missing values") : MSGF;
+        return err_msg ? Msg("May not contain missing values") : MSGF;
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        return err_msg ? newMsgf("Must be of length %s %i, but has length %i", getOperatorString(checker->len.op), checker->len.cmp, length(x)) : MSGF;
+        return err_msg ? Msgf("Must be of length %s %i, but has length %i", getOperatorString(checker->len.op), checker->len.cmp, length(x)) : MSGF;
     }
 
-    if (checker->lower.fun != NULL && !check_bound(x, checker->lower)) {
-        return err_msg ? newMsgf("All elements must be %s %f", getOperatorString(checker->lower.op), checker->lower.cmp) : MSGF;
+    if (checker->lower.fun != NULL && !is_in_bound(x, checker->lower)) {
+        return err_msg ? Msgf("All elements must be %s %f", getOperatorString(checker->lower.op), checker->lower.cmp) : MSGF;
     }
 
-    if (checker->upper.fun != NULL && !check_bound(x, checker->upper)) {
-        return err_msg ? newMsgf("All elements must be %s %f", getOperatorString(checker->upper.op), checker->upper.cmp) : MSGF;
+    if (checker->upper.fun != NULL && !is_in_bound(x, checker->upper)) {
+        return err_msg ? Msgf("All elements must be %s %f", getOperatorString(checker->upper.op), checker->upper.cmp) : MSGF;
     }
 
     return MSGT;

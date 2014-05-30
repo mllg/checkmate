@@ -6,14 +6,14 @@
 \title{Check if an argument is a matrix}
 \usage{
 checkMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = "any", col.names = "any")
+  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL)
 
 assertMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = "any", col.names = "any",
+  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL,
   .var.name)
 
 testMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = "any", col.names = "any")
+  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr

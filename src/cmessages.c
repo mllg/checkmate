@@ -3,13 +3,13 @@
 const msg_t MSGT = { .ok = TRUE };
 const msg_t MSGF = { .ok = FALSE };
 
-msg_t newMsg(const char * str) {
+msg_t Msg(const char *str) {
     msg_t msg = MSGF;
     strncpy(msg.msg, str, CMSGLEN);
     return msg;
 }
 
-msg_t newMsgf(const char *fmt, ...) {
+msg_t Msgf(const char *fmt, ...) {
     msg_t msg = MSGF;
     va_list vargs;
     va_start(vargs, fmt);
@@ -17,16 +17,16 @@ msg_t newMsgf(const char *fmt, ...) {
     return msg;
 }
 
-void setMsg(msg_t *msg, const char * str) {
-    strncpy(msg->msg, str, CMSGLEN);
-    msg->ok = FALSE;
+SEXP CRes(const char *str) {
+    return ScalarString(mkChar(str));
 }
 
-void setMsgf(msg_t *msg, const char *fmt, ...) {
+SEXP CResf(const char *fmt, ...) {
+    char msg[CMSGLEN];
     va_list vargs;
     va_start(vargs, fmt);
-    vsnprintf(msg->msg, CMSGLEN, fmt, vargs);
-    msg->ok = FALSE;
+    vsnprintf(msg, CMSGLEN, fmt, vargs);
+    return ScalarString(mkChar(msg));
 }
 
 SEXP mwrap(msg_t msg) {

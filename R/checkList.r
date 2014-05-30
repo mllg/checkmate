@@ -2,6 +2,7 @@
 #'
 #' @templateVar fn List
 #' @template checker
+#' @inheritParams checkVector
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
@@ -15,7 +16,7 @@
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+  .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkListProps(x, types)
 }
 
@@ -34,7 +35,7 @@ checkListProps = function(x, types = character(0L)) {
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
   makeAssertion(
-    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
     checkListProps(x, types)
   , vname(x, .var.name))
 }
@@ -44,7 +45,7 @@ assertList = function(x, types = character(0L), any.missing = TRUE, all.missing 
 #' @export
 testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(
-    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, .PACKAGE = "checkmate") %and%
+    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
     checkListProps(x, types)
   )
 }

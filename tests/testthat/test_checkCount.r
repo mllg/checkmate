@@ -4,7 +4,9 @@ test_that("checkCount", {
   expect_false(testCount(integer(0)))
   expect_false(testCount(NULL))
 
-  expect_true(testCount(1L))
+  expect_true(testCount(0L))
+  expect_false(testCount(0L, positive = TRUE))
+  expect_true(testCount(1L, positive = TRUE))
   expect_true(testCount(1))
   expect_true(testCount(0))
   expect_false(testCount(-1))

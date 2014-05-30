@@ -5,11 +5,17 @@
 \alias{testNumeric}
 \title{Check that an argument is a vector of type numeric}
 \usage{
-checkNumeric(x, lower = -Inf, upper = Inf, ...)
+checkNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL)
 
-assertNumeric(x, lower = -Inf, upper = Inf, ..., .var.name)
+assertNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, .var.name)
 
-testNumeric(x, lower = -Inf, upper = Inf, ...)
+testNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -25,8 +31,27 @@ Lower value all elements of \code{x} must be greater than.}
 \item{upper}{[\code{numeric(1)}]\cr
 Upper value all elements of \code{x} must be lower than.}
 
-\item{...}{[ANY]\cr
-Additional parameters used in a call of \code{\link{checkVector}}.}
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:

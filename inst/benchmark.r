@@ -19,6 +19,14 @@ pr(microbenchmark(
     checkArg(x, "logical", len = 1, na.ok = FALSE)
 ))
 
+x = 1
+pr(microbenchmark(
+    if (length(x) != 1L || !is.numeric(x) || is.na(x) || any(x < 0)) stop("error"),
+    qassert(x, "N1[0,)"),
+    assertNumber(x, na.ok = FALSE, lower = 0),
+    checkArg(x, "numeric", len = 1, na.ok = FALSE, lower = 1)
+))
+
 x = 1:10
 pr(microbenchmark(
     if (!is.integer(x) || length(x) == 0 || any(x < 0)) stop("error"),

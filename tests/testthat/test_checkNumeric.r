@@ -3,7 +3,7 @@ context("checkNumeric")
 test_that("checkNumeric", {
   expect_true(testNumeric(integer(0)))
   expect_false(testNumeric(NULL))
-  expect_false(testNumeric(TRUE))
+  expect_true(testNumeric(TRUE))
   expect_true(testNumeric(NA))
   expect_true(testNumeric(NA_real_))
   expect_false(testNumeric(NA_real_, any.missing = FALSE))

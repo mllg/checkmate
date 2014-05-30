@@ -42,7 +42,7 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
         parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 
-    if (LOGICAL(recursive)[0])
-        return ScalarLogical(qtest_list(x, checker, nrules));
-    return ScalarLogical(qtest1(x, checker, nrules));
+    return LOGICAL(recursive)[0] ?
+        ScalarLogical(qtest_list(x, checker, nrules)) : 
+        ScalarLogical(qtest1(x, checker, nrules));
 }

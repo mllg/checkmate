@@ -3,7 +3,6 @@
 
 #include <R.h>
 #include <Rinternals.h>
-#include "typedefs.h"
 
 SEXP c_qtest(SEXP, SEXP, SEXP);
 
