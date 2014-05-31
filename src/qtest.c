@@ -43,6 +43,6 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
     }
 
     return LOGICAL(recursive)[0] ?
-        ScalarLogical(qtest_list(x, checker, nrules)) : 
+        ScalarLogical(qtest_list(x, checker, nrules)) :
         ScalarLogical(qtest1(x, checker, nrules));
 }

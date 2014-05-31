@@ -38,7 +38,7 @@ static Rboolean check_strict_names(SEXP x) {
     const char *str;
     for (R_len_t i = 0; i < nx; i++) {
         str = CHAR(STRING_ELT(x, i));
-        while (*str == '.') 
+        while (*str == '.')
             str++;
         if (!isalpha(*str))
             return FALSE;
@@ -55,7 +55,7 @@ static Rboolean check_strict_names(SEXP x) {
 /*********************************************************************************************************************/
 static msg_t check_names(SEXP nn, SEXP type) {
     if (!isNull(type)) {
-        const char const *ctype = CHAR(STRING_ELT(type, 0));
+        const char *ctype = CHAR(STRING_ELT(type, 0));
 
         if (strcmp(ctype, "unnamed") == 0) {
             if (!isNull(nn))
@@ -100,7 +100,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
         if (length(x) > n)
             return Msgf("Must have length <= %i", n);
     }
-    
+
     assertFlag(any_missing, "any.missing");
     if (isFALSE(any_missing) && any_missing_atomic(x))
         return Msg("Contains missing values");
@@ -108,7 +108,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     assertFlag(all_missing, "all.missing");
     if (isFALSE(all_missing) && all_missing_atomic(x))
         return Msg("Contains only missing values");
-    
+
     assertFlag(unique, "unique");
     if (isTRUE(unique) && any_duplicated(x, FALSE) > 0)
         return Msg("Contains only missing values");
@@ -151,7 +151,7 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
     if (!isNull(row_names) || !isNull(col_names)) {
         msg_t msg;
         SEXP dn = getAttrib(x, R_DimNamesSymbol);
-        
+
         msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 1), row_names);
         if (!msg.ok)
             return msg;

@@ -22,7 +22,7 @@ static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
 static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
 static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
-static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); }
+/* static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); } */
 
 /*********************************************************************************************************************/
 /* functions for simple integer-integer and double-double comparisons                                                */
