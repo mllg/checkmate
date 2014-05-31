@@ -55,7 +55,7 @@ static Rboolean check_strict_names(SEXP x) {
 /*********************************************************************************************************************/
 static msg_t check_names(SEXP nn, SEXP type) {
     if (!isNull(type)) {
-        const char *ctype = CHAR(STRING_ELT(type, 0));
+        const char * const ctype = CHAR(STRING_ELT(type, 0));
 
         if (strcmp(ctype, "unnamed") == 0) {
             if (!isNull(nn))

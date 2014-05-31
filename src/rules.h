@@ -4,14 +4,13 @@
 #include <R.h>
 #include <Rinternals.h>
 #include "cmessages.h"
+#include "comps.h"
 #include "bounds.h"
 
-typedef Rboolean(*ll_cmp)(R_len_t, R_len_t);
 typedef enum {
     CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_LIST, CL_COMPLEX,
     CL_ATOMIC, CL_MATRIX, CL_DATAFRAME, CL_ENVIRONMENT, CL_FUNCTION, CL_NULL, CL_NONE
 } class_t;
-
 
 typedef struct {
     struct {

@@ -22,21 +22,7 @@ static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
 static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
 static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
-/* static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); } */
 
-/*********************************************************************************************************************/
-/* functions for simple integer-integer and double-double comparisons                                                */
-/*********************************************************************************************************************/
-static inline Rboolean ii_eq(const R_len_t x, const R_len_t y) { return x == y; }
-static inline Rboolean ii_lt(const R_len_t x, const R_len_t y) { return x <  y; }
-static inline Rboolean ii_gt(const R_len_t x, const R_len_t y) { return x >  y; }
-static inline Rboolean ii_le(const R_len_t x, const R_len_t y) { return x <= y; }
-static inline Rboolean ii_ge(const R_len_t x, const R_len_t y) { return x >= y; }
-
-
-/*********************************************************************************************************************/
-/* Class strings                                                                                                     */
-/*********************************************************************************************************************/
 static const char * CLSTR[] = {
      "logical", "integer", "integerish", "numeric", "double", "string", "list", "complex",
      "atomic", "matrix", "data frame", "environment", "function", "NULL"
@@ -299,15 +285,19 @@ msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        return err_msg ? Msgf("Must be of length %s %i, but has length %i", getOperatorString(checker->len.op), checker->len.cmp, length(x)) : MSGF;
+        return err_msg ? Msgf("Must be of length %s %i, but has length %i", CMPSTR[checker->len.cmp], length(x)) : MSGF;
     }
 
-    if (checker->lower.fun != NULL && !is_in_bound(x, checker->lower)) {
-        return err_msg ? Msgf("All elements must be %s %f", getOperatorString(checker->lower.op), checker->lower.cmp) : MSGF;
+    if (checker->lower.fun != NULL) {
+        msg_t msg = check_bound(x, checker->lower);
+        if (!msg.ok)
+            return msg;
     }
 
-    if (checker->upper.fun != NULL && !is_in_bound(x, checker->upper)) {
-        return err_msg ? Msgf("All elements must be %s %f", getOperatorString(checker->upper.op), checker->upper.cmp) : MSGF;
+    if (checker->upper.fun != NULL) {
+        msg_t msg = check_bound(x, checker->upper);
+        if (!msg.ok)
+            return msg;
     }
 
     return MSGT;
