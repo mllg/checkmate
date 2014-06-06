@@ -8,6 +8,7 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
+#' @family scalars
 #' @useDynLib checkmate c_check_string
 #' @examples
 #'  testString("a")

@@ -9,6 +9,7 @@
 #'  Lower value all elements of \code{x} must be greater than.
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than.
+#' @family scalars
 #' @useDynLib checkmate c_check_number
 #' @export
 #' @examples

@@ -23,7 +23,7 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 Are missing values allowed? Default is \code{FALSE}.}
 
 \item{positive}{[\code{logical(1)}]\cr
-Must \code{x} be positive (> 0)?
+Must \code{x} be positive (>= 1)?
 Default is \code{FALSE}.}
 }
 \value{

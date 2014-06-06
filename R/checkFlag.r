@@ -7,6 +7,7 @@
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
+#' @family scalars
 #' @useDynLib checkmate c_check_flag
 #' @export
 #' @examples

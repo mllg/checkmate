@@ -17,10 +17,11 @@
 #' @return Converted \code{x}.
 #' @export
 asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
-  if (!allMissingAtomic(x) && !isIntegerish(x, tol))
-    mstop("Error converting '%s' to an integer", vname(x, .var.name))
+  assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name))
+  as.integer(x)
+}
 
-  x = as.integer(x)
-  assertInteger(x, ..., .var.name = .var.name)
-  return(x)
+asCount = function(x, na.ok = FALSE, positive = FALSE, .var.name) {
+  assertCount(x, na.ok, positive, vname(x, .var.name))
+  as.integer(x)
 }

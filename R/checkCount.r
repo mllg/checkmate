@@ -8,8 +8,9 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @param positive [\code{logical(1)}]\cr
-#'  Must \code{x} be positive (> 0)?
+#'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}.
+#' @family scalars
 #' @useDynLib checkmate c_check_count
 #' @export
 #' @examples

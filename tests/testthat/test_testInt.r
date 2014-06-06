@@ -1,0 +1,16 @@
+context("checkInt")
+
+test_that("checkInt", {
+  expect_false(testInt(integer(0)))
+  expect_false(testInt(NULL))
+
+  expect_true(testInt(1L))
+  expect_true(testInt(1.))
+  expect_false(testInt(NA))
+  expect_true(testInt(NA_real_, na.ok = TRUE))
+  expect_false(testInt(1:2))
+  expect_false(testInt(""))
+
+  expect_true(assertInt(1))
+  expect_error(assertInt(2+3i), "integerish")
+})

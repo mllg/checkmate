@@ -264,7 +264,7 @@ SEXP c_check_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
 /*********************************************************************************************************************/
 SEXP c_check_flag(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!isLogical(x) && !is_na))
+    if (length(x) != 1 || (!is_na && !isLogical(x)))
         return CRes("Must be a logical flag");
 
     assertFlag(na_ok, "na.ok");
@@ -275,7 +275,7 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
 
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!isIntegerish(x, INTEGERISH_DEFAULT_TOL) && !is_na))
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, INTEGERISH_DEFAULT_TOL)))
         return CRes("Must be a count");
     if (is_na) {
         assertFlag(na_ok, "na.ok");
@@ -290,9 +290,21 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive) {
     return ScalarLogical(TRUE);
 }
 
+SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
+    Rboolean is_na = is_scalar_na(x);
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, INTEGERISH_DEFAULT_TOL)))
+        return CRes("Must be a single integerish value");
+    if (is_na) {
+        assertFlag(na_ok, "na.ok");
+        if (!isTRUE(na_ok))
+            return CRes("May not be NA");
+    }
+    return mwrap(check_bounds(x, lower, upper));
+}
+
 SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!isNumeric(x) && !is_na))
+    if (length(x) != 1 || (!is_na && !isNumeric(x)))
         return CRes("Must be a number");
 
     assertFlag(na_ok, "na.ok");
@@ -306,7 +318,7 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
 
 SEXP c_check_string(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!isString(x) && !is_na))
+    if (length(x) != 1 || (!is_na && !isString(x)))
         return CRes("Must be a string");
 
     assertFlag(na_ok, "na.ok");

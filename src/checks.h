@@ -22,6 +22,7 @@ SEXP c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 
 SEXP c_check_flag(SEXP, SEXP);
 SEXP c_check_count(SEXP, SEXP, SEXP);
+SEXP c_check_int(SEXP, SEXP, SEXP, SEXP);
 SEXP c_check_number(SEXP, SEXP, SEXP, SEXP);
 SEXP c_check_string(SEXP, SEXP);
 
