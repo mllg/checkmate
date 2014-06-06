@@ -285,7 +285,7 @@ msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        return err_msg ? Msgf("Must be of length %s %i, but has length %i", CMPSTR[checker->len.cmp], length(x)) : MSGF;
+        return err_msg ? Msgf("Must be of length %s %i, but has length %i", CMPSTR[checker->len.op], checker->len.cmp, length(x)) : MSGF;
     }
 
     if (checker->lower.fun != NULL) {
