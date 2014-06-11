@@ -34,7 +34,7 @@ checkConstantHelper = function(x, tol = .Machine$double.eps^0.5) {
       return(all(Re(d) < tol & Im(d) < tol))
     }
     # logical, character, integer, ...
-    return(all(x == x[[1L]]))
+    return(length(unique(x)) > 1L)
   }
   all(vapply(tail(x, -1L), identical, y=x[[1L]], FUN.VALUE=NA))
 }

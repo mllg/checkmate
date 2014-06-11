@@ -41,4 +41,13 @@ and \code{NA_character_}.
 testString("a")
  testString(letters)
 }
+\seealso{
+Other scalars: \code{\link{assertCount}},
+  \code{\link{checkCount}}, \code{\link{testCount}};
+  \code{\link{assertFlag}}, \code{\link{checkFlag}},
+  \code{\link{testFlag}}; \code{\link{assertInt}},
+  \code{\link{checkInt}}, \code{\link{testInt}};
+  \code{\link{assertNumber}}, \code{\link{checkNumber}},
+  \code{\link{testNumber}}
+}
 

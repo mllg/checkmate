@@ -41,4 +41,13 @@ and \code{NA_character_}.
 testFlag(TRUE)
  testFlag(1)
 }
+\seealso{
+Other scalars: \code{\link{assertCount}},
+  \code{\link{checkCount}}, \code{\link{testCount}};
+  \code{\link{assertInt}}, \code{\link{checkInt}},
+  \code{\link{testInt}}; \code{\link{assertNumber}},
+  \code{\link{checkNumber}}, \code{\link{testNumber}};
+  \code{\link{assertString}}, \code{\link{checkString}},
+  \code{\link{testString}}
+}
 

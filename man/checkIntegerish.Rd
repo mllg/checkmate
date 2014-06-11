@@ -27,7 +27,7 @@ Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{tol}{[\code{double(1)}]\cr
-Numerical tolerance used to check if a double or complex can be converted.
+Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
 
 \item{lower}{[\code{numeric(1)}]\cr
