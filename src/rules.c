@@ -194,11 +194,10 @@ static int parse_length(checker_t *checker, const char *rule) {
 }
 
 static int parse_bounds(checker_t *checker, const char *rule) {
-    checker->lower.fun = NULL;
-    checker->upper.fun = NULL;
-
     switch(rule[0]) {
         case '\0':
+            checker->lower.fun = NULL;
+            checker->upper.fun = NULL;
             return 0;
         case '(':
             checker->lower.fun = &dd_gt;
@@ -213,10 +212,8 @@ static int parse_bounds(checker_t *checker, const char *rule) {
     }
 
     char *end;
-    double cmp;
-    const char *start = rule+1;
-
-    cmp = strtod(start, &end);
+    const char *start = rule + 1;
+    double cmp = strtod(start, &end);
     if (start == end) {
         if (checker->lower.op == GT) {
             checker->lower.fun = &dd_ne;
@@ -229,8 +226,8 @@ static int parse_bounds(checker_t *checker, const char *rule) {
     }
 
     switch(*end) {
-        case ',' : start = end + 1; break;
-        case ')' : break;
+        case ',' : start = end + 1;
+        case ')' :
         case ']' : break;
         default  : error("Invalid bound definition, error parsing lower bound, missing separator ',' or missing closing ')' or ']': %s", rule);
     }
@@ -256,7 +253,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
         error("Invalid bound definition, error parsing upper bound or missing closing ')' or ']': %s", rule);
     }
 
-    return end-rule+1;
+    return end - rule + 1;
 }
 
 void parse_rule(checker_t *checker, const char *rule) {
