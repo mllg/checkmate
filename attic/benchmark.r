@@ -1,5 +1,7 @@
 library(microbenchmark)
+library(compiler)
 library(checkmate)
+
 
 pr = function(mb, unit) {
   print(mb, unit = unit, order="median")
