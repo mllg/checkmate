@@ -18,6 +18,17 @@ Virtually **every standard type of user error** when passing arguments into func
 caught with a simple, readable line which produces an **informative error message** in case.
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 
+Here is quick example to get you started at once. Let's look at the function makeSimpleFileLogger in
+our BBmisc helper page. As you can see, a file path, a boolean flag and a count can be passed by the
+user. Here is the corresponding code to perform the checks:
+
+```r
+makeSimpleFileLogger = function(logfile, touch = FALSE, keep = 10L) {
+  checkFile(logfile)
+  checkFlag(touch)
+  keep = asInt(keep, lower = 0L)
+```
+
 Here is an overview of the most useful functions for argument checking:
 
 ### Scalars / Single Objects:
@@ -27,6 +38,7 @@ Here is an overview of the most useful functions for argument checking:
 * [checkNumber](http://mllg.github.io/checkmate/man/checkNumber.html)
 * [checkCount](http://mllg.github.io/checkmate/man/checkCount.html)
 * [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
+* [asInt](http://mllg.github.io/checkmate/man/asInt.html)
 * [checkString](http://mllg.github.io/checkmate/man/checkString.html)
 * [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
 
@@ -45,6 +57,7 @@ What can be checked: Choices like "A", "B" or "C" or a subet of those.
 * [checkNumeric](http://mllg.github.io/checkmate/man/checkNumeric.html)
 * [checkInteger](http://mllg.github.io/checkmate/man/checkInteger.html)
 * [checkIntegerish](http://mllg.github.io/checkmate/man/checkIntegerish.html)
+* [asInteger](http://mllg.github.io/checkmate/man/asInteger.html)
 * [checkComplex](http://mllg.github.io/checkmate/man/checkComplex.html)
 * [checkCharacter](http://mllg.github.io/checkmate/man/checkCharacter.html)
 * [checkFactor](http://mllg.github.io/checkmate/man/checkFactor.html)
@@ -87,3 +100,7 @@ What can be checked: Path exists, is accessible.
 These functions allow a special syntax to define argument checks using
 a special pattern. E.g., `qassert(x, "I+")` asserts that `x` is an integer
 vector with at least one element and no missing values.
+This provide a completely alternative mini-language (or style) how to perform arg checks.
+You choose what you like best.
+
+
