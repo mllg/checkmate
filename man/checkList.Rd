@@ -70,7 +70,9 @@ testList(list())
  testList(as.list(iris), types = c("numeric", "factor"))
 }
 \seealso{
-Other basetypes: \code{\link{assertCharacter}},
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};

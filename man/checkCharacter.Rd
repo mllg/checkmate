@@ -85,9 +85,10 @@ testCharacter(letters, min.len = 1, any.missing = FALSE)
  testCharacter("example", pattern = "xa")
 }
 \seealso{
-Other basetypes: \code{\link{assertComplex}},
-  \code{\link{checkComplex}}, \code{\link{testComplex}};
-  \code{\link{assertDataFrame}},
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertComplex}}, \code{\link{checkComplex}},
+  \code{\link{testComplex}}; \code{\link{assertDataFrame}},
   \code{\link{checkDataFrame}},
   \code{\link{testDataFrame}};
   \code{\link{assertEnvironment}},

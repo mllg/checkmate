@@ -65,7 +65,9 @@ testComplex(1)
  testComplex(1+1i)
 }
 \seealso{
-Other basetypes: \code{\link{assertCharacter}},
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}};
   \code{\link{assertDataFrame}},

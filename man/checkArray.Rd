@@ -5,14 +5,11 @@
 \alias{testArray}
 \title{Check if an argument is an array}
 \usage{
-checkArray(x, any.missing = TRUE, min.dims = NULL, dims = NULL,
-  dim.names = NULL)
+checkArray(x, any.missing = TRUE, d = NULL)
 
-assertArray(x, any.missing = TRUE, min.dims = NULL, dims = NULL,
-  dim.names = NULL, .var.name)
+assertArray(x, any.missing = TRUE, d = NULL, .var.name)
 
-testArray(x, any.missing = TRUE, min.dims = NULL, dims = NULL,
-  dim.names = NULL)
+testArray(x, any.missing = TRUE, d = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -22,18 +19,11 @@ Object to check.}
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
-\item{any.missing}{[\code{integer(1)}]\cr
+\item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
 
-\item{min.dims}{[\code{integer}]\cr
-Minimum dimensions.}
-
-\item{dims}{[\code{integer}]\cr
-Exact dimensions.}
-
-\item{dim.names}{[\code{logical(1)}]\cr
-Check for row names. Default is \dQuote{any} (no check).
-See \code{\link{checkNamed}} for possible values.}
+\item{d}{[\code{integer}]\cr
+Dimensionality of array.}
 }
 \value{
 Depending on the function prefix:

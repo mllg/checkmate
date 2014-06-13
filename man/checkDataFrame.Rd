@@ -25,7 +25,7 @@ Object to check.}
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
-\item{any.missing}{[\code{integer(1)}]\cr
+\item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{min.rows}{[\code{integer(1)}]\cr
@@ -68,7 +68,9 @@ testDataFrame(iris, "data.frame")
  testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
 }
 \seealso{
-Other basetypes: \code{\link{assertCharacter}},
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};

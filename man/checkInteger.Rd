@@ -76,7 +76,9 @@ testInteger(1L)
 \seealso{
 \code{\link{asInteger}}
 
-Other basetypes: \code{\link{assertCharacter}},
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};
