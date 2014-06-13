@@ -26,14 +26,17 @@ user. Here is the corresponding code to perform the checks:
 
 ```splus
 makeSimpleFileLogger = function(logfile, touch = FALSE, keep = 10L) {
-  checkFile(logfile)
-  checkFlag(touch)
+  assertFile(logfile)
+  assertFlag(touch)
   keep = asInt(keep, lower = 0L)
   
   ....
 }
   
 ```
+The last line not only does the assertion for the integer "keep", it also auto-converts numeric-coded ints to the actual integer data type
+of R, so 1 becomes 1L.
+
 
 Here is an overview of the most useful functions for argument checking:
 
