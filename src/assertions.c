@@ -12,10 +12,10 @@ void assertFlag(SEXP x, const char *vname) {
 void assertCount(SEXP x, const char *vname) {
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL) || length(x) != 1)
         error("Argument '%s' must be a count", vname);
-    if (asInteger(x) < 0)
-        error("Argument '%s' must be > 0", vname);
     if (any_missing_integerish(x))
         error("Argument '%s' may not be missing", vname);
+    if (asInteger(x) < 0)
+        error("Argument '%s' must be > 0", vname);
 
 }
 
