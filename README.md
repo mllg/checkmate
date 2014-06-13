@@ -22,9 +22,11 @@ Here is an overview of the most useful functions for argument checking:
 
 ### Scalars / Single Objects:
 
+* [checkNull](http://mllg.github.io/checkmate/man/checkNull.html)
 * [checkFlag](http://mllg.github.io/checkmate/man/checkFlag.html)
 * [checkNumber](http://mllg.github.io/checkmate/man/checkNumber.html)
 * [checkCount](http://mllg.github.io/checkmate/man/checkCount.html)
+* [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
 * [checkString](http://mllg.github.io/checkmate/man/checkString.html)
 * [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
 
@@ -49,14 +51,15 @@ What can be checked: Choices like "A", "B" or "C" or a subet of those.
 
 What can be checked: Length, upper and lower bounds, NAs.
 
-### Matrices and Data Frame:
+### Matrices, Arrays and Data Frame:
 
 * [checkMatrix](http://mllg.github.io/checkmate/man/checkMatrix.html)
+* [checkArray](http://mllg.github.io/checkmate/man/checkArray.html)
 * [checkDataFrame](http://mllg.github.io/checkmate/man/checkDataFrame.html)
 
 What can be checked: Number of rows, cols, NAs, names.
 
-### List / Environments:
+### Lists and Environments:
 
 * [checkList](http://mllg.github.io/checkmate/man/checkList.html)
 * [checkEnvironment](http://mllg.github.io/checkmate/man/checkEnvironment.html)
@@ -70,3 +73,20 @@ What can be checked: length, element type, names.
 
 What can be checked: Path exists, is accessible.
 
+### Functions:
+
+* [checkFunction](http://mllg.github.io/checkmate/man/checkFunction.html)
+
+What can be checked: Arguments and ordered arguments.
+
+
+### Lazy Argument Checks
+
+* [qassert](http://mllg.github.io/checkmate/man/qassert.html)
+* [qassertr](http://mllg.github.io/checkmate/man/qassert.html)
+* [qtest](http://mllg.github.io/checkmate/man/qtest.html)
+* [qtestr](http://mllg.github.io/checkmate/man/qtestr.html)
+
+These functions allow a special syntax to define argument checks using
+a special pattern. E.g., `qassert(x, "I+")` asserts that `x` is an integer
+vector with at least one element and no missing values.
