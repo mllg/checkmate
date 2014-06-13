@@ -163,6 +163,21 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
     return MSGT;
 }
 
+static msg_t check_array_props(SEXP x, SEXP any_missing, SEXP d) {
+    if (!isNull(d)) {
+        R_len_t xd = LENGTH(getAttrib(x, R_DimSymbol));
+        int d2 = asInteger(d);
+        if (xd != d2)
+            return Msgf("Must be %i-d array", d2);
+    }
+    assertFlag(any_missing, "any.missing");
+    if (isFALSE(any_missing) && any_missing_atomic(x))
+        return Msg("Contains missing values");
+
+    return MSGT;
+}
+
+
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
@@ -232,6 +247,12 @@ SEXP c_check_matrix(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP
     if (!isMatrix(x))
         return CRes("Must be a matrix");
     return mwrap(check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols, row_names, col_names));
+}
+
+SEXP c_check_array(SEXP x, SEXP any_missing, SEXP d) {
+    if (!isArray(x))
+        return CRes("Must be an array");
+    return mwrap(check_array_props(x, any_missing, d));
 }
 
 SEXP c_check_names(SEXP nn, SEXP type) {
