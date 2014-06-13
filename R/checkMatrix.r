@@ -12,10 +12,10 @@
 #'  Exact number of rows.
 #' @param ncols [\code{integer(1)}]\cr
 #'  Exact number of columns.
-#' @param row.names [\code{logical(1)}]\cr
+#' @param row.names [\code{character(1)}]\cr
 #'  Check for row names. Default is \dQuote{any} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
-#' @param col.names [\code{logical(1)}]\cr
+#' @param col.names [\code{character(1)}]\cr
 #'  Check for column names. Default is \dQuote{any} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
 #' @family basetypes
