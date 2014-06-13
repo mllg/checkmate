@@ -2,7 +2,7 @@
 #'
 #' @templateVar fn Matrix
 #' @template checker
-#' @param any.missing [\code{integer(1)}]\cr
+#' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
 #'  Minimum number of rows.
