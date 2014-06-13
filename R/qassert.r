@@ -99,7 +99,9 @@
 #' qtest(iris, "D+")
 qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
-  qamsg(x, res, vname(x, .var.name))
+  if (!isTRUE(res))
+    mstop(qamsg(x, res, vname(x, .var.name)))
+  invisible(TRUE)
 }
 
 

@@ -5,7 +5,7 @@
 #' @export
 checkNull = function(x) {
   if (!is.null(x))
-    return("'ss' must be NULL")
+    return("Must be NULL")
   return(TRUE)
 }
 

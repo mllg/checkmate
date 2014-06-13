@@ -11,13 +11,10 @@ vname = function(x, var.name, n = 1L) {
   deparse(substitute(x, parent.frame(n)))
 }
 
-# qassert and qassertr message helper
+# qassert, qassertr and assert message helper
 qamsg = function(x, msg, vname, recursive=FALSE) {
-  if (isTRUE(msg))
-    return(invisible(TRUE))
-
   if (length(msg) > 1L)
-    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")))
+    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")), "\n")
   if (recursive) {
     pos = attr(msg, "pos")
     if (testNamed(x)) {
@@ -28,7 +25,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
   } else {
     item = ""
   }
-  mstop("Assertion on '%s'%s failed: %s", vname, item, msg, n = 1L)
+  sprintf("Assertion on '%s'%s failed. %s", vname, item, msg)
 }
 
 "%and%" = function(lhs, rhs) {
