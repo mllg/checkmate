@@ -25,3 +25,10 @@ void assertNumber(SEXP x, const char *vname) {
     if (any_missing_numeric(x))
         error("Argument '%s' may not be missing", vname);
 }
+
+void assertString(SEXP x, const char *vname) {
+    if (!isString(x) || length(x) != 1)
+        error("Argument '%s' must be a string", vname);
+    if (any_missing_string(x))
+        error("Argument '%s' may not be missing", vname);
+}

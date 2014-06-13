@@ -55,6 +55,7 @@ static Rboolean check_strict_names(SEXP x) {
 /*********************************************************************************************************************/
 static msg_t check_names(SEXP nn, SEXP type) {
     if (!isNull(type)) {
+        assertString(type, "type");
         const char * const ctype = CHAR(STRING_ELT(type, 0));
 
         if (strcmp(ctype, "unnamed") == 0) {
@@ -164,6 +165,7 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
 }
 
 static msg_t check_storage(SEXP x, SEXP mode) {
+    assertString(mode, "mode");
     const char * const storage = CHAR(STRING_ELT(mode, 0));
     if (strcmp(storage, "any") == 0) {
         ;

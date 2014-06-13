@@ -7,5 +7,6 @@
 void assertFlag(SEXP, const char *);
 void assertCount(SEXP, const char *);
 void assertNumber(SEXP, const char *);
+void assertString(SEXP, const char *);
 
 #endif
