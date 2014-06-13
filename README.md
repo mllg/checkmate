@@ -93,7 +93,7 @@ What can be checked: Length, upper and lower bounds, NAs.
 * [checkArray](http://mllg.github.io/checkmate/man/checkArray.html)
 * [checkDataFrame](http://mllg.github.io/checkmate/man/checkDataFrame.html)
 
-What can be checked: Number of rows, cols, NAs, names.
+What can be checked: Storage mode (numeric, char, etc.), number of rows, cols, NAs, names.
 
 ### Lists and Environments:
 
