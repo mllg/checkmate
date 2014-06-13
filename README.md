@@ -66,6 +66,12 @@ What can be checked: Number of rows, cols, NAs, names.
 
 What can be checked: length, element type, names.
 
+### Functions:
+
+* [checkFunction](http://mllg.github.io/checkmate/man/checkFunction.html)
+
+What can be checked: Arguments and ordered arguments.
+
 ### File IO:
 
 * [checkFile](http://mllg.github.io/checkmate/man/checkFile.html)
@@ -73,19 +79,10 @@ What can be checked: length, element type, names.
 
 What can be checked: Path exists, is accessible.
 
-### Functions:
-
-* [checkFunction](http://mllg.github.io/checkmate/man/checkFunction.html)
-
-What can be checked: Arguments and ordered arguments.
-
-
 ### Lazy Argument Checks
 
 * [qassert](http://mllg.github.io/checkmate/man/qassert.html)
 * [qassertr](http://mllg.github.io/checkmate/man/qassert.html)
-* [qtest](http://mllg.github.io/checkmate/man/qtest.html)
-* [qtestr](http://mllg.github.io/checkmate/man/qtestr.html)
 
 These functions allow a special syntax to define argument checks using
 a special pattern. E.g., `qassert(x, "I+")` asserts that `x` is an integer
