@@ -22,11 +22,15 @@ Here is quick example to get you started at once. Let's look at the function mak
 our BBmisc helper page. As you can see, a file path, a boolean flag and a count can be passed by the
 user. Here is the corresponding code to perform the checks:
 
-```r
+```splus
 makeSimpleFileLogger = function(logfile, touch = FALSE, keep = 10L) {
   checkFile(logfile)
   checkFlag(touch)
   keep = asInt(keep, lower = 0L)
+  
+  ....
+}
+  
 ```
 
 Here is an overview of the most useful functions for argument checking:
