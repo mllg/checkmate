@@ -37,6 +37,20 @@ makeSimpleFileLogger = function(logfile, touch = FALSE, keep = 10L) {
 The last line not only does the assertion for the integer "keep", it also auto-converts numeric-coded ints to the actual integer data type
 of R, so 1 becomes 1L.
 
+Here is what happens if you perform wrong inputs:
+
+
+```splus
+makeSimpleFileLogger(logfile = 444)
+>  Assertion on 'x' failed. Must be of class 'string', not 'double'
+
+makeSimpleFileLogger(logfile = "/wrongpath/myfile.log")
+>  Assertion on 'logfile' failed: File does not exist: '/wrongpath/myfile.log'
+
+makeSimpleFileLogger(logfile = "log.txt", keep = -20L)
+>  Assertion on 'logfile' failed: File does not exist: 'log.txt'
+
+```
 
 Here is an overview of the most useful functions for argument checking:
 
