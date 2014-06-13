@@ -9,6 +9,8 @@ checkNull = function(x) {
   return(TRUE)
 }
 
+#' @rdname checkNull
+#' @export
 assertNull = function(x, .var.name) {
   makeAssertion(
     checkNull(x)

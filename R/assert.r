@@ -3,11 +3,14 @@
 #' @param ... [ANY]\cr
 #'  List of calls to check functions.
 #' @param .var.name [character(1)]\cr
-#'  Name for \code{x}. Defaults to a heuristic to determine
-#'  the name.
+#'  Name for object to check. Defaults to a heuristic to determine
+#'  the name of the first call.
 #' @return Throws an error if all checks failed and invisibly returns
 #'  \code{TRUE} otherwise.
 #' @export
+#' @examples
+#' x = 1:10
+#' assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 assert = function(..., .var.name) {
   dots = match.call(expand.dots = FALSE)$...
   msgs = character(length(dots))
@@ -21,5 +24,5 @@ assert = function(..., .var.name) {
     .var.name = as.character(dots[[1L]])[2L]
   if (length(msgs) > 1L)
     msgs = sprintf("%s: %s", lapply(dots, function(x) as.character(x)[1L]), msgs)
-  mstop(qamsg(x, msgs, .var.name, FALSE))
+  mstop(qamsg(NULL, msgs, .var.name, FALSE))
 }

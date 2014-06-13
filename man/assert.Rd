@@ -10,8 +10,8 @@ assert(..., .var.name)
 List of calls to check functions.}
 
 \item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name.}
+Name for object to check. Defaults to a heuristic to determine
+the name of the first call.}
 }
 \value{
 Throws an error if all checks failed and invisibly returns
@@ -19,5 +19,9 @@ Throws an error if all checks failed and invisibly returns
 }
 \description{
 Combine multiple checks to an assertion
+}
+\examples{
+x = 1:10
+assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 }
 
