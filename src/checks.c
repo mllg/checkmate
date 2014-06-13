@@ -88,14 +88,14 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     }
 
     if (!isNull(min_len)) {
-        assertCount(min_len, "min_len");
+        assertCount(min_len, "min.len");
         R_len_t n = asInteger(min_len);
         if (length(x) < n)
             return Msgf("Must have length >= %i", n);
     }
 
     if (!isNull(max_len)) {
-        assertCount(max_len, "max_len");
+        assertCount(max_len, "max.len");
         R_len_t n = asInteger(max_len);
         if (length(x) > n)
             return Msgf("Must have length <= %i", n);
@@ -165,10 +165,10 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
 
 static msg_t check_array_props(SEXP x, SEXP any_missing, SEXP d) {
     if (!isNull(d)) {
-        R_len_t xd = LENGTH(getAttrib(x, R_DimSymbol));
-        int d2 = asInteger(d);
-        if (xd != d2)
-            return Msgf("Must be %i-d array", d2);
+        assertCount(d, "d");
+        int di = asInteger(d);
+        if (LENGTH(getAttrib(x, R_DimSymbol)) != di)
+            return Msgf("Must be %i-d array", di);
     }
     assertFlag(any_missing, "any.missing");
     if (isFALSE(any_missing) && any_missing_atomic(x))
