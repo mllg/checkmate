@@ -5,15 +5,17 @@
 \alias{testMatrix}
 \title{Check if an argument is a matrix}
 \usage{
-checkMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL)
+checkMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
+  col.names = NULL)
 
-assertMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL,
-  .var.name)
+assertMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
+  col.names = NULL, .var.name)
 
-testMatrix(x, any.missing = TRUE, min.rows = NULL, min.cols = NULL,
-  nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL)
+testMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
+  col.names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -22,6 +24,12 @@ Object to check.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{mode}{[\code{character(1)}]\cr
+Storage mode of the matrix. Matricies can hold \dQuote{logical},
+\dQuote{integer}, \dQuote{double}, \dQuote{complex} and
+\dQuote{character}. \dQuote{numeric} is also supported by this
+function. Default is \dQuote{any}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
@@ -38,11 +46,11 @@ Exact number of rows.}
 \item{ncols}{[\code{integer(1)}]\cr
 Exact number of columns.}
 
-\item{row.names}{[\code{logical(1)}]\cr
+\item{row.names}{[\code{character(1)}]\cr
 Check for row names. Default is \dQuote{any} (no check).
 See \code{\link{checkNamed}} for possible values.}
 
-\item{col.names}{[\code{logical(1)}]\cr
+\item{col.names}{[\code{character(1)}]\cr
 Check for column names. Default is \dQuote{any} (no check).
 See \code{\link{checkNamed}} for possible values.}
 }

@@ -22,6 +22,10 @@ test_that("checkMatrix", {
   expect_true(testMatrix(x, row.names = "named"))
   expect_true(testMatrix(x, col.names = "named"))
 
+  expect_true(testMatrix(x, mode = "integer"))
+  expect_true(testMatrix(x, mode = "numeric"))
+  expect_false(testMatrix(x, mode = "double"))
+
   expect_true(assertMatrix(x))
   expect_error(assertMatrix(iris))
 })

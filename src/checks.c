@@ -243,9 +243,33 @@ SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
-SEXP c_check_matrix(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
+SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
     if (!isMatrix(x))
         return CRes("Must be a matrix");
+    const char * const storage = CHAR(STRING_ELT(mode, 0));
+    if (strcmp(storage, "any") == 0) {
+        ;
+    } else if (strcmp(storage, "logical") == 0) {
+        if (!isLogical(x))
+            return CRes("Must contain logicals");
+    } else if (strcmp(storage, "integer") == 0) {
+        if (!isInteger(x))
+            return CRes("Must contain integers");
+    } else if (strcmp(storage, "double") == 0) {
+        if (!isReal(x))
+            return CRes("Must contain doubles");
+    } else if (strcmp(storage, "numeric") == 0) {
+        if (!isNumeric(x))
+            return CRes("Must contain numerics");
+    } else if (strcmp(storage, "complex") == 0) {
+        if (!isComplex(x))
+            return CRes("Must contain complexs");
+    } else if (strcmp(storage, "character") == 0) {
+        if (!isString(x))
+            return CRes("Must contain characters");
+    } else {
+        error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex' or 'character'");
+    }
     return mwrap(check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols, row_names, col_names));
 }
 

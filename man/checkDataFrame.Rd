@@ -40,11 +40,11 @@ Exact number of rows.}
 \item{ncols}{[\code{integer(1)}]\cr
 Exact number of columns.}
 
-\item{row.names}{[\code{logical(1)}]\cr
+\item{row.names}{[\code{character(1)}]\cr
 Check for row names. Default is \dQuote{any} (no check).
 See \code{\link{checkNamed}} for possible values.}
 
-\item{col.names}{[\code{logical(1)}]\cr
+\item{col.names}{[\code{character(1)}]\cr
 Check for column names. Default is \dQuote{any} (no check).
 See \code{\link{checkNamed}} for possible values.}
 
