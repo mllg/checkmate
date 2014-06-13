@@ -5,11 +5,11 @@
 \alias{testArray}
 \title{Check if an argument is an array}
 \usage{
-checkArray(x, any.missing = TRUE, d = NULL)
+checkArray(x, mode = "any", any.missing = TRUE, d = NULL)
 
-assertArray(x, any.missing = TRUE, d = NULL, .var.name)
+assertArray(x, mode = "any", any.missing = TRUE, d = NULL, .var.name)
 
-testArray(x, any.missing = TRUE, d = NULL)
+testArray(x, mode = "any", any.missing = TRUE, d = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -18,6 +18,12 @@ Object to check.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{mode}{[\code{character(1)}]\cr
+Storage mode of the matrix. Matricies can hold \dQuote{logical},
+\dQuote{integer}, \dQuote{double}, \dQuote{complex} and
+\dQuote{character}. \dQuote{numeric} is also supported by this
+function. Default is \dQuote{any}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
