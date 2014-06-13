@@ -18,8 +18,10 @@ Virtually **every standard type of user error** when passing arguments into func
 caught with a simple, readable line which produces an **informative error message** in case.
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 
-Here is quick example to get you started at once. Let's look at the function makeSimpleFileLogger in
-our BBmisc helper page. As you can see, a file path, a boolean flag and a count can be passed by the
+Here is quick example to get you started at once. Let's look at the function 
+[makeSimpleFileLogger](http://berndbischl.github.io/BBmisc/man/makeSimpleFileLogger.html)
+in our [BBmisc](http://berndbischl.github.io/BBmisc/) helper package.
+As you can see, a file path, a boolean flag and a count can be passed in by the
 user. Here is the corresponding code to perform the checks:
 
 ```r
