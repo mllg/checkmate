@@ -47,6 +47,6 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, .var.name) {
 #'  Upper value all elements of \code{x} must be lower than.
 #' @export
 asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name) {
-  assertInt(x, na.ok, lower, upper, .var.name)
+  assertInt(x, na.ok, lower, upper, vname(x, .var.name))
   as.integer(x)
 }

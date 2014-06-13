@@ -2,7 +2,7 @@
 #include "assertions.h"
 
 static inline msg_t boundError(bound_t bound) {
-    return Msgf("All elements must be %s %f", CMPSTR[bound.op], bound.cmp);
+    return Msgf("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
 }
 
 msg_t check_bound(SEXP x, const bound_t bound) {
