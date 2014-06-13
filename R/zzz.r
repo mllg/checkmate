@@ -3,7 +3,7 @@
 #' @section Additional information:
 #'
 #' \describe{
-#'   \item{Homepage:}{\url{https://github.com/tudo-r/checkmate}}
+#'   \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
 #' }
 #'
 #' @docType package

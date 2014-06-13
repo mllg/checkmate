@@ -1,6 +1,6 @@
 #' Check if an argument is a count
 #'
-#' A count is a non-negative integer.
+#' A count is a non-negative integerish value.
 #'
 #' @templateVar fn Count
 #' @template na-handling

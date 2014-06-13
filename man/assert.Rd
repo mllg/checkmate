@@ -22,6 +22,6 @@ Combine multiple checks to an assertion
 }
 \examples{
 x = 1:10
-assert(checkNull(x), checkInteger(x, any.missing = FALSE))
+ assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 }
 

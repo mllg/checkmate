@@ -11,7 +11,7 @@ The checkmate package
 
 
 \describe{
-  \item{Homepage:}{\url{https://github.com/tudo-r/checkmate}}
+  \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
 }
 }
 

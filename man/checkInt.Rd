@@ -3,7 +3,7 @@
 \alias{assertInt}
 \alias{checkInt}
 \alias{testInt}
-\title{Check if an argument is a single integer}
+\title{Check if an argument is a single integerish value}
 \usage{
 checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf)
 
@@ -36,7 +36,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check if an argument is a single integer
+Check if an argument is a single integerish value
 }
 \details{
 This function does not distinguish between

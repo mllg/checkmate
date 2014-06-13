@@ -19,6 +19,10 @@
 #'  the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.
 #' @return Converted \code{x}.
 #' @export
+#' @examples
+#'  asInteger(c(1, 2, 3))
+#'  asCount(1)
+#'  asInt(1)
 asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
   assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name))
   as.integer(x)

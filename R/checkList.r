@@ -7,8 +7,8 @@
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
 #'  Character vector of class names. Each list element must inherit
-#'  from at least one of the provided types.
 #'  Defaults to \code{character(0)} (no check).
+#'  from at least one of the provided types.
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_list

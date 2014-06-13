@@ -1,4 +1,4 @@
-#' Check if an argument is a single integer
+#' Check if an argument is a single integerish value
 #'
 #' @templateVar fn Int
 #' @template na-handling

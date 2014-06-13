@@ -29,4 +29,8 @@ Depending on the function prefix:
 \description{
 Check if an argument is NULL
 }
+\examples{
+testNull(NULL)
+ testNull(1)
+}
 

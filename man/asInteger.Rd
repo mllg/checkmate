@@ -50,4 +50,9 @@ Convertible are (a) atomic vectors with all elements \code{NA}
 and (b) double vectors with all elements being within \code{tol}
 range of an integer.
 }
+\examples{
+asInteger(c(1, 2, 3))
+ asCount(1)
+ asInt(1)
+}
 

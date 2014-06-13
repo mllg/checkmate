@@ -78,25 +78,25 @@
 #' @useDynLib checkmate c_qassert
 #' @export
 #' @examples
-#' # logical of length 1
-#' qtest(NA, "b1")
+#'  # logical of length 1
+#'  qtest(NA, "b1")
 #'
-#' # logical of length 1, NA not allowed
-#' qtest(NA, "B1")
+#'  # logical of length 1, NA not allowed
+#'  qtest(NA, "B1")
 #'
-#' # logical of length 0 or 1, NA not allowed
-#' qtest(TRUE, "B?")
+#'  # logical of length 0 or 1, NA not allowed
+#'  qtest(TRUE, "B?")
 #'
-#' # numeric with length > 0
-#' qtest(runif(10), "n+")
+#'  # numeric with length > 0
+#'  qtest(runif(10), "n+")
 #'
-#' # integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
-#' qtest(1:3, "I+[0,)")
+#'  # integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
+#'  qtest(1:3, "I+[0,)")
 #'
-#' # either an emtpy list or a character vector with <=5 elements
-#' qtest(1, c("l0", "s<=5"))
-#' # data frame with at least one column, no NA in any column
-#' qtest(iris, "D+")
+#'  # either an emtpy list or a character vector with <=5 elements
+#'  qtest(1, c("l0", "s<=5"))
+#'  # data frame with at least one column, no NA in any column
+#'  qtest(iris, "D+")
 qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
   if (!isTRUE(res))

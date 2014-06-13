@@ -24,4 +24,8 @@ named.}
 \description{
 Find the index of first/last \code{TRUE} value in a logical vector.
 }
+\examples{
+which.first(c(FALSE, TRUE))
+ which.last(c(FALSE, FALSE))
+}
 

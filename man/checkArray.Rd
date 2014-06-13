@@ -41,6 +41,9 @@ Depending on the function prefix:
 \description{
 Check if an argument is an array
 }
+\examples{
+checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
+}
 \seealso{
 Other basetypes: \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},

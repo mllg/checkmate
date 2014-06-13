@@ -9,8 +9,8 @@
 #'  \code{TRUE} otherwise.
 #' @export
 #' @examples
-#' x = 1:10
-#' assert(checkNull(x), checkInteger(x, any.missing = FALSE))
+#'  x = 1:10
+#'  assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 assert = function(..., .var.name) {
   dots = match.call(expand.dots = FALSE)$...
   msgs = character(length(dots))

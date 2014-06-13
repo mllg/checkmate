@@ -22,6 +22,12 @@ Missingness is defined as \code{NA} or \code{NaN} for atomic types and data fram
 \code{NULL} is defined as missing for lists.
 }
 \examples{
+x = 1:2
+ allMissing(x)
+ x[1] = NA
+ allMissing(x)
+ x[2] = NA
+ allMissing(x)
 anyMissing(c(1, NA))
  allMissing(c(1, NA))
  anyMissing(list(1, NULL))
