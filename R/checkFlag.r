@@ -18,13 +18,19 @@ checkFlag = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkFlag
+#' @useDynLib checkmate c_check_flag
 #' @export
 assertFlag = function(x, na.ok = FALSE, .var.name) {
-  makeAssertion(checkFlag(x, na.ok), vname(x, .var.name))
+  makeAssertion(
+    .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
+  , vname(x, .var.name))
 }
 
 #' @rdname checkFlag
+#' @useDynLib checkmate c_check_flag
 #' @export
 testFlag = function(x, na.ok = FALSE) {
-  isTRUE(checkFlag(x, na.ok))
+  isTRUE(
+    .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
+  )
 }
