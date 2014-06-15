@@ -60,8 +60,8 @@ Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertIntegerish} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertIntegerish} throws an error message,
  \code{testIntegerish} returns \code{FALSE} and \code{checkIntegerish} returns
  a string with the error message.
 }

@@ -30,8 +30,8 @@ Upper value all elements of \code{x} must be lower than.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertNumber} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertNumber} throws an error message,
  \code{testNumber} returns \code{FALSE} and \code{checkNumber} returns
  a string with the error message.
 }

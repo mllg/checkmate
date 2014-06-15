@@ -61,8 +61,8 @@ Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertFactor} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertFactor} throws an error message,
  \code{testFactor} returns \code{FALSE} and \code{checkFactor} returns
  a string with the error message.
 }

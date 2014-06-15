@@ -25,8 +25,8 @@ force a check for read, write and execute access rights, respectively.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertFile} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertFile} throws an error message,
  \code{testFile} returns \code{FALSE} and \code{checkFile} returns
  a string with the error message.
 }
@@ -44,6 +44,10 @@ Check existence and access rights of files
 Other filesystem: \code{\link{assertAccess}},
   \code{\link{checkAccess}}, \code{\link{testAccess}};
   \code{\link{assertDirectory}},
-  \code{\link{checkDirectory}}, \code{\link{testDirectory}}
+  \code{\link{checkDirectory}},
+  \code{\link{testDirectory}};
+  \code{\link{assertPathForOutput}},
+  \code{\link{checkPathForOutput}},
+  \code{\link{testPathForOutput}}
 }
 

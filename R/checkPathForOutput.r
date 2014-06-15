@@ -32,13 +32,13 @@ checkPathForOutput = function(x) {
   return(checkAccess(dn, "w"))
 }
 
+#' @rdname checkPathForOutput
 #' @export
-#' @rdname checkFile
 assertPathForOutput = function(x, .var.name) {
   makeAssertion(checkPathForOutput(x), vname(x, .var.name))
 }
 
-#' @rdname checkFile
+#' @rdname checkPathForOutput
 #' @export
 testPathForOutput = function(x) {
   isTRUE(checkPathForOutput(x))

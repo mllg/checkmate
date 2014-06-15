@@ -24,8 +24,8 @@ Are missing values allowed? Default is \code{FALSE}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertString} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertString} throws an error message,
  \code{testString} returns \code{FALSE} and \code{checkString} returns
  a string with the error message.
 }

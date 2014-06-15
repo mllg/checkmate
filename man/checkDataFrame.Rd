@@ -55,8 +55,8 @@ from at least one of the provided types.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertDataFrame} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertDataFrame} throws an error message,
  \code{testDataFrame} returns \code{FALSE} and \code{checkDataFrame} returns
  a string with the error message.
 }

@@ -21,8 +21,8 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertScalarNA} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertScalarNA} throws an error message,
  \code{testScalarNA} returns \code{FALSE} and \code{checkScalarNA} returns
  a string with the error message.
 }

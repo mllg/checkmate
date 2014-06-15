@@ -55,8 +55,8 @@ Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertNumeric} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertNumeric} throws an error message,
  \code{testNumeric} returns \code{FALSE} and \code{checkNumeric} returns
  a string with the error message.
 }

@@ -47,8 +47,8 @@ Default is \dQuote{any} which performs no check at all.}
 }
 \value{
 Depending on the function prefix:
- If the check is successfull, all functions return \code{TRUE}.
- If the check is not successfull, \code{assertAtmoic} throws an error message,
+ If the check is successful, all functions return \code{TRUE}.
+ If the check is not successful, \code{assertAtmoic} throws an error message,
  \code{testAtmoic} returns \code{FALSE} and \code{checkAtmoic} returns
  a string with the error message.
 }
@@ -56,7 +56,7 @@ Depending on the function prefix:
 Check that an argument is an atomic vector
 }
 \examples{
-testAtmomic(letters, min.len = 1L, any.missing = FALSE)
+testAtomic(letters, min.len = 1L, any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},
