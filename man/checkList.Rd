@@ -30,8 +30,9 @@ Additional parameters used in a call of \code{\link{checkVector}}.}
 
 \item{types}{[\code{character}]\cr
 Character vector of class names. Each list element must inherit
-Defaults to \code{character(0)} (no check).
-from at least one of the provided types.}
+from at least one of the provided types. Inheritance is checked using
+\code{\link[methods]{is}}.
+Defaults to \code{character(0)} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}

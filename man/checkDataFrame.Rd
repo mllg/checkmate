@@ -50,8 +50,9 @@ See \code{\link{checkNamed}} for possible values.}
 
 \item{types}{[\code{character}]\cr
 Character vector of class names. Each list element must inherit
-Defaults to \code{character(0)} (no check).
-from at least one of the provided types.}
+from at least one of the provided types. Inheritance is checked using
+\code{\link[methods]{is}}.
+Defaults to \code{character(0)} (no check).}
 }
 \value{
 Depending on the function prefix:

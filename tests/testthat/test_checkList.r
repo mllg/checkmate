@@ -10,6 +10,7 @@ test_that("checkList", {
   expect_true(testList(x, types = c("numeric", "factor")))
   expect_false(testList(x, types = c("integer", "factor")))
   expect_false(testList(x, types = c("numeric", "character")))
+  expect_true(testList(x, types = c("vector", "factor")))
   expect_true(testList(list(NULL), types = "NULL"))
 
   expect_true(testList(list(), types = "numeric"))

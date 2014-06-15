@@ -7,11 +7,13 @@
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
 #'  Character vector of class names. Each list element must inherit
+#'  from at least one of the provided types. Inheritance is checked using
+#'  \code{\link[methods]{is}}.
 #'  Defaults to \code{character(0)} (no check).
-#'  from at least one of the provided types.
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_list
+#' @importFrom methods is
 #' @examples
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
@@ -24,9 +26,13 @@ checkListProps = function(x, types = character(0L)) {
   if (length(types) == 0L)
     return(TRUE)
   qassert(types, "S")
-  ok = vapply(x, inherits, what = types, FUN.VALUE = NA, USE.NAMES = FALSE)
-  if (all(ok))
-    return(TRUE)
+
+  ind = seq_along(x)
+  for (type in types) {
+    ind = ind[!vapply(x[ind], is, class2 = type, FUN.VALUE = NA, USE.NAMES = FALSE)]
+    if (length(ind) == 0L)
+      return(TRUE)
+  }
   return(sprintf("May only contain the following types: %s", collapse(types)))
 }
 
