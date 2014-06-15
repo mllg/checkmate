@@ -19,12 +19,6 @@ checkNamed = function(x, type = "named") {
   .Call("c_check_named", x, type, PACKAGE = "checkmate")
 }
 
-#' @useDynLib checkmate c_check_names
-checkNames = function(nn, type = "named") {
-  .Call("c_check_names", nn, type, PACKAGE = "checkmate")
-}
-
-
 #' @rdname checkNamed
 #' @useDynLib checkmate c_check_named
 #' @export
