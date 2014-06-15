@@ -53,7 +53,10 @@ Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{checkFlag}},
   \code{\link{testFlag}}; \code{\link{assertInt}},
   \code{\link{checkInt}}, \code{\link{testInt}};
-  \code{\link{assertString}}, \code{\link{checkString}},
-  \code{\link{testString}}
+  \code{\link{assertScalarNA}},
+  \code{\link{checkScalarNA}}, \code{\link{testScalarNA}};
+  \code{\link{assertScalar}}, \code{\link{checkScalar}},
+  \code{\link{testScalar}}; \code{\link{assertString}},
+  \code{\link{checkString}}, \code{\link{testString}}
 }
 

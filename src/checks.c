@@ -383,3 +383,14 @@ SEXP c_check_string(SEXP x, SEXP na_ok) {
         return CRes("May not be NA");
     return ScalarLogical(TRUE);
 }
+
+SEXP c_check_scalar(SEXP x, SEXP na_ok) {
+    Rboolean is_na = is_scalar_na(x);
+    if (length(x) != 1 || (!is_na && !isVectorAtomic(x)))
+        return CRes("Must be an atomic scalar");
+
+    assertFlag(na_ok, "na.ok");
+    if (is_na && !isTRUE(na_ok))
+        return CRes("May not be NA");
+    return ScalarLogical(TRUE);
+}

@@ -48,6 +48,9 @@ Other scalars: \code{\link{assertCount}},
   \code{\link{testFlag}}; \code{\link{assertInt}},
   \code{\link{checkInt}}, \code{\link{testInt}};
   \code{\link{assertNumber}}, \code{\link{checkNumber}},
-  \code{\link{testNumber}}
+  \code{\link{testNumber}}; \code{\link{assertScalarNA}},
+  \code{\link{checkScalarNA}}, \code{\link{testScalarNA}};
+  \code{\link{assertScalar}}, \code{\link{checkScalar}},
+  \code{\link{testScalar}}
 }
 
