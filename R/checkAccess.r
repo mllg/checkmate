@@ -21,17 +21,17 @@ checkAccess = function(x, access = "") {
       stop("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
     if (1L %in% access) {
-      w = which.first(file.access(x, 4L) != 0L)
+      w = wf(file.access(x, 4L) != 0L)
       if (length(w) > 0L)
         return(sprintf("'%s' not readable", x[w]))
     }
     if (2L %in% access) {
-      w = which.first(file.access(x, 2L) != 0L)
+      w = wf(file.access(x, 2L) != 0L)
       if (length(w) > 0L)
         return(sprintf("'%s' not writeable", x[w]))
     }
     if (3L %in% access) {
-      w = which.first(file.access(x, 1L) != 0L)
+      w = wf(file.access(x, 1L) != 0L)
       if (length(w) > 0L)
         return(sprintf("'%s' not executeable", x[w]))
     }

@@ -316,6 +316,12 @@ SEXP c_check_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
+SEXP c_check_atomic(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
+    if (!isVectorAtomic(x))
+        return CRes("Must be atomic");
+    return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
+}
+
 /*********************************************************************************************************************/
 /* Check functions for scalars                                                                                       */
 /*********************************************************************************************************************/

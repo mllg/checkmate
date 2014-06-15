@@ -5,6 +5,7 @@ test_that("checkVector", {
   expect_false(testVector(NULL))
   expect_true(testVector(1))
   expect_true(testVector(integer(0)))
+  expect_true(testVector(factor(1)))
 
   expect_true(testVector(NA, any.missing = TRUE))
   expect_false(testVector(NA, any.missing = FALSE))

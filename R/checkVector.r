@@ -1,4 +1,8 @@
-#' Check vector properties
+#' Check that an argument is a vector
+#'
+#' The definition of a vector is slighty different from the one in \code{\link[base]{is.vector}}.
+#' Vectors are all atomic types except \code{NULL}, regardless of additional
+#' class attributes. E.g., af \code{factor} is a vector.
 #'
 #' @templateVar fn Vector
 #' @template checker

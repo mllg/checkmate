@@ -40,7 +40,7 @@ checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = T
   }
   qassert(empty.levels.ok, "B1")
   if (!empty.levels.ok) {
-    not.ok = which.first(table(x) == 0L)
+    not.ok = wf(table(x) == 0L)
     if (length(not.ok) > 0L)
       return(sprintf("Has has empty level '%s'", names(not.ok)))
   }

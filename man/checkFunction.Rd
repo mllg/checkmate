@@ -44,7 +44,8 @@ testFunction(mean)
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
-  \code{\link{assertCharacter}},
+  \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
+  \code{\link{testAtomic}}; \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};

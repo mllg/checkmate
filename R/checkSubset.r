@@ -10,7 +10,7 @@
 #'  testSubset(c("a", "z"), letters)
 checkSubset = function(x, choices) {
   qassert(choices, "a+")
-  not.ok = which.first(x %nin% choices)
+  not.ok = wf(x %nin% choices)
   if (length(not.ok) > 0L)
     return(sprintf("Must be a subset of {'%s'}", collapse(choices, "','")))
   return(TRUE)

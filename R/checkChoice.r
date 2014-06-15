@@ -9,9 +9,8 @@
 #' @examples
 #'  testChoice("x", letters)
 checkChoice = function(x, choices) {
-  qassert(x, "a1")
   qassert(choices, "a+")
-  if (x %nin% choices)
+  if (!qtest(x, "a1") || x %nin% choices)
     return(sprintf("Must be element of {'%s'}", collapse(choices, "','")))
   return(TRUE)
 }

@@ -87,8 +87,10 @@ testCharacter(letters, min.len = 1, any.missing = FALSE)
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
-  \code{\link{assertComplex}}, \code{\link{checkComplex}},
-  \code{\link{testComplex}}; \code{\link{assertDataFrame}},
+  \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
+  \code{\link{testAtomic}}; \code{\link{assertComplex}},
+  \code{\link{checkComplex}}, \code{\link{testComplex}};
+  \code{\link{assertDataFrame}},
   \code{\link{checkDataFrame}},
   \code{\link{testDataFrame}};
   \code{\link{assertEnvironment}},

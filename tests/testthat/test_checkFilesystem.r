@@ -10,7 +10,7 @@ dir.create(dn)
 
 test_that("check_file", {
   expect_false(testFile(character(0)))
-  expect_error(testFile(NULL))
+  expect_false(testFile(NULL))
   expect_false(testFile(ff))
   expect_false(testFile(dn))
   expect_true(testFile(fn))
@@ -66,10 +66,8 @@ test_that("check_path_for_output", {
   expect_true(testPathForOutput(ff))
   expect_false(testPathForOutput(fn))
 
-  expect_error(assertPathForOutput(character(0)), "a string")
-  expect_error(assertPathForOutput(c("a", "b")), "a string")
+  expect_error(assertPathForOutput(character(0)), "path provided")
+  expect_true(assertPathForOutput(c("a", "b")), "path")
   expect_true(assertPathForOutput(ff))
   expect_error(assertPathForOutput(fn), "exist")
 })
-
-

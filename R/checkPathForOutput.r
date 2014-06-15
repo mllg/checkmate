@@ -17,16 +17,18 @@
 #' @family filesystem
 #' @export
 checkPathForOutput = function(x) {
-  ch = checkString(x)
-  if (!isTRUE(ch))
-    return(ch)
+  if (!qtest(x, "S+"))
+    return("No path provided")
+  x = normalizePath(x, mustWork = FALSE)
 
   dn = dirname(x)
   isdir = file.info(dn)$isdir
-  if (!file.exists(dn) || is.na(isdir))
-    return(sprintf("Path to file (dirname) does not exist: '%s' of '%s'", dn, x))
-  if (file.exists(x))
-    return(sprintf("File at path already exists: '%s'", x))
+  w = wf(!file.exists(dn) || is.na(isdir))
+  if (length(w) > 0L)
+    return(sprintf("Path to file (dirname) does not exist: '%s' of '%s'", dn[w], x[w]))
+  w = wf(file.exists(x))
+  if (length(w) > 0L)
+    return(sprintf("File at path already exists: '%s'", x[w]))
   return(checkAccess(dn, "w"))
 }
 
@@ -41,4 +43,3 @@ assertPathForOutput = function(x, .var.name) {
 testPathForOutput = function(x) {
   isTRUE(checkPathForOutput(x))
 }
-

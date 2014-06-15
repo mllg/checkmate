@@ -13,9 +13,10 @@
 #'  assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 assert = function(..., .var.name) {
   dots = match.call(expand.dots = FALSE)$...
+  env = parent.frame()
   msgs = character(length(dots))
   for (i in seq_along(dots)) {
-    val = eval(dots[[i]], envir = parent.frame())
+    val = eval(dots[[i]], envir = env)
     if (isTRUE(val))
       return(TRUE)
     msgs[i] = as.character(val)

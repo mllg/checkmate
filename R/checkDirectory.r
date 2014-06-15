@@ -13,15 +13,14 @@
 #'  # Is R's home directory writable?
 #'  testDirectory(R.home(), "w")
 checkDirectory = function(x, access = "") {
-  qassert(x, "S")
-  if (length(x) == 0L)
+  if (!qtest(x, "S+"))
     return("No directory provided")
 
   isdir = file.info(x)$isdir
-  w = which.first(is.na(isdir))
+  w = wf(is.na(isdir))
   if (length(w) > 0L)
     return(sprintf("Directory '%s' does not exists", x[w]))
-  w = which.first(!isdir)
+  w = wf(!isdir)
   if (length(w) > 0L)
     return(sprintf("Directory extected, but file in place: '%s'", x[w]))
 

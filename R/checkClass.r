@@ -25,11 +25,11 @@ checkClass = function(x, classes, ordered = FALSE) {
   qassert(classes, "S")
   qassert(ordered, "B1")
   ord = inherits(x, classes, TRUE)
-  w = which.first(ord == 0L)
+  w = wf(ord == 0L)
   if (length(w) > 0L)
     return(sprintf("Must have class '%s'", classes[w]))
   if (ordered) {
-    w = which.first(ord != seq_along(ord))
+    w = wf(ord != seq_along(ord))
     if (length(w) > 0L)
       return(sprintf("Must have class '%s' in position %i", classes[w], w))
   }

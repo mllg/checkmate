@@ -45,7 +45,9 @@ Check if an argument is an array
 checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 }
 \seealso{
-Other basetypes: \code{\link{assertCharacter}},
+Other basetypes: \code{\link{assertAtomic}},
+  \code{\link{checkAtomic}}, \code{\link{testAtomic}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};

@@ -3,7 +3,7 @@
 \alias{assertVector}
 \alias{checkVector}
 \alias{testVector}
-\title{Check vector properties}
+\title{Check that an argument is a vector}
 \usage{
 checkVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
@@ -53,7 +53,9 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check vector properties
+The definition of a vector is slighty different from the one in \code{\link[base]{is.vector}}.
+Vectors are all atomic types except \code{NULL}, regardless of additional
+class attributes. E.g., af \code{factor} is a vector.
 }
 \examples{
 testVector(letters, min.len = 1L, any.missing = FALSE)
@@ -61,7 +63,8 @@ testVector(letters, min.len = 1L, any.missing = FALSE)
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
-  \code{\link{assertCharacter}},
+  \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
+  \code{\link{testAtomic}}; \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
   \code{\link{checkComplex}}, \code{\link{testComplex}};
