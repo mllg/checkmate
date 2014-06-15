@@ -58,3 +58,18 @@ test_that("check_access", {
     expect_error(testAccess(fn, "rrr"))
   }
 })
+
+
+test_that("check_path_for_output", {
+  expect_false(testPathForOutput(character(0)))
+  expect_false(testPathForOutput(NULL))
+  expect_true(testPathForOutput(ff))
+  expect_false(testPathForOutput(fn))
+
+  expect_error(assertPathForOutput(character(0)), "a string")
+  expect_error(assertPathForOutput(c("a", "b")), "a string")
+  expect_true(assertPathForOutput(ff))
+  expect_error(assertPathForOutput(fn), "exist")
+})
+
+
