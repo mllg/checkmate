@@ -357,9 +357,10 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive) {
+SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
+    assertNumber(tol, "tol");
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, INTEGERISH_DEFAULT_TOL)))
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, REAL(tol)[0])))
         return CRes("Must be a count");
     if (is_na) {
         assertFlag(na_ok, "na.ok");
@@ -374,9 +375,10 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive) {
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
+SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
+    assertNumber(tol, "tol");
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, INTEGERISH_DEFAULT_TOL)))
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, REAL(tol)[0])))
         return CRes("Must be a single integerish value");
     if (is_na) {
         assertFlag(na_ok, "na.ok");

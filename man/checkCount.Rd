@@ -5,11 +5,14 @@
 \alias{testCount}
 \title{Check if an argument is a count}
 \usage{
-checkCount(x, na.ok = FALSE, positive = FALSE)
+checkCount(x, na.ok = FALSE, positive = FALSE,
+  tol = .Machine$double.eps^0.5)
 
-assertCount(x, na.ok = FALSE, positive = FALSE, .var.name)
+assertCount(x, na.ok = FALSE, positive = FALSE,
+  tol = .Machine$double.eps^0.5, .var.name)
 
-testCount(x, na.ok = FALSE, positive = FALSE)
+testCount(x, na.ok = FALSE, positive = FALSE,
+  tol = .Machine$double.eps^0.5)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -25,6 +28,10 @@ Are missing values allowed? Default is \code{FALSE}.}
 \item{positive}{[\code{logical(1)}]\cr
 Must \code{x} be positive (>= 1)?
 Default is \code{FALSE}.}
+
+\item{tol}{[\code{double(1)}]\cr
+Numerical tolerance used to check whether a double or complex can be converted.
+Default is \code{sqrt(.Machine$double.eps)}.}
 }
 \value{
 Depending on the function prefix:

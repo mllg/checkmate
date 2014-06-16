@@ -7,9 +7,11 @@
 \usage{
 asInteger(x, ..., tol = .Machine$double.eps^0.5, .var.name)
 
-asCount(x, na.ok = FALSE, positive = FALSE, .var.name)
+asCount(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5,
+  .var.name)
 
-asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name)
+asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  tol = .Machine$double.eps^0.5, .var.name)
 }
 \arguments{
 \item{x}{[ANY]\cr

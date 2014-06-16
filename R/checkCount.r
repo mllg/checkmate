@@ -10,28 +10,31 @@
 #' @param positive [\code{logical(1)}]\cr
 #'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}.
+#' @param tol [\code{double(1)}]\cr
+#'  Numerical tolerance used to check whether a double or complex can be converted.
+#'  Default is \code{sqrt(.Machine$double.eps)}.
 #' @family scalars
 #' @useDynLib checkmate c_check_count
 #' @export
 #' @examples
 #'  testCount(1)
 #'  testCount(-1)
-checkCount = function(x, na.ok = FALSE, positive = FALSE) {
-  .Call("c_check_count", x, na.ok, positive, PACKAGE = "checkmate")
+checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5) {
+  .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
 }
 
 #' @rdname checkCount
 #' @export
-assertCount = function(x, na.ok = FALSE, positive = FALSE, .var.name) {
+assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5, .var.name) {
   makeAssertion(
-    .Call("c_check_count", x, na.ok, positive, PACKAGE = "checkmate")
+    .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
   , vname(x, .var.name))
 }
 
 #' @rdname checkCount
 #' @export
-testCount = function(x, na.ok = FALSE, positive = FALSE) {
+testCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5) {
   isTRUE(
-    .Call("c_check_count", x, na.ok, positive, PACKAGE = "checkmate")
+    .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
   )
 }

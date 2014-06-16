@@ -5,11 +5,14 @@
 \alias{testInt}
 \title{Check if an argument is a single integerish value}
 \usage{
-checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf)
+checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  tol = .Machine$double.eps^0.5)
 
-assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name)
+assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  tol = .Machine$double.eps^0.5, .var.name)
 
-testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf)
+testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  tol = .Machine$double.eps^0.5)
 }
 \arguments{
 \item{x}{[ANY]\cr

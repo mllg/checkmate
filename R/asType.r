@@ -35,8 +35,8 @@ asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
-asCount = function(x, na.ok = FALSE, positive = FALSE, .var.name) {
-  assertCount(x, na.ok, positive, vname(x, .var.name))
+asCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5, .var.name) {
+  assertCount(x, na.ok, positive, tol, vname(x, .var.name))
   as.integer(x)
 }
 
@@ -46,7 +46,7 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, .var.name) {
 #' @param upper [\code{numeric(1)}]\cr
 #'  Upper value all elements of \code{x} must be lower than.
 #' @export
-asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name) {
-  assertInt(x, na.ok, lower, upper, vname(x, .var.name))
+asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine$double.eps^0.5, .var.name) {
+  assertInt(x, na.ok, lower, upper, tol, vname(x, .var.name))
   as.integer(x)
 }
