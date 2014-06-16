@@ -63,6 +63,8 @@ Here is an overview of the most useful functions for argument checking:
 * [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
 * [checkString](http://mllg.github.io/checkmate/man/checkString.html)
 * [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
+* [checkScalar](http://mllg.github.io/checkmate/man/checkScalar.html)
+* [checkScalarNA](http://mllg.github.io/checkmate/man/checkScalarNA.html)
 * [asInt](http://mllg.github.io/checkmate/man/asInteger.html)
 * [asCount](http://mllg.github.io/checkmate/man/asInteger.html)
 
@@ -87,7 +89,6 @@ What can be checked: Choices like "A", "B" or "C" or a subset of those.
 * [checkVector](http://mllg.github.io/checkmate/man/checkVector.html)
 * [checkAtomic](http://mllg.github.io/checkmate/man/checkAtomic.html)
 * [checkAtomicVector](http://mllg.github.io/checkmate/man/checkAtomicVector.html)
-* [checkScalarNA](http://mllg.github.io/checkmate/man/checkScalarNA.html)
 * [asInteger](http://mllg.github.io/checkmate/man/asInteger.html)
 
 What can be checked: Length, upper and lower bounds, NAs.
