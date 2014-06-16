@@ -18,7 +18,7 @@ Virtually **every standard type of user error** when passing arguments into func
 caught with a simple, readable line which produces an **informative error message** in case.
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 
-Here is quick example to get you started at once. Let's look at the function 
+Here is quick example to get you started at once. Let's look at the function
 [makeSimpleFileLogger](http://berndbischl.github.io/BBmisc/man/makeSimpleFileLogger.html)
 in our [BBmisc](http://berndbischl.github.io/BBmisc/) helper package.
 As you can see, a file path, a boolean flag and a count can be passed in by the
@@ -29,13 +29,13 @@ makeSimpleFileLogger = function(logfile, touch = FALSE, keep = 10L) {
   assertFile(logfile)
   assertFlag(touch)
   keep = asInt(keep, lower = 0L)
-  
+
   ....
 }
-  
+
 ```
-The last line not only does the assertion for the integer "keep", it also auto-converts numeric-coded ints to the actual integer data type
-of R, so 1 becomes 1L.
+The last line not only does the assertion for the integer "keep", it also auto-converts numeric-coded integers to the actual integer data type
+of R, so `1` becomes `1L`.
 
 Here is what happens if you perform wrong inputs:
 
@@ -61,9 +61,10 @@ Here is an overview of the most useful functions for argument checking:
 * [checkNumber](http://mllg.github.io/checkmate/man/checkNumber.html)
 * [checkCount](http://mllg.github.io/checkmate/man/checkCount.html)
 * [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
-* [asInt](http://mllg.github.io/checkmate/man/asInt.html)
 * [checkString](http://mllg.github.io/checkmate/man/checkString.html)
 * [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
+* [asInt](http://mllg.github.io/checkmate/man/asInt.html)
+* [asCount](http://mllg.github.io/checkmate/man/asInt.html)
 
 What can be checked: Simple, non-NA scalars and objects of a specific class.
 
@@ -72,7 +73,7 @@ What can be checked: Simple, non-NA scalars and objects of a specific class.
 * [checkChoice](http://mllg.github.io/checkmate/man/checkChoice.html)
 * [checkSubset](http://mllg.github.io/checkmate/man/checkSubset.html)
 
-What can be checked: Choices like "A", "B" or "C" or a subet of those.
+What can be checked: Choices like "A", "B" or "C" or a subset of those.
 
 ### Vectors and factors:
 
@@ -84,6 +85,10 @@ What can be checked: Choices like "A", "B" or "C" or a subet of those.
 * [checkComplex](http://mllg.github.io/checkmate/man/checkComplex.html)
 * [checkCharacter](http://mllg.github.io/checkmate/man/checkCharacter.html)
 * [checkFactor](http://mllg.github.io/checkmate/man/checkFactor.html)
+* [checkVector](http://mllg.github.io/checkmate/man/checkVector.html)
+* [checkAtomic](http://mllg.github.io/checkmate/man/checkAtomic.html)
+* [checkAtomicVector](http://mllg.github.io/checkmate/man/checkAtomicVector.html)
+* [asInteger](http://mllg.github.io/checkmate/man/asInteger.html)
 
 What can be checked: Length, upper and lower bounds, NAs.
 
@@ -115,7 +120,7 @@ What can be checked: Arguments and ordered arguments.
 
 What can be checked: Path exists, is accessible.
 
-### Lazy Argument Checks
+### Argument Checks for the Lazy
 
 * [qassert](http://mllg.github.io/checkmate/man/qassert.html)
 * [qassertr](http://mllg.github.io/checkmate/man/qassert.html)
@@ -125,5 +130,3 @@ a special pattern. E.g., `qassert(x, "I+")` asserts that `x` is an integer
 vector with at least one element and no missing values.
 This provide a completely alternative mini-language (or style) how to perform arg checks.
 You choose what you like best.
-
-
