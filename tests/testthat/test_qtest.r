@@ -121,6 +121,7 @@ test_that("non-atomic types", {
 })
 
 test_that("atomic types", {
+  expect_succ(NULL, "a")
   expect_succ(xb, "a+")
   expect_fail(xb, "A+")
   expect_succ(xi, "a+")
@@ -133,6 +134,20 @@ test_that("atomic types", {
   expect_fail(xl, "A+")
   expect_fail(xe, "a+")
   expect_fail(xf, "a+")
+
+  expect_fail(NULL, "v")
+  expect_succ(xb, "v+")
+  expect_fail(xb, "V+")
+  expect_succ(xi, "v+")
+  expect_fail(xi, "V+")
+  expect_succ(xr, "v+")
+  expect_fail(xr, "V+")
+  expect_succ(xm, "v+")
+  expect_fail(xm, "V+")
+  expect_fail(xl, "v+")
+  expect_fail(xl, "V+")
+  expect_fail(xe, "v+")
+  expect_fail(xf, "V+")
 })
 
 test_that("optional chars", {

@@ -53,9 +53,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-The definition of a vector is slighty different from the one in \code{\link[base]{is.vector}}.
-Vectors are all atomic types except \code{NULL}, regardless of additional
-class attributes. E.g., af \code{factor} is a vector.
+The definition of a vector can be found in \code{\link[base]{is.vector}}.
 }
 \examples{
 testVector(letters, min.len = 1L, any.missing = FALSE)
@@ -63,6 +61,9 @@ testVector(letters, min.len = 1L, any.missing = FALSE)
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
   \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
   \code{\link{testAtomic}}; \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},

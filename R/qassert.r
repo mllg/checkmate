@@ -35,6 +35,7 @@
 #'      \code{[nN]} \tab Numeric (integer or double).\cr
 #'      \code{[sS]} \tab String / character.\cr
 #'      \code{[aA]} \tab Atomic.\cr
+#'      \code{[vV]} \tab Atomic vector (see \code{\link{checkAtomicVector}}).\cr
 #'      \code{[lL]} \tab List. Missingness is defined as \code{NULL} element.\cr
 #'      \code{[mM]} \tab Matrix.\cr
 #'      \code{[dD]} \tab Data.frame. Missingness is checked recursively on columns.\cr

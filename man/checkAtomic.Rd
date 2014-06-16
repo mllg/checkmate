@@ -61,6 +61,9 @@ testAtomic(letters, min.len = 1L, any.missing = FALSE)
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
   \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},

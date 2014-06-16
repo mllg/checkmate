@@ -77,6 +77,9 @@ x = factor("a", levels = c("a", "b"))
 \seealso{
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
   \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
   \code{\link{testAtomic}}; \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},

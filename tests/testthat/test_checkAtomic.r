@@ -1,8 +1,16 @@
 context("checkAtomic")
 
+li = list(
+  list = list(1, 2),
+  factor = factor("a"),
+  integer = 1:2,
+  NULL = NULL,
+  data.frame = iris
+)
+
 test_that("checkAtomic", {
   expect_true(testAtomic(integer(0)))
-  expect_false(testAtomic(NULL))
+  expect_true(testAtomic(NULL))
   expect_true(testAtomic(1))
   expect_true(testAtomic(integer(0)))
   expect_true(testAtomic(factor(1)))
@@ -34,4 +42,6 @@ test_that("checkAtomic", {
 
   expect_true(assertAtomic(1))
   expect_error(assertAtomic(iris), "atomic")
+
+  expect_equal(sapply(li, is.atomic), sapply(li, testAtomic))
 })

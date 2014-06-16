@@ -32,6 +32,15 @@ static inline Rboolean is_scalar_na(SEXP x) {
     return FALSE;
 }
 
+static inline Rboolean is_vector(SEXP x) {
+    if (!isVector(x))
+        return FALSE;
+    SEXP attr = ATTRIB(x);
+    if (length(attr) > 0 && (TAG(attr) != R_NamesSymbol || CDR(attr) != R_NilValue))
+        return FALSE;
+    return TRUE;
+}
+
 static Rboolean check_strict_names(SEXP x) {
     const R_len_t nx = length(x);
 
@@ -311,14 +320,20 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
 }
 
 SEXP c_check_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    if (!isVector(x) || isFrame(x))
+    if (!is_vector(x))
         return CRes("Must be a vector");
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
 SEXP c_check_atomic(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    if (!isVectorAtomic(x))
+    if (!isNull(x) && !isVectorAtomic(x))
         return CRes("Must be atomic");
+    return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
+}
+
+SEXP c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
+    if (!isVectorAtomic(x))
+        return CRes("Must be an atomic vector");
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 

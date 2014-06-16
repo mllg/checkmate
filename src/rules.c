@@ -15,7 +15,8 @@ static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
 static inline Rboolean is_class_numeric(SEXP x) { return isNumeric(x); }
 static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
-static inline Rboolean is_class_atomic(SEXP x) { return isVectorAtomic(x); }
+static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
+static inline Rboolean is_class_atomic_vector(SEXP x) { return isVectorAtomic(x); }
 static inline Rboolean is_class_list(SEXP x) { return isNewList(x) && !isFrame(x); }
 static inline Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
 static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
@@ -25,7 +26,7 @@ static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
 
 static const char * CLSTR[] = {
      "logical", "integer", "integerish", "numeric", "double", "string", "list", "complex",
-     "atomic", "matrix", "data frame", "environment", "function", "NULL"
+     "atomic", "atomic vector", "matrix", "data frame", "environment", "function", "NULL"
 };
 
 /*********************************************************************************************************************/
@@ -87,6 +88,12 @@ static int parse_class(checker_t *checker, const char *rule) {
         case 'a':
             checker->class.fun = &is_class_atomic;
             checker->class.name = CL_ATOMIC;
+            break;
+        case 'V':
+            checker->missing.fun = &any_missing_atomic;
+        case 'v':
+            checker->class.fun = &is_class_atomic_vector;
+            checker->class.name = CL_ATOMIC_VECTOR;
             break;
         case 'M':
             checker->missing.fun = &any_missing_matrix;
