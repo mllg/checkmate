@@ -11,8 +11,6 @@ NeedsCompilation: yes
 ByteCompile: yes
 Encoding: UTF-8
 Roxygen: list(wrap = FALSE)
-Imports:
-    methods
 Depends:
     R (>= 2.15.0)
 Suggests:

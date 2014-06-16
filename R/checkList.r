@@ -7,13 +7,15 @@
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
 #'  Character vector of class names. Each list element must inherit
-#'  from at least one of the provided types. Inheritance is checked using
-#'  \code{\link[methods]{is}}.
+#'  from at least one of the provided types.
+#'  The types \dQuote{logical}, \dQuote{integer}, \dQuote{integerish}, \dQuote{double},
+#'  \dQuote{numeric}, \dQuote{complex}, \dQuote{character}, \dQuote{factor}, \dQuote{atomic}, \dQuote{vector}
+#'  \dQuote{atomicvector}, \dQuote{array}, \dQuote{matrix}, \dQuote{list} and \dQuote{null} are supported.
+#'  For other types \code{\link[base]{inherits}} is used to check \code{x}'s inheritance.
 #'  Defaults to \code{character(0)} (no check).
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_list
-#' @importFrom methods is
 #' @examples
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
@@ -29,7 +31,25 @@ checkListProps = function(x, types = character(0L)) {
 
   ind = seq_along(x)
   for (type in types) {
-    ind = ind[!vapply(x[ind], is, class2 = type, FUN.VALUE = NA, USE.NAMES = FALSE)]
+    f = switch(type,
+      logical = is.logical,
+      integer = is.integer,
+      integerish = isIntegerish,
+      double = is.double,
+      numeric = is.numeric,
+      complex = is.complex,
+      character = is.character,
+      factor = is.factor,
+      atomic = is.atomic,
+      vector = is.vector,
+      atomicvector = function(x) !is.null(x) && is.atomic(x),
+      array = is.array,
+      matrix = is.matrix,
+      list = is.list,
+      null = is.null,
+      function(x) inherits(x, type)
+    )
+    ind = ind[!vapply(x[ind], f, FUN.VALUE = NA, USE.NAMES = FALSE)]
     if (length(ind) == 0L)
       return(TRUE)
   }
