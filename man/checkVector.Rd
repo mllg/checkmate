@@ -5,15 +5,17 @@
 \alias{testVector}
 \title{Check that an argument is a vector}
 \usage{
-checkVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+checkVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
 
-assertVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  .var.name)
+assertVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL, .var.name)
 
-testVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+testVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -22,6 +24,10 @@ Object to check.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{strict}{[\code{logical(1)}]\cr
+May the vector have additional attributes or perform a strict check like in \code{\link[base]{is.vector}}?
+Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s to be recognized as vectors.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}

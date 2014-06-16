@@ -319,9 +319,15 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
-SEXP c_check_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    if (!is_vector(x))
-        return CRes("Must be a vector");
+SEXP c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
+    assertFlag(strict, "strict");
+    if (isTRUE(strict)) {
+        if (!is_vector(x))
+            return CRes("Must be a vector");
+    } else {
+        if (!isVector(x))
+            return CRes("Must be a vector");
+    }
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 

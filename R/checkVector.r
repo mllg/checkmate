@@ -4,6 +4,9 @@
 #'
 #' @templateVar fn Vector
 #' @template checker
+#' @param strict [\code{logical(1)}]\cr
+#'  May the vector have additional attributes or perform a strict check like in \code{\link[base]{is.vector}}?
+#'  Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s to be recognized as vectors.
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are vectors with missing values allowed? Default is \code{TRUE}.
 #' @param all.missing [\code{logical(1)}]\cr
@@ -24,24 +27,24 @@
 #' @export
 #' @examples
 #'  testVector(letters, min.len = 1L, any.missing = FALSE)
-checkVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call("c_check_vector", strict, x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkVector
 #' @useDynLib checkmate c_check_vector
 #' @export
-assertVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+assertVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
   makeAssertion(
-    .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+    .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
   , vname(x, .var.name))
 }
 
 #' @rdname checkVector
 #' @useDynLib checkmate c_check_vector
 #' @export
-testVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+testVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(
-    .Call("c_check_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+    .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
   )
 }
