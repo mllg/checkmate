@@ -2,11 +2,12 @@ Package: checkmate
 Type: Package
 Title: checkmate
 Description: Fast and versatile argument checks
-Version: 0.9
-Author: Michel Lang <michellang@gmail.com>
+Version: 1.0
+Author: Michel Lang <michellang@gmail.com>,
+    Bernd Bischl <bernd_bischl@gmx.net>
 Maintainer: Michel Lang <michellang@gmail.com>
-URL: https://github.com/tudo-r/checkmate
-BugReports: https://github.com/tudo-r/checkmate/issues
+URL: https://github.com/mllg/checkmate
+BugReports: https://github.com/mllg/checkmate/issues
 NeedsCompilation: yes
 ByteCompile: yes
 Encoding: UTF-8
