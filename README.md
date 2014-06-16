@@ -63,8 +63,8 @@ Here is an overview of the most useful functions for argument checking:
 * [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
 * [checkString](http://mllg.github.io/checkmate/man/checkString.html)
 * [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
-* [asInt](http://mllg.github.io/checkmate/man/asInt.html)
-* [asCount](http://mllg.github.io/checkmate/man/asInt.html)
+* [asInt](http://mllg.github.io/checkmate/man/asInteger.html)
+* [asCount](http://mllg.github.io/checkmate/man/asInteger.html)
 
 What can be checked: Simple, non-NA scalars and objects of a specific class.
 
@@ -81,7 +81,6 @@ What can be checked: Choices like "A", "B" or "C" or a subset of those.
 * [checkNumeric](http://mllg.github.io/checkmate/man/checkNumeric.html)
 * [checkInteger](http://mllg.github.io/checkmate/man/checkInteger.html)
 * [checkIntegerish](http://mllg.github.io/checkmate/man/checkIntegerish.html)
-* [asInteger](http://mllg.github.io/checkmate/man/asInteger.html)
 * [checkComplex](http://mllg.github.io/checkmate/man/checkComplex.html)
 * [checkCharacter](http://mllg.github.io/checkmate/man/checkCharacter.html)
 * [checkFactor](http://mllg.github.io/checkmate/man/checkFactor.html)
@@ -117,6 +116,7 @@ What can be checked: Arguments and ordered arguments.
 
 * [checkFile](http://mllg.github.io/checkmate/man/checkFile.html)
 * [checkDirectory](http://mllg.github.io/checkmate/man/checkDirectory.html)
+* [checkPathForOutput](http://mllg.github.io/checkmate/man/checkPathForOutput.html)
 
 What can be checked: Path exists, is accessible.
 
