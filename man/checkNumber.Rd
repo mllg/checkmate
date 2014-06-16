@@ -5,11 +5,12 @@
 \alias{testNumber}
 \title{Check if an argument is a single numeric}
 \usage{
-checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf)
+checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
-assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, .var.name)
+assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE, .var.name)
 
-testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf)
+testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -27,6 +28,9 @@ Lower value all elements of \code{x} must be greater than.}
 
 \item{upper}{[\code{numeric(1)}]\cr
 Upper value all elements of \code{x} must be lower than.}
+
+\item{finite}{[\code{logical(1)}]\cr
+Check for only finite values? Default is \code{FALSE}.}
 }
 \value{
 Depending on the function prefix:

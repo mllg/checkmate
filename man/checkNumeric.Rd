@@ -5,17 +5,17 @@
 \alias{testNumeric}
 \title{Check that an argument is a vector of type numeric}
 \usage{
-checkNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL)
+checkNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL)
 
-assertNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, .var.name)
+assertNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL, .var.name)
 
-testNumeric(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL)
+testNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -30,6 +30,9 @@ Lower value all elements of \code{x} must be greater than.}
 
 \item{upper}{[\code{numeric(1)}]\cr
 Upper value all elements of \code{x} must be lower than.}
+
+\item{finite}{[\code{logical(1)}]\cr
+Check for only finite values? Default is \code{FALSE}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}

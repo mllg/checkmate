@@ -59,6 +59,18 @@ static Rboolean check_strict_names(SEXP x) {
     return TRUE;
 }
 
+static Rboolean all_finite(SEXP x) {
+    if (!isReal(x))
+        return TRUE;
+    const double * xp = REAL(x);
+    const double * const xe = xp + length(x);
+    for (; xp != xe; xp++) {
+        if (*xp == R_PosInf || *xp == R_NegInf)
+            return FALSE;
+    }
+    return TRUE;
+}
+
 /*********************************************************************************************************************/
 /* Shared check functions returning an intermediate msg_t                                                            */
 /*********************************************************************************************************************/
@@ -310,9 +322,12 @@ SEXP c_check_named(SEXP x, SEXP type) {
     return mwrap(check_names(getAttrib(x, R_NamesSymbol), type));
 }
 
-SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
+SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
     if (!isNumeric(x) && !all_missing_atomic(x))
         return CRes("Must be numeric");
+    assertFlag(finite, "finite");
+    if (isTRUE(finite) && !all_finite(x))
+        return CRes("Must be finite");
     msg_t msg = check_bounds(x, lower, upper);
     if (!msg.ok)
         return mwrap(msg);
@@ -388,7 +403,7 @@ SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
     return mwrap(check_bounds(x, lower, upper));
 }
 
-SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
+SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     Rboolean is_na = is_scalar_na(x);
     if (length(x) != 1 || (!is_na && !isNumeric(x)))
         return CRes("Must be a number");
@@ -399,6 +414,9 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper) {
             return CRes("May not be NA");
         return ScalarLogical(TRUE);
     }
+    assertFlag(finite, "finite");
+    if (isTRUE(finite) && !all_finite(x))
+        return CRes("Must be finite");
     return mwrap(check_bounds(x, lower, upper));
 }
 

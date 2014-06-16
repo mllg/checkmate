@@ -13,6 +13,11 @@ test_that("checkNumber", {
   expect_false(testNumber(1:2))
   expect_false(testNumber(""))
 
+  expect_true(testNumber(Inf))
+  expect_true(testNumber(-Inf))
+  expect_error(assertNumber(Inf, finite = TRUE), "finite")
+  expect_error(assertNumber(-Inf, finite = TRUE), "finite")
+
   expect_true(assertNumber(1))
   expect_error(assertNumber(2+3i), "number")
 })
