@@ -5,7 +5,7 @@
 #' @param mode [\code{character(1)}]\cr
 #'  Storage mode of the matrix. Matricies can hold \dQuote{logical},
 #'  \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
-#'  \dQuote{character}. Default is \dQuote{any}.
+#'  \dQuote{character}. Default is \code{NULL} (no check).
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
@@ -29,14 +29,14 @@
 #'  x = matrix(1:9, 3)
 #'  colnames(x) = letters[1:3]
 #'  testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
-checkMatrix = function(x, mode = "any", any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+checkMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkMatrix
 #' @useDynLib checkmate c_check_matrix
 #' @export
-assertMatrix = function(x, mode = "any", any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, .var.name) {
+assertMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, .var.name) {
   makeAssertion(
     .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   , vname(x, .var.name))
@@ -45,7 +45,7 @@ assertMatrix = function(x, mode = "any", any.missing = TRUE, min.rows = NULL, mi
 #' @rdname checkMatrix
 #' @useDynLib checkmate c_check_matrix
 #' @export
-testMatrix = function(x, mode = "any", any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+testMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   isTRUE(
     .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   )

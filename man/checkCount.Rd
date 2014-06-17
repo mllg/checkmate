@@ -6,13 +6,13 @@
 \title{Check if an argument is a count}
 \usage{
 checkCount(x, na.ok = FALSE, positive = FALSE,
-  tol = .Machine$double.eps^0.5)
+  tol = sqrt(.Machine$double.eps))
 
 assertCount(x, na.ok = FALSE, positive = FALSE,
-  tol = .Machine$double.eps^0.5, .var.name)
+  tol = sqrt(.Machine$double.eps), .var.name)
 
 testCount(x, na.ok = FALSE, positive = FALSE,
-  tol = .Machine$double.eps^0.5)
+  tol = sqrt(.Machine$double.eps))
 }
 \arguments{
 \item{x}{[ANY]\cr

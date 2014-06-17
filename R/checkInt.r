@@ -13,13 +13,13 @@
 #' @examples
 #'  testInt(1)
 #'  testInt(-1, lower = 0)
-checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine$double.eps^0.5) {
+checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
 }
 
 #' @rdname checkInt
 #' @export
-assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine$double.eps^0.5, .var.name) {
+assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
   makeAssertion(
     .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
   , vname(x, .var.name))
@@ -27,7 +27,7 @@ assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine
 
 #' @rdname checkInt
 #' @export
-testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine$double.eps^0.5) {
+testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
   isTRUE(
     .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
   )

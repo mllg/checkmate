@@ -21,7 +21,7 @@
 #'  asInteger(c(1, 2, 3))
 #'  asCount(1)
 #'  asInt(1)
-asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
+asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), .var.name) {
   assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name))
   as.integer(x)
 }
@@ -33,7 +33,7 @@ asInteger = function(x, ..., tol = .Machine$double.eps^0.5, .var.name) {
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
-asCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5, .var.name) {
+asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name) {
   assertCount(x, na.ok, positive, tol, vname(x, .var.name))
   as.integer(x)
 }
@@ -41,7 +41,7 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps
 #' @rdname asInteger
 #' @template bounds
 #' @export
-asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = .Machine$double.eps^0.5, .var.name) {
+asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
   assertInt(x, na.ok, lower, upper, tol, vname(x, .var.name))
   as.integer(x)
 }

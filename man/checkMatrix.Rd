@@ -5,15 +5,15 @@
 \alias{testMatrix}
 \title{Check if an argument is a matrix}
 \usage{
-checkMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+checkMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
   col.names = NULL)
 
-assertMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+assertMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
   col.names = NULL, .var.name)
 
-testMatrix(x, mode = "any", any.missing = TRUE, min.rows = NULL,
+testMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
   col.names = NULL)
 }
@@ -28,7 +28,7 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 \item{mode}{[\code{character(1)}]\cr
 Storage mode of the matrix. Matricies can hold \dQuote{logical},
 \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
-\dQuote{character}. Default is \dQuote{any}.}
+\dQuote{character}. Default is \code{NULL} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}

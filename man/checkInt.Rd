@@ -6,13 +6,13 @@
 \title{Check if an argument is a single integerish value}
 \usage{
 checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5)
+  tol = sqrt(.Machine$double.eps))
 
 assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5, .var.name)
+  tol = sqrt(.Machine$double.eps), .var.name)
 
 testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = .Machine$double.eps^0.5)
+  tol = sqrt(.Machine$double.eps))
 }
 \arguments{
 \item{x}{[ANY]\cr

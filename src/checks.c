@@ -20,6 +20,11 @@ static inline Rboolean isFALSE(SEXP x) {
     return (LOGICAL(x)[0] == FALSE);
 }
 
+static inline double asTol(SEXP tol) {
+    assertNumber(tol, "tol");
+    return REAL(tol)[0];
+}
+
 static inline Rboolean is_scalar_na(SEXP x) {
     if (length(x) == 1) {
         switch(TYPEOF(x)) {
@@ -184,30 +189,30 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
 }
 
 static msg_t check_storage(SEXP x, SEXP mode) {
-    assertString(mode, "mode");
-    const char * const storage = CHAR(STRING_ELT(mode, 0));
-    if (strcmp(storage, "any") == 0) {
-        ;
-    } else if (strcmp(storage, "logical") == 0) {
-        if (!isLogical(x))
-            return Msg("Must contain logicals");
-    } else if (strcmp(storage, "integer") == 0) {
-        if (!isInteger(x))
-            return Msg("Must contain integers");
-    } else if (strcmp(storage, "double") == 0) {
-        if (!isReal(x))
-            return Msg("Must contain doubles");
-    } else if (strcmp(storage, "numeric") == 0) {
-        if (!isNumeric(x))
-            return Msg("Must contain numerics");
-    } else if (strcmp(storage, "complex") == 0) {
-        if (!isComplex(x))
-            return Msg("Must contain complexs");
-    } else if (strcmp(storage, "character") == 0) {
-        if (!isString(x))
-            return Msg("Must contain characters");
-    } else {
-        error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex' or 'character'");
+    if (!isNull(mode)) {
+        assertString(mode, "mode");
+        const char * const storage = CHAR(STRING_ELT(mode, 0));
+        if (strcmp(storage, "logical") == 0) {
+            if (!isLogical(x))
+                return Msg("Must contain logicals");
+        } else if (strcmp(storage, "integer") == 0) {
+            if (!isInteger(x))
+                return Msg("Must contain integers");
+        } else if (strcmp(storage, "double") == 0) {
+            if (!isReal(x))
+                return Msg("Must contain doubles");
+        } else if (strcmp(storage, "numeric") == 0) {
+            if (!isNumeric(x))
+                return Msg("Must contain numerics");
+        } else if (strcmp(storage, "complex") == 0) {
+            if (!isComplex(x))
+                return Msg("Must contain complexs");
+        } else if (strcmp(storage, "character") == 0) {
+            if (!isString(x))
+                return Msg("Must contain characters");
+        } else {
+            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex' or 'character'");
+        }
     }
     return MSGT;
 }
@@ -270,7 +275,7 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
 }
 
 SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    if (!isIntegerish(x, asReal(tol)) && !all_missing_atomic(x))
+    if (!isIntegerish(x, asTol(tol)) && !all_missing_atomic(x))
         return CRes("Must be integerish");
 
     msg_t msg = check_bounds(x, lower, upper);
@@ -371,9 +376,8 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
 }
 
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
-    assertNumber(tol, "tol");
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, REAL(tol)[0])))
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
         return CRes("Must be a count");
     if (is_na) {
         assertFlag(na_ok, "na.ok");
@@ -389,9 +393,8 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
 }
 
 SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
-    assertNumber(tol, "tol");
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, REAL(tol)[0])))
+    if (length(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
         return CRes("Must be a single integerish value");
     if (is_na) {
         assertFlag(na_ok, "na.ok");

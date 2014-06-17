@@ -17,13 +17,13 @@
 #' @examples
 #'  testCount(1)
 #'  testCount(-1)
-checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5) {
+checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
 }
 
 #' @rdname checkCount
 #' @export
-assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5, .var.name) {
+assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name) {
   makeAssertion(
     .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
   , vname(x, .var.name))
@@ -31,7 +31,7 @@ assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double
 
 #' @rdname checkCount
 #' @export
-testCount = function(x, na.ok = FALSE, positive = FALSE, tol = .Machine$double.eps^0.5) {
+testCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   isTRUE(
     .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
   )

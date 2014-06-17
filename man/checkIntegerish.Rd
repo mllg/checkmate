@@ -5,16 +5,16 @@
 \alias{testIntegerish}
 \title{Check if an object is an integerish vector}
 \usage{
-checkIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+checkIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
-assertIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+assertIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
   .var.name)
 
-testIntegerish(x, tol = .Machine$double.eps^0.5, lower = -Inf,
+testIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 }
