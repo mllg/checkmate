@@ -35,9 +35,8 @@ checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE
 #' @useDynLib checkmate c_check_vector
 #' @export
 assertVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  makeAssertion(
-    .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  , vname(x, .var.name))
+  res = .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkVector

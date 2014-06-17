@@ -21,9 +21,8 @@ checkNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missin
 #' @useDynLib checkmate c_check_numeric
 #' @export
 assertNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  makeAssertion(
-    .Call("c_check_numeric", x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  , vname(x, .var.name))
+  res = .Call("c_check_numeric", x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkNumeric

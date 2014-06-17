@@ -17,9 +17,8 @@ checkScalar = function(x, na.ok = FALSE) {
 #' @rdname checkScalar
 #' @export
 assertScalar = function(x, na.ok = FALSE, .var.name) {
-  makeAssertion(
-    .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
-  , vname(x, .var.name))
+  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkScalar

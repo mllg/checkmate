@@ -42,7 +42,8 @@ checkAccess = function(x, access = "") {
 #' @rdname checkAccess
 #' @export
 assertAccess = function(x, access = "", .var.name) {
-  makeAssertion(checkAccess(x, access), vname(x, .var.name))
+  res = checkAccess(x, access)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkAccess

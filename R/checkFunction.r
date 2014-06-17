@@ -41,7 +41,8 @@ checkFunction = function(x, args = NULL, ordered = FALSE) {
 #' @rdname checkFunction
 #' @export
 assertFunction = function(x, args = NULL, ordered = FALSE, .var.name) {
-  makeAssertion(checkFunction(x, args, ordered), vname(x, .var.name))
+  res = checkFunction(x, args, ordered)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkFunction

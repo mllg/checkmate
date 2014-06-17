@@ -60,10 +60,9 @@ checkListProps = function(x, types = character(0L)) {
 #' @useDynLib checkmate c_check_list
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  makeAssertion(
-    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
     checkListProps(x, types)
-  , vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkList

@@ -18,7 +18,8 @@ checkChoice = function(x, choices) {
 #' @rdname checkChoice
 #' @export
 assertChoice = function(x, choices, .var.name) {
-  makeAssertion(checkChoice(x, choices), vname(x, .var.name))
+  res = checkChoice(x, choices)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkChoice

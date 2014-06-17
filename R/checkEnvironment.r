@@ -26,7 +26,8 @@ checkEnvironment = function(x, contains = character(0L)) {
 #' @rdname checkEnvironment
 #' @export
 assertEnvironment = function(x, contains = character(0L), .var.name) {
-  makeAssertion(checkEnvironment(x, contains), vname(x, .var.name))
+  res = checkEnvironment(x, contains)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkEnvironment

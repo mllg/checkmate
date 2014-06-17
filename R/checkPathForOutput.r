@@ -38,7 +38,8 @@ checkPathForOutput = function(x) {
 #' @rdname checkPathForOutput
 #' @export
 assertPathForOutput = function(x, .var.name) {
-  makeAssertion(checkPathForOutput(x), vname(x, .var.name))
+  res = checkPathForOutput(x)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkPathForOutput

@@ -39,7 +39,8 @@ checkClass = function(x, classes, ordered = FALSE) {
 #' @rdname checkClass
 #' @export
 assertClass = function(x, classes, ordered = FALSE, .var.name) {
-  makeAssertion(checkClass(x, classes, ordered), vname(x, .var.name))
+  res = checkClass(x, classes, ordered)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkClass

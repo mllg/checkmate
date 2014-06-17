@@ -20,7 +20,8 @@ checkString = function(x, na.ok = FALSE) {
 #' @rdname checkString
 #' @export
 assertString = function(x, na.ok = FALSE, .var.name) {
-  makeAssertion(checkString(x, na.ok), vname(x, .var.name))
+  res = checkString(x, na.ok)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkString

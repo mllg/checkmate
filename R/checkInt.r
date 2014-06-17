@@ -20,9 +20,8 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
 #' @rdname checkInt
 #' @export
 assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
-  makeAssertion(
-    .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
-  , vname(x, .var.name))
+  res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkInt

@@ -30,7 +30,8 @@ checkDirectory = function(x, access = "") {
 #' @rdname checkDirectory
 #' @export
 assertDirectory = function(x, access = "", .var.name) {
-  makeAssertion(checkDirectory(x, access), vname(x, .var.name))
+  res = checkDirectory(x, access)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkDirectory

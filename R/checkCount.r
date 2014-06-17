@@ -24,9 +24,8 @@ checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$do
 #' @rdname checkCount
 #' @export
 assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name) {
-  makeAssertion(
-    .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  , vname(x, .var.name))
+  res = .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkCount

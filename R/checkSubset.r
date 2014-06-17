@@ -20,7 +20,8 @@ checkSubset = function(x, choices) {
 #' @rdname checkSubset
 #' @export
 assertSubset = function(x, choices, .var.name) {
-  makeAssertion(checkSubset(x, choices), vname(x, .var.name))
+  res = checkSubset(x, choices)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkSubset

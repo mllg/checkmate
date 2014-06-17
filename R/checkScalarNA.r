@@ -17,9 +17,8 @@ checkScalarNA = function(x) {
 #' @rdname checkScalarNA
 #' @export
 assertScalarNA = function(x, .var.name) {
-  makeAssertion(
-    checkScalarNA(x)
-  , vname(x, .var.name))
+  res = checkScalarNA(x)
+  makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkScalarNA
