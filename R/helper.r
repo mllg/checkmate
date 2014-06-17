@@ -1,17 +1,19 @@
-makeAssertion = function(msg, var.name, n = 0L) {
+vname = function(x, var.name) {
+  if (!missing(var.name))
+    return(var.name)
+  deparse(substitute(x, parent.frame(1L)))
+}
+
+makeAssertion = function(msg, var.name) {
   if (!isTRUE(msg))
-    mstop("Assertion on '%s' failed: %s", var.name, msg, n = n)
+    mstop("Assertion on '%s' failed: %s", var.name, msg)
   invisible(TRUE)
 }
 
-# getter for variable name
-vname = function(x, var.name, n = 1L) {
-  if (!missing(var.name))
-    return(var.name)
-  deparse(substitute(x, parent.frame(n)))
+mstop = function(msg, ...) {
+  stop(simpleError(sprintf(msg, ...), call = sys.call(1L)))
 }
 
-# qassert, qassertr and assert message helper
 qamsg = function(x, msg, vname, recursive=FALSE) {
   if (length(msg) > 1L)
     msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")), "\n")
@@ -38,8 +40,4 @@ collapse = function(x, sep = ",") {
 
 "%nin%" = function(x, y) {
   !match(x, y, nomatch = 0L)
-}
-
-mstop = function(msg, ..., n = 0L) {
-  stop(simpleError(sprintf(msg, ...), call = sys.call(n + 1L)))
 }
