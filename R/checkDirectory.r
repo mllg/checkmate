@@ -10,8 +10,8 @@
 #'  # Is R's home directory readable?
 #'  testDirectory(R.home(), "r")
 #'
-#'  # Is R's home directory writable?
-#'  testDirectory(R.home(), "w")
+#'  # Is R's home directory readable and writable?
+#'  testDirectory(R.home(), "rw")
 checkDirectory = function(x, access = "") {
   if (!qtest(x, "S+"))
     return("No directory provided")

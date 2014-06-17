@@ -3,7 +3,7 @@
 \alias{assertDataFrame}
 \alias{checkDataFrame}
 \alias{testDataFrame}
-\title{Check if an argument is a \code{data.frame}}
+\title{Check if an argument is a data frame}
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
@@ -41,11 +41,11 @@ Exact number of rows.}
 Exact number of columns.}
 
 \item{row.names}{[\code{character(1)}]\cr
-Check for row names. Default is \dQuote{any} (no check).
+Check for row names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.}
 
 \item{col.names}{[\code{character(1)}]\cr
-Check for column names. Default is \dQuote{any} (no check).
+Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.}
 
 \item{types}{[\code{character}]\cr
@@ -54,7 +54,7 @@ from at least one of the provided types.
 The types \dQuote{logical}, \dQuote{integer}, \dQuote{integerish}, \dQuote{double},
 \dQuote{numeric}, \dQuote{complex}, \dQuote{character}, \dQuote{factor}, \dQuote{atomic}, \dQuote{vector}
 \dQuote{atomicvector}, \dQuote{array}, \dQuote{matrix}, \dQuote{list} and \dQuote{null} are supported.
-For other types \code{\link[base]{inherits}} is used to check \code{x}'s inheritance.
+For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 Defaults to \code{character(0)} (no check).}
 }
 \value{
@@ -65,7 +65,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check if an argument is a \code{data.frame}
+Check if an argument is a data frame
 }
 \examples{
 testDataFrame(iris, "data.frame")

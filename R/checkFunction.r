@@ -6,7 +6,7 @@
 #'  Expected formal arguments.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Flag whether the arguments provided in \code{args} must be the first
-#'  \code{length(args)} arguments of the function.
+#'  \code{length(args)} arguments of the function in the specified order.
 #'  Default is \code{FALSE}.
 #' @family basetypes
 #' @export

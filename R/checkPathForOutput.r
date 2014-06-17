@@ -5,9 +5,9 @@
 #'
 #' This is checked:
 #' \itemize{
-#' \item{Does \code{dirname(x)} exist?}
-#' \item{Does no file under path \code{x)} exist?}
-#' \item{Is \code{dirname(x)} writeable?}
+#'  \item{Does \code{dirname(x)} exist?}
+#'  \item{Does no file under path \code{x)} exist?}
+#'  \item{Is \code{dirname(x)} writeable?}
 #' }
 #'
 #' A string without slashes is interpreted as a file in the current working directory.
@@ -16,6 +16,9 @@
 #' @template checker
 #' @family filesystem
 #' @export
+#' @examples
+#' # Can we create a file in the tempdir?
+#' testPathForOutput(file.path(tempdir(), "process.log"))
 checkPathForOutput = function(x) {
   if (!qtest(x, "S+"))
     return("No path provided")

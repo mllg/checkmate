@@ -34,6 +34,7 @@ Check if object is a subset of a given set
 }
 \examples{
 testSubset(c("a", "z"), letters)
+ testSubset("ab", letters)
 }
 \seealso{
 Other set: \code{\link{assertChoice}},

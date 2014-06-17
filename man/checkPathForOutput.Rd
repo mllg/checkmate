@@ -31,12 +31,16 @@ Check whether a file path can later be safely used to create a file and write to
 
 This is checked:
 \itemize{
-\item{Does \code{dirname(x)} exist?}
-\item{Does no file under path \code{x)} exist?}
-\item{Is \code{dirname(x)} writeable?}
+ \item{Does \code{dirname(x)} exist?}
+ \item{Does no file under path \code{x)} exist?}
+ \item{Is \code{dirname(x)} writeable?}
 }
 
 A string without slashes is interpreted as a file in the current working directory.
+}
+\examples{
+# Can we create a file in the tempdir?
+testPathForOutput(file.path(tempdir(), "process.log"))
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},

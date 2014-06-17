@@ -3,7 +3,7 @@
 \alias{assertVector}
 \alias{checkVector}
 \alias{testVector}
-\title{Check that an argument is a vector}
+\title{Check if an argument is a vector}
 \usage{
 checkVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
@@ -26,8 +26,10 @@ Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{strict}{[\code{logical(1)}]\cr
-May the vector have additional attributes or perform a strict check like in \code{\link[base]{is.vector}}?
-Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s to be recognized as vectors.}
+May the vector have additional attributes or perform a
+check for additional attributes like \code{\link[base]{is.vector}}?
+Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s
+to be recognized as vectors.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}
@@ -59,7 +61,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-The definition of a vector can be found in \code{\link[base]{is.vector}}.
+Check if an argument is a vector
 }
 \examples{
 testVector(letters, min.len = 1L, any.missing = FALSE)

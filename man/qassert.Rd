@@ -2,7 +2,7 @@
 \name{qassert}
 \alias{qassert}
 \alias{qtest}
-\title{Argument checks on (builtin) R types}
+\title{Quick argument checks on (builtin) R types}
 \usage{
 qassert(x, rules, .var.name)
 

@@ -30,7 +30,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-A string a character vector of length 1.
+A string a scalar character vector.
 }
 \details{
 This function does not distinguish between

@@ -1,6 +1,6 @@
 #' Check if an argument is a string
 #'
-#' A string a character vector of length 1.
+#' A string a scalar character vector.
 #'
 #' @templateVar fn String
 #' @template na-handling

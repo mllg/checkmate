@@ -4,10 +4,7 @@
 #' @template na-handling
 #' @template checker
 #' @inheritParams checkVector
-#' @param lower [\code{numeric(1)}]\cr
-#'  Lower value all elements of \code{x} must be greater than.
-#' @param upper [\code{numeric(1)}]\cr
-#'  Upper value all elements of \code{x} must be lower than.
+#' @template bounds
 #' @param finite [\code{logical(1)}]\cr
 #'  Check for only finite values? Default is \code{FALSE}.
 #' @family basetypes

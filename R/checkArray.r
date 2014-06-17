@@ -9,7 +9,7 @@
 #'  function. Default is \dQuote{any}.
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
-#' @param d [\code{integer}]\cr
+#' @param d [\code{integer(1)}]\cr
 #'  Dimensionality of array.
 #' @family basetypes
 #' @useDynLib checkmate c_check_array

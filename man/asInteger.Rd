@@ -18,7 +18,7 @@ asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
 Object to convert.}
 
 \item{...}{[ANY]\cr
-Additional arguments passed to \code{\link{checkInteger}}.}
+Additional arguments passed to \code{\link{assertIntegerish}}.}
 
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.

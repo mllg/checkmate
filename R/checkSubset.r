@@ -8,6 +8,7 @@
 #' @export
 #' @examples
 #'  testSubset(c("a", "z"), letters)
+#'  testSubset("ab", letters)
 checkSubset = function(x, choices) {
   qassert(choices, "a+")
   not.ok = wf(x %nin% choices)

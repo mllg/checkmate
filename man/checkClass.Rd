@@ -20,7 +20,7 @@ Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{classes}{[\code{character}]\cr
-Class names to check for inheritance.}
+Class names to check for inheritance with \code{\link[base]{inherits}}.}
 
 \item{ordered}{[\code{logical(1)}]\cr
 Expect \code{x} to be specialized in provided order.

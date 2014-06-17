@@ -5,10 +5,7 @@
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
-#' @param lower [\code{numeric(1)}]\cr
-#'  Lower value all elements of \code{x} must be greater than.
-#' @param upper [\code{numeric(1)}]\cr
-#'  Upper value all elements of \code{x} must be lower than.
+#' @template bounds
 #' @param finite [\code{logical(1)}]\cr
 #'  Check for only finite values? Default is \code{FALSE}.
 #' @family scalars

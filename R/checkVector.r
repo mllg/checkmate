@@ -1,12 +1,12 @@
-#' Check that an argument is a vector
-#'
-#' The definition of a vector can be found in \code{\link[base]{is.vector}}.
+#' Check if an argument is a vector
 #'
 #' @templateVar fn Vector
 #' @template checker
 #' @param strict [\code{logical(1)}]\cr
-#'  May the vector have additional attributes or perform a strict check like in \code{\link[base]{is.vector}}?
-#'  Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s to be recognized as vectors.
+#'  May the vector have additional attributes or perform a
+#'  check for additional attributes like \code{\link[base]{is.vector}}?
+#'  Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s
+#'  to be recognized as vectors.
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are vectors with missing values allowed? Default is \code{TRUE}.
 #' @param all.missing [\code{logical(1)}]\cr

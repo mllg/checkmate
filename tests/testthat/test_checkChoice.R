@@ -3,6 +3,7 @@ context("checkChoice")
 test_that("checkChoice", {
   expect_false(testChoice(character(0), letters))
   expect_false(testChoice(NULL, letters))
+  expect_false(testChoice(1, NULL))
 
   expect_true(testChoice(1L, 1:10))
   expect_false(testChoice("ab", letters))

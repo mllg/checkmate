@@ -2,7 +2,7 @@
 \name{qassertr}
 \alias{qassertr}
 \alias{qtestr}
-\title{Recursive arguments checks on lists and data frames.}
+\title{Quick recursive arguments checks on lists and data frames}
 \usage{
 qassertr(x, rules, .var.name)
 

@@ -31,10 +31,10 @@ Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
 
 \item{lower}{[\code{numeric(1)}]\cr
-Lower value all elements of \code{x} must be greater than or equal.}
+Lower value all elements of \code{x} must be greater than.}
 
 \item{upper}{[\code{numeric(1)}]\cr
-Upper value all elements of \code{x} must be lower than or equal.}
+Upper value all elements of \code{x} must be lower than.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}

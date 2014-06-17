@@ -1,4 +1,4 @@
-#' Check if an argument is a \code{data.frame}
+#' Check if an argument is a data frame
 #'
 #' @templateVar fn DataFrame
 #' @template checker

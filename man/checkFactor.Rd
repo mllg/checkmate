@@ -31,7 +31,7 @@ Vector of allowed factor levels.}
 \item{ordered}{[\code{logical(1)}]\cr
 Check for an ordered factor? If \code{FALSE} or \code{TRUE}, checks explicitly
 for an unordered or ordered factor, respectively.
-Default is \code{NA} which disables this check.}
+Default is \code{NA} which does not perform a check.}
 
 \item{empty.levels.ok}{[\code{logical(1)}]\cr
 Are empty levels allowed?

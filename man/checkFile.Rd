@@ -21,7 +21,7 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{access}{[\code{character(1)}]\cr
 Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
-force a check for read, write and execute access rights, respectively.}
+force a check for read, write or execute access rights, respectively.}
 }
 \value{
 Depending on the function prefix:
@@ -37,8 +37,8 @@ Check existence and access rights of files
 # Check if R's COPYING file is readable
  testFile(file.path(R.home(), "COPYING"), access = "r")
 
- # Check if R's COPYING file is writable
- testFile(file.path(R.home(), "COPYING"), access = "w")
+ # Check if R's COPYING file is readable and writable
+ testFile(file.path(R.home(), "COPYING"), access = "rw")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},

@@ -4,10 +4,7 @@
 #' @template na-handling
 #' @template checker
 #' @inheritParams checkVector
-#' @param lower [\code{numeric(1)}]\cr
-#'  Lower value all elements of \code{x} must be greater than or equal.
-#' @param upper [\code{numeric(1)}]\cr
-#'  Upper value all elements of \code{x} must be lower than or equal.
+#' @template bounds
 #' @family basetypes
 #' @seealso \code{\link{asInteger}}
 #' @useDynLib checkmate c_check_integer

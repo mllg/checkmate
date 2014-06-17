@@ -39,6 +39,7 @@ This function does not distinguish between
 }
 \examples{
 testScalar(1)
+ testScalar(1:10)
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},

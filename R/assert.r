@@ -3,9 +3,9 @@
 #' @param ... [ANY]\cr
 #'  List of calls to check functions.
 #' @param .var.name [character(1)]\cr
-#'  Name for object to check. Defaults to a heuristic to determine
-#'  the name of the first call.
-#' @return Throws an error if all checks failed and invisibly returns
+#'  Name of object to check. Defaults to a heuristic to determine
+#'  the name of the first argument of the first call.
+#' @return Throws an error if all checks fails and invisibly returns
 #'  \code{TRUE} otherwise.
 #' @export
 #' @examples

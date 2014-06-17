@@ -1,4 +1,4 @@
-#' Recursive arguments checks on lists and data frames.
+#' Quick recursive arguments checks on lists and data frames
 #'
 #' These functions are the tuned counterparts of \code{\link{qtest}} and
 #' \code{\link{qassert}} tailored for recursive checks of list

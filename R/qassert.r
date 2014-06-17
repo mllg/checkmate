@@ -1,4 +1,4 @@
-#' Argument checks on (builtin) R types
+#' Quick argument checks on (builtin) R types
 #'
 #' The provided functions parse rules which allow to express some of the most
 #' frequent argument checks by typing just a few letters.

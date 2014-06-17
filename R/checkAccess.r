@@ -4,7 +4,7 @@
 #' @template checker
 #' @param access [\code{character(1)}]\cr
 #'  Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
-#'  force a check for read, write and execute access rights, respectively.
+#'  force a check for read, write or execute access rights, respectively.
 #' @family filesystem
 #' @export
 #' @examples

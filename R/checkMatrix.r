@@ -4,9 +4,8 @@
 #' @template checker
 #' @param mode [\code{character(1)}]\cr
 #'  Storage mode of the matrix. Matricies can hold \dQuote{logical},
-#'  \dQuote{integer}, \dQuote{double}, \dQuote{complex} and
-#'  \dQuote{character}. \dQuote{numeric} is also supported by this
-#'  function. Default is \dQuote{any}.
+#'  \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
+#'  \dQuote{character}. Default is \dQuote{any}.
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
@@ -18,10 +17,10 @@
 #' @param ncols [\code{integer(1)}]\cr
 #'  Exact number of columns.
 #' @param row.names [\code{character(1)}]\cr
-#'  Check for row names. Default is \dQuote{any} (no check).
+#'  Check for row names. Default is \dQuote{NULL} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
 #' @param col.names [\code{character(1)}]\cr
-#'  Check for column names. Default is \dQuote{any} (no check).
+#'  Check for column names. Default is \dQuote{NULL} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
 #' @family basetypes
 #' @useDynLib checkmate c_check_matrix

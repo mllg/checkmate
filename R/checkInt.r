@@ -5,13 +5,8 @@
 #' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
-#' @param lower [\code{numeric(1)}]\cr
-#'  Lower value all elements of \code{x} must be greater than.
-#' @param upper [\code{numeric(1)}]\cr
-#'  Upper value all elements of \code{x} must be lower than.
-#' @param tol [\code{double(1)}]\cr
-#'  Numerical tolerance used to check whether a double or complex can be converted.
-#'  Default is \code{sqrt(.Machine$double.eps)}.
+#' @template bounds
+#' @template tol
 #' @family scalars
 #' @useDynLib checkmate c_check_int
 #' @export

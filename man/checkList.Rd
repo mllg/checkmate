@@ -34,7 +34,7 @@ from at least one of the provided types.
 The types \dQuote{logical}, \dQuote{integer}, \dQuote{integerish}, \dQuote{double},
 \dQuote{numeric}, \dQuote{complex}, \dQuote{character}, \dQuote{factor}, \dQuote{atomic}, \dQuote{vector}
 \dQuote{atomicvector}, \dQuote{array}, \dQuote{matrix}, \dQuote{list} and \dQuote{null} are supported.
-For other types \code{\link[base]{inherits}} is used to check \code{x}'s inheritance.
+For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 Defaults to \code{character(0)} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr

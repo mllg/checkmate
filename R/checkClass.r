@@ -3,7 +3,7 @@
 #' @templateVar fn Class
 #' @template checker
 #' @param classes [\code{character}]\cr
-#'  Class names to check for inheritance.
+#'  Class names to check for inheritance with \code{\link[base]{inherits}}.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.

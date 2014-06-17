@@ -27,7 +27,7 @@ Are missing values allowed? Default is \code{FALSE}.}
 
 \item{positive}{[\code{logical(1)}]\cr
 Must \code{x} be positive (>= 1)?
-Default is \code{FALSE}.}
+Default is \code{FALSE}, allowing 0.}
 
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.

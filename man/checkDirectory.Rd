@@ -21,7 +21,7 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{access}{[\code{character(1)}]\cr
 Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
-force a check for read, write and execute access rights, respectively.}
+force a check for read, write or execute access rights, respectively.}
 }
 \value{
 Depending on the function prefix:
@@ -37,8 +37,8 @@ Check for existence and access rights of directories
 # Is R's home directory readable?
  testDirectory(R.home(), "r")
 
- # Is R's home directory writable?
- testDirectory(R.home(), "w")
+ # Is R's home directory readable and writable?
+ testDirectory(R.home(), "rw")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},

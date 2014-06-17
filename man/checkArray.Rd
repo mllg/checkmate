@@ -28,7 +28,7 @@ function. Default is \dQuote{any}.}
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
 
-\item{d}{[\code{integer}]\cr
+\item{d}{[\code{integer(1)}]\cr
 Dimensionality of array.}
 }
 \value{
