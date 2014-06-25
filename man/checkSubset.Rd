@@ -5,11 +5,11 @@
 \alias{testSubset}
 \title{Check if object is a subset of a given set}
 \usage{
-checkSubset(x, choices, empty.ok = FALSE)
+checkSubset(x, choices, empty.ok = TRUE)
 
-assertSubset(x, choices, empty.ok = FALSE, .var.name)
+assertSubset(x, choices, empty.ok = TRUE, .var.name)
 
-testSubset(x, choices, empty.ok = FALSE)
+testSubset(x, choices, empty.ok = TRUE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -23,8 +23,8 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 Set of possible values.}
 
 \item{empty.ok}{[\code{logical(1)}]\cr
-Treat zero-length \code{x} as subset of set \code{choices}?
-Default is \code{FALSE}.}
+Treat zero-length \code{x} as subset of any set \code{choices}?
+Default is \code{TRUE}.}
 }
 \value{
 Depending on the function prefix:
