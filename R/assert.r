@@ -18,7 +18,7 @@ assert = function(..., .var.name) {
   for (i in seq_along(dots)) {
     val = eval(dots[[i]], envir = env)
     if (isTRUE(val))
-      return(invisble(TRUE))
+      return(invisible(TRUE))
     msgs[i] = as.character(val)
   }
   if (missing(.var.name))
