@@ -4,6 +4,7 @@ Version 1.1 (xxxx-xx-xx)
 * Improved error messages in assert* functions
 * New argument 'empty.ok' for *Subset functions
 * assert() now returns TRUE invisibly (as documented)
+* Fixed handling of zero-length arguments in checkFunction
 
 Version 1.0 (2014-06-17)
 -------------------------------------------------------------------------------

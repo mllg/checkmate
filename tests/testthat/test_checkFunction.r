@@ -6,7 +6,6 @@ test_that("checkFunction", {
   expect_false(testFunction(NULL))
   expect_true(testFunction(identity))
   expect_true(testFunction(myfun))
-  # FIXME this does not work ... is this a testthat issue?
   # expect_true(testFunction("myfun"))
   expect_false(testFunction(fff))
   expect_false(testFunction("fff"))
@@ -28,4 +27,8 @@ test_that("checkFunction", {
   expect_error(assertFunction(fff), "not found")
   expect_error(assertFunction(myfun, "z"), "formal arguments")
   expect_error(assertFunction(myfun, "y", ordered=TRUE), "first formal arguments")
+
+
+  expect_false(testFunction(function(x) x^2, args = character(0)))
+  expect_true(testFunction(function() x^2, args = character(0)))
 })

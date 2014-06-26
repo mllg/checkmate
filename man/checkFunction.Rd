@@ -20,7 +20,9 @@ Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{args}{[\code{character}]\cr
-Expected formal arguments.}
+Expected formal arguments. Checks that a function has no arguments if
+set to \code{character(0)}.
+Default is \code{NULL} (no check).}
 
 \item{ordered}{[\code{logical(1)}]\cr
 Flag whether the arguments provided in \code{args} must be the first
