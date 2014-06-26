@@ -136,7 +136,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
 
     assertFlag(unique, "unique");
     if (isTRUE(unique) && any_duplicated(x, FALSE) > 0)
-        return Msg("Contains only missing values");
+        return Msg("Contains duplicated values");
 
     return check_names(getAttrib(x, R_NamesSymbol), names);
 }
