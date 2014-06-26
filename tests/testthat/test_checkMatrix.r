@@ -18,7 +18,13 @@ test_that("checkMatrix", {
 
   expect_false(testMatrix(x, row.names = "named"))
   expect_false(testMatrix(x, col.names = "named"))
-  rownames(x) = colnames(x) = letters[1:3]
+  rownames(x) = letters[1:3]; colnames(x) = NULL
+  expect_true(testMatrix(x, row.names = "named"))
+  expect_false(testMatrix(x, col.names = "named"))
+  colnames(x) = letters[1:3]; rownames(x) = NULL
+  expect_false(testMatrix(x, row.names = "named"))
+  expect_true(testMatrix(x, col.names = "named"))
+  colnames(x) = rownames(x) = letters[1:3]
   expect_true(testMatrix(x, row.names = "named"))
   expect_true(testMatrix(x, col.names = "named"))
 

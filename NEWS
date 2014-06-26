@@ -6,6 +6,7 @@ Version 1.1 (xxxx-xx-xx)
 * assert() now returns TRUE invisibly (as documented)
 * Fixed handling of zero-length arguments in checkFunction
 * Fixed error message if duplicted values where found
+* Fixed a missing check for row names in checkMatrix and checkDataFrame
 
 Version 1.0 (2014-06-17)
 -------------------------------------------------------------------------------
