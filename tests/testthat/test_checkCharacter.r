@@ -17,6 +17,8 @@ test_that("checkCharacter", {
   expect_true(testCharacter(x, pattern="AB", ignore.case=TRUE))
   expect_false(testCharacter(x, pattern="AB", ignore.case=FALSE))
   expect_false(testCharacter(x, pattern="AB", ignore.case=FALSE))
+  expect_true(testCharacter(x, pattern="a+", fixed=FALSE))
+  expect_false(testCharacter(x, pattern="a+", fixed=TRUE))
 
   x = letters[1:3]
   expect_true(testCharacter(x, any.missing=FALSE, min.len=1L, max.len=3L))

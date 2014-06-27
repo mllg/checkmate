@@ -1,6 +1,6 @@
 context("checkComplex")
 
-test_that("checkCompley", {
+test_that("checkComplex", {
   expect_true(testComplex(complex(0)))
   expect_false(testComplex(NULL))
   expect_false(testComplex(TRUE))
