@@ -10,6 +10,7 @@
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param d [\code{integer(1)}]\cr
 #'  Dimensionality of array.
+#'  Default is \code{NULL} (no check).
 #' @family basetypes
 #' @useDynLib checkmate c_check_array
 #' @export

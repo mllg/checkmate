@@ -28,7 +28,8 @@ Storage mode of the matrix. Matricies can hold \dQuote{logical},
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{d}{[\code{integer(1)}]\cr
-Dimensionality of array.}
+Dimensionality of array.
+Default is \code{NULL} (no check).}
 }
 \value{
 Depending on the function prefix:

@@ -1,4 +1,4 @@
-#' Combine multiple checks to an assertion
+#' Combine multiple checks into one assertion
 #'
 #' @param ... [ANY]\cr
 #'  List of calls to check functions.
