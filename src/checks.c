@@ -48,7 +48,6 @@ static inline Rboolean is_vector(SEXP x) {
 
 static Rboolean check_strict_names(SEXP x) {
     const R_len_t nx = length(x);
-
     const char *str;
     for (R_len_t i = 0; i < nx; i++) {
         str = CHAR(STRING_ELT(x, i));
@@ -373,7 +372,6 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
     if (length(x) != 1 || (!is_na && !isLogical(x)))
         return CRes("Must be a logical flag");
-
     assertFlag(na_ok, "na.ok");
     if (is_na && !isTRUE(na_ok))
         return CRes("May not be NA");
@@ -413,7 +411,6 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     Rboolean is_na = is_scalar_na(x);
     if (length(x) != 1 || (!is_na && !isNumeric(x)))
         return CRes("Must be a number");
-
     assertFlag(na_ok, "na.ok");
     if (is_na) {
         if (!isTRUE(na_ok))
@@ -430,7 +427,6 @@ SEXP c_check_string(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
     if (length(x) != 1 || (!is_na && !isString(x)))
         return CRes("Must be a string");
-
     assertFlag(na_ok, "na.ok");
     if (is_na && !isTRUE(na_ok))
         return CRes("May not be NA");
@@ -441,7 +437,6 @@ SEXP c_check_scalar(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
     if (length(x) != 1 || (!is_na && !isVectorAtomic(x)))
         return CRes("Must be an atomic scalar");
-
     assertFlag(na_ok, "na.ok");
     if (is_na && !isTRUE(na_ok))
         return CRes("May not be NA");

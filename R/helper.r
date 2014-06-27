@@ -30,6 +30,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
   sprintf("Assertion on '%s'%s failed. %s", vname, item, msg)
 }
 
+# Don't use this with assert*. Will fk up the error messages
 "%and%" = function(lhs, rhs) {
   if (isTRUE(lhs)) rhs else lhs
 }

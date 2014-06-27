@@ -10,7 +10,8 @@
 #'  from at least one of the provided types.
 #'  The types \dQuote{logical}, \dQuote{integer}, \dQuote{integerish}, \dQuote{double},
 #'  \dQuote{numeric}, \dQuote{complex}, \dQuote{character}, \dQuote{factor}, \dQuote{atomic}, \dQuote{vector}
-#'  \dQuote{atomicvector}, \dQuote{array}, \dQuote{matrix}, \dQuote{list} and \dQuote{null} are supported.
+#'  \dQuote{atomicvector}, \dQuote{array}, \dQuote{matrix}, \dQuote{list}, \dQuote{function},
+#'  \dQuote{environment} and \dQuote{null} are supported.
 #'  For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 #'  Defaults to \code{character(0)} (no check).
 #' @family basetypes
@@ -20,6 +21,7 @@
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  force(x)
   .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkListProps(x, types)
 }
@@ -32,21 +34,23 @@ checkListProps = function(x, types = character(0L)) {
   ind = seq_along(x)
   for (type in types) {
     f = switch(type,
-      logical = is.logical,
-      integer = is.integer,
-      integerish = isIntegerish,
-      double = is.double,
-      numeric = is.numeric,
-      complex = is.complex,
-      character = is.character,
-      factor = is.factor,
-      atomic = is.atomic,
-      vector = is.vector,
-      atomicvector = function(x) !is.null(x) && is.atomic(x),
-      array = is.array,
-      matrix = is.matrix,
-      list = is.list,
-      null = is.null,
+      "logical" = is.logical,
+      "integer" = is.integer,
+      "integerish" = isIntegerish,
+      "double" = is.double,
+      "numeric" = is.numeric,
+      "complex" = is.complex,
+      "character" = is.character,
+      "factor" = is.factor,
+      "atomic" = is.atomic,
+      "vector" = is.vector,
+      "atomicvector" = function(x) !is.null(x) && is.atomic(x),
+      "array" = is.array,
+      "matrix" = is.matrix,
+      "function" = is.function,
+      "environment" = is.environment,
+      "list" = is.list,
+      "null" = is.null,
       function(x) inherits(x, type)
     )
     ind = ind[!vapply(x[ind], f, FUN.VALUE = NA, USE.NAMES = FALSE)]
@@ -60,8 +64,9 @@ checkListProps = function(x, types = character(0L)) {
 #' @useDynLib checkmate c_check_list
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
-    checkListProps(x, types)
+  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res)
+  res = checkListProps(x, types)
   makeAssertion(res, vname(x, .var.name))
 }
 

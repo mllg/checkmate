@@ -51,8 +51,9 @@ checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = T
 #' @useDynLib checkmate c_check_factor
 #' @export
 assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
-    checkFactorProps(x, levels, ordered, empty.levels.ok)
+  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
+  res = checkFactorProps(x, levels, ordered, empty.levels.ok)
   makeAssertion(res, vname(x, .var.name))
 }
 
