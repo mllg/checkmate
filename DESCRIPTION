@@ -1,8 +1,8 @@
 Package: checkmate
 Type: Package
-Title: checkmate: Fast and versatile argument checks
+Title: Fast and versatile argument checks
 Description: Tests and assertions to perform frequent argument checks. A
-    substantial part of the package was written in C to minimize an worries
+    substantial part of the package was written in C to minimize any worries
     about execution time overhead.
 Version: 1.1
 Author: Michel Lang <michellang@gmail.com>,
