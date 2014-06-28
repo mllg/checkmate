@@ -178,7 +178,7 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
     if (isFALSE(any_missing) && any_missing_atomic(x))
         return Msg("Contains missing values");
 
-    if (!isNull(row_names) || !isNull(col_names)) {
+    if (!isNull(row_names) || !isNull(col_names) && length(x) > 0) {
         msg_t msg;
         SEXP dn = getAttrib(x, R_DimNamesSymbol);
 
