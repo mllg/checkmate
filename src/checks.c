@@ -76,7 +76,7 @@ static inline Rboolean all_finite_double(SEXP x) {
 /*********************************************************************************************************************/
 /* Shared check functions returning an intermediate msg_t                                                            */
 /*********************************************************************************************************************/
-static msg_t check_named(SEXP nn, SEXP type) {
+static msg_t check_names(SEXP nn, SEXP type) {
     if (!isNull(type)) {
         assertString(type, "type");
         const char * const ctype = CHAR(STRING_ELT(type, 0));
@@ -102,9 +102,9 @@ static msg_t check_named(SEXP nn, SEXP type) {
     return MSGT;
 }
 
-static msg_t check_names(SEXP x, SEXP type) {
+static msg_t check_named(SEXP x, SEXP type) {
     if (length(x) > 0) {
-        return check_named(getAttrib(x, R_NamesSymbol), type);
+        return check_names(getAttrib(x, R_NamesSymbol), type);
     }
     return MSGT;
 }
@@ -143,7 +143,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     if (isTRUE(unique) && any_duplicated(x, FALSE) > 0)
         return Msg("Contains duplicated values");
 
-    return check_names(x, names);
+    return check_named(x, names);
 }
 
 static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
@@ -178,14 +178,14 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
     if (isFALSE(any_missing) && any_missing_atomic(x))
         return Msg("Contains missing values");
 
-    if (!isNull(row_names) || !isNull(col_names) && length(x) > 0) {
+    if ((!isNull(row_names) || !isNull(col_names)) && length(x) > 0) {
         msg_t msg;
         SEXP dn = getAttrib(x, R_DimNamesSymbol);
 
-        msg = check_named(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 0), row_names);
+        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 0), row_names);
         if (!msg.ok)
             return msg;
-        msg = check_named(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 1), col_names);
+        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 1), col_names);
         if (!msg.ok)
             return msg;
     }
@@ -320,14 +320,10 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
     return mwrap(check_array_props(x, any_missing, d));
 }
 
-SEXP c_check_names(SEXP nn, SEXP type) {
-    return mwrap(check_names(nn, type));
-}
-
 SEXP c_check_named(SEXP x, SEXP type) {
     if (length(x) == 0)
         return mwrap(MSGT);
-    return mwrap(check_names(x, type));
+    return mwrap(check_named(x, type));
 }
 
 SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {

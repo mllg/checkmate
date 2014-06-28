@@ -34,4 +34,7 @@ test_that("checkMatrix", {
 
   expect_true(assertMatrix(x))
   expect_error(assertMatrix(iris))
+
+  expect_true(testMatrix(matrix(ncol = 0, nrow = 0), row.names = "named"))
+  expect_true(testMatrix(matrix(ncol = 0, nrow = 0), col.names = "named"))
 })
