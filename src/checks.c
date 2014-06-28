@@ -101,6 +101,7 @@ static msg_t check_named(SEXP nn, SEXP type) {
     }
     return MSGT;
 }
+
 static msg_t check_names(SEXP x, SEXP type) {
     if (length(x) > 0) {
         return check_named(getAttrib(x, R_NamesSymbol), type);
@@ -388,8 +389,8 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
             return CRes("May not be NA");
     } else  {
         assertFlag(positive, "positive");
-        const int xi = asInteger(x), pos = LOGICAL(positive)[0];
-        if (xi < pos)
+        const int pos = LOGICAL(positive)[0];
+        if (asInteger(x) < pos)
             return CResf("Must be >= %i", pos);
     }
     return ScalarLogical(TRUE);
