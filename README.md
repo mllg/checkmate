@@ -40,6 +40,7 @@ What can be checked: Simple, non-NA scalars and objects of a specific class.
 
 * [checkChoice](http://mllg.github.io/checkmate/man/checkChoice.html)
 * [checkSubset](http://mllg.github.io/checkmate/man/checkSubset.html)
+* [checkSetEqual](http://mllg.github.io/checkmate/man/checkSetEqual.html)
 
 What can be checked: Choices like "A", "B" or "C" or a subset of those.
 
