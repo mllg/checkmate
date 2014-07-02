@@ -1,5 +1,6 @@
 Version 1.2 (2014-xx-xx)
 * Fixed dimnames check on empty matrices and data frames
+* added *SetEqual functions
 
 Version 1.1 (2014-06-28)
 -------------------------------------------------------------------------------
