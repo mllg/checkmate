@@ -10,6 +10,14 @@ test_that("asInteger", {
   expect_equal(asInteger(xc), xi)
   expect_equal(asInteger(NA), NA_integer_)
 
+  expect_equal(names(asInteger(xi)), names(xi))
+  expect_equal(names(asInteger(xd)), names(xd))
+  expect_equal(names(asInteger(xc)), names(xc))
+  names(xi) = names(xd) = names(xc) = letters[1:5]
+  expect_equal(names(asInteger(xi)), names(xi))
+  expect_equal(names(asInteger(xd)), names(xd))
+  expect_equal(names(asInteger(xc)), names(xc))
+
   expect_error(asInteger("a"))
   expect_error(asInteger(3+1i))
   expect_error(asInteger(iris))
@@ -20,6 +28,14 @@ test_that("asInt", {
   xi = 1L
   xd = 1.
   xc = as.complex(1)
+
+  expect_equal(names(asInt(xi)), names(xi))
+  expect_equal(names(asInt(xd)), names(xd))
+  expect_equal(names(asInt(xc)), names(xc))
+  names(xi) = names(xd) = names(xc) = "a"
+  expect_equal(names(asInt(xi)), names(xi))
+  expect_equal(names(asInt(xd)), names(xd))
+  expect_equal(names(asInt(xc)), names(xc))
 
   expect_error(asInt(1:2), "integerish")
   expect_equal(asInt(xi), xi)
@@ -39,7 +55,15 @@ test_that("asCount", {
   xd = 1.
   xc = as.complex(1)
 
-  expect_error(asInt(1:2), "integerish")
+  expect_equal(names(asCount(xi)), names(xi))
+  expect_equal(names(asCount(xd)), names(xd))
+  expect_equal(names(asCount(xc)), names(xc))
+  names(xi) = names(xd) = names(xc) = "a"
+  expect_equal(names(asCount(xi)), names(xi))
+  expect_equal(names(asCount(xd)), names(xd))
+  expect_equal(names(asCount(xc)), names(xc))
+
+  expect_error(asCount(1:2), "count")
   expect_equal(asCount(xi), xi)
   expect_equal(asCount(xd), xi)
   expect_equal(asCount(xc), xi)

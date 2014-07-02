@@ -23,7 +23,8 @@
 #'  asInt(1)
 asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), .var.name) {
   assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name))
-  as.integer(x)
+  storage.mode(x) = "integer"
+  x
 }
 
 #' @rdname asInteger
@@ -35,7 +36,8 @@ asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), .var.name) {
 #' @export
 asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name) {
   assertCount(x, na.ok, positive, tol, vname(x, .var.name))
-  as.integer(x)
+  storage.mode(x) = "integer"
+  x
 }
 
 #' @rdname asInteger
@@ -43,5 +45,6 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$doubl
 #' @export
 asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
   assertInt(x, na.ok, lower, upper, tol, vname(x, .var.name))
-  as.integer(x)
+  storage.mode(x) = "integer"
+  x
 }
