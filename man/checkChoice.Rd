@@ -36,7 +36,9 @@ Check if an object is an element of a given set
 testChoice("x", letters)
 }
 \seealso{
-Other set: \code{\link{assertSubset}},
-  \code{\link{checkSubset}}, \code{\link{testSubset}}
+Other set: \code{\link{assertSetEqual}},
+  \code{\link{checkSetEqual}}, \code{\link{testSetEqual}};
+  \code{\link{assertSubset}}, \code{\link{checkSubset}},
+  \code{\link{testSubset}}
 }
 

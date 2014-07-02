@@ -24,6 +24,7 @@ Select the check(s) to perform.
 \dQuote{unnamed} checks \code{x} to be unnamed.
 \dQuote{named} (default) checks \code{x} to be named, this includes names to be not \code{NA} or emtpy (\code{""}).
 \dQuote{unique} additionally tests for non-duplicated names.
+\dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.}
 }
 \value{
