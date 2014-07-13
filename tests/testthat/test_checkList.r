@@ -15,6 +15,7 @@ test_that("checkList", {
   expect_true(testList(list(), types = "numeric"))
   expect_true(assertList(x, types = c("numeric", "factor")))
   expect_error(assertList(x, types = "numeric"), "types: numeric")
+  expect_error(assertList(x, len = 33), "Must have length 33")
 
   expect_true(testList(list(), names = "named"))
 

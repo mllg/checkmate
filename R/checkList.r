@@ -65,7 +65,7 @@ checkListProps = function(x, types = character(0L)) {
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
   res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res)
+  makeAssertion(res, vname(x, .var.name))
   res = checkListProps(x, types)
   makeAssertion(res, vname(x, .var.name))
 }
