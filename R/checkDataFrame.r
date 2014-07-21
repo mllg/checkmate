@@ -29,8 +29,6 @@ assertDataFrame = function(x, types = character(0L), any.missing = TRUE, min.row
 #' @useDynLib checkmate c_check_dataframe
 #' @export
 testDataFrame = function(x, types = character(0L), any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  isTRUE(
-    .Call("c_check_dataframe", x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate") %and%
-    checkListProps(x, types)
-  )
+  isTRUE(.Call("c_check_dataframe", x, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")) &&
+  isTRUE(checkListProps(x, types))
 }

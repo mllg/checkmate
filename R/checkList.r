@@ -21,9 +21,26 @@
 #'  testList(list())
 #'  testList(as.list(iris), types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  force(x)
   .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkListProps(x, types)
+}
+
+#' @rdname checkList
+#' @useDynLib checkmate c_check_list
+#' @export
+assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
+  res = checkListProps(x, types)
+  makeAssertion(res, vname(x, .var.name))
+}
+
+#' @rdname checkList
+#' @useDynLib checkmate c_check_list
+#' @export
+testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(.Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")) &&
+  isTRUE(checkListProps(x, types))
 }
 
 checkListProps = function(x, types = character(0L)) {
@@ -58,24 +75,4 @@ checkListProps = function(x, types = character(0L)) {
       return(TRUE)
   }
   return(sprintf("May only contain the following types: %s", collapse(types)))
-}
-
-#' @rdname checkList
-#' @useDynLib checkmate c_check_list
-#' @export
-assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
-  res = checkListProps(x, types)
-  makeAssertion(res, vname(x, .var.name))
-}
-
-#' @rdname checkList
-#' @useDynLib checkmate c_check_list
-#' @export
-testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
-    checkListProps(x, types)
-  )
 }

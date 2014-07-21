@@ -24,6 +24,24 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
   checkFactorProps(x, levels, ordered, empty.levels.ok)
 }
 
+#' @rdname checkFactor
+#' @useDynLib checkmate c_check_factor
+#' @export
+assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeAssertion(res, vname(x, .var.name))
+  res = checkFactorProps(x, levels, ordered, empty.levels.ok)
+  makeAssertion(res, vname(x, .var.name))
+}
+
+#' @rdname checkFactor
+#' @useDynLib checkmate c_check_factor
+#' @export
+testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  isTRUE(.Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")) &&
+  isTRUE(checkFactorProps(x, levels, ordered, empty.levels.ok))
+}
+
 checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE) {
   if (!is.null(levels)) {
     qassert(levels, "S")
@@ -45,24 +63,4 @@ checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = T
       return(sprintf("Has has empty levels '%s'", collapse(empty, "','")))
   }
   return(TRUE)
-}
-
-#' @rdname checkFactor
-#' @useDynLib checkmate c_check_factor
-#' @export
-assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
-  res = checkFactorProps(x, levels, ordered, empty.levels.ok)
-  makeAssertion(res, vname(x, .var.name))
-}
-
-#' @rdname checkFactor
-#' @useDynLib checkmate c_check_factor
-#' @export
-testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
-    checkFactorProps(x, levels, ordered, empty.levels.ok)
-  )
 }

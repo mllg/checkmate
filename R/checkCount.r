@@ -31,7 +31,5 @@ assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$d
 #' @rdname checkCount
 #' @export
 testCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
-  isTRUE(
-    .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate"))
 }

@@ -29,7 +29,5 @@ assertInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.m
 #' @useDynLib checkmate c_check_integer
 #' @export
 testInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
 }

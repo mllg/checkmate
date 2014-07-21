@@ -26,7 +26,5 @@ assertComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, 
 #' @useDynLib checkmate c_check_complex
 #' @export
 testComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_complex", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_complex", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
 }

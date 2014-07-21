@@ -24,7 +24,5 @@ assertAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 #' @useDynLib checkmate c_check_atomic
 #' @export
 testAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_atomic", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_atomic", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
 }

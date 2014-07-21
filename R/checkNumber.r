@@ -28,7 +28,5 @@ assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FA
 #' @rdname checkNumber
 #' @export
 testNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
-  isTRUE(
-    .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate"))
 }

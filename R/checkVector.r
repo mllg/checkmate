@@ -43,7 +43,5 @@ assertVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRU
 #' @useDynLib checkmate c_check_vector
 #' @export
 testVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(
-    .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
 }

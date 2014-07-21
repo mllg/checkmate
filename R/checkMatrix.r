@@ -45,7 +45,5 @@ assertMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min
 #' @useDynLib checkmate c_check_matrix
 #' @export
 testMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  isTRUE(
-    .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
-  )
+  isTRUE(.Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate"))
 }

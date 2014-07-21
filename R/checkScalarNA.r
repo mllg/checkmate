@@ -24,7 +24,5 @@ assertScalarNA = function(x, .var.name) {
 #' @rdname checkScalarNA
 #' @export
 testScalarNA = function(x) {
-  isTRUE(
-    checkScalarNA(x)
-  )
+  isTRUE(checkScalarNA(x))
 }
