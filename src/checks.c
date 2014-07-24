@@ -7,6 +7,7 @@
 #include "all_missing.h"
 #include "all_nchar.h"
 #include "bounds.h"
+#include "helper.h"
 
 
 /*********************************************************************************************************************/
@@ -207,7 +208,7 @@ static msg_t check_storage(SEXP x, SEXP mode) {
             if (!isReal(x))
                 return Msg("Must contain doubles");
         } else if (strcmp(storage, "numeric") == 0) {
-            if (!isInteger(x) || isReal(x))
+            if (!isStrictlyNumeric(x))
                 return Msg("Must contain numerics");
         } else if (strcmp(storage, "complex") == 0) {
             if (!isComplex(x))
@@ -406,7 +407,7 @@ SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
 
 SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !(isInteger(x) || isReal(x))))
+    if (length(x) != 1 || (!is_na && !isStrictlyNumeric(x)))
         return CRes("Must be a number");
     assertFlag(na_ok, "na.ok");
     if (is_na) {
