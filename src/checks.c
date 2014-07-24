@@ -207,7 +207,7 @@ static msg_t check_storage(SEXP x, SEXP mode) {
             if (!isReal(x))
                 return Msg("Must contain doubles");
         } else if (strcmp(storage, "numeric") == 0) {
-            if (!isNumeric(x))
+            if (!isInteger(x) || isReal(x))
                 return Msg("Must contain numerics");
         } else if (strcmp(storage, "complex") == 0) {
             if (!isComplex(x))
