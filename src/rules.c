@@ -12,7 +12,7 @@ static inline Rboolean is_class_logical(SEXP x) { return isLogical(x); }
 static inline Rboolean is_class_integer(SEXP x) { return isInteger(x); }
 static inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, INTEGERISH_DEFAULT_TOL); }
 static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
-static inline Rboolean is_class_numeric(SEXP x) { return isNumeric(x); }
+static inline Rboolean is_class_numeric(SEXP x) { return isInteger(x) || isReal(x); }
 static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
 static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
