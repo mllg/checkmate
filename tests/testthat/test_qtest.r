@@ -195,3 +195,10 @@ test_that("empty vectors", {
   expect_fail(integer(0), "r[0,0]")
   expect_fail(integer(0), "*+")
 })
+
+test_that("logicals are not numeric", {
+  expect_fail(TRUE, "i")
+  expect_fail(TRUE, "I")
+  expect_fail(TRUE, "n")
+  expect_fail(TRUE, "N")
+})
