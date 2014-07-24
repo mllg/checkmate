@@ -406,7 +406,7 @@ SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
 
 SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isNumeric(x)))
+    if (length(x) != 1 || (!is_na && !(isInteger(x) || isReal(x))))
         return CRes("Must be a number");
     assertFlag(na_ok, "na.ok");
     if (is_na) {

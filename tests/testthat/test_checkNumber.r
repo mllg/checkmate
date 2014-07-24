@@ -18,6 +18,8 @@ test_that("checkNumber", {
   expect_error(assertNumber(Inf, finite = TRUE), "finite")
   expect_error(assertNumber(-Inf, finite = TRUE), "finite")
 
+  expect_false(testNumber(TRUE))
+
   expect_true(assertNumber(1))
   expect_error(assertNumber(2+3i), "number")
 })
