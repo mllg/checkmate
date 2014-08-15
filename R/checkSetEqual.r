@@ -4,28 +4,38 @@
 #' @template checker
 #' @param y [\code{atomic}]\cr
 #'  Set to compare with.
+#' @param ordered [\code{logical(1)}]\cr
+#'  Check \code{x} to have the same length and order as \code{y}, i.e.
+#'  check using \dQuote{==} while handling \code{NA}s nicely.
+#'  Default is \code{FALSE}.
 #' @family set
 #' @export
 #' @examples
 #'  testSetEqual(c("a", "b"), c("a", "b"))
 #'  testSetEqual(1:3, 1:4)
-checkSetEqual = function(x, y) {
+checkSetEqual = function(x, y, ordered = FALSE) {
   qassert(x, "a")
   qassert(y, "a")
-  if (any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
-    return(sprintf("Must be equal to set {'%s'}", collapse(y, "','")))
+  qassert(ordered, "B1")
+  if (ordered) {
+    if (length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
+      return(sprintf("Must be equal to {'%s'}", collapse(y, "','")))
+  } else {
+    if (any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
+      return(sprintf("Must be equal to set {'%s'}", collapse(y, "','")))
+  }
   return(TRUE)
 }
 
 #' @rdname checkSetEqual
 #' @export
-assertSetEqual = function(x, y, .var.name) {
-  res = checkSetEqual(x, y)
+assertSetEqual = function(x, y, ordered = TRUE, .var.name) {
+  res = checkSetEqual(x, y, ordered)
   makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkSetEqual
 #' @export
-testSetEqual = function(x, y) {
-  isTRUE(checkSetEqual(x, y))
+testSetEqual = function(x, y, ordered = TRUE) {
+  isTRUE(checkSetEqual(x, y, ordered))
 }
