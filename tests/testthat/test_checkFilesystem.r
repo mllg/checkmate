@@ -59,7 +59,6 @@ test_that("check_access", {
   }
 })
 
-
 test_that("check_path_for_output", {
   expect_false(testPathForOutput(character(0)))
   expect_false(testPathForOutput(NULL))
@@ -70,4 +69,7 @@ test_that("check_path_for_output", {
   expect_true(assertPathForOutput(c("a", "b")), "path")
   expect_true(assertPathForOutput(ff))
   expect_error(assertPathForOutput(fn), "exist")
+  expect_true(assertPathForOutput(fn, overwrite = TRUE))
+  expect_true(testPathForOutput(c(fn, ff, dn), overwrite = TRUE))
+  expect_false(testPathForOutput(c(fn, ff, dn), overwrite = FALSE))
 })
