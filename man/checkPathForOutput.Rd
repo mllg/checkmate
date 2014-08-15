@@ -5,11 +5,11 @@
 \alias{testPathForOutput}
 \title{Check file path for later output}
 \usage{
-checkPathForOutput(x)
+checkPathForOutput(x, overwrite = FALSE)
 
-assertPathForOutput(x, .var.name)
+assertPathForOutput(x, overwrite = FALSE, .var.name)
 
-testPathForOutput(x)
+testPathForOutput(x, overwrite = FALSE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -18,6 +18,11 @@ Object to check.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{overwrite}{[\code{logical(1)}]\cr
+If \code{TRUE}, an exising file in place is allowed if it
+it is both readable and writeable.
+Default is \code{FALSE}.}
 }
 \value{
 Depending on the function prefix:
