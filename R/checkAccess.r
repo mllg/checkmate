@@ -8,11 +8,11 @@
 #' @family filesystem
 #' @export
 #' @examples
-#'  # Is R's home directory readable?
-#'  testAccess(R.home(), "r")
+#' # Is R's home directory readable?
+#' testAccess(R.home(), "r")
 #'
-#'  # Is R's home directory writeable?
-#'  testAccess(R.home(), "w")
+#' # Is R's home directory writeable?
+#' testAccess(R.home(), "w")
 checkAccess = function(x, access = "") {
   qassert(access, "S1")
   if (nzchar(access)) {

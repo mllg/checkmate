@@ -9,8 +9,12 @@
 #'  \code{TRUE} otherwise.
 #' @export
 #' @examples
-#'  x = 1:10
-#'  assert(checkNull(x), checkInteger(x, any.missing = FALSE))
+#' x = 1:10
+#' assert(checkNull(x), checkInteger(x, any.missing = FALSE))
+#' \dontrun{
+#' x = 1
+#' assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
+#' }
 assert = function(..., .var.name) {
   dots = match.call(expand.dots = FALSE)$...
   env = parent.frame()

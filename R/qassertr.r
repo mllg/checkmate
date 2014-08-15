@@ -17,8 +17,8 @@
 #' @useDynLib checkmate c_qassert
 #' @export
 #' @examples
-#'  qtestr(as.list(1:10), "i+")
-#'  qtestr(iris, "n")
+#' qtestr(as.list(1:10), "i+")
+#' qtestr(iris, "n")
 qassertr = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
   if (!isTRUE(res))

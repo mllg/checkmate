@@ -31,8 +31,8 @@ Check if an argument is a single missing value
 }
 \examples{
 testScalarNA(1)
- testScalarNA(NA_real_)
- testScalarNA(rep(NA, 2))
+testScalarNA(NA_real_)
+testScalarNA(rep(NA, 2))
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},

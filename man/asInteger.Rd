@@ -54,7 +54,7 @@ range of an integer.
 }
 \examples{
 asInteger(c(1, 2, 3))
- asCount(1)
- asInt(1)
+asCount(1)
+asInt(1)
 }
 

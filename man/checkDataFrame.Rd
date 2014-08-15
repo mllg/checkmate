@@ -70,7 +70,7 @@ Check if an argument is a data frame
 }
 \examples{
 testDataFrame(iris, "data.frame")
- testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
+testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

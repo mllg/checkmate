@@ -35,10 +35,10 @@ Check for existence and access rights of directories
 }
 \examples{
 # Is R's home directory readable?
- testDirectory(R.home(), "r")
+testDirectory(R.home(), "r")
 
- # Is R's home directory readable and writable?
- testDirectory(R.home(), "rw")
+# Is R's home directory readable and writable?
+testDirectory(R.home(), "rw")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},

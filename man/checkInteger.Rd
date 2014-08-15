@@ -70,8 +70,8 @@ This function does not distinguish between
 }
 \examples{
 testInteger(1L)
- testInteger(1.)
- testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
+testInteger(1.)
+testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
 }
 \seealso{
 \code{\link{asInteger}}

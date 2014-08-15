@@ -62,7 +62,7 @@ This function does not distinguish between
 }
 \examples{
 testComplex(1)
- testComplex(1+1i)
+testComplex(1+1i)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

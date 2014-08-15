@@ -6,11 +6,11 @@
 #' @family filesystem
 #' @export
 #' @examples
-#'  # Check if R's COPYING file is readable
-#'  testFile(file.path(R.home(), "COPYING"), access = "r")
+#' # Check if R's COPYING file is readable
+#' testFile(file.path(R.home(), "COPYING"), access = "r")
 #'
-#'  # Check if R's COPYING file is readable and writable
-#'  testFile(file.path(R.home(), "COPYING"), access = "rw")
+#' # Check if R's COPYING file is readable and writable
+#' testFile(file.path(R.home(), "COPYING"), access = "rw")
 checkFile = function(x, access = "") {
   if (!qtest(x, "S+"))
     return("No file provided")

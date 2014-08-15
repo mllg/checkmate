@@ -50,7 +50,7 @@ This function does not distinguish between
 }
 \examples{
 testCount(1)
- testCount(-1)
+testCount(-1)
 }
 \seealso{
 Other scalars: \code{\link{assertFlag}},

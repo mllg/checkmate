@@ -26,9 +26,9 @@
 #' @useDynLib checkmate c_check_matrix
 #' @export
 #' @examples
-#'  x = matrix(1:9, 3)
-#'  colnames(x) = letters[1:3]
-#'  testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
+#' x = matrix(1:9, 3)
+#' colnames(x) = letters[1:3]
+#' testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
 checkMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
 }

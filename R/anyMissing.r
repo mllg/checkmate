@@ -11,9 +11,9 @@
 #' @useDynLib checkmate c_any_missing
 #' @export
 #' @examples
-#'  anyMissing(c(1, 1))
-#'  anyMissing(c(1, NA))
-#'  anyMissing(list(1, NULL))
+#' anyMissing(c(1, 1))
+#' anyMissing(c(1, NA))
+#' anyMissing(list(1, NULL))
 anyMissing = function(x) {
   .Call("c_any_missing", x, PACKAGE = "checkmate")
 }

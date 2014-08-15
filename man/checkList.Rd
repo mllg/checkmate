@@ -72,7 +72,7 @@ Check if an argument is a list
 }
 \examples{
 testList(list())
- testList(as.list(iris), types = c("numeric", "factor"))
+testList(as.list(iris), types = c("numeric", "factor"))
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

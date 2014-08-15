@@ -62,7 +62,7 @@ This function does not distinguish between
 }
 \examples{
 testLogical(TRUE)
- testLogical(TRUE, min.len = 1)
+testLogical(TRUE, min.len = 1)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

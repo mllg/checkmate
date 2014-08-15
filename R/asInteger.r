@@ -18,9 +18,9 @@
 #' @return Converted \code{x}.
 #' @export
 #' @examples
-#'  asInteger(c(1, 2, 3))
-#'  asCount(1)
-#'  asInt(1)
+#' asInteger(c(1, 2, 3))
+#' asCount(1)
+#' asInt(1)
 asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), .var.name) {
   assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name))
   storage.mode(x) = "integer"

@@ -30,7 +30,7 @@ elements or data frame columns.
 }
 \examples{
 qtestr(as.list(1:10), "i+")
- qtestr(iris, "n")
+qtestr(iris, "n")
 }
 \seealso{
 \code{\link{qtest}}, \code{\link{qassert}}

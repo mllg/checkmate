@@ -23,10 +23,10 @@ Missingness is defined as \code{NA} or \code{NaN} for atomic types and data fram
 }
 \examples{
 allMissing(1:2)
- allMissing(c(1, NA))
- allMissing(c(NA, NA))
+allMissing(c(1, NA))
+allMissing(c(NA, NA))
 anyMissing(c(1, 1))
- anyMissing(c(1, NA))
- anyMissing(list(1, NULL))
+anyMissing(c(1, NA))
+anyMissing(list(1, NULL))
 }
 

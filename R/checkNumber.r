@@ -12,8 +12,8 @@
 #' @useDynLib checkmate c_check_number
 #' @export
 #' @examples
-#'  testNumber(1)
-#'  testNumber(1:2)
+#' testNumber(1)
+#' testNumber(1:2)
 checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
   .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
 }

@@ -15,7 +15,7 @@
 #' @useDynLib checkmate c_check_array
 #' @export
 #' @examples
-#'  checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
+#' checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL) {
   .Call("c_check_array", x, mode, any.missing, d, PACKAGE = "checkmate")
 }

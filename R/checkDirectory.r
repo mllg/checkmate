@@ -7,11 +7,11 @@
 #' @family filesystem
 #' @export
 #' @examples
-#'  # Is R's home directory readable?
-#'  testDirectory(R.home(), "r")
+#' # Is R's home directory readable?
+#' testDirectory(R.home(), "r")
 #'
-#'  # Is R's home directory readable and writable?
-#'  testDirectory(R.home(), "rw")
+#' # Is R's home directory readable and writable?
+#' testDirectory(R.home(), "rw")
 checkDirectory = function(x, access = "") {
   if (!qtest(x, "S+"))
     return("No directory provided")

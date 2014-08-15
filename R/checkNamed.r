@@ -12,10 +12,10 @@
 #' @useDynLib checkmate c_check_named
 #' @export
 #' @examples
-#'  x = 1:3
-#'  testNamed(x, "unnamed")
-#'  names(x) = letters[1:3]
-#'  testNamed(x, "unique")
+#' x = 1:3
+#' testNamed(x, "unnamed")
+#' names(x) = letters[1:3]
+#' testNamed(x, "unique")
 checkNamed = function(x, type = "named") {
   .Call("c_check_named", x, type, PACKAGE = "checkmate")
 }

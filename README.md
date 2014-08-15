@@ -22,80 +22,86 @@ Here is an overview of the most useful functions for argument checking:
 
 ### Scalars / Single Objects:
 
-* [checkNull](http://mllg.github.io/checkmate/man/checkNull.html)
-* [checkFlag](http://mllg.github.io/checkmate/man/checkFlag.html)
-* [checkNumber](http://mllg.github.io/checkmate/man/checkNumber.html)
-* [checkCount](http://mllg.github.io/checkmate/man/checkCount.html)
-* [checkInt](http://mllg.github.io/checkmate/man/checkInt.html)
-* [checkString](http://mllg.github.io/checkmate/man/checkString.html)
-* [checkClass](http://mllg.github.io/checkmate/man/checkClass.html)
-* [checkScalar](http://mllg.github.io/checkmate/man/checkScalar.html)
-* [checkScalarNA](http://mllg.github.io/checkmate/man/checkScalarNA.html)
-* [asInt](http://mllg.github.io/checkmate/man/asInteger.html)
-* [asCount](http://mllg.github.io/checkmate/man/asInteger.html)
+* [checkNull](http://www.rdocumentation.org/packages/checkmate/functions/checkNull)
+* [checkFlag](http://www.rdocumentation.org/packages/checkmate/functions/checkFlag)
+* [checkNumber](http://www.rdocumentation.org/packages/checkmate/functions/checkNumber)
+* [checkCount](http://www.rdocumentation.org/packages/checkmate/functions/checkCount)
+* [checkInt](http://www.rdocumentation.org/packages/checkmate/functions/checkInt)
+* [checkString](http://www.rdocumentation.org/packages/checkmate/functions/checkString)
+* [checkClass](http://www.rdocumentation.org/packages/checkmate/functions/checkClass)
+* [checkScalar](http://www.rdocumentation.org/packages/checkmate/functions/checkScalar)
+* [checkScalarNA](http://www.rdocumentation.org/packages/checkmate/functions/checkScalarNA)
+* [asInt](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
+* [asCount](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
 
 What can be checked: Simple, non-NA scalars and objects of a specific class.
 
 ### Choices and Subsets
 
-* [checkChoice](http://mllg.github.io/checkmate/man/checkChoice.html)
-* [checkSubset](http://mllg.github.io/checkmate/man/checkSubset.html)
-* [checkSetEqual](http://mllg.github.io/checkmate/man/checkSetEqual.html)
+* [checkChoice](http://www.rdocumentation.org/packages/checkmate/functions/checkChoice)
+* [checkSubset](http://www.rdocumentation.org/packages/checkmate/functions/checkSubset)
+* [checkSetEqual](http://www.rdocumentation.org/packages/checkmate/functions/checkSetEqual)
 
-What can be checked: Choices like "A", "B" or "C" or a subset of those.
+What can be checked: Choices like "A", "B" or "C", subset of those or set equality.
 
 ### Vectors and factors:
 
-* [checkLogical](http://mllg.github.io/checkmate/man/checkLogical.html)
-* [checkNumeric](http://mllg.github.io/checkmate/man/checkNumeric.html)
-* [checkInteger](http://mllg.github.io/checkmate/man/checkInteger.html)
-* [checkIntegerish](http://mllg.github.io/checkmate/man/checkIntegerish.html)
-* [checkComplex](http://mllg.github.io/checkmate/man/checkComplex.html)
-* [checkCharacter](http://mllg.github.io/checkmate/man/checkCharacter.html)
-* [checkFactor](http://mllg.github.io/checkmate/man/checkFactor.html)
-* [checkVector](http://mllg.github.io/checkmate/man/checkVector.html)
-* [checkAtomic](http://mllg.github.io/checkmate/man/checkAtomic.html)
-* [checkAtomicVector](http://mllg.github.io/checkmate/man/checkAtomicVector.html)
-* [asInteger](http://mllg.github.io/checkmate/man/asInteger.html)
+* [checkLogical](http://www.rdocumentation.org/packages/checkmate/functions/checkLogical)
+* [checkNumeric](http://www.rdocumentation.org/packages/checkmate/functions/checkNumeric)
+* [checkInteger](http://www.rdocumentation.org/packages/checkmate/functions/checkInteger)
+* [checkIntegerish](http://www.rdocumentation.org/packages/checkmate/functions/checkIntegerish)
+* [checkComplex](http://www.rdocumentation.org/packages/checkmate/functions/checkComplex)
+* [checkCharacter](http://www.rdocumentation.org/packages/checkmate/functions/checkCharacter)
+* [checkFactor](http://www.rdocumentation.org/packages/checkmate/functions/checkFactor)
+* [checkVector](http://www.rdocumentation.org/packages/checkmate/functions/checkVector)
+* [checkAtomic](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomic)
+* [checkAtomicVector](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomicVector)
+* [asInteger](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
 
-What can be checked: Length, upper and lower bounds, NAs.
+What can be checked: Length, upper and lower bounds, NAs, duplicates, names.
 
 ### Matrices, Arrays and Data Frame:
 
-* [checkMatrix](http://mllg.github.io/checkmate/man/checkMatrix.html)
-* [checkArray](http://mllg.github.io/checkmate/man/checkArray.html)
-* [checkDataFrame](http://mllg.github.io/checkmate/man/checkDataFrame.html)
+* [checkMatrix](http://www.rdocumentation.org/packages/checkmate/functions/checkMatrix)
+* [checkArray](http://www.rdocumentation.org/packages/checkmate/functions/checkArray)
+* [checkDataFrame](http://www.rdocumentation.org/packages/checkmate/functions/checkDataFrame)
 
 What can be checked: Storage mode (numeric, char, etc.), number of rows, cols, NAs, names.
 
 ### Lists and Environments:
 
-* [checkList](http://mllg.github.io/checkmate/man/checkList.html)
-* [checkEnvironment](http://mllg.github.io/checkmate/man/checkEnvironment.html)
+* [checkList](http://www.rdocumentation.org/packages/checkmate/functions/checkList)
+* [checkEnvironment](http://www.rdocumentation.org/packages/checkmate/functions/checkEnvironment)
 
 What can be checked: length, element type, names.
 
 ### Functions:
 
-* [checkFunction](http://mllg.github.io/checkmate/man/checkFunction.html)
+* [checkFunction](http://www.rdocumentation.org/packages/checkmate/functions/checkFunction)
 
 What can be checked: Arguments and ordered arguments.
 
 ### File IO:
 
-* [checkFile](http://mllg.github.io/checkmate/man/checkFile.html)
-* [checkDirectory](http://mllg.github.io/checkmate/man/checkDirectory.html)
-* [checkPathForOutput](http://mllg.github.io/checkmate/man/checkPathForOutput.html)
+* [checkFile](http://www.rdocumentation.org/packages/checkmate/functions/checkFile)
+* [checkDirectory](http://www.rdocumentation.org/packages/checkmate/functions/checkDirectory)
+* [checkPathForOutput](http://www.rdocumentation.org/packages/checkmate/functions/checkPathForOutput)
 
 What can be checked: Path exists, is accessible.
 
+### In case you miss flexibility:
+
+* [assert](http://www.rdocumentation.org/packages/checkmate/functions/assert)
+
+Perform multiple checks at once and throw an assertion if all checks fail.
+
+
 ### Argument Checks for the Lazy
 
-* [qassert](http://mllg.github.io/checkmate/man/qassert.html)
-* [qassertr](http://mllg.github.io/checkmate/man/qassert.html)
+* [qassert](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
+* [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
 
-These functions allow a special syntax to define argument checks using
-a special pattern. E.g., `qassert(x, "I+")` asserts that `x` is an integer
-vector with at least one element and no missing values.
-This provide a completely alternative mini-language (or style) how to perform arg checks.
+These functions allow a special syntax to define argument checks using a special pattern.
+E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one element and no missing values.
+This provide a completely alternative mini-language (or style) how to perform argument checks.
 You choose what you like best.

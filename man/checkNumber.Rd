@@ -49,7 +49,7 @@ This function does not distinguish between
 }
 \examples{
 testNumber(1)
- testNumber(1:2)
+testNumber(1:2)
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},

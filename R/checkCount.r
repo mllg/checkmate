@@ -15,8 +15,8 @@
 #' @useDynLib checkmate c_check_count
 #' @export
 #' @examples
-#'  testCount(1)
-#'  testCount(-1)
+#' testCount(1)
+#' testCount(-1)
 checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
 }

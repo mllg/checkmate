@@ -70,7 +70,7 @@ The rule is specified in up to three parts.
      \code{[+]} \tab length of at least one, or\cr
      \code{[0-9]+} \tab exact length specified as integer.
    }
-   Preceeding the exact length with one of the comparison operators \code{=}/\code{==},
+   Preceding the exact length with one of the comparison operators \code{=}/\code{==},
    \code{<}, \code{<=}, \code{>=} or \code{>} is also supported.
  }
  \item{
@@ -92,24 +92,24 @@ The implementation is mostly written in \code{C} to minimize the overhead.
 }
 \examples{
 # logical of length 1
- qtest(NA, "b1")
+qtest(NA, "b1")
 
- # logical of length 1, NA not allowed
- qtest(NA, "B1")
+# logical of length 1, NA not allowed
+qtest(NA, "B1")
 
- # logical of length 0 or 1, NA not allowed
- qtest(TRUE, "B?")
+# logical of length 0 or 1, NA not allowed
+qtest(TRUE, "B?")
 
- # numeric with length > 0
- qtest(runif(10), "n+")
+# numeric with length > 0
+qtest(runif(10), "n+")
 
- # integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
- qtest(1:3, "I+[0,)")
+# integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
+qtest(1:3, "I+[0,)")
 
- # either an emtpy list or a character vector with <=5 elements
- qtest(1, c("l0", "s<=5"))
- # data frame with at least one column, no NA in any column
- qtest(iris, "D+")
+# either an emtpy list or a character vector with <=5 elements
+qtest(1, c("l0", "s<=5"))
+# data frame with at least one column, no NA in any column
+qtest(iris, "D+")
 }
 \seealso{
 \code{\link{qtestr}} and \code{\link{qassertr}} for efficient checks

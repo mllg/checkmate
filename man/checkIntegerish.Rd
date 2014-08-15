@@ -75,8 +75,8 @@ This function does not distinguish between
 }
 \examples{
 testIntegerish(1L)
- testIntegerish(1.)
- testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
+testIntegerish(1.)
+testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

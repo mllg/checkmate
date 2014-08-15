@@ -11,8 +11,8 @@
 #' @family scalars
 #' @useDynLib checkmate c_check_string
 #' @examples
-#'  testString("a")
-#'  testString(letters)
+#' testString("a")
+#' testString(letters)
 checkString = function(x, na.ok = FALSE) {
   .Call("c_check_string", x, na.ok, PACKAGE = "checkmate")
 }

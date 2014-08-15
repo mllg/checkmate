@@ -11,8 +11,8 @@
 #' @useDynLib checkmate c_check_flag
 #' @export
 #' @examples
-#'  testFlag(TRUE)
-#'  testFlag(1)
+#' testFlag(TRUE)
+#' testFlag(1)
 checkFlag = function(x, na.ok = FALSE) {
   .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
 }

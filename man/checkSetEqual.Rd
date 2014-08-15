@@ -5,11 +5,11 @@
 \alias{testSetEqual}
 \title{Check if object is a subset of a given set}
 \usage{
-checkSetEqual(x, y)
+checkSetEqual(x, y, ordered = FALSE)
 
-assertSetEqual(x, y, .var.name)
+assertSetEqual(x, y, ordered = TRUE, .var.name)
 
-testSetEqual(x, y)
+testSetEqual(x, y, ordered = TRUE)
 }
 \arguments{
 \item{x}{[ANY]\cr
@@ -21,6 +21,11 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{y}{[\code{atomic}]\cr
 Set to compare with.}
+
+\item{ordered}{[\code{logical(1)}]\cr
+Check \code{x} to have the same length and order as \code{y}, i.e.
+check using \dQuote{==} while handling \code{NA}s nicely.
+Default is \code{FALSE}.}
 }
 \value{
 Depending on the function prefix:

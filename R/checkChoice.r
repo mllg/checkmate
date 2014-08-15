@@ -7,7 +7,7 @@
 #' @family set
 #' @export
 #' @examples
-#'  testChoice("x", letters)
+#' testChoice("x", letters)
 checkChoice = function(x, choices) {
   qassert(choices, "a")
   if (!qtest(x, "a1") || x %nin% choices)

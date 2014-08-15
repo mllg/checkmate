@@ -81,8 +81,8 @@ This function does not distinguish between
 }
 \examples{
 testCharacter(letters, min.len = 1, any.missing = FALSE)
- testCharacter(letters, min.chars = 2)
- testCharacter("example", pattern = "xa")
+testCharacter(letters, min.chars = 2)
+testCharacter("example", pattern = "xa")
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

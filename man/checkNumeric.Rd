@@ -73,7 +73,7 @@ This function does not distinguish between
 }
 \examples{
 testNumeric(1)
- testNumeric(1, min.len = 1, lower = 0)
+testNumeric(1, min.len = 1, lower = 0)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

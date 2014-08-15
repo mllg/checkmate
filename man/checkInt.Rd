@@ -52,7 +52,7 @@ This function does not distinguish between
 }
 \examples{
 testInt(1)
- testInt(-1, lower = 0)
+testInt(-1, lower = 0)
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},

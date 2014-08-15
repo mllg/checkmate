@@ -41,7 +41,7 @@ Check if an argument is a function
 }
 \examples{
 testFunction(mean)
- testFunction(mean, args = "x")
+testFunction(mean, args = "x")
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

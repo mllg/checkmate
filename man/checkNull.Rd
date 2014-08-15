@@ -31,6 +31,6 @@ Check if an argument is NULL
 }
 \examples{
 testNull(NULL)
- testNull(1)
+testNull(1)
 }
 

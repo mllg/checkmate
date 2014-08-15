@@ -10,8 +10,8 @@
 #' @family set
 #' @export
 #' @examples
-#'  testSubset(c("a", "z"), letters)
-#'  testSubset("ab", letters)
+#' testSubset(c("a", "z"), letters)
+#' testSubset("ab", letters)
 checkSubset = function(x, choices, empty.ok = TRUE) {
   qassert(choices, "a+")
   qassert(empty.ok, "B1")

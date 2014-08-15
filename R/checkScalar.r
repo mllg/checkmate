@@ -8,8 +8,8 @@
 #' @family scalars
 #' @export
 #' @examples
-#'  testScalar(1)
-#'  testScalar(1:10)
+#' testScalar(1)
+#' testScalar(1:10)
 checkScalar = function(x, na.ok = FALSE) {
   .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
 }

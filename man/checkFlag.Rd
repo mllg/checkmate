@@ -39,7 +39,7 @@ This function does not distinguish between
 }
 \examples{
 testFlag(TRUE)
- testFlag(1)
+testFlag(1)
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},

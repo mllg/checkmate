@@ -13,8 +13,8 @@
 #' @family basetypes
 #' @export
 #' @examples
-#'  testFunction(mean)
-#'  testFunction(mean, args = "x")
+#' testFunction(mean)
+#' testFunction(mean, args = "x")
 checkFunction = function(x, args = NULL, ordered = FALSE) {
   qassert(ordered, "B1")
   x = try(match.fun(x), silent = TRUE)

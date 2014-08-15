@@ -35,10 +35,10 @@ Check file system access rights
 }
 \examples{
 # Is R's home directory readable?
- testAccess(R.home(), "r")
+testAccess(R.home(), "r")
 
- # Is R's home directory writeable?
- testAccess(R.home(), "w")
+# Is R's home directory writeable?
+testAccess(R.home(), "w")
 }
 \seealso{
 Other filesystem: \code{\link{assertDirectory}},

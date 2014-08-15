@@ -5,9 +5,9 @@
 #' @param y [\code{atomic}]\cr
 #'  Set to compare with.
 #' @param ordered [\code{logical(1)}]\cr
-#'  Check \code{x} to have the same length and order as \code{y}, i.e.
-#'  check using \dQuote{==} while handling \code{NA}s nicely.
-#'  Default is \code{FALSE}.
+#' Check \code{x} to have the same length and order as \code{y}, i.e.
+#' check using \dQuote{==} while handling \code{NA}s nicely.
+#' Default is \code{FALSE}.
 #' @family set
 #' @export
 #' @examples

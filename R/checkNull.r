@@ -4,8 +4,8 @@
 #' @template checker
 #' @export
 #' @examples
-#'  testNull(NULL)
-#'  testNull(1)
+#' testNull(NULL)
+#' testNull(1)
 checkNull = function(x) {
   if (!is.null(x))
     return("Must be NULL")

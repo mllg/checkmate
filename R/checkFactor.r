@@ -16,9 +16,9 @@
 #' @useDynLib checkmate c_check_factor
 #' @export
 #' @examples
-#'  x = factor("a", levels = c("a", "b"))
-#'  testFactor(x)
-#'  testFactor(x, empty.levels.ok = FALSE)
+#' x = factor("a", levels = c("a", "b"))
+#' testFactor(x)
+#' testFactor(x, empty.levels.ok = FALSE)
 checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkFactorProps(x, levels, ordered, empty.levels.ok)
