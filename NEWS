@@ -1,3 +1,8 @@
+Version 1.4 (2014-08-15)
+-------------------------------------------------------------------------------
+* Fixed a bug where data frame row and columns names where not retrieved
+  correctly
+
 Version 1.3 (2014-08-15)
 -------------------------------------------------------------------------------
 * Fixed a bug where logical values passed a check for numerics in "qassert"
