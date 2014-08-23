@@ -77,25 +77,25 @@ static inline Rboolean all_finite_double(SEXP x) {
 /*********************************************************************************************************************/
 /* Shared check functions returning an intermediate msg_t                                                            */
 /*********************************************************************************************************************/
-static msg_t check_names(SEXP nn, SEXP type) {
+static msg_t check_names(SEXP nn, SEXP type, const char * what) {
     if (!isNull(type)) {
         assertString(type, "type");
         const char * const ctype = CHAR(STRING_ELT(type, 0));
 
         if (strcmp(ctype, "unnamed") == 0) {
             if (!isNull(nn))
-                return Msg("Must be unnamed");
+                return Msgf("%s must be unnamed");
         } else if (strcmp(ctype, "named") == 0) {
             if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
-                return Msg("Must be named");
+                return Msgf("%s must be named");
         } else if (strcmp(ctype, "unique") == 0) {
             if (isNull(nn) || any_missing_string(nn) || any_duplicated(nn, FALSE) > 0 || !all_nchar(nn, 1))
-                return Msg("Must be uniquely named");
+                return Msgf("%s must be uniquely named");
         } else if (strcmp(ctype, "strict") == 0) {
             if (isNull(nn) || any_missing_string(nn) || any_duplicated(nn, FALSE) > 0 || !all_nchar(nn, 1))
-                return Msg("Must be uniquely named");
+                return Msgf("%s must be uniquely named");
             if (!check_strict_names(nn))
-                return Msg("Must be named according to R's variable naming rules");
+                return Msgf("%s must be named according to R's variable naming rules");
         } else {
             error("Unknown naming definition '%s'", ctype);
         }
@@ -104,9 +104,38 @@ static msg_t check_names(SEXP nn, SEXP type) {
 }
 
 static msg_t check_named(SEXP x, SEXP type) {
-    if (length(x) > 0) {
-        return check_names(getAttrib(x, R_NamesSymbol), type);
+    if (length(x) > 0)
+        return check_names(getAttrib(x, R_NamesSymbol), type, "Object");
+    return MSGT;
+}
+
+static msg_t check_colnames(SEXP x, SEXP type) {
+    SEXP cn;
+    if (isFrame(x)) {
+        cn = getAttrib(x, R_NamesSymbol);
+    } else {
+        cn = getAttrib(x, R_DimNamesSymbol);
+        if (!isNull(cn))
+            cn = VECTOR_ELT(cn, 1);
     }
+    msg_t msg = check_names(cn, col_names, "Columns");
+    if (!msg.ok)
+        return msg;
+    return MSGT;
+}
+
+static msg_t check_rownames(SEXP x, SEXP type) {
+    SEXP rn;
+    if (isFrame(x)) {
+        rn = getAttrib(x, R_NamesSymbol);
+    } else {
+        rn = getAttrib(x, R_DimNamesSymbol);
+        if (!isNull(rn))
+            rn = VECTOR_ELT(rn, 0);
+    }
+    msg_t msg = check_names(cn, col_names, "Columns");
+    if (!msg.ok)
+        return msg;
     return MSGT;
 }
 
@@ -147,7 +176,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     return check_named(x, names);
 }
 
-static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
+static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols) {
     if (!isNull(min_rows) || !isNull(rows)) {
         R_len_t xrows = nrows(x);
         if (!isNull(min_rows)) {
@@ -178,18 +207,6 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
     assertFlag(any_missing, "any.missing");
     if (isFALSE(any_missing) && any_missing_atomic(x))
         return Msg("Contains missing values");
-
-    if ((!isNull(row_names) || !isNull(col_names)) && length(x) > 0) {
-        msg_t msg;
-        SEXP dn = getAttrib(x, R_DimNamesSymbol);
-
-        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 0), row_names);
-        if (!msg.ok)
-            return msg;
-        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 1), col_names);
-        if (!msg.ok)
-            return msg;
-    }
 
     return MSGT;
 }
@@ -262,7 +279,21 @@ SEXP c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
 SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
     if (!isFrame(x))
         return CRes("Must be a data frame");
-    return mwrap(check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols, row_names, col_names));
+    msg_t msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
+    if (!msg.ok)
+        return mwrap(msg);
+
+    if ((!isNull(row_names) || !isNull(col_names)) && length(x) > 0) {
+        SEXP rn = getAttrib(x, install("row.names"));
+        if (isInteger(rn)) {
+        } else {
+            msg = check_names(isNull(rn) ? R_NilValue : rn, row_names);
+            if (!msg.ok)
+                return msg;
+        }
+
+    }
+    return MSGT;
 }
 
 SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
@@ -309,7 +340,20 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
     msg_t msg = check_storage(x, mode);
     if (!msg.ok)
         return mwrap(msg);
-    return mwrap(check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols, row_names, col_names));
+    msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
+    if (!msg.ok)
+        return mwrap(msg);
+    if ((!isNull(row_names) || !isNull(col_names)) && length(x) > 0) {
+        SEXP dn = getAttrib(x, R_DimNamesSymbol);
+
+        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 0), row_names);
+        if (!msg.ok)
+            return msg;
+        msg = check_names(isNull(dn) ? R_NilValue : VECTOR_ELT(dn, 1), col_names);
+        if (!msg.ok)
+            return msg;
+    }
+    return MSGT;
 }
 
 SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
