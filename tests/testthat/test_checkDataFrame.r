@@ -21,7 +21,6 @@ test_that("checkDataFrame", {
 
   expect_true(assertDataFrame(x, types = c("numeric", "factor")))
   expect_error(assertDataFrame(x, types = "numeric"), "types: numeric")
-
 })
 
 
@@ -44,7 +43,8 @@ test_that("checkDataFrame name checking works", {
   expect_true(assertDataFrame(df, col.names = "unique"))
   expect_error(assertDataFrame(df, col.names = "strict"), "naming rules")
 
-  rownames(df)
-  expect_true(assertDataFrame(df, row.names = "unnamed"))
-  expect_error(assertDataFrame(df, row.names = "unnamed"))
+  rownames(df) = NULL
+  expect_error(assertDataFrame(df, row.names = "unnamed"), "unnamed")
+  expect_true(assertDataFrame(df, row.names = "named"))
+  expect_error(assertDataFrame(df, row.names = "strict"), "naming rules")
 })

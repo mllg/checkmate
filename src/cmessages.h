@@ -14,8 +14,8 @@ extern const msg_t MSGT;
 extern const msg_t MSGF;
 msg_t Msg(const char *);
 msg_t Msgf(const char *, ...);
-SEXP CRes(const char *);
-SEXP CResf(const char *, ...);
+SEXP CheckResult(const char *);
+SEXP CheckResultf(const char *, ...);
 SEXP mwrap(msg_t);
 
 #endif

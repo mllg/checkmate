@@ -14,18 +14,20 @@ msg_t Msgf(const char *fmt, ...) {
     va_list vargs;
     va_start(vargs, fmt);
     vsnprintf(msg.msg, CMSGLEN, fmt, vargs);
+    va_end(vargs);
     return msg;
 }
 
-SEXP CRes(const char *str) {
+SEXP CheckResult(const char *str) {
     return ScalarString(mkChar(str));
 }
 
-SEXP CResf(const char *fmt, ...) {
+SEXP CheckResultf(const char *fmt, ...) {
     char msg[CMSGLEN];
     va_list vargs;
     va_start(vargs, fmt);
     vsnprintf(msg, CMSGLEN, fmt, vargs);
+    va_end(vargs);
     return ScalarString(mkChar(msg));
 }
 
