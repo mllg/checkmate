@@ -86,65 +86,26 @@ static Rboolean check_strict_names(SEXP x) {
     return TRUE;
 }
 
-static msg_t check_names(SEXP nn, SEXP type, const char * what) {
-    /* FIXME: add length check */
-    if (!isNull(type)) {
-        assertString(type, "type");
-        const char * const ctype = CHAR(STRING_ELT(type, 0));
-        if (strcmp(ctype, "unnamed") == 0) {
-            if (!isNull(nn))
-                return Msgf("%s must be unnamed", what);
-        } else if (strcmp(ctype, "named") == 0) {
-            if (!check_valid_names(nn))
-                return Msgf("%s must be named", what);
-        } else if (strcmp(ctype, "unique") == 0) {
-            if (!check_unique_names(nn))
-                return Msgf("%s must be uniquely named", what);
-        } else if (strcmp(ctype, "strict") == 0) {
-            if (!check_strict_names(nn))
-                return Msgf("%s must be uniquely named according to R's variable naming rules", what);
-        } else {
-            error("Unknown naming definition '%s'", ctype);
-        }
+static msg_t check_names(SEXP x, SEXP nn, SEXP type, const char * what) {
+    assertString(type, "type");
+    const char * const ctype = CHAR(STRING_ELT(type, 0));
+
+    if (strcmp(ctype, "unnamed") == 0) {
+        if (length(x) > 0 && !isNull(nn))
+            return Msgf("%s must be unnamed", what);
+    } else if (strcmp(ctype, "named") == 0) {
+        if (length(x) > 0 && !check_valid_names(nn))
+            return Msgf("%s must be named", what);
+    } else if (strcmp(ctype, "unique") == 0) {
+        if (length(x) > 0 && !check_unique_names(nn))
+            return Msgf("%s must be uniquely named", what);
+    } else if (strcmp(ctype, "strict") == 0) {
+        if (length(x) > 0 && !check_strict_names(nn))
+            return Msgf("%s must be uniquely named according to R's variable naming rules", what);
+    } else {
+        error("Unknown naming definition '%s'", ctype);
     }
     return MSGT;
-}
-
-static msg_t check_named(SEXP x, SEXP type) {
-    if (length(x) > 0)
-        return check_names(getAttrib(x, R_NamesSymbol), type, "Object");
-    return MSGT;
-}
-
-static msg_t check_col_names(SEXP x, SEXP type) {
-    SEXP cn;
-    if (isFrame(x)) {
-        cn = getAttrib(x, R_NamesSymbol);
-    } else {
-        cn = getAttrib(x, R_DimNamesSymbol);
-        if (!isNull(cn))
-            cn = VECTOR_ELT(cn, 1);
-    }
-    return check_names(cn, type, "Columns");
-}
-
-static msg_t check_row_names(SEXP x, SEXP type) {
-    SEXP rn;
-    R_len_t NPROTECT = 0;
-    if (isFrame(x)) {
-        rn = getAttrib(x, install("row.names"));
-        if (isInteger(rn)) {
-            rn = PROTECT(coerceVector(rn, STRSXP));
-            NPROTECT++;
-        }
-    } else {
-        rn = getAttrib(x, R_DimNamesSymbol);
-        if (!isNull(rn))
-            rn = VECTOR_ELT(rn, 0);
-    }
-    msg_t msg = check_names(rn, type, "Rows");
-    UNPROTECT(NPROTECT);
-    return msg;
 }
 
 static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
@@ -181,7 +142,9 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     if (isTRUE(unique) && any_duplicated(x, FALSE) > 0)
         return Msg("Contains duplicated values");
 
-    return check_named(x, names);
+    if (!isNull(names))
+        return check_names(x, getAttrib(x, R_NamesSymbol), names, "Vector");
+    return MSGT;
 }
 
 static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols) {
@@ -291,12 +254,27 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, S
     msg_t msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
     if (!msg.ok)
         return mwrap(msg);
-    msg = check_row_names(x, row_names);
-    if (!msg.ok)
-        return mwrap(msg);
-    msg = check_col_names(x, col_names);
-    if (!msg.ok)
-        return mwrap(msg);
+
+
+    if (!isNull(row_names)) {
+        SEXP nn = getAttrib(x, install("row.names"));
+
+        if (isInteger(nn)) {
+            nn = PROTECT(coerceVector(nn, STRSXP));
+            msg = check_names(x, nn, row_names, "Rows");
+            UNPROTECT(1);
+        } else {
+            msg = check_names(x, nn, row_names, "Rows");
+        }
+        if (!msg.ok)
+            return mwrap(msg);
+    }
+
+    if (!isNull(col_names)) {
+        msg = check_names(x, getAttrib(x, R_NamesSymbol), col_names, "Columns");
+        if (!msg.ok)
+            return mwrap(msg);
+    }
     return ScalarLogical(TRUE);
 }
 
@@ -340,24 +318,33 @@ SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
 SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
     if (!isMatrix(x))
         return CheckResult("Must be a matrix");
+
     msg_t msg = check_storage(x, mode);
     if (!msg.ok)
         return mwrap(msg);
+
     msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
     if (!msg.ok)
         return mwrap(msg);
-    if (length(x) > 0) {
-        if (!isNull(row_names)) {
-            msg = check_row_names(x, row_names);
-            if (!msg.ok)
-                return mwrap(msg);
-        }
-        if (!isNull(col_names)) {
-            msg = check_col_names(x, col_names);
-            if (!msg.ok)
-                return mwrap(msg);
-        }
+
+    if (!isNull(row_names)) {
+        SEXP nn = getAttrib(x, R_DimNamesSymbol);
+        if (!isNull(nn))
+            nn = VECTOR_ELT(nn, 0);
+        msg = check_names(x, nn, row_names, "Rows");
+        if (!msg.ok)
+            return mwrap(msg);
     }
+
+    if (!isNull(col_names) && length(x) > 0) {
+        SEXP nn = getAttrib(x, R_DimNamesSymbol);
+        if (!isNull(nn))
+            nn = VECTOR_ELT(nn, 1);
+        msg = check_names(x, nn, col_names, "Columns");
+        if (!msg.ok)
+            return mwrap(msg);
+    }
+
     return ScalarLogical(TRUE);
 }
 
@@ -371,8 +358,8 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
 }
 
 SEXP c_check_named(SEXP x, SEXP type) {
-    if (length(x) > 0)
-        return mwrap(check_named(x, type));
+    if (!isNull(type))
+        return mwrap(check_names(x, getAttrib(x, R_NamesSymbol), type, "Object"));
     return ScalarLogical(TRUE);
 }
 
