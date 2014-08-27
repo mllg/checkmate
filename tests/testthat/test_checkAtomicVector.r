@@ -9,6 +9,11 @@ li = list(
 )
 
 test_that("checkAtomicVector", {
+  myobj = 1:2
+  expect_succ(AtomicVector, myobj)
+  myobj = NULL
+  expect_fail(AtomicVector, myobj)
+
   expect_true(testAtomicVector(integer(0)))
   expect_false(testAtomicVector(NULL))
   expect_true(testAtomicVector(1))
@@ -40,8 +45,7 @@ test_that("checkAtomicVector", {
   expect_true(testAtomicVector(setNames(1, "x"), names="named"))
   expect_false(testAtomicVector(1, names="unique"))
 
-  expect_true(assertAtomic(1))
-  expect_error(assertAtomic(iris), "atomic")
+  expect_error(assertAtomicVector(iris), "atomic")
 
   expected = setNames(c(FALSE, TRUE, TRUE, FALSE, FALSE), c("list", "factor", "integer", "NULL", "data.frame"))
   expect_equal(expected, sapply(li, testAtomicVector))

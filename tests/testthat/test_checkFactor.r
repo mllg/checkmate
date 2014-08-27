@@ -1,6 +1,11 @@
 context("checkFactor")
 
 test_that("checkFactor", {
+  myobj = factor(letters[1:2])
+  expect_succ(Factor, myobj)
+  myobj = letters[1:2]
+  expect_fail(Factor, myobj)
+
   x = factor(c("a", "b"), levels = c("a", "b"))
   expect_true(testFactor(x))
   expect_false(testFactor(integer(1)))
@@ -23,8 +28,7 @@ test_that("checkFactor", {
 
 
   x = factor(c("a", "b"), levels = c("a", "b", "c"))
-  expect_true(assertFactor(x))
-  expect_error(assertFactor(1))
+  expect_error(assertFactor(1), "factor")
   expect_error(assertFactor(x, levels = c("a")), "levels")
   expect_error(assertFactor(x, empty.levels.ok = FALSE), "empty")
   expect_error(assertFactor(x, ordered = TRUE), "ordered")

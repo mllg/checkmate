@@ -1,6 +1,11 @@
 context("checkMatrix")
 
 test_that("checkMatrix", {
+  myobj = matrix(1:9, 3)
+  expect_succ(Matrix, myobj)
+  myobj = TRUE
+  expect_fail(Matrix, myobj)
+
   x = matrix(1:9, 3)
   expect_true(testMatrix(x))
   expect_true(testMatrix(matrix(nrow=0, ncol=0)))
@@ -32,8 +37,7 @@ test_that("checkMatrix", {
   expect_true(testMatrix(x, mode = "numeric"))
   expect_false(testMatrix(x, mode = "double"))
 
-  expect_true(assertMatrix(x))
-  expect_error(assertMatrix(iris))
+  expect_error(assertMatrix(iris), "matrix")
 
   expect_true(testMatrix(matrix(ncol = 0, nrow = 0), row.names = "named"))
   expect_true(testMatrix(matrix(ncol = 0, nrow = 0), col.names = "named"))

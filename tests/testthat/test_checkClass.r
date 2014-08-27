@@ -1,6 +1,10 @@
 context("checkClass")
 
 test_that("checkClass", {
+  myobj = 1
+  expect_succ(Class, myobj, "numeric")
+  expect_fail(Class, myobj, "integer")
+
   expect_true(testClass(NULL, "NULL"))
   expect_true(testClass(1, "numeric"))
   expect_true(testClass(1L, "integer"))
@@ -18,7 +22,6 @@ test_that("checkClass", {
 
   foo = 1
   class(foo) = c("a", "b")
-  expect_true(assertClass(foo, "a"))
   expect_error(assertClass(foo, "c"), "class 'c'")
   expect_error(assertClass(foo, "b", ordered=TRUE), "position 1")
 })

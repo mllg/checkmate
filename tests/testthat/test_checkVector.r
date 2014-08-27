@@ -9,6 +9,11 @@ li = list(
 )
 
 test_that("checkVector", {
+  myobj = 1:3
+  expect_succ(Vector, myobj)
+  myobj = NULL
+  expect_fail(Vector, myobj)
+
   expect_true(testVector(integer(0)))
   expect_false(testVector(NULL))
   expect_true(testVector(1))
@@ -45,7 +50,5 @@ test_that("checkVector", {
   expected = setNames(c(TRUE, TRUE, TRUE, FALSE, TRUE), c("list", "factor", "integer", "NULL", "data.frame"))
   expect_equal(expected, sapply(li, testVector, strict = FALSE))
 
-
-  expect_true(assertVector(1))
   expect_error(assertVector(iris, strict = TRUE), "vector")
 })

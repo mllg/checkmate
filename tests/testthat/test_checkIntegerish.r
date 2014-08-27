@@ -1,6 +1,11 @@
 context("checkIntegerish")
 
 test_that("checkIntegerish", {
+  myobj = 1
+  expect_succ(Integerish, myobj)
+  myobj = 3.3
+  expect_fail(Integerish, myobj)
+
   x = 1 - 0.9 -.1
 
   expect_true(testIntegerish(integer(0)))
@@ -36,7 +41,5 @@ test_that("checkIntegerish", {
   expect_false(testIntegerish(min-.1))
   expect_false(testIntegerish(max+.1))
 
-
-  expect_true(assertIntegerish(x))
   expect_error(assertIntegerish(x, tol=0), "integerish")
 })

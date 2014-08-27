@@ -1,6 +1,11 @@
 context("checkNumeric")
 
 test_that("checkNumeric", {
+  myobj = 1
+  expect_succ(Numeric, myobj)
+  myobj = "a"
+  expect_fail(Numeric, myobj)
+
   expect_true(testNumeric(integer(0)))
   expect_false(testNumeric(NULL))
   expect_true(testNumeric(TRUE))
@@ -22,6 +27,5 @@ test_that("checkNumeric", {
   expect_true(testNumeric(1:3, lower = 1L, upper = 3L))
   expect_false(testNumeric(1:3, lower = 5))
 
-  expect_true(assertNumeric(1L))
-  expect_error(assertNumeric("a"))
+  expect_error(assertNumeric("a"), "numeric")
 })

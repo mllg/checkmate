@@ -1,6 +1,11 @@
 context("checkSetEqual")
 
 test_that("checkSetEqual", {
+  myobj = letters[1:3]
+  expect_succ(SetEqual, myobj, letters[1:3])
+  myobj = letters[1:2]
+  expect_fail(String, myobj, letters[1:3])
+
   expect_true(testSetEqual(character(0), character(0)))
   expect_true(testSetEqual(character(0), character(0), ordered = TRUE))
   expect_false(testSetEqual(character(0), letters))
@@ -22,7 +27,6 @@ test_that("checkSetEqual", {
   expect_false(testSetEqual(c(NA_integer_, 2L), 1:2, ordered = TRUE))
   expect_true(testSetEqual(c(NA_integer_, 2L), c(NA_real_, 2), ordered = TRUE))
 
-  expect_true(assertSetEqual(1L, 1))
   expect_error(assertSetEqual(1, 1:2), "equal to")
   expect_error(assertSetEqual(1L, list()), "atomic")
 })

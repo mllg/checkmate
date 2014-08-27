@@ -1,6 +1,11 @@
 context("checkList")
 
 test_that("checkList", {
+  myobj = list(1, 2, 3)
+  expect_succ(List, myobj)
+  myobj = TRUE
+  expect_fail(List, myobj)
+
   expect_true(testList(list()))
   expect_false(testList(NULL))
   expect_true(testList(list(1)))
@@ -13,7 +18,6 @@ test_that("checkList", {
   expect_true(testList(x, types = c("vector", "factor")))
   expect_true(testList(list(NULL), types = "NULL"))
   expect_true(testList(list(), types = "numeric"))
-  expect_true(assertList(x, types = c("numeric", "factor")))
   expect_false(testList(list(TRUE), types = "numeric"))
   expect_error(assertList(x, types = "numeric"), "types: numeric")
   expect_error(assertList(x, len = 33), "Must have length 33")
@@ -24,6 +28,5 @@ test_that("checkList", {
   class(x) = "foo"
   x = list(x, 1:3)
   expect_true(testList(x, types = c("foo", "integerish")))
-  expect_true(assertList(list(TRUE)))
-  expect_error(assertList(1))
+  expect_error(assertList(1), "list")
 })

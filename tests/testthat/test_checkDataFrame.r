@@ -1,6 +1,11 @@
 context("checkDataFrame")
 
 test_that("checkDataFrame", {
+  myobj = iris
+  expect_succ(DataFrame, myobj)
+  myobj = TRUE
+  expect_fail(DataFrame, myobj)
+
   expect_true(testDataFrame(data.frame()))
   expect_false(testDataFrame(NULL))
   expect_true(testDataFrame(data.frame(1)))
@@ -14,12 +19,7 @@ test_that("checkDataFrame", {
   expect_true(testDataFrame(data.frame(), types = "NULL"))
 
   expect_true(testDataFrame(data.frame(), types = "numeric"))
-
-  y = data.frame(TRUE)
-  expect_true(assertDataFrame(y))
-  expect_error(assert(1))
-
-  expect_true(assertDataFrame(x, types = c("numeric", "factor")))
+  expect_error(assertDataFrame(1), "data frame")
   expect_error(assertDataFrame(x, types = "numeric"), "types: numeric")
 })
 

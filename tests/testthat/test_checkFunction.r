@@ -1,6 +1,11 @@
 context("checkFunction")
 
 test_that("checkFunction", {
+  myobj = mean
+  expect_succ(Function, myobj)
+  myobj = TRUE
+  expect_fail(Function, myobj)
+
   myfun = function(x, y, ...) x + y
 
   expect_false(testFunction(NULL))
@@ -23,7 +28,6 @@ test_that("checkFunction", {
   expect_false(testFunction(myfun, args = c("y", "x"), ordered=TRUE))
 
 
-  expect_true(assertFunction(myfun))
   expect_error(assertFunction(fff), "not found")
   expect_error(assertFunction(myfun, "z"), "formal arguments")
   expect_error(assertFunction(myfun, "y", ordered=TRUE), "first formal arguments")

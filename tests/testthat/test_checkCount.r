@@ -1,6 +1,11 @@
 context("checkCount")
 
 test_that("checkCount", {
+  myobj = 1
+  expect_succ(Count, myobj)
+  myobj = -1
+  expect_fail(Count, myobj)
+
   expect_false(testCount(integer(0)))
   expect_false(testCount(NULL))
 
@@ -16,6 +21,5 @@ test_that("checkCount", {
   expect_true(testCount(NA_integer_, na.ok = TRUE))
   expect_false(testCount(1:2))
 
-  expect_true(assertCount(1))
   expect_error(assertCount(-1), ">= 0")
 })

@@ -1,6 +1,11 @@
 context("checkArray")
 
 test_that("checkArray", {
+  myobj = array(1:2)
+  expect_succ(Array, myobj)
+  myobj = 1:2
+  expect_fail(Array, myobj)
+
   x = array(dim = c(2, 3))
   expect_true(testArray(x))
   expect_true(testArray(x, d = 2L))
@@ -17,4 +22,6 @@ test_that("checkArray", {
   expect_true(testArray(x, mode = "numeric"))
   expect_false(testArray(x, mode = "double"))
   expect_false(testArray(x, mode = "character"))
+
+  expect_error(assertArray(1:3), "array")
 })

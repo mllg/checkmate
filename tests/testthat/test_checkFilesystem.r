@@ -9,32 +9,37 @@ file.create(fn)
 dir.create(dn)
 
 test_that("check_file", {
+  myobj = fn
+  expect_succ(File, myobj)
+  myobj = ff
+  expect_fail(File, myobj)
+
   expect_false(testFile(character(0)))
   expect_false(testFile(NULL))
-  expect_false(testFile(ff))
   expect_false(testFile(dn))
-  expect_true(testFile(fn))
 
   expect_error(assertFile(character(0)), "provided")
   expect_error(assertFile(ff), "exist")
   expect_error(assertFile(dn))
-  expect_true(assertFile(fn))
 })
 
 test_that("check_directory", {
+  myobj = dn
+  expect_succ(Directory, myobj)
+  myobj = ff
+  expect_fail(Directory, myobj)
+
   expect_false(testDirectory(character(0)))
-  expect_false(testDirectory(ff))
   expect_false(testDirectory(fn))
-  expect_true(testDirectory(dn))
 
   expect_error(assertDirectory(character(0)), "provided")
   expect_error(assertDirectory(ff), "exist")
   expect_error(assertDirectory(fn))
-  expect_true(assertDirectory(dn))
 })
 
 test_that("check_access", {
-  expect_true(testAccess(R.home(), "r"))
+  myobj = R.home()
+  expect_succ(Access, myobj, "r")
 
   if (.Platform$OS.type != "windows") {
     Sys.chmod(fn, "0000")
@@ -60,10 +65,13 @@ test_that("check_access", {
 })
 
 test_that("check_path_for_output", {
+  myobj = ff
+  expect_succ(PathForOutput, myobj)
+  myobj = fn
+  expect_fail(PathForOutput, myobj)
+
   expect_false(testPathForOutput(character(0)))
   expect_false(testPathForOutput(NULL))
-  expect_true(testPathForOutput(ff))
-  expect_false(testPathForOutput(fn))
 
   expect_error(assertPathForOutput(character(0)), "path provided")
   expect_true(assertPathForOutput(c("a", "b")), "path")

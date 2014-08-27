@@ -1,6 +1,11 @@
 context("checkInt")
 
 test_that("checkInt", {
+  myobj = 1L
+  expect_succ(Int, myobj)
+  myobj = 1.1
+  expect_fail(Int, myobj)
+
   expect_false(testInt(integer(0)))
   expect_false(testInt(NULL))
 
@@ -11,6 +16,5 @@ test_that("checkInt", {
   expect_false(testInt(1:2))
   expect_false(testInt(""))
 
-  expect_true(assertInt(1))
   expect_error(assertInt(2+3i), "integerish")
 })
