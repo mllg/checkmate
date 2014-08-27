@@ -1,6 +1,6 @@
-Version 1.4 (2014-08-15)
+Version 1.4 (2014-xx-xx)
 -------------------------------------------------------------------------------
-* Fixed a bug where data frame row and columns names where not retrieved
+* Fixed a bug where rownames and colnames of data.frames where not retrieved
   correctly
 
 Version 1.3 (2014-08-15)
