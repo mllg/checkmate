@@ -8,7 +8,7 @@ indent_style = space
 trim_trailing_whitespace = true
 
 [*.r]
-indent_size = 8
+indent_size = 2
 
 [*.c,*.h]
 indent_size = 4
