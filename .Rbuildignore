@@ -4,6 +4,7 @@ src/.+\.so$
 tar.gz$
 \.swp$
 ^\.gitignore$
+^\.editorconfig$
 ^\.travis
 \.yml$
 ^README.md$
