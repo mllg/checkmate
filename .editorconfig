@@ -1,3 +1,4 @@
+# See http://editorconfig.org
 root = true
 
 [*]
@@ -7,8 +8,14 @@ insert_final_newline = true
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.r]
+[*.{r,R}]
 indent_size = 2
 
-[*.c,*.h]
+[*.{c,h}]
 indent_size = 4
+
+[*.{cpp,hpp}]
+indent_size = 4
+
+[{NEWS,DESCRIPTION,LICENSE}]
+max_line_length = 80
