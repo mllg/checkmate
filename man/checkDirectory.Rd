@@ -21,7 +21,8 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 
 \item{access}{[\code{character(1)}]\cr
 Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
-force a check for read, write or execute access rights, respectively.}
+force a check for read, write or execute access rights, respectively.
+Write and executable rights are not checked on Windows.}
 }
 \value{
 Depending on the function prefix:
