@@ -1,7 +1,6 @@
 # checkmate
 
 [![Build Status](https://travis-ci.org/mllg/checkmate.svg)](https://travis-ci.org/mllg/checkmate)
-[![DOI](https://zenodo.org/badge/5780/mllg/checkmate.png)](http://dx.doi.org/10.5281/zenodo.11575)
 
 Fast and versatile argument checks for R.
 
