@@ -5,6 +5,7 @@
 #' @param access [\code{character(1)}]\cr
 #'  Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights, respectively.
+#'  Write and executable rights are not checked on Windows.
 #' @family filesystem
 #' @export
 #' @examples
@@ -25,15 +26,17 @@ checkAccess = function(x, access = "") {
       if (length(w) > 0L)
         return(sprintf("'%s' not readable", x[w]))
     }
-    if (2L %in% access) {
-      w = wf(file.access(x, 2L) != 0L)
-      if (length(w) > 0L)
-        return(sprintf("'%s' not writeable", x[w]))
-    }
-    if (3L %in% access) {
-      w = wf(file.access(x, 1L) != 0L)
-      if (length(w) > 0L)
-        return(sprintf("'%s' not executeable", x[w]))
+    if (.Platform$OS.type != "windows") {
+      if (2L %in% access) {
+        w = wf(file.access(x, 2L) != 0L)
+        if (length(w) > 0L)
+          return(sprintf("'%s' not writeable", x[w]))
+      }
+      if (3L %in% access) {
+        w = wf(file.access(x, 1L) != 0L)
+        if (length(w) > 0L)
+          return(sprintf("'%s' not executeable", x[w]))
+      }
     }
   }
   return(TRUE)

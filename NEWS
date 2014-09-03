@@ -3,6 +3,7 @@ Version 1.4 (2014-xx-xx)
 * Fixed a bug where rownames and colnames of data.frames where not retrieved
   correctly
 * Fixed a bug in checkVector (wrong order of arguments in call to C)
+* Checks for filesystem write and executable rights are now disabled on windows
 
 Version 1.3 (2014-08-15)
 -------------------------------------------------------------------------------
