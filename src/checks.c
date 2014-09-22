@@ -14,6 +14,8 @@
 /*********************************************************************************************************************/
 /* Some helpers                                                                                                      */
 /*********************************************************************************************************************/
+typedef enum { T_UNDEF, T_UNNAMED, T_NAMED, T_UNIQUE, T_STRICT } name_t;
+
 static inline Rboolean isTRUE(SEXP x) {
     return (LOGICAL(x)[0] == TRUE);
 }
@@ -64,12 +66,10 @@ static Rboolean check_valid_names(SEXP x) {
 }
 
 static Rboolean check_unique_names(SEXP x) {
-    return check_valid_names(x) && any_duplicated(x, FALSE) == 0;
+    return any_duplicated(x, FALSE) == 0;
 }
 
 static Rboolean check_strict_names(SEXP x) {
-    if (!check_unique_names(x))
-        return FALSE;
     const R_len_t nx = length(x);
     const char *str;
     for (R_len_t i = 0; i < nx; i++) {
@@ -86,24 +86,49 @@ static Rboolean check_strict_names(SEXP x) {
     return TRUE;
 }
 
-static msg_t check_names(SEXP x, SEXP nn, SEXP type, const char * what) {
+static name_t get_name_type(SEXP type) {
     assertString(type, "type");
     const char * const ctype = CHAR(STRING_ELT(type, 0));
+    if (strcmp(ctype, "unnamed") == 0)
+        return T_UNNAMED;
+    if (strcmp(ctype, "named") == 0)
+        return T_NAMED;
+    if (strcmp(ctype, "unique") == 0)
+        return T_UNIQUE;
+    if (strcmp(ctype, "strict") == 0)
+        return T_STRICT;
+    error("Unknown type definition '%s'", ctype);
+}
 
-    if (strcmp(ctype, "unnamed") == 0) {
-        if (length(x) > 0 && !isNull(nn))
-            return Msgf("%s must be unnamed", what);
-    } else if (strcmp(ctype, "named") == 0) {
-        if (length(x) > 0 && !check_valid_names(nn))
-            return Msgf("%s must be named", what);
-    } else if (strcmp(ctype, "unique") == 0) {
-        if (length(x) > 0 && !check_unique_names(nn))
-            return Msgf("%s must be uniquely named", what);
-    } else if (strcmp(ctype, "strict") == 0) {
-        if (length(x) > 0 && !check_strict_names(nn))
-            return Msgf("%s must be uniquely named according to R's variable naming rules", what);
+static name_t check_type(SEXP nn, name_t type) {
+    if (type == T_UNNAMED) {
+        if (!isNull(nn))
+            return T_UNNAMED;
     } else {
-        error("Unknown naming definition '%s'", ctype);
+        if (!check_valid_names(nn))
+            return T_NAMED;
+
+        if (type >= T_UNIQUE) {
+            if (!check_unique_names(nn))
+                return T_UNIQUE;
+
+            if (type >= T_STRICT && !check_strict_names(nn))
+                return T_STRICT;
+        }
+    }
+    return T_UNDEF;
+}
+
+static msg_t check_names(SEXP x, SEXP nn, SEXP type, const char * what) {
+    name_t ntype = get_name_type(type);
+    if (length(x) > 0) {
+        switch(check_type(nn, ntype)) {
+            case T_UNDEF: break;
+            case T_UNNAMED: return Msgf("%s must be unnamed", what);
+            case T_NAMED: return Msgf("%s must be named", what);
+            case T_UNIQUE: return Msgf("%s must be uniquely named", what);
+            case T_STRICT: return Msgf("%s must be named according to R's variable naming rules", what);
+        }
     }
     return MSGT;
 }
@@ -360,6 +385,20 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
 SEXP c_check_named(SEXP x, SEXP type) {
     if (!isNull(type))
         return mwrap(check_names(x, getAttrib(x, R_NamesSymbol), type, "Object"));
+    return ScalarLogical(TRUE);
+}
+
+SEXP c_check_names(SEXP x, SEXP type) {
+    if (!isString(x))
+        return CheckResult("Must be a character vector of names");
+    name_t res = check_type(x, get_name_type(type));
+    switch(res) {
+        case T_UNDEF: break;
+        case T_UNNAMED: return CheckResult("Names must be missing (NULL)");
+        case T_NAMED: return CheckResult("Valid names required");
+        case T_UNIQUE: return CheckResult("All names must be unique");
+        case T_STRICT: return CheckResult("All names must comply to R's variable naming rules");
+    }
     return ScalarLogical(TRUE);
 }
 

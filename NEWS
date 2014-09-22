@@ -1,3 +1,7 @@
+Version 1.5 (2014-xx-xx)
+-------------------------------------------------------------------------------
+* Added checkNames
+
 Version 1.4 (2014-09-03)
 -------------------------------------------------------------------------------
 * Fixed a bug where rownames and colnames of data.frames where not retrieved
