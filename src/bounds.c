@@ -1,5 +1,5 @@
 #include "bounds.h"
-#include "assertions.h"
+#include "as_type.h"
 
 static inline msg_t boundError(bound_t bound) {
     return Msgf("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
@@ -30,8 +30,7 @@ msg_t check_bound(SEXP x, const bound_t bound) {
 msg_t check_bounds(SEXP x, SEXP lower, SEXP upper) {
     double tmp;
 
-    assertNumber(lower, "lower");
-    tmp = asReal(lower);
+    tmp = asNumber(lower, "lower");
     if (R_FINITE(tmp)) {
         bound_t bound = { .cmp = tmp, .op = GE, .fun = &dd_ge };
         msg_t msg = check_bound(x, bound);
@@ -39,8 +38,7 @@ msg_t check_bounds(SEXP x, SEXP lower, SEXP upper) {
             return boundError(bound);
     }
 
-    assertNumber(lower, "upper");
-    tmp = asReal(upper);
+    tmp = asNumber(upper, "upper");
     if (R_FINITE(tmp)) {
         bound_t bound = { .cmp = tmp, .op = LE, .fun = &dd_le };
         msg_t msg = check_bound(x, bound);
