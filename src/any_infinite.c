@@ -3,8 +3,6 @@
 static Rboolean any_infinite_double(SEXP x);
 static Rboolean any_infinite_complex(SEXP x);
 static Rboolean any_infinite_list(SEXP x);
-static Rboolean any_infinite(SEXP x);
-
 
 static Rboolean any_infinite_double(SEXP x) {
     const double * xp = REAL(x);
@@ -36,7 +34,7 @@ static Rboolean any_infinite_list(SEXP x) {
     return FALSE;
 }
 
-static Rboolean any_infinite(SEXP x) {
+Rboolean any_infinite(SEXP x) {
     switch(TYPEOF(x)) {
         case REALSXP: return any_infinite_double(x);
         case CPLXSXP: return any_infinite_complex(x);
@@ -44,7 +42,6 @@ static Rboolean any_infinite(SEXP x) {
     }
     return FALSE;
 }
-
 
 SEXP c_any_infinite(SEXP x) {
     return ScalarLogical(any_infinite(x));

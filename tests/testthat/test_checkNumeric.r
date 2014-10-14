@@ -20,6 +20,7 @@ test_that("checkNumeric", {
   expect_true(testNumeric(1))
   expect_true(testNumeric(Inf))
   expect_true(testNumeric(-Inf))
+  expect_true(assertNumeric(1:2, finite = TRUE))
   expect_error(assertNumeric(c(1, Inf), finite = TRUE), "finite")
   expect_error(assertNumeric(c(1, -Inf), finite = TRUE), "finite")
   expect_true(testNumeric(1:3, any.missing=FALSE, min.len=1L, max.len=3L))

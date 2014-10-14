@@ -5,6 +5,7 @@
 #include "cmessages.h"
 #include "is_integerish.h"
 #include "any_missing.h"
+#include "any_infinite.h"
 #include "all_missing.h"
 #include "all_nchar.h"
 #include "bounds.h"
@@ -36,16 +37,6 @@ static inline Rboolean is_vector(SEXP x) {
     SEXP attr = ATTRIB(x);
     if (length(attr) > 0 && (TAG(attr) != R_NamesSymbol || CDR(attr) != R_NilValue))
         return FALSE;
-    return TRUE;
-}
-
-static inline Rboolean all_finite_double(SEXP x) {
-    const double * xp = REAL(x);
-    const double * const xe = xp + length(x);
-    for (; xp != xe; xp++) {
-        if (*xp == R_PosInf || *xp == R_NegInf)
-            return FALSE;
-    }
     return TRUE;
 }
 
@@ -384,7 +375,7 @@ SEXP c_check_names(SEXP x, SEXP type) {
 SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
     if (!isNumeric(x) && !all_missing_atomic(x))
         return CheckResult("Must be numeric");
-    if (asFlag(finite, "finite") && !all_finite_double(x))
+    if (asFlag(finite, "finite") && any_infinite(x))
         return CheckResult("Must be finite");
     msg_t msg = check_bounds(x, lower, upper);
     if (!msg.ok)
@@ -457,7 +448,7 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
             return CheckResult("May not be NA");
         return ScalarLogical(TRUE);
     }
-    if (asFlag(finite, "finite") && !all_finite_double(x))
+    if (asFlag(finite, "finite") && any_infinite(x))
         return CheckResult("Must be finite");
     return mwrap(check_bounds(x, lower, upper));
 }
