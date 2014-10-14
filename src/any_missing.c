@@ -102,14 +102,14 @@ Rboolean any_missing_frame(SEXP x) {
 SEXP c_any_missing(SEXP x) {
     Rboolean res;
     switch(TYPEOF(x)) {
-        case LGLSXP: res = any_missing_logical(x); break;
-        case INTSXP: res = any_missing_integer(x); break;
+        case LGLSXP:  res = any_missing_logical(x); break;
+        case INTSXP:  res = any_missing_integer(x); break;
         case REALSXP: res = any_missing_double(x); break;
         case CPLXSXP: res = any_missing_complex(x); break;
-        case STRSXP: res = any_missing_string(x); break;
-        case NILSXP: res = FALSE; break;
-        case VECSXP: res = isFrame(x) ? any_missing_frame(x) : any_missing_list(x); break;
-        case RAWSXP: res = FALSE;
+        case STRSXP:  res = any_missing_string(x); break;
+        case NILSXP:  res = FALSE; break;
+        case VECSXP:  res = isFrame(x) ? any_missing_frame(x) : any_missing_list(x); break;
+        case RAWSXP:  res = FALSE; break;
         default: error("Object of type '%s' not supported", type2char(TYPEOF(x)));
     }
     return ScalarLogical(res);
