@@ -1,6 +1,7 @@
 Version 1.5 (2014-xx-xx)
 -------------------------------------------------------------------------------
 * Added checkNames
+* Added checkPercentage
 * Added anyInfinite
 * Fixed error messages for some dimension checks (min.rows and friends)
 * Fixed error while checking numerics for finiteness

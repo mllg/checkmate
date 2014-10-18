@@ -41,7 +41,9 @@ Other scalars: \code{\link{assertCount}},
   \code{\link{testFlag}}; \code{\link{assertInt}},
   \code{\link{checkInt}}, \code{\link{testInt}};
   \code{\link{assertNumber}}, \code{\link{checkNumber}},
-  \code{\link{testNumber}}; \code{\link{assertScalar}},
+  \code{\link{testNumber}}; \code{\link{assertPercentage}},
+  \code{\link{checkPercentage}},
+  \code{\link{testPercentage}}; \code{\link{assertScalar}},
   \code{\link{checkScalar}}, \code{\link{testScalar}};
   \code{\link{assertString}}, \code{\link{checkString}},
   \code{\link{testString}}

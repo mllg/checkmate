@@ -60,6 +60,9 @@ Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{checkFlag}},
   \code{\link{testFlag}}; \code{\link{assertNumber}},
   \code{\link{checkNumber}}, \code{\link{testNumber}};
+  \code{\link{assertPercentage}},
+  \code{\link{checkPercentage}},
+  \code{\link{testPercentage}};
   \code{\link{assertScalarNA}},
   \code{\link{checkScalarNA}}, \code{\link{testScalarNA}};
   \code{\link{assertScalar}}, \code{\link{checkScalar}},
