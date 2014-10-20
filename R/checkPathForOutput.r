@@ -6,7 +6,7 @@
 #' This is checked:
 #' \itemize{
 #'  \item{Does \code{dirname(x)} exist?}
-#'  \item{Does no file under path \code{x)} exist?}
+#'  \item{Does no file under path \code{x} exist?}
 #'  \item{Is \code{dirname(x)} writeable?}
 #' }
 #'
