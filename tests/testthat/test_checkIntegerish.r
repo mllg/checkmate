@@ -28,6 +28,7 @@ test_that("checkIntegerish", {
   expect_false(testIntegerish(Inf))
 
   expect_true(testIntegerish(3+0i))
+  expect_false(testIntegerish(3-1i))
   expect_true(testIntegerish(as.complex(NA)))
   expect_false(testIntegerish(3+2i))
   expect_false(testIntegerish(list()))
@@ -40,6 +41,7 @@ test_that("checkIntegerish", {
   expect_false(testIntegerish(max+1))
   expect_false(testIntegerish(min-.1))
   expect_false(testIntegerish(max+.1))
+
 
   expect_error(assertIntegerish(x, tol=0), "integerish")
 })

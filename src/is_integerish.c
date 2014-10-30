@@ -21,7 +21,7 @@ static inline Rboolean is_integerish_complex(SEXP x, const double tol) {
     const Rcomplex * xc = COMPLEX(x);
     const Rcomplex * const xe = xc + length(x);
     for (; xc != xe; xc++) {
-        if ((*xc).i >= tol || is_unconvertible((*xc).r, tol))
+        if (fabs((*xc).i) >= tol || is_unconvertible((*xc).r, tol))
             return FALSE;
     }
     return TRUE;
