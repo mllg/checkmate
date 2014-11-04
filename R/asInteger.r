@@ -7,9 +7,9 @@
 #' and (b) double vectors with all elements being within \code{tol}
 #' range of an integer.
 #'
-#' @param x [ANY]\cr
+#' @param x [any]\cr
 #'  Object to convert.
-#' @param ... [ANY]\cr
+#' @param ... [any]\cr
 #'  Additional arguments passed to \code{\link{assertIntegerish}}.
 #' @template tol
 #' @param .var.name [character(1)]\cr

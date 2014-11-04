@@ -1,10 +1,11 @@
 #' Check if an argument is a percentage
 #'
 #' @templateVar fn Percentage
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
+#' @template checker
 #' @family scalars
 #' @useDynLib checkmate c_check_number
 #' @export

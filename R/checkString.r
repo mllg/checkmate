@@ -3,12 +3,13 @@
 #' A string a scalar character vector.
 #'
 #' @templateVar fn String
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
-#' @export
+#' @template checker
 #' @family scalars
+#' @export
 #' @useDynLib checkmate c_check_string
 #' @examples
 #' testString("a")

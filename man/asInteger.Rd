@@ -14,10 +14,10 @@ asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps), .var.name)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to convert.}
 
-\item{...}{[ANY]\cr
+\item{...}{[any]\cr
 Additional arguments passed to \code{\link{assertIntegerish}}.}
 
 \item{tol}{[\code{double(1)}]\cr

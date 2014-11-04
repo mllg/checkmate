@@ -12,7 +12,7 @@ assertSetEqual(x, y, ordered = TRUE, .var.name)
 testSetEqual(x, y, ordered = TRUE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{y}{[\code{atomic}]\cr

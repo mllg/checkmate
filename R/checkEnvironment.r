@@ -1,10 +1,11 @@
 #' Check if an argument is an environment
 #'
 #' @templateVar fn Environment
-#' @template checker
+#' @template x
 #' @param contains [\code{character}]\cr
 #'  Vector of object names expected in the environment.
 #'  Defaults to \code{character(0)}.
+#' @template checker
 #' @family basetypes
 #' @export
 #' @examples

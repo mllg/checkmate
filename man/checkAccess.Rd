@@ -12,7 +12,7 @@ assertAccess(x, access = "", .var.name)
 testAccess(x, access = "")
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{access}{[\code{character(1)}]\cr

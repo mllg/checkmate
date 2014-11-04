@@ -1,7 +1,7 @@
 #' Check if an argument is a matrix
 #'
 #' @templateVar fn Matrix
-#' @template checker
+#' @template x
 #' @param mode [\code{character(1)}]\cr
 #'  Storage mode of the matrix. Matricies can hold \dQuote{logical},
 #'  \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
@@ -22,6 +22,7 @@
 #' @param col.names [\code{character(1)}]\cr
 #'  Check for column names. Default is \dQuote{NULL} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_matrix
 #' @export

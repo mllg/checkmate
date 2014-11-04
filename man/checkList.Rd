@@ -18,7 +18,7 @@ testList(x, types = character(0L), any.missing = TRUE, all.missing = TRUE,
   names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{types}{[\code{character}]\cr

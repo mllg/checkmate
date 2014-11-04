@@ -1,8 +1,8 @@
 #' Check if an argument is a vector of type character
 #'
 #' @templateVar fn Character
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @inheritParams checkVector
 #' @param pattern [\code{character(1L)}]\cr
 #'  Regular expression as used in \code{\link[base]{grepl}}.
@@ -14,6 +14,7 @@
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param min.chars [\code{integer(1)}]\cr
 #'  Minimum number of characters in each element of \code{x}.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_character
 #' @export

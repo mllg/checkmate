@@ -12,7 +12,7 @@ assertNamed(x, type = "named", .var.name)
 testNamed(x, type = "named")
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{type}{[character(1)]\cr

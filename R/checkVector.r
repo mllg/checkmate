@@ -1,7 +1,7 @@
 #' Check if an argument is a vector
 #'
 #' @templateVar fn Vector
-#' @template checker
+#' @template x
 #' @param strict [\code{logical(1)}]\cr
 #'  May the vector have additional attributes or perform a
 #'  check for additional attributes like \code{\link[base]{is.vector}}?
@@ -22,6 +22,7 @@
 #' @param names [\code{character(1)}]\cr
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_vector
 #' @export

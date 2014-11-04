@@ -1,12 +1,13 @@
 #' Check if object is a subset of a given set
 #'
 #' @templateVar fn Subset
-#' @template checker
+#' @template x
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.
 #' @param empty.ok [\code{logical(1)}]\cr
 #'  Treat zero-length \code{x} as subset of any set \code{choices}?
 #'  Default is \code{TRUE}.
+#' @template checker
 #' @family set
 #' @export
 #' @examples

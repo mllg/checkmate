@@ -12,7 +12,7 @@ assertFunction(x, args = NULL, ordered = FALSE, .var.name)
 testFunction(x, args = NULL, ordered = FALSE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{args}{[\code{character}]\cr

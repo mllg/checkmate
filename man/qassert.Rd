@@ -9,7 +9,7 @@ qassert(x, rules, .var.name)
 qtest(x, rules)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object the check.}
 
 \item{rules}{[\code{character}]\cr

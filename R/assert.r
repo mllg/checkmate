@@ -1,6 +1,6 @@
 #' Combine multiple checks into one assertion
 #'
-#' @param ... [ANY]\cr
+#' @param ... [any]\cr
 #'  List of calls to check functions.
 #' @param .var.name [character(1)]\cr
 #'  Name of object to check. Defaults to a heuristic to determine

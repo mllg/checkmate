@@ -12,7 +12,7 @@ assertPathForOutput(x, overwrite = FALSE, .var.name)
 testPathForOutput(x, overwrite = FALSE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{overwrite}{[\code{logical(1)}]\cr

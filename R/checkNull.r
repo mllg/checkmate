@@ -1,6 +1,7 @@
 #' Check if an argument is NULL
 #'
 #' @templateVar fn Null
+#' @template x
 #' @template checker
 #' @export
 #' @examples

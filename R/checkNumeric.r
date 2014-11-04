@@ -1,12 +1,13 @@
 #' Check that an argument is a vector of type numeric
 #'
 #' @templateVar fn Numeric
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @inheritParams checkVector
 #' @template bounds
 #' @param finite [\code{logical(1)}]\cr
 #'  Check for only finite values? Default is \code{FALSE}.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_numeric
 #' @export

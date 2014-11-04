@@ -3,10 +3,11 @@
 #' A flag a a single logical value.
 #'
 #' @templateVar fn Flag
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
+#' @template checker
 #' @family scalars
 #' @useDynLib checkmate c_check_flag
 #' @export

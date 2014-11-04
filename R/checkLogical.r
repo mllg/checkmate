@@ -1,9 +1,10 @@
 #' Check if an argument is a vector of type logical
 #'
 #' @templateVar fn Logical
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @inheritParams checkVector
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_logical
 #' @export

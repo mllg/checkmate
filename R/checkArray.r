@@ -1,7 +1,7 @@
 #' Check if an argument is an array
 #'
 #' @templateVar fn Array
-#' @template checker
+#' @template x
 #' @param mode [\code{character(1)}]\cr
 #'  Storage mode of the matrix. Matricies can hold \dQuote{logical},
 #'  \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
@@ -11,6 +11,7 @@
 #' @param d [\code{integer(1)}]\cr
 #'  Dimensionality of array.
 #'  Default is \code{NULL} (no check).
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_array
 #' @export

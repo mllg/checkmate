@@ -1,11 +1,12 @@
 #' Check file system access rights
 #'
 #' @templateVar fn Access
-#' @template checker
+#' @template x
 #' @param access [\code{character(1)}]\cr
 #'  Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 #'  force a check for read, write or execute access rights, respectively.
 #'  Write and executable rights are not checked on Windows.
+#' @template checker
 #' @family filesystem
 #' @export
 #' @examples

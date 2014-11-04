@@ -18,7 +18,7 @@ testMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
   col.names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{mode}{[\code{character(1)}]\cr

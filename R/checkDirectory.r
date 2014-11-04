@@ -1,9 +1,10 @@
 #' Check for existence and access rights of directories
 #'
 #' @templateVar fn Directory
-#' @template checker
+#' @template x
 #' @inheritParams checkAccess
 #' @inheritParams checkFile
+#' @template checker
 #' @family filesystem
 #' @export
 #' @examples

@@ -13,7 +13,7 @@ assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
 testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr

@@ -1,6 +1,7 @@
 #' Check if an argument is a single missing value
 #'
 #' @templateVar fn ScalarNA
+#' @template x
 #' @template checker
 #' @family scalars
 #' @export

@@ -3,7 +3,7 @@
 \alias{assertNames}
 \alias{checkNames}
 \alias{testNames}
-\title{Check for names}
+\title{Check names to comply to specific rules}
 \usage{
 checkNames(x, type = "named")
 
@@ -12,8 +12,8 @@ assertNames(x, type = "named", .var.name)
 testNames(x, type = "named")
 }
 \arguments{
-\item{x}{[ANY]\cr
-Object to check.}
+\item{x}{[\code{character} || \code{NULL}]\cr
+Names to check using rules defined via \code{type}.}
 
 \item{type}{[character(1)]\cr
 Select the check(s) to perform.
@@ -34,7 +34,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check for names
+Similar to \code{\link{checkNamed}} but you can specify the names directly.
 }
 \examples{
 x = 1:3

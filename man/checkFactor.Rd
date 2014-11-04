@@ -18,7 +18,7 @@ testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{levels}{[\code{character}]\cr

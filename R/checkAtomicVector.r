@@ -8,7 +8,7 @@
 #' In short, this is equivalent to \code{is.atomic(x) && !is.null(x)}.
 #'
 #' @templateVar fn AtomicVector
-#' @template checker
+#' @template x
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are vectors with missing values allowed? Default is \code{TRUE}.
 #' @param all.missing [\code{logical(1)}]\cr
@@ -24,6 +24,7 @@
 #' @param names [\code{character(1)}]\cr
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_atomic_vector
 #' @export

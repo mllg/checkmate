@@ -12,7 +12,7 @@ assertNull(x, .var.name)
 testNull(x)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{.var.name}{[character(1)]\cr

@@ -1,7 +1,7 @@
 #' Check if an argument is a factor
 #'
 #' @templateVar fn Factor
-#' @template checker
+#' @template x
 #' @inheritParams checkVector
 #' @param levels [\code{character}]\cr
 #'  Vector of allowed factor levels.
@@ -12,6 +12,7 @@
 #' @param empty.levels.ok [\code{logical(1)}]\cr
 #'  Are empty levels allowed?
 #'  Default is \code{TRUE}.
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_factor
 #' @export

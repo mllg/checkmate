@@ -12,7 +12,7 @@ assertDirectory(x, access = "", .var.name)
 testDirectory(x, access = "", .var.name)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{access}{[\code{character(1)}]\cr

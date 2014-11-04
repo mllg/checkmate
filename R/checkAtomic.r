@@ -1,8 +1,9 @@
 #' Check that an argument is an atomic vector
 #'
 #' @templateVar fn Atmoic
-#' @template checker
+#' @template x
 #' @inheritParams checkVector
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_atomic
 #' @export

@@ -12,7 +12,7 @@ assertChoice(x, choices, .var.name)
 testChoice(x, choices)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{choices}{[\code{atomic}]\cr

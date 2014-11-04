@@ -12,7 +12,7 @@ assertClass(x, classes, ordered = FALSE, .var.name)
 testClass(x, classes, ordered = FALSE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{classes}{[\code{character}]\cr

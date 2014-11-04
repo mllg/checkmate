@@ -1,7 +1,7 @@
 #' Check if an argument is a function
 #'
 #' @templateVar fn Function
-#' @template checker
+#' @template x
 #' @param args [\code{character}]\cr
 #'  Expected formal arguments. Checks that a function has no arguments if
 #'  set to \code{character(0)}.
@@ -10,6 +10,7 @@
 #'  Flag whether the arguments provided in \code{args} must be the first
 #'  \code{length(args)} arguments of the function in the specified order.
 #'  Default is \code{FALSE}.
+#' @template checker
 #' @family basetypes
 #' @export
 #' @examples

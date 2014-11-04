@@ -6,7 +6,7 @@
 assert(..., .var.name)
 }
 \arguments{
-\item{...}{[ANY]\cr
+\item{...}{[any]\cr
 List of calls to check functions.}
 
 \item{.var.name}{[character(1)]\cr

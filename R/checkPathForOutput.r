@@ -13,11 +13,12 @@
 #' A string without slashes is interpreted as a file in the current working directory.
 #'
 #' @templateVar fn PathForOutput
-#' @template checker
+#' @template x
 #' @param overwrite [\code{logical(1)}]\cr
 #'  If \code{TRUE}, an exising file in place is allowed if it
 #'  it is both readable and writeable.
 #'  Default is \code{FALSE}.
+#' @template checker
 #' @family filesystem
 #' @export
 #' @examples

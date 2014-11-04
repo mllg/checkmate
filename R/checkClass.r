@@ -1,12 +1,13 @@
 #' Check argument inheritance
 #'
 #' @templateVar fn Class
-#' @template checker
+#' @template x
 #' @param classes [\code{character}]\cr
 #'  Class names to check for inheritance with \code{\link[base]{inherits}}.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.
+#' @template checker
 #' @export
 #' @examples
 #' # Create an object with classes "foo" and "bar"

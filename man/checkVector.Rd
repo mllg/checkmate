@@ -18,7 +18,7 @@ testVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
   names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{strict}{[\code{logical(1)}]\cr

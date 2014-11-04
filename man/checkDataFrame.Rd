@@ -18,7 +18,7 @@ testDataFrame(x, types = character(0L), any.missing = TRUE,
   row.names = NULL, col.names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{types}{[\code{character}]\cr

@@ -19,7 +19,7 @@ testIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{tol}{[\code{double(1)}]\cr

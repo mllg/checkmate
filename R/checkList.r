@@ -1,7 +1,7 @@
 #' Check if an argument is a list
 #'
 #' @templateVar fn List
-#' @template checker
+#' @template x
 #' @inheritParams checkVector
 #' @param ... [ANY]\cr
 #'  Additional parameters used in a call of \code{\link{checkVector}}.
@@ -14,6 +14,7 @@
 #'  \dQuote{environment} and \dQuote{null} are supported.
 #'  For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 #'  Defaults to \code{character(0)} (no check).
+#' @template checker
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_list

@@ -1,5 +1,3 @@
-#' @param x [ANY]\cr
-#'  Object to check.
 #' @param .var.name [character(1)]\cr
 #'  Name for \code{x}. Defaults to a heuristic to determine
 #'  the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.

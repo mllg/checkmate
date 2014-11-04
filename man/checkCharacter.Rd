@@ -21,7 +21,7 @@ testCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
   names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{min.chars}{[\code{integer(1)}]\cr

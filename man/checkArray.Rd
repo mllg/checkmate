@@ -12,7 +12,7 @@ assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, .var.name)
 testArray(x, mode = NULL, any.missing = TRUE, d = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{mode}{[\code{character(1)}]\cr

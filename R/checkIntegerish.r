@@ -1,11 +1,12 @@
 #' Check if an object is an integerish vector
 #'
 #' @templateVar fn Integerish
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @inheritParams checkInteger
 #' @inheritParams checkVector
 #' @template tol
+#' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_is_integerish
 #' @export

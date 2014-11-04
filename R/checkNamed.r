@@ -1,7 +1,7 @@
 #' Check if an argument is named
 #'
 #' @templateVar fn Named
-#' @template checker
+#' @template x
 #' @param type [character(1)]\cr
 #'  Select the check(s) to perform.
 #'  \dQuote{unnamed} checks \code{x} to be unnamed.
@@ -9,6 +9,7 @@
 #'  \dQuote{unique} additionally tests for non-duplicated names.
 #'  \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 #'  Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.
+#' @template checker
 #' @useDynLib checkmate c_check_named
 #' @export
 #' @examples

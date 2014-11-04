@@ -18,7 +18,7 @@ testNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   max.len = NULL, unique = FALSE, names = NULL)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{lower}{[\code{numeric(1)}]\cr

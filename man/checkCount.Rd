@@ -15,7 +15,7 @@ testCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps))
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr

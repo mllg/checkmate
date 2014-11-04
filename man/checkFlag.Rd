@@ -12,7 +12,7 @@ assertFlag(x, na.ok = FALSE, .var.name)
 testFlag(x, na.ok = FALSE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr

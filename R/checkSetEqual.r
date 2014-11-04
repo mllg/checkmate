@@ -1,13 +1,14 @@
 #' Check if object is a subset of a given set
 #'
 #' @templateVar fn Subset
-#' @template checker
+#' @template x
 #' @param y [\code{atomic}]\cr
 #'  Set to compare with.
 #' @param ordered [\code{logical(1)}]\cr
 #' Check \code{x} to have the same length and order as \code{y}, i.e.
 #' check using \dQuote{==} while handling \code{NA}s nicely.
 #' Default is \code{FALSE}.
+#' @template checker
 #' @family set
 #' @export
 #' @examples

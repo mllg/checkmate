@@ -1,12 +1,13 @@
 #' Check if an argument is a single integerish value
 #'
 #' @templateVar fn Int
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @template bounds
 #' @template tol
+#' @template checker
 #' @family scalars
 #' @useDynLib checkmate c_check_int
 #' @export

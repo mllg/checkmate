@@ -12,7 +12,7 @@ assertSubset(x, choices, empty.ok = TRUE, .var.name)
 testSubset(x, choices, empty.ok = TRUE)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{choices}{[\code{atomic}]\cr

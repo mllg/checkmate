@@ -1,6 +1,7 @@
 Version 1.5.1 (20xx-xx-xx)
 -------------------------------------------------------------------------------
 * Fixed a bug handling complex number in checks for integerish values
+* Improved documentation
 
 Version 1.5.0 (2014-10-18)
 -------------------------------------------------------------------------------

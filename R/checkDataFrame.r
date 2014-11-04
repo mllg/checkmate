@@ -1,9 +1,10 @@
 #' Check if an argument is a data frame
 #'
 #' @templateVar fn DataFrame
-#' @template checker
+#' @template x
 #' @inheritParams checkMatrix
 #' @inheritParams checkList
+#' @template checker
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_dataframe

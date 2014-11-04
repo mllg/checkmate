@@ -12,7 +12,7 @@ assertEnvironment(x, contains = character(0L), .var.name)
 testEnvironment(x, contains = character(0L))
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[any]\cr
 Object to check.}
 
 \item{contains}{[\code{character}]\cr

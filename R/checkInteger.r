@@ -1,10 +1,11 @@
 #' Check if an argument is vector of type integer
 #'
 #' @templateVar fn Integer
+#' @template x
 #' @template na-handling
-#' @template checker
 #' @inheritParams checkVector
 #' @template bounds
+#' @template checker
 #' @family basetypes
 #' @seealso \code{\link{asInteger}}
 #' @useDynLib checkmate c_check_integer
