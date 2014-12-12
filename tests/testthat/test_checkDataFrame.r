@@ -25,9 +25,9 @@ test_that("checkDataFrame", {
   # check nrow and ncol constraints
   expect_true(testDataFrame(x, nrows = 150L, ncols = 5L))
   expect_false(testDataFrame(x, nrows = 150L, ncols = 7L))
-  expect_true(testDataFrame(x, min.rows = 2L, ncols = 4L))
-  expect_false(testDataFrame(x, min.rows = 151L, ncols = 4L))
-  expect_false(testDataFrame(x, min.rows = 1L, ncols = 6L))
+  expect_true(testDataFrame(x, min.rows = 2L, min.cols = 4L))
+  expect_false(testDataFrame(x, min.rows = 151L, min.cols = 4L))
+  expect_false(testDataFrame(x, min.rows = 1L, min.cols = 6L))
 
 })
 
