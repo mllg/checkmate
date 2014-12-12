@@ -158,7 +158,7 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
         if (!isNull(rows)) {
             R_len_t cmp = asCount(rows, "rows");
             if (xrows != cmp)
-                return Msgf("Must have at exactly %i rows", cmp);
+                return Msgf("Must have exactly %i rows", cmp);
         }
     }
     if (!isNull(min_cols) || !isNull(cols)) {
@@ -171,7 +171,7 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
         if (!isNull(cols)) {
             R_len_t cmp = asCount(cols, "cols");
             if (xcols != cmp)
-                return Msgf("Must have at exactly %i cols", cmp);
+                return Msgf("Must have exactly %i cols", cmp);
         }
     }
 
