@@ -15,7 +15,10 @@ branches:
    - /-expt$/
 notifications:
   email:
+    recipients:
+        - michellang@gmail.com
+        - bernd_bischl@gmx.net
     on_success: change
-    on_failure: change
+    on_failure: always
 after_failure:
   - ./travis-tool.sh dump_logs
