@@ -147,24 +147,6 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     return MSGT;
 }
 
-/* FIXME: I am unsure but there seems to be a bug in R C API
- * ncols(x) does not work for data.frames
- * so we now have our own little ncol / nrow wrappers....... :(
-*/
-static R_len_t get_nrows(SEXP x) {
-  if (isFrame(x))
-    return length(x) == 0 ? 0 : length(VECTOR_ELT(x, 0));
-  else
-    return nrows(x);
-}
-
-static R_len_t get_ncols(SEXP x) {
-  if (isFrame(x))
-    return length(x);
-  else
-    return ncols(x);
-}
-
 static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols) {
     if (!isNull(min_rows) || !isNull(rows)) {
         R_len_t xrows = get_nrows(x);
