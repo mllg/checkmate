@@ -1,4 +1,4 @@
-Version 1.5.1 (20xx-xx-xx)
+Version 1.5.1 (2014-12-13)
 -------------------------------------------------------------------------------
 * Included a workaround for R's nrow and ncol to properly worh with data frames
 * Fixed a bug handling complex number in checks for integerish values
