@@ -34,4 +34,16 @@ test_that("checkFactor", {
   expect_error(assertFactor(x, ordered = TRUE), "ordered")
   x = as.ordered(x)
   expect_error(assertFactor(x, ordered = FALSE), "unordered")
+
+
+  x = factor(c("a", "b"))
+  expect_true(testFactor(x, n.levels = 2))
+  expect_true(testFactor(x, min.levels = 2))
+  expect_true(testFactor(x, max.levels = 2))
+  expect_false(testFactor(x, n.levels = 1))
+  expect_false(testFactor(x, min.levels = 3))
+  expect_false(testFactor(x, max.levels = 1))
+
+  expect_error(testFactor(x, n.levels = NA))
+  expect_error(assertFactor(x, n.levels = 1), "exactly 1 level")
 })

@@ -1,3 +1,7 @@
+Version 1.5.2 (2015-xx-xx)
+-------------------------------------------------------------------------------
+* New arguments for *Factor functions: (n|min|max).levels.
+
 Version 1.5.1 (2014-12-13)
 -------------------------------------------------------------------------------
 * Included a workaround for R's nrow and ncol to properly worh with data frames
