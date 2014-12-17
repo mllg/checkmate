@@ -1,5 +1,6 @@
 #' Quick argument checks on (builtin) R types
 #'
+#' @description
 #' The provided functions parse rules which allow to express some of the most
 #' frequent argument checks by typing just a few letters.
 #'
@@ -73,7 +74,7 @@
 #' @note
 #' The functions are inspired by the blog post of Bogumił Kamiński:
 #' \url{http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html}.
-#' The implementation is mostly written in \code{C} to minimize the overhead.
+#' The implementation is mostly written in C to minimize the overhead.
 #' @seealso \code{\link{qtestr}} and \code{\link{qassertr}} for efficient checks
 #' of list elements and data frame columns.
 #' @useDynLib checkmate c_qassert
@@ -104,7 +105,6 @@ qassert = function(x, rules, .var.name) {
     mstop(qamsg(x, res, vname(x, .var.name)))
   invisible(TRUE)
 }
-
 
 #' @useDynLib checkmate c_qtest
 #' @rdname qassert

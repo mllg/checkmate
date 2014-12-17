@@ -1,5 +1,6 @@
 #' Quick recursive arguments checks on lists and data frames
 #'
+#' @description
 #' These functions are the tuned counterparts of \code{\link{qtest}} and
 #' \code{\link{qassert}} tailored for recursive checks of list
 #' elements or data frame columns.
