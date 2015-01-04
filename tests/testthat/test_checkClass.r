@@ -20,8 +20,10 @@ test_that("checkClass", {
   expect_true(testClass(foo, c("a", "b"), ordered=TRUE))
   expect_false(testClass(foo, c("b", "a"), ordered=TRUE))
 
-  foo = 1
-  class(foo) = c("a", "b")
-  expect_error(assertClass(foo, "c"), "Must have class 'c', not 'a,b'")
-  expect_error(assertClass(foo, "b", ordered=TRUE), "Must have class 'b' in position 1, not 'a,b'")
+  foo = setClasses(1, c("a", "b"))
+  expect_error(assertClass(foo, "c"), "Must have class 'c', but has classes 'a','b'")
+  expect_error(assertClass(foo, "b", ordered=TRUE), "Must have class 'b' in position 1, but has classes 'a','b'")
+
+  foo = setClasses(1, "a")
+  expect_error(assertClass(foo, "c"), "Must have class 'c', but has class 'a'")
 })
