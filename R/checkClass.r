@@ -27,12 +27,14 @@ checkClass = function(x, classes, ordered = FALSE) {
   qassert(ordered, "B1")
   ord = inherits(x, classes, TRUE)
   w = wf(ord == 0L)
+  # output whole class vector in case of an error to user
   if (length(w) > 0L)
-    return(sprintf("Must have class '%s'", classes[w]))
+    return(sprintf("Must have class '%s', not '%s'", classes[w], collapse(class(x))))
   if (ordered) {
     w = wf(ord != seq_along(ord))
     if (length(w) > 0L)
-      return(sprintf("Must have class '%s' in position %i", classes[w], w))
+      return(sprintf("Must have class '%s' in position %i, not '%s'",
+        classes[w], w, collapse(class(x))))
   }
   return(TRUE)
 }
