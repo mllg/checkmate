@@ -1,6 +1,6 @@
 src/.+\.o$
 src/.+\.so$
-tar.gz$
+\.tar\.gz$
 \.swp$
 ^\.gitignore$
 ^\.editorconfig$
@@ -10,3 +10,4 @@ tar.gz$
 ^man-roxygen
 ^makeR
 ^Makefile$
+^appveyor\.yml$
