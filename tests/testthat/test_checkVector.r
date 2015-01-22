@@ -52,3 +52,11 @@ test_that("checkVector", {
 
   expect_error(assertVector(iris, strict = TRUE), "vector")
 })
+
+test_that("arguments any.missing and all.missing are checked", {
+  x = 1
+  expect_error(checkVector(x, any.missing = 1), "flag")
+  expect_error(checkVector(x, any.missing = NA), "missing")
+  expect_error(checkVector(x, all.missing = 1), "flag")
+  expect_error(checkVector(x, all.missing = NA), "missing")
+})

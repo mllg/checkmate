@@ -44,3 +44,10 @@ test_that("checkMatrix", {
 
   expect_error(assertMatrix(matrix(), min.len = 99), "99")
 })
+
+test_that("dimension arugments are checked", {
+  x = matrix(1)
+  expect_error(checkMatrix(x, min.rows = 1.2), "count")
+  expect_error(checkMatrix(x, min.rows = NA_integer_), "missing")
+  expect_error(checkMatrix(x, min.rows = -1), ">= 0")
+})

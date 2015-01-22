@@ -42,6 +42,7 @@ test_that("checkIntegerish", {
   expect_false(testIntegerish(min-.1))
   expect_false(testIntegerish(max+.1))
 
-
+  expect_false(testIntegerish(NA, any.missing = FALSE))
+  expect_false(testIntegerish(NA, all.missing = FALSE))
   expect_error(assertIntegerish(x, tol=0), "integerish")
 })

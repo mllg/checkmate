@@ -58,6 +58,7 @@ test_that("integerish", {
   expect_succ(xb, "x")
   expect_succ(xi, "x")
   expect_succ(xr, "x")
+  expect_fail(xr, "X")
   expect_fail(1:3+.0001, "x")
   expect_fail(xd, "x")
 })
@@ -118,6 +119,7 @@ test_that("non-atomic types", {
   expect_fail(xe, "b")
   expect_fail(xf, "b")
   expect_fail(as.symbol("x"), "n")
+  expect_fail(xd, "a")
 })
 
 test_that("atomic types", {
@@ -126,6 +128,8 @@ test_that("atomic types", {
   expect_fail(xb, "A+")
   expect_succ(xi, "a+")
   expect_fail(xi, "A+")
+  expect_succ(xi, "n+")
+  expect_fail(xi, "N+")
   expect_succ(xr, "a+")
   expect_fail(xr, "A+")
   expect_succ(xm, "a+")

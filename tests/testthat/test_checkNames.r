@@ -37,3 +37,8 @@ test_that("checkNames", {
   x = c("a", "1")
   expect_error(assertNames(x, "strict"), "naming rules")
 })
+
+test_that("argument 'type' is checked", {
+  expect_error(checkNames("x", type = 1), "string")
+  expect_error(checkNames("x", type = NA_character_), "missing")
+})
