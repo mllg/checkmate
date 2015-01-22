@@ -54,7 +54,7 @@ R_len_t asCount(SEXP x, const char *vname) {
     if (xi == NA_INTEGER)
         error("Argument '%s' may not be missing", vname);
     if (xi < 0)
-        error("Argument '%s' must be > 0", vname);
+        error("Argument '%s' must be >= 0", vname);
     return xi;
 }
 
