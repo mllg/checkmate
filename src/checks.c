@@ -1,22 +1,18 @@
 #include "checks.h"
 #include <ctype.h>
 #include <string.h>
-#include "as_type.h"
 #include "cmessages.h"
 #include "is_integerish.h"
 #include "any_missing.h"
 #include "any_infinite.h"
 #include "all_missing.h"
 #include "all_nchar.h"
-#include "bounds.h"
 #include "helper.h"
 
 
 /*********************************************************************************************************************/
 /* Some helpers                                                                                                      */
 /*********************************************************************************************************************/
-typedef enum { T_UNDEF, T_UNNAMED, T_NAMED, T_UNIQUE, T_STRICT } name_t;
-
 static inline double asTol(SEXP tol) {
     return asNumber(tol, "tol");
 }
@@ -38,6 +34,53 @@ static inline Rboolean is_vector(SEXP x) {
     if (length(attr) > 0 && (TAG(attr) != R_NamesSymbol || CDR(attr) != R_NilValue))
         return FALSE;
     return TRUE;
+}
+
+static msg_t check_bounds(SEXP x, SEXP lower, SEXP upper) {
+    double tmp;
+
+    tmp = asNumber(lower, "lower");
+    if (R_FINITE(tmp)) {
+        if (isReal(x)) {
+            const double *xp = REAL(x);
+            const double * const xend = xp + length(x);
+            for (; xp != xend; xp++) {
+                if (!ISNAN(*xp) && *xp < tmp)
+                    return Msgf("All elements must be >= %g", tmp);
+            }
+        } else if (isInteger(x)) {
+            const int *xp = INTEGER(x);
+            const int * const xend = xp + length(x);
+            for (; xp != xend; xp++) {
+                if (*xp != NA_INTEGER && *xp < tmp)
+                    return Msgf("All elements must be >= %g", tmp);
+            }
+        } else {
+            error("Bound checks only possible for numeric variables");
+        }
+    }
+
+    tmp = asNumber(upper, "upper");
+    if (R_FINITE(tmp)) {
+        if (isReal(x)) {
+            const double *xp = REAL(x);
+            const double * const xend = xp + length(x);
+            for (; xp != xend; xp++) {
+                if (!ISNAN(*xp) && *xp > tmp)
+                    return Msgf("All elements must be <= %g", tmp);
+            }
+        } else if (isInteger(x)) {
+            const int *xp = INTEGER(x);
+            const int * const xend = xp + length(x);
+            for (; xp != xend; xp++) {
+                if (*xp != NA_INTEGER && *xp > tmp)
+                    return Msgf("All elements must be <= %g", tmp);
+            }
+        } else {
+            error("Bound checks only possible for numeric variables");
+        }
+    }
+    return MSGT;
 }
 
 /*********************************************************************************************************************/
@@ -68,49 +111,36 @@ static Rboolean check_strict_names(SEXP x) {
     return TRUE;
 }
 
-static name_t get_name_type(SEXP type) {
-    const char * const ctype = asString(type, "type");
-    if (strcmp(ctype, "unnamed") == 0)
-        return T_UNNAMED;
-    if (strcmp(ctype, "named") == 0)
-        return T_NAMED;
-    if (strcmp(ctype, "unique") == 0)
-        return T_UNIQUE;
-    if (strcmp(ctype, "strict") == 0)
-        return T_STRICT;
-    error("Unknown type definition '%s'", ctype);
-}
+static msg_t check_names(SEXP nn, SEXP type, const char * what) {
+    typedef enum { T_NAMED, T_UNIQUE, T_STRICT } name_t;
+    const char * expected = asString(type, "names");
 
-static name_t check_type(SEXP nn, name_t type) {
-    if (type == T_UNNAMED) {
-        if (!isNull(nn))
-            return T_UNNAMED;
+    if (strcmp(expected, "unnamed") == 0) {
+        if (isNull(nn))
+            return MSGT;
+        return Msgf("%s must be unnamed", what);
+    }
+
+    name_t checks;
+    if (strcmp(expected, "named") == 0) {
+        checks = T_NAMED;
+    } else if (strcmp(expected, "unique") == 0) {
+        checks = T_UNIQUE;
+    } else if (strcmp(expected, "strict") == 0) {
+        checks = T_STRICT;
     } else {
-        if (!check_valid_names(nn))
-            return T_NAMED;
-
-        if (type >= T_UNIQUE) {
-            if (!check_unique_names(nn))
-                return T_UNIQUE;
-
-            if (type >= T_STRICT && !check_strict_names(nn))
-                return T_STRICT;
-        }
+        error("Unknown type definition '%s'", expected);
     }
-    return T_UNDEF;
-}
 
-static msg_t check_names(SEXP x, SEXP nn, SEXP type, const char * what) {
-    name_t ntype = get_name_type(type);
-    if (length(x) > 0) {
-        switch(check_type(nn, ntype)) {
-            case T_UNDEF: break;
-            case T_UNNAMED: return Msgf("%s must be unnamed", what);
-            case T_NAMED: return Msgf("%s must be named", what);
-            case T_UNIQUE: return Msgf("%s must be uniquely named", what);
-            case T_STRICT: return Msgf("%s must be named according to R's variable naming rules", what);
-        }
+    if (!check_valid_names(nn))
+        return Msgf("%s must be named", what);
+    if (checks >= T_UNIQUE) {
+        if (!check_unique_names(nn))
+            return Msgf("%s must be uniquely named", what);
+        if (checks == T_STRICT && !check_strict_names(nn))
+            return Msgf("%s must be named according to R's variable naming rules", what);
     }
+
     return MSGT;
 }
 
@@ -142,8 +172,8 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     if (asFlag(unique, "unique") && any_duplicated(x, FALSE) > 0)
         return Msg("Contains duplicated values");
 
-    if (!isNull(names))
-        return check_names(x, getAttrib(x, R_NamesSymbol), names, "Vector");
+    if (!isNull(names) && length(x) > 0)
+        return check_names(getAttrib(x, R_NamesSymbol), names, "Vector");
     return MSGT;
 }
 
@@ -256,17 +286,17 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, S
 
         if (isInteger(nn)) {
             nn = PROTECT(coerceVector(nn, STRSXP));
-            msg = check_names(x, nn, row_names, "Rows");
+            msg = check_names(nn, row_names, "Rows");
             UNPROTECT(1);
         } else {
-            msg = check_names(x, nn, row_names, "Rows");
+            msg = check_names(nn, row_names, "Rows");
         }
         if (!msg.ok)
             return mwrap(msg);
     }
 
     if (!isNull(col_names)) {
-        msg = check_names(x, getAttrib(x, R_NamesSymbol), col_names, "Columns");
+        msg = check_names(getAttrib(x, R_NamesSymbol), col_names, "Columns");
         if (!msg.ok)
             return mwrap(msg);
     }
@@ -322,11 +352,11 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
     if (!msg.ok)
         return mwrap(msg);
 
-    if (!isNull(row_names)) {
+    if (!isNull(row_names) && length(x) > 0) {
         SEXP nn = getAttrib(x, R_DimNamesSymbol);
         if (!isNull(nn))
             nn = VECTOR_ELT(nn, 0);
-        msg = check_names(x, nn, row_names, "Rows");
+        msg = check_names(nn, row_names, "Rows");
         if (!msg.ok)
             return mwrap(msg);
     }
@@ -335,7 +365,7 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
         SEXP nn = getAttrib(x, R_DimNamesSymbol);
         if (!isNull(nn))
             nn = VECTOR_ELT(nn, 1);
-        msg = check_names(x, nn, col_names, "Columns");
+        msg = check_names(nn, col_names, "Columns");
         if (!msg.ok)
             return mwrap(msg);
     }
@@ -353,23 +383,15 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
 }
 
 SEXP c_check_named(SEXP x, SEXP type) {
-    if (!isNull(type))
-        return mwrap(check_names(x, getAttrib(x, R_NamesSymbol), type, "Object"));
+    if (!isNull(type) && length(x) > 0)
+        return mwrap(check_names(getAttrib(x, R_NamesSymbol), type, "Object"));
     return ScalarLogical(TRUE);
 }
 
 SEXP c_check_names(SEXP x, SEXP type) {
     if (!isString(x))
         return CheckResult("Must be a character vector of names");
-    name_t res = check_type(x, get_name_type(type));
-    switch(res) {
-        case T_UNDEF: break;
-        case T_UNNAMED: return CheckResult("Names must be missing (NULL)");
-        case T_NAMED: return CheckResult("Valid names required");
-        case T_UNIQUE: return CheckResult("All names must be unique");
-        case T_STRICT: return CheckResult("All names must comply to R's variable naming rules");
-    }
-    return ScalarLogical(TRUE);
+    return mwrap(check_names(x, type, "Object"));
 }
 
 SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {

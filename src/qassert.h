@@ -5,5 +5,6 @@
 #include <Rinternals.h>
 
 SEXP c_qassert(SEXP, SEXP, SEXP);
+SEXP c_qtest(SEXP, SEXP, SEXP);
 
 #endif
