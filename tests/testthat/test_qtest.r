@@ -57,6 +57,8 @@ test_that("type and missingness", {
 test_that("integerish", {
   expect_succ(xb, "x")
   expect_succ(xi, "x")
+  expect_succ(xi, "x")
+  expect_fail(xi, "X")
   expect_succ(xr, "x")
   expect_fail(xr, "X")
   expect_fail(1:3+.0001, "x")
@@ -130,6 +132,8 @@ test_that("atomic types", {
   expect_fail(xi, "A+")
   expect_succ(xi, "n+")
   expect_fail(xi, "N+")
+  expect_succ(xr, "n+")
+  expect_fail(xr, "N+")
   expect_succ(xr, "a+")
   expect_fail(xr, "A+")
   expect_succ(xm, "a+")
