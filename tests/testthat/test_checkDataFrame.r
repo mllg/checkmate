@@ -19,7 +19,7 @@ test_that("checkDataFrame", {
   expect_true(testDataFrame(data.frame(), types = "NULL"))
 
   expect_true(testDataFrame(data.frame(), types = "numeric"))
-  expect_error(assertDataFrame(1), "data frame")
+  expect_error(assertDataFrame(1), "data.frame")
   expect_error(assertDataFrame(x, types = "numeric"), "types: numeric")
 
   # check nrow and ncol constraints
