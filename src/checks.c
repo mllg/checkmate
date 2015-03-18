@@ -278,8 +278,7 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, S
 
     msg_t msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
     if (!msg.ok)
-        return mwrap(msg);
-
+        return make_result(msg.msg);
 
     if (!isNull(row_names)) {
         SEXP nn = getAttrib(x, install("row.names"));
@@ -292,14 +291,15 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP min_rows, SEXP min_cols, S
             msg = check_names(nn, row_names, "Rows");
         }
         if (!msg.ok)
-            return mwrap(msg);
+            return make_result(msg.msg);
     }
 
     if (!isNull(col_names)) {
         msg = check_names(getAttrib(x, R_NamesSymbol), col_names, "Columns");
         if (!msg.ok)
-            return mwrap(msg);
+            return make_result(msg.msg);
     }
+
     return ScalarLogical(TRUE);
 }
 
@@ -314,7 +314,7 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
         return make_result("Must be integer");
     msg_t msg = check_bounds(x, lower, upper);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
@@ -324,7 +324,7 @@ SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missi
 
     msg_t msg = check_bounds(x, lower, upper);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
@@ -346,11 +346,11 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
 
     msg_t msg = check_storage(x, mode);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
 
     msg = check_matrix_props(x, any_missing, min_rows, min_cols, rows, cols);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
 
     if (!isNull(row_names) && length(x) > 0) {
         SEXP nn = getAttrib(x, R_DimNamesSymbol);
@@ -358,7 +358,7 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
             nn = VECTOR_ELT(nn, 0);
         msg = check_names(nn, row_names, "Rows");
         if (!msg.ok)
-            return mwrap(msg);
+            return make_result(msg.msg);
     }
 
     if (!isNull(col_names) && length(x) > 0) {
@@ -367,7 +367,7 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
             nn = VECTOR_ELT(nn, 1);
         msg = check_names(nn, col_names, "Columns");
         if (!msg.ok)
-            return mwrap(msg);
+            return make_result(msg.msg);
     }
 
     return ScalarLogical(TRUE);
@@ -378,7 +378,7 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
         return make_result("Must be an array");
     msg_t msg = check_storage(x, mode);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
     return mwrap(check_array_props(x, any_missing, d));
 }
 
@@ -401,7 +401,7 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missi
         return make_result("Must be finite");
     msg_t msg = check_bounds(x, lower, upper);
     if (!msg.ok)
-        return mwrap(msg);
+        return make_result(msg.msg);
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
 
