@@ -8,6 +8,5 @@ src/.+\.so$
 ^travis.yml$
 ^README.md$
 ^man-roxygen
-^makeR
 ^Makefile$
 ^appveyor\.yml$
