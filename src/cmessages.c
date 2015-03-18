@@ -21,7 +21,7 @@ SEXP make_result(const char *fmt, ...) {
     return ScalarString(mkChar(msg));
 }
 
-static const char * guessType(SEXP x) {
+const char * guessType(SEXP x) {
     SEXP attr = getAttrib(x, R_ClassSymbol);
     if (!isNull(attr))
         return CHAR(STRING_ELT(attr, 0));

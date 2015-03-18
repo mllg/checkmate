@@ -340,7 +340,7 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        return err_msg ? make_msg("Must be of class '%s', not '%s'", CLSTR[checker->class.name], type2char(TYPEOF(x))) : MSGF;
+        return err_msg ? make_msg("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guessType(x)) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
