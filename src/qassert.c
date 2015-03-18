@@ -57,8 +57,8 @@ static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
 static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
 
-static const char const * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
-static const char const * CLSTR[] = {
+static const char * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
+static const char * CLSTR[] = {
      "logical", "integer", "integerish", "numeric", "double", "string", "list", "complex",
      "atomic", "atomic vector", "matrix", "data frame", "environment", "function", "NULL"
 };
