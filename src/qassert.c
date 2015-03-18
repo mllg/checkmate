@@ -72,14 +72,14 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
         const double * const xend = xp + length(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
-                return Msgf("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
+                return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
     } else if (isInteger(x)) {
         const int *xp = INTEGER(x);
         const int * const xend = xp + length(x);
         for (; xp != xend; xp++) {
             if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
-                return Msgf("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
+                return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
     } else {
         error("Bound checks only possible for numeric variables");
@@ -340,15 +340,15 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        return err_msg ? Msgf("Must be of class '%s', not '%s'", CLSTR[checker->class.name], type2char(TYPEOF(x))) : MSGF;
+        return err_msg ? make_msg("Must be of class '%s', not '%s'", CLSTR[checker->class.name], type2char(TYPEOF(x))) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
-        return err_msg ? Msg("May not contain missing values") : MSGF;
+        return err_msg ? make_msg("May not contain missing values") : MSGF;
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        return err_msg ? Msgf("Must be of length %s %i, but has length %i", CMPSTR[checker->len.op], checker->len.cmp, length(x)) : MSGF;
+        return err_msg ? make_msg("Must be of length %s %i, but has length %i", CMPSTR[checker->len.op], checker->len.cmp, length(x)) : MSGF;
     }
 
     if (checker->lower.fun != NULL) {

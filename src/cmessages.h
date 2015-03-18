@@ -12,10 +12,8 @@ typedef struct {
 
 extern const msg_t MSGT;
 extern const msg_t MSGF;
-msg_t Msg(const char *);
-msg_t Msgf(const char *, ...);
-SEXP CheckResult(const char *);
-SEXP CheckResultf(const char *, ...);
+msg_t make_msg(const char *, ...);
+SEXP make_result(const char *, ...);
 SEXP mwrap(msg_t);
 
 #endif
