@@ -33,5 +33,6 @@ assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, .var.name) 
 #' @useDynLib checkmate c_check_array
 #' @export
 testArray = function(x, mode = NULL, any.missing = TRUE, d = NULL) {
-  isTRUE(.Call("c_check_array", x, mode, any.missing, d, PACKAGE = "checkmate"))
+  res = .Call("c_check_array", x, mode, any.missing, d, PACKAGE = "checkmate")
+  isTRUE(res)
 }

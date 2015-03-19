@@ -25,5 +25,6 @@ assertScalar = function(x, na.ok = FALSE, .var.name) {
 #' @rdname checkScalar
 #' @export
 testScalar = function(x, na.ok = FALSE) {
-  isTRUE(.Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate"))
+  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
+  isTRUE(res)
 }

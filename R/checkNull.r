@@ -23,5 +23,5 @@ assertNull = function(x, .var.name) {
 #' @rdname checkNull
 #' @export
 testNull = function(x) {
-  isTRUE(checkNull(x))
+  is.null(x)
 }

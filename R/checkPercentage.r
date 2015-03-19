@@ -26,5 +26,6 @@ assertPercentage = function(x, na.ok = FALSE, .var.name) {
 #' @rdname checkPercentage
 #' @export
 testPercentage = function(x, na.ok = FALSE) {
-  isTRUE(.Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate"))
+  res = .Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate")
+  isTRUE(res)
 }

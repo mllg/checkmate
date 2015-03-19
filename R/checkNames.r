@@ -35,5 +35,6 @@ assertNames = function(x, type = "named", .var.name) {
 #' @useDynLib checkmate c_check_names
 #' @export
 testNames = function(x, type = "named") {
-  isTRUE(.Call("c_check_names", x, type, PACKAGE = "checkmate"))
+  res = .Call("c_check_names", x, type, PACKAGE = "checkmate")
+  isTRUE(res)
 }

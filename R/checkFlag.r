@@ -30,5 +30,6 @@ assertFlag = function(x, na.ok = FALSE, .var.name) {
 #' @useDynLib checkmate c_check_flag
 #' @export
 testFlag = function(x, na.ok = FALSE) {
-  isTRUE(.Call("c_check_flag", x, na.ok, PACKAGE = "checkmate"))
+  res = .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
+  isTRUE(res)
 }

@@ -30,5 +30,6 @@ assertNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missi
 #' @useDynLib checkmate c_check_numeric
 #' @export
 testNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(.Call("c_check_numeric", x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
+  res = .Call("c_check_numeric", x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  isTRUE(res)
 }

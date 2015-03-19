@@ -28,5 +28,6 @@ assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Ma
 #' @rdname checkInt
 #' @export
 testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
-  isTRUE(.Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate"))
+  res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
+  isTRUE(res)
 }

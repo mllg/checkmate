@@ -48,8 +48,8 @@ assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, 
 #' @useDynLib checkmate c_check_factor
 #' @export
 testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL) {
-  isTRUE(.Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")) &&
-  isTRUE(checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels))
+  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  isTRUE(res) && isTRUE(checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels))
 }
 
 checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {

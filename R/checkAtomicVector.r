@@ -46,5 +46,6 @@ assertAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = N
 #' @useDynLib checkmate c_check_atomic_vector
 #' @export
 testAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  isTRUE(.Call("c_check_atomic_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate"))
+  res = .Call("c_check_atomic_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  isTRUE(res)
 }
