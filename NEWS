@@ -1,6 +1,7 @@
 Version 1.5.2 (2015-xx-xx)
 -------------------------------------------------------------------------------
 * New arguments for *Factor functions: (n|min|max).levels.
+* Improved error messages for type checks
 
 Version 1.5.1 (2014-12-13)
 -------------------------------------------------------------------------------
