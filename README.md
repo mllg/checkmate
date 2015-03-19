@@ -1,6 +1,6 @@
 # checkmate
 
-[![CRAN](https://img.shields.io/badge/cran-1.5.1-yellow.svg)](http://cran.r-project.org/web/packages/checkmate/)
+[![CRAN](https://img.shields.io/badge/cran-1.5.2-yellow.svg)](http://cran.r-project.org/web/packages/checkmate/)
 [![Build Status](https://travis-ci.org/mllg/checkmate.svg)](https://travis-ci.org/mllg/checkmate)
 [![Build status](https://ci.appveyor.com/api/projects/status/y4ayps61hjd3375o/branch/master?svg=true)](https://ci.appveyor.com/project/mllg/checkmate/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/r/mllg/checkmate?branch=master)

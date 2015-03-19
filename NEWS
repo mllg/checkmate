@@ -1,4 +1,4 @@
-Version 1.5.2 (2015-xx-xx)
+Version 1.5.2 (2015-03-19)
 -------------------------------------------------------------------------------
 * Fixed: (assert|check|test)Character(NA_character_, min.chars = 1) does not
   eval to TRUE anymore.
