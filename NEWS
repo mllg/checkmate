@@ -1,7 +1,10 @@
 Version 1.5.2 (2015-xx-xx)
 -------------------------------------------------------------------------------
+* Fixed: (assert|check|test)Character(NA_character_, min.chars = 1) does not
+  eval to TRUE anymore.
 * New arguments for *Factor functions: (n|min|max).levels.
-* Improved error messages for type checks
+* Improved error messages for type and length checks
+* Improved error messages for missing arguments
 
 Version 1.5.1 (2014-12-13)
 -------------------------------------------------------------------------------
