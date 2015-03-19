@@ -22,5 +22,5 @@ test_that("guessType", {
   expect_true(grepl("matrix'$", checkLogical(xm)))
   expect_true(grepl("array'$", checkLogical(xa)))
   expect_true(grepl("frame'$", checkLogical(xf)))
-  expect_true(grepl("myclass'$", checkLogical(setClasses(1, "myclass"))))
+  x = 1; class(x) = "myclass"; expect_true(grepl("myclass'$", checkLogical(x)))
 })
