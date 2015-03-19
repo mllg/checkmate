@@ -69,3 +69,13 @@ test_that("dimension arugments are checked", {
   expect_error(checkMatrix(x, min.rows = NA_integer_), "missing")
   expect_error(checkMatrix(x, min.rows = -1), ">= 0")
 })
+
+test_that("dimesions are reported correctly", {
+  x = matrix(1:42, ncol = 1)
+  expect_true(grepl(42, checkMatrix(x, nrows = 43)))
+  expect_true(grepl(42, checkMatrix(x, min.rows = 43)))
+
+  x = t(x)
+  expect_true(grepl(42, checkMatrix(x, ncols = 43)))
+  expect_true(grepl(42, checkMatrix(x, min.cols = 43)))
+})

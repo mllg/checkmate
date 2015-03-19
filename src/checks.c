@@ -118,7 +118,7 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
     if (strcmp(expected, "unnamed") == 0) {
         if (isNull(nn))
             return MSGT;
-        return make_msg("%s must be unnamed", what);
+        return make_msg("%s must be unnamed, but has names", what);
     }
 
     name_t checks;
@@ -148,19 +148,19 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     if (!isNull(len)) {
         R_len_t n = asCount(len, "len");
         if (length(x) != n)
-            return make_msg("Must have length %i", n);
+            return make_msg("Must have length %i, but has length %i", n, length(x));
     }
 
     if (!isNull(min_len)) {
         R_len_t n = asCount(min_len, "min.len");
         if (length(x) < n)
-            return make_msg("Must have length >= %i", n);
+            return make_msg("Must have length >= %i, but has length %i", n, length(x));
     }
 
     if (!isNull(max_len)) {
         R_len_t n = asCount(max_len, "max.len");
         if (length(x) > n)
-            return make_msg("Must have length <= %i", n);
+            return make_msg("Must have length <= %i, but has length %i", n, length(x));
     }
 
     if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
@@ -183,12 +183,12 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
         if (!isNull(min_rows)) {
             R_len_t cmp = asCount(min_rows, "min.rows");
             if (xrows < cmp)
-                return make_msg("Must have at least %i rows", cmp);
+                return make_msg("Must have at least %i rows, but has %i rows", cmp, xrows);
         }
         if (!isNull(rows)) {
             R_len_t cmp = asCount(rows, "rows");
             if (xrows != cmp)
-                return make_msg("Must have exactly %i rows", cmp);
+                return make_msg("Must have exactly %i rows, but has %i rows", cmp, xrows);
         }
     }
     if (!isNull(min_cols) || !isNull(cols)) {
@@ -196,12 +196,12 @@ static msg_t check_matrix_props(SEXP x, SEXP any_missing, SEXP min_rows, SEXP mi
         if (!isNull(min_cols)) {
             R_len_t cmp = asCount(min_cols, "min.cols");
             if (xcols < cmp)
-                return make_msg("Must have at least %i cols", cmp);
+                return make_msg("Must have at least %i cols, but has %i cols", cmp, xcols);
         }
         if (!isNull(cols)) {
             R_len_t cmp = asCount(cols, "cols");
             if (xcols != cmp)
-                return make_msg("Must have exactly %i cols", cmp);
+                return make_msg("Must have exactly %i cols, but has %i cols", cmp, xcols);
         }
     }
 
@@ -242,8 +242,9 @@ static msg_t check_storage(SEXP x, SEXP mode) {
 static msg_t check_array_props(SEXP x, SEXP any_missing, SEXP d) {
     if (!isNull(d)) {
         int di = asCount(d, "d");
-        if (LENGTH(getAttrib(x, R_DimSymbol)) != di)
-            return make_msg("Must be a %i-d array", di);
+        R_len_t ndim = length(getAttrib(x, R_DimSymbol));
+        if (ndim != di)
+            return make_msg("Must be a %i-d array, but has dimension %i", di, ndim);
     }
     if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
         return make_msg("Contains missing values");

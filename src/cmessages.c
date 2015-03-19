@@ -28,7 +28,7 @@ const char * guessType(SEXP x) {
 
     attr = getAttrib(x, R_DimSymbol);
     if (!isNull(attr))
-        return LENGTH(attr) == 2 ? "matrix" : "array";
+        return length(attr) == 2 ? "matrix" : "array";
 
     return type2char(TYPEOF(x));
 }

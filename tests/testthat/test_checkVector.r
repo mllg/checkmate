@@ -60,3 +60,13 @@ test_that("arguments any.missing and all.missing are checked", {
   expect_error(checkVector(x, all.missing = 1), "flag")
   expect_error(checkVector(x, all.missing = NA), "missing")
 })
+
+test_that("length is correctly reported", {
+  x = 1:42
+  expect_true(grepl(42, checkVector(x, len = 1), fixed = TRUE))
+  expect_true(grepl(42, checkVector(x, min.len = 43), fixed = TRUE))
+  expect_true(grepl(42, checkVector(x, max.len = 1), fixed = TRUE))
+  expect_true(grepl(43, checkVector(x, len = 43), fixed = TRUE))
+  expect_true(grepl(43, checkVector(x, min.len = 43), fixed = TRUE))
+  expect_true(grepl(41, checkVector(x, max.len = 41), fixed = TRUE))
+})
