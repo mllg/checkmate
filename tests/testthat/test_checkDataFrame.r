@@ -56,3 +56,17 @@ test_that("checkDataFrame name checking works", {
   expect_true(assertDataFrame(df, row.names = "named"))
   expect_error(assertDataFrame(df, row.names = "strict"), "naming rules")
 })
+
+test_that("dimension checks work for empty frames", {
+  x = iris[, -c(1:5)]
+  expect_true(testDataFrame(x, min.rows = 5))
+  expect_true(testDataFrame(x, nrows = 150))
+  expect_false(testDataFrame(x, min.rows = 151))
+  expect_false(testDataFrame(x, nrows = 1))
+
+  x = iris[-c(1:150), ]
+  expect_true(testDataFrame(x, min.cols = 1))
+  expect_true(testDataFrame(x, ncols = 5))
+  expect_false(testDataFrame(x, min.cols = 6))
+  expect_false(testDataFrame(x, ncols = 1))
+})

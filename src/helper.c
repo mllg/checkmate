@@ -16,17 +16,16 @@ Rboolean isStrictlyNumeric(SEXP x) {
  * so we now have our own little ncol / nrow wrappers....... :(
 */
 R_len_t get_nrows(SEXP x) {
-  if (isFrame(x))
-    return length(x) == 0 ? 0 : length(VECTOR_ELT(x, 0));
-  else
+    if (isFrame(x))
+        return length(getAttrib(x, R_RowNamesSymbol));
     return nrows(x);
 }
 
 R_len_t get_ncols(SEXP x) {
-  if (isFrame(x))
-    return length(x);
-  else
-    return ncols(x);
+    if (isFrame(x))
+        return length(x);
+    else
+        return ncols(x);
 }
 
 
