@@ -17,6 +17,7 @@ test_that("checkInteger", {
   expect_false(testInteger(1:3, any.missing = FALSE, len = 5))
   expect_true(testInteger(1:3, lower = 1L, upper = 3L))
   expect_false(testInteger(1:3, lower = 5))
+  expect_false(testInteger(1:3, upper = 1))
 
   expect_error(assertInteger(1), "integer")
 })

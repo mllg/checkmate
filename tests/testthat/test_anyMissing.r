@@ -63,6 +63,18 @@ test_that("allMissing", {
   expect_false(allMissing(xm))
   expect_false(allMissing(xf))
 
+  xb[] = xi[] = xd[] = xc[] = xm[] = xs = NA
+  xl = list(NULL, NULL)
+  xf$a = xf$b = NA
+
+  expect_true(allMissing(xb))
+  expect_true(allMissing(xi))
+  expect_true(allMissing(xd))
+  expect_true(allMissing(xc))
+  expect_true(allMissing(xs))
+  expect_true(allMissing(xl))
+  expect_true(allMissing(xm))
+  expect_true(allMissing(xf))
 
   expect_false(allMissing(as.raw(1)))
   expect_false(allMissing(NULL))
