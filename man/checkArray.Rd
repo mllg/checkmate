@@ -6,11 +6,14 @@
 \alias{testArray}
 \title{Check if an argument is an array}
 \usage{
-checkArray(x, mode = NULL, any.missing = TRUE, d = NULL)
+checkArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
+  max.d = NULL)
 
-assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, .var.name)
+assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
+  max.d = NULL, .var.name)
 
-testArray(x, mode = NULL, any.missing = TRUE, d = NULL)
+testArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
+  max.d = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -25,7 +28,15 @@ Storage mode of the matrix. Matricies can hold \dQuote{logical},
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{d}{[\code{integer(1)}]\cr
-Dimensionality of array.
+Exact dimensionality of array \code{x}.
+Default is \code{NULL} (no check).}
+
+\item{min.d}{[\code{integer(1)}]\cr
+Minimum dimensionality of array \code{x}.
+Default is \code{NULL} (no check).}
+
+\item{max.d}{[\code{integer(1)}]\cr
+Maximum dimensionality of array \code{x}.
 Default is \code{NULL} (no check).}
 
 \item{.var.name}{[character(1)]\cr

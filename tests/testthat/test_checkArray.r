@@ -10,6 +10,12 @@ test_that("checkArray", {
   expect_true(testArray(x))
   expect_true(testArray(x, d = 2L))
   expect_false(testArray(x, d = 1L))
+  expect_true(testArray(x, min.d = 0L))
+  expect_true(testArray(x, min.d = 1L))
+  expect_true(testArray(x, max.d = 2L))
+  expect_true(testArray(x, max.d = 3L))
+  expect_false(testArray(x, min.d = 3L))
+  expect_false(testArray(x, max.d = 1L))
 
   x[2,2] = NA
   expect_true(testMatrix(x))

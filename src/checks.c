@@ -239,20 +239,6 @@ static msg_t check_storage(SEXP x, SEXP mode) {
     return MSGT;
 }
 
-static msg_t check_array_props(SEXP x, SEXP any_missing, SEXP d) {
-    if (!isNull(d)) {
-        int di = asCount(d, "d");
-        R_len_t ndim = length(getAttrib(x, R_DimSymbol));
-        if (ndim != di)
-            return make_msg("Must be a %i-d array, but has dimension %i", di, ndim);
-    }
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
-        return make_msg("Contains missing values");
-
-    return MSGT;
-}
-
-
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
@@ -374,13 +360,37 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d) {
+SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP max_d) {
     if (!isArray(x))
         return make_type_error(x, "array");
+
     msg_t msg = check_storage(x, mode);
     if (!msg.ok)
         return make_result(msg.msg);
-    return mwrap(check_array_props(x, any_missing, d));
+
+    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
+        return make_result("Contains missing values");
+
+    R_len_t ndim = length(getAttrib(x, R_DimSymbol));
+    if (!isNull(d)) {
+        int di = asCount(d, "d");
+        if (ndim != di)
+            return make_result("Must be a %i-d array, but has dimension %i", di, ndim);
+    }
+
+    if (!isNull(min_d)) {
+        int di = asCount(min_d, "min.d");
+        if (ndim < di)
+            return make_result("Must have >=%i dimensions, but has dimension %i", di, ndim);
+    }
+
+    if (!isNull(max_d)) {
+        int di = asCount(max_d, "max.d");
+        if (ndim > di)
+            return make_result("Must have <=%i dimensions, but has dimension %i", di, ndim);
+    }
+
+    return ScalarLogical(TRUE);
 }
 
 SEXP c_check_named(SEXP x, SEXP type) {

@@ -1,6 +1,9 @@
 Version 1.5.3 (2015-xx-xx)
 -------------------------------------------------------------------------------
 * Fixed a bug regarding the number of rows in zero-column data frames.
+* Fixed a bug where the type of lists with dimension attribute where
+  reported as "array" or "matrix"
+* Family *Array: new arguments "min.d" and "max.d"
 
 Version 1.5.2 (2015-03-19)
 -------------------------------------------------------------------------------
