@@ -27,7 +27,7 @@ const char * guessType(SEXP x) {
         return CHAR(STRING_ELT(attr, 0));
 
     attr = getAttrib(x, R_DimSymbol);
-    if (!isNull(attr))
+    if (!isNull(attr) && isVectorAtomic(x))
         return length(attr) == 2 ? "matrix" : "array";
 
     return type2char(TYPEOF(x));

@@ -25,3 +25,14 @@ test_that("checkArray", {
 
   expect_error(assertArray(1:3), "array")
 })
+
+test_that("type guessing works", {
+  x = array(1:4)
+  expect_match(checkCharacter(x), "array")
+
+  x = array(1:4, dim = c(2, 2))
+  expect_match(checkCharacter(x), "matrix")
+
+  x = array(1:9, dim = c(3, 3, 3))
+  expect_match(checkCharacter(x), "array")
+})

@@ -50,3 +50,8 @@ test_that("checkAtomicVector", {
   expected = setNames(c(FALSE, TRUE, TRUE, FALSE, FALSE), c("list", "factor", "integer", "NULL", "data.frame"))
   expect_equal(expected, sapply(li, testAtomicVector))
 })
+
+test_that("type guessing works (#48)", {
+  x = structure(list(1:4, letters[1:3]), dim = c(2, 1))
+  expect_match(checkAtomic(x), "list")
+})
