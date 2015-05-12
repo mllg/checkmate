@@ -17,13 +17,12 @@ checkDirectory = function(x, access = "") {
   if (!qtest(x, "S+"))
     return("No directory provided")
 
-  isdir = file.info(x)$isdir
-  w = wf(is.na(isdir))
-  if (length(w) > 0L)
+  w = wf(!dir.exists(x))
+  if (length(w) > 0L) {
+    if (file.exists(x[w]))
+      return(sprintf("Directory extected, but file in place: '%s'", x[w]))
     return(sprintf("Directory '%s' does not exists", x[w]))
-  w = wf(!isdir)
-  if (length(w) > 0L)
-    return(sprintf("Directory extected, but file in place: '%s'", x[w]))
+  }
 
   return(checkAccess(x, access))
 }

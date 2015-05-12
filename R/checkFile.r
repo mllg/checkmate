@@ -16,13 +16,13 @@ checkFile = function(x, access = "") {
   if (!qtest(x, "S+"))
     return("No file provided")
 
-  isdir = file.info(x)$isdir
-  not.ok = wf(is.na(isdir))
-  if (length(not.ok) > 0L)
-    return(sprintf("File does not exist: '%s'", x[not.ok]))
-  not.ok = wf(isdir)
-  if (length(not.ok) > 0L)
-    return(sprintf("File expected, but directory in place: '%s'", x[not.ok]))
+  d.e = dir.exists(x)
+  w = wf(!file.exists(x) || d.e)
+  if (length(w) > 0L) {
+    if (d.e[w])
+      return(sprintf("File expected, but directory in place: '%s'", x[w]))
+    return(sprintf("File does not exist: '%s'", x[w]))
+  }
 
   return(checkAccess(x, access))
 }
