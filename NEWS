@@ -4,6 +4,8 @@ Version 1.5.3 (2015-xx-xx)
 * Fixed a bug where the type of lists with dimension attribute where
   reported as "array" or "matrix"
 * Family *Array: new arguments "min.d" and "max.d"
+* Family *Array and *Matrix: Argument "mode" now additionally accepts strings
+  "list" and "atomic"
 
 Version 1.5.2 (2015-03-19)
 -------------------------------------------------------------------------------
