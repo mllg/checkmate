@@ -10,22 +10,50 @@ Rboolean isStrictlyNumeric(SEXP x) {
     return FALSE;
 }
 
+/* Checks for a regular list, i.e. not a data frame, not NULL */
+Rboolean isRList(SEXP x) {
+    if (TYPEOF(x) == VECSXP) {
+        SEXP cl = getAttrib(x, R_ClassSymbol);
+        const R_len_t n = length(cl);
+        for (R_len_t i = 0; i < n; i++) {
+            if (strcmp(CHAR(STRING_ELT(cl, i)), "data.frame") == 0)
+                return FALSE;
+        }
+        return TRUE;
+    }
+    return FALSE;
+}
 
-/* FIXME: I am unsure but there seems to be a bug in R C API
- * ncols(x) does not work for data.frames
- * so we now have our own little ncol / nrow wrappers....... :(
-*/
+
+/* ncols and nrows is bugged for data frames:
+ * (a) data.frames are treated like lists and thus you get length() back
+ * (b) reports wrong dimension for zero-column data frames
+ * Here are our own wrappers
+ * */
 R_len_t get_nrows(SEXP x) {
-    if (isFrame(x))
-        return length(getAttrib(x, R_RowNamesSymbol));
-    return nrows(x);
+    if (isVector(x) || isList(x)) {
+        if (isFrame(x))
+            return length(getAttrib(x, R_RowNamesSymbol));
+    } else {
+        error("Object does not have a dimension");
+    }
+    SEXP dim = getAttrib(x, R_DimSymbol);
+    if (dim == R_NilValue)
+        return length(x);
+    return INTEGER(dim)[0];
 }
 
 R_len_t get_ncols(SEXP x) {
-    if (isFrame(x))
-        return length(x);
-    else
-        return ncols(x);
+    if (isVector(x) || isList(x)) {
+        if (isFrame(x))
+            return length(x);
+        SEXP dim = getAttrib(x, R_DimSymbol);
+        if (length(dim) >= 2)
+            return INTEGER(dim)[1];
+    } else {
+        error("Object does not have a dimension");
+    }
+    return 1;
 }
 
 

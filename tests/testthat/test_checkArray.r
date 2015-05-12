@@ -26,8 +26,16 @@ test_that("checkArray", {
   x = array(1:27, dim = c(3, 3, 3))
   expect_true(testArray(x, mode = "integer"))
   expect_true(testArray(x, mode = "numeric"))
+  expect_true(testArray(x, mode = "atomic"))
   expect_false(testArray(x, mode = "double"))
   expect_false(testArray(x, mode = "character"))
+  expect_false(testArray(x, mode = "list"))
+
+  x = array(list(1, 1), dim = c(1, 2))
+  expect_true(testArray(x))
+  expect_true(testArray(x, mode = "list"))
+  expect_false(testArray(x, mode = "atomic"))
+  expect_false(testArray(x, mode = "numeric"))
 
   expect_error(assertArray(1:3), "array")
 })

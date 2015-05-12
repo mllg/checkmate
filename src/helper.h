@@ -5,6 +5,7 @@
 #include <Rinternals.h>
 
 Rboolean isStrictlyNumeric(SEXP);
+Rboolean isRList(SEXP);
 R_len_t get_ncols(SEXP);
 R_len_t get_nrows(SEXP);
 double asNumber(SEXP, const char *);

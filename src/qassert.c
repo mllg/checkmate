@@ -50,7 +50,7 @@ static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
 static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
 static inline Rboolean is_class_atomic_vector(SEXP x) { return isVectorAtomic(x); }
-static inline Rboolean is_class_list(SEXP x) { return isNewList(x) && !isFrame(x); }
+static inline Rboolean is_class_list(SEXP x) { return isRList(x); }
 static inline Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
 static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
 static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
@@ -379,7 +379,7 @@ static inline R_len_t qassert1(SEXP x, const checker_t *checker, msg_t *result, 
 }
 
 static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
-    if (!isNewList(x))
+    if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
     const R_len_t nx = length(x);

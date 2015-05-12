@@ -20,9 +20,11 @@ testArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
 Object to check.}
 
 \item{mode}{[\code{character(1)}]\cr
-Storage mode of the matrix. Matricies can hold \dQuote{logical},
-\dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
-\dQuote{character}. Default is \code{NULL} (no check).}
+Storage mode of the array. Arrays can hold vectors, i.e. \dQuote{logical},
+\dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex},
+\dQuote{character} and \dQuote{list}. You can also specify \dQuote{atomic} here
+to explicitly prohibit lists.
+Default is \code{NULL} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}

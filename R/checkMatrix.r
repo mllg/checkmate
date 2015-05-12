@@ -2,10 +2,7 @@
 #'
 #' @templateVar fn Matrix
 #' @template x
-#' @param mode [\code{character(1)}]\cr
-#'  Storage mode of the matrix. Matricies can hold \dQuote{logical},
-#'  \dQuote{integer}, \dQuote{double}, \dQuote{numeric}, \dQuote{complex} and
-#'  \dQuote{character}. Default is \code{NULL} (no check).
+#' @template mode
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr

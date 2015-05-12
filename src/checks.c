@@ -216,24 +216,30 @@ static msg_t check_storage(SEXP x, SEXP mode) {
         const char * const storage = asString(mode, "mode");
         if (strcmp(storage, "logical") == 0) {
             if (!isLogical(x))
-                return make_msg("Must contain logicals");
+                return make_msg("Must store logicals");
         } else if (strcmp(storage, "integer") == 0) {
             if (!isInteger(x))
-                return make_msg("Must contain integers");
+                return make_msg("Must store integers");
         } else if (strcmp(storage, "double") == 0) {
             if (!isReal(x))
-                return make_msg("Must contain doubles");
+                return make_msg("Must store doubles");
         } else if (strcmp(storage, "numeric") == 0) {
             if (!isStrictlyNumeric(x))
-                return make_msg("Must contain numerics");
+                return make_msg("Must store numerics");
         } else if (strcmp(storage, "complex") == 0) {
             if (!isComplex(x))
-                return make_msg("Must contain complexs");
+                return make_msg("Must store complexs");
         } else if (strcmp(storage, "character") == 0) {
             if (!isString(x))
-                return make_msg("Must contain characters");
+                return make_msg("Must store characters");
+        } else if (strcmp(storage, "list") == 0) {
+            if (!isRList(x))
+                return make_msg("Must store a list");
+        } else if (strcmp(storage, "atomic") == 0) {
+            if (!isVectorAtomic(x))
+                return make_msg("Must be atomic");
         } else {
-            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex' or 'character'");
+            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex', 'character', 'list' or 'atomic'");
         }
     }
     return MSGT;
@@ -316,7 +322,7 @@ SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missi
 }
 
 SEXP c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    if (!isNewList(x) || isFrame(x) || isNull(x))
+    if (!isRList(x))
         return make_type_error(x, "list");
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
