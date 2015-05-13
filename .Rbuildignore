@@ -1,12 +1,9 @@
-src/.+\.o$
-src/.+\.so$
-\.tar\.gz$
+^src/.+\.o$
+^src/.+\.so$
 \.swp$
 ^\.agignore$
-^\.gitignore$
 ^\.editorconfig$
 ^.travis.yml$
 ^README\.md$
-^man-roxygen
-^Makefile$
+^man-roxygen/
 ^appveyor\.yml$
