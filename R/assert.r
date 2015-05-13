@@ -1,5 +1,12 @@
 #' Combine multiple checks into one assertion
 #'
+#' @description
+#' You can call this function with an arbitrary number of of \code{check*}
+#' functions. The resulting assertion is successful, if at least one
+#' check evaluates to \code{TRUE}. Otherwise, \code{assert} throws an
+#' informative error messages where the messages from all \code{check*}
+#' functions are collected.
+#'
 #' @param ... [any]\cr
 #'  List of calls to check functions.
 #' @param .var.name [character(1)]\cr

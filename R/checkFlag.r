@@ -1,6 +1,7 @@
 #' Check if an argument is a flag
 #'
-#' A flag a a single logical value.
+#' @description
+#' A flag is defined as single logical value.
 #'
 #' @templateVar fn Flag
 #' @template x

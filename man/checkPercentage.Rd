@@ -31,7 +31,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check if an argument is a percentage
+This checks \code{x} to be numeric and in the range \code{[0,1]}.
 }
 \details{
 This function does not distinguish between

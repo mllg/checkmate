@@ -31,7 +31,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-A flag a a single logical value.
+A flag is defined as single logical value.
 }
 \details{
 This function does not distinguish between

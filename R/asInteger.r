@@ -1,5 +1,6 @@
 #' Convert an argument to an integer
 #'
+#' @description
 #' \code{asInteger} is intended to be used for vectors while \code{asInt} is
 #' a specialization for scalar integers and \code{asCount} for scalar
 #' non-negative integers.

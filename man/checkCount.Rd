@@ -42,7 +42,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-A count is a non-negative integerish value.
+A count is defined as non-negative integerish value.
 }
 \details{
 This function does not distinguish between

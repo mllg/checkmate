@@ -1,5 +1,6 @@
 #' Check that an argument is an atomic vector
 #'
+#' @description
 #' An atomic vector is defined slightly different from specifications in
 #' \code{\link[base]{is.atomic}} and \code{\link[base]{is.vector}}:
 #' An atomic vector is either \code{logical}, \code{integer}, \code{numeric},
@@ -26,6 +27,7 @@
 #'  Default is \dQuote{any} which performs no check at all.
 #' @template checker
 #' @family basetypes
+#' @family atomicvector
 #' @useDynLib checkmate c_check_atomic_vector
 #' @export
 #' @examples

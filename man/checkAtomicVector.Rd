@@ -65,6 +65,11 @@ In short, this is equivalent to \code{is.atomic(x) && !is.null(x)}.
 testAtomicVector(letters, min.len = 1L, any.missing = FALSE)
 }
 \seealso{
+Other atomicvector: \code{\link{assertAtomic}},
+  \code{\link{checkAtomic}}, \code{\link{testAtomic}};
+  \code{\link{assertVector}}, \code{\link{checkVector}},
+  \code{\link{testVector}}
+
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
   \code{\link{assertAtomic}}, \code{\link{checkAtomic}},

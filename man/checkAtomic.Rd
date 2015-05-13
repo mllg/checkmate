@@ -54,12 +54,49 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Check that an argument is an atomic vector
+For the definition of \dQuote{atomic}, see \code{\link[base]{is.atomic}}.
 }
 \examples{
 testAtomic(letters, min.len = 1L, any.missing = FALSE)
 }
 \seealso{
+Other atomicvector: \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
+  \code{\link{assertVector}}, \code{\link{checkVector}},
+  \code{\link{testVector}}
+
+Other basetypes: \code{\link{assertArray}},
+  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
+  \code{\link{assertCharacter}},
+  \code{\link{checkCharacter}},
+  \code{\link{testCharacter}}; \code{\link{assertComplex}},
+  \code{\link{checkComplex}}, \code{\link{testComplex}};
+  \code{\link{assertDataFrame}},
+  \code{\link{checkDataFrame}},
+  \code{\link{testDataFrame}};
+  \code{\link{assertEnvironment}},
+  \code{\link{checkEnvironment}},
+  \code{\link{testEnvironment}};
+  \code{\link{assertFactor}}, \code{\link{checkFactor}},
+  \code{\link{testFactor}}; \code{\link{assertFunction}},
+  \code{\link{checkFunction}}, \code{\link{testFunction}};
+  \code{\link{assertIntegerish}},
+  \code{\link{checkIntegerish}},
+  \code{\link{testIntegerish}};
+  \code{\link{assertInteger}}, \code{\link{checkInteger}},
+  \code{\link{testInteger}}; \code{\link{assertList}},
+  \code{\link{checkList}}, \code{\link{testList}};
+  \code{\link{assertLogical}}, \code{\link{checkLogical}},
+  \code{\link{testLogical}}; \code{\link{assertMatrix}},
+  \code{\link{checkMatrix}}, \code{\link{testMatrix}};
+  \code{\link{assertNumeric}}, \code{\link{checkNumeric}},
+  \code{\link{testNumeric}}; \code{\link{assertVector}},
+  \code{\link{checkVector}}, \code{\link{testVector}}
+
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
   \code{\link{assertAtomicVector}},

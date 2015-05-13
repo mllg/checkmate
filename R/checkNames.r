@@ -1,6 +1,7 @@
 #' Check names to comply to specific rules
 #'
-#'  Similar to \code{\link{checkNamed}} but you can specify the names directly.
+#' @description
+#' Similar to \code{\link{checkNamed}} but you can pass the names directly.
 #'
 #' @templateVar fn Named
 #' @param x [\code{character} || \code{NULL}]\cr

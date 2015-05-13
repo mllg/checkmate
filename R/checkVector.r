@@ -24,6 +24,7 @@
 #'  Default is \dQuote{any} which performs no check at all.
 #' @template checker
 #' @family basetypes
+#' @family atomicvector
 #' @useDynLib checkmate c_check_vector
 #' @export
 #' @examples

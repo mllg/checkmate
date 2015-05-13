@@ -35,7 +35,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-Similar to \code{\link{checkNamed}} but you can specify the names directly.
+Similar to \code{\link{checkNamed}} but you can pass the names directly.
 }
 \examples{
 x = 1:3

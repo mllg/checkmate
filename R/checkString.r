@@ -1,6 +1,7 @@
 #' Check if an argument is a string
 #'
-#' A string a scalar character vector.
+#' @description
+#' A string is defined as a scalar character vector.
 #'
 #' @templateVar fn String
 #' @template x

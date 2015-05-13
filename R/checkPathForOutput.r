@@ -9,8 +9,7 @@
 #'  \item{Does no file under path \code{x} exist?}
 #'  \item{Is \code{dirname(x)} writeable?}
 #' }
-#'
-#' A string without slashes is interpreted as a file in the current working directory.
+#' Paths are relative to the current working directory.
 #'
 #' @templateVar fn PathForOutput
 #' @template x

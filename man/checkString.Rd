@@ -31,7 +31,7 @@ Depending on the function prefix:
  a string with the error message.
 }
 \description{
-A string a scalar character vector.
+A string is defined as a scalar character vector.
 }
 \details{
 This function does not distinguish between

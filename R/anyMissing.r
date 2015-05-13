@@ -1,5 +1,6 @@
 #' Check if an object contains missing values
 #'
+#' @description
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 #' Missingness is defined as \code{NA} or \code{NaN} for atomic types and data frame columns,
 #' \code{NULL} is defined as missing for lists.

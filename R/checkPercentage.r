@@ -1,5 +1,8 @@
 #' Check if an argument is a percentage
 #'
+#' @description
+#' This checks \code{x} to be numeric and in the range \code{[0,1]}.
+#'
 #' @templateVar fn Percentage
 #' @template x
 #' @template na-handling

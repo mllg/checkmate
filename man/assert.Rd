@@ -19,7 +19,11 @@ Throws an error if all checks fails and invisibly returns
  \code{TRUE} otherwise.
 }
 \description{
-Combine multiple checks into one assertion
+You can call this function with an arbitrary number of of \code{check*}
+functions. The resulting assertion is successful, if at least one
+check evaluates to \code{TRUE}. Otherwise, \code{assert} throws an
+informative error messages where the messages from all \code{check*}
+functions are collected.
 }
 \examples{
 x = 1:10

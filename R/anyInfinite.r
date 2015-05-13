@@ -1,5 +1,6 @@
 #' Check if an object contains infinte values
 #'
+#' @description
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 #'
 #' @param x [\code{ANY}]\cr

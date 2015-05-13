@@ -68,6 +68,12 @@ Check if an argument is a vector
 testVector(letters, min.len = 1L, any.missing = FALSE)
 }
 \seealso{
+Other atomicvector: \code{\link{assertAtomicVector}},
+  \code{\link{checkAtomicVector}},
+  \code{\link{testAtomicVector}};
+  \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
+  \code{\link{testAtomic}}
+
 Other basetypes: \code{\link{assertArray}},
   \code{\link{checkArray}}, \code{\link{testArray}};
   \code{\link{assertAtomicVector}},
