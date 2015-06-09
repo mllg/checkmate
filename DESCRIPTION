@@ -17,5 +17,7 @@ Roxygen: list(wrap = FALSE)
 Depends:
     R (>= 2.15.0)
 Suggests:
-    testthat
+    testthat,
+    knitr
 License: BSD_3_clause + file LICENSE
+VignetteBuilder: knitr

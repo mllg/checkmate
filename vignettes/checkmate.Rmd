@@ -1,0 +1,154 @@
+---
+title: "Checkmate"
+author: "Michel Lang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Ever used an R function that produced a not-very-helpful error message, just to discover after minutes of debugging that you simply passed a wrong argument?
+
+Blaming the laziness of the package author for not doing such standard checks (in a dynamically typed language such as R) is at least partially unfair, as R makes theses types of checks cumbersome and annoying. Well, that's how it was in the past.
+
+Enter checkmate.
+
+Virtually **every standard type of user error** when passing arguments into function can be caught with a simple, readable line which produces an **informative error message** in case.
+A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
+
+## Intro
+As a motivational example, consider you have a function to calculate the faculty of a natural number and the user may choose between using either the stirling approximation or R's `factorial` function (which internally uses the gamma function).
+Thus, you have two arguments, `n` and `method`.
+Argument `n` must obviously be a positive natural number and `method` must be either `"stirling"` or `"factorial"`.
+Here is a version of all the hoops you need to jump through to ensure that these simple requirements are met:
+```{r}
+fact <- function(n, method = "stirling") {
+  if (length(n) != 1)
+    stop("Argument 'n' must have length 1")
+  if (!is.numeric(n))
+    stop("Argument 'n' must be numeric")
+  if (is.na(n))
+    stop("Argument 'n' may not be NA")
+  if (is.double(n)) {
+    if (is.nan(n))
+      stop("Argument 'n' may not be NaN")
+    if (is.infinite(n))
+      stop("Argument 'n' must be finite")
+    if (abs(n - round(n, 0)) > sqrt(.Machine$double.eps))
+      stop("Argument 'n' must be an integerish value")
+    n <- as.integer(n)
+  }
+  if (n < 0)
+    stop("Argument 'n' must be >= 0")
+  if (length(method) != 1)
+    stop("Argument 'method' must have length 1")
+  if (!is.character(method) || !method %in% c("stirling", "factorial"))
+    stop("Argument 'method' must be either 'stirling' or 'factorial'")
+
+  if (method == "factorial")
+    factorial(n)
+  else
+    sqrt(2 * pi * n) * (n / exp(1))^n
+}
+```
+And for comparison, here is the same function using checkmate:
+```{r}
+fact <- function(n, method = "stirling") {
+  library(checkmate)
+  assertCount(n)
+  assertChoice(method, c("stirling", "factorial"))
+
+  if (method == "factorial")
+    factorial(n)
+  else
+    sqrt(2 * pi * n) * (n / exp(1))^n
+}
+```
+
+## Function overview
+
+### Scalars
+
+* [checkFlag](http://www.rdocumentation.org/packages/checkmate/functions/checkFlag)
+* [checkCount](http://www.rdocumentation.org/packages/checkmate/functions/checkCount)
+* [checkInt](http://www.rdocumentation.org/packages/checkmate/functions/checkInt)
+* [checkNumber](http://www.rdocumentation.org/packages/checkmate/functions/checkNumber)
+* [checkString](http://www.rdocumentation.org/packages/checkmate/functions/checkString)
+* [checkScalar](http://www.rdocumentation.org/packages/checkmate/functions/checkScalar)
+* [checkScalarNA](http://www.rdocumentation.org/packages/checkmate/functions/checkScalarNA)
+* [checkPercentage](http://www.rdocumentation.org/packages/checkmate/functions/checkPercentage)
+
+
+### Vectors
+
+* [checkLogical](http://www.rdocumentation.org/packages/checkmate/functions/checkLogical)
+* [checkNumeric](http://www.rdocumentation.org/packages/checkmate/functions/checkNumeric)
+* [checkInteger](http://www.rdocumentation.org/packages/checkmate/functions/checkInteger)
+* [checkIntegerish](http://www.rdocumentation.org/packages/checkmate/functions/checkIntegerish)
+* [checkComplex](http://www.rdocumentation.org/packages/checkmate/functions/checkComplex)
+* [checkCharacter](http://www.rdocumentation.org/packages/checkmate/functions/checkCharacter)
+* [checkFactor](http://www.rdocumentation.org/packages/checkmate/functions/checkFactor)
+* [checkList](http://www.rdocumentation.org/packages/checkmate/functions/checkList)
+* [checkVector](http://www.rdocumentation.org/packages/checkmate/functions/checkVector)
+* [checkAtomic](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomic)
+* [checkAtomicVector](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomicVector)
+
+
+### Attributes
+
+* [checkClass](http://www.rdocumentation.org/packages/checkmate/functions/checkClass)
+* [checkNames](http://www.rdocumentation.org/packages/checkmate/functions/checkNames)
+* [checkNamed](http://www.rdocumentation.org/packages/checkmate/functions/checkNamed)
+
+
+### Choices and Subsets
+
+* [checkChoice](http://www.rdocumentation.org/packages/checkmate/functions/checkChoice)
+* [checkSubset](http://www.rdocumentation.org/packages/checkmate/functions/checkSubset)
+* [checkSetEqual](http://www.rdocumentation.org/packages/checkmate/functions/checkSetEqual)
+
+
+### Matrices, Arrays and Data Frame
+
+* [checkMatrix](http://www.rdocumentation.org/packages/checkmate/functions/checkMatrix)
+* [checkArray](http://www.rdocumentation.org/packages/checkmate/functions/checkArray)
+* [checkDataFrame](http://www.rdocumentation.org/packages/checkmate/functions/checkDataFrame)
+
+
+### Safe Coercion to integer
+
+* [asCount](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
+* [asInt](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
+* [asInteger](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
+
+
+### Other builtin
+
+* [checkNull](http://www.rdocumentation.org/packages/checkmate/functions/checkNull)
+* [checkEnvironment](http://www.rdocumentation.org/packages/checkmate/functions/checkEnvironment)
+* [checkFunction](http://www.rdocumentation.org/packages/checkmate/functions/checkFunction)
+
+
+### File IO:
+
+* [checkFile](http://www.rdocumentation.org/packages/checkmate/functions/checkFile)
+* [checkDirectory](http://www.rdocumentation.org/packages/checkmate/functions/checkDirectory)
+* [checkPathForOutput](http://www.rdocumentation.org/packages/checkmate/functions/checkPathForOutput)
+
+
+## In case you miss flexibility
+
+You can use [assert](http://www.rdocumentation.org/packages/checkmate/functions/assert) to perform multiple checks at once and throw an assertion if all checks fail.
+
+
+## Argument Checks for the Lazy
+
+The follwoing functions allow a special syntax to define argument checks using a special pattern.
+E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one element and no missing values.
+This provide a completely alternative mini-language (or style) how to perform argument checks.
+You choose what you like best.
+
+* [qassert](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
+* [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)

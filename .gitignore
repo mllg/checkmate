@@ -3,3 +3,4 @@ checkmate.Rcheck
 
 src/*.so
 src/*.o
+inst/doc
