@@ -4,6 +4,6 @@
 #include <R.h>
 #include <Rinternals.h>
 
-Rboolean all_nchar(SEXP, R_len_t);
+Rboolean all_nchar(SEXP, R_xlen_t);
 
 #endif

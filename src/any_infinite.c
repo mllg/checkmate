@@ -6,7 +6,7 @@ static Rboolean any_infinite_list(SEXP x);
 
 static Rboolean any_infinite_double(SEXP x) {
     const double * xp = REAL(x);
-    const double * const xe = xp + length(x);
+    const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp == R_PosInf || *xp == R_NegInf)
             return TRUE;
@@ -16,7 +16,7 @@ static Rboolean any_infinite_double(SEXP x) {
 
 static Rboolean any_infinite_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);
-    const Rcomplex * const xe = xp + length(x);
+    const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if ((*xp).r == R_PosInf || (*xp).i == R_PosInf ||
             (*xp).r == R_NegInf || (*xp).i == R_NegInf)
@@ -26,8 +26,8 @@ static Rboolean any_infinite_complex(SEXP x) {
 }
 
 static Rboolean any_infinite_list(SEXP x) {
-    const R_len_t nx = length(x);
-    for (R_len_t i = 0; i < nx; i++) {
+    const R_xlen_t nx = xlength(x);
+    for (R_xlen_t i = 0; i < nx; i++) {
         if (any_infinite(VECTOR_ELT(x, i)))
             return TRUE;
     }

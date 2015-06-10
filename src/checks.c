@@ -18,7 +18,7 @@ static inline double asTol(SEXP tol) {
 }
 
 static inline Rboolean is_scalar_na(SEXP x) {
-    if (length(x) == 1) {
+    if (xlength(x) == 1) {
         switch(TYPEOF(x)) {
             case LGLSXP: return (LOGICAL(x)[0] == NA_LOGICAL);
             case INTSXP: return (INTEGER(x)[0] == NA_INTEGER);
@@ -43,14 +43,14 @@ static msg_t check_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (R_FINITE(tmp)) {
         if (isReal(x)) {
             const double *xp = REAL(x);
-            const double * const xend = xp + length(x);
+            const double * const xend = xp + xlength(x);
             for (; xp != xend; xp++) {
                 if (!ISNAN(*xp) && *xp < tmp)
                     return make_msg("All elements must be >= %g", tmp);
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER(x);
-            const int * const xend = xp + length(x);
+            const int * const xend = xp + xlength(x);
             for (; xp != xend; xp++) {
                 if (*xp != NA_INTEGER && *xp < tmp)
                     return make_msg("All elements must be >= %g", tmp);
@@ -64,14 +64,14 @@ static msg_t check_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (R_FINITE(tmp)) {
         if (isReal(x)) {
             const double *xp = REAL(x);
-            const double * const xend = xp + length(x);
+            const double * const xend = xp + xlength(x);
             for (; xp != xend; xp++) {
                 if (!ISNAN(*xp) && *xp > tmp)
                     return make_msg("All elements must be <= %g", tmp);
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER(x);
-            const int * const xend = xp + length(x);
+            const int * const xend = xp + xlength(x);
             for (; xp != xend; xp++) {
                 if (*xp != NA_INTEGER && *xp > tmp)
                     return make_msg("All elements must be <= %g", tmp);
@@ -95,9 +95,9 @@ static Rboolean check_unique_names(SEXP x) {
 }
 
 static Rboolean check_strict_names(SEXP x) {
-    const R_len_t nx = length(x);
+    const R_xlen_t nx = xlength(x);
     const char *str;
-    for (R_len_t i = 0; i < nx; i++) {
+    for (R_xlen_t i = 0; i < nx; i++) {
         str = CHAR(STRING_ELT(x, i));
         while (*str == '.')
             str++;
@@ -146,21 +146,21 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
 
 static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
     if (!isNull(len)) {
-        R_len_t n = asCount(len, "len");
-        if (length(x) != n)
-            return make_msg("Must have length %i, but has length %i", n, length(x));
+        R_xlen_t n = asCount(len, "len");
+        if (xlength(x) != n)
+            return make_msg("Must have length %g, but has length %g", (double)n, (double)xlength(x));
     }
 
     if (!isNull(min_len)) {
-        R_len_t n = asCount(min_len, "min.len");
-        if (length(x) < n)
-            return make_msg("Must have length >= %i, but has length %i", n, length(x));
+        R_xlen_t n = asCount(min_len, "min.len");
+        if (xlength(x) < n)
+            return make_msg("Must have length >= %g, but has length %g", (double)n, (double)xlength(x));
     }
 
     if (!isNull(max_len)) {
-        R_len_t n = asCount(max_len, "max.len");
-        if (length(x) > n)
-            return make_msg("Must have length <= %i, but has length %i", n, length(x));
+        R_xlen_t n = asCount(max_len, "max.len");
+        if (xlength(x) > n)
+            return make_msg("Must have length <= %g, but has length %g", (double)n, (double)xlength(x));
     }
 
     if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
@@ -172,7 +172,7 @@ static msg_t check_vector_props(SEXP x, SEXP any_missing, SEXP all_missing, SEXP
     if (asFlag(unique, "unique") && any_duplicated(x, FALSE) > 0)
         return make_msg("Contains duplicated values");
 
-    if (!isNull(names) && length(x) > 0)
+    if (!isNull(names) && xlength(x) > 0)
         return check_names(getAttrib(x, R_NamesSymbol), names, "Vector");
     return MSGT;
 }
@@ -252,9 +252,9 @@ SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missin
     if (!isString(x) && !all_missing_atomic(x))
         return make_type_error(x, "character");
     if (!isNull(min_chars)) {
-        R_len_t n = asCount(min_chars, "min.chars");
+        R_xlen_t n = asCount(min_chars, "min.chars");
         if (n > 0 && !all_nchar(x, n))
-            return make_result("All elements must have at least %i characters", n);
+            return make_result("All elements must have at least %g characters", (double)n);
     }
     return mwrap(check_vector_props(x, any_missing, all_missing, len, min_len, max_len, unique, names));
 }
@@ -345,7 +345,7 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
     if (!msg.ok)
         return make_result(msg.msg);
 
-    if (!isNull(row_names) && length(x) > 0) {
+    if (!isNull(row_names) && xlength(x) > 0) {
         SEXP nn = getAttrib(x, R_DimNamesSymbol);
         if (!isNull(nn))
             nn = VECTOR_ELT(nn, 0);
@@ -354,7 +354,7 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP min_rows, SEXP min
             return make_result(msg.msg);
     }
 
-    if (!isNull(col_names) && length(x) > 0) {
+    if (!isNull(col_names) && xlength(x) > 0) {
         SEXP nn = getAttrib(x, R_DimNamesSymbol);
         if (!isNull(nn))
             nn = VECTOR_ELT(nn, 1);
@@ -379,19 +379,19 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP
 
     R_len_t ndim = length(getAttrib(x, R_DimSymbol));
     if (!isNull(d)) {
-        int di = asCount(d, "d");
+        R_len_t di = asCount(d, "d");
         if (ndim != di)
             return make_result("Must be a %i-d array, but has dimension %i", di, ndim);
     }
 
     if (!isNull(min_d)) {
-        int di = asCount(min_d, "min.d");
+        R_len_t di = asCount(min_d, "min.d");
         if (ndim < di)
             return make_result("Must have >=%i dimensions, but has dimension %i", di, ndim);
     }
 
     if (!isNull(max_d)) {
-        int di = asCount(max_d, "max.d");
+        R_len_t di = asCount(max_d, "max.d");
         if (ndim > di)
             return make_result("Must have <=%i dimensions, but has dimension %i", di, ndim);
     }
@@ -400,7 +400,7 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP
 }
 
 SEXP c_check_named(SEXP x, SEXP type) {
-    if (!isNull(type) && length(x) > 0)
+    if (!isNull(type) && xlength(x) > 0)
         return mwrap(check_names(getAttrib(x, R_NamesSymbol), type, "Object"));
     return ScalarLogical(TRUE);
 }
@@ -445,7 +445,7 @@ SEXP c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len,
 /*********************************************************************************************************************/
 SEXP c_check_flag(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isLogical(x)))
+    if (xlength(x) != 1 || (!is_na && !isLogical(x)))
         return make_type_error(x, "logical flag");
     if (is_na && !asFlag(na_ok, "na.ok"))
         return make_result("May not be NA");
@@ -454,7 +454,7 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
 
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
+    if (xlength(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
         return make_type_error(x, "count");
     if (is_na) {
         if (!asFlag(na_ok, "na.ok"))
@@ -469,7 +469,7 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
 
 SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
+    if (xlength(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
         return make_type_error(x, "single integerish value");
     if (is_na) {
         if (!asFlag(na_ok, "na.ok"))
@@ -480,7 +480,7 @@ SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
 
 SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isStrictlyNumeric(x)))
+    if (xlength(x) != 1 || (!is_na && !isStrictlyNumeric(x)))
         return make_type_error(x, "number");
     if (is_na) {
         if (!asFlag(na_ok, "na.ok"))
@@ -494,7 +494,7 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
 
 SEXP c_check_string(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isString(x)))
+    if (xlength(x) != 1 || (!is_na && !isString(x)))
         return make_type_error(x, "string");
     if (is_na && !asFlag(na_ok, "na.ok"))
         return make_result("May not be NA");
@@ -503,7 +503,7 @@ SEXP c_check_string(SEXP x, SEXP na_ok) {
 
 SEXP c_check_scalar(SEXP x, SEXP na_ok) {
     Rboolean is_na = is_scalar_na(x);
-    if (length(x) != 1 || (!is_na && !isVectorAtomic(x)))
+    if (xlength(x) != 1 || (!is_na && !isVectorAtomic(x)))
         return make_type_error(x, "atomic scalar");
     if (is_na && !asFlag(na_ok, "na.ok"))
         return make_result("May not be NA");

@@ -3,9 +3,9 @@
 SEXP c_which_first(SEXP x) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
-    const R_len_t n = length(x);
+    const R_xlen_t n = xlength(x);
     const int *xp = LOGICAL(x);
-    for (R_len_t i = 0; i < n; i++) {
+    for (R_xlen_t i = 0; i < n; i++) {
         if (xp[i] != NA_LOGICAL && xp[i])
             return ScalarInteger(i+1);
     }
@@ -15,9 +15,9 @@ SEXP c_which_first(SEXP x) {
 SEXP c_which_last(SEXP x) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
-    const R_len_t n = length(x);
+    const R_xlen_t n = xlength(x);
     const int *xp = LOGICAL(x);
-    for (R_len_t i = n - 1; i >= 0; i--) {
+    for (R_xlen_t i = n - 1; i >= 0; i--) {
         if (xp[i] != NA_LOGICAL && xp[i])
             return ScalarInteger(i+1);
     }

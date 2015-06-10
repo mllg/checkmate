@@ -2,7 +2,7 @@
 
 Rboolean any_missing_logical(SEXP x) {
     const int * xp = LOGICAL(x);
-    const int * const xe = xp + length(x);
+    const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp == NA_LOGICAL)
             return TRUE;
@@ -12,7 +12,7 @@ Rboolean any_missing_logical(SEXP x) {
 
 Rboolean any_missing_integer(SEXP x) {
     const int * xp = INTEGER(x);
-    const int * const xe = xp + length(x);
+    const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp == NA_INTEGER)
             return TRUE;
@@ -31,7 +31,7 @@ Rboolean any_missing_integerish(SEXP x) {
 
 Rboolean any_missing_double(SEXP x) {
     const double * xp = REAL(x);
-    const double * const xe = xp + length(x);
+    const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (ISNAN(*xp))
             return TRUE;
@@ -49,7 +49,7 @@ Rboolean any_missing_numeric(SEXP x) {
 
 Rboolean any_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);
-    const Rcomplex * const xe = xp + length(x);
+    const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (ISNAN((*xp).r) || ISNAN((*xp).i))
             return TRUE;
@@ -58,8 +58,8 @@ Rboolean any_missing_complex(SEXP x) {
 }
 
 Rboolean any_missing_string(SEXP x) {
-    const R_len_t nx = length(x);
-    for (R_len_t i = 0; i < nx; i++) {
+    const R_xlen_t nx = xlength(x);
+    for (R_xlen_t i = 0; i < nx; i++) {
         if (STRING_ELT(x, i) == NA_STRING)
             return TRUE;
     }
@@ -78,8 +78,8 @@ Rboolean any_missing_atomic(SEXP x) {
 }
 
 Rboolean any_missing_list(SEXP x) {
-    const R_len_t nx = length(x);
-    for (R_len_t i = 0; i < nx; i++) {
+    const R_xlen_t nx = xlength(x);
+    for (R_xlen_t i = 0; i < nx; i++) {
         if (isNull(VECTOR_ELT(x, i)))
             return TRUE;
     }
@@ -91,8 +91,8 @@ Rboolean any_missing_matrix(SEXP x) {
 }
 
 Rboolean any_missing_frame(SEXP x) {
-    const R_len_t nc = length(x);
-    for (R_len_t i = 0; i < nc; i++) {
+    const R_xlen_t nc = xlength(x);
+    for (R_xlen_t i = 0; i < nc; i++) {
         if (any_missing_atomic(VECTOR_ELT(x, i)))
             return TRUE;
     }

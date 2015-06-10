@@ -1,3 +1,8 @@
+Version 1.6.0 (2015-xx-xx)
+-------------------------------------------------------------------------------
+* Started to support long vectors
+* Added a vignette
+
 Version 1.5.3 (2015-05-13)
 -------------------------------------------------------------------------------
 * Fixed a bug regarding the number of rows in zero-column data frames.

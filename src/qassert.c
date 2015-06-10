@@ -10,7 +10,7 @@ typedef enum {
 } class_t;
 
 typedef Rboolean(*dd_cmp)(double, double);
-typedef Rboolean(*ll_cmp)(R_len_t, R_len_t);
+typedef Rboolean(*ll_cmp)(R_xlen_t, R_xlen_t);
 typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
 typedef struct { dd_cmp fun; double cmp; cmp_t op; } bound_t;
 
@@ -24,18 +24,18 @@ typedef struct {
     } missing;
     struct {
         ll_cmp fun;
-        R_len_t cmp;
+        R_xlen_t cmp;
         cmp_t op;
     } len;
     bound_t lower;
     bound_t upper;
 } checker_t;
 
-static inline Rboolean ii_eq(const R_len_t x, const R_len_t y) { return x == y; }
-static inline Rboolean ii_lt(const R_len_t x, const R_len_t y) { return x <  y; }
-static inline Rboolean ii_gt(const R_len_t x, const R_len_t y) { return x >  y; }
-static inline Rboolean ii_le(const R_len_t x, const R_len_t y) { return x <= y; }
-static inline Rboolean ii_ge(const R_len_t x, const R_len_t y) { return x >= y; }
+static inline Rboolean ii_eq(const R_xlen_t x, const R_xlen_t y) { return x == y; }
+static inline Rboolean ii_lt(const R_xlen_t x, const R_xlen_t y) { return x <  y; }
+static inline Rboolean ii_gt(const R_xlen_t x, const R_xlen_t y) { return x >  y; }
+static inline Rboolean ii_le(const R_xlen_t x, const R_xlen_t y) { return x <= y; }
+static inline Rboolean ii_ge(const R_xlen_t x, const R_xlen_t y) { return x >= y; }
 static inline Rboolean dd_lt(const double x, const double y) { return x <  y; }
 static inline Rboolean dd_gt(const double x, const double y) { return x >  y; }
 static inline Rboolean dd_le(const double x, const double y) { return x <= y; }
@@ -69,14 +69,14 @@ static const char * CLSTR[] = {
 static msg_t check_bound(SEXP x, const bound_t bound) {
     if (isReal(x)) {
         const double *xp = REAL(x);
-        const double * const xend = xp + length(x);
+        const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
                 return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
     } else if (isInteger(x)) {
         const int *xp = INTEGER(x);
-        const int * const xend = xp + length(x);
+        const int * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
                 return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
@@ -347,8 +347,8 @@ static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg
         return err_msg ? make_msg("May not contain missing values") : MSGF;
     }
 
-    if (checker->len.fun != NULL && !checker->len.fun(length(x), checker->len.cmp)) {
-        return err_msg ? make_msg("Must be of length %s %i, but has length %i", CMPSTR[checker->len.op], checker->len.cmp, length(x)) : MSGF;
+    if (checker->len.fun != NULL && !checker->len.fun(xlength(x), checker->len.cmp)) {
+        return err_msg ? make_msg("Must be of length %s %i, but has length %g", CMPSTR[checker->len.op], checker->len.cmp, (double)xlength(x)) : MSGF;
     }
 
     if (checker->lower.fun != NULL) {
@@ -382,8 +382,8 @@ static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *resu
     if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
-    const R_len_t nx = length(x);
-    for (R_len_t i = 0; i < nx; i++) {
+    const R_len_t nx = xlength(x);
+    for (R_xlen_t i = 0; i < nx; i++) {
         if (qassert1(VECTOR_ELT(x, i), checker, result, nrules) != 0)
             return i + 1;
     }
@@ -443,8 +443,8 @@ static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_
     if (!isNewList(x))
         error("Argument 'x' must be a list or data.frame");
 
-    const R_len_t nx = length(x);
-    for (R_len_t i = 0; i < nx; i++) {
+    const R_len_t nx = xlength(x);
+    for (R_xlen_t i = 0; i < nx; i++) {
         if (!qtest1(VECTOR_ELT(x, i), checker, nrules))
             return FALSE;
     }
