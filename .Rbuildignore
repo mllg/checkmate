@@ -5,5 +5,5 @@
 ^\.editorconfig$
 ^.travis.yml$
 ^README\.md$
-^man-roxygen/
+man-roxygen
 ^appveyor\.yml$
