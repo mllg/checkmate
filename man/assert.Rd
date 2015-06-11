@@ -4,11 +4,15 @@
 \alias{assert}
 \title{Combine multiple checks into one assertion}
 \usage{
-assert(..., .var.name)
+assert(..., combine = "or", .var.name)
 }
 \arguments{
 \item{...}{[any]\cr
 List of calls to check functions.}
+
+\item{combine}{[\code{character(1)}]\cr
+\dQuote{or} or \dQuote{and} to combine the check functions with an OR
+or AND, respectively.}
 
 \item{.var.name}{[character(1)]\cr
 Name of object to check. Defaults to a heuristic to determine
@@ -20,10 +24,10 @@ Throws an error if all checks fails and invisibly returns
 }
 \description{
 You can call this function with an arbitrary number of of \code{check*}
-functions. The resulting assertion is successful, if at least one
-check evaluates to \code{TRUE}. Otherwise, \code{assert} throws an
-informative error messages where the messages from all \code{check*}
-functions are collected.
+functions. The resulting assertion is successful, if \code{combine} is
+\dQuote{or} (default) and at least one check evaluates to \code{TRUE} or
+\code{combine} is \dQuote{and} and all checks evaluate to \code{TRUE}.
+Otherwise, \code{assert} throws an informative error message.
 }
 \examples{
 x = 1:10
