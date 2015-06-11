@@ -455,7 +455,7 @@ SEXP c_check_flag(SEXP x, SEXP na_ok) {
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
     Rboolean is_na = is_scalar_na(x);
     if (xlength(x) != 1 || (!is_na && !isIntegerish(x, asTol(tol))))
-        return make_type_error(x, "integerish");
+        return make_type_error(x, "count");
     if (is_na) {
         if (!asFlag(na_ok, "na.ok"))
             return make_result("May not be NA");
