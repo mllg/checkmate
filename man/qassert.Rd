@@ -109,7 +109,8 @@ qtest(1:3, "I+[0,)")
 
 # either an emtpy list or a character vector with <=5 elements
 qtest(1, c("l0", "s<=5"))
-# data frame with at least one column, no NA in any column
+
+# data frame with at least one column and no missing value in any column
 qtest(iris, "D+")
 }
 \seealso{
