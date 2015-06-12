@@ -49,11 +49,13 @@ Exact number of columns.}
 
 \item{row.names}{[\code{character(1)}]\cr
 Check for row names. Default is \dQuote{NULL} (no check).
-See \code{\link{checkNamed}} for possible values.}
+See \code{\link{checkNamed}} for possible values.
+Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
 \item{col.names}{[\code{character(1)}]\cr
 Check for column names. Default is \dQuote{NULL} (no check).
-See \code{\link{checkNamed}} for possible values.}
+See \code{\link{checkNamed}} for possible values.
+Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
@@ -70,8 +72,8 @@ Depending on the function prefix:
 Check if an argument is a data frame
 }
 \examples{
-testDataFrame(iris, "data.frame")
-testDataFrame(iris, "data.frame", min.rows = 1, col.names = "named")
+testDataFrame(iris)
+testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "named")
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},

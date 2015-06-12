@@ -53,7 +53,8 @@ Must all values be unique? Default is \code{FALSE}.}
 
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.
-Default is \dQuote{any} which performs no check at all.}
+Default is \dQuote{any} which performs no check at all.
+Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

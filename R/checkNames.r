@@ -12,6 +12,7 @@
 #'  \dQuote{named} (default) checks \code{x} for reguluar names which excludes names to be \code{NA} or emtpy (\code{""}).
 #'  \dQuote{unique} additionally tests for non-duplicated names.
 #'  \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
+#'  Note that you can use \code{\link{checkSubset}} to check for a specific set of names.
 #' @template checker
 #' @useDynLib checkmate c_check_named
 #' @export

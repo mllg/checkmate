@@ -40,6 +40,7 @@ Check if object is a subset of a given set
 \examples{
 testSubset(c("a", "z"), letters)
 testSubset("ab", letters)
+testSubset("Species", names(iris))
 }
 \seealso{
 Other set: \code{\link{assertChoice}},

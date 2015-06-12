@@ -16,9 +16,11 @@
 #' @param row.names [\code{character(1)}]\cr
 #'  Check for row names. Default is \dQuote{NULL} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
+#'  Note that you can use \code{\link{checkSubset}} to check for a specific set of names.
 #' @param col.names [\code{character(1)}]\cr
 #'  Check for column names. Default is \dQuote{NULL} (no check).
 #'  See \code{\link{checkNamed}} for possible values.
+#'  Note that you can use \code{\link{checkSubset}} to test for a specific set of names.
 #' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_matrix

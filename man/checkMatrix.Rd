@@ -46,11 +46,13 @@ Exact number of columns.}
 
 \item{row.names}{[\code{character(1)}]\cr
 Check for row names. Default is \dQuote{NULL} (no check).
-See \code{\link{checkNamed}} for possible values.}
+See \code{\link{checkNamed}} for possible values.
+Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
 \item{col.names}{[\code{character(1)}]\cr
 Check for column names. Default is \dQuote{NULL} (no check).
-See \code{\link{checkNamed}} for possible values.}
+See \code{\link{checkNamed}} for possible values.
+Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

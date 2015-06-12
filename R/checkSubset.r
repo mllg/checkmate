@@ -13,6 +13,7 @@
 #' @examples
 #' testSubset(c("a", "z"), letters)
 #' testSubset("ab", letters)
+#' testSubset("Species", names(iris))
 checkSubset = function(x, choices, empty.ok = TRUE) {
   qassert(choices, "a+")
   qassert(empty.ok, "B1")

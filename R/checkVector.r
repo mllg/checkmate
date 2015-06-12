@@ -22,6 +22,7 @@
 #' @param names [\code{character(1)}]\cr
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
+#'  Note that you can use \code{\link{checkSubset}} to check for a specific set of names.
 #' @template checker
 #' @family basetypes
 #' @family atomicvector

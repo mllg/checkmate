@@ -21,7 +21,8 @@ Select the check(s) to perform.
 \dQuote{unnamed} checks \code{x} to be \code{NULL}.
 \dQuote{named} (default) checks \code{x} for reguluar names which excludes names to be \code{NA} or emtpy (\code{""}).
 \dQuote{unique} additionally tests for non-duplicated names.
-\dQuote{strict} checks for unique names which comply to R's variable name restrictions.}
+\dQuote{strict} checks for unique names which comply to R's variable name restrictions.
+Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
