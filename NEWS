@@ -1,7 +1,7 @@
 Version 1.6.0 (2015-xx-xx)
 -------------------------------------------------------------------------------
 * Started to support long vectors
-* Added a vignette
+* Added a short vignette
 * New argument "combine" for assert() to allow combining check functions with
   an AND instead of an OR
 
