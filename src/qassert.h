@@ -2,6 +2,7 @@
 #define CHECKMATE_QASSERT_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 
 SEXP c_qassert(SEXP, SEXP, SEXP);

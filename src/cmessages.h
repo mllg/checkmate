@@ -2,6 +2,7 @@
 #define CHECKMATE_CMESSAGES_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 
 enum { CMSGLEN = 256 };

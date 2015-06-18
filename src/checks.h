@@ -2,6 +2,7 @@
 #define CHECKMATE_CHECKS_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 #include "cmessages.h"
 

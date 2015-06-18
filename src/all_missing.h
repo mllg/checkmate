@@ -2,6 +2,7 @@
 #define CHECKMATE_ALL_MISSING_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 
 Rboolean all_missing_logical(SEXP);

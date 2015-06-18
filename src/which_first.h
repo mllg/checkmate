@@ -2,6 +2,7 @@
 #define CHECKMATE_WHICH_FIRST_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 #include <Rdefines.h>
 

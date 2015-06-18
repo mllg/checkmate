@@ -2,6 +2,7 @@
 #define CHECKMATE_HELPER_H_
 
 #include <R.h>
+#define USE_RINTERNALS
 #include <Rinternals.h>
 
 Rboolean isStrictlyNumeric(SEXP);
