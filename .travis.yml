@@ -7,6 +7,10 @@ r_binary_packages:
     - testthat
     - knitr
 
+before_script:
+    - git clone https://github.com/mllg/travis-r-tools.git travis-r-tools
+    - Rscript travis-r-tools/update-packages.r
+
 after_success:
     - Rscript -e 'library(covr);coveralls()'
 
