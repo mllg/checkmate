@@ -8,8 +8,8 @@ r_binary_packages:
     - knitr
 
 before_script:
-    - curl -L -O https://raw.githubusercontent.com/mllg/travis-r-tools/master/update-packages.r
-    - Rscript update-packages.r
+    - curl -L https://raw.githubusercontent.com/mllg/travis-r-tools/master/update-packages.r -o /tmp/update-packages.r
+    - Rscript /tmp/update-packages.r
 
 after_success:
     - Rscript -e 'library(covr);coveralls()'
