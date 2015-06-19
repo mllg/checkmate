@@ -4,7 +4,6 @@ r_github_packages:
     - jimhester/covr
 
 r_binary_packages:
-    - covr
     - testthat
     - knitr
 
