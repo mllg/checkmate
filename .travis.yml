@@ -4,12 +4,13 @@ r_github_packages:
     - jimhester/covr
 
 r_binary_packages:
+    - covr
     - testthat
     - knitr
 
 before_script:
-    - git clone https://github.com/mllg/travis-r-tools.git travis-r-tools
-    - Rscript travis-r-tools/update-packages.r
+    - curl -L -O https://raw.githubusercontent.com/mllg/travis-r-tools/master/update-packages.r
+    - Rscript update-packages.r
 
 after_success:
     - Rscript -e 'library(covr);coveralls()'
