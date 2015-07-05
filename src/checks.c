@@ -92,7 +92,7 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
     } else if (strcmp(expected, "strict") == 0) {
         checks = T_STRICT;
     } else {
-        error("Unknown type definition '%s'", expected);
+        error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", expected);
     }
 
     if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))

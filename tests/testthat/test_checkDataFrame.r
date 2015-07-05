@@ -28,7 +28,6 @@ test_that("checkDataFrame", {
   expect_true(testDataFrame(x, min.rows = 2L, min.cols = 4L))
   expect_false(testDataFrame(x, min.rows = 151L, min.cols = 4L))
   expect_false(testDataFrame(x, min.rows = 1L, min.cols = 6L))
-
 })
 
 
@@ -45,6 +44,7 @@ test_that("checkDataFrame name checking works", {
   expect_true(assertDataFrame(df, col.names = "named"))
   expect_error(assertDataFrame(df, col.names = "unique"), "uniquely")
   expect_error(assertDataFrame(df, col.names = "strict"), "uniquely")
+  expect_error(assertDataFrame(df, col.names = "foo"), "unnamed")
 
   names(df) = c("x", "1")
   expect_true(assertDataFrame(df, col.names = "named"))
@@ -81,4 +81,22 @@ test_that("missing values are detected", {
   x$b[2] = NA
   expect_false(testDataFrame(x, any.missing = FALSE))
   expect_false(testDataFrame(x, all.missing = FALSE))
+})
+
+test_that("data.table is supported", {
+  skip_if_not_installed("data.table")
+  library(data.table)
+  myobj = as.data.table(iris)
+  expect_succ(DataFrame, myobj)
+  expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
+  expect_true(testDataFrame(data.table()))
+})
+
+test_that("dplyr::data_frame is supported", {
+  skip_if_not_installed("dplyr")
+  library(dplyr)
+  myobj = as_data_frame(iris)
+  expect_succ(DataFrame, myobj)
+  expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
+  expect_true(testDataFrame(data_frame()))
 })

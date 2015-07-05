@@ -20,6 +20,8 @@ Imports:
     utils
 Suggests:
     testthat,
-    knitr
+    knitr,
+    data.table,
+    dplyr
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr

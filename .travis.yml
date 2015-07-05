@@ -6,6 +6,8 @@ r_github_packages:
 r_binary_packages:
     - testthat
     - knitr
+    - data.table
+    - dplyr
 
 before_script:
     - curl -L https://raw.githubusercontent.com/mllg/travis-r-tools/master/update-packages.r -o /tmp/update-packages.r
