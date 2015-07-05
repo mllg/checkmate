@@ -6,11 +6,11 @@
 \alias{testFunction}
 \title{Check if an argument is a function}
 \usage{
-checkFunction(x, args = NULL, ordered = FALSE)
+checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL)
 
-assertFunction(x, args = NULL, ordered = FALSE, .var.name)
+assertFunction(x, args = NULL, ordered = FALSE, nargs = NULL, .var.name)
 
-testFunction(x, args = NULL, ordered = FALSE)
+testFunction(x, args = NULL, ordered = FALSE, nargs = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -25,6 +25,10 @@ Default is \code{NULL} (no check).}
 Flag whether the arguments provided in \code{args} must be the first
 \code{length(args)} arguments of the function in the specified order.
 Default is \code{FALSE}.}
+
+\item{nargs}{[\code{integer(1)}]\cr
+Required number of arguments, without \code{...}.
+Default is \code{NULL} (no check).}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
