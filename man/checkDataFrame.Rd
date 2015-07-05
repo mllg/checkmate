@@ -7,16 +7,16 @@
 \title{Check if an argument is a data frame}
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
-  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL)
 
 assertDataFrame(x, types = character(0L), any.missing = TRUE,
-  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, .var.name)
+  all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, .var.name)
 
 testDataFrame(x, types = character(0L), any.missing = TRUE,
-  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -34,6 +34,9 @@ Defaults to \code{character(0)} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are matricies with only missing values allowed? Default is \code{TRUE}.}
 
 \item{min.rows}{[\code{integer(1)}]\cr
 Minimum number of rows.}

@@ -72,10 +72,10 @@ Rboolean all_missing_list(SEXP x) {
 Rboolean all_missing_frame(SEXP x) {
     const R_xlen_t nc = xlength(x);
     for (R_xlen_t i = 0; i < nc; i++) {
-        if (!all_missing_atomic(VECTOR_ELT(x, i)))
-            return FALSE;
+        if (all_missing_atomic(VECTOR_ELT(x, i)))
+            return TRUE;
     }
-    return TRUE;
+    return FALSE;
 }
 
 Rboolean all_missing(SEXP x) {

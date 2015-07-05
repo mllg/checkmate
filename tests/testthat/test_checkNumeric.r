@@ -39,3 +39,10 @@ test_that("bounds are checked", {
   expect_error(checkNumeric(1, upper = 1:2), "number")
   expect_error(checkNumeric(1, upper = NA_real_), "missing")
 })
+
+test_that("bounds of vectors with only missings are not checked", {
+  expect_true(checkNumeric(NA, lower = 1))
+  expect_true(checkNumeric(NA_character_, upper = 10))
+  expect_fail(Numeric, 0:5, lower = 1L)
+  expect_fail(Numeric, 5:15, upper = 10L)
+})

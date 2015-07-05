@@ -5,6 +5,8 @@
 #' @template mode
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
+#' @param all.missing [\code{logical(1)}]\cr
+#'  Are matricies with only missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
 #'  Minimum number of rows.
 #' @param min.cols [\code{integer(1)}]\cr
@@ -29,22 +31,22 @@
 #' x = matrix(1:9, 3)
 #' colnames(x) = letters[1:3]
 #' testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
-checkMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+  .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
 }
 
 #' @rdname checkMatrix
 #' @useDynLib checkmate c_check_matrix
 #' @export
-assertMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, .var.name) {
-  res = .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+assertMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, .var.name) {
+  res = .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   makeAssertion(res, vname(x, .var.name))
 }
 
 #' @rdname checkMatrix
 #' @useDynLib checkmate c_check_matrix
 #' @export
-testMatrix = function(x, mode = NULL, any.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  res = .Call("c_check_matrix", x, mode, any.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+testMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+  res = .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   isTRUE(res)
 }

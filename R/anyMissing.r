@@ -3,7 +3,11 @@
 #' @description
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 #' Missingness is defined as \code{NA} or \code{NaN} for atomic types and data frame columns,
-#' \code{NULL} is defined as missing for lists.
+#' \code{NULL} is defined as missing for lists.\cr
+#' \code{allMissing} applied to a \code{data.frame} returns \code{TRUE} if at least one column has
+#' only non-missing values. If you want to perform the less frequent check that there is not a single
+#' non-missing observation present in the \code{data.frame}, use \code{all(sapply(df, allMissing))}
+#' instead.
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to check.

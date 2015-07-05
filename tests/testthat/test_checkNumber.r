@@ -27,3 +27,10 @@ test_that("checkNumber", {
 
   expect_error(assertNumber(2+3i), "number")
 })
+
+test_that("bounds of vectors with only missings are not checked", {
+  expect_true(checkNumber(NA, na.ok = TRUE, lower = 1))
+  expect_true(checkNumber(NA_character_, na.ok = TRUE, upper = 10))
+  expect_fail(Number, 0, lower = 1)
+  expect_fail(Number, 100, upper = 10)
+})

@@ -20,12 +20,20 @@ Object to check.}
 \description{
 Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 Missingness is defined as \code{NA} or \code{NaN} for atomic types and data frame columns,
-\code{NULL} is defined as missing for lists.
+\code{NULL} is defined as missing for lists.\cr
+\code{allMissing} applied to a \code{data.frame} returns \code{TRUE} if at least one column has
+only non-missing values. If you want to perform the less frequent check that there is not a single
+non-missing observation present in the \code{data.frame}, use \code{all(sapply(df, allMissing))}
+instead.
 }
 \examples{
 allMissing(1:2)
 allMissing(c(1, NA))
 allMissing(c(NA, NA))
+x = data.frame(a = 1:2, b = NA)
+# Note how allMissing combines the results for data frames:
+allMissing(x)
+all(sapply(x, allMissing))
 anyMissing(c(1, 1))
 anyMissing(c(1, NA))
 anyMissing(list(1, NULL))

@@ -80,3 +80,16 @@ test_that("allMissing", {
   expect_false(allMissing(NULL))
   expect_error(allMissing(as.symbol("a")), "supported")
 })
+
+test_that("anyMissing and allMissing work correctly with data.frames", {
+  df = data.frame(a = 1:2, b = 2:1)
+  expect_false(anyMissing(df))
+  expect_false(allMissing(df))
+  df$b[1] = NA
+  expect_true(anyMissing(df))
+  expect_false(allMissing(df))
+  df$b[2] = NA
+  expect_true(anyMissing(df))
+  expect_true(allMissing(df))
+  expect_false(all(sapply(df, allMissing)))
+})

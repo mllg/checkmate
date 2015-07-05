@@ -18,3 +18,11 @@ test_that("checkInt", {
 
   expect_error(assertInt(2+3i), "integerish")
 })
+
+
+test_that("bounds of vectors with only missings are not checked", {
+  expect_true(checkInt(NA, na.ok = TRUE, lower = 1))
+  expect_true(checkInt(NA_character_, na.ok = TRUE, upper = 10))
+  expect_fail(Int, 0L, lower = 1L)
+  expect_fail(Int, 100L, upper = 10L)
+})

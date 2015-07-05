@@ -1,3 +1,10 @@
+Version 1.6.1 (2015-xx-xx)
+-------------------------------------------------------------------------------
+* Added argument `all.missing` for checks on matricies and data frames.
+* Clearified documentation for `assert()` and `allMissing()`
+* Fixed a bug where bound checks were performed on missing values.
+* Fixed a bug where missingness was not correctly detected in data frames.
+
 Version 1.6.0 (2015-06-19)
 -------------------------------------------------------------------------------
 * Started to support long vectors

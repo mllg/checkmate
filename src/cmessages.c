@@ -38,9 +38,3 @@ SEXP make_type_error(SEXP x, const char *expected) {
     snprintf(msg, CMSGLEN, "Must be of type '%s', not '%s'", expected, guessType(x));
     return ScalarString(mkChar(msg));
 }
-
-SEXP mwrap(msg_t msg) {
-    if (msg.ok)
-        return ScalarLogical(TRUE);
-    return ScalarString(mkChar(msg.msg));
-}

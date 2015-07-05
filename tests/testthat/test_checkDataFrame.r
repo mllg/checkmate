@@ -70,3 +70,15 @@ test_that("dimension checks work for empty frames", {
   expect_false(testDataFrame(x, min.cols = 6))
   expect_false(testDataFrame(x, ncols = 1))
 })
+
+test_that("missing values are detected", {
+  x = data.frame(a = 1:2, b = c(1, 2))
+  expect_true(testDataFrame(x, any.missing = FALSE))
+  expect_true(testDataFrame(x, all.missing = FALSE))
+  x$b[1] = NA
+  expect_false(testDataFrame(x, any.missing = FALSE))
+  expect_true(testDataFrame(x, all.missing = FALSE))
+  x$b[2] = NA
+  expect_false(testDataFrame(x, any.missing = FALSE))
+  expect_false(testDataFrame(x, all.missing = FALSE))
+})

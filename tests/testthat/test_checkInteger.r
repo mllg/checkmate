@@ -21,3 +21,10 @@ test_that("checkInteger", {
 
   expect_error(assertInteger(1), "integer")
 })
+
+test_that("bounds of vectors with only missings are not checked", {
+  expect_true(checkInteger(NA, lower = 1))
+  expect_true(checkInteger(NA_character_, upper = 10))
+  expect_fail(Integer, 0L, lower = 1L)
+  expect_fail(Integer, 100L, upper = 10L)
+})

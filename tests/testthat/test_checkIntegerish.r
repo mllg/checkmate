@@ -46,3 +46,10 @@ test_that("checkIntegerish", {
   expect_false(testIntegerish(NA, all.missing = FALSE))
   expect_error(assertIntegerish(x, tol=0), "integerish")
 })
+
+test_that("bounds of vectors with only missings are not checked", {
+  expect_true(checkInteger(NA, lower = 1))
+  expect_true(checkInteger(NA_character_, upper = 10))
+  expect_fail(Integerish, 0, lower = 1L)
+  expect_fail(Integerish, 100, upper = 10L)
+})

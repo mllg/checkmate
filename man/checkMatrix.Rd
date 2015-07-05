@@ -6,17 +6,17 @@
 \alias{testMatrix}
 \title{Check if an argument is a matrix}
 \usage{
-checkMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL)
+checkMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
+  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL)
 
-assertMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, .var.name)
+assertMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
+  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, .var.name)
 
-testMatrix(x, mode = NULL, any.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL)
+testMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
+  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -31,6 +31,9 @@ Default is \code{NULL} (no check).}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are matricies with only missing values allowed? Default is \code{TRUE}.}
 
 \item{min.rows}{[\code{integer(1)}]\cr
 Minimum number of rows.}
