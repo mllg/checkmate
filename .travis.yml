@@ -1,18 +1,16 @@
 language: r
 
-r_github_packages:
-    - jimhester/covr
-
 r_binary_packages:
     - testthat
     - knitr
+    - covr
 
 before_script:
     - curl -L https://raw.githubusercontent.com/mllg/travis-r-tools/master/update-packages.r -o /tmp/update-packages.r
     - Rscript /tmp/update-packages.r
 
 after_success:
-    - Rscript -e 'library(covr);coveralls()'
+    - Rscript -e 'library(covr); coveralls()'
 
 notifications:
   email:
