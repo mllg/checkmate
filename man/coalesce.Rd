@@ -6,6 +6,16 @@
 \usage{
 lhs \%??\% rhs
 }
+\arguments{
+\item{lhs}{[any]\cr
+Left hand side of the operator. Is returned, if not missing or \code{NULL}.}
+
+\item{rhs}{[any]\cr
+Right hand side of the operator. Is returned, if \code{lhs} is missing or \code{NULL}.}
+}
+\value{
+Either \code{lhs} or \code{rhs}.
+}
 \description{
 Returns the left hand side if not missing nor \code{NULL}, and
 the right hand side otherwise.
