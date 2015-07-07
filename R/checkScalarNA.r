@@ -25,5 +25,13 @@ assertScalarNA = function(x, .var.name) {
 #' @rdname checkScalarNA
 #' @export
 testScalarNA = function(x) {
-  isTRUE(checkScalarNA(x))
+  res = checkScalarNA(x)
+  isTRUE(res)
+}
+
+#' @rdname checkScalarNA
+#' @export
+expect_scalar_na = function(x, info = NULL, label = NULL) {
+  res = checkScalarNA(x)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

@@ -33,3 +33,11 @@ testInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.mis
   res = .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
   isTRUE(res)
 }
+
+#' @rdname checkInteger
+#' @useDynLib checkmate c_check_integer
+#' @export
+expect_integer = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_integer", x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
+}

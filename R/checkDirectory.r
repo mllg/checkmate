@@ -37,5 +37,13 @@ assertDirectory = function(x, access = "", .var.name) {
 #' @rdname checkDirectory
 #' @export
 testDirectory = function(x, access = "", .var.name) {
-  isTRUE(checkDirectory(x, access))
+  res = checkDirectory(x, access)
+  isTRUE(res)
+}
+
+#' @rdname checkDirectory
+#' @export
+expect_directory = function(x, access = "", info = NULL, label = NULL) {
+  res = checkDirectory(x, access)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

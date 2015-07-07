@@ -3,6 +3,7 @@
 \name{checkNumber}
 \alias{assertNumber}
 \alias{checkNumber}
+\alias{expect_number}
 \alias{testNumber}
 \title{Check if an argument is a single numeric}
 \usage{
@@ -12,6 +13,9 @@ assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   finite = FALSE, .var.name)
 
 testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
+
+expect_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -32,13 +36,21 @@ Check for only finite values? Default is \code{FALSE}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertNumber} throws an error message,
- \code{testNumber} returns \code{FALSE} and \code{checkNumber} returns
- a string with the error message.
+ \code{testNumber} returns \code{FALSE}, \code{checkNumber} returns
+ a string with the error message. The function preceded with \code{expect__number} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check if an argument is a single numeric
@@ -54,17 +66,22 @@ testNumber(1:2)
 }
 \seealso{
 Other scalars: \code{\link{assertCount}},
-  \code{\link{checkCount}}, \code{\link{testCount}};
-  \code{\link{assertFlag}}, \code{\link{checkFlag}},
+  \code{\link{checkCount}}, \code{\link{expect_count}},
+  \code{\link{testCount}}; \code{\link{assertFlag}},
+  \code{\link{checkFlag}}, \code{\link{expect_flag}},
   \code{\link{testFlag}}; \code{\link{assertInt}},
-  \code{\link{checkInt}}, \code{\link{testInt}};
-  \code{\link{assertPercentage}},
+  \code{\link{checkInt}}, \code{\link{expect_int}},
+  \code{\link{testInt}}; \code{\link{assertPercentage}},
   \code{\link{checkPercentage}},
+  \code{\link{expect_percentage}},
   \code{\link{testPercentage}};
   \code{\link{assertScalarNA}},
-  \code{\link{checkScalarNA}}, \code{\link{testScalarNA}};
-  \code{\link{assertScalar}}, \code{\link{checkScalar}},
+  \code{\link{checkScalarNA}},
+  \code{\link{expect_scalar_na}},
+  \code{\link{testScalarNA}}; \code{\link{assertScalar}},
+  \code{\link{checkScalar}}, \code{\link{expect_scalar}},
   \code{\link{testScalar}}; \code{\link{assertString}},
-  \code{\link{checkString}}, \code{\link{testString}}
+  \code{\link{checkString}}, \code{\link{expect_string}},
+  \code{\link{testString}}
 }
 

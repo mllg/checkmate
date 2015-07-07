@@ -19,6 +19,7 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
 }
 
 #' @rdname checkInt
+#' @useDynLib checkmate c_check_int
 #' @export
 assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
   res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
@@ -26,8 +27,17 @@ assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Ma
 }
 
 #' @rdname checkInt
+#' @useDynLib checkmate c_check_int
 #' @export
 testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
   res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
   isTRUE(res)
+}
+
+#' @rdname checkInt
+#' @useDynLib checkmate c_check_int
+#' @export
+expect_int = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), info = NULL, label = NULL) {
+  res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
 }

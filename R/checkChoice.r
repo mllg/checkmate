@@ -26,5 +26,13 @@ assertChoice = function(x, choices, .var.name) {
 #' @rdname checkChoice
 #' @export
 testChoice = function(x, choices) {
-  isTRUE(checkChoice(x, choices))
+  res = checkChoice(x, choices)
+  isTRUE(res)
+}
+
+#' @rdname checkChoice
+#' @export
+expect_choice = function(x, choices, info = NULL, label = NULL) {
+  res = checkChoice(x, choices)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

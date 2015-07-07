@@ -17,9 +17,9 @@ Roxygen: list(wrap = FALSE)
 Depends:
     R (>= 3.0.0)
 Imports:
-    utils
+    utils,
+    testthat
 Suggests:
-    testthat,
     knitr,
     data.table,
     dplyr

@@ -32,3 +32,10 @@ testNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALS
   res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
   isTRUE(res)
 }
+
+#' @rdname checkNumber
+#' @export
+expect_number = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, info = NULL, label = NULL) {
+  res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
+}

@@ -34,5 +34,13 @@ assertEnvironment = function(x, contains = character(0L), .var.name) {
 #' @rdname checkEnvironment
 #' @export
 testEnvironment = function(x, contains = character(0L)) {
-  isTRUE(checkEnvironment(x, contains))
+  res = checkEnvironment(x, contains)
+  isTRUE(res)
+}
+
+#' @rdname checkEnvironment
+#' @export
+expect_environment = function(x, contains = character(0L), info = NULL, label = NULL) {
+  res = checkEnvironment(x, contains)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

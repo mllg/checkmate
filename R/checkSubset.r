@@ -34,5 +34,13 @@ assertSubset = function(x, choices, empty.ok = TRUE, .var.name) {
 #' @rdname checkSubset
 #' @export
 testSubset = function(x, choices, empty.ok = TRUE) {
-  isTRUE(checkSubset(x, choices, empty.ok))
+  res = checkSubset(x, choices, empty.ok)
+  isTRUE(res)
+}
+
+#' @rdname checkSubset
+#' @export
+expect_subset = function(x, choices, empty.ok = TRUE, info = NULL, label = NULL) {
+  res = checkSubset(x, choices, empty.ok)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

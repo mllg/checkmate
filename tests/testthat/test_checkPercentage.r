@@ -2,9 +2,9 @@ context("checkPercentage")
 
 test_that("checkPercentage", {
   myobj = 1
-  expect_succ(Percentage, myobj)
+  expect_succ_all(Percentage, myobj)
   myobj = 2
-  expect_fail(Percentage, myobj)
+  expect_fail_all(Percentage, myobj)
 
   expect_false(testPercentage(integer(0)))
   expect_false(testPercentage(NULL))

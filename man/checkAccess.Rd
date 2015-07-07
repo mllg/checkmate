@@ -3,6 +3,7 @@
 \name{checkAccess}
 \alias{assertAccess}
 \alias{checkAccess}
+\alias{expect_access}
 \alias{testAccess}
 \title{Check file system access rights}
 \usage{
@@ -11,6 +12,8 @@ checkAccess(x, access = "")
 assertAccess(x, access = "", .var.name)
 
 testAccess(x, access = "")
+
+expect_access(x, access = "", info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -24,13 +27,21 @@ Write and executable rights are not checked on Windows.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertAccess} throws an error message,
- \code{testAccess} returns \code{FALSE} and \code{checkAccess} returns
- a string with the error message.
+ \code{testAccess} returns \code{FALSE}, \code{checkAccess} returns
+ a string with the error message. The function preceded with \code{expect__access} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check file system access rights
@@ -45,10 +56,13 @@ testAccess(R.home(), "w")
 \seealso{
 Other filesystem: \code{\link{assertDirectory}},
   \code{\link{checkDirectory}},
+  \code{\link{expect_directory}},
   \code{\link{testDirectory}}; \code{\link{assertFile}},
-  \code{\link{checkFile}}, \code{\link{testFile}};
+  \code{\link{checkFile}}, \code{\link{expect_file}},
+  \code{\link{testFile}};
   \code{\link{assertPathForOutput}},
   \code{\link{checkPathForOutput}},
+  \code{\link{expect_path_for_output}},
   \code{\link{testPathForOutput}}
 }
 

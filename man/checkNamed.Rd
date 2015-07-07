@@ -3,6 +3,7 @@
 \name{checkNamed}
 \alias{assertNamed}
 \alias{checkNamed}
+\alias{expect_named}
 \alias{testNamed}
 \title{Check if an argument is named}
 \usage{
@@ -11,6 +12,8 @@ checkNamed(x, type = "named")
 assertNamed(x, type = "named", .var.name)
 
 testNamed(x, type = "named")
+
+expect_named(x, type = "named", info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -28,13 +31,21 @@ Also note that you can use \code{\link{checkSubset}} to check for a specific set
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertNamed} throws an error message,
- \code{testNamed} returns \code{FALSE} and \code{checkNamed} returns
- a string with the error message.
+ \code{testNamed} returns \code{FALSE}, \code{checkNamed} returns
+ a string with the error message. The function preceded with \code{expect__named} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check if an argument is named

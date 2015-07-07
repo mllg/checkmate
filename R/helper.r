@@ -1,13 +1,18 @@
 vname = function(x, var.name) {
-  if (!missing(var.name))
+  if (!missing(var.name) && !is.null(var.name))
     return(var.name)
-  deparse(substitute(x, parent.frame(1L)))
+  collapse(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), "\n")
 }
 
 makeAssertion = function(msg, var.name) {
   if (!isTRUE(msg))
     mstop("Assertion on '%s' failed: %s", var.name, msg)
   invisible(TRUE)
+}
+
+makeExpectation = function(res, info, label) {
+  cond = function(tmp) expectation(isTRUE(res), res, "all good")
+  expect_that(1, cond, info = info, label = label)
 }
 
 mstop = function(msg, ...) {
@@ -41,4 +46,8 @@ collapse = function(x, sep = ",") {
 
 "%nin%" = function(x, y) {
   !match(x, y, nomatch = 0L)
+}
+
+killCamel = function(x) {
+  gsub("([A-Z])", "_\\L\\1", x, perl = TRUE)
 }

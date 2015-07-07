@@ -2,9 +2,9 @@ context("checkSubset")
 
 test_that("checkSubset", {
   myobj = letters[1:3]
-  expect_succ(Subset, myobj, letters)
+  expect_succ_all(Subset, myobj, letters)
   myobj = 1:2
-  expect_fail(Subset, myobj, letters)
+  expect_fail_all(Subset, myobj, letters)
 
   expect_false(testSubset(character(0), letters, empty.ok = FALSE))
   expect_true(testSubset(character(0), letters, empty.ok = TRUE))

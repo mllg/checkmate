@@ -2,9 +2,9 @@ context("checkList")
 
 test_that("checkList", {
   myobj = list(1, 2, 3)
-  expect_succ(List, myobj)
+  expect_succ_all(List, myobj)
   myobj = TRUE
-  expect_fail(List, myobj)
+  expect_fail_all(List, myobj)
 
   expect_true(testList(list()))
   expect_false(testList(NULL))

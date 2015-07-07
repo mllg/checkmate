@@ -52,6 +52,14 @@ testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, an
   isTRUE(res) && isTRUE(checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels))
 }
 
+#' @rdname checkFactor
+#' @useDynLib checkmate c_check_factor
+#' @export
+expect_factor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and% checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
+  makeExpectation(res, info = info, label = vname(x, label))
+}
+
 checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
   if (!is.null(levels)) {
     qassert(levels, "S")

@@ -50,3 +50,11 @@ testMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, mi
   res = .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   isTRUE(res)
 }
+
+#' @rdname checkMatrix
+#' @useDynLib checkmate c_check_matrix
+#' @export
+expect_matrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
+}

@@ -3,6 +3,7 @@
 \name{checkFile}
 \alias{assertFile}
 \alias{checkFile}
+\alias{expect_file}
 \alias{testFile}
 \title{Check existence and access rights of files}
 \usage{
@@ -11,6 +12,8 @@ checkFile(x, access = "")
 assertFile(x, access = "", .var.name)
 
 testFile(x, access = "")
+
+expect_file(x, access = "", info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -24,13 +27,21 @@ Write and executable rights are not checked on Windows.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertFile} throws an error message,
- \code{testFile} returns \code{FALSE} and \code{checkFile} returns
- a string with the error message.
+ \code{testFile} returns \code{FALSE}, \code{checkFile} returns
+ a string with the error message. The function preceded with \code{expect__file} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check existence and access rights of files
@@ -44,12 +55,14 @@ testFile(file.path(R.home(), "COPYING"), access = "rw")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},
-  \code{\link{checkAccess}}, \code{\link{testAccess}};
-  \code{\link{assertDirectory}},
+  \code{\link{checkAccess}}, \code{\link{expect_access}},
+  \code{\link{testAccess}}; \code{\link{assertDirectory}},
   \code{\link{checkDirectory}},
+  \code{\link{expect_directory}},
   \code{\link{testDirectory}};
   \code{\link{assertPathForOutput}},
   \code{\link{checkPathForOutput}},
+  \code{\link{expect_path_for_output}},
   \code{\link{testPathForOutput}}
 }
 

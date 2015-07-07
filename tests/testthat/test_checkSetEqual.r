@@ -2,9 +2,9 @@ context("checkSetEqual")
 
 test_that("checkSetEqual", {
   myobj = letters[1:3]
-  expect_succ(SetEqual, myobj, letters[1:3])
+  expect_succ_all(SetEqual, myobj, letters[1:3])
   myobj = letters[1:2]
-  expect_fail(String, myobj, letters[1:3])
+  expect_fail_all(String, myobj, letters[1:3])
 
   expect_true(testSetEqual(character(0), character(0)))
   expect_true(testSetEqual(character(0), character(0), ordered = TRUE))

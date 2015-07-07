@@ -3,6 +3,7 @@
 \name{checkDataFrame}
 \alias{assertDataFrame}
 \alias{checkDataFrame}
+\alias{expect_data_frame}
 \alias{testDataFrame}
 \title{Check if an argument is a data frame}
 \usage{
@@ -17,6 +18,11 @@ assertDataFrame(x, types = character(0L), any.missing = TRUE,
 testDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
   ncols = NULL, row.names = NULL, col.names = NULL)
+
+expect_data_frame(x, types = character(0L), any.missing = TRUE,
+  all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, info = NULL,
+  label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -63,13 +69,21 @@ Note that you can use \code{\link{checkSubset}} to test for a specific set of na
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertDataFrame} throws an error message,
- \code{testDataFrame} returns \code{FALSE} and \code{checkDataFrame} returns
- a string with the error message.
+ \code{testDataFrame} returns \code{FALSE}, \code{checkDataFrame} returns
+ a string with the error message. The function preceded with \code{expect__data_frame} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check if an argument is a data frame
@@ -80,32 +94,45 @@ testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "n
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},
-  \code{\link{checkArray}}, \code{\link{testArray}};
+  \code{\link{checkArray}}, \code{\link{expect_array}},
+  \code{\link{testArray}};
   \code{\link{assertAtomicVector}},
   \code{\link{checkAtomicVector}},
+  \code{\link{expect_atomic_vector}},
   \code{\link{testAtomicVector}};
   \code{\link{assertAtomic}}, \code{\link{checkAtomic}},
-  \code{\link{testAtomic}}; \code{\link{assertCharacter}},
+  \code{\link{expect_atomic}}, \code{\link{testAtomic}};
+  \code{\link{assertCharacter}},
   \code{\link{checkCharacter}},
+  \code{\link{expect_character}},
   \code{\link{testCharacter}}; \code{\link{assertComplex}},
-  \code{\link{checkComplex}}, \code{\link{testComplex}};
+  \code{\link{checkComplex}}, \code{\link{expect_complex}},
+  \code{\link{testComplex}};
   \code{\link{assertEnvironment}},
   \code{\link{checkEnvironment}},
+  \code{\link{expect_environment}},
   \code{\link{testEnvironment}};
   \code{\link{assertFactor}}, \code{\link{checkFactor}},
-  \code{\link{testFactor}}; \code{\link{assertFunction}},
-  \code{\link{checkFunction}}, \code{\link{testFunction}};
+  \code{\link{expect_factor}}, \code{\link{testFactor}};
+  \code{\link{assertFunction}},
+  \code{\link{checkFunction}},
+  \code{\link{expect_function}},
+  \code{\link{testFunction}};
   \code{\link{assertIntegerish}},
   \code{\link{checkIntegerish}},
+  \code{\link{expect_integerish}},
   \code{\link{testIntegerish}};
   \code{\link{assertInteger}}, \code{\link{checkInteger}},
-  \code{\link{testInteger}}; \code{\link{assertList}},
-  \code{\link{checkList}}, \code{\link{testList}};
+  \code{\link{expect_integer}}, \code{\link{testInteger}};
+  \code{\link{assertList}}, \code{\link{checkList}},
+  \code{\link{expect_list}}, \code{\link{testList}};
   \code{\link{assertLogical}}, \code{\link{checkLogical}},
-  \code{\link{testLogical}}; \code{\link{assertMatrix}},
-  \code{\link{checkMatrix}}, \code{\link{testMatrix}};
+  \code{\link{expect_logical}}, \code{\link{testLogical}};
+  \code{\link{assertMatrix}}, \code{\link{checkMatrix}},
+  \code{\link{expect_matrix}}, \code{\link{testMatrix}};
   \code{\link{assertNumeric}}, \code{\link{checkNumeric}},
-  \code{\link{testNumeric}}; \code{\link{assertVector}},
-  \code{\link{checkVector}}, \code{\link{testVector}}
+  \code{\link{expect_numeric}}, \code{\link{testNumeric}};
+  \code{\link{assertVector}}, \code{\link{checkVector}},
+  \code{\link{expect_vector}}, \code{\link{testVector}}
 }
 

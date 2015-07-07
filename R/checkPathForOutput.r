@@ -53,5 +53,13 @@ assertPathForOutput = function(x, overwrite = FALSE, .var.name) {
 #' @rdname checkPathForOutput
 #' @export
 testPathForOutput = function(x, overwrite = FALSE) {
-  isTRUE(checkPathForOutput(x, overwrite))
+  res = checkPathForOutput(x, overwrite)
+  isTRUE(res)
+}
+
+#' @rdname checkPathForOutput
+#' @export
+expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NULL) {
+  res = checkPathForOutput(x, overwrite)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

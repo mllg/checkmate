@@ -2,9 +2,9 @@ context("checkNamed")
 
 test_that("checkNamed", {
   myobj = setNames(1:3, letters[1:3])
-  expect_succ(Named, myobj)
+  expect_succ_all(Named, myobj)
   myobj = 1:3
-  expect_fail(Named, myobj)
+  expect_fail_all(Named, myobj)
 
   expect_true(testNamed(integer(0)))
   expect_true(testNamed(NULL))

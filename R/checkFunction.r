@@ -64,5 +64,13 @@ assertFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, .var.na
 #' @rdname checkFunction
 #' @export
 testFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
-  isTRUE(checkFunction(x, args, ordered, nargs))
+  res = checkFunction(x, args, ordered, nargs)
+  isTRUE(res)
+}
+
+#' @rdname checkFunction
+#' @export
+expect_function = function(x, args = NULL, ordered = FALSE, nargs = NULL, info = NULL, label = NULL) {
+  res = checkFunction(x, args, ordered, nargs)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

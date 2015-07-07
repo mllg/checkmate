@@ -20,6 +20,7 @@ checkPercentage = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkPercentage
+#' @useDynLib checkmate c_check_number
 #' @export
 assertPercentage = function(x, na.ok = FALSE, .var.name) {
   res = .Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate")
@@ -27,8 +28,17 @@ assertPercentage = function(x, na.ok = FALSE, .var.name) {
 }
 
 #' @rdname checkPercentage
+#' @useDynLib checkmate c_check_number
 #' @export
 testPercentage = function(x, na.ok = FALSE) {
   res = .Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate")
   isTRUE(res)
+}
+
+#' @rdname checkPercentage
+#' @useDynLib checkmate c_check_number
+#' @export
+expect_percentage = function(x, na.ok = FALSE, info = NULL, label = NULL) {
+  res = .Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
 }

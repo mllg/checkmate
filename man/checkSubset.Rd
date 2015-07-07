@@ -3,6 +3,7 @@
 \name{checkSubset}
 \alias{assertSubset}
 \alias{checkSubset}
+\alias{expect_subset}
 \alias{testSubset}
 \title{Check if object is a subset of a given set}
 \usage{
@@ -11,6 +12,8 @@ checkSubset(x, choices, empty.ok = TRUE)
 assertSubset(x, choices, empty.ok = TRUE, .var.name)
 
 testSubset(x, choices, empty.ok = TRUE)
+
+expect_subset(x, choices, empty.ok = TRUE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -26,13 +29,21 @@ Default is \code{TRUE}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertSubset} throws an error message,
- \code{testSubset} returns \code{FALSE} and \code{checkSubset} returns
- a string with the error message.
+ \code{testSubset} returns \code{FALSE}, \code{checkSubset} returns
+ a string with the error message. The function preceded with \code{expect__subset} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check if object is a subset of a given set
@@ -44,8 +55,10 @@ testSubset("Species", names(iris))
 }
 \seealso{
 Other set: \code{\link{assertChoice}},
-  \code{\link{checkChoice}}, \code{\link{testChoice}};
-  \code{\link{assertSetEqual}},
-  \code{\link{checkSetEqual}}, \code{\link{testSetEqual}}
+  \code{\link{checkChoice}}, \code{\link{expect_choice}},
+  \code{\link{testChoice}}; \code{\link{assertSetEqual}},
+  \code{\link{checkSetEqual}},
+  \code{\link{expect_set_equal}},
+  \code{\link{testSetEqual}}
 }
 

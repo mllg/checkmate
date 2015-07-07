@@ -2,9 +2,9 @@ context("checkArray")
 
 test_that("checkArray", {
   myobj = array(1:2)
-  expect_succ(Array, myobj)
+  expect_succ_all(Array, myobj)
   myobj = 1:2
-  expect_fail(Array, myobj)
+  expect_fail_all(Array, myobj)
 
   x = array(dim = c(2, 3))
   expect_true(testArray(x))

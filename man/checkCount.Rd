@@ -3,6 +3,7 @@
 \name{checkCount}
 \alias{assertCount}
 \alias{checkCount}
+\alias{expect_count}
 \alias{testCount}
 \title{Check if an argument is a count}
 \usage{
@@ -14,6 +15,9 @@ assertCount(x, na.ok = FALSE, positive = FALSE,
 
 testCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps))
+
+expect_count(x, na.ok = FALSE, positive = FALSE,
+  tol = sqrt(.Machine$double.eps), info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -33,13 +37,21 @@ Default is \code{sqrt(.Machine$double.eps)}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertCount} throws an error message,
- \code{testCount} returns \code{FALSE} and \code{checkCount} returns
- a string with the error message.
+ \code{testCount} returns \code{FALSE}, \code{checkCount} returns
+ a string with the error message. The function preceded with \code{expect__count} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 A count is defined as non-negative integerish value.
@@ -55,17 +67,22 @@ testCount(-1)
 }
 \seealso{
 Other scalars: \code{\link{assertFlag}},
-  \code{\link{checkFlag}}, \code{\link{testFlag}};
-  \code{\link{assertInt}}, \code{\link{checkInt}},
+  \code{\link{checkFlag}}, \code{\link{expect_flag}},
+  \code{\link{testFlag}}; \code{\link{assertInt}},
+  \code{\link{checkInt}}, \code{\link{expect_int}},
   \code{\link{testInt}}; \code{\link{assertNumber}},
-  \code{\link{checkNumber}}, \code{\link{testNumber}};
-  \code{\link{assertPercentage}},
+  \code{\link{checkNumber}}, \code{\link{expect_number}},
+  \code{\link{testNumber}}; \code{\link{assertPercentage}},
   \code{\link{checkPercentage}},
+  \code{\link{expect_percentage}},
   \code{\link{testPercentage}};
   \code{\link{assertScalarNA}},
-  \code{\link{checkScalarNA}}, \code{\link{testScalarNA}};
-  \code{\link{assertScalar}}, \code{\link{checkScalar}},
+  \code{\link{checkScalarNA}},
+  \code{\link{expect_scalar_na}},
+  \code{\link{testScalarNA}}; \code{\link{assertScalar}},
+  \code{\link{checkScalar}}, \code{\link{expect_scalar}},
   \code{\link{testScalar}}; \code{\link{assertString}},
-  \code{\link{checkString}}, \code{\link{testString}}
+  \code{\link{checkString}}, \code{\link{expect_string}},
+  \code{\link{testString}}
 }
 

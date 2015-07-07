@@ -2,9 +2,9 @@ context("checkEnvironment")
 
 test_that("checkEnvironment", {
   myobj = new.env()
-  expect_succ(Environment, myobj)
+  expect_succ_all(Environment, myobj)
   myobj = list()
-  expect_fail(Environment, myobj)
+  expect_fail_all(Environment, myobj)
 
   ee = new.env(parent = emptyenv())
   ee$yyy = 1

@@ -2,9 +2,9 @@ context("checkCharacter")
 
 test_that("checkCharacter", {
   myobj = c("a", "b")
-  expect_succ(Character, myobj)
+  expect_succ_all(Character, myobj)
   myobj = 0
-  expect_fail(Character, myobj)
+  expect_fail_all(Character, myobj)
 
   expect_true(testCharacter(character(0)))
   expect_false(testCharacter(NULL))

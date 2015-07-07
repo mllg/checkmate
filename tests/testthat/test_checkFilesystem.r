@@ -10,9 +10,9 @@ dir.create(dn)
 
 test_that("check_file", {
   myobj = fn
-  expect_succ(File, myobj)
+  expect_succ_all(File, myobj)
   myobj = ff
-  expect_fail(File, myobj)
+  expect_fail_all(File, myobj)
 
   expect_false(testFile(character(0)))
   expect_false(testFile(NULL))
@@ -25,9 +25,9 @@ test_that("check_file", {
 
 test_that("check_directory", {
   myobj = dn
-  expect_succ(Directory, myobj)
+  expect_succ_all(Directory, myobj)
   myobj = ff
-  expect_fail(Directory, myobj)
+  expect_fail_all(Directory, myobj)
 
   expect_false(testDirectory(character(0)))
   expect_false(testDirectory(fn))
@@ -39,7 +39,7 @@ test_that("check_directory", {
 
 test_that("check_access", {
   myobj = R.home()
-  expect_succ(Access, myobj, "r")
+  expect_succ_all(Access, myobj, "r")
 
   if (.Platform$OS.type != "windows") {
     Sys.chmod(fn, "0000")
@@ -66,9 +66,9 @@ test_that("check_access", {
 
 test_that("check_path_for_output", {
   myobj = ff
-  expect_succ(PathForOutput, myobj)
+  expect_succ_all(PathForOutput, myobj)
   myobj = fn
-  expect_fail(PathForOutput, myobj)
+  expect_fail_all(PathForOutput, myobj)
 
   expect_false(testPathForOutput(character(0)))
   expect_false(testPathForOutput(NULL))

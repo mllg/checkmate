@@ -10,9 +10,9 @@ li = list(
 
 test_that("checkAtomic", {
   myobj = 1:2
-  expect_succ(Atomic, myobj)
+  expect_succ_all(Atomic, myobj)
   myobj = iris
-  expect_fail(Atomic, myobj)
+  expect_fail_all(Atomic, myobj)
 
   expect_true(testAtomic(integer(0)))
   expect_true(testAtomic(NULL))

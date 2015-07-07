@@ -8,4 +8,7 @@
 #'   \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
 #' }
 #' @importFrom utils head
+#' @importFrom utils tail
+#' @importFrom testthat expect_that
+#' @importFrom testthat expectation
 NULL

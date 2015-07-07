@@ -2,9 +2,9 @@ context("checkLogical")
 
 test_that("checkLogical", {
   myobj = TRUE
-  expect_succ(Logical, myobj)
+  expect_succ_all(Logical, myobj)
   myobj = 1
-  expect_fail(Logical, myobj)
+  expect_fail_all(Logical, myobj)
 
   expect_true(testLogical(logical(0)))
   expect_false(testLogical(NULL))

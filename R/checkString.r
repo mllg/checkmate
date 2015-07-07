@@ -20,6 +20,7 @@ checkString = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkString
+#' @useDynLib checkmate c_check_string
 #' @export
 assertString = function(x, na.ok = FALSE, .var.name) {
   res = checkString(x, na.ok)
@@ -27,7 +28,17 @@ assertString = function(x, na.ok = FALSE, .var.name) {
 }
 
 #' @rdname checkString
+#' @useDynLib checkmate c_check_string
 #' @export
 testString = function(x, na.ok = FALSE) {
-  isTRUE(checkString(x, na.ok))
+  res = checkString(x, na.ok)
+  isTRUE(res)
+}
+
+#' @rdname checkString
+#' @useDynLib checkmate c_check_string
+#' @export
+expect_string = function(x, na.ok = FALSE, info = NULL, label = NULL) {
+  res = checkString(x, na.ok)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

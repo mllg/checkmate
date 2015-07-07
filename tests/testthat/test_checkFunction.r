@@ -2,9 +2,9 @@ context("checkFunction")
 
 test_that("checkFunction", {
   myobj = mean
-  expect_succ(Function, myobj)
+  expect_succ_all(Function, myobj)
   myobj = TRUE
-  expect_fail(Function, myobj)
+  expect_fail_all(Function, myobj)
 
   myfun = function(x, y, ...) x + y
 

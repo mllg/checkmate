@@ -3,6 +3,7 @@
 \name{checkPathForOutput}
 \alias{assertPathForOutput}
 \alias{checkPathForOutput}
+\alias{expect_path_for_output}
 \alias{testPathForOutput}
 \title{Check file path for later output}
 \usage{
@@ -11,6 +12,8 @@ checkPathForOutput(x, overwrite = FALSE)
 assertPathForOutput(x, overwrite = FALSE, .var.name)
 
 testPathForOutput(x, overwrite = FALSE)
+
+expect_path_for_output(x, overwrite = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -24,13 +27,21 @@ Default is \code{FALSE}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertPathForOutput} throws an error message,
- \code{testPathForOutput} returns \code{FALSE} and \code{checkPathForOutput} returns
- a string with the error message.
+ \code{testPathForOutput} returns \code{FALSE}, \code{checkPathForOutput} returns
+ a string with the error message. The function preceded with \code{expect__path_for_output} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check whether a file path can later be safely used to create a file and write to it.
@@ -49,10 +60,12 @@ testPathForOutput(file.path(tempdir(), "process.log"))
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},
-  \code{\link{checkAccess}}, \code{\link{testAccess}};
-  \code{\link{assertDirectory}},
+  \code{\link{checkAccess}}, \code{\link{expect_access}},
+  \code{\link{testAccess}}; \code{\link{assertDirectory}},
   \code{\link{checkDirectory}},
+  \code{\link{expect_directory}},
   \code{\link{testDirectory}}; \code{\link{assertFile}},
-  \code{\link{checkFile}}, \code{\link{testFile}}
+  \code{\link{checkFile}}, \code{\link{expect_file}},
+  \code{\link{testFile}}
 }
 

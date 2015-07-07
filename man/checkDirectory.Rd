@@ -3,6 +3,7 @@
 \name{checkDirectory}
 \alias{assertDirectory}
 \alias{checkDirectory}
+\alias{expect_directory}
 \alias{testDirectory}
 \title{Check for existence and access rights of directories}
 \usage{
@@ -11,6 +12,8 @@ checkDirectory(x, access = "")
 assertDirectory(x, access = "", .var.name)
 
 testDirectory(x, access = "", .var.name)
+
+expect_directory(x, access = "", info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -24,13 +27,21 @@ Write and executable rights are not checked on Windows.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertDirectory} throws an error message,
- \code{testDirectory} returns \code{FALSE} and \code{checkDirectory} returns
- a string with the error message.
+ \code{testDirectory} returns \code{FALSE}, \code{checkDirectory} returns
+ a string with the error message. The function preceded with \code{expect__directory} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check for existence and access rights of directories
@@ -44,11 +55,13 @@ testDirectory(R.home(), "rw")
 }
 \seealso{
 Other filesystem: \code{\link{assertAccess}},
-  \code{\link{checkAccess}}, \code{\link{testAccess}};
-  \code{\link{assertFile}}, \code{\link{checkFile}},
+  \code{\link{checkAccess}}, \code{\link{expect_access}},
+  \code{\link{testAccess}}; \code{\link{assertFile}},
+  \code{\link{checkFile}}, \code{\link{expect_file}},
   \code{\link{testFile}};
   \code{\link{assertPathForOutput}},
   \code{\link{checkPathForOutput}},
+  \code{\link{expect_path_for_output}},
   \code{\link{testPathForOutput}}
 }
 

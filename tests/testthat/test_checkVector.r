@@ -10,9 +10,9 @@ li = list(
 
 test_that("checkVector", {
   myobj = 1:3
-  expect_succ(Vector, myobj)
+  expect_succ_all(Vector, myobj)
   myobj = NULL
-  expect_fail(Vector, myobj)
+  expect_fail_all(Vector, myobj)
 
   expect_true(testVector(integer(0)))
   expect_false(testVector(NULL))

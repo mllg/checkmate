@@ -2,9 +2,9 @@ context("checkChoice")
 
 test_that("checkChoice", {
   myobj = 1
-  expect_succ(Choice, myobj, 1:3)
+  expect_succ_all(Choice, myobj, 1:3)
   myobj = 0
-  expect_fail(Choice, myobj, 1:3)
+  expect_fail_all(Choice, myobj, 1:3)
 
   expect_false(testChoice(character(0), letters))
   expect_false(testChoice(NULL, letters))

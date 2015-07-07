@@ -2,8 +2,8 @@ context("checkNames")
 
 test_that("checkNames", {
   nn = letters[1:3]
-  expect_succ(Names, nn)
-  expect_fail(Names, nn, type = "unnamed")
+  expect_succ_all(Names, nn)
+  expect_fail_all(Names, nn, type = "unnamed")
 
   expect_true(testNames(character(0)))
   expect_false(testNames(NULL))

@@ -30,9 +30,7 @@ checkList = function(x, types = character(0L), any.missing = TRUE, all.missing =
 #' @useDynLib checkmate c_check_list
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
-  res = checkListProps(x, types)
+  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and% checkListProps(x, types)
   makeAssertion(res, vname(x, .var.name))
 }
 
@@ -42,6 +40,14 @@ assertList = function(x, types = character(0L), any.missing = TRUE, all.missing 
 testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
   isTRUE(res) && isTRUE(checkListProps(x, types))
+}
+
+#' @rdname checkList
+#' @useDynLib checkmate c_check_list
+#' @export
+expect_list = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and% checkListProps(x, types)
+  makeExpectation(res, info = info, label = vname(x, label))
 }
 
 checkListProps = function(x, types = character(0L)) {

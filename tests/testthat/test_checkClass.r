@@ -2,8 +2,8 @@ context("checkClass")
 
 test_that("checkClass", {
   myobj = 1
-  expect_succ(Class, myobj, "numeric")
-  expect_fail(Class, myobj, "integer")
+  expect_succ_all(Class, myobj, "numeric")
+  expect_fail_all(Class, myobj, "integer")
 
   expect_true(testClass(NULL, "NULL"))
   expect_true(testClass(1, "numeric"))

@@ -56,3 +56,10 @@ testAccess = function(x, access = "") {
   res = checkAccess(x, access)
   isTRUE(res)
 }
+
+#' @rdname checkAccess
+#' @export
+expect_access = function(x, access = "", info = NULL, label = NULL) {
+  res = checkAccess(x, access)
+  makeExpectation(res, info = info, label = vname(x, label))
+}

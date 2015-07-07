@@ -2,9 +2,9 @@ context("checkScalar")
 
 test_that("checkScalar", {
   myobj = "a"
-  expect_succ(Scalar, myobj)
+  expect_succ_all(Scalar, myobj)
   myobj = 1:2
-  expect_fail(Scalar, myobj)
+  expect_fail_all(Scalar, myobj)
 
   expect_true(testScalar(TRUE))
   expect_true(testScalar(1L))

@@ -40,3 +40,11 @@ testNames = function(x, type = "named") {
   res = .Call("c_check_names", x, type, PACKAGE = "checkmate")
   isTRUE(res)
 }
+
+#' @rdname checkNames
+#' @useDynLib checkmate c_check_names
+#' @export
+expect_names = function(x, type = "named", info = NULL, label = NULL) {
+  res = .Call("c_check_names", x, type, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
+}

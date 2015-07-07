@@ -2,9 +2,9 @@ context("checkCount")
 
 test_that("checkCount", {
   myobj = 1
-  expect_succ(Count, myobj)
+  expect_succ_all(Count, myobj)
   myobj = -1
-  expect_fail(Count, myobj)
+  expect_fail_all(Count, myobj)
 
   expect_false(testCount(integer(0)))
   expect_false(testCount(NULL))

@@ -33,3 +33,11 @@ testDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missi
   res = .Call("c_check_dataframe", x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
   isTRUE(res) && isTRUE(checkListProps(x, types))
 }
+
+#' @rdname checkDataFrame
+#' @useDynLib checkmate c_check_dataframe
+#' @export
+expect_data_frame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_dataframe", x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate") %and% checkListProps(x, types)
+  makeExpectation(res, info = info, label = vname(x, label))
+}

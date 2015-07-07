@@ -2,9 +2,9 @@ context("checkFlag")
 
 test_that("checkFlag", {
   myobj = TRUE
-  expect_succ(Flag, myobj)
+  expect_succ_all(Flag, myobj)
   myobj = NA
-  expect_fail(Flag, myobj)
+  expect_fail_all(Flag, myobj)
 
   expect_false(testFlag(logical(0)))
   expect_false(testFlag(NULL))

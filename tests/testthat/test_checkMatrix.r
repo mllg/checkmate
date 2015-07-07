@@ -2,9 +2,9 @@ context("checkMatrix")
 
 test_that("checkMatrix", {
   myobj = matrix(1:9, 3)
-  expect_succ(Matrix, myobj)
+  expect_succ_all(Matrix, myobj)
   myobj = TRUE
-  expect_fail(Matrix, myobj)
+  expect_fail_all(Matrix, myobj)
 
   x = matrix(1:9, 3)
   expect_true(testMatrix(x))

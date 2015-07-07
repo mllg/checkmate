@@ -2,9 +2,9 @@ context("checkDataFrame")
 
 test_that("checkDataFrame", {
   myobj = iris
-  expect_succ(DataFrame, myobj)
+  expect_succ_all(DataFrame, myobj)
   myobj = TRUE
-  expect_fail(DataFrame, myobj)
+  expect_fail_all(DataFrame, myobj)
 
   expect_true(testDataFrame(data.frame()))
   expect_false(testDataFrame(NULL))
@@ -87,7 +87,7 @@ test_that("data.table is supported", {
   skip_if_not_installed("data.table")
   library(data.table)
   myobj = as.data.table(iris)
-  expect_succ(DataFrame, myobj)
+  expect_succ_all(DataFrame, myobj)
   expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
   expect_true(testDataFrame(data.table()))
 })
@@ -96,7 +96,7 @@ test_that("dplyr::data_frame is supported", {
   skip_if_not_installed("dplyr")
   library(dplyr)
   myobj = as_data_frame(iris)
-  expect_succ(DataFrame, myobj)
+  expect_succ_all(DataFrame, myobj)
   expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
   expect_true(testDataFrame(data_frame()))
 })

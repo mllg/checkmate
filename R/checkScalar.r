@@ -7,6 +7,7 @@
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @template checker
 #' @family scalars
+#' @useDynLib checkmate c_check_scalar
 #' @export
 #' @examples
 #' testScalar(1)
@@ -16,6 +17,7 @@ checkScalar = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkScalar
+#' @useDynLib checkmate c_check_scalar
 #' @export
 assertScalar = function(x, na.ok = FALSE, .var.name) {
   res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
@@ -23,8 +25,17 @@ assertScalar = function(x, na.ok = FALSE, .var.name) {
 }
 
 #' @rdname checkScalar
+#' @useDynLib checkmate c_check_scalar
 #' @export
 testScalar = function(x, na.ok = FALSE) {
   res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
   isTRUE(res)
+}
+
+#' @rdname checkScalar
+#' @useDynLib checkmate c_check_scalar
+#' @export
+expect_scalar = function(x, na.ok = FALSE, info = NULL, label = NULL) {
+  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
 }

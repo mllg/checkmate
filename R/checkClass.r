@@ -54,5 +54,13 @@ assertClass = function(x, classes, ordered = FALSE, .var.name) {
 #' @rdname checkClass
 #' @export
 testClass = function(x, classes, ordered = FALSE) {
-  isTRUE(checkClass(x, classes, ordered))
+  res = checkClass(x, classes, ordered)
+  isTRUE(res)
+}
+
+#' @rdname checkClass
+#' @export
+expect_class = function(x, classes, ordered = FALSE, info = NULL, label = NULL) {
+  res = checkClass(x, classes, ordered)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

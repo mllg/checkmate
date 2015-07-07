@@ -2,9 +2,9 @@ context("checkFactor")
 
 test_that("checkFactor", {
   myobj = factor(letters[1:2])
-  expect_succ(Factor, myobj)
+  expect_succ_all(Factor, myobj)
   myobj = letters[1:2]
-  expect_fail(Factor, myobj)
+  expect_fail_all(Factor, myobj)
 
   x = factor(c("a", "b"), levels = c("a", "b"))
   expect_true(testFactor(x))

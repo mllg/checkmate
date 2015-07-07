@@ -3,6 +3,7 @@
 \name{checkClass}
 \alias{assertClass}
 \alias{checkClass}
+\alias{expect_class}
 \alias{testClass}
 \title{Check argument inheritance}
 \usage{
@@ -11,6 +12,8 @@ checkClass(x, classes, ordered = FALSE)
 assertClass(x, classes, ordered = FALSE, .var.name)
 
 testClass(x, classes, ordered = FALSE)
+
+expect_class(x, classes, ordered = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -26,13 +29,21 @@ Default is \code{FALSE}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertClass} throws an error message,
- \code{testClass} returns \code{FALSE} and \code{checkClass} returns
- a string with the error message.
+ \code{testClass} returns \code{FALSE}, \code{checkClass} returns
+ a string with the error message. The function preceded with \code{expect__class} will
+ return an \code{\link[testthat]{expectation}}.
 }
 \description{
 Check argument inheritance

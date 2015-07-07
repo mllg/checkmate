@@ -39,3 +39,11 @@ testArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
   res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
   isTRUE(res)
 }
+
+#' @rdname checkArray
+#' @useDynLib checkmate c_check_array
+#' @export
+expect_array = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, info = NULL, label = NULL) {
+  res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
+}

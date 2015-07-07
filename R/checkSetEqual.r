@@ -38,5 +38,13 @@ assertSetEqual = function(x, y, ordered = TRUE, .var.name) {
 #' @rdname checkSetEqual
 #' @export
 testSetEqual = function(x, y, ordered = TRUE) {
-  isTRUE(checkSetEqual(x, y, ordered))
+  res = checkSetEqual(x, y, ordered)
+  isTRUE(res)
+}
+
+#' @rdname checkSetEqual
+#' @export
+expect_set_equal = function(x, y, ordered = TRUE, info = NULL, label = NULL) {
+  res = checkSetEqual(x, y, ordered)
+  makeExpectation(res, info = info, label = vname(x, label))
 }

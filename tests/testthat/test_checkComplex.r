@@ -2,9 +2,9 @@ context("checkComplex")
 
 test_that("checkComplex", {
   myobj = 1+1i
-  expect_succ(Complex, myobj)
+  expect_succ_all(Complex, myobj)
   myobj = 1
-  expect_fail(Complex, myobj)
+  expect_fail_all(Complex, myobj)
 
   expect_true(testComplex(complex(0L)))
   expect_false(testComplex(NULL))
