@@ -38,10 +38,10 @@ testNamed = function(x, type = "named") {
   isTRUE(res)
 }
 
-#' @rdname checkNamed
-#' @useDynLib checkmate c_check_named
-#' @export
-expect_named = function(x, type = "named", info = NULL, label = NULL) {
-  res = .Call("c_check_named", x, type, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
-}
+# #' @rdname checkNamed
+# #' @useDynLib checkmate c_check_named
+# #' @export
+# expect_named = function(x, type = "named", info = NULL, label = NULL) {
+#   res = .Call("c_check_named", x, type, PACKAGE = "checkmate")
+#   makeExpectation(res, info = info, label = vname(x, label))
+# }
