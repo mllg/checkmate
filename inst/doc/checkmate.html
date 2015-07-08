@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Michel Lang" />
+
+<meta name="date" content="2015-07-09" />
+
+<title>Checkmate</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<link href="data:text/css;charset=utf-8,body%7Bbackground%2Dcolor%3A%23fff%3Bmargin%3A1em%20auto%3Bmax%2Dwidth%3A700px%3Boverflow%3Avisible%3Bpadding%2Dleft%3A2em%3Bpadding%2Dright%3A2em%3Bfont%2Dfamily%3A%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3Bfont%2Dsize%3A14px%3Bline%2Dheight%3A1%2E35%7D%23header%7Btext%2Dalign%3Acenter%7D%23TOC%7Bclear%3Aboth%3Bmargin%3A0%200%2010px%2010px%3Bpadding%3A4px%3Bwidth%3A400px%3Bborder%3A1px%20solid%20%23CCCCCC%3Bborder%2Dradius%3A5px%3Bbackground%2Dcolor%3A%23f6f6f6%3Bfont%2Dsize%3A13px%3Bline%2Dheight%3A1%2E3%7D%23TOC%20%2Etoctitle%7Bfont%2Dweight%3Abold%3Bfont%2Dsize%3A15px%3Bmargin%2Dleft%3A5px%7D%23TOC%20ul%7Bpadding%2Dleft%3A40px%3Bmargin%2Dleft%3A%2D1%2E5em%3Bmargin%2Dtop%3A5px%3Bmargin%2Dbottom%3A5px%7D%23TOC%20ul%20ul%7Bmargin%2Dleft%3A%2D2em%7D%23TOC%20li%7Bline%2Dheight%3A16px%7Dtable%7Bmargin%3A1em%20auto%3Bborder%2Dwidth%3A1px%3Bborder%2Dcolor%3A%23DDDDDD%3Bborder%2Dstyle%3Aoutset%3Bborder%2Dcollapse%3Acollapse%7Dtable%20th%7Bborder%2Dwidth%3A2px%3Bpadding%3A5px%3Bborder%2Dstyle%3Ainset%7Dtable%20td%7Bborder%2Dwidth%3A1px%3Bborder%2Dstyle%3Ainset%3Bline%2Dheight%3A18px%3Bpadding%3A5px%205px%7Dtable%2C%20table%20th%2C%20table%20td%7Bborder%2Dleft%2Dstyle%3Anone%3Bborder%2Dright%2Dstyle%3Anone%7Dtable%20thead%2C%20table%20tr%2Eeven%7Bbackground%2Dcolor%3A%23f7f7f7%7Dp%7Bmargin%3A0%2E5em%200%7Dblockquote%7Bbackground%2Dcolor%3A%23f6f6f6%3Bpadding%3A0%2E25em%200%2E75em%7Dhr%7Bborder%2Dstyle%3Asolid%3Bborder%3Anone%3Bborder%2Dtop%3A1px%20solid%20%23777%3Bmargin%3A28px%200%7Ddl%7Bmargin%2Dleft%3A0%7Ddl%20dd%7Bmargin%2Dbottom%3A13px%3Bmargin%2Dleft%3A13px%7Ddl%20dt%7Bfont%2Dweight%3Abold%7Dul%7Bmargin%2Dtop%3A0%7Dul%20li%7Blist%2Dstyle%3Acircle%20outside%7Dul%20ul%7Bmargin%2Dbottom%3A0%7Dpre%2C%20code%7Bbackground%2Dcolor%3A%23f7f7f7%3Bborder%2Dradius%3A3px%3Bcolor%3A%23333%7Dpre%7Bwhite%2Dspace%3Apre%2Dwrap%3Bborder%2Dradius%3A3px%3Bmargin%3A5px%200px%2010px%200px%3Bpadding%3A10px%7Dpre%3Anot%28%5Bclass%5D%29%7Bbackground%2Dcolor%3A%23f7f7f7%7Dcode%7Bfont%2Dfamily%3AConsolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3Bfont%2Dsize%3A85%25%7Dp%20%3E%20code%2C%20li%20%3E%20code%7Bpadding%3A2px%200px%7Ddiv%2Efigure%7Btext%2Dalign%3Acenter%7Dimg%7Bbackground%2Dcolor%3A%23FFFFFF%3Bpadding%3A2px%3Bborder%3A1px%20solid%20%23DDDDDD%3Bborder%2Dradius%3A3px%3Bborder%3A1px%20solid%20%23CCCCCC%3Bmargin%3A0%205px%7Dh1%7Bmargin%2Dtop%3A0%3Bfont%2Dsize%3A35px%3Bline%2Dheight%3A40px%7Dh2%7Bborder%2Dbottom%3A4px%20solid%20%23f7f7f7%3Bpadding%2Dtop%3A10px%3Bpadding%2Dbottom%3A2px%3Bfont%2Dsize%3A145%25%7Dh3%7Bborder%2Dbottom%3A2px%20solid%20%23f7f7f7%3Bpadding%2Dtop%3A10px%3Bfont%2Dsize%3A120%25%7Dh4%7Bborder%2Dbottom%3A1px%20solid%20%23f7f7f7%3Bmargin%2Dleft%3A8px%3Bfont%2Dsize%3A105%25%7Dh5%2C%20h6%7Bborder%2Dbottom%3A1px%20solid%20%23ccc%3Bfont%2Dsize%3A105%25%7Da%7Bcolor%3A%230033dd%3Btext%2Ddecoration%3Anone%7Da%3Ahover%7Bcolor%3A%236666ff%7Da%3Avisited%7Bcolor%3A%23800080%7Da%3Avisited%3Ahover%7Bcolor%3A%23BB00BB%7Da%5Bhref%5E%3D%22http%3A%22%5D%7Btext%2Ddecoration%3Aunderline%7Da%5Bhref%5E%3D%22https%3A%22%5D%7Btext%2Ddecoration%3Aunderline%7Dcode%20%3E%20span%2Ekw%7Bcolor%3A%23555%3Bfont%2Dweight%3Abold%7Dcode%20%3E%20span%2Edt%7Bcolor%3A%23902000%7Dcode%20%3E%20span%2Edv%7Bcolor%3A%2340a070%7Dcode%20%3E%20span%2Ebn%7Bcolor%3A%23d14%7Dcode%20%3E%20span%2Efl%7Bcolor%3A%23d14%7Dcode%20%3E%20span%2Ech%7Bcolor%3A%23d14%7Dcode%20%3E%20span%2Est%7Bcolor%3A%23d14%7Dcode%20%3E%20span%2Eco%7Bcolor%3A%23888888%3Bfont%2Dstyle%3Aitalic%7Dcode%20%3E%20span%2Eot%7Bcolor%3A%23007020%7Dcode%20%3E%20span%2Eal%7Bcolor%3A%23ff0000%3Bfont%2Dweight%3Abold%7Dcode%20%3E%20span%2Efu%7Bcolor%3A%23900%3Bfont%2Dweight%3Abold%7Dcode%20%3E%20span%2Eer%7Bcolor%3A%23a61717%3Bbackground%2Dcolor%3A%23e3d2d2%7D" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+<div id="header">
+<h1 class="title">Checkmate</h1>
+<h4 class="author"><em>Michel Lang</em></h4>
+<h4 class="date"><em>2015-07-09</em></h4>
+</div>
+
+
+<p>Ever used an R function that produced a not-very-helpful error message, just to discover after minutes of debugging that you simply passed a wrong argument?</p>
+<p>Blaming the laziness of the package author for not doing such standard checks (in a dynamically typed language such as R) is at least partially unfair, as R makes theses types of checks cumbersome and annoying. Well, that’s how it was in the past.</p>
+<p>Enter checkmate.</p>
+<p>Virtually <strong>every standard type of user error</strong> when passing arguments into function can be caught with a simple, readable line which produces an <strong>informative error message</strong> in case. A substantial part of the package was written in C to <strong>minimize any worries about execution time overhead</strong>.</p>
+<div id="intro" class="section level2">
+<h2>Intro</h2>
+<p>As a motivational example, consider you have a function to calculate the faculty of a natural number and the user may choose between using either the stirling approximation or R’s <code>factorial</code> function (which internally uses the gamma function). Thus, you have two arguments, <code>n</code> and <code>method</code>. Argument <code>n</code> must obviously be a positive natural number and <code>method</code> must be either <code>&quot;stirling&quot;</code> or <code>&quot;factorial&quot;</code>. Here is a version of all the hoops you need to jump through to ensure that these simple requirements are met:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fact &lt;-<span class="st"> </span>function(n, <span class="dt">method =</span> <span class="st">&quot;stirling&quot;</span>) {
+  if (<span class="kw">length</span>(n) !=<span class="st"> </span><span class="dv">1</span>)
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' must have length 1&quot;</span>)
+  if (!<span class="kw">is.numeric</span>(n))
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' must be numeric&quot;</span>)
+  if (<span class="kw">is.na</span>(n))
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' may not be NA&quot;</span>)
+  if (<span class="kw">is.double</span>(n)) {
+    if (<span class="kw">is.nan</span>(n))
+      <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' may not be NaN&quot;</span>)
+    if (<span class="kw">is.infinite</span>(n))
+      <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' must be finite&quot;</span>)
+    if (<span class="kw">abs</span>(n -<span class="st"> </span><span class="kw">round</span>(n, <span class="dv">0</span>)) &gt;<span class="st"> </span><span class="kw">sqrt</span>(.Machine$double.eps))
+      <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' must be an integerish value&quot;</span>)
+    n &lt;-<span class="st"> </span><span class="kw">as.integer</span>(n)
+  }
+  if (n &lt;<span class="st"> </span><span class="dv">0</span>)
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'n' must be &gt;= 0&quot;</span>)
+  if (<span class="kw">length</span>(method) !=<span class="st"> </span><span class="dv">1</span>)
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'method' must have length 1&quot;</span>)
+  if (!<span class="kw">is.character</span>(method) ||<span class="st"> </span>!method %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;stirling&quot;</span>, <span class="st">&quot;factorial&quot;</span>))
+    <span class="kw">stop</span>(<span class="st">&quot;Argument 'method' must be either 'stirling' or 'factorial'&quot;</span>)
+
+  if (method ==<span class="st"> &quot;factorial&quot;</span>)
+    <span class="kw">factorial</span>(n)
+  else
+    <span class="kw">sqrt</span>(<span class="dv">2</span> *<span class="st"> </span>pi *<span class="st"> </span>n) *<span class="st"> </span>(n /<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))^n
+}</code></pre></div>
+<p>And for comparison, here is the same function using checkmate:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fact &lt;-<span class="st"> </span>function(n, <span class="dt">method =</span> <span class="st">&quot;stirling&quot;</span>) {
+  <span class="kw">assertCount</span>(n)
+  <span class="kw">assertChoice</span>(method, <span class="kw">c</span>(<span class="st">&quot;stirling&quot;</span>, <span class="st">&quot;factorial&quot;</span>))
+
+  if (method ==<span class="st"> &quot;factorial&quot;</span>)
+    <span class="kw">factorial</span>(n)
+  else
+    <span class="kw">sqrt</span>(<span class="dv">2</span> *<span class="st"> </span>pi *<span class="st"> </span>n) *<span class="st"> </span>(n /<span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))^n
+}</code></pre></div>
+</div>
+<div id="function-overview" class="section level2">
+<h2>Function overview</h2>
+<p>All functions come in four flavors, depending on the prefix. If prefixed with <code>assert</code>, an error is thrown if the check fails. Otherwise, <code>TRUE</code> is returned invisibly. The family of functions prefixed with <code>test</code> always return the check result as logical value. Functions starting with <code>check</code> return the error message as a string (or <code>TRUE</code> otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message. The last family of functions is intended to be used with the <a href="http://cran.r-project.org/web/packages/testthat">testthat package</a>. All performed checks are logged into the <code>testthat</code> reported.</p>
+<div id="scalars" class="section level3">
+<h3>Scalars</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkFlag">checkFlag</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkCount">checkCount</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkInt">checkInt</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkNumber">checkNumber</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkString">checkString</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkScalar">checkScalar</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkScalarNA">checkScalarNA</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkPercentage">checkPercentage</a></li>
+</ul>
+</div>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkLogical">checkLogical</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkNumeric">checkNumeric</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkInteger">checkInteger</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkIntegerish">checkIntegerish</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkComplex">checkComplex</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkCharacter">checkCharacter</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkFactor">checkFactor</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkList">checkList</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkVector">checkVector</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkAtomic">checkAtomic</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkAtomicVector">checkAtomicVector</a></li>
+</ul>
+</div>
+<div id="attributes" class="section level3">
+<h3>Attributes</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkClass">checkClass</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkNames">checkNames</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkNamed">checkNamed</a></li>
+</ul>
+</div>
+<div id="choices-and-subsets" class="section level3">
+<h3>Choices and Subsets</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkChoice">checkChoice</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkSubset">checkSubset</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkSetEqual">checkSetEqual</a></li>
+</ul>
+</div>
+<div id="matrices-arrays-and-data-frame" class="section level3">
+<h3>Matrices, Arrays and Data Frame</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkMatrix">checkMatrix</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkArray">checkArray</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkDataFrame">checkDataFrame</a></li>
+</ul>
+</div>
+<div id="safe-coercion-to-integer" class="section level3">
+<h3>Safe Coercion to integer</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/asInteger">asCount</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/asInteger">asInt</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/asInteger">asInteger</a></li>
+</ul>
+</div>
+<div id="other-builtin" class="section level3">
+<h3>Other builtin</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkNull">checkNull</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkEnvironment">checkEnvironment</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkFunction">checkFunction</a></li>
+</ul>
+</div>
+<div id="file-io" class="section level3">
+<h3>File IO:</h3>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkFile">checkFile</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkDirectory">checkDirectory</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/checkPathForOutput">checkPathForOutput</a></li>
+</ul>
+</div>
+</div>
+<div id="in-case-you-miss-flexibility" class="section level2">
+<h2>In case you miss flexibility</h2>
+<p>You can use <a href="http://www.rdocumentation.org/packages/checkmate/functions/assert">assert</a> to perform multiple checks at once and throw an assertion if all checks fail.</p>
+</div>
+<div id="argument-checks-for-the-lazy" class="section level2">
+<h2>Argument Checks for the Lazy</h2>
+<p>The following functions allow a special syntax to define argument checks using a special pattern. E.g., <code>qassert(x, &quot;I+&quot;)</code> asserts that <code>x</code> is an integer vector with at least one element and no missing values. This provide a completely alternative mini-language (or style) how to perform argument checks. You choose what you like best.</p>
+<ul>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/qassert">qassert</a></li>
+<li><a href="http://www.rdocumentation.org/packages/checkmate/functions/qassert">qassertr</a></li>
+</ul>
+</div>
+<div id="checkmate-as-testthat-extension" class="section level2">
+<h2>checkmate as testthat extension</h2>
+<p>To extend <a href="http://cran.r-project.org/web/packages/testthat">testthat</a>, use either need to IMPORT, DEPEND or SUGGEST on the <code>checkmate</code> package. If you only SUGGEST <code>checkmate</code>, you need to load the library in you <code>tests/test-all.r</code> file. Here is a minimal example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(testthat)
+<span class="kw">library</span>(checkmate) <span class="co"># for extensions</span>
+<span class="kw">test_check</span>(<span class="st">&quot;checkmate&quot;</span>)</code></pre></div>
+<p>Now you are all set and can use more than 30 new expectations in your tests.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test_that</span>(<span class="st">&quot;checkmate is a sweet extension&quot;</span>, {
+    x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>)
+    <span class="kw">expect_numeric</span>(x, <span class="dt">len =</span> <span class="dv">100</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)
+})</code></pre></div>
+</div>
+<div id="speed-considerations" class="section level2">
+<h2>Speed considerations</h2>
+<p>In comparison with tediously writing the checks yourself in R (c.f. factorial example at the beginning of the vignette), R is sometimes a tad faster while performing checks on scalars. This seems odd at first, because checkmate is mostly written in C and should be comparably fast. But many of the functions in the <code>base</code> package are not regular functions, but primitives. While primitives jump directly into the C code, checkmate has to employ the considerably slower <code>.Call</code> interface. As a result, checkmate is sometimes slower while checking small vectors or scalar values, but on the other hand, you save a lot of time because you don’t have to write hundreds of lines of code just to check some inputs.</p>
+<p>For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables. Here is a small unrepresentative benchmark</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(microbenchmark)
+
+x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1000</span>)
+r =<span class="st"> </span>function(x) <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(x) &amp;&amp;<span class="st"> </span><span class="kw">length</span>(x) ==<span class="st"> </span><span class="dv">1000</span> &amp;&amp;<span class="st"> </span><span class="kw">all</span>(!<span class="kw">is.na</span>(x) &amp;<span class="st"> </span>x &gt;=<span class="st"> </span><span class="dv">0</span> &amp;<span class="st"> </span>x &lt;=<span class="st"> </span><span class="dv">1</span>))
+cm =<span class="st"> </span>function(x) <span class="kw">assertNumeric</span>(x, <span class="dt">len =</span> <span class="dv">1000</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)
+<span class="kw">autoplot</span>(<span class="kw">microbenchmark</span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x)))</code></pre></div>
+<p><img src="data:image/png;base64,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" alt /></p>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
