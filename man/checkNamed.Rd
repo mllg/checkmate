@@ -3,7 +3,6 @@
 \name{checkNamed}
 \alias{assertNamed}
 \alias{checkNamed}
-\alias{expect_named}
 \alias{testNamed}
 \title{Check if an argument is named}
 \usage{
@@ -12,8 +11,6 @@ checkNamed(x, type = "named")
 assertNamed(x, type = "named", .var.name)
 
 testNamed(x, type = "named")
-
-expect_named(x, type = "named", info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
