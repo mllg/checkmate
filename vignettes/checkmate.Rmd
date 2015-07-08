@@ -183,16 +183,18 @@ In comparison with tediously writing the checks yourself in R (c.f. factorial ex
 This seems odd at first, because checkmate is mostly written in C and should be comparably fast.
 But many of the functions in the `base` package are not regular functions, but primitives.
 While primitives jump directly into the C code, checkmate has to employ the considerably slower `.Call` interface.
-As a result, checkmate is sometimes slower while checking small vectors or scalar values, but on the other hand, you save a lot of time because you don't have to write hundreds of lines of code just to check some inputs.
+As a result, checkmate is sometimes slower while checking scalars or small vectors (but you have to invest a some orders of magnitude more time to write these checks yourself).
 
 For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables.
-Here is a small unrepresentative benchmark
-```{r}
+Here is a small unrepresentative benchmark, but also note that this one here has been executed from inside `knitr` which is often the cause for outliers in the measured execution time. Better try it yourself.
+```{r,dev="svg",fig.width=6,fig.height=4}
 library(ggplot2)
 library(microbenchmark)
 
 x = runif(1000)
 r = function(x) stopifnot(is.numeric(x) && length(x) == 1000 && all(!is.na(x) & x >= 0 & x <= 1))
 cm = function(x) assertNumeric(x, len = 1000, any.missing = FALSE, lower = 0, upper = 1)
-autoplot(microbenchmark(r(x), cm(x)))
+mb = microbenchmark(r(x), cm(x))
+print(mb)
+autoplot(mb)
 ```
