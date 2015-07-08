@@ -76,7 +76,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertNumeric} throws an error message,
  \code{testNumeric} returns \code{FALSE}, \code{checkNumeric} returns
- a string with the error message. The function preceded with \code{expect__numeric} will
+ a string with the error message. The function \code{expect_numeric} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

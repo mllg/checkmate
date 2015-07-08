@@ -35,7 +35,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertScalarNA} throws an error message,
  \code{testScalarNA} returns \code{FALSE}, \code{checkScalarNA} returns
- a string with the error message. The function preceded with \code{expect__scalar_n_a} will
+ a string with the error message. The function \code{expect_scalar_n_a} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

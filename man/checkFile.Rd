@@ -40,7 +40,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertFile} throws an error message,
  \code{testFile} returns \code{FALSE}, \code{checkFile} returns
- a string with the error message. The function preceded with \code{expect__file} will
+ a string with the error message. The function \code{expect_file} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

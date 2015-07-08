@@ -42,7 +42,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertSubset} throws an error message,
  \code{testSubset} returns \code{FALSE}, \code{checkSubset} returns
- a string with the error message. The function preceded with \code{expect__subset} will
+ a string with the error message. The function \code{expect_subset} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

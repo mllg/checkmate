@@ -32,7 +32,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertNull} throws an error message,
  \code{testNull} returns \code{FALSE}, \code{checkNull} returns
- a string with the error message. The function preceded with \code{expect__null} will
+ a string with the error message. The function \code{expect_null} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

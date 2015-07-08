@@ -64,7 +64,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertLogical} throws an error message,
  \code{testLogical} returns \code{FALSE}, \code{checkLogical} returns
- a string with the error message. The function preceded with \code{expect__logical} will
+ a string with the error message. The function \code{expect_logical} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

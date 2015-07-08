@@ -40,7 +40,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertPathForOutput} throws an error message,
  \code{testPathForOutput} returns \code{FALSE}, \code{checkPathForOutput} returns
- a string with the error message. The function preceded with \code{expect__path_for_output} will
+ a string with the error message. The function \code{expect_path_for_output} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

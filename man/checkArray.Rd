@@ -61,7 +61,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertArray} throws an error message,
  \code{testArray} returns \code{FALSE}, \code{checkArray} returns
- a string with the error message. The function preceded with \code{expect__array} will
+ a string with the error message. The function \code{expect_array} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

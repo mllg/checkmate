@@ -79,7 +79,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertList} throws an error message,
  \code{testList} returns \code{FALSE}, \code{checkList} returns
- a string with the error message. The function preceded with \code{expect__list} will
+ a string with the error message. The function \code{expect_list} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

@@ -94,7 +94,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertFactor} throws an error message,
  \code{testFactor} returns \code{FALSE}, \code{checkFactor} returns
- a string with the error message. The function preceded with \code{expect__factor} will
+ a string with the error message. The function \code{expect_factor} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

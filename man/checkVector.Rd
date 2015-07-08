@@ -72,7 +72,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertVector} throws an error message,
  \code{testVector} returns \code{FALSE}, \code{checkVector} returns
- a string with the error message. The function preceded with \code{expect__vector} will
+ a string with the error message. The function \code{expect_vector} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

@@ -39,7 +39,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertEnvironment} throws an error message,
  \code{testEnvironment} returns \code{FALSE}, \code{checkEnvironment} returns
- a string with the error message. The function preceded with \code{expect__environment} will
+ a string with the error message. The function \code{expect_environment} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

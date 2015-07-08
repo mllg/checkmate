@@ -63,7 +63,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertAtomicVector} throws an error message,
  \code{testAtomicVector} returns \code{FALSE}, \code{checkAtomicVector} returns
- a string with the error message. The function preceded with \code{expect__atomic_vector} will
+ a string with the error message. The function \code{expect_atomic_vector} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

@@ -64,7 +64,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertAtmoic} throws an error message,
  \code{testAtmoic} returns \code{FALSE}, \code{checkAtmoic} returns
- a string with the error message. The function preceded with \code{expect__atmoic} will
+ a string with the error message. The function \code{expect_atmoic} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

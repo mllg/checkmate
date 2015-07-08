@@ -40,7 +40,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertAccess} throws an error message,
  \code{testAccess} returns \code{FALSE}, \code{checkAccess} returns
- a string with the error message. The function preceded with \code{expect__access} will
+ a string with the error message. The function \code{expect_access} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{

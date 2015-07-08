@@ -43,7 +43,7 @@ Depending on the function prefix:
  If the check is successful, all functions return \code{TRUE}.
  If the check is not successful, \code{assertNamed} throws an error message,
  \code{testNamed} returns \code{FALSE}, \code{checkNamed} returns
- a string with the error message. The function preceded with \code{expect__named} will
+ a string with the error message. The function \code{expect_named} will
  return an \code{\link[testthat]{expectation}}.
 }
 \description{
