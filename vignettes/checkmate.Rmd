@@ -8,6 +8,9 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{r,include=FALSE}
+library(checkmate)
+```
 
 Ever used an R function that produced a not-very-helpful error message, just to discover after minutes of debugging that you simply passed a wrong argument?
 
@@ -56,7 +59,6 @@ fact <- function(n, method = "stirling") {
 And for comparison, here is the same function using checkmate:
 ```{r}
 fact <- function(n, method = "stirling") {
-  library(checkmate)
   assertCount(n)
   assertChoice(method, c("stirling", "factorial"))
 
@@ -68,6 +70,12 @@ fact <- function(n, method = "stirling") {
 ```
 
 ## Function overview
+All functions come in four flavors, depending on the prefix.
+If prefixed with `assert`, an error is thrown if the check fails. Otherwise, `TRUE` is returned invisibly.
+The family of functions prefixed with `test` always return the check result as logical value.
+Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
+The last family of functions is intended to be used with the [testthat package](http://cran.r-project.org/web/packages/testthat).
+All performed checks are logged into the `testthat` reported.
 
 ### Scalars
 
@@ -145,10 +153,46 @@ You can use [assert](http://www.rdocumentation.org/packages/checkmate/functions/
 
 ## Argument Checks for the Lazy
 
-The follwoing functions allow a special syntax to define argument checks using a special pattern.
+The following functions allow a special syntax to define argument checks using a special pattern.
 E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one element and no missing values.
 This provide a completely alternative mini-language (or style) how to perform argument checks.
 You choose what you like best.
 
 * [qassert](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
 * [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
+
+## checkmate as testthat extension
+To extend [testthat](http://cran.r-project.org/web/packages/testthat), use either need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
+If you only SUGGEST `checkmate`, you need to load the library in you `tests/test-all.r` file.
+Here is a minimal example:
+```{r,eval=FALSE}
+library(testthat)
+library(checkmate) # for extensions
+test_check("checkmate")
+```
+Now you are all set and can use more than 30 new expectations in your tests.
+```{r,eval=FALSE}
+test_that("checkmate is a sweet extension", {
+    x = runif(100)
+    expect_numeric(x, len = 100, any.missing = FALSE, lower = 0, upper = 1)
+})
+```
+
+## Speed considerations
+In comparison with tediously writing the checks yourself in R (c.f. factorial example at the beginning of the vignette), R is sometimes a tad faster while performing checks on scalars.
+This seems odd at first, because checkmate is mostly written in C and should be comparably fast.
+But many of the functions in the `base` package are not regular functions, but primitives.
+While primitives jump directly into the C code, checkmate has to employ the considerably slower `.Call` interface.
+As a result, checkmate is sometimes slower while checking small vectors or scalar values, but on the other hand, you save a lot of time because you don't have to write hundreds of lines of code just to check some inputs.
+
+For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables.
+Here is a small unrepresentative benchmark
+```{r}
+library(ggplot2)
+library(microbenchmark)
+
+x = runif(1000)
+r = function(x) stopifnot(is.numeric(x) && length(x) == 1000 && all(!is.na(x) & x >= 0 & x <= 1))
+cm = function(x) assertNumeric(x, len = 1000, any.missing = FALSE, lower = 0, upper = 1)
+autoplot(microbenchmark(r(x), cm(x)))
+```

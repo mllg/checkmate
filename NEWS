@@ -1,5 +1,8 @@
 Version 1.6.1 (2015-xx-xx)
 -------------------------------------------------------------------------------
+* New family of functions: `expect_*` is intended to be used in combination
+  with testthat. Functions `expect_null()` and `expect_named()`
+  are not provided to avoid name clashes with testthat.
 * Added argument `all.missing` for checks on matricies and data frames.
 * Clearified documentation for `assert()` and `allMissing()`
 * Fixed a bug where bound checks were performed on missing values.

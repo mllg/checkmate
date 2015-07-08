@@ -20,6 +20,8 @@ Imports:
     utils,
     testthat
 Suggests:
+    ggplot2,
+    microbenchmark,
     knitr,
     data.table,
     dplyr
