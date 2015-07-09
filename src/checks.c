@@ -95,7 +95,7 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", expected);
     }
 
-    if (isNull(nn) || any_missing_string(nn) > MISS_NONE || !all_nchar(nn, 1))
+    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
         return make_msg("%s must be named", what);
     if (checks >= T_UNIQUE) {
         if (any_duplicated(nn, FALSE) != 0)
@@ -136,7 +136,7 @@ static msg_t check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
 }
 
 static msg_t check_vector_missings(SEXP x, SEXP any_missing, SEXP all_missing) {
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x) > MISS_NONE)
+    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
         return make_msg("Contains missing values");
     if (!asFlag(all_missing, "all.missing") && all_missing_atomic(x))
         return make_msg("Contains only missing values");
@@ -271,7 +271,7 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows
 
     if (!isNull(col_names))
         assert(check_names(getAttrib(x, R_NamesSymbol), col_names, "Columns"));
-    if (!asFlag(any_missing, "any.missing") && any_missing_frame(x) > MISS_NONE)
+    if (!asFlag(any_missing, "any.missing") && any_missing_frame(x))
         return make_result("Contains missing values");
     if (!asFlag(all_missing, "all.missing") && all_missing_frame(x))
         return make_result("Contains only missing values");
@@ -360,7 +360,7 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP
 
     assert(check_storage(x, mode));
 
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x) > MISS_NONE)
+    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
         return make_result("Contains missing values");
 
     R_len_t ndim = length(getAttrib(x, R_DimSymbol));

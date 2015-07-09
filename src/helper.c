@@ -69,7 +69,7 @@ double asNumber(SEXP x, const char *vname) {
 const char * asString(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
         error("Argument '%s' must be a string", vname);
-    if (any_missing_string(x) != MISS_NONE)
+    if (any_missing_string(x))
         error("Argument '%s' may not be missing", vname);
     return CHAR(STRING_ELT(x, 0));
 }
