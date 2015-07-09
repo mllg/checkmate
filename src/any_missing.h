@@ -5,17 +5,22 @@
 #define USE_RINTERNALS
 #include <Rinternals.h>
 
-Rboolean any_missing_logical(SEXP);
-Rboolean any_missing_integer(SEXP);
-Rboolean any_missing_integerish(SEXP);
-Rboolean any_missing_double(SEXP);
-Rboolean any_missing_numeric(SEXP);
-Rboolean any_missing_complex(SEXP);
-Rboolean any_missing_string(SEXP);
-Rboolean any_missing_atomic(SEXP);
-Rboolean any_missing_list(SEXP);
-Rboolean any_missing_matrix(SEXP);
-Rboolean any_missing_frame(SEXP);
+typedef enum {
+    MISS_NONE = 0, MISS_LOGICAL, MISS_INTEGER, MISS_DOUBLE, MISS_COMPLEX,
+    MISS_CHARACTER, MISS_LIST
+} miss_t;
+
+miss_t any_missing_logical(SEXP);
+miss_t any_missing_integer(SEXP);
+miss_t any_missing_integerish(SEXP);
+miss_t any_missing_double(SEXP);
+miss_t any_missing_numeric(SEXP);
+miss_t any_missing_complex(SEXP);
+miss_t any_missing_string(SEXP);
+miss_t any_missing_atomic(SEXP);
+miss_t any_missing_list(SEXP);
+miss_t any_missing_matrix(SEXP);
+miss_t any_missing_frame(SEXP);
 SEXP c_any_missing(SEXP);
 
 #endif

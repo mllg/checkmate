@@ -95,13 +95,23 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", expected);
     }
 
-    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
+    if (isNull(nn) || any_missing_string(nn) > MISS_NONE || !all_nchar(nn, 1))
         return make_msg("%s must be named", what);
     if (checks >= T_UNIQUE) {
         if (any_duplicated(nn, FALSE) != 0)
             return make_msg("%s must be uniquely named", what);
         if (checks == T_STRICT && !check_strict_names(nn))
             return make_msg("%s must be named according to R's variable naming rules", what);
+    }
+    return MSGT;
+}
+
+
+static msg_t check_min_chars(SEXP x, SEXP min_chars) {
+    if (!isNull(min_chars)) {
+        R_xlen_t n = asCount(min_chars, "min.chars");
+        if (n > 0 && !all_nchar(x, n))
+            return make_msg("All elements must have at least %g characters", (double)n);
     }
     return MSGT;
 }
@@ -126,22 +136,26 @@ static msg_t check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
 }
 
 static msg_t check_vector_missings(SEXP x, SEXP any_missing, SEXP all_missing) {
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
+    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x) > MISS_NONE)
         return make_msg("Contains missing values");
     if (!asFlag(all_missing, "all.missing") && all_missing_atomic(x))
         return make_msg("Contains only missing values");
     return MSGT;
 }
 
-static msg_t check_vector_contents(SEXP x, SEXP unique, SEXP names) {
+static msg_t check_vector_unique(SEXP x, SEXP unique) {
     if (asFlag(unique, "unique") && any_duplicated(x, FALSE) > 0)
         return make_msg("Contains duplicated values");
+    return MSGT;
+}
+
+static msg_t check_vector_names(SEXP x, SEXP names) {
     if (!isNull(names) && xlength(x) > 0)
         return check_names(getAttrib(x, R_NamesSymbol), names, "Vector");
     return MSGT;
 }
 
-static msg_t check_finite(SEXP x, SEXP finite) {
+static msg_t check_vector_finite(SEXP x, SEXP finite) {
     if (asFlag(finite, "finite") && any_infinite(x))
         return make_msg("Must be finite");
     return MSGT;
@@ -217,14 +231,11 @@ static msg_t check_storage(SEXP x, SEXP mode) {
 SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
     if (!isString(x) && !all_missing_atomic(x))
         return make_type_error(x, "character");
-    if (!isNull(min_chars)) {
-        R_xlen_t n = asCount(min_chars, "min.chars");
-        if (n > 0 && !all_nchar(x, n))
-            return make_result("All elements must have at least %g characters", (double)n);
-    }
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_min_chars(x, min_chars));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -232,8 +243,9 @@ SEXP c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
     if (!isComplex(x) && !all_missing_atomic(x))
         return make_type_error(x, "complex");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -259,7 +271,7 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows
 
     if (!isNull(col_names))
         assert(check_names(getAttrib(x, R_NamesSymbol), col_names, "Columns"));
-    if (!asFlag(any_missing, "any.missing") && any_missing_frame(x))
+    if (!asFlag(any_missing, "any.missing") && any_missing_frame(x) > MISS_NONE)
         return make_result("Contains missing values");
     if (!asFlag(all_missing, "all.missing") && all_missing_frame(x))
         return make_result("Contains only missing values");
@@ -270,8 +282,9 @@ SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
     if (!isFactor(x) && !all_missing_atomic(x))
         return make_type_error(x, "factor");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -279,9 +292,10 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
     if (!isInteger(x) && !all_missing_atomic(x))
         return make_type_error(x, "integer");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
     assert(check_bounds(x, lower, upper));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -290,9 +304,10 @@ SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missi
     if (!isIntegerish(x, dtol) && !all_missing_atomic(x))
         return make_type_error(x, "integerish");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
     assert(check_bounds(x, lower, upper));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -300,8 +315,9 @@ SEXP c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min
     if (!isRList(x))
         return make_type_error(x, "list");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -309,8 +325,9 @@ SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
     if (!isLogical(x) && !all_missing_atomic(x))
         return make_type_error(x, "logical");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -334,7 +351,6 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP 
         assert(check_names(nn, col_names, "Columns"));
     }
     assert(check_vector_missings(x, any_missing, all_missing));
-
     return ScalarLogical(TRUE);
 }
 
@@ -344,7 +360,7 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP
 
     assert(check_storage(x, mode));
 
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
+    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x) > MISS_NONE)
         return make_result("Contains missing values");
 
     R_len_t ndim = length(getAttrib(x, R_DimSymbol));
@@ -387,10 +403,11 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missi
     if (!isNumeric(x) && !all_missing_atomic(x))
         return make_type_error(x, "numeric");
     assert(check_vector_len(x, len, min_len, max_len));
-    assert(check_finite(x, finite));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
     assert(check_bounds(x, lower, upper));
+    assert(check_vector_finite(x, finite));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -403,8 +420,9 @@ SEXP c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEX
             return make_type_error(x, "vector");
     }
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -412,8 +430,9 @@ SEXP c_check_atomic(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
     if (!isNull(x) && !isVectorAtomic(x))
         return make_type_error(x, "atomic");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -421,8 +440,9 @@ SEXP c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len,
     if (!isVectorAtomic(x))
         return make_type_error(x, "atomic vector");
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_vector_contents(x, unique, names));
+    assert(check_vector_unique(x, unique));
     return ScalarLogical(TRUE);
 }
 
@@ -488,7 +508,7 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
             return make_result("May not be NA");
         return ScalarLogical(TRUE);
     }
-    assert(check_finite(x, finite));
+    assert(check_vector_finite(x, finite));
     assert(check_bounds(x, lower, upper));
     return ScalarLogical(TRUE);
 }

@@ -20,7 +20,7 @@ typedef struct {
         class_t name;
     } class;
     struct {
-        Rboolean(*fun)(SEXP);
+        miss_t(*fun)(SEXP);
     } missing;
     struct {
         ll_cmp fun;
@@ -343,7 +343,7 @@ static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg
         return err_msg ? make_msg("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guessType(x)) : MSGF;
     }
 
-    if (checker->missing.fun != NULL && checker->missing.fun(x)) {
+    if (checker->missing.fun != NULL && checker->missing.fun(x) > MISS_NONE) {
         return err_msg ? make_msg("May not contain missing values") : MSGF;
     }
 
