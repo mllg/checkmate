@@ -6,7 +6,7 @@ r_github_packages:
 r_binary_packages:
    - testthat
    - knitr
-   - microbenchmark
+   # - microbenchmark
    - ggplot2
    - data.table
    - dplyr
