@@ -3,11 +3,9 @@ language: r
 r_github_packages:
     - jimhester/covr
 
-r_binary_packages:
-    - testthat
-    - knitr
-    - data.table
-    - dplyr
+cache:
+  directories:
+      - /usr/local/lib/R/site-library
 
 before_script:
     - curl -L https://raw.githubusercontent.com/rdatsci/travis-r-tools/master/update-packages.r -o /tmp/update-packages.r
