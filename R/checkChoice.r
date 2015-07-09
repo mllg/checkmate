@@ -31,6 +31,7 @@ testChoice = function(x, choices) {
 }
 
 #' @rdname checkChoice
+#' @template expect
 #' @export
 expect_choice = function(x, choices, info = NULL, label = NULL) {
   res = checkChoice(x, choices)

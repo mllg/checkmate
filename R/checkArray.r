@@ -41,6 +41,7 @@ testArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
 }
 
 #' @rdname checkArray
+#' @template expect
 #' @useDynLib checkmate c_check_array
 #' @export
 expect_array = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, info = NULL, label = NULL) {

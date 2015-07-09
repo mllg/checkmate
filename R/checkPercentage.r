@@ -36,6 +36,7 @@ testPercentage = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkPercentage
+#' @template expect
 #' @useDynLib checkmate c_check_number
 #' @export
 expect_percentage = function(x, na.ok = FALSE, info = NULL, label = NULL) {

@@ -69,6 +69,7 @@ testFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
 }
 
 #' @rdname checkFunction
+#' @template expect
 #' @export
 expect_function = function(x, args = NULL, ordered = FALSE, nargs = NULL, info = NULL, label = NULL) {
   res = checkFunction(x, args, ordered, nargs)

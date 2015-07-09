@@ -58,6 +58,7 @@ testPathForOutput = function(x, overwrite = FALSE) {
 }
 
 #' @rdname checkPathForOutput
+#' @template expect
 #' @export
 expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NULL) {
   res = checkPathForOutput(x, overwrite)

@@ -52,6 +52,7 @@ testMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, mi
 }
 
 #' @rdname checkMatrix
+#' @template expect
 #' @useDynLib checkmate c_check_matrix
 #' @export
 expect_matrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, info = NULL, label = NULL) {

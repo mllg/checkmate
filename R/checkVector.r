@@ -51,6 +51,7 @@ testVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
 }
 
 #' @rdname checkVector
+#' @template expect
 #' @useDynLib checkmate c_check_vector
 #' @export
 expect_vector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

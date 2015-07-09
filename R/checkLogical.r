@@ -32,6 +32,7 @@ testLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
 }
 
 #' @rdname checkLogical
+#' @template expect
 #' @useDynLib checkmate c_check_logical
 #' @export
 expect_logical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

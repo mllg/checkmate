@@ -46,6 +46,7 @@ testCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ign
 }
 
 #' @rdname checkCharacter
+#' @template expect
 #' @useDynLib checkmate c_check_character
 #' @export
 expect_character = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,  unique = FALSE, names = NULL, info = NULL, label = NULL) {

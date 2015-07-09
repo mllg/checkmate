@@ -35,6 +35,7 @@ testAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min
 }
 
 #' @rdname checkAtomic
+#' @template expect
 #' @useDynLib checkmate c_check_atomic
 #' @export
 expect_atomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

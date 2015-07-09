@@ -36,6 +36,7 @@ testFlag = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkFlag
+#' @template expect
 #' @useDynLib checkmate c_check_flag
 #' @export
 expect_flag = function(x, na.ok = FALSE, info = NULL, label = NULL) {

@@ -35,6 +35,7 @@ testInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.mis
 }
 
 #' @rdname checkInteger
+#' @template expect
 #' @useDynLib checkmate c_check_integer
 #' @export
 expect_integer = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

@@ -43,6 +43,7 @@ testSetEqual = function(x, y, ordered = TRUE) {
 }
 
 #' @rdname checkSetEqual
+#' @template expect
 #' @export
 expect_set_equal = function(x, y, ordered = TRUE, info = NULL, label = NULL) {
   res = checkSetEqual(x, y, ordered)

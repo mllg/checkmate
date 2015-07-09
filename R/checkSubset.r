@@ -39,6 +39,7 @@ testSubset = function(x, choices, empty.ok = TRUE) {
 }
 
 #' @rdname checkSubset
+#' @template expect
 #' @export
 expect_subset = function(x, choices, empty.ok = TRUE, info = NULL, label = NULL) {
   res = checkSubset(x, choices, empty.ok)

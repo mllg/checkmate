@@ -41,6 +41,7 @@ testFile = function(x, access = "") {
 }
 
 #' @rdname checkFile
+#' @template expect
 #' @export
 expect_file = function(x, access = "", info = NULL, label = NULL) {
   res = checkFile(x, access)

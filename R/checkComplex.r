@@ -32,6 +32,7 @@ testComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
 }
 
 #' @rdname checkComplex
+#' @template expect
 #' @useDynLib checkmate c_check_complex
 #' @export
 expect_complex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

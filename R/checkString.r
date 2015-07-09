@@ -36,6 +36,7 @@ testString = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkString
+#' @template expect
 #' @useDynLib checkmate c_check_string
 #' @export
 expect_string = function(x, na.ok = FALSE, info = NULL, label = NULL) {

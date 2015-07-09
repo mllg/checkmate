@@ -58,6 +58,7 @@ testAccess = function(x, access = "") {
 }
 
 #' @rdname checkAccess
+#' @template expect
 #' @export
 expect_access = function(x, access = "", info = NULL, label = NULL) {
   res = checkAccess(x, access)

@@ -42,6 +42,7 @@ testDirectory = function(x, access = "", .var.name) {
 }
 
 #' @rdname checkDirectory
+#' @template expect
 #' @export
 expect_directory = function(x, access = "", info = NULL, label = NULL) {
   res = checkDirectory(x, access)

@@ -40,6 +40,7 @@ testCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$dou
 }
 
 #' @rdname checkCount
+#' @template expect
 #' @useDynLib checkmate c_check_count
 #' @export
 expect_count = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), info = NULL, label = NULL) {

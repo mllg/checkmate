@@ -59,6 +59,7 @@ testClass = function(x, classes, ordered = FALSE) {
 }
 
 #' @rdname checkClass
+#' @template expect
 #' @export
 expect_class = function(x, classes, ordered = FALSE, info = NULL, label = NULL) {
   res = checkClass(x, classes, ordered)

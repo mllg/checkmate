@@ -39,6 +39,7 @@ testEnvironment = function(x, contains = character(0L)) {
 }
 
 #' @rdname checkEnvironment
+#' @template expect
 #' @export
 expect_environment = function(x, contains = character(0L), info = NULL, label = NULL) {
   res = checkEnvironment(x, contains)

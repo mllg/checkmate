@@ -35,6 +35,7 @@ testDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missi
 }
 
 #' @rdname checkDataFrame
+#' @template expect
 #' @useDynLib checkmate c_check_dataframe
 #' @export
 expect_data_frame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, info = NULL, label = NULL) {

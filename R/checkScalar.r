@@ -33,6 +33,7 @@ testScalar = function(x, na.ok = FALSE) {
 }
 
 #' @rdname checkScalar
+#' @template expect
 #' @useDynLib checkmate c_check_scalar
 #' @export
 expect_scalar = function(x, na.ok = FALSE, info = NULL, label = NULL) {

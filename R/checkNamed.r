@@ -40,6 +40,7 @@ testNamed = function(x, type = "named") {
 
 # #' @rdname checkNamed
 # #' @useDynLib checkmate c_check_named
+# #' @template expect
 # #' @export
 # expect_named = function(x, type = "named", info = NULL, label = NULL) {
 #   res = .Call("c_check_named", x, type, PACKAGE = "checkmate")

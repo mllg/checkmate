@@ -53,6 +53,7 @@ testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, an
 }
 
 #' @rdname checkFactor
+#' @template expect
 #' @useDynLib checkmate c_check_factor
 #' @export
 expect_factor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

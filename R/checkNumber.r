@@ -34,6 +34,7 @@ testNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALS
 }
 
 #' @rdname checkNumber
+#' @template expect
 #' @export
 expect_number = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, info = NULL, label = NULL) {
   res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")

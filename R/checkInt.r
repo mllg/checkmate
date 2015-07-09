@@ -35,6 +35,7 @@ testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mach
 }
 
 #' @rdname checkInt
+#' @template expect
 #' @useDynLib checkmate c_check_int
 #' @export
 expect_int = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), info = NULL, label = NULL) {

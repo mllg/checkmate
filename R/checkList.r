@@ -43,6 +43,7 @@ testList = function(x, types = character(0L), any.missing = TRUE, all.missing = 
 }
 
 #' @rdname checkList
+#' @template expect
 #' @useDynLib checkmate c_check_list
 #' @export
 expect_list = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {

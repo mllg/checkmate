@@ -30,6 +30,7 @@ testScalarNA = function(x) {
 }
 
 #' @rdname checkScalarNA
+#' @template expect
 #' @export
 expect_scalar_na = function(x, info = NULL, label = NULL) {
   res = checkScalarNA(x)

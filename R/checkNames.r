@@ -42,6 +42,7 @@ testNames = function(x, type = "named") {
 }
 
 #' @rdname checkNames
+#' @template expect
 #' @useDynLib checkmate c_check_names
 #' @export
 expect_names = function(x, type = "named", info = NULL, label = NULL) {

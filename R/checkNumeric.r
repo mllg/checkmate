@@ -35,6 +35,7 @@ testNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing
 }
 
 #' @rdname checkNumeric
+#' @template expect
 #' @useDynLib checkmate c_check_numeric
 #' @export
 expect_numeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, info = NULL, label = NULL) {
