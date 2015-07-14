@@ -100,7 +100,7 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
     if (checks >= T_UNIQUE) {
         if (any_duplicated(nn, FALSE) != 0)
             return make_msg("%s must be uniquely named", what);
-        if (checks == T_STRICT && !check_strict_names(nn))
+        if (checks >= T_STRICT && !check_strict_names(nn))
             return make_msg("%s must be named according to R's variable naming rules", what);
     }
     return MSGT;

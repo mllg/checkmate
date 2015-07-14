@@ -1,9 +1,5 @@
 #include "any_infinite.h"
 
-static Rboolean any_infinite_double(SEXP x);
-static Rboolean any_infinite_complex(SEXP x);
-static Rboolean any_infinite_list(SEXP x);
-
 static Rboolean any_infinite_double(SEXP x) {
     const double * xp = REAL(x);
     const double * const xe = xp + xlength(x);
