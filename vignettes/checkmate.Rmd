@@ -74,7 +74,7 @@ All functions come in four flavors, depending on the prefix.
 If prefixed with `assert`, an error is thrown if the check fails. Otherwise, `TRUE` is returned invisibly.
 The family of functions prefixed with `test` always return the check result as logical value.
 Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
-The last family of functions is intended to be used with the [testthat package](http://cran.r-project.org/web/packages/testthat).
+The last family of functions is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
 All performed checks are logged into the `testthat` reported.
 
 ### Scalars
@@ -162,7 +162,7 @@ You choose what you like best.
 * [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
 
 ## checkmate as testthat extension
-To extend [testthat](http://cran.r-project.org/web/packages/testthat), use either need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
+To extend [testthat](http://cran.r-project.org/package=testthat), use either need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
 If you only SUGGEST `checkmate`, you need to load the library in you `tests/test-all.r` file.
 Here is a minimal example:
 ```{r,eval=FALSE}
