@@ -167,12 +167,12 @@ If you only SUGGEST `checkmate`, you need to load the library in you `tests/test
 Here is a minimal example:
 ```{r,eval=FALSE}
 library(testthat)
-library(checkmate) # for extensions
+library(checkmate) # for testthat extensions
 test_check("checkmate")
 ```
 Now you are all set and can use more than 30 new expectations in your tests.
 ```{r,eval=FALSE}
-test_that("checkmate is a sweet extension", {
+test_that("checkmate is a sweet extension for testthat", {
     x = runif(100)
     expect_numeric(x, len = 100, any.missing = FALSE, lower = 0, upper = 1)
 })
