@@ -2,12 +2,15 @@
 % Please edit documentation in R/qassertr.r
 \name{qassertr}
 \alias{qassertr}
+\alias{qexpectr}
 \alias{qtestr}
 \title{Quick recursive arguments checks on lists and data frames}
 \usage{
 qassertr(x, rules, .var.name)
 
 qtestr(x, rules)
+
+qexpectr(x, rules, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[\code{list} or \code{data.frame}]\cr
@@ -20,14 +23,21 @@ Set of rules. See \code{\link{qtest}}}
 \item{.var.name}{[\code{logical(1)}]\cr
 Argument name to print in error message. If missing,
 the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
 }
 \description{
-These functions are the tuned counterparts of \code{\link{qtest}} and
-\code{\link{qassert}} tailored for recursive checks of list
-elements or data frame columns.
+These functions are the tuned counterparts of \code{\link{qtest}},
+\code{\link{qassert}} and \code{\link{qexpect}} tailored for recursive
+checks of list elements or data frame columns.
 }
 \examples{
 qtestr(as.list(1:10), "i+")

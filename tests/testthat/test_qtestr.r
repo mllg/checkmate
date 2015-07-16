@@ -5,12 +5,16 @@ expect_succ_all = function(x, rules) {
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(qassertr(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+  expect_true(is.expectation(qexpectr(x, rules)),
+    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 
 expect_fail_all = function(x, rules) {
   expect_false(qtestr(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(inherits(try(qassertr(x, rules), silent=TRUE), "try-error"),
+    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+  expect_error(with_reporter(SilentReporter(), qexpectr(x, rules)),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 

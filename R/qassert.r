@@ -19,6 +19,8 @@
 #' otherwise.
 #' \code{qtest} behaves the same way but returns \code{FALSE} if none of the
 #' \code{rules} comply.
+#' \code{qexpect} is intended to be inside the unit test framework \code{\link[testthat]{testthat}} and
+#' returns an \code{\link[testthat]{expectation}}.
 #'
 #' The rule is specified in up to three parts.
 #' \enumerate{
@@ -112,4 +114,13 @@ qassert = function(x, rules, .var.name) {
 #' @export
 qtest = function(x, rules) {
   .Call("c_qtest", x, rules, FALSE, PACKAGE = "checkmate")
+}
+
+#' @useDynLib checkmate c_qassert
+#' @template expect
+#' @rdname qassert
+#' @export
+qexpect = function(x, rules, info = NULL, label = NULL) {
+  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
 }

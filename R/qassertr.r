@@ -1,9 +1,9 @@
 #' Quick recursive arguments checks on lists and data frames
 #'
 #' @description
-#' These functions are the tuned counterparts of \code{\link{qtest}} and
-#' \code{\link{qassert}} tailored for recursive checks of list
-#' elements or data frame columns.
+#' These functions are the tuned counterparts of \code{\link{qtest}},
+#' \code{\link{qassert}} and \code{\link{qexpect}} tailored for recursive
+#' checks of list elements or data frame columns.
 #'
 #' @param x [\code{list} or \code{data.frame}]\cr
 #'   List or data frame to check for compliance with at least one of \code{rules}.
@@ -33,4 +33,13 @@ qassertr = function(x, rules, .var.name) {
 #' @export
 qtestr = function(x, rules) {
   .Call("c_qtest", x, rules, TRUE, PACKAGE = "checkmate")
+}
+
+#' @useDynLib checkmate c_qassert
+#' @template expect
+#' @rdname qassertr
+#' @export
+qexpectr = function(x, rules, info = NULL, label = NULL) {
+  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
+  makeExpectation(res, info = info, label = vname(x, label))
 }

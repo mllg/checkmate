@@ -2,12 +2,15 @@
 % Please edit documentation in R/qassert.r
 \name{qassert}
 \alias{qassert}
+\alias{qexpect}
 \alias{qtest}
 \title{Quick argument checks on (builtin) R types}
 \usage{
 qassert(x, rules, .var.name)
 
 qtest(x, rules)
+
+qexpect(x, rules, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -19,6 +22,13 @@ Set of rules. See details.}
 \item{.var.name}{[\code{logical(1)}]\cr
 Argument name to print in error message. If missing,
 the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.}
+
+\item{info}{[character(1)]\cr
+Extra information to be included in the message for the testthat reporter.
+See \code{\link[testthat]{expect_that}}.}
+
+\item{label}{[character(1)]\cr
+Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
@@ -33,6 +43,8 @@ not comply to at least one of the \code{rules} and returns \code{TRUE}
 otherwise.
 \code{qtest} behaves the same way but returns \code{FALSE} if none of the
 \code{rules} comply.
+\code{qexpect} is intended to be inside the unit test framework \code{\link[testthat]{testthat}} and
+returns an \code{\link[testthat]{expectation}}.
 
 The rule is specified in up to three parts.
 \enumerate{

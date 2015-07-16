@@ -15,12 +15,16 @@ expect_succ_all = function(x, rules) {
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(qassert(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+  expect_true(is.expectation(qexpect(x, rules)),
+    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 
 expect_fail_all = function(x, rules) {
   expect_false(qtest(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(inherits(try(qassert(x, rules), silent=TRUE), "try-error"),
+    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+  expect_error(with_reporter(SilentReporter(), qexpect(x, rules)),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 
@@ -205,6 +209,13 @@ test_that("empty vectors", {
 })
 
 test_that("logicals are not numeric", {
+  expect_fail_all(TRUE, "i")
+  expect_fail_all(TRUE, "I")
+  expect_fail_all(TRUE, "n")
+  expect_fail_all(TRUE, "N")
+})
+
+test_that("qexpect works", {
   expect_fail_all(TRUE, "i")
   expect_fail_all(TRUE, "I")
   expect_fail_all(TRUE, "n")
