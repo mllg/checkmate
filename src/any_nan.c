@@ -1,9 +1,5 @@
 #include "any_nan.h"
 
-static Rboolean any_nan_double(SEXP x);
-static Rboolean any_nan_complex(SEXP x);
-static Rboolean any_nan_list(SEXP x);
-
 static Rboolean any_nan_double(SEXP x) {
     const double * xp = REAL(x);
     const double * const xe = xp + xlength(x);

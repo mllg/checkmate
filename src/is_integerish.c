@@ -6,7 +6,7 @@ static inline Rboolean is_unconvertible(const double x, const double tol) {
     return (!ISNAN(x) && (x <= INT_MIN || x > INT_MAX || fabs(x - nearbyint(x)) >= tol));
 }
 
-static inline Rboolean is_integerish_double(SEXP x, const double tol) {
+static Rboolean is_integerish_double(SEXP x, const double tol) {
     const double *xr = REAL(x);
     const double * const xend = xr + length(x);
 
@@ -17,7 +17,7 @@ static inline Rboolean is_integerish_double(SEXP x, const double tol) {
     return TRUE;
 }
 
-static inline Rboolean is_integerish_complex(SEXP x, const double tol) {
+static Rboolean is_integerish_complex(SEXP x, const double tol) {
     const Rcomplex * xc = COMPLEX(x);
     const Rcomplex * const xe = xc + length(x);
     for (; xc != xe; xc++) {
