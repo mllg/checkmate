@@ -17,13 +17,13 @@ Roxygen: list(wrap = FALSE)
 Depends:
     R (>= 3.0.0)
 Imports:
-    utils,
-    testthat
+    utils
 Suggests:
-    ggplot2,
-    microbenchmark,
-    knitr,
     data.table,
-    dplyr
+    dplyr,
+    ggplot2,
+    knitr,
+    microbenchmark,
+    testthat
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
