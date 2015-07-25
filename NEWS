@@ -1,8 +1,10 @@
-Version 1.6.2 (2015-xx-xx)
+Version 1.6.2 (2015-07-26)
 -------------------------------------------------------------------------------
-* checkmate does not import testthat anymore to speed up package loading times
-  and to keep the dependencies at a minimum. The `expect*` family of functions
-  can still be used, the namespace will be loaded on demand.
+* Fixed a compile-time warning
+* checkmate does not import `testthat` anymore in order to speed up
+  package loading times and to keep the dependencies at a minimum.
+  The `expect_*` family of functions can still be used, the namespace will be
+  loaded on demand.
 
 Version 1.6.1 (2015-07-16)
 -------------------------------------------------------------------------------

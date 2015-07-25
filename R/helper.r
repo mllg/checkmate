@@ -12,9 +12,9 @@ makeAssertion = function(msg, var.name) {
 
 makeExpectation = function(res, info, label) {
   if (!requireNamespace("testthat", quietly = TRUE))
-    stop("Package 'testthat' is required for this function")
-  cond = function(tmp) testthat::expectation(isTRUE(res), res, "all good")
-  testthat::expect_that(1, cond, info = info, label = label)
+    stop("Package 'testthat' is required for 'expect_*' extensions")
+  cond = function(tmp) testthat::expectation(isTRUE(res), failure_msg = res, success_msg = "all good")
+  testthat::expect_that(TRUE, cond, info = info, label = label)
 }
 
 mstop = function(msg, ...) {

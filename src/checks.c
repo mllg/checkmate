@@ -9,7 +9,7 @@
 #include "all_nchar.h"
 #include "helper.h"
 
-#define assert(x) ({ msg_t tmp = x; if (!tmp.ok) return ScalarString(mkChar(tmp.msg)); })
+#define assert(x) { msg_t tmp = x; if (!tmp.ok) return ScalarString(mkChar(tmp.msg)); }
 
 /*********************************************************************************************************************/
 /* Some helpers                                                                                                      */
