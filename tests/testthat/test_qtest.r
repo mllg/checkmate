@@ -104,6 +104,13 @@ test_that("bounds", {
   expect_fail_all(c(-Inf, 0, Inf), "n(,]")
   expect_fail_all(c(-Inf, 0, Inf), "n(,)")
 
+  xx = letters[1:3]
+  expect_succ_all(xx, "s+[1,]")
+  expect_succ_all(xx, "s+[1,1]")
+  expect_fail_all(xx, "s+[2]")
+  expect_fail_all(NA_character_, "s+[1]")
+  expect_fail_all(NA, "s+[1]")
+
   expect_succ_all(1, "n+()")
   expect_succ_all(1, "n+[]")
   expect_succ_all(Inf, "n+[]")
@@ -112,6 +119,8 @@ test_that("bounds", {
   expect_fail_all(Inf, "n+()")
   expect_fail_all(Inf, "n+[)")
   expect_fail_all(-Inf, "n+(]")
+
+  expect_error(qassert(iris, "d+[1]"), "Bound checks")
 })
 
 test_that("non-atomic types", {

@@ -81,8 +81,16 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
             if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
                 return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
+    } else if (isString(x)) {
+        const R_xlen_t nx = xlength(x);
+        double nchar;
+        for (R_xlen_t i = 0; i < nx; i++) {
+            nchar = STRING_ELT(x, i) == NA_STRING ? 0. : (double)length(STRING_ELT(x, i));
+            if (!bound.fun(nchar, bound.cmp))
+                return make_msg("All elements must have %s %g chars", CMPSTR[bound.op], bound.cmp);
+        }
     } else {
-        error("Bound checks only possible for numeric variables");
+        error("Bound checks only possible for numeric variables and strings");
     }
 
     return MSGT;
