@@ -162,39 +162,72 @@ You choose what you like best.
 * [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
 
 ## checkmate as testthat extension
-To extend [testthat](http://cran.r-project.org/package=testthat), use either need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
-If you only SUGGEST `checkmate`, you need to load the library in you `tests/test-all.r` file.
+To extend [testthat](http://cran.r-project.org/package=testthat), you need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
 Here is a minimal example:
 ```{r,eval=FALSE}
+# file: tests/test-all.R
 library(testthat)
 library(checkmate) # for testthat extensions
-test_check("checkmate")
+test_check("mypkg")
 ```
 Now you are all set and can use more than 30 new expectations in your tests.
 ```{r,eval=FALSE}
 test_that("checkmate is a sweet extension for testthat", {
-    x = runif(100)
-    expect_numeric(x, len = 100, any.missing = FALSE, lower = 0, upper = 1)
+  x = runif(100)
+  expect_numeric(x, len = 100, any.missing = FALSE, lower = 0, upper = 1)
 })
 ```
 
 ## Speed considerations
 In comparison with tediously writing the checks yourself in R (c.f. factorial example at the beginning of the vignette), R is sometimes a tad faster while performing checks on scalars.
 This seems odd at first, because checkmate is mostly written in C and should be comparably fast.
-But many of the functions in the `base` package are not regular functions, but primitives.
-While primitives jump directly into the C code, checkmate has to employ the considerably slower `.Call` interface.
-As a result, checkmate is sometimes slower while checking scalars or small vectors (but you have to invest a some orders of magnitude more time to write these checks yourself).
+Yet many of the functions in the `base` package are not regular functions, but primitives.
+While primitives jump directly into the C code, checkmate has to use the considerably slower `.Call` interface.
+As a result, checkmate is sometimes slower while checking scalars or small vectors (but you have to invest some orders of magnitude more time to write these checks yourself).
 
 For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables.
-Here is a small unrepresentative benchmark, but also note that this one here has been executed from inside `knitr` which is often the cause for outliers in the measured execution time. Better try it yourself.
+Here is a small unrepresentative benchmark.
+But also note that this one here has been executed from inside `knitr` which is often the cause for outliers in the measured execution time.
+Better run the benchmark yourself to get unbiased results.
 ```{r,dev="svg",fig.width=6,fig.height=4}
 library(ggplot2)
 library(microbenchmark)
 
+# check x for being numeric of length 1000 with no missing nor NaN values
 x = runif(1000)
 r = function(x) stopifnot(is.numeric(x) && length(x) == 1000 && all(!is.na(x) & x >= 0 & x <= 1))
-cm = function(x) assertNumeric(x, len = 1000, any.missing = FALSE, lower = 0, upper = 1)
-mb = microbenchmark(r(x), cm(x))
+cm1 = function(x) assertNumeric(x, len = 1000, any.missing = FALSE, lower = 0, upper = 1)
+cm2 = function(x) qassert(x, "N1000[0,1]")
+mb = microbenchmark(r(x), cm1(x), cm2(x))
+print(mb)
+autoplot(mb)
+```
+
+```{r,dev="svg",fig.width=6,fig.height=4}
+# check x for being a character vector with no missing values or empty strings
+x = sample(letters, 10000, replace = TRUE)
+r = function(x) stopifnot(is.character(x) && !any(is.na(x)) && all(nzchar(x)))
+cm1 = function(x) assertCharacter(x, any.missing = FALSE, min.chars = 1)
+cm2 = function(x) qassert(x, "S+[1,]")
+mb = microbenchmark(r(x), cm1(x), cm2(x))
+print(mb)
+autoplot(mb)
+```
+
+```{r,dev="svg",fig.width=6,fig.height=4}
+# check x for being a data frame with no missing values
+N = 1000
+x = data.frame(a = runif(N), b = sample(letters[1:5], N, replace = TRUE), c = sample(c(FALSE, TRUE), N, replace = TRUE))
+r = function(x) is.data.frame(x) && !any(sapply(x, function(x) any(is.na(x))))
+cm1 = function(x) testDataFrame(x, any.missing = FALSE)
+cm2 = function(x) qtest(x, "D")
+mb = microbenchmark(r(x), cm1(x), cm2(x))
+print(mb)
+autoplot(mb)
+
+# checkmate tries to stop as early as possible
+x$a[1] = NA
+mb = microbenchmark(r(x), cm1(x), cm2(x))
 print(mb)
 autoplot(mb)
 ```
