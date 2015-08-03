@@ -13,9 +13,6 @@ reportAssertions(collection)
 \arguments{
 \item{collection}{[\code{AssertCollection}]\cr
 Object of type \dQuote{AssertCollection} (constructed via \code{makeAssertCollection}).}
-
-\item{x}{[any]\cr
-Object to test for class \dQuote{AssertCollection}.}
 }
 \value{
 \code{makeAssertCollection()} returns an object of class \dQuote{AssertCollection} and
@@ -31,13 +28,14 @@ the report function to a certain degree.
 See the example on how to push custom messages or retrieve all stored messages.
 }
 \examples{
-coll = makeAssertCollection()
 x = "a"
+coll = makeAssertCollection()
+
+print(coll$isEmpty())
 assertNumeric(x, add = coll)
-print(coll$empty())
-coll$push(msg = "Custom error message", vname = "var.name")
-print(coll$getMessages())
-print(coll$getVarNames())
+coll$isEmpty()
+coll$push("Custom error message")
+coll$getMessages()
 \dontrun{
   reportAssertions(coll)
 }

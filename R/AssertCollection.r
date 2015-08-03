@@ -1,8 +1,6 @@
 #' Collect multiple assertions
 #' @name AssertCollection
 #'
-#' @param x [any]\cr
-#'  Object to test for class \dQuote{AssertCollection}.
 #' @param collection [\code{AssertCollection}]\cr
 #'  Object of type \dQuote{AssertCollection} (constructed via \code{makeAssertCollection}).
 #' @description
@@ -16,12 +14,14 @@
 #'  \code{reportCollection} returns invisibly \code{TRUE} if no error is thrown (i.e., no message was
 #'  collected).
 #' @examples
-#' coll = makeAssertCollection()
 #' x = "a"
+#' coll = makeAssertCollection()
+#'
+#' print(coll$isEmpty())
 #' assertNumeric(x, add = coll)
-#' print(coll$empty())
+#' coll$isEmpty()
 #' coll$push("Custom error message")
-#' print(coll$getMessages())
+#' coll$getMessages()
 #' \dontrun{
 #'   reportAssertions(coll)
 #' }
