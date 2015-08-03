@@ -56,6 +56,8 @@ test_that("type and missingness", {
   expect_fail_all(xm, "r")
   expect_fail_all(xl, "d")
   expect_fail_all(xl, "f")
+
+  expect_error(qassert(1, "O"), "Unknown class identifier")
 })
 
 test_that("integerish", {
@@ -82,6 +84,9 @@ test_that("length", {
   expect_succ_all(xe, "e1")
   expect_fail_all(xe, "e>=2")
   expect_fail_all(xe, "f+")
+
+  expect_error(qassert(1, "n9999999999999"), "handle length")
+  expect_error(qassert(1, "n-1"), "negative length")
 })
 
 test_that("bounds", {
@@ -201,6 +206,11 @@ test_that("malformated pattern", {
   expect_error(qassert(1, "n+[,y]"), "upper")
   expect_error(qassert(1, "n*("), "bound definition")
   expect_error(qassert(1, "n*]"), "bound definition")
+  expect_error(qassert(1, "n*(1)xx"), "Additional chars found")
+  expect_error(qassert(1, TRUE), "be a string")
+  expect_error(qassert(1, NA_character_), "not be NA")
+  expect_error(qtest(1, TRUE), "be a string")
+  expect_error(qtest(1, NA_character_), "not be NA")
 })
 
 test_that("we get some output", {
@@ -215,6 +225,7 @@ test_that("empty vectors", {
   expect_succ_all(integer(0), "n[0,0]")
   expect_fail_all(integer(0), "r[0,0]")
   expect_fail_all(integer(0), "*+")
+  expect_succ_all(TRUE, character(0))
 })
 
 test_that("logicals are not numeric", {

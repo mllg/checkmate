@@ -25,7 +25,7 @@ Rboolean any_missing_integerish(SEXP x) {
         case LGLSXP: return any_missing_logical(x);
         case INTSXP: return any_missing_integer(x);
         case REALSXP: return any_missing_double(x);
-        default: error("Error in any_missing_logical: x is not logical or numeric");
+        default: error("Error in any_missing_integerish: x is not logical or numeric");
     }
 }
 

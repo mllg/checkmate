@@ -38,4 +38,7 @@ test_that("qtestr", {
   x = list()
   expect_succ_all(x, "n+")
   expect_succ_all(x, "0+")
+
+  x = list(1, 2)
+  expect_fail_all(x, "S1")
 })
