@@ -1,54 +1,62 @@
 #' Collect multiple assertions
+#' @name AssertCollection
 #'
+#' @param x [any]\cr
+#'  Object to test for class \dQuote{AssertCollection}.
 #' @param collection [\code{AssertCollection}]\cr
 #'  Object of type \dQuote{AssertCollection} (constructed via \code{makeAssertCollection}).
 #' @description
 #' The function \code{makeAssertCollection()} returns a simple stack-like
 #' closure you can pass to all functions of the \code{assert*}-family.
 #' All messages get collected and can be reported with \code{reportAssertions()}.
-#' Alternatively, you can easily write your own report function. The example
-#' on how to push custom messages or retrieve all stored messages.
+#' Alternatively, you can easily write your own report function or customize the the output of
+#' the report function to a certain degree.
+#' See the example on how to push custom messages or retrieve all stored messages.
 #' @return \code{makeAssertCollection()} returns an object of class \dQuote{AssertCollection} and
 #'  \code{reportCollection} returns invisibly \code{TRUE} if no error is thrown (i.e., no message was
 #'  collected).
-#' @aliases AssertCollection
-#' @export
 #' @examples
 #' coll = makeAssertCollection()
 #' x = "a"
 #' assertNumeric(x, add = coll)
 #' print(coll$empty())
-#' coll$push(msg = "Custom error message", vname = "var.name")
+#' coll$push("Custom error message")
 #' print(coll$getMessages())
-#' print(coll$getVarNames())
 #' \dontrun{
 #'   reportAssertions(coll)
 #' }
+NULL
+
+#' @export
+#' @rdname AssertCollection
 makeAssertCollection = function() {
-  vnames = character(0L)
   msgs = character(0L)
   setClasses(list(
-    push = function(msg, vname) { msgs <<- c(msgs, msg); vnames <<- c(vnames, vname) },
-    getVarNames = function() vnames,
+    push = function(msg) msgs <<- c(msgs, msg),
     getMessages = function() msgs,
-    empty = function() length(msgs) == 0L
+    isEmpty = function() length(msgs) == 0L
   ), "AssertCollection")
 }
 
 #' @export
 print.AssertCollection = function(x, ...) {
-  cat(sprintf("Collection of %i assertions.\n", length(x$getMessages())))
-  cat("Methods: push(), get() and empty().\n")
+  n = length(x$getMessages())
+  if (n == 0L) {
+    cat("Empty collection\n")
+  } else {
+    cat(sprintf("Collection of %i assertion%s.\n", n, ifelse(n > 1L, "s", "")))
+  }
 }
 
 #' @export
-#' @rdname makeAssertCollection
+#' @rdname AssertCollection
 reportAssertions = function(collection) {
-  if (!collection$empty()) {
+  assertClass(collection, "AssertCollection")
+  if (!collection$isEmpty()) {
     msgs = collection$getMessages()
-    vnames = collection$getVarNames()
-    msg = sprintf("%i assertions failed:", length(msgs))
-    stop(simpleError(collapse(c(msg, strwrap(sprintf("Variable '%s': %s", vnames, msgs), prefix = " * ")), "\n"), call = sys.call(1L)))
+    context = "%i assertions failed:"
+    err = c(sprintf(context, length(msgs)), strwrap(msgs, prefix = " * "))
+    stop(simpleError(collapse(err, "\n"), call = sys.call(1L)))
   }
-  invisible(NULL)
+  invisible(TRUE)
 }

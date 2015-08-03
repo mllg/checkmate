@@ -6,12 +6,10 @@ vname = function(x, var.name) {
 
 makeAssertion = function(msg, var.name, collection) {
   if (!isTRUE(msg)) {
-    if (is.null(collection)) {
+    if (is.null(collection))
       mstop("Assertion on '%s' failed: %s", var.name, msg)
-    } else {
-      collection$push(msg, var.name)
-      return(invisible(FALSE))
-    }
+    collection$push(sprintf("Variable '%s': %s", var.name, msg))
+    return(invisible(FALSE))
   }
   invisible(TRUE)
 }
