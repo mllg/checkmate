@@ -2,8 +2,6 @@
 #'
 #' @param collection [\code{AssertCollection}]\cr
 #'  Object of type \dQuote{AssertCollection} (constructed via \code{makeAssertCollection}).
-#' @param context [\code{character(1)}]\cr
-#'  Contextual information for the reporter. Will be printed as first line before
 #' @description
 #' The function \code{makeAssertCollection()} returns a simple stack-like
 #' closure you can pass to all functions of the \code{assert*}-family.
@@ -18,9 +16,9 @@
 #' @examples
 #' coll = makeAssertCollection()
 #' x = "a"
-#' assertNumeric(x, push = coll)
+#' assertNumeric(x, add = coll)
 #' print(coll$empty())
-#' coll$push("Custom error message")
+#' coll$push(msg = "Custom error message", vname = "var.name")
 #' print(coll$getMessages())
 #' print(coll$getVarNames())
 #' \dontrun{
