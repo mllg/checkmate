@@ -1,5 +1,7 @@
 Version 1.6.3 (2015-xx-xx)
 -------------------------------------------------------------------------------
+* Assertions can now be collected (via `makeAssertCollection()`) and reported
+  (via `reportAssertions()`).
 * `qassert()` can now perform bound checks on strings
 
 Version 1.6.2 (2015-07-26)
