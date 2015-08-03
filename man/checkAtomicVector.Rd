@@ -12,7 +12,7 @@ checkAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 
 assertAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  .var.name)
+  add = NULL, .var.name)
 
 testAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
@@ -46,6 +46,9 @@ Must all values be unique? Default is \code{FALSE}.}
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

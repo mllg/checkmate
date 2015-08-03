@@ -9,7 +9,7 @@
 \usage{
 checkClass(x, classes, ordered = FALSE)
 
-assertClass(x, classes, ordered = FALSE, .var.name)
+assertClass(x, classes, ordered = FALSE, add = NULL, .var.name)
 
 testClass(x, classes, ordered = FALSE)
 
@@ -25,6 +25,9 @@ Class names to check for inheritance with \code{\link[base]{inherits}}.}
 \item{ordered}{[\code{logical(1)}]\cr
 Expect \code{x} to be specialized in provided order.
 Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

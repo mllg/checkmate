@@ -11,7 +11,7 @@ checkArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
   max.d = NULL)
 
 assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, .var.name)
+  max.d = NULL, add = NULL, .var.name)
 
 testArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
   max.d = NULL)
@@ -44,6 +44,9 @@ Default is \code{NULL} (no check).}
 \item{max.d}{[\code{integer(1)}]\cr
 Maximum dimensionality of array \code{x}.
 Default is \code{NULL} (no check).}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

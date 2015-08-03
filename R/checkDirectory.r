@@ -29,9 +29,9 @@ checkDirectory = function(x, access = "") {
 
 #' @rdname checkDirectory
 #' @export
-assertDirectory = function(x, access = "", .var.name) {
+assertDirectory = function(x, access = "", add = NULL, .var.name) {
   res = checkDirectory(x, access)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkDirectory

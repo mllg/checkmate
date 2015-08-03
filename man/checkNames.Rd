@@ -9,7 +9,7 @@
 \usage{
 checkNames(x, type = "named")
 
-assertNames(x, type = "named", .var.name)
+assertNames(x, type = "named", add = NULL, .var.name)
 
 testNames(x, type = "named")
 
@@ -26,6 +26,9 @@ Select the check(s) to perform.
 \dQuote{unique} additionally tests for non-duplicated names.
 \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

@@ -9,7 +9,7 @@
 \usage{
 checkString(x, na.ok = FALSE)
 
-assertString(x, na.ok = FALSE, .var.name)
+assertString(x, na.ok = FALSE, add = NULL, .var.name)
 
 testString(x, na.ok = FALSE)
 
@@ -21,6 +21,9 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

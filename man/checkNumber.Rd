@@ -10,7 +10,7 @@
 checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, .var.name)
+  finite = FALSE, add = NULL, .var.name)
 
 testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
@@ -32,6 +32,9 @@ Upper value all elements of \code{x} must be lower than.}
 
 \item{finite}{[\code{logical(1)}]\cr
 Check for only finite values? Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

@@ -12,7 +12,7 @@ checkAtomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 
 assertAtomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  .var.name)
+  add = NULL, .var.name)
 
 testAtomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
@@ -47,6 +47,9 @@ Must all values be unique? Default is \code{FALSE}.}
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.
 Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

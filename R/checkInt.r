@@ -21,9 +21,9 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
 #' @rdname checkInt
 #' @useDynLib checkmate c_check_int
 #' @export
-assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name) {
+assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkInt

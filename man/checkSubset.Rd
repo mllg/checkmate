@@ -9,7 +9,7 @@
 \usage{
 checkSubset(x, choices, empty.ok = TRUE)
 
-assertSubset(x, choices, empty.ok = TRUE, .var.name)
+assertSubset(x, choices, empty.ok = TRUE, add = NULL, .var.name)
 
 testSubset(x, choices, empty.ok = TRUE)
 
@@ -25,6 +25,9 @@ Set of possible values.}
 \item{empty.ok}{[\code{logical(1)}]\cr
 Treat zero-length \code{x} as subset of any set \code{choices}?
 Default is \code{TRUE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

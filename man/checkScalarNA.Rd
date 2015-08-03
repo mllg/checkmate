@@ -9,7 +9,7 @@
 \usage{
 checkScalarNA(x)
 
-assertScalarNA(x, .var.name)
+assertScalarNA(x, add = NULL, .var.name)
 
 testScalarNA(x)
 
@@ -18,6 +18,9 @@ expect_scalar_na(x, info = NULL, label = NULL)
 \arguments{
 \item{x}{[any]\cr
 Object to check.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

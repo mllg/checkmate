@@ -29,8 +29,9 @@ checkFile = function(x, access = "") {
 
 #' @export
 #' @rdname checkFile
-assertFile = function(x, access = "", .var.name) {
-  makeAssertion(checkFile(x, access), vname(x, .var.name))
+assertFile = function(x, access = "", add = NULL, .var.name) {
+  res = checkFile(x, access)
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkFile

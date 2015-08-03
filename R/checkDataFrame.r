@@ -19,11 +19,14 @@ checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.miss
 #' @rdname checkDataFrame
 #' @useDynLib checkmate c_check_dataframe
 #' @export
-assertDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, .var.name) {
-  res = .Call("c_check_dataframe", x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
-  res = checkListProps(x, types)
-  makeAssertion(res, vname(x, .var.name))
+assertDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
+  {
+    res = .Call("c_check_dataframe", x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+    makeAssertion(res, vname(x, .var.name), add)
+  } %and% {
+    res = checkListProps(x, types)
+    makeAssertion(res, vname(x, .var.name), add)
+  }
 }
 
 #' @rdname checkDataFrame

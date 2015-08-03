@@ -9,7 +9,7 @@
 \usage{
 checkFlag(x, na.ok = FALSE)
 
-assertFlag(x, na.ok = FALSE, .var.name)
+assertFlag(x, na.ok = FALSE, add = NULL, .var.name)
 
 testFlag(x, na.ok = FALSE)
 
@@ -21,6 +21,9 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

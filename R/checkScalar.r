@@ -19,9 +19,9 @@ checkScalar = function(x, na.ok = FALSE) {
 #' @rdname checkScalar
 #' @useDynLib checkmate c_check_scalar
 #' @export
-assertScalar = function(x, na.ok = FALSE, .var.name) {
+assertScalar = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkScalar

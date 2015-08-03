@@ -45,9 +45,9 @@ checkPathForOutput = function(x, overwrite = FALSE) {
 
 #' @rdname checkPathForOutput
 #' @export
-assertPathForOutput = function(x, overwrite = FALSE, .var.name) {
+assertPathForOutput = function(x, overwrite = FALSE, add = NULL, .var.name) {
   res = checkPathForOutput(x, overwrite)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkPathForOutput

@@ -45,9 +45,9 @@ checkAccess = function(x, access = "") {
 
 #' @rdname checkAccess
 #' @export
-assertAccess = function(x, access = "", .var.name) {
+assertAccess = function(x, access = "", add = NULL, .var.name) {
   res = checkAccess(x, access)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkAccess

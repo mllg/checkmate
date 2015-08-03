@@ -9,7 +9,7 @@
 \usage{
 checkPathForOutput(x, overwrite = FALSE)
 
-assertPathForOutput(x, overwrite = FALSE, .var.name)
+assertPathForOutput(x, overwrite = FALSE, add = NULL, .var.name)
 
 testPathForOutput(x, overwrite = FALSE)
 
@@ -23,6 +23,9 @@ Object to check.}
 If \code{TRUE}, an exising file in place is allowed if it
 it is both readable and writeable.
 Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

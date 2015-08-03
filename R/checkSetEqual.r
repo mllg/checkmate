@@ -30,9 +30,9 @@ checkSetEqual = function(x, y, ordered = FALSE) {
 
 #' @rdname checkSetEqual
 #' @export
-assertSetEqual = function(x, y, ordered = TRUE, .var.name) {
+assertSetEqual = function(x, y, ordered = TRUE, add = NULL, .var.name) {
   res = checkSetEqual(x, y, ordered)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkSetEqual

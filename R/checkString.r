@@ -22,9 +22,9 @@ checkString = function(x, na.ok = FALSE) {
 #' @rdname checkString
 #' @useDynLib checkmate c_check_string
 #' @export
-assertString = function(x, na.ok = FALSE, .var.name) {
+assertString = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkString(x, na.ok)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkString

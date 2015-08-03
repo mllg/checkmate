@@ -22,9 +22,9 @@ checkPercentage = function(x, na.ok = FALSE) {
 #' @rdname checkPercentage
 #' @useDynLib checkmate c_check_number
 #' @export
-assertPercentage = function(x, na.ok = FALSE, .var.name) {
+assertPercentage = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = .Call("c_check_number", x, na.ok, 0.0, 1.0, FALSE, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkPercentage

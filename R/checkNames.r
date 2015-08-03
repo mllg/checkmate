@@ -28,9 +28,9 @@ checkNames = function(x, type = "named") {
 #' @rdname checkNames
 #' @useDynLib checkmate c_check_names
 #' @export
-assertNames = function(x, type = "named", .var.name) {
+assertNames = function(x, type = "named", add = NULL, .var.name) {
   res = .Call("c_check_names", x, type, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkNames

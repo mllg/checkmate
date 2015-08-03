@@ -8,7 +8,7 @@
 \usage{
 checkNamed(x, type = "named")
 
-assertNamed(x, type = "named", .var.name)
+assertNamed(x, type = "named", add = NULL, .var.name)
 
 testNamed(x, type = "named")
 }
@@ -24,6 +24,9 @@ Select the check(s) to perform.
 \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 Note that for zero-length \code{x} every name check evalutes to \code{TRUE}.
 Also note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

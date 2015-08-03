@@ -27,9 +27,9 @@ checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL
 #' @rdname checkArray
 #' @useDynLib checkmate c_check_array
 #' @export
-assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, .var.name) {
+assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, add = NULL, .var.name) {
   res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkArray

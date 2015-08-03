@@ -21,9 +21,9 @@ checkAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
 #' @rdname checkAtomic
 #' @useDynLib checkmate c_check_atomic
 #' @export
-assertAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name) {
+assertAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = .Call("c_check_atomic", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkAtomic

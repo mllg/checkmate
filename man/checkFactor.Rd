@@ -15,7 +15,7 @@ checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
 assertFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, .var.name)
+  unique = FALSE, names = NULL, add = NULL, .var.name)
 
 testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
@@ -77,6 +77,9 @@ Must all values be unique? Default is \code{FALSE}.}
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.
 Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

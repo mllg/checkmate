@@ -9,7 +9,7 @@
 \usage{
 checkSetEqual(x, y, ordered = FALSE)
 
-assertSetEqual(x, y, ordered = TRUE, .var.name)
+assertSetEqual(x, y, ordered = TRUE, add = NULL, .var.name)
 
 testSetEqual(x, y, ordered = TRUE)
 
@@ -26,6 +26,9 @@ Set to compare with.}
 Check \code{x} to have the same length and order as \code{y}, i.e.
 check using \dQuote{==} while handling \code{NA}s nicely.
 Default is \code{FALSE}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

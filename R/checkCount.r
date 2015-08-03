@@ -26,9 +26,9 @@ checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$do
 #' @rdname checkCount
 #' @useDynLib checkmate c_check_count
 #' @export
-assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name) {
+assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkCount

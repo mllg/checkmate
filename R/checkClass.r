@@ -46,9 +46,9 @@ checkClass = function(x, classes, ordered = FALSE) {
 
 #' @rdname checkClass
 #' @export
-assertClass = function(x, classes, ordered = FALSE, .var.name) {
+assertClass = function(x, classes, ordered = FALSE, add = NULL, .var.name) {
   res = checkClass(x, classes, ordered)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkClass

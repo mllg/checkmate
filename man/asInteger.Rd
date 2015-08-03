@@ -6,13 +6,13 @@
 \alias{asInteger}
 \title{Convert an argument to an integer}
 \usage{
-asInteger(x, ..., tol = sqrt(.Machine$double.eps), .var.name)
+asInteger(x, ..., tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
 
 asCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), .var.name)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
 
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), .var.name)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
 }
 \arguments{
 \item{x}{[any]\cr

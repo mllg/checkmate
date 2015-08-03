@@ -8,13 +8,16 @@
 \usage{
 checkNull(x)
 
-assertNull(x, .var.name)
+assertNull(x, add = NULL, .var.name)
 
 testNull(x)
 }
 \arguments{
 \item{x}{[any]\cr
 Object to check.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

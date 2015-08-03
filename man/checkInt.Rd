@@ -11,7 +11,7 @@ checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps))
 
 assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), .var.name)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
 
 testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps))
@@ -35,6 +35,9 @@ Upper value all elements of \code{x} must be lower than.}
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

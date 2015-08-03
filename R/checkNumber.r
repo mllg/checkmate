@@ -21,9 +21,9 @@ checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FAL
 
 #' @rdname checkNumber
 #' @export
-assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, .var.name) {
+assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, add = NULL, .var.name) {
   res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkNumber

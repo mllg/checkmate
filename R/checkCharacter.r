@@ -30,11 +30,14 @@ checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ig
 #' @rdname checkCharacter
 #' @useDynLib checkmate c_check_character
 #' @export
-assertCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,  unique = FALSE, names = NULL, .var.name) {
-  res = .Call("c_check_character", x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
-  res = checkCharacterProps(x, pattern, fixed, ignore.case)
-  makeAssertion(res, vname(x, .var.name))
+assertCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,  unique = FALSE, names = NULL, add = NULL, .var.name) {
+  {
+    res = .Call("c_check_character", x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+    makeAssertion(res, vname(x, .var.name), add)
+  } %and% {
+    res = checkCharacterProps(x, pattern, fixed, ignore.case)
+    makeAssertion(res, vname(x, .var.name), add)
+  }
 }
 
 #' @rdname checkCharacter

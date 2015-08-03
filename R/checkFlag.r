@@ -22,9 +22,9 @@ checkFlag = function(x, na.ok = FALSE) {
 #' @rdname checkFlag
 #' @useDynLib checkmate c_check_flag
 #' @export
-assertFlag = function(x, na.ok = FALSE, .var.name) {
+assertFlag = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkFlag

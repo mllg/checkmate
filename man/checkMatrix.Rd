@@ -13,7 +13,7 @@ checkMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
 
 assertMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, .var.name)
+  row.names = NULL, col.names = NULL, add = NULL, .var.name)
 
 testMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
@@ -61,6 +61,9 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.
 Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

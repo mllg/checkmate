@@ -15,9 +15,9 @@ checkNull = function(x) {
 
 #' @rdname checkNull
 #' @export
-assertNull = function(x, .var.name) {
+assertNull = function(x, add = NULL, .var.name) {
   res = checkNull(x)
-  makeAssertion(res, vname(x, .var.name))
+  makeAssertion(res, vname(x, .var.name), add)
 }
 
 #' @rdname checkNull

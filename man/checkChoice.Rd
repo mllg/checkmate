@@ -9,7 +9,7 @@
 \usage{
 checkChoice(x, choices)
 
-assertChoice(x, choices, .var.name)
+assertChoice(x, choices, add = NULL, .var.name)
 
 testChoice(x, choices)
 
@@ -21,6 +21,9 @@ Object to check.}
 
 \item{choices}{[\code{atomic}]\cr
 Set of possible values.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine

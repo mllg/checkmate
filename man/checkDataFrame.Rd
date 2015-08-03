@@ -13,7 +13,8 @@ checkDataFrame(x, types = character(0L), any.missing = TRUE,
 
 assertDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, .var.name)
+  ncols = NULL, row.names = NULL, col.names = NULL, add = NULL,
+  .var.name)
 
 testDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
@@ -65,6 +66,9 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.
 Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
