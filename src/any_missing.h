@@ -16,6 +16,7 @@ Rboolean any_missing_atomic(SEXP);
 Rboolean any_missing_list(SEXP);
 Rboolean any_missing_matrix(SEXP);
 Rboolean any_missing_frame(SEXP);
+Rboolean any_missing(SEXP);
 SEXP c_any_missing(SEXP);
 
 #endif
