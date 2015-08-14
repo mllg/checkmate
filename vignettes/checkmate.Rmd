@@ -74,7 +74,7 @@ All functions come in four flavors, depending on the prefix.
 If prefixed with `assert`, an error is thrown if the check fails. Otherwise, `TRUE` is returned invisibly.
 The family of functions prefixed with `test` always return the check result as logical value.
 Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
-The last family of functions is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
+`expect` is the last family of functions and is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
 All performed checks are logged into the `testthat` reported.
 
 ### Scalars
