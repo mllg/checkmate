@@ -9,11 +9,11 @@
 \usage{
 checkSetEqual(x, y, ordered = FALSE)
 
-assertSetEqual(x, y, ordered = TRUE, add = NULL, .var.name)
+assertSetEqual(x, y, ordered = FALSE, add = NULL, .var.name)
 
-testSetEqual(x, y, ordered = TRUE)
+testSetEqual(x, y, ordered = FALSE)
 
-expect_set_equal(x, y, ordered = TRUE, info = NULL, label = NULL)
+expect_set_equal(x, y, ordered = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
