@@ -79,76 +79,76 @@ All performed checks are logged into the `testthat` reported.
 
 ### Scalars
 
-* [checkFlag](http://www.rdocumentation.org/packages/checkmate/functions/checkFlag)
-* [checkCount](http://www.rdocumentation.org/packages/checkmate/functions/checkCount)
-* [checkInt](http://www.rdocumentation.org/packages/checkmate/functions/checkInt)
-* [checkNumber](http://www.rdocumentation.org/packages/checkmate/functions/checkNumber)
-* [checkString](http://www.rdocumentation.org/packages/checkmate/functions/checkString)
-* [checkScalar](http://www.rdocumentation.org/packages/checkmate/functions/checkScalar)
-* [checkScalarNA](http://www.rdocumentation.org/packages/checkmate/functions/checkScalarNA)
-* [checkPercentage](http://www.rdocumentation.org/packages/checkmate/functions/checkPercentage)
+* [checkFlag](https://mllg.github.io/checkmate/checkFlag)
+* [checkCount](https://mllg.github.io/checkmate/checkCount)
+* [checkInt](https://mllg.github.io/checkmate/checkInt)
+* [checkNumber](https://mllg.github.io/checkmate/checkNumber)
+* [checkString](https://mllg.github.io/checkmate/checkString)
+* [checkScalar](https://mllg.github.io/checkmate/checkScalar)
+* [checkScalarNA](https://mllg.github.io/checkmate/checkScalarNA)
+* [checkPercentage](https://mllg.github.io/checkmate/checkPercentage)
 
 
 ### Vectors
 
-* [checkLogical](http://www.rdocumentation.org/packages/checkmate/functions/checkLogical)
-* [checkNumeric](http://www.rdocumentation.org/packages/checkmate/functions/checkNumeric)
-* [checkInteger](http://www.rdocumentation.org/packages/checkmate/functions/checkInteger)
-* [checkIntegerish](http://www.rdocumentation.org/packages/checkmate/functions/checkIntegerish)
-* [checkComplex](http://www.rdocumentation.org/packages/checkmate/functions/checkComplex)
-* [checkCharacter](http://www.rdocumentation.org/packages/checkmate/functions/checkCharacter)
-* [checkFactor](http://www.rdocumentation.org/packages/checkmate/functions/checkFactor)
-* [checkList](http://www.rdocumentation.org/packages/checkmate/functions/checkList)
-* [checkVector](http://www.rdocumentation.org/packages/checkmate/functions/checkVector)
-* [checkAtomic](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomic)
-* [checkAtomicVector](http://www.rdocumentation.org/packages/checkmate/functions/checkAtomicVector)
+* [checkLogical](https://mllg.github.io/checkmate/checkLogical)
+* [checkNumeric](https://mllg.github.io/checkmate/checkNumeric)
+* [checkInteger](https://mllg.github.io/checkmate/checkInteger)
+* [checkIntegerish](https://mllg.github.io/checkmate/checkIntegerish)
+* [checkComplex](https://mllg.github.io/checkmate/checkComplex)
+* [checkCharacter](https://mllg.github.io/checkmate/checkCharacter)
+* [checkFactor](https://mllg.github.io/checkmate/checkFactor)
+* [checkList](https://mllg.github.io/checkmate/checkList)
+* [checkVector](https://mllg.github.io/checkmate/checkVector)
+* [checkAtomic](https://mllg.github.io/checkmate/checkAtomic)
+* [checkAtomicVector](https://mllg.github.io/checkmate/checkAtomicVector)
 
 
 ### Attributes
 
-* [checkClass](http://www.rdocumentation.org/packages/checkmate/functions/checkClass)
-* [checkNames](http://www.rdocumentation.org/packages/checkmate/functions/checkNames)
-* [checkNamed](http://www.rdocumentation.org/packages/checkmate/functions/checkNamed)
+* [checkClass](https://mllg.github.io/checkmate/checkClass)
+* [checkNames](https://mllg.github.io/checkmate/checkNames)
+* [checkNamed](https://mllg.github.io/checkmate/checkNamed)
 
 
 ### Choices and Subsets
 
-* [checkChoice](http://www.rdocumentation.org/packages/checkmate/functions/checkChoice)
-* [checkSubset](http://www.rdocumentation.org/packages/checkmate/functions/checkSubset)
-* [checkSetEqual](http://www.rdocumentation.org/packages/checkmate/functions/checkSetEqual)
+* [checkChoice](https://mllg.github.io/checkmate/checkChoice)
+* [checkSubset](https://mllg.github.io/checkmate/checkSubset)
+* [checkSetEqual](https://mllg.github.io/checkmate/checkSetEqual)
 
 
 ### Matrices, Arrays and Data Frame
 
-* [checkMatrix](http://www.rdocumentation.org/packages/checkmate/functions/checkMatrix)
-* [checkArray](http://www.rdocumentation.org/packages/checkmate/functions/checkArray)
-* [checkDataFrame](http://www.rdocumentation.org/packages/checkmate/functions/checkDataFrame)
+* [checkMatrix](https://mllg.github.io/checkmate/checkMatrix)
+* [checkArray](https://mllg.github.io/checkmate/checkArray)
+* [checkDataFrame](https://mllg.github.io/checkmate/checkDataFrame)
 
 
 ### Safe Coercion to integer
 
-* [asCount](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
-* [asInt](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
-* [asInteger](http://www.rdocumentation.org/packages/checkmate/functions/asInteger)
+* [asCount](https://mllg.github.io/checkmate/asInteger)
+* [asInt](https://mllg.github.io/checkmate/asInteger)
+* [asInteger](https://mllg.github.io/checkmate/asInteger)
 
 
 ### Other builtin
 
-* [checkNull](http://www.rdocumentation.org/packages/checkmate/functions/checkNull)
-* [checkEnvironment](http://www.rdocumentation.org/packages/checkmate/functions/checkEnvironment)
-* [checkFunction](http://www.rdocumentation.org/packages/checkmate/functions/checkFunction)
+* [checkNull](https://mllg.github.io/checkmate/checkNull)
+* [checkEnvironment](https://mllg.github.io/checkmate/checkEnvironment)
+* [checkFunction](https://mllg.github.io/checkmate/checkFunction)
 
 
 ### File IO:
 
-* [checkFile](http://www.rdocumentation.org/packages/checkmate/functions/checkFile)
-* [checkDirectory](http://www.rdocumentation.org/packages/checkmate/functions/checkDirectory)
-* [checkPathForOutput](http://www.rdocumentation.org/packages/checkmate/functions/checkPathForOutput)
+* [checkFile](https://mllg.github.io/checkmate/checkFile)
+* [checkDirectory](https://mllg.github.io/checkmate/checkDirectory)
+* [checkPathForOutput](https://mllg.github.io/checkmate/checkPathForOutput)
 
 
 ## In case you miss flexibility
 
-You can use [assert](http://www.rdocumentation.org/packages/checkmate/functions/assert) to perform multiple checks at once and throw an assertion if all checks fail.
+You can use [assert](https://mllg.github.io/checkmate/assert) to perform multiple checks at once and throw an assertion if all checks fail.
 
 
 ## Argument Checks for the Lazy
@@ -158,8 +158,8 @@ E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one
 This provide a completely alternative mini-language (or style) how to perform argument checks.
 You choose what you like best.
 
-* [qassert](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
-* [qassertr](http://www.rdocumentation.org/packages/checkmate/functions/qassert)
+* [qassert](https://mllg.github.io/checkmate/qassert)
+* [qassertr](https://mllg.github.io/checkmate/qassert)
 
 ## checkmate as testthat extension
 To extend [testthat](http://cran.r-project.org/package=testthat), you need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
