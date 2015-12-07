@@ -9,3 +9,6 @@
 man-roxygen
 ^appveyor\.yml$
 ^vignettes/.+\.html$
+^inst/web
+^inst/autogen
+^inst/staticdocs
