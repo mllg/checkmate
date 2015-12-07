@@ -31,7 +31,7 @@ See \code{\link[testthat]{expect_that}}.}
 Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
-[logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
+See details.
 }
 \description{
 The provided functions parse rules which allow to express some of the most
@@ -39,7 +39,7 @@ frequent argument checks by typing just a few letters.
 }
 \details{
 \code{qassert} throws an \code{R} exception if object \code{x} does
-not comply to at least one of the \code{rules} and returns \code{TRUE}
+not comply to at least one of the \code{rules} and returns the tested object invisibly
 otherwise.
 \code{qtest} behaves the same way but returns \code{FALSE} if none of the
 \code{rules} comply.

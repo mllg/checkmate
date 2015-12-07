@@ -3,7 +3,7 @@ context("qtestr")
 expect_succ_all = function(x, rules) {
   expect_true(qtestr(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_true(qassertr(x, rules),
+  expect_identical(qassertr(x, rules), x,
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(is.expectation(qexpectr(x, rules)),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))

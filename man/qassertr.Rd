@@ -32,7 +32,7 @@ See \code{\link[testthat]{expect_that}}.}
 Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
-[logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
+See details of \code{\link{qassert}}.
 }
 \description{
 These functions are the tuned counterparts of \code{\link{qtest}},

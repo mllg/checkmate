@@ -1,4 +1,4 @@
-#' Quick argument checks on (builtin) R types
+#' @title Quick argument checks on (builtin) R types
 #'
 #' @description
 #' The provided functions parse rules which allow to express some of the most
@@ -11,11 +11,11 @@
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
+#' @return See details.
 #'
 #' @details
 #' \code{qassert} throws an \code{R} exception if object \code{x} does
-#' not comply to at least one of the \code{rules} and returns \code{TRUE}
+#' not comply to at least one of the \code{rules} and returns the tested object invisibly
 #' otherwise.
 #' \code{qtest} behaves the same way but returns \code{FALSE} if none of the
 #' \code{rules} comply.
@@ -106,7 +106,7 @@ qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
   if (!isTRUE(res))
     mstop(qamsg(x, res, vname(x, .var.name)))
-  invisible(TRUE)
+  invisible(x)
 }
 
 #' @useDynLib checkmate c_qtest

@@ -13,7 +13,7 @@ xf = function(x) x
 expect_succ_all = function(x, rules) {
   expect_true(qtest(x, rules),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_true(qassert(x, rules),
+  expect_identical(qassert(x, rules), x,
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
   expect_true(is.expectation(qexpect(x, rules)),
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))

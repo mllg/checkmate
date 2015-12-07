@@ -1,4 +1,4 @@
-#' Quick recursive arguments checks on lists and data frames
+#' @title Quick recursive arguments checks on lists and data frames
 #'
 #' @description
 #' These functions are the tuned counterparts of \code{\link{qtest}},
@@ -13,7 +13,7 @@
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return [logical(1)]: \code{TRUE} on success, \code{FALSE} (or a thrown exception) otherwise.
+#' @return See details of \code{\link{qassert}}.
 #' @seealso \code{\link{qtest}}, \code{\link{qassert}}
 #' @useDynLib checkmate c_qassert
 #' @export
@@ -24,7 +24,7 @@ qassertr = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
   if (!isTRUE(res))
     mstop(qamsg(x, res, vname(x, .var.name), recursive = TRUE))
-  invisible(TRUE)
+  invisible(x)
 }
 
 
