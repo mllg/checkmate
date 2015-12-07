@@ -21,4 +21,4 @@ caught with a simple, readable line which produces an **informative error messag
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 Furthermore, the package provides over 30 expectations to extend the popular [testthat package](http://cran.r-project.org/package=testthat) for unit tests.
 
-For a more detailed introduction, see the [package vignette](https://cran.r-project.org/web/packages/checkmate/vignettes/checkmate.html).
+For a more detailed introduction, see the [package vignette](https://mllg.github.io/checkmate/vignettes/checkmate.html).
