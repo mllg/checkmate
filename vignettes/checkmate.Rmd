@@ -70,12 +70,23 @@ fact <- function(n, method = "stirling") {
 ```
 
 ## Function overview
-All functions come in four flavors, depending on the prefix.
-If prefixed with `assert`, an error is thrown if the check fails. Otherwise, `TRUE` is returned invisibly.
+The functions can be split into four functional groups, indicated by their prefix.
+
+If prefixed with `assert`, an error is thrown if the corresponding check fails.
+Otherwise, the checked object is returned invisibly.
+There are many different coding styles out there in the wild, but most R programmers stick to either `CamelCase` or `underscore_case`.
+Therefore, `checkmate` offers all assert functions in both flavors: `assert_count` is just an alias for `assertCount` but allows you to retain your favorite style.
+
 The family of functions prefixed with `test` always return the check result as logical value.
+Again, you can use `test_count` and `testCount` interchangeably.
+
 Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
+Note that this is a feature only very few advanced users need and `checkmate` currently only provides a CamelCase variant.
+
 `expect` is the last family of functions and is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
-All performed checks are logged into the `testthat` reported.
+All performed checks are logged into the `testthat` reporter.
+Because `testthat` uses the `underscore_case`, the extension functions only come in this flavor.
+
 
 ### Scalars
 
@@ -161,6 +172,7 @@ You choose what you like best.
 * [qassert](https://mllg.github.io/checkmate/qassert)
 * [qassertr](https://mllg.github.io/checkmate/qassert)
 
+
 ## checkmate as testthat extension
 To extend [testthat](http://cran.r-project.org/package=testthat), you need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
 Here is a minimal example:
@@ -175,6 +187,8 @@ Now you are all set and can use more than 30 new expectations in your tests.
 test_that("checkmate is a sweet extension for testthat", {
   x = runif(100)
   expect_numeric(x, len = 100, any.missing = FALSE, lower = 0, upper = 1)
+  # or, equivalent, using the lazy style:
+  qexpect(x, "N100[0,1]")
 })
 ```
 
@@ -186,7 +200,7 @@ While primitives jump directly into the C code, checkmate has to use the conside
 As a result, checkmate is sometimes slower while checking scalars or small vectors (but you have to invest some orders of magnitude more time to write these checks yourself).
 
 For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables.
-Here is a small unrepresentative benchmark.
+Here is a small yet unrepresentative benchmark.
 But also note that this one here has been executed from inside `knitr` which is often the cause for outliers in the measured execution time.
 Better run the benchmark yourself to get unbiased results.
 ```{r,dev="svg",fig.width=6,fig.height=4}
