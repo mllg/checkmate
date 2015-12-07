@@ -4,14 +4,13 @@ vname = function(x, var.name) {
   collapse(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), "\n")
 }
 
-makeAssertion = function(msg, var.name, collection) {
+makeAssertion = function(x, msg, var.name, collection) {
   if (!isTRUE(msg)) {
     if (is.null(collection))
       mstop("Assertion on '%s' failed: %s", var.name, msg)
     collection$push(sprintf("Variable '%s': %s", var.name, msg))
-    return(invisible(FALSE))
   }
-  invisible(TRUE)
+  return(invisible(x))
 }
 
 makeExpectation = function(res, info, label) {
@@ -58,6 +57,6 @@ setClasses = function(x, cl) {
   x
 }
 
-killCamel = function(x) {
+convertCamelCase = function(x) {
   tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
 }

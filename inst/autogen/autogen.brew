@@ -4,14 +4,23 @@
 #' @export
 assert<%= name_cc %> = function(<%= args_with_defaults %>, add = NULL, .var.name) {
   res = <%= fun %>(<%= args_simple %>)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname check<%= name_cc %>
+#' @export
+assert_<%= name_lc %> = assert<%= name_cc %>
 
 #' @rdname check<%= name_cc %>
 #' @export
 test<%= name_cc %> = function(<%= args_with_defaults %>) {
   isTRUE(<%= fun %>(<%= args_simple %>))
 }
+
+#' @rdname check<%= name_cc %>
+#' @export
+test_<%= name_lc %> = test<%= name_cc %>
 
 <% if (!fun %in% c("checkNamed", "checkNull")) { -%>
 #' @rdname check<%= name_cc %>

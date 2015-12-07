@@ -34,26 +34,26 @@ test_that("checkDataFrame", {
 test_that("checkDataFrame name checking works", {
   df = data.frame(x = 1:2, y = 1:2)
   names(df) = c("x", "x")
-  expect_true(assertDataFrame(df))
+  expect_identical(assertDataFrame(df), df)
   expect_error(assertDataFrame(df, col.names = "unnamed"), "unnamed")
 
   names(df) = c("x", "")
   expect_error(assertDataFrame(df, col.names = "named"), "named")
 
   names(df) = c("x", "x")
-  expect_true(assertDataFrame(df, col.names = "named"))
+  expect_identical(assertDataFrame(df, col.names = "named"), df)
   expect_error(assertDataFrame(df, col.names = "unique"), "uniquely")
   expect_error(assertDataFrame(df, col.names = "strict"), "uniquely")
   expect_error(assertDataFrame(df, col.names = "foo"), "unnamed")
 
   names(df) = c("x", "1")
-  expect_true(assertDataFrame(df, col.names = "named"))
-  expect_true(assertDataFrame(df, col.names = "unique"))
+  expect_identical(assertDataFrame(df, col.names = "named"), df)
+  expect_identical(assertDataFrame(df, col.names = "unique"), df)
   expect_error(assertDataFrame(df, col.names = "strict"), "naming rules")
 
   rownames(df) = NULL
   expect_error(assertDataFrame(df, row.names = "unnamed"), "unnamed")
-  expect_true(assertDataFrame(df, row.names = "named"))
+  expect_identical(assertDataFrame(df, row.names = "named"), df)
   expect_error(assertDataFrame(df, row.names = "strict"), "naming rules")
 })
 

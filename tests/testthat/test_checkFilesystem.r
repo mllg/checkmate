@@ -74,10 +74,10 @@ test_that("check_path_for_output", {
   expect_false(testPathForOutput(NULL))
 
   expect_error(assertPathForOutput(character(0)), "path provided")
-  expect_true(assertPathForOutput(c("a", "b")), "path")
-  expect_true(assertPathForOutput(ff))
+  expect_identical(assertPathForOutput(c("a", "b")), c("a", "b"))
+  expect_identical(assertPathForOutput(ff), ff)
   expect_error(assertPathForOutput(fn), "exist")
-  expect_true(assertPathForOutput(fn, overwrite = TRUE))
+  expect_identical(assertPathForOutput(fn, overwrite = TRUE), fn)
   expect_true(testPathForOutput(c(fn, ff, dn), overwrite = TRUE))
   expect_false(testPathForOutput(c(fn, ff, dn), overwrite = FALSE))
 })

@@ -4,14 +4,23 @@
 #' @export
 assertAccess = function(x, access = "", add = NULL, .var.name) {
   res = checkAccess(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkAccess
+#' @export
+assert_access = assertAccess
 
 #' @rdname checkAccess
 #' @export
 testAccess = function(x, access = "") {
   isTRUE(checkAccess(x, access))
 }
+
+#' @rdname checkAccess
+#' @export
+test_access = testAccess
 
 #' @rdname checkAccess
 #' @template expect
@@ -28,14 +37,23 @@ expect_access = function(x, access = "", info = NULL, label = NULL) {
 #' @export
 assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, add = NULL, .var.name) {
   res = checkArray(x, mode, any.missing, d, min.d, max.d)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkArray
+#' @export
+assert_array = assertArray
 
 #' @rdname checkArray
 #' @export
 testArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
   isTRUE(checkArray(x, mode, any.missing, d, min.d, max.d))
 }
+
+#' @rdname checkArray
+#' @export
+test_array = testArray
 
 #' @rdname checkArray
 #' @template expect
@@ -52,14 +70,23 @@ expect_array = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NU
 #' @export
 assertAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkAtomic(x, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkAtomic
+#' @export
+assert_atomic = assertAtomic
 
 #' @rdname checkAtomic
 #' @export
 testAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkAtomic(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkAtomic
+#' @export
+test_atomic = testAtomic
 
 #' @rdname checkAtomic
 #' @template expect
@@ -76,14 +103,23 @@ expect_atomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, 
 #' @export
 assertAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkAtomicVector(x, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkAtomicVector
+#' @export
+assert_atomic_vector = assertAtomicVector
 
 #' @rdname checkAtomicVector
 #' @export
 testAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkAtomicVector(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkAtomicVector
+#' @export
+test_atomic_vector = testAtomicVector
 
 #' @rdname checkAtomicVector
 #' @template expect
@@ -100,14 +136,23 @@ expect_atomic_vector = function(x, any.missing = TRUE, all.missing = TRUE, len =
 #' @export
 assertCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkCharacter(x, min.chars, pattern, fixed, ignore.case, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkCharacter
+#' @export
+assert_character = assertCharacter
 
 #' @rdname checkCharacter
 #' @export
 testCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkCharacter(x, min.chars, pattern, fixed, ignore.case, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkCharacter
+#' @export
+test_character = testCharacter
 
 #' @rdname checkCharacter
 #' @template expect
@@ -124,14 +169,23 @@ expect_character = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, 
 #' @export
 assertChoice = function(x, choices, add = NULL, .var.name) {
   res = checkChoice(x, choices)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkChoice
+#' @export
+assert_choice = assertChoice
 
 #' @rdname checkChoice
 #' @export
 testChoice = function(x, choices) {
   isTRUE(checkChoice(x, choices))
 }
+
+#' @rdname checkChoice
+#' @export
+test_choice = testChoice
 
 #' @rdname checkChoice
 #' @template expect
@@ -148,14 +202,23 @@ expect_choice = function(x, choices, info = NULL, label = NULL) {
 #' @export
 assertClass = function(x, classes, ordered = FALSE, add = NULL, .var.name) {
   res = checkClass(x, classes, ordered)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkClass
+#' @export
+assert_class = assertClass
 
 #' @rdname checkClass
 #' @export
 testClass = function(x, classes, ordered = FALSE) {
   isTRUE(checkClass(x, classes, ordered))
 }
+
+#' @rdname checkClass
+#' @export
+test_class = testClass
 
 #' @rdname checkClass
 #' @template expect
@@ -172,14 +235,23 @@ expect_class = function(x, classes, ordered = FALSE, info = NULL, label = NULL) 
 #' @export
 assertComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkComplex(x, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkComplex
+#' @export
+assert_complex = assertComplex
 
 #' @rdname checkComplex
 #' @export
 testComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkComplex(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkComplex
+#' @export
+test_complex = testComplex
 
 #' @rdname checkComplex
 #' @template expect
@@ -196,14 +268,23 @@ expect_complex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 #' @export
 assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = checkCount(x, na.ok, positive, tol)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkCount
+#' @export
+assert_count = assertCount
 
 #' @rdname checkCount
 #' @export
 testCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   isTRUE(checkCount(x, na.ok, positive, tol))
 }
+
+#' @rdname checkCount
+#' @export
+test_count = testCount
 
 #' @rdname checkCount
 #' @template expect
@@ -220,14 +301,23 @@ expect_count = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$
 #' @export
 assertDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
   res = checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkDataFrame
+#' @export
+assert_data_frame = assertDataFrame
 
 #' @rdname checkDataFrame
 #' @export
 testDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   isTRUE(checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }
+
+#' @rdname checkDataFrame
+#' @export
+test_data_frame = testDataFrame
 
 #' @rdname checkDataFrame
 #' @template expect
@@ -244,14 +334,23 @@ expect_data_frame = function(x, types = character(0L), any.missing = TRUE, all.m
 #' @export
 assertDirectory = function(x, access = "", add = NULL, .var.name) {
   res = checkDirectory(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkDirectory
+#' @export
+assert_directory = assertDirectory
 
 #' @rdname checkDirectory
 #' @export
 testDirectory = function(x, access = "") {
   isTRUE(checkDirectory(x, access))
 }
+
+#' @rdname checkDirectory
+#' @export
+test_directory = testDirectory
 
 #' @rdname checkDirectory
 #' @template expect
@@ -268,14 +367,23 @@ expect_directory = function(x, access = "", info = NULL, label = NULL) {
 #' @export
 assertEnvironment = function(x, contains = character(0L), add = NULL, .var.name) {
   res = checkEnvironment(x, contains)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkEnvironment
+#' @export
+assert_environment = assertEnvironment
 
 #' @rdname checkEnvironment
 #' @export
 testEnvironment = function(x, contains = character(0L)) {
   isTRUE(checkEnvironment(x, contains))
 }
+
+#' @rdname checkEnvironment
+#' @export
+test_environment = testEnvironment
 
 #' @rdname checkEnvironment
 #' @template expect
@@ -292,14 +400,23 @@ expect_environment = function(x, contains = character(0L), info = NULL, label = 
 #' @export
 assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkFactor(x, levels, ordered, empty.levels.ok, any.missing, all.missing, len, min.len, max.len, n.levels, min.levels, max.levels, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkFactor
+#' @export
+assert_factor = assertFactor
 
 #' @rdname checkFactor
 #' @export
 testFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkFactor(x, levels, ordered, empty.levels.ok, any.missing, all.missing, len, min.len, max.len, n.levels, min.levels, max.levels, unique, names))
 }
+
+#' @rdname checkFactor
+#' @export
+test_factor = testFactor
 
 #' @rdname checkFactor
 #' @template expect
@@ -316,14 +433,23 @@ expect_factor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
 #' @export
 assertFile = function(x, access = "", add = NULL, .var.name) {
   res = checkFile(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkFile
+#' @export
+assert_file = assertFile
 
 #' @rdname checkFile
 #' @export
 testFile = function(x, access = "") {
   isTRUE(checkFile(x, access))
 }
+
+#' @rdname checkFile
+#' @export
+test_file = testFile
 
 #' @rdname checkFile
 #' @template expect
@@ -340,14 +466,23 @@ expect_file = function(x, access = "", info = NULL, label = NULL) {
 #' @export
 assertFlag = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkFlag(x, na.ok)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkFlag
+#' @export
+assert_flag = assertFlag
 
 #' @rdname checkFlag
 #' @export
 testFlag = function(x, na.ok = FALSE) {
   isTRUE(checkFlag(x, na.ok))
 }
+
+#' @rdname checkFlag
+#' @export
+test_flag = testFlag
 
 #' @rdname checkFlag
 #' @template expect
@@ -364,14 +499,23 @@ expect_flag = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 #' @export
 assertFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, add = NULL, .var.name) {
   res = checkFunction(x, args, ordered, nargs)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkFunction
+#' @export
+assert_function = assertFunction
 
 #' @rdname checkFunction
 #' @export
 testFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
   isTRUE(checkFunction(x, args, ordered, nargs))
 }
+
+#' @rdname checkFunction
+#' @export
+test_function = testFunction
 
 #' @rdname checkFunction
 #' @template expect
@@ -388,14 +532,23 @@ expect_function = function(x, args = NULL, ordered = FALSE, nargs = NULL, info =
 #' @export
 assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = checkInt(x, na.ok, lower, upper, tol)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkInt
+#' @export
+assert_int = assertInt
 
 #' @rdname checkInt
 #' @export
 testInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
   isTRUE(checkInt(x, na.ok, lower, upper, tol))
 }
+
+#' @rdname checkInt
+#' @export
+test_int = testInt
 
 #' @rdname checkInt
 #' @template expect
@@ -412,14 +565,23 @@ expect_int = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.M
 #' @export
 assertInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkInteger(x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkInteger
+#' @export
+assert_integer = assertInteger
 
 #' @rdname checkInteger
 #' @export
 testInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkInteger(x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkInteger
+#' @export
+test_integer = testInteger
 
 #' @rdname checkInteger
 #' @template expect
@@ -436,14 +598,23 @@ expect_integer = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.
 #' @export
 assertIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkIntegerish(x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkIntegerish
+#' @export
+assert_integerish = assertIntegerish
 
 #' @rdname checkIntegerish
 #' @export
 testIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkIntegerish(x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkIntegerish
+#' @export
+test_integerish = testIntegerish
 
 #' @rdname checkIntegerish
 #' @template expect
@@ -460,14 +631,23 @@ expect_integerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, u
 #' @export
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkList(x, types, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkList
+#' @export
+assert_list = assertList
 
 #' @rdname checkList
 #' @export
 testList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkList(x, types, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkList
+#' @export
+test_list = testList
 
 #' @rdname checkList
 #' @template expect
@@ -484,14 +664,23 @@ expect_list = function(x, types = character(0L), any.missing = TRUE, all.missing
 #' @export
 assertLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkLogical(x, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkLogical
+#' @export
+assert_logical = assertLogical
 
 #' @rdname checkLogical
 #' @export
 testLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkLogical(x, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkLogical
+#' @export
+test_logical = testLogical
 
 #' @rdname checkLogical
 #' @template expect
@@ -508,14 +697,23 @@ expect_logical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 #' @export
 assertMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
   res = checkMatrix(x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkMatrix
+#' @export
+assert_matrix = assertMatrix
 
 #' @rdname checkMatrix
 #' @export
 testMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   isTRUE(checkMatrix(x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
 }
+
+#' @rdname checkMatrix
+#' @export
+test_matrix = testMatrix
 
 #' @rdname checkMatrix
 #' @template expect
@@ -532,14 +730,23 @@ expect_matrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
 #' @export
 assertNamed = function(x, type = "named", add = NULL, .var.name) {
   res = checkNamed(x, type)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkNamed
+#' @export
+assert_named = assertNamed
 
 #' @rdname checkNamed
 #' @export
 testNamed = function(x, type = "named") {
   isTRUE(checkNamed(x, type))
 }
+
+#' @rdname checkNamed
+#' @export
+test_named = testNamed
 
 
 
@@ -549,14 +756,23 @@ testNamed = function(x, type = "named") {
 #' @export
 assertNames = function(x, type = "named", add = NULL, .var.name) {
   res = checkNames(x, type)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkNames
+#' @export
+assert_names = assertNames
 
 #' @rdname checkNames
 #' @export
 testNames = function(x, type = "named") {
   isTRUE(checkNames(x, type))
 }
+
+#' @rdname checkNames
+#' @export
+test_names = testNames
 
 #' @rdname checkNames
 #' @template expect
@@ -573,14 +789,23 @@ expect_names = function(x, type = "named", info = NULL, label = NULL) {
 #' @export
 assertNull = function(x, add = NULL, .var.name) {
   res = checkNull(x)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkNull
+#' @export
+assert_null = assertNull
 
 #' @rdname checkNull
 #' @export
 testNull = function(x) {
   isTRUE(checkNull(x))
 }
+
+#' @rdname checkNull
+#' @export
+test_null = testNull
 
 
 
@@ -590,14 +815,23 @@ testNull = function(x) {
 #' @export
 assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, add = NULL, .var.name) {
   res = checkNumber(x, na.ok, lower, upper, finite)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkNumber
+#' @export
+assert_number = assertNumber
 
 #' @rdname checkNumber
 #' @export
 testNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
   isTRUE(checkNumber(x, na.ok, lower, upper, finite))
 }
+
+#' @rdname checkNumber
+#' @export
+test_number = testNumber
 
 #' @rdname checkNumber
 #' @template expect
@@ -614,14 +848,23 @@ expect_number = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = F
 #' @export
 assertNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkNumeric(x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkNumeric
+#' @export
+assert_numeric = assertNumeric
 
 #' @rdname checkNumeric
 #' @export
 testNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkNumeric(x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkNumeric
+#' @export
+test_numeric = testNumeric
 
 #' @rdname checkNumeric
 #' @template expect
@@ -638,14 +881,23 @@ expect_numeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.miss
 #' @export
 assertPathForOutput = function(x, overwrite = FALSE, add = NULL, .var.name) {
   res = checkPathForOutput(x, overwrite)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkPathForOutput
+#' @export
+assert_path_for_output = assertPathForOutput
 
 #' @rdname checkPathForOutput
 #' @export
 testPathForOutput = function(x, overwrite = FALSE) {
   isTRUE(checkPathForOutput(x, overwrite))
 }
+
+#' @rdname checkPathForOutput
+#' @export
+test_path_for_output = testPathForOutput
 
 #' @rdname checkPathForOutput
 #' @template expect
@@ -662,14 +914,23 @@ expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NUL
 #' @export
 assertPercentage = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkPercentage(x, na.ok)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkPercentage
+#' @export
+assert_percentage = assertPercentage
 
 #' @rdname checkPercentage
 #' @export
 testPercentage = function(x, na.ok = FALSE) {
   isTRUE(checkPercentage(x, na.ok))
 }
+
+#' @rdname checkPercentage
+#' @export
+test_percentage = testPercentage
 
 #' @rdname checkPercentage
 #' @template expect
@@ -686,14 +947,23 @@ expect_percentage = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 #' @export
 assertScalar = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkScalar(x, na.ok)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkScalar
+#' @export
+assert_scalar = assertScalar
 
 #' @rdname checkScalar
 #' @export
 testScalar = function(x, na.ok = FALSE) {
   isTRUE(checkScalar(x, na.ok))
 }
+
+#' @rdname checkScalar
+#' @export
+test_scalar = testScalar
 
 #' @rdname checkScalar
 #' @template expect
@@ -710,14 +980,23 @@ expect_scalar = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 #' @export
 assertScalarNA = function(x, add = NULL, .var.name) {
   res = checkScalarNA(x)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkScalarNA
+#' @export
+assert_scalar_na = assertScalarNA
 
 #' @rdname checkScalarNA
 #' @export
 testScalarNA = function(x) {
   isTRUE(checkScalarNA(x))
 }
+
+#' @rdname checkScalarNA
+#' @export
+test_scalar_na = testScalarNA
 
 #' @rdname checkScalarNA
 #' @template expect
@@ -734,14 +1013,23 @@ expect_scalar_na = function(x, info = NULL, label = NULL) {
 #' @export
 assertSetEqual = function(x, y, ordered = FALSE, add = NULL, .var.name) {
   res = checkSetEqual(x, y, ordered)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkSetEqual
+#' @export
+assert_set_equal = assertSetEqual
 
 #' @rdname checkSetEqual
 #' @export
 testSetEqual = function(x, y, ordered = FALSE) {
   isTRUE(checkSetEqual(x, y, ordered))
 }
+
+#' @rdname checkSetEqual
+#' @export
+test_set_equal = testSetEqual
 
 #' @rdname checkSetEqual
 #' @template expect
@@ -758,14 +1046,23 @@ expect_set_equal = function(x, y, ordered = FALSE, info = NULL, label = NULL) {
 #' @export
 assertString = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkString(x, na.ok)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkString
+#' @export
+assert_string = assertString
 
 #' @rdname checkString
 #' @export
 testString = function(x, na.ok = FALSE) {
   isTRUE(checkString(x, na.ok))
 }
+
+#' @rdname checkString
+#' @export
+test_string = testString
 
 #' @rdname checkString
 #' @template expect
@@ -782,14 +1079,23 @@ expect_string = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 #' @export
 assertSubset = function(x, choices, empty.ok = TRUE, add = NULL, .var.name) {
   res = checkSubset(x, choices, empty.ok)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkSubset
+#' @export
+assert_subset = assertSubset
 
 #' @rdname checkSubset
 #' @export
 testSubset = function(x, choices, empty.ok = TRUE) {
   isTRUE(checkSubset(x, choices, empty.ok))
 }
+
+#' @rdname checkSubset
+#' @export
+test_subset = testSubset
 
 #' @rdname checkSubset
 #' @template expect
@@ -806,14 +1112,23 @@ expect_subset = function(x, choices, empty.ok = TRUE, info = NULL, label = NULL)
 #' @export
 assertVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkVector(x, strict, any.missing, all.missing, len, min.len, max.len, unique, names)
-  makeAssertion(res, vname(x, .var.name), add)
+  makeAssertion(x, res, vname(x, .var.name), add)
+  invisible(x)
 }
+
+#' @rdname checkVector
+#' @export
+assert_vector = assertVector
 
 #' @rdname checkVector
 #' @export
 testVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   isTRUE(checkVector(x, strict, any.missing, all.missing, len, min.len, max.len, unique, names))
 }
+
+#' @rdname checkVector
+#' @export
+test_vector = testVector
 
 #' @rdname checkVector
 #' @template expect
