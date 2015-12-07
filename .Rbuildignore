@@ -8,3 +8,4 @@
 ^NEWS\.md$
 man-roxygen
 ^appveyor\.yml$
+^vignettes/.+\.html$
