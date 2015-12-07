@@ -1,4 +1,0 @@
-[submodule "inst/web"]
-	path = inst/web
-	url = git@github.com:mllg/checkmate.git
-	branch = gh-pages
