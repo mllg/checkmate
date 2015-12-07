@@ -1,0 +1,4 @@
+[submodule "inst/web"]
+	path = inst/web
+	url = https://github.com/mllg/checkmate.git
+	branch = gh-pages
