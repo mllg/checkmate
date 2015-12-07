@@ -7,5 +7,5 @@
 #'  If the check is successful, all functions return \code{TRUE}.
 #'  If the check is not successful, \code{assert<%= fn %>} throws an error message,
 #'  \code{test<%= fn %>} returns \code{FALSE}, \code{check<%= fn %>} returns
-#'  a string with the error message. The function \code{expect<%= killCamel(fn) %>} will
+#'  a string with the error message. The function \code{expect_<%= killCamel(fn) %>} will
 #'  return an \code{\link[testthat]{expectation}}.

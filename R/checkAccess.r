@@ -42,25 +42,3 @@ checkAccess = function(x, access = "") {
   }
   return(TRUE)
 }
-
-#' @rdname checkAccess
-#' @export
-assertAccess = function(x, access = "", add = NULL, .var.name) {
-  res = checkAccess(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkAccess
-#' @export
-testAccess = function(x, access = "") {
-  res = checkAccess(x, access)
-  isTRUE(res)
-}
-
-#' @rdname checkAccess
-#' @template expect
-#' @export
-expect_access = function(x, access = "", info = NULL, label = NULL) {
-  res = checkAccess(x, access)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

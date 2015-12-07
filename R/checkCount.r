@@ -22,28 +22,3 @@
 checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
 }
-
-#' @rdname checkCount
-#' @useDynLib checkmate c_check_count
-#' @export
-assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
-  res = .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkCount
-#' @useDynLib checkmate c_check_count
-#' @export
-testCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
-  res = .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  isTRUE(res)
-}
-
-#' @rdname checkCount
-#' @template expect
-#' @useDynLib checkmate c_check_count
-#' @export
-expect_count = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), info = NULL, label = NULL) {
-  res = .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
-}

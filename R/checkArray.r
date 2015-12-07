@@ -23,28 +23,3 @@
 checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
   .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
 }
-
-#' @rdname checkArray
-#' @useDynLib checkmate c_check_array
-#' @export
-assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, add = NULL, .var.name) {
-  res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkArray
-#' @useDynLib checkmate c_check_array
-#' @export
-testArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
-  res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
-  isTRUE(res)
-}
-
-#' @rdname checkArray
-#' @template expect
-#' @useDynLib checkmate c_check_array
-#' @export
-expect_array = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, info = NULL, label = NULL) {
-  res = .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
-}

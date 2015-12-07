@@ -26,25 +26,3 @@ checkDirectory = function(x, access = "") {
 
   return(checkAccess(x, access))
 }
-
-#' @rdname checkDirectory
-#' @export
-assertDirectory = function(x, access = "", add = NULL, .var.name) {
-  res = checkDirectory(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkDirectory
-#' @export
-testDirectory = function(x, access = "", .var.name) {
-  res = checkDirectory(x, access)
-  isTRUE(res)
-}
-
-#' @rdname checkDirectory
-#' @template expect
-#' @export
-expect_directory = function(x, access = "", info = NULL, label = NULL) {
-  res = checkDirectory(x, access)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

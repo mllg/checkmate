@@ -23,25 +23,3 @@ checkSubset = function(x, choices, empty.ok = TRUE) {
     return(sprintf("Must be a subset of {'%s'}", collapse(choices, "','")))
   return(TRUE)
 }
-
-#' @rdname checkSubset
-#' @export
-assertSubset = function(x, choices, empty.ok = TRUE, add = NULL, .var.name) {
-  res = checkSubset(x, choices, empty.ok)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkSubset
-#' @export
-testSubset = function(x, choices, empty.ok = TRUE) {
-  res = checkSubset(x, choices, empty.ok)
-  isTRUE(res)
-}
-
-#' @rdname checkSubset
-#' @template expect
-#' @export
-expect_subset = function(x, choices, empty.ok = TRUE, info = NULL, label = NULL) {
-  res = checkSubset(x, choices, empty.ok)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

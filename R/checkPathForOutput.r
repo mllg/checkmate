@@ -42,25 +42,3 @@ checkPathForOutput = function(x, overwrite = FALSE) {
     return(sprintf("File at path already exists: '%s'", x[head(w, 1L)]))
   return(checkAccess(dn, "w"))
 }
-
-#' @rdname checkPathForOutput
-#' @export
-assertPathForOutput = function(x, overwrite = FALSE, add = NULL, .var.name) {
-  res = checkPathForOutput(x, overwrite)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkPathForOutput
-#' @export
-testPathForOutput = function(x, overwrite = FALSE) {
-  res = checkPathForOutput(x, overwrite)
-  isTRUE(res)
-}
-
-#' @rdname checkPathForOutput
-#' @template expect
-#' @export
-expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NULL) {
-  res = checkPathForOutput(x, overwrite)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

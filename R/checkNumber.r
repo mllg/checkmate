@@ -18,25 +18,3 @@
 checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
   .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
 }
-
-#' @rdname checkNumber
-#' @export
-assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, add = NULL, .var.name) {
-  res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkNumber
-#' @export
-testNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
-  res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
-  isTRUE(res)
-}
-
-#' @rdname checkNumber
-#' @template expect
-#' @export
-expect_number = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, info = NULL, label = NULL) {
-  res = .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
-}

@@ -1,3 +1,6 @@
+# Version 1.7 (2015-xx-xx)
+* Much of the code is now automatically generated with brew.
+
 # Version 1.6.3 (2015-10-23)
 * Assertions can now be collected (via `makeAssertCollection()`) and reported
   (via `reportAssertions()`).

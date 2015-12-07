@@ -26,25 +26,3 @@ checkFile = function(x, access = "") {
 
   return(checkAccess(x, access))
 }
-
-#' @export
-#' @rdname checkFile
-assertFile = function(x, access = "", add = NULL, .var.name) {
-  res = checkFile(x, access)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkFile
-#' @export
-testFile = function(x, access = "") {
-  res = checkFile(x, access)
-  isTRUE(res)
-}
-
-#' @rdname checkFile
-#' @template expect
-#' @export
-expect_file = function(x, access = "", info = NULL, label = NULL) {
-  res = checkFile(x, access)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

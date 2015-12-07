@@ -21,28 +21,3 @@
 checkNamed = function(x, type = "named") {
   .Call("c_check_named", x, type, PACKAGE = "checkmate")
 }
-
-#' @rdname checkNamed
-#' @useDynLib checkmate c_check_named
-#' @export
-assertNamed = function(x, type = "named", add = NULL, .var.name) {
-  res = .Call("c_check_named", x, type, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkNamed
-#' @useDynLib checkmate c_check_named
-#' @export
-testNamed = function(x, type = "named") {
-  res = .Call("c_check_named", x, type, PACKAGE = "checkmate")
-  isTRUE(res)
-}
-
-# #' @rdname checkNamed
-# #' @useDynLib checkmate c_check_named
-# #' @template expect
-# #' @export
-# expect_named = function(x, type = "named", info = NULL, label = NULL) {
-#   res = .Call("c_check_named", x, type, PACKAGE = "checkmate")
-#   makeExpectation(res, info = info, label = vname(x, label))
-# }

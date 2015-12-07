@@ -59,5 +59,5 @@ setClasses = function(x, cl) {
 }
 
 killCamel = function(x) {
-  gsub("([A-Z])", "_\\L\\1", x, perl = TRUE)
+  tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
 }

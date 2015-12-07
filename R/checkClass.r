@@ -43,25 +43,3 @@ checkClass = function(x, classes, ordered = FALSE) {
   }
   return(TRUE)
 }
-
-#' @rdname checkClass
-#' @export
-assertClass = function(x, classes, ordered = FALSE, add = NULL, .var.name) {
-  res = checkClass(x, classes, ordered)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkClass
-#' @export
-testClass = function(x, classes, ordered = FALSE) {
-  res = checkClass(x, classes, ordered)
-  isTRUE(res)
-}
-
-#' @rdname checkClass
-#' @template expect
-#' @export
-expect_class = function(x, classes, ordered = FALSE, info = NULL, label = NULL) {
-  res = checkClass(x, classes, ordered)
-  makeExpectation(res, info = info, label = vname(x, label))
-}

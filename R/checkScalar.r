@@ -15,28 +15,3 @@
 checkScalar = function(x, na.ok = FALSE) {
   .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
 }
-
-#' @rdname checkScalar
-#' @useDynLib checkmate c_check_scalar
-#' @export
-assertScalar = function(x, na.ok = FALSE, add = NULL, .var.name) {
-  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkScalar
-#' @useDynLib checkmate c_check_scalar
-#' @export
-testScalar = function(x, na.ok = FALSE) {
-  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
-  isTRUE(res)
-}
-
-#' @rdname checkScalar
-#' @template expect
-#' @useDynLib checkmate c_check_scalar
-#' @export
-expect_scalar = function(x, na.ok = FALSE, info = NULL, label = NULL) {
-  res = .Call("c_check_scalar", x, na.ok, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
-}

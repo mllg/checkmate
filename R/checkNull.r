@@ -12,16 +12,3 @@ checkNull = function(x) {
     return("Must be NULL")
   return(TRUE)
 }
-
-#' @rdname checkNull
-#' @export
-assertNull = function(x, add = NULL, .var.name) {
-  res = checkNull(x)
-  makeAssertion(res, vname(x, .var.name), add)
-}
-
-#' @rdname checkNull
-#' @export
-testNull = function(x) {
-  is.null(x)
-}
