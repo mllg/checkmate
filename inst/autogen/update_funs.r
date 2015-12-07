@@ -13,20 +13,20 @@ get_args = function(sig) {
     if (is.symbol(value))
       return(name)
 
-    if (is.character(value))
-      return(sprintf("%s = \"%s\"", name, value))
-
-    if (is.null(value))
+    if (is.null(value)) {
        value = "NULL"
-
-    if (is.language(value))
+    } else if (is.language(value)) {
       value = capture.output(print(value))
+    } else if (is.character(value)) {
+      value = sprintf("\"%s\"", value)
+    }
 
     return(sprintf("%s = %s", name, value))
   }, name = names(sig), value = sig), collapse = ", ")
 }
 
 for (fun in funs) {
+  message(sprintf("Creating functions for '%s'", fun))
   sig = formals(match.fun(fun))
   name = substr(fun, 6L, nchar(fun))
   vars = list(

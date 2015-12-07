@@ -23,18 +23,17 @@
 #' testCharacter(letters, min.chars = 2)
 #' testCharacter("example", pattern = "xa")
 checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,  unique = FALSE, names = NULL) {
+  checkCharacterProps = function(x, pattern = NULL, fixed = FALSE, ignore.case = FALSE) {
+    if (!is.null(pattern)) {
+      qassert(pattern, "S1")
+      qassert(fixed, "B1")
+      qassert(ignore.case, "B1")
+      ok = grepl(pattern, x, fixed = fixed, ignore.case = ignore.case)
+      if(!all(ok))
+        return(sprintf("Must comply to pattern '%s", pattern))
+    }
+    return(TRUE)
+  }
   .Call("c_check_character", x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkCharacterProps(x, pattern, fixed, ignore.case)
-}
-
-checkCharacterProps = function(x, pattern = NULL, fixed = FALSE, ignore.case = FALSE) {
-  if (!is.null(pattern)) {
-    qassert(pattern, "S1")
-    qassert(fixed, "B1")
-    qassert(ignore.case, "B1")
-    ok = grepl(pattern, x, fixed = fixed, ignore.case = ignore.case)
-    if(!all(ok))
-      return(sprintf("Must comply to pattern '%s", pattern))
-  }
-  return(TRUE)
 }
