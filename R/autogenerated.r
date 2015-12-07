@@ -5,7 +5,6 @@
 assertAccess = function(x, access = "", add = NULL, .var.name) {
   res = checkAccess(x, access)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkAccess
@@ -38,7 +37,6 @@ expect_access = function(x, access = "", info = NULL, label = NULL) {
 assertArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, add = NULL, .var.name) {
   res = checkArray(x, mode, any.missing, d, min.d, max.d)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkArray
@@ -71,7 +69,6 @@ expect_array = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NU
 assertAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkAtomic(x, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkAtomic
@@ -104,7 +101,6 @@ expect_atomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, 
 assertAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkAtomicVector(x, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkAtomicVector
@@ -137,7 +133,6 @@ expect_atomic_vector = function(x, any.missing = TRUE, all.missing = TRUE, len =
 assertCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkCharacter(x, min.chars, pattern, fixed, ignore.case, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkCharacter
@@ -170,7 +165,6 @@ expect_character = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, 
 assertChoice = function(x, choices, add = NULL, .var.name) {
   res = checkChoice(x, choices)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkChoice
@@ -203,7 +197,6 @@ expect_choice = function(x, choices, info = NULL, label = NULL) {
 assertClass = function(x, classes, ordered = FALSE, add = NULL, .var.name) {
   res = checkClass(x, classes, ordered)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkClass
@@ -236,7 +229,6 @@ expect_class = function(x, classes, ordered = FALSE, info = NULL, label = NULL) 
 assertComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkComplex(x, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkComplex
@@ -269,7 +261,6 @@ expect_complex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 assertCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = checkCount(x, na.ok, positive, tol)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkCount
@@ -302,7 +293,6 @@ expect_count = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$
 assertDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
   res = checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkDataFrame
@@ -335,7 +325,6 @@ expect_data_frame = function(x, types = character(0L), any.missing = TRUE, all.m
 assertDirectory = function(x, access = "", add = NULL, .var.name) {
   res = checkDirectory(x, access)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkDirectory
@@ -368,7 +357,6 @@ expect_directory = function(x, access = "", info = NULL, label = NULL) {
 assertEnvironment = function(x, contains = character(0L), add = NULL, .var.name) {
   res = checkEnvironment(x, contains)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkEnvironment
@@ -401,7 +389,6 @@ expect_environment = function(x, contains = character(0L), info = NULL, label = 
 assertFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkFactor(x, levels, ordered, empty.levels.ok, any.missing, all.missing, len, min.len, max.len, n.levels, min.levels, max.levels, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkFactor
@@ -434,7 +421,6 @@ expect_factor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
 assertFile = function(x, access = "", add = NULL, .var.name) {
   res = checkFile(x, access)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkFile
@@ -467,7 +453,6 @@ expect_file = function(x, access = "", info = NULL, label = NULL) {
 assertFlag = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkFlag(x, na.ok)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkFlag
@@ -500,7 +485,6 @@ expect_flag = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 assertFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, add = NULL, .var.name) {
   res = checkFunction(x, args, ordered, nargs)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkFunction
@@ -533,7 +517,6 @@ expect_function = function(x, args = NULL, ordered = FALSE, nargs = NULL, info =
 assertInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), add = NULL, .var.name) {
   res = checkInt(x, na.ok, lower, upper, tol)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkInt
@@ -566,7 +549,6 @@ expect_int = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.M
 assertInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkInteger(x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkInteger
@@ -599,7 +581,6 @@ expect_integer = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.
 assertIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkIntegerish(x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkIntegerish
@@ -632,7 +613,6 @@ expect_integerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, u
 assertList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkList(x, types, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkList
@@ -665,7 +645,6 @@ expect_list = function(x, types = character(0L), any.missing = TRUE, all.missing
 assertLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkLogical(x, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkLogical
@@ -698,7 +677,6 @@ expect_logical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 assertMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
   res = checkMatrix(x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkMatrix
@@ -731,7 +709,6 @@ expect_matrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
 assertNamed = function(x, type = "named", add = NULL, .var.name) {
   res = checkNamed(x, type)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkNamed
@@ -757,7 +734,6 @@ test_named = testNamed
 assertNames = function(x, type = "named", add = NULL, .var.name) {
   res = checkNames(x, type)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkNames
@@ -790,7 +766,6 @@ expect_names = function(x, type = "named", info = NULL, label = NULL) {
 assertNull = function(x, add = NULL, .var.name) {
   res = checkNull(x)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkNull
@@ -816,7 +791,6 @@ test_null = testNull
 assertNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, add = NULL, .var.name) {
   res = checkNumber(x, na.ok, lower, upper, finite)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkNumber
@@ -849,7 +823,6 @@ expect_number = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = F
 assertNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkNumeric(x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkNumeric
@@ -882,7 +855,6 @@ expect_numeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.miss
 assertPathForOutput = function(x, overwrite = FALSE, add = NULL, .var.name) {
   res = checkPathForOutput(x, overwrite)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkPathForOutput
@@ -915,7 +887,6 @@ expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NUL
 assertPercentage = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkPercentage(x, na.ok)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkPercentage
@@ -948,7 +919,6 @@ expect_percentage = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 assertScalar = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkScalar(x, na.ok)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkScalar
@@ -981,7 +951,6 @@ expect_scalar = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 assertScalarNA = function(x, add = NULL, .var.name) {
   res = checkScalarNA(x)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkScalarNA
@@ -1014,7 +983,6 @@ expect_scalar_na = function(x, info = NULL, label = NULL) {
 assertSetEqual = function(x, y, ordered = FALSE, add = NULL, .var.name) {
   res = checkSetEqual(x, y, ordered)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkSetEqual
@@ -1047,7 +1015,6 @@ expect_set_equal = function(x, y, ordered = FALSE, info = NULL, label = NULL) {
 assertString = function(x, na.ok = FALSE, add = NULL, .var.name) {
   res = checkString(x, na.ok)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkString
@@ -1080,7 +1047,6 @@ expect_string = function(x, na.ok = FALSE, info = NULL, label = NULL) {
 assertSubset = function(x, choices, empty.ok = TRUE, add = NULL, .var.name) {
   res = checkSubset(x, choices, empty.ok)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkSubset
@@ -1113,7 +1079,6 @@ expect_subset = function(x, choices, empty.ok = TRUE, info = NULL, label = NULL)
 assertVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, add = NULL, .var.name) {
   res = checkVector(x, strict, any.missing, all.missing, len, min.len, max.len, unique, names)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname checkVector

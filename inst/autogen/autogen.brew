@@ -5,7 +5,6 @@
 assert<%= name_cc %> = function(<%= args_with_defaults %>, add = NULL, .var.name) {
   res = <%= fun %>(<%= args_simple %>)
   makeAssertion(x, res, vname(x, .var.name), add)
-  invisible(x)
 }
 
 #' @rdname check<%= name_cc %>
