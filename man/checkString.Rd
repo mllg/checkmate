@@ -67,8 +67,7 @@ testString(letters)
 \seealso{
 Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{assertInt}},
-  \code{\link{assertNumber}},
-  \code{\link{assertPercentage}},
-  \code{\link{assertScalarNA}}, \code{\link{assertScalar}}
+  \code{\link{assertNumber}}, \code{\link{assertScalarNA}},
+  \code{\link{assertScalar}}
 }
 

@@ -60,8 +60,7 @@ testScalarNA(rep(NA, 2))
 \seealso{
 Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{assertInt}},
-  \code{\link{assertNumber}},
-  \code{\link{assertPercentage}},
-  \code{\link{assertScalar}}, \code{\link{assertString}}
+  \code{\link{assertNumber}}, \code{\link{assertScalar}},
+  \code{\link{assertString}}
 }
 

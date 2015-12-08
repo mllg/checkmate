@@ -97,7 +97,6 @@ Because `testthat` uses the `underscore_case`, the extension functions only come
 * [checkString](https://mllg.github.io/checkmate/checkString)
 * [checkScalar](https://mllg.github.io/checkmate/checkScalar)
 * [checkScalarNA](https://mllg.github.io/checkmate/checkScalarNA)
-* [checkPercentage](https://mllg.github.io/checkmate/checkPercentage)
 
 
 ### Vectors
@@ -134,6 +133,7 @@ Because `testthat` uses the `underscore_case`, the extension functions only come
 * [checkMatrix](https://mllg.github.io/checkmate/checkMatrix)
 * [checkArray](https://mllg.github.io/checkmate/checkArray)
 * [checkDataFrame](https://mllg.github.io/checkmate/checkDataFrame)
+* [checkDataTable](https://mllg.github.io/checkmate/checkDataTable)
 
 
 ### Safe Coercion to integer

@@ -83,7 +83,6 @@ testInt(-1, lower = 0)
 \seealso{
 Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{assertNumber}},
-  \code{\link{assertPercentage}},
   \code{\link{assertScalarNA}}, \code{\link{assertScalar}},
   \code{\link{assertString}}
 }
