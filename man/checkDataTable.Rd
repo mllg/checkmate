@@ -115,14 +115,12 @@ Depending on the function prefix:
 Check if an argument is a data table
 }
 \examples{
-\dontrun{
 library(data.table)
 dt = as.data.table(iris)
 setkeyv(dt, "Species")
 setkeyv(dt, "Sepal.Length", physical = FALSE)
 testDataTable(dt)
 testDataTable(dt, keys = "Species", index = "Sepal.Length", any.missing = FALSE)
-}
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},
