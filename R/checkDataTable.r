@@ -18,7 +18,7 @@
 #' setkeyv(dt, "Species")
 #' setkeyv(dt, "Sepal.Length", physical = FALSE)
 #' testDataTable(dt)
-#' testDataTable(dt, keys = "Species", index = "Sepal.Length", any.missing = FALSE)
+#' testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   if (!requireNamespace("data.table", quietly = TRUE))
     stop("Install 'data.table' to perform checks in data tables")
