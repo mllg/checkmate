@@ -79,7 +79,6 @@ testNumber(1:2)
 \seealso{
 Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{assertInt}},
-  \code{\link{assertPercentage}},
   \code{\link{assertScalarNA}}, \code{\link{assertScalar}},
   \code{\link{assertString}}
 }

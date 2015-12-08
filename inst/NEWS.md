@@ -1,9 +1,12 @@
 # Version 1.7 (2015-xx-xx)
-* Added alias functions for functions provided in CamelCase:
+* Added alias functions for all functions in CamelCase style:
   `assert_*` and `test_*`
 * All assert functions now invisibly return the tested object instead of
   `TRUE` and can now be used with magrittr.
 * Much of the code is now automatically generated with brew.
+* Removed `*Percentage` family of functions
+* Added `*DataTable` functions to properly test primary and secondary keys of
+  data tables.
 
 # Version 1.6.3 (2015-10-23)
 * Assertions can now be collected (via `makeAssertCollection()`) and reported

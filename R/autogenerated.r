@@ -318,6 +318,38 @@ expect_data_frame = function(x, types = character(0L), any.missing = TRUE, all.m
 }
 
 
+### auto-generated functions for checkDataTable ############################################################################
+
+#' @rdname checkDataTable
+#' @export
+assertDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, add = NULL, .var.name) {
+  res = checkDataTable(x, key, index, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
+  makeAssertion(x, res, vname(x, .var.name), add)
+}
+
+#' @rdname checkDataTable
+#' @export
+assert_data_table = assertDataTable
+
+#' @rdname checkDataTable
+#' @export
+testDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+  isTRUE(checkDataTable(x, key, index, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names))
+}
+
+#' @rdname checkDataTable
+#' @export
+test_data_table = testDataTable
+
+#' @rdname checkDataTable
+#' @template expect
+#' @export
+expect_data_table = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, info = NULL, label = NULL) {
+  res = checkDataTable(x, key, index, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
+  makeExpectation(res, info = info, label = vname(x, label))
+}
+
+
 ### auto-generated functions for checkDirectory ############################################################################
 
 #' @rdname checkDirectory
@@ -876,38 +908,6 @@ test_path_for_output = testPathForOutput
 #' @export
 expect_path_for_output = function(x, overwrite = FALSE, info = NULL, label = NULL) {
   res = checkPathForOutput(x, overwrite)
-  makeExpectation(res, info = info, label = vname(x, label))
-}
-
-
-### auto-generated functions for checkPercentage ############################################################################
-
-#' @rdname checkPercentage
-#' @export
-assertPercentage = function(x, na.ok = FALSE, add = NULL, .var.name) {
-  res = checkPercentage(x, na.ok)
-  makeAssertion(x, res, vname(x, .var.name), add)
-}
-
-#' @rdname checkPercentage
-#' @export
-assert_percentage = assertPercentage
-
-#' @rdname checkPercentage
-#' @export
-testPercentage = function(x, na.ok = FALSE) {
-  isTRUE(checkPercentage(x, na.ok))
-}
-
-#' @rdname checkPercentage
-#' @export
-test_percentage = testPercentage
-
-#' @rdname checkPercentage
-#' @template expect
-#' @export
-expect_percentage = function(x, na.ok = FALSE, info = NULL, label = NULL) {
-  res = checkPercentage(x, na.ok)
   makeExpectation(res, info = info, label = vname(x, label))
 }
 

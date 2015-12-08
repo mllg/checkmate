@@ -67,8 +67,7 @@ testScalar(1:10)
 \seealso{
 Other scalars: \code{\link{assertCount}},
   \code{\link{assertFlag}}, \code{\link{assertInt}},
-  \code{\link{assertNumber}},
-  \code{\link{assertPercentage}},
-  \code{\link{assertScalarNA}}, \code{\link{assertString}}
+  \code{\link{assertNumber}}, \code{\link{assertScalarNA}},
+  \code{\link{assertString}}
 }
 

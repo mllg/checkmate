@@ -81,7 +81,6 @@ testCount(-1)
 \seealso{
 Other scalars: \code{\link{assertFlag}},
   \code{\link{assertInt}}, \code{\link{assertNumber}},
-  \code{\link{assertPercentage}},
   \code{\link{assertScalarNA}}, \code{\link{assertScalar}},
   \code{\link{assertString}}
 }
