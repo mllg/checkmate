@@ -23,6 +23,7 @@ Suggests:
     dplyr,
     ggplot2,
     knitr,
+    magrittr,
     microbenchmark,
     testthat
 License: BSD_3_clause + file LICENSE
