@@ -120,7 +120,7 @@ dt = as.data.table(iris)
 setkeyv(dt, "Species")
 setkeyv(dt, "Sepal.Length", physical = FALSE)
 testDataTable(dt)
-testDataTable(dt, keys = "Species", index = "Sepal.Length", any.missing = FALSE)
+testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{assertArray}},
