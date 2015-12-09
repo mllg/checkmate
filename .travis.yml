@@ -1,28 +1,41 @@
-language: r
-warnings_are_errors: true
+language: c
+sudo: false
 
-r_github_packages:
-    - jimhester/covr
+addons:
+  apt:
+    sources:
+      - r-packages-precise
+    packages:
+      - r-base-dev
+      - r-recommended
+      - pandoc
+      - qpdf
+      - texlive-base
+      - texlive-latex-base
+      - texlive-generic-recommended
+      - texlive-fonts-recommended
+      - texlive-fonts-extra
+      - texlive-extra-utils
+      - texlive-latex-recommended
+      - texlive-latex-extra
+      - texinfo
+      - lmodern
 
-r_binary_packages:
-   - testthat
-   - knitr
-   # - microbenchmark
-   - ggplot2
-   - data.table
-   - dplyr
+env:
+  - R_LIBS_USER=~/R/library CRAN="http://cran.rstudio.com"
+
+cache:
+  directories:
+    $R_LIBS_USER
 
 before_script:
-    - curl -L https://raw.githubusercontent.com/rdatsci/travis-r-tools/master/update-packages.r -o /tmp/update-packages.r
-    - Rscript /tmp/update-packages.r
+  - mkdir -p "$R_LIBS_USER"
+  - Rscript -e 'if (length(find.package("devtools", quiet = TRUE)) == 0L) { install.packages("devtools", repos = "'${CRAN}'") }'
+  - Rscript -e 'devtools::update_packages(c("devtools", "covr"), repos = "'${CRAN}'")'
+  - Rscript -e 'devtools::install_deps(repos = "'${CRAN}'", dependencies = TRUE, upgrade = TRUE)'
+
+script:
+  - Rscript -e 'devtools::check()'
 
 after_success:
-    - Rscript -e 'library(covr); coveralls()'
-
-notifications:
-  email:
-    recipients:
-        - michellang@gmail.com
-        - bernd_bischl@gmx.net
-    on_success: change
-    on_failure: always
+  - Rscript -e 'library(covr); coveralls()'
