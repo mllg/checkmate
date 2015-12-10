@@ -1,7 +1,5 @@
-checkmate_*.tar.gz
 checkmate.Rcheck
 .DS_Store
-
 src/*.so
 src/*.o
 inst/doc
