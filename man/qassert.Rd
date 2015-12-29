@@ -73,7 +73,7 @@ The rule is specified in up to three parts.
    }
    Note that the check for missingness does not distinguish between
    \code{NaN} and \code{NA}. Infinite values are not treated as missing, but
-   can be catched using boundary checks (part 3).
+   can be caught using boundary checks (part 3).
    }
  \item{
    Length definition. This can be one of

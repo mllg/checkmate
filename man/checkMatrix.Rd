@@ -47,7 +47,7 @@ here to explicitly prohibit lists. Default is \code{NULL} (no check).}
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{all.missing}{[\code{logical(1)}]\cr
-Are matricies with only missing values allowed? Default is \code{TRUE}.}
+Are matrices with only missing values allowed? Default is \code{TRUE}.}
 
 \item{min.rows}{[\code{integer(1)}]\cr
 Minimum number of rows.}

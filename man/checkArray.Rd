@@ -41,15 +41,15 @@ here to explicitly prohibit lists. Default is \code{NULL} (no check).}
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{d}{[\code{integer(1)}]\cr
-Exact dimensionality of array \code{x}.
+Exact number of dimensions of array \code{x}.
 Default is \code{NULL} (no check).}
 
 \item{min.d}{[\code{integer(1)}]\cr
-Minimum dimensionality of array \code{x}.
+Minimum number of dimensions of array \code{x}.
 Default is \code{NULL} (no check).}
 
 \item{max.d}{[\code{integer(1)}]\cr
-Maximum dimensionality of array \code{x}.
+Maximum number of dimensions of array \code{x}.
 Default is \code{NULL} (no check).}
 
 \item{add}{[\code{AssertCollection}]\cr

@@ -1,4 +1,4 @@
-#' Check if an object contains infinte values
+#' Check if an object contains infinite values
 #'
 #' @description
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
