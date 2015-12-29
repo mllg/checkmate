@@ -6,13 +6,13 @@
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param d [\code{integer(1)}]\cr
-#'  Exact dimensionality of array \code{x}.
+#'  Exact number of dimensions of array \code{x}.
 #'  Default is \code{NULL} (no check).
 #' @param min.d [\code{integer(1)}]\cr
-#'  Minimum dimensionality of array \code{x}.
+#'  Minimum number of dimensions of array \code{x}.
 #'  Default is \code{NULL} (no check).
 #' @param max.d [\code{integer(1)}]\cr
-#'  Maximum dimensionality of array \code{x}.
+#'  Maximum number of dimensions of array \code{x}.
 #'  Default is \code{NULL} (no check).
 #' @template checker
 #' @family basetypes

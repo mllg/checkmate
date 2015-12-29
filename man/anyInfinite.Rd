@@ -2,7 +2,7 @@
 % Please edit documentation in R/anyInfinite.r
 \name{anyInfinite}
 \alias{anyInfinite}
-\title{Check if an object contains infinte values}
+\title{Check if an object contains infinite values}
 \usage{
 anyInfinite(x)
 }

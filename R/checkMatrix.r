@@ -6,7 +6,7 @@
 #' @param any.missing [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @param all.missing [\code{logical(1)}]\cr
-#'  Are matricies with only missing values allowed? Default is \code{TRUE}.
+#'  Are matrices with only missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
 #'  Minimum number of rows.
 #' @param min.cols [\code{integer(1)}]\cr

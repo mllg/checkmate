@@ -14,7 +14,7 @@
 #' @templateVar fn PathForOutput
 #' @template x
 #' @param overwrite [\code{logical(1)}]\cr
-#'  If \code{TRUE}, an exising file in place is allowed if it
+#'  If \code{TRUE}, an existing file in place is allowed if it
 #'  it is both readable and writeable.
 #'  Default is \code{FALSE}.
 #' @template checker
