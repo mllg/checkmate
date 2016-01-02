@@ -90,12 +90,12 @@ Same as <code>.var.name</code>, but passed down to <code><a href='http://www.ins
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, all functions return <code>TRUE</code>. If the check
+ If the check is successful, the functions return <code>TRUE</code>. If the check
  is not successful, <code>assertPathForOutput</code>/<code>assert_path_for_output</code>
  throws an error message, <code>testPathForOutput</code>/<code>test_path_for_output</code>
  returns <code>FALSE</code>,
  and <code>checkPathForOutput</code> returns a string with the error message.
- The function <code>expect_path_for_output</code> will return an
+ The function <code>expect_path_for_output</code> always returns an
  <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
 </dl></p>
   

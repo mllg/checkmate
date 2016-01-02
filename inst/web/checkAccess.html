@@ -90,12 +90,12 @@ Same as <code>.var.name</code>, but passed down to <code><a href='http://www.ins
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, all functions return <code>TRUE</code>. If the check
+ If the check is successful, the functions return <code>TRUE</code>. If the check
  is not successful, <code>assertAccess</code>/<code>assert_access</code>
  throws an error message, <code>testAccess</code>/<code>test_access</code>
  returns <code>FALSE</code>,
  and <code>checkAccess</code> returns a string with the error message.
- The function <code>expect_access</code> will return an
+ The function <code>expect_access</code> always returns an
  <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
 </dl></p>
   

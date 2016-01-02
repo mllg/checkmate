@@ -94,12 +94,12 @@ Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, all functions return \code{TRUE}. If the check
+ If the check is successful, the functions return \code{TRUE}. If the check
  is not successful, \code{assertDataFrame}/\code{assert_data_frame}
  throws an error message, \code{testDataFrame}/\code{test_data_frame}
  returns \code{FALSE},
  and \code{checkDataFrame} returns a string with the error message.
- The function \code{expect_data_frame} will return an
+ The function \code{expect_data_frame} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{
