@@ -73,12 +73,12 @@ Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, all functions return \code{TRUE}. If the check
+ If the check is successful, the functions return \code{TRUE}. If the check
  is not successful, \code{assertComplex}/\code{assert_complex}
  throws an error message, \code{testComplex}/\code{test_complex}
  returns \code{FALSE},
  and \code{checkComplex} returns a string with the error message.
- The function \code{expect_complex} will return an
+ The function \code{expect_complex} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{

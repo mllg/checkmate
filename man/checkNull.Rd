@@ -31,12 +31,12 @@ the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, all functions return \code{TRUE}. If the check
+ If the check is successful, the functions return \code{TRUE}. If the check
  is not successful, \code{assertNull}/\code{assert_null}
  throws an error message, \code{testNull}/\code{test_null}
  returns \code{FALSE},
  and \code{checkNull} returns a string with the error message.
- The function \code{expect_null} will return an
+ The function \code{expect_null} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{
