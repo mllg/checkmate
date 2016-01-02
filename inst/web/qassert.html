@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>qassert. checkmate 1.7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">checkmate 1.7</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Quick argument checks on (builtin) R types</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>qassert(x, rules, .var.name)</div>
+<div>qtest(x, rules)</div>
+<div>qexpect(x, rules, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object the check.</dd>
+      <dt>rules</dt>
+      <dd>[<code>character</code>]
+Set of rules. See details.</dd>
+      <dt>.var.name</dt>
+      <dd>[<code>logical(1)</code>]
+Argument name to print in error message. If missing,
+the name of <code>x</code> will be retrieved via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dt>info</dt>
+      <dd>[character(1)]
+Extra information to be included in the message for the testthat reporter.
+See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+      <dt>label</dt>
+      <dd>[character(1)]
+Same as <code>.var.name</code>, but passed down to <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+See details.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>The provided functions parse rules which allow to express some of the most
+frequent argument checks by typing just a few letters.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p><code>qassert</code> throws an <code>R</code> exception if object <code>x</code> does
+not comply to at least one of the <code>rules</code> and returns the tested object invisibly
+otherwise.
+<code>qtest</code> behaves the same way but returns <code>FALSE</code> if none of the
+<code>rules</code> comply.
+<code>qexpect</code> is intended to be inside the unit test framework <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/testthat'>testthat</a></code> and
+returns an <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.</p>
+  
+      <p>The rule is specified in up to three parts.
+<ol>
+<li>
+   Class and missingness check.
+   The first letter is an abbreviation for the class. If it is
+   provided uppercase, missing values are prohibited.
+   Supported abbreviations:
+   <table><tr><td>
+     <code>[bB]</code> </td>
+</tr><tr><td> Bool / logical.</td>
+</tr><tr><td>
+     <code>[iI]</code> </td>
+</tr><tr><td> Integer.</td>
+</tr><tr><td>
+     <code>[xX]</code> </td>
+</tr><tr><td> Integerish (numeric convertible to integer, see <code><a href='checkIntegerish.html'>checkIntegerish</a></code>).</td>
+</tr><tr><td>
+     <code>[rR]</code> </td>
+</tr><tr><td> Real / double.</td>
+</tr><tr><td>
+     <code>[cC]</code> </td>
+</tr><tr><td> Complex.</td>
+</tr><tr><td>
+     <code>[nN]</code> </td>
+</tr><tr><td> Numeric (integer or double).</td>
+</tr><tr><td>
+     <code>[sS]</code> </td>
+</tr><tr><td> String / character.</td>
+</tr><tr><td>
+     <code>[aA]</code> </td>
+</tr><tr><td> Atomic.</td>
+</tr><tr><td>
+     <code>[vV]</code> </td>
+</tr><tr><td> Atomic vector (see <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>).</td>
+</tr><tr><td>
+     <code>[lL]</code> </td>
+</tr><tr><td> List. Missingness is defined as <code>NULL</code> element.</td>
+</tr><tr><td>
+     <code>[mM]</code> </td>
+</tr><tr><td> Matrix.</td>
+</tr><tr><td>
+     <code>[dD]</code> </td>
+</tr><tr><td> Data.frame. Missingness is checked recursively on columns.</td>
+</tr><tr><td>
+     <code>[e]</code>  </td>
+</tr><tr><td> Environment.</td>
+</tr><tr><td>
+     <code>[f]</code>  </td>
+</tr><tr><td> Function.</td>
+</tr><tr><td>
+     <code>[0]</code>  </td>
+</tr><tr><td> <code>NULL</code>.</td>
+</tr></table>
+   Note that the check for missingness does not distinguish between
+   <code>NaN</code> and <code>NA</code>. Infinite values are not treated as missing, but
+   can be caught using boundary checks (part 3).</p>
+  
+      <p></li>
+<li>
+   Length definition. This can be one of
+   <table><tr><td>
+     <code>[*]</code> </td>
+</tr><tr><td> any length,</td>
+</tr><tr><td>
+     <code>[?]</code> </td>
+</tr><tr><td> length of zero or one,</td>
+</tr><tr><td>
+     <code>[+]</code> </td>
+</tr><tr><td> length of at least one, or</td>
+</tr></table>
+   Preceding the exact length with one of the comparison operators <code>=</code>/<code>==</code>,
+   <code><</code>, <code><=</code>, <code>>=</code> or <code>></code> is also supported.</p>
+  
+      <p></li>
+<li>
+   Range check as two numbers separated by a comma, enclosed by square brackets
+   (endpoint included) or parentheses (endpoint excluded).
+   For example, &#147;[0, 3)&#148; would trigger the check <code>all(x >= 0 & x < 3)</code>.
+   Endpoints may be omitted which is the equivalent of an infinite endpoint.
+   By definition <code>[0,]</code> contains <code>Inf</code>, while <code>[0,)</code> does not.
+   The same holds for the left (lower) endpoint and <code>-Inf</code>.
+   E.g., the rule &#147;N1()&#148; checks for a single finite numeric which is not NA,
+   while &#147;N1[)&#148; would allow <code>-Inf</code>.</p>
+  
+      <p></li>
+</ol></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+
+      <p>The functions are inspired by the blog post of Bogumił Kamiński:
+<a href = 'http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html'>http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html</a>.
+The implementation is mostly written in C to minimize the overhead.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'># logical of length 1
+qtest(NA, &quot;b1&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# logical of length 1, NA not allowed
+qtest(NA, &quot;B1&quot;)
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>
+# logical of length 0 or 1, NA not allowed
+qtest(TRUE, &quot;B?&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# numeric with length &gt; 0
+qtest(runif(10), &quot;n+&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# integer with length &gt; 0, NAs not allowed, all integers &gt;= 0 and &lt; Inf
+qtest(1:3, &quot;I+[0,)&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# either an emtpy list or a character vector with &lt;=5 elements
+qtest(1, c(&quot;l0&quot;, &quot;s&lt;=5&quot;))
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>
+# data frame with at least one column and no missing value in any column
+qtest(iris, &quot;D+&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>qassert</li><li>qexpect</li><li>qtest</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a href='qassertr.html'>qtestr</a></code> and <code><a href='qassertr.html'>qassertr</a></code> for efficient checks
+of list elements and data frame columns.
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

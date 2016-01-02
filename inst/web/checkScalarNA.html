@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>assertScalarNA. checkmate 1.7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">checkmate 1.7</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Check if an argument is a single missing value</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>assertScalarNA(x, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>assert_scalar_na(x, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>testScalarNA(x)</div>
+<div>test_scalar_na(x)</div>
+<div>expect_scalar_na(x, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div>
+<div>checkScalarNA(x)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object to check.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>.var.name</dt>
+      <dd>[character(1)]
+Name for <code>x</code>. Defaults to a heuristic to determine
+the name using <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dt>info</dt>
+      <dd>[character(1)]
+Extra information to be included in the message for the testthat reporter.
+See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+      <dt>label</dt>
+      <dd>[character(1)]
+Same as <code>.var.name</code>, but passed down to <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Depending on the function prefix:
+ If the check is successful, all functions return <code>TRUE</code>. If the check
+ is not successful, <code>assertScalarNA</code>/<code>assert_scalar_na</code>
+ throws an error message, <code>testScalarNA</code>/<code>test_scalar_na</code>
+ returns <code>FALSE</code>,
+ and <code>checkScalarNA</code> returns a string with the error message.
+ The function <code>expect_scalar_na</code> will return an
+ <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Check if an argument is a single missing value</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>testScalarNA(1)
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>testScalarNA(NA_real_)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>testScalarNA(rep(NA, 2))
+</div>
+<div class='output'>[1] FALSE
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>assertScalarNA</li><li>assert_scalar_na</li><li>checkScalarNA</li><li>expect_scalar_na</li><li>testScalarNA</li><li>test_scalar_na</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+Other scalars: <code><a href='checkCount.html'>assertCount</a></code>,
+  <code><a href='checkFlag.html'>assertFlag</a></code>, <code><a href='checkInt.html'>assertInt</a></code>,
+  <code><a href='checkNumber.html'>assertNumber</a></code>, <code><a href='checkScalar.html'>assertScalar</a></code>,
+  <code><a href='checkString.html'>assertString</a></code>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

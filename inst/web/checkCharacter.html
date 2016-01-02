@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>assertCharacter. checkmate 1.7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">checkmate 1.7</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Check if an argument is a vector of type character</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>assertCharacter(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>assert_character(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>testCharacter(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
+<div>test_character(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
+<div>expect_character(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div>
+<div>checkCharacter(x, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;FALSE, ignore.case&nbsp;=&nbsp;FALSE, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object to check.</dd>
+      <dt>min.chars</dt>
+      <dd>[<code>integer(1)</code>]
+Minimum number of characters in each element of <code>x</code>.</dd>
+      <dt>pattern</dt>
+      <dd>[<code>character(1L)</code>]
+Regular expression as used in <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>.
+All elements of <code>x</code> must comply to this pattern.
+Defaults to <code>NULL</code>.</dd>
+      <dt>fixed</dt>
+      <dd>[<code>logical(1)</code>]
+See <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
+      <dt>ignore.case</dt>
+      <dd>[<code>logical(1)</code>]
+See <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
+      <dt>any.missing</dt>
+      <dd>[<code>logical(1)</code>]
+Are vectors with missing values allowed? Default is <code>TRUE</code>.</dd>
+      <dt>all.missing</dt>
+      <dd>[<code>logical(1)</code>]
+Are vectors with only missing values allowed? Default is <code>TRUE</code>.</dd>
+      <dt>len</dt>
+      <dd>[<code>integer(1)</code>]
+Exact expected length of <code>x</code>.</dd>
+      <dt>min.len</dt>
+      <dd>[<code>integer(1)</code>]
+Minimal length of <code>x</code>.</dd>
+      <dt>max.len</dt>
+      <dd>[<code>integer(1)</code>]
+Maximal length of <code>x</code>.</dd>
+      <dt>unique</dt>
+      <dd>[<code>logical(1)</code>]
+Must all values be unique? Default is <code>FALSE</code>.</dd>
+      <dt>names</dt>
+      <dd>[<code>character(1)</code>]
+Check for names. See <code><a href='checkNamed.html'>checkNamed</a></code> for possible values.
+Default is &#147;any&#148; which performs no check at all.
+Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>.var.name</dt>
+      <dd>[character(1)]
+Name for <code>x</code>. Defaults to a heuristic to determine
+the name using <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dt>info</dt>
+      <dd>[character(1)]
+Extra information to be included in the message for the testthat reporter.
+See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+      <dt>label</dt>
+      <dd>[character(1)]
+Same as <code>.var.name</code>, but passed down to <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Depending on the function prefix:
+ If the check is successful, all functions return <code>TRUE</code>. If the check
+ is not successful, <code>assertCharacter</code>/<code>assert_character</code>
+ throws an error message, <code>testCharacter</code>/<code>test_character</code>
+ returns <code>FALSE</code>,
+ and <code>checkCharacter</code> returns a string with the error message.
+ The function <code>expect_character</code> will return an
+ <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Check if an argument is a vector of type character</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>This function does not distinguish between
+<code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>
+<code>NA_character_</code> and <code>NaN</code>.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>testCharacter(letters, min.len = 1, any.missing = FALSE)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>testCharacter(letters, min.chars = 2)
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>testCharacter(&quot;example&quot;, pattern = &quot;xa&quot;)
+</div>
+<div class='output'>[1] TRUE
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>assertCharacter</li><li>assert_character</li><li>checkCharacter</li><li>expect_character</li><li>testCharacter</li><li>test_character</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+Other basetypes: <code><a href='checkArray.html'>assertArray</a></code>,
+  <code><a href='checkAtomicVector.html'>assertAtomicVector</a></code>,
+  <code><a href='checkAtomic.html'>assertAtomic</a></code>, <code><a href='checkComplex.html'>assertComplex</a></code>,
+  <code><a href='checkDataFrame.html'>assertDataFrame</a></code>,
+  <code><a href='checkDataTable.html'>assertDataTable</a></code>,
+  <code><a href='checkEnvironment.html'>assertEnvironment</a></code>,
+  <code><a href='checkFactor.html'>assertFactor</a></code>, <code><a href='checkFunction.html'>assertFunction</a></code>,
+  <code><a href='checkIntegerish.html'>assertIntegerish</a></code>,
+  <code><a href='checkInteger.html'>assertInteger</a></code>, <code><a href='checkList.html'>assertList</a></code>,
+  <code><a href='checkLogical.html'>assertLogical</a></code>, <code><a href='checkMatrix.html'>assertMatrix</a></code>,
+  <code><a href='checkNumeric.html'>assertNumeric</a></code>, <code><a href='checkVector.html'>assertVector</a></code>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
