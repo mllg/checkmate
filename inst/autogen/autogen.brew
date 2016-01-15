@@ -4,7 +4,7 @@
 #' @export
 assert<%= name_cc %> = function(<%= args_with_defaults %>, add = NULL, .var.name) {
   res = <%= fun %>(<%= args_simple %>)
-  makeAssertion(x, res, vname(x, .var.name), add)
+  makeAssertion(x, res, .var.name, add)
 }
 
 #' @rdname check<%= name_cc %>
@@ -27,7 +27,7 @@ test_<%= name_lc %> = test<%= name_cc %>
 #' @export
 expect_<%= name_lc %> = function(<%= args_with_defaults %>, info = NULL, label = NULL) {
   res = <%= fun %>(<%= args_simple %>)
-  makeExpectation(res, info = info, label = vname(x, label))
+  makeExpectation(res, info = info, label)
 }
 <% } -%>
 

@@ -84,7 +84,7 @@ See \code{\link[testthat]{expect_that}}.}
 \item{label}{[character(1)]\cr
 Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 
-\item{...}{[ANY]\cr
+\item{...}{[any]\cr
 Additional parameters used in a call of \code{\link{checkVector}}.}
 }
 \value{
