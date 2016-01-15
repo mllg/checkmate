@@ -105,7 +105,7 @@
 qassert = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
   if (!isTRUE(res))
-    mstop(qamsg(x, res, vname(x, .var.name)))
+    mstop(qamsg(x, res, .var.name))
   invisible(x)
 }
 
@@ -122,5 +122,5 @@ qtest = function(x, rules) {
 #' @export
 qexpect = function(x, rules, info = NULL, label = NULL) {
   res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
+  makeExpectation(res, info = info, label = label)
 }

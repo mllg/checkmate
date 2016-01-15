@@ -23,7 +23,7 @@
 qassertr = function(x, rules, .var.name) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
   if (!isTRUE(res))
-    mstop(qamsg(x, res, vname(x, .var.name), recursive = TRUE))
+    mstop(qamsg(x, res, .var.name, recursive = TRUE))
   invisible(x)
 }
 
@@ -41,5 +41,5 @@ qtestr = function(x, rules) {
 #' @export
 qexpectr = function(x, rules, info = NULL, label = NULL) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = vname(x, label))
+  makeExpectation(res, info = info, label = label)
 }
