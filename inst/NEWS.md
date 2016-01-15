@@ -1,12 +1,16 @@
-# Version 1.7 (2015-xx-xx)
+# Version 1.7 (2016-xx-xx)
+* Exported functions `makeAssertion`, `makeTest` and `makeExpectation` to assist
+  expanding the package with user-generated checks.
+* Added functions `makeAssertionFunction`, `makeTestFunction` and
+  `makeExpectationFunction` to automatically create functions based on a provided
+  check function.
+  * Added `*DataTable` functions to properly test primary and secondary keys of
+  data tables.
 * Added alias functions for all functions in CamelCase style:
   `assert_*` and `test_*`
 * All assert functions now invisibly return the tested object instead of
-  `TRUE` and can now be used with magrittr.
-* Much of the code is now automatically generated with brew.
-* Removed `*Percentage` family of functions
-* Added `*DataTable` functions to properly test primary and secondary keys of
-  data tables.
+  `TRUE` and thus can be used with magrittr.
+* Removed `*Percentage` family of functions.
 
 # Version 1.6.3 (2015-10-23)
 * Assertions can now be collected (via `makeAssertCollection()`) and reported

@@ -38,8 +38,9 @@ qtestr = function(x, rules) {
 #' @useDynLib checkmate c_qassert
 #' @template expect
 #' @rdname qassertr
+#' @include makeExpectation.r
 #' @export
 qexpectr = function(x, rules, info = NULL, label = NULL) {
   res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
-  makeExpectation(res, info = info, label = label)
+  makeExpectation(x, res, info = info, label = label)
 }

@@ -24,3 +24,28 @@
 checkNames = function(x, type = "named") {
   .Call("c_check_names", x, type, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkNames
+assertNames = makeAssertionFunction(checkNames)
+
+#' @export
+#' @rdname checkNames
+assert_names = assertNames
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkNames
+testNames = makeTestFunction(checkNames)
+
+#' @export
+#' @rdname checkNames
+test_names = testNames
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkNames
+expect_names = makeExpectationFunction(checkNames)

@@ -59,3 +59,28 @@ checkListProps = function(x, types = character(0L)) {
   }
   return(sprintf("May only contain the following types: %s", collapse(types)))
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkList
+assertList = makeAssertionFunction(checkList)
+
+#' @export
+#' @rdname checkList
+assert_list = assertList
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkList
+testList = makeTestFunction(checkList)
+
+#' @export
+#' @rdname checkList
+test_list = testList
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkList
+expect_list = makeExpectationFunction(checkList)

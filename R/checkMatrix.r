@@ -34,3 +34,28 @@
 checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkMatrix
+assertMatrix = makeAssertionFunction(checkMatrix)
+
+#' @export
+#' @rdname checkMatrix
+assert_matrix = assertMatrix
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkMatrix
+testMatrix = makeTestFunction(checkMatrix)
+
+#' @export
+#' @rdname checkMatrix
+test_matrix = testMatrix
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkMatrix
+expect_matrix = makeExpectationFunction(checkMatrix)

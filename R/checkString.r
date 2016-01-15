@@ -18,3 +18,28 @@
 checkString = function(x, na.ok = FALSE) {
   .Call("c_check_string", x, na.ok, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkString
+assertString = makeAssertionFunction(checkString)
+
+#' @export
+#' @rdname checkString
+assert_string = assertString
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkString
+testString = makeTestFunction(checkString)
+
+#' @export
+#' @rdname checkString
+test_string = testString
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkString
+expect_string = makeExpectationFunction(checkString)

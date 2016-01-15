@@ -18,3 +18,28 @@
 checkFlag = function(x, na.ok = FALSE) {
   .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkFlag
+assertFlag = makeAssertionFunction(checkFlag)
+
+#' @export
+#' @rdname checkFlag
+assert_flag = assertFlag
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkFlag
+testFlag = makeTestFunction(checkFlag)
+
+#' @export
+#' @rdname checkFlag
+test_flag = testFlag
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkFlag
+expect_flag = makeExpectationFunction(checkFlag)

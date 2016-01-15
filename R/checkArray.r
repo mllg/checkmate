@@ -23,3 +23,28 @@
 checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
   .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkArray
+assertArray = makeAssertionFunction(checkArray)
+
+#' @export
+#' @rdname checkArray
+assert_array = assertArray
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkArray
+testArray = makeTestFunction(checkArray)
+
+#' @export
+#' @rdname checkArray
+test_array = testArray
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkArray
+expect_array = makeExpectationFunction(checkArray)

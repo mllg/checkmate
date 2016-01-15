@@ -43,3 +43,28 @@ checkClass = function(x, classes, ordered = FALSE) {
   }
   return(TRUE)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkClass
+assertClass = makeAssertionFunction(checkClass)
+
+#' @export
+#' @rdname checkClass
+assert_class = assertClass
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkClass
+testClass = makeTestFunction(checkClass)
+
+#' @export
+#' @rdname checkClass
+test_class = testClass
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkClass
+expect_class = makeExpectationFunction(checkClass)

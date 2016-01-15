@@ -70,3 +70,28 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
   .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkFactor
+assertFactor = makeAssertionFunction(checkFactor)
+
+#' @export
+#' @rdname checkFactor
+assert_factor = assertFactor
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkFactor
+testFactor = makeTestFunction(checkFactor)
+
+#' @export
+#' @rdname checkFactor
+test_factor = testFactor
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkFactor
+expect_factor = makeExpectationFunction(checkFactor)

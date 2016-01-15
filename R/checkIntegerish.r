@@ -17,3 +17,28 @@
 checkIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   .Call("c_check_integerish", x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkIntegerish
+assertIntegerish = makeAssertionFunction(checkIntegerish)
+
+#' @export
+#' @rdname checkIntegerish
+assert_integerish = assertIntegerish
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkIntegerish
+testIntegerish = makeTestFunction(checkIntegerish)
+
+#' @export
+#' @rdname checkIntegerish
+test_integerish = testIntegerish
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkIntegerish
+expect_integerish = makeExpectationFunction(checkIntegerish)

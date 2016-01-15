@@ -33,3 +33,28 @@
 checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   .Call("c_check_vector", x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkVector
+assertVector = makeAssertionFunction(checkVector)
+
+#' @export
+#' @rdname checkVector
+assert_vector = assertVector
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkVector
+testVector = makeTestFunction(checkVector)
+
+#' @export
+#' @rdname checkVector
+test_vector = testVector
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkVector
+expect_vector = makeExpectationFunction(checkVector)

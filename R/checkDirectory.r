@@ -26,3 +26,28 @@ checkDirectory = function(x, access = "") {
 
   return(checkAccess(x, access))
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkDirectory
+assertDirectory = makeAssertionFunction(checkDirectory)
+
+#' @export
+#' @rdname checkDirectory
+assert_directory = assertDirectory
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkDirectory
+testDirectory = makeTestFunction(checkDirectory)
+
+#' @export
+#' @rdname checkDirectory
+test_directory = testDirectory
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkDirectory
+expect_directory = makeExpectationFunction(checkDirectory)

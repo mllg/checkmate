@@ -7,7 +7,7 @@
 \usage{
 makeTest(res)
 
-makeTestFunction(check.fun)
+makeTestFunction(check.fun, ee = parent.frame())
 }
 \arguments{
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
@@ -16,6 +16,9 @@ and an error message as string otherwise.}
 
 \item{check.fun}{[\code{function}]\cr
 Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.}
+
+\item{ee}{[\code{environment}]\cr
+The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
 \code{makeTest} returns \code{TRUE} if the check is successful and \code{FALSE} otherwise.
