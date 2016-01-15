@@ -4,7 +4,6 @@
 \alias{assertNull}
 \alias{assert_null}
 \alias{checkNull}
-\alias{expect_null}
 \alias{testNull}
 \alias{test_null}
 \title{Check if an argument is NULL}
@@ -18,8 +17,6 @@ assert_null(x, add = NULL, .var.name)
 testNull(x)
 
 test_null(x)
-
-expect_null(x, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -31,13 +28,6 @@ Collection to store assertions. See \code{\link{AssertCollection}}.}
 \item{.var.name}{[character(1)]\cr
 Name for \code{x}. Defaults to a heuristic to determine
 the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
-
-\item{info}{[character(1)]\cr
-Extra information to be included in the message for the testthat reporter.
-See \code{\link[testthat]{expect_that}}.}
-
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
 Depending on the function prefix:

@@ -41,8 +41,9 @@ testNamed = makeTestFunction(checkNamed)
 #' @rdname checkNamed
 test_named = testNamed
 
-#' @export
-#' @include makeExpectation.r
-#' @template expect
-#' @rdname checkNamed
+# This function is already provided by testthat
+# #' @export
+# #' @include makeExpectation.r
+# #' @template expect
+# #' @rdname checkNamed
 expect_named = makeExpectationFunction(checkNamed)
