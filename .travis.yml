@@ -9,6 +9,7 @@ addons:
       - r-base-dev
       - r-recommended
       - pandoc
+      - pandoc-citeproc
       - qpdf
       - texlive-base
       - texlive-latex-base
