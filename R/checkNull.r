@@ -32,8 +32,9 @@ testNull = makeTestFunction(checkNull)
 #' @rdname checkNull
 test_null = testNull
 
-#' @export
-#' @include makeExpectation.r
-#' @template expect
-#' @rdname checkNull
+# This function is already provided by testthat
+# #' @export
+# #' @include makeExpectation.r
+# #' @template expect
+# #' @rdname checkNull
 expect_null = makeExpectationFunction(checkNull)
