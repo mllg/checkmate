@@ -23,3 +23,28 @@ checkEnvironment = function(x, contains = character(0L)) {
   }
   return(TRUE)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkEnvironment
+assertEnvironment = makeAssertionFunction(checkEnvironment)
+
+#' @export
+#' @rdname checkEnvironment
+assert_environment = assertEnvironment
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkEnvironment
+testEnvironment = makeTestFunction(checkEnvironment)
+
+#' @export
+#' @rdname checkEnvironment
+test_environment = testEnvironment
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkEnvironment
+expect_environment = makeExpectationFunction(checkEnvironment)

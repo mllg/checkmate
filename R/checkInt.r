@@ -17,3 +17,28 @@
 checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_int", x, na.ok, lower, upper, tol, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkInt
+assertInt = makeAssertionFunction(checkInt)
+
+#' @export
+#' @rdname checkInt
+assert_int = assertInt
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkInt
+testInt = makeTestFunction(checkInt)
+
+#' @export
+#' @rdname checkInt
+test_int = testInt
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkInt
+expect_int = makeExpectationFunction(checkInt)

@@ -42,3 +42,28 @@ checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), an
 
   checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkDataTable
+assertDataTable = makeAssertionFunction(checkDataTable)
+
+#' @export
+#' @rdname checkDataTable
+assert_data_table = assertDataTable
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkDataTable
+testDataTable = makeTestFunction(checkDataTable)
+
+#' @export
+#' @rdname checkDataTable
+test_data_table = testDataTable
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkDataTable
+expect_data_table = makeExpectationFunction(checkDataTable)

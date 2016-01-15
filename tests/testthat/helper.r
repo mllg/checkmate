@@ -32,16 +32,8 @@ expect_succ_all = function(part, x, ...) {
   expect_identical(fun(x, ...), x)
 
   fun = match.fun(paste0("expect_", lc))
-  expect_true(is.expectation(fun(x, ...)))
-
-  fun = makeTestFunction(match.fun(paste0("check", cc)))
-  expect_true(fun(x, ...))
-
-  fun = makeAssertionFunction(match.fun(paste0("check", cc)))
-  expect_identical(fun(x, ...), x)
-
-  fun = makeExpectationFunction(match.fun(paste0("check", cc)))
   expect_expectation_successful(fun(x, ...))
+
   invisible(TRUE)
 }
 
@@ -68,17 +60,8 @@ expect_fail_all = function(part, x, ...) {
   expect_error(fun(x, ...), "'x'")
 
   fun = match.fun(paste0("expect_", lc))
-  expect_expectation_failed(fun(x, ...))
-
-  fun = makeTestFunction(match.fun(paste0("check", cc)))
-  expect_false(fun(x, ...))
-
-  fun = makeAssertionFunction(match.fun(paste0("check", cc)))
-  expect_error(fun(x, ..., .var.name = xn), xn)
-  expect_error(fun(x, ...), "'x'")
-
-  fun = makeExpectationFunction(match.fun(paste0("check", cc)))
   expect_expectation_failed(fun(x, ...), "x")
   expect_expectation_failed(fun(x, ..., label = xn), xn)
+
   invisible(TRUE)
 }

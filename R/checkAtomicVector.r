@@ -35,3 +35,28 @@
 checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   .Call("c_check_atomic_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkAtomicVector
+assertAtomicVector = makeAssertionFunction(checkAtomicVector)
+
+#' @export
+#' @rdname checkAtomicVector
+assert_atomic_vector = assertAtomicVector
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkAtomicVector
+testAtomicVector = makeTestFunction(checkAtomicVector)
+
+#' @export
+#' @rdname checkAtomicVector
+test_atomic_vector = testAtomicVector
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkAtomicVector
+expect_atomic_vector = makeExpectationFunction(checkAtomicVector)

@@ -22,3 +22,28 @@
 checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
   .Call("c_check_count", x, na.ok, positive, tol, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkCount
+assertCount = makeAssertionFunction(checkCount)
+
+#' @export
+#' @rdname checkCount
+assert_count = assertCount
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkCount
+testCount = makeTestFunction(checkCount)
+
+#' @export
+#' @rdname checkCount
+test_count = testCount
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkCount
+expect_count = makeExpectationFunction(checkCount)

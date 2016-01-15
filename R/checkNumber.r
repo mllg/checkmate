@@ -18,3 +18,28 @@
 checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
   .Call("c_check_number", x, na.ok, lower, upper, finite, PACKAGE = "checkmate")
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkNumber
+assertNumber = makeAssertionFunction(checkNumber)
+
+#' @export
+#' @rdname checkNumber
+assert_number = assertNumber
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkNumber
+testNumber = makeTestFunction(checkNumber)
+
+#' @export
+#' @rdname checkNumber
+test_number = testNumber
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkNumber
+expect_number = makeExpectationFunction(checkNumber)

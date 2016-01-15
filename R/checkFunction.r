@@ -53,3 +53,28 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
   }
   return(TRUE)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkFunction
+assertFunction = makeAssertionFunction(checkFunction)
+
+#' @export
+#' @rdname checkFunction
+assert_function = assertFunction
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkFunction
+testFunction = makeTestFunction(checkFunction)
+
+#' @export
+#' @rdname checkFunction
+test_function = testFunction
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkFunction
+expect_function = makeExpectationFunction(checkFunction)

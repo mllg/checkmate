@@ -5,11 +5,14 @@
 \alias{makeExpectationFunction}
 \title{Turn a Check into an Expectation}
 \usage{
-makeExpectation(res, info, label)
+makeExpectation(x, res, info = NULL, label = NULL)
 
-makeExpectationFunction(check.fun)
+makeExpectationFunction(check.fun, ee = parent.frame())
 }
 \arguments{
+\item{x}{[any]\cr
+Object to check.}
+
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
 The result of a check function: \code{TRUE} for successful checks,
 and an error message as string otherwise.}
@@ -22,6 +25,9 @@ See \code{\link[testthat]{expect_that}}}
 
 \item{check.fun}{[\code{function}]\cr
 Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.}
+
+\item{ee}{[\code{environment}]\cr
+The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
 \code{makeExpectation} returns the expectation result.

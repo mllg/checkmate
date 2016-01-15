@@ -26,3 +26,28 @@ checkFile = function(x, access = "") {
 
   return(checkAccess(x, access))
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkFile
+assertFile = makeAssertionFunction(checkFile)
+
+#' @export
+#' @rdname checkFile
+assert_file = assertFile
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkFile
+testFile = makeTestFunction(checkFile)
+
+#' @export
+#' @rdname checkFile
+test_file = testFile
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkFile
+expect_file = makeExpectationFunction(checkFile)

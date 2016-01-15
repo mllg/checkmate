@@ -37,3 +37,28 @@ checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ig
   .Call("c_check_character", x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
   checkCharacterProps(x, pattern, fixed, ignore.case)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkCharacter
+assertCharacter = makeAssertionFunction(checkCharacter)
+
+#' @export
+#' @rdname checkCharacter
+assert_character = assertCharacter
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkCharacter
+testCharacter = makeTestFunction(checkCharacter)
+
+#' @export
+#' @rdname checkCharacter
+test_character = testCharacter
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkCharacter
+expect_character = makeExpectationFunction(checkCharacter)

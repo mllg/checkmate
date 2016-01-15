@@ -42,3 +42,28 @@ checkAccess = function(x, access = "") {
   }
   return(TRUE)
 }
+
+#' @export
+#' @include makeAssertion.r
+#' @template assert
+#' @rdname checkAccess
+assertAccess = makeAssertionFunction(checkAccess)
+
+#' @export
+#' @rdname checkAccess
+assert_access = assertAccess
+
+#' @export
+#' @include makeTest.r
+#' @rdname checkAccess
+testAccess = makeTestFunction(checkAccess)
+
+#' @export
+#' @rdname checkAccess
+test_access = testAccess
+
+#' @export
+#' @include makeExpectation.r
+#' @template expect
+#' @rdname checkAccess
+expect_access = makeExpectationFunction(checkAccess)

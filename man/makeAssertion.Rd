@@ -7,7 +7,7 @@
 \usage{
 makeAssertion(x, res, var.name, collection)
 
-makeAssertionFunction(check.fun)
+makeAssertionFunction(check.fun, ee = parent.frame())
 }
 \arguments{
 \item{x}{[any]\cr
@@ -27,6 +27,9 @@ in it. If \code{NULL} (default), an exception is raised if \code{res} is not
 
 \item{check.fun}{[\code{function}]\cr
 Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.}
+
+\item{ee}{[\code{environment}]\cr
+The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
 \code{makeAssertion} invisibly returns the checked object if the check was successful,
