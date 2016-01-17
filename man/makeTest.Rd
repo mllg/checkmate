@@ -7,7 +7,7 @@
 \usage{
 makeTest(res)
 
-makeTestFunction(check.fun, ee = parent.frame())
+makeTestFunction(check.fun, env = parent.frame())
 }
 \arguments{
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
@@ -17,7 +17,7 @@ and an error message as string otherwise.}
 \item{check.fun}{[\code{function}]\cr
 Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.}
 
-\item{ee}{[\code{environment}]\cr
+\item{env}{[\code{environment}]\cr
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
@@ -27,7 +27,7 @@ The environment of the created function. Default is the \code{\link[base]{parent
 \description{
 \code{makeTest} is the internal function used to evaluate the result of a
 check and throw an exception if necessary.
-This function is currently a stub and just calls \code{\link[base]{isTRUE}}.
+This function is currently only a stub and just calls \code{\link[base]{isTRUE}}.
 \code{makeTestFunction} can be used to automatically create an assertion
 function based on a check function (see example).
 }
@@ -41,7 +41,8 @@ testFalse = function(x) {
   makeTest(res)
 }
 
-# Alternative: Automatically create such a function:
-test = makeTestFunction(checkFalse)
+# Alternative: Automatically create such a function
+testFalse = makeTestFunction(checkFalse)
+print(testFalse)
 }
 

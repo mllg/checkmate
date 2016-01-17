@@ -31,8 +31,9 @@
 #'   makeAssertion(x, res, .var.name, add)
 #' }
 #'
-#' # Alternative: Automatically create such a function:
+#' # Alternative: Automatically create such a function
 #' assertFalse = makeAssertionFunction(checkFalse)
+#' print(assertFalse)
 makeAssertion = function(x, res, var.name, collection) {
   if (!isTRUE(res)) {
     if (is.null(collection))
@@ -45,10 +46,10 @@ makeAssertion = function(x, res, var.name, collection) {
 #' @rdname makeAssertion
 #' @param check.fun [\code{function}]\cr
 #'  Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.
-#' @param ee [\code{environment}]\cr
+#' @param env [\code{environment}]\cr
 #'  The environment of the created function. Default is the \code{\link[base]{parent.frame}}.
 #' @export
-makeAssertionFunction = function(check.fun, ee = parent.frame()) {
+makeAssertionFunction = function(check.fun, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
 
@@ -56,6 +57,6 @@ makeAssertionFunction = function(check.fun, ee = parent.frame()) {
   formals(new.fun) = c(formals(check.fun), alist(add = NULL, .var.name =))
   tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
   body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
-  environment(new.fun) = ee
+  environment(new.fun) = env
   return(new.fun)
 }
