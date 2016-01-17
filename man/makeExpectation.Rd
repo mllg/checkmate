@@ -7,7 +7,7 @@
 \usage{
 makeExpectation(x, res, info = NULL, label = NULL)
 
-makeExpectationFunction(check.fun, ee = parent.frame())
+makeExpectationFunction(check.fun, env = parent.frame())
 }
 \arguments{
 \item{x}{[any]\cr
@@ -26,7 +26,7 @@ See \code{\link[testthat]{expect_that}}}
 \item{check.fun}{[\code{function}]\cr
 Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.}
 
-\item{ee}{[\code{environment}]\cr
+\item{env}{[\code{environment}]\cr
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
@@ -49,7 +49,8 @@ expect_false = function(x, info = NULL, label = NULL) {
   makeExpectation(res, info = info, label = label)
 }
 
-# Alternative: Automatically create such a function:
+# Alternative: Automatically create such a function
 expect_false = makeExpectationFunction(checkFalse)
+print(expect_false)
 }
 

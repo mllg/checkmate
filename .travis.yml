@@ -1,42 +1,13 @@
-language: c
-sudo: false
+language: r
+sudo: required
+warnings_are_errors: true
 
-addons:
-  apt:
-    sources:
-      - r-packages-precise
-    packages:
-      - r-base-dev
-      - r-recommended
-      - pandoc
-      - pandoc-citeproc
-      - qpdf
-      - texlive-base
-      - texlive-latex-base
-      - texlive-generic-recommended
-      - texlive-fonts-recommended
-      - texlive-fonts-extra
-      - texlive-extra-utils
-      - texlive-latex-recommended
-      - texlive-latex-extra
-      - texinfo
-      - lmodern
-
-env:
-  - R_LIBS_USER=~/R/library CRAN="http://cran.rstudio.com"
-
-cache:
-  directories:
-    $R_LIBS_USER
-
-before_script:
-  - mkdir -p "$R_LIBS_USER"
-  - Rscript -e 'if (length(find.package("devtools", quiet = TRUE)) == 0L) { install.packages("devtools", repos = "'${CRAN}'") }'
-  - Rscript -e 'devtools::update_packages(c("devtools", "covr"), repos = "'${CRAN}'")'
-  - Rscript -e 'devtools::install_deps(repos = "'${CRAN}'", dependencies = TRUE, upgrade = TRUE)'
-
-script:
-  - Rscript -e 'devtools::check()'
-
-after_success:
-  - Rscript -e 'library(covr); coveralls()'
+r_binary_packages:
+  - data.table
+  - dplyr
+  - ggplot2
+  - knitr
+  - rmarkdown
+  - magrittr
+  - microbenchmark
+  - testthat
