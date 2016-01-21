@@ -245,3 +245,8 @@ mb = microbenchmark(r(x), cm1(x), cm2(x))
 print(mb)
 autoplot(mb)
 ```
+
+For the sake of completeness, here the `sessionInfo()` for the benchmark (but remember the note before on `knitr` possibly biasing the results).
+```{r}
+sessionInfo()
+```
