@@ -480,3 +480,20 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
         ScalarLogical(qtest_list(x, checker, nrules)) :
         ScalarLogical(qtest1(x, checker, nrules));
 }
+
+/*********************************************************************************************************************/
+/* exported to be used in other packages                                                                             */
+/*********************************************************************************************************************/
+Rboolean qtest(SEXP x, const char *rule) {
+    checker_t checker;
+    parse_rule(&checker, rule);
+    return qtest1(x, &checker, 1);
+}
+
+void qassert(SEXP x, const char *rule, const char *name) {
+    checker_t checker;
+    parse_rule(&checker, rule);
+    msg_t result = check_rule(x, &checker, TRUE);
+    if (!result.ok)
+        error("Variable '%s': %s", name, result.msg);
+}
