@@ -22,7 +22,7 @@
 #' testList(list())
 #' testList(as.list(iris), types = c("numeric", "factor"))
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call("c_check_list", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+  .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
   checkListProps(x, types)
 }
 

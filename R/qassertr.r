@@ -21,7 +21,7 @@
 #' qtestr(as.list(1:10), "i+")
 #' qtestr(iris, "n")
 qassertr = function(x, rules, .var.name) {
-  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
+  res = .Call(c_qassert, x, rules, TRUE)
   if (!isTRUE(res))
     mstop(qamsg(x, res, .var.name, recursive = TRUE))
   invisible(x)
@@ -32,7 +32,7 @@ qassertr = function(x, rules, .var.name) {
 #' @useDynLib checkmate c_qtest
 #' @export
 qtestr = function(x, rules) {
-  .Call("c_qtest", x, rules, TRUE, PACKAGE = "checkmate")
+  .Call(c_qtest, x, rules, TRUE)
 }
 
 #' @useDynLib checkmate c_qassert
@@ -41,6 +41,6 @@ qtestr = function(x, rules) {
 #' @include makeExpectation.r
 #' @export
 qexpectr = function(x, rules, info = NULL, label = NULL) {
-  res = .Call("c_qassert", x, rules, TRUE, PACKAGE = "checkmate")
+  res = .Call(c_qassert, x, rules, TRUE)
   makeExpectation(x, res, info = info, label = label)
 }

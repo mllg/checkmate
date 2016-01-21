@@ -21,7 +21,7 @@
 #' @examples
 #' checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
-  .Call("c_check_array", x, mode, any.missing, d, min.d, max.d, PACKAGE = "checkmate")
+  .Call(c_check_array, x, mode, any.missing, d, min.d, max.d)
 }
 
 #' @export

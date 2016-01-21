@@ -10,5 +10,5 @@
 #' allMissing(x)
 #' all(sapply(x, allMissing))
 allMissing = function(x) {
-  .Call("c_all_missing", x, PACKAGE = "checkmate")
+  .Call(c_all_missing, x)
 }

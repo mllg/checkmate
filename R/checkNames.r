@@ -22,7 +22,7 @@
 #' names(x) = letters[1:3]
 #' testNames(x, "unique")
 checkNames = function(x, type = "named") {
-  .Call("c_check_names", x, type, PACKAGE = "checkmate")
+  .Call(c_check_names, x, type)
 }
 
 #' @export

@@ -16,7 +16,7 @@
 #' testFlag(TRUE)
 #' testFlag(1)
 checkFlag = function(x, na.ok = FALSE) {
-  .Call("c_check_flag", x, na.ok, PACKAGE = "checkmate")
+  .Call(c_check_flag, x, na.ok)
 }
 
 #' @export

@@ -103,7 +103,7 @@
 #' # data frame with at least one column and no missing value in any column
 #' qtest(iris, "D+")
 qassert = function(x, rules, .var.name) {
-  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
+  res = .Call(c_qassert, x, rules, FALSE)
   if (!isTRUE(res))
     mstop(qamsg(x, res, .var.name))
   invisible(x)
@@ -113,7 +113,7 @@ qassert = function(x, rules, .var.name) {
 #' @rdname qassert
 #' @export
 qtest = function(x, rules) {
-  .Call("c_qtest", x, rules, FALSE, PACKAGE = "checkmate")
+  .Call(c_qtest, x, rules, FALSE)
 }
 
 #' @useDynLib checkmate c_qassert
@@ -122,6 +122,6 @@ qtest = function(x, rules) {
 #' @include makeExpectation.r
 #' @export
 qexpect = function(x, rules, info = NULL, label = NULL) {
-  res = .Call("c_qassert", x, rules, FALSE, PACKAGE = "checkmate")
+  res = .Call(c_qassert, x, rules, FALSE)
   makeExpectation(x, res, info = info, label = label)
 }

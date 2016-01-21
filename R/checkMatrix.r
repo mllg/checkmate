@@ -32,7 +32,7 @@
 #' colnames(x) = letters[1:3]
 #' testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
 checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  .Call("c_check_matrix", x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, PACKAGE = "checkmate")
+  .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
 #' @export

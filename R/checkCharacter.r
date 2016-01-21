@@ -34,7 +34,7 @@ checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = FALSE, ig
     }
     return(TRUE)
   }
-  .Call("c_check_character", x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
   checkCharacterProps(x, pattern, fixed, ignore.case)
 }
 
