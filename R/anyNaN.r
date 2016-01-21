@@ -14,5 +14,5 @@
 #' iris[3, 3] = NaN
 #' anyNaN(iris)
 anyNaN = function(x) {
-  .Call("c_any_nan", x, PACKAGE = "checkmate")
+  .Call(c_any_nan, x)
 }

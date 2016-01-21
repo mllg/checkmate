@@ -14,5 +14,5 @@
 #' iris[3, 3] = Inf
 #' anyInfinite(iris)
 anyInfinite = function(x) {
-  .Call("c_any_infinite", x, PACKAGE = "checkmate")
+  .Call(c_any_infinite, x)
 }

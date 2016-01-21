@@ -33,7 +33,7 @@
 #' @examples
 #' testAtomicVector(letters, min.len = 1L, any.missing = FALSE)
 checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call("c_check_atomic_vector", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate")
+  .Call(c_check_atomic_vector, x, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
 #' @export

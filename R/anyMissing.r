@@ -20,5 +20,5 @@
 #' anyMissing(c(1, NA))
 #' anyMissing(list(1, NULL))
 anyMissing = function(x) {
-  .Call("c_any_missing", x, PACKAGE = "checkmate")
+  .Call(c_any_missing, x)
 }

@@ -67,7 +67,7 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
     }
     return(TRUE)
   }
-  .Call("c_check_factor", x, any.missing, all.missing, len, min.len, max.len, unique, names, PACKAGE = "checkmate") %and%
+  .Call(c_check_factor, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
   checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }
 
