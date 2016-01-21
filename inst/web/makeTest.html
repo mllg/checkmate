@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkNull. checkmate 1.7</title>
+<title>makeTest. checkmate 1.7</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -47,43 +47,34 @@
         
       </header>
       
-      <h1>Check if an argument is NULL</h1>
+      <h1>Turn a Check into a Test</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkNull(x)</div>
-<div>assertNull(x, add&nbsp;=&nbsp;NULL, .var.name)</div>
-<div>assert_null(x, add&nbsp;=&nbsp;NULL, .var.name)</div>
-<div>testNull(x)</div>
-<div>test_null(x)</div></pre>
+    <pre><div>makeTest(res)</div>
+<div>makeTestFunction(check.fun, env&nbsp;=&nbsp;parent.frame())</div></pre>
     
     <h2>Arguments</h2>
     <dl>
-      <dt>x</dt>
-      <dd>[any]
-Object to check.</dd>
-      <dt>add</dt>
-      <dd>[<code>AssertCollection</code>]
-Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
-      <dt>.var.name</dt>
-      <dd>[character(1)]
-Name for <code>x</code>. Defaults to a heuristic to determine
-the name using <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dt>res</dt>
+      <dd>[<code>TRUE</code> | <code>character(1)</code>]
+The result of a check function: <code>TRUE</code> for successful checks,
+and an error message as string otherwise.</dd>
+      <dt>check.fun</dt>
+      <dd>[<code>function</code>]
+Function which checks the input. Must return <code>TRUE</code> on success and a string with the error message otherwise.</dd>
+      <dt>env</dt>
+      <dd>[<code>environment</code>]
+The environment of the created function. Default is the <code><a href='http://www.inside-r.org/r-doc/base/sys.parent'>parent.frame</a></code>.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
       <p><dl>
-Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertNull</code>/<code>assert_null</code>
- throws an error message, <code>testNull</code>/<code>test_null</code>
- returns <code>FALSE</code>,
- and <code>checkNull</code> returns a string with the error message.
- The function <code>expect_null</code> always returns an
- <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
+<code>makeTest</code> returns <code>TRUE</code> if the check is successful and <code>FALSE</code> otherwise.
+ <code>makeTestFunction</code> returns a <code>function</code>.
 </dl></p>
   
     </div>
@@ -91,23 +82,38 @@ Depending on the function prefix:
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Check if an argument is NULL</p>
+      <p><code>makeTest</code> is the internal function used to evaluate the result of a
+check and throw an exception if necessary.
+This function is currently only a stub and just calls <code><a href='http://www.inside-r.org/r-doc/base/Logic'>isTRUE</a></code>.
+<code>makeTestFunction</code> can be used to automatically create an assertion
+function based on a check function (see example).</p>
   
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>testNull(NULL)
+    <pre class="examples"><div class='input'># Simple custom check function
+checkFalse = function(x) if (!identical(x, FALSE)) &quot;Must be FALSE&quot; else TRUE
+
+# Create the respective test function
+testFalse = function(x) {
+  res = checkFalse(x)
+  makeTest(res)
+}
+
+# Alternative: Automatically create such a function
+testFalse = makeTestFunction(checkFalse)
+print(testFalse)
 </div>
-<div class='output'>[1] TRUE
-</div>
-<div class='input'>testNull(1)
-</div>
-<div class='output'>[1] FALSE
+<div class='output'>function (x) 
+{
+    isTRUE(checkFalse(x))
+}
+&lt;environment: 0x7ff425f08b10&gt;
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertNull</li><li>assert_null</li><li>checkNull</li><li>testNull</li><li>test_null</li>
+      <li>makeTest</li><li>makeTestFunction</li>
     </ul>
     <ul>
       

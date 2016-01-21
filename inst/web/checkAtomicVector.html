@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>assertAtomicVector. checkmate 1.7</title>
+<title>checkAtomicVector. checkmate 1.7</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -52,12 +52,12 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>assertAtomicVector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
+    <pre><div>checkAtomicVector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
+<div>assertAtomicVector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>assert_atomic_vector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>testAtomicVector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
 <div>test_atomic_vector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
-<div>expect_atomic_vector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div>
-<div>checkAtomicVector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div></pre>
+<div>expect_atomic_vector(x, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -146,21 +146,19 @@ In short, this is equivalent to <code>is.atomic(x) && !is.null(x)</code>.</p>
       
     <h2>See also</h2>
     
-Other atomicvector: <code><a href='checkAtomic.html'>assertAtomic</a></code>,
-  <code><a href='checkVector.html'>assertVector</a></code>
+Other atomicvector: <code><a href='checkAtomic.html'>checkAtomic</a></code>,
+  <code><a href='checkVector.html'>checkVector</a></code>
 
-Other basetypes: <code><a href='checkArray.html'>assertArray</a></code>,
-  <code><a href='checkAtomic.html'>assertAtomic</a></code>,
-  <code><a href='checkCharacter.html'>assertCharacter</a></code>,
-  <code><a href='checkComplex.html'>assertComplex</a></code>,
-  <code><a href='checkDataFrame.html'>assertDataFrame</a></code>,
-  <code><a href='checkDataTable.html'>assertDataTable</a></code>,
-  <code><a href='checkEnvironment.html'>assertEnvironment</a></code>,
-  <code><a href='checkFactor.html'>assertFactor</a></code>, <code><a href='checkFunction.html'>assertFunction</a></code>,
-  <code><a href='checkIntegerish.html'>assertIntegerish</a></code>,
-  <code><a href='checkInteger.html'>assertInteger</a></code>, <code><a href='checkList.html'>assertList</a></code>,
-  <code><a href='checkLogical.html'>assertLogical</a></code>, <code><a href='checkMatrix.html'>assertMatrix</a></code>,
-  <code><a href='checkNumeric.html'>assertNumeric</a></code>, <code><a href='checkVector.html'>assertVector</a></code>
+Other basetypes: <code><a href='checkArray.html'>checkArray</a></code>,
+  <code><a href='checkAtomic.html'>checkAtomic</a></code>, <code><a href='checkCharacter.html'>checkCharacter</a></code>,
+  <code><a href='checkComplex.html'>checkComplex</a></code>, <code><a href='checkDataFrame.html'>checkDataFrame</a></code>,
+  <code><a href='checkDataTable.html'>checkDataTable</a></code>,
+  <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
+  <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFunction.html'>checkFunction</a></code>,
+  <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
+  <code><a href='checkInteger.html'>checkInteger</a></code>, <code><a href='checkList.html'>checkList</a></code>,
+  <code><a href='checkLogical.html'>checkLogical</a></code>, <code><a href='checkMatrix.html'>checkMatrix</a></code>,
+  <code><a href='checkNumeric.html'>checkNumeric</a></code>, <code><a href='checkVector.html'>checkVector</a></code>
 
         
   </div>

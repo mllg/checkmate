@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>assertPathForOutput. checkmate 1.7</title>
+<title>checkPathForOutput. checkmate 1.7</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -52,12 +52,12 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>assertPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
+    <pre><div>checkPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE)</div>
+<div>assertPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>assert_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>testPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE)</div>
 <div>test_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE)</div>
-<div>expect_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div>
-<div>checkPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE)</div></pre>
+<div>expect_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -137,8 +137,8 @@ testPathForOutput(file.path(tempdir(), &quot;process.log&quot;))
       
     <h2>See also</h2>
     
-Other filesystem: <code><a href='checkAccess.html'>assertAccess</a></code>,
-  <code><a href='checkDirectory.html'>assertDirectory</a></code>, <code><a href='checkFile.html'>assertFile</a></code>
+Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
+  <code><a href='checkDirectory.html'>checkDirectory</a></code>, <code><a href='checkFile.html'>checkFile</a></code>
 
         
   </div>

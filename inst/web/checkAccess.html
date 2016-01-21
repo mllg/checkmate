@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>assertAccess. checkmate 1.7</title>
+<title>checkAccess. checkmate 1.7</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -52,12 +52,12 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>assertAccess(x, access&nbsp;=&nbsp;"", add&nbsp;=&nbsp;NULL, .var.name)</div>
+    <pre><div>checkAccess(x, access&nbsp;=&nbsp;"")</div>
+<div>assertAccess(x, access&nbsp;=&nbsp;"", add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>assert_access(x, access&nbsp;=&nbsp;"", add&nbsp;=&nbsp;NULL, .var.name)</div>
 <div>testAccess(x, access&nbsp;=&nbsp;"")</div>
 <div>test_access(x, access&nbsp;=&nbsp;"")</div>
-<div>expect_access(x, access&nbsp;=&nbsp;"", info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div>
-<div>checkAccess(x, access&nbsp;=&nbsp;"")</div></pre>
+<div>expect_access(x, access&nbsp;=&nbsp;"", info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -118,7 +118,7 @@ testAccess(R.home(), &quot;r&quot;)
 # Is R&#39;s home directory writeable?
 testAccess(R.home(), &quot;w&quot;)
 </div>
-<div class='output'>[1] FALSE
+<div class='output'>[1] TRUE
 </div></pre>
   </div>
   <div class="span4">
@@ -131,9 +131,8 @@ testAccess(R.home(), &quot;w&quot;)
       
     <h2>See also</h2>
     
-Other filesystem: <code><a href='checkDirectory.html'>assertDirectory</a></code>,
-  <code><a href='checkFile.html'>assertFile</a></code>,
-  <code><a href='checkPathForOutput.html'>assertPathForOutput</a></code>
+Other filesystem: <code><a href='checkDirectory.html'>checkDirectory</a></code>,
+  <code><a href='checkFile.html'>checkFile</a></code>, <code><a href='checkPathForOutput.html'>checkPathForOutput</a></code>
 
         
   </div>
