@@ -81,7 +81,13 @@ Same as <code>.var.name</code>, but passed down to <code><a href='http://www.ins
       <h2>Value</h2>
 
       <p><dl>
-See details.
+<code>qassert</code> throws an <code>R</code> exception if object <code>x</code> does
+ not comply to at least one of the <code>rules</code> and returns the tested object invisibly
+ otherwise.
+ <code>qtest</code> behaves the same way but returns <code>FALSE</code> if none of the
+ <code>rules</code> comply.
+ <code>qexpect</code> is intended to be inside the unit test framework <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/testthat'>testthat</a></code> and
+ returns an <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
 </dl></p>
   
     </div>
@@ -97,14 +103,6 @@ frequent argument checks by typing just a few letters.</p>
     <div class="Details">
       <h2>Details</h2>
 
-      <p><code>qassert</code> throws an <code>R</code> exception if object <code>x</code> does
-not comply to at least one of the <code>rules</code> and returns the tested object invisibly
-otherwise.
-<code>qtest</code> behaves the same way but returns <code>FALSE</code> if none of the
-<code>rules</code> comply.
-<code>qexpect</code> is intended to be inside the unit test framework <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/testthat'>testthat</a></code> and
-returns an <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.</p>
-  
       <p>The rule is specified in up to three parts.
 <ol>
 <li>
@@ -267,7 +265,7 @@ of list elements and data frame columns.
       
       <footer>
       <p class="pull-right"><a href="#">Back to top</a></p>
-<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
       </footer>
     </div>
   </body>
