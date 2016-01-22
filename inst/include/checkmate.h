@@ -1,10 +1,9 @@
+#ifndef _CHECKMATE_H_
+#define _CHECKMATE_H_
+
 #include <R.h>
-#include <R_ext/Rdynload.h>
 #include <Rinternals.h>
 #include <Rdefines.h>
-
-#ifndef _CHECKMATE
-#define _CHECKMATE
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,7 +23,7 @@ Rboolean qassert(SEXP x, const char *rule, const char *name) {
   return fun(x, rule, name);
 }
 
-#endif /* _CHECKMATE */
+#endif
 
 #ifdef __cplusplus
 }

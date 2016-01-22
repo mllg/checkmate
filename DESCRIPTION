@@ -20,6 +20,7 @@ Imports:
     utils
 Suggests:
     data.table,
+    devtools,
     dplyr,
     ggplot2,
     knitr,
