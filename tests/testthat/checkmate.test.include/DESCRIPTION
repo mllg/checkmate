@@ -1,0 +1,13 @@
+Package: checkmate.test.include
+Type: Package
+Title: Test registered C functions of checkmate
+Description: Includes "checkmate.h".
+Version: 1.0
+Author: Michel Lang <michellang@gmail.com>
+Maintainer: Michel Lang <michellang@gmail.com>
+NeedsCompilation: yes
+Encoding: UTF-8
+License: GPL2
+Imports: checkmate
+LinkingTo: checkmate
+RoxygenNote: 5.0.1
