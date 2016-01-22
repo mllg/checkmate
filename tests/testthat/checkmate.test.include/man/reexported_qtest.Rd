@@ -4,7 +4,7 @@
 \alias{reexported_qtest}
 \title{Re-export of qtest}
 \usage{
-reexported_qtest(x, rules)
+reexported_qtest(x, rule)
 }
 \arguments{
 \item{x}{See \code{link[checkmate]{qtest}}.}
