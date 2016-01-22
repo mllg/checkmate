@@ -4,7 +4,7 @@
 \alias{reexported_qassert}
 \title{Re-export of qassert}
 \usage{
-reexported_qassert(x, rules, var.name = "x")
+reexported_qassert(x, rule, var.name = "x")
 }
 \arguments{
 \item{x}{See \code{link[checkmate]{qassert}}.}

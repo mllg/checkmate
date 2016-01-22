@@ -16,10 +16,10 @@ Rboolean qtest(SEXP x, const char *rule) {
   return fun(x, rule);
 }
 
-Rboolean qassert(SEXP x, const char *rule, const char *name) {
-  static Rboolean(*fun)(SEXP, const char *, const char *) = NULL;
+SEXP qassert(SEXP x, const char *rule, const char *name) {
+  static SEXP(*fun)(SEXP, const char *, const char *) = NULL;
   if (fun == NULL)
-    fun = (Rboolean(*)(SEXP, const char *, const char *)) R_GetCCallable("checkmate", "qassert");
+    fun = (SEXP(*)(SEXP, const char *, const char *)) R_GetCCallable("checkmate", "qassert");
   return fun(x, rule, name);
 }
 
