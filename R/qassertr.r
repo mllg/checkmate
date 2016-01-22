@@ -13,7 +13,7 @@
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return See details of \code{\link{qassert}}.
+#' @return See \code{\link{qassert}}.
 #' @seealso \code{\link{qtest}}, \code{\link{qassert}}
 #' @useDynLib checkmate c_qassert
 #' @export

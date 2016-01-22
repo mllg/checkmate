@@ -32,7 +32,7 @@ See \code{\link[testthat]{expect_that}}.}
 Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
 }
 \value{
-See details of \code{\link{qassert}}.
+See \code{\link{qassert}}.
 }
 \description{
 These functions are the tuned counterparts of \code{\link{qtest}},

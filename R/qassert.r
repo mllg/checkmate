@@ -11,17 +11,16 @@
 #' @param .var.name [\code{logical(1)}]\cr
 #'  Argument name to print in error message. If missing,
 #'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
-#' @return See details.
+#' @return
+#'  \code{qassert} throws an \code{R} exception if object \code{x} does
+#'  not comply to at least one of the \code{rules} and returns the tested object invisibly
+#'  otherwise.
+#'  \code{qtest} behaves the same way but returns \code{FALSE} if none of the
+#'  \code{rules} comply.
+#'  \code{qexpect} is intended to be inside the unit test framework \code{\link[testthat]{testthat}} and
+#'  returns an \code{\link[testthat]{expectation}}.
 #'
 #' @details
-#' \code{qassert} throws an \code{R} exception if object \code{x} does
-#' not comply to at least one of the \code{rules} and returns the tested object invisibly
-#' otherwise.
-#' \code{qtest} behaves the same way but returns \code{FALSE} if none of the
-#' \code{rules} comply.
-#' \code{qexpect} is intended to be inside the unit test framework \code{\link[testthat]{testthat}} and
-#' returns an \code{\link[testthat]{expectation}}.
-#'
 #' The rule is specified in up to three parts.
 #' \enumerate{
 #'  \item{
