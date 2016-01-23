@@ -1,18 +1,19 @@
-# Version 1.7 (2016-xx-xx)
+# Version 1.7 (2016-01-23)
+* Added alias functions for all functions in CamelCase style, e.g.
+  `assert_numeric` is the new alias for `assertNumeric` and `test_matrix` is the
+  alias for `test_matrix`.
+* All assert functions now invisibly return the tested object instead of `TRUE`
+  and thus can be used with magrittr pipes.
+* Improved speed for most functions by reducing the .Call overhead (Thanks to
+  Hadley Wickham).
+* Added `*DataTable` functions to properly test primary and secondary keys of
+  data tables.
+* Removed `*Percentage` family of functions.
 * Exported functions `makeAssertion`, `makeTest` and `makeExpectation` to assist
   expanding the package with user-generated checks.
 * Added functions `makeAssertionFunction`, `makeTestFunction` and
   `makeExpectationFunction` to automatically create the respective functions
   based on a provided check function.
-* Added `*DataTable` functions to properly test primary and secondary keys of
-  data tables.
-* Added alias functions for all functions in CamelCase style: `assert_*` and
-  `test_*`
-* All assert functions now invisibly return the tested object instead of `TRUE`
-  and thus can be used with magrittr.
-* Removed `*Percentage` family of functions.
-* Improved speed in most functions by reducing the .Call overhead (Thanks to
-  Hadley Wickham).
 
 # Version 1.6.3 (2015-10-23)
 * Assertions can now be collected (via `makeAssertCollection()`) and reported
