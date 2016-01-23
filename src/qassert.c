@@ -398,6 +398,16 @@ static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *resu
     return 0;
 }
 
+/* exported for other packages */
+SEXP qassert(SEXP x, const char *rule, const char *name) {
+    checker_t checker;
+    parse_rule(&checker, rule);
+    msg_t result = check_rule(x, &checker, TRUE);
+    if (!result.ok)
+        error("Variable '%s': %s", name, result.msg);
+    return x;
+}
+
 SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     const Rboolean nrules = length(rules);
     R_len_t failed;
@@ -459,6 +469,13 @@ static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_
     return TRUE;
 }
 
+/* exported for other packages */
+Rboolean qtest(SEXP x, const char *rule) {
+    checker_t checker;
+    parse_rule(&checker, rule);
+    return qtest1(x, &checker, 1);
+}
+
 SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
     const R_len_t nrules = length(rules);
 
@@ -479,22 +496,4 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
     return LOGICAL(recursive)[0] ?
         ScalarLogical(qtest_list(x, checker, nrules)) :
         ScalarLogical(qtest1(x, checker, nrules));
-}
-
-/*********************************************************************************************************************/
-/* exported to be used in other packages                                                                             */
-/*********************************************************************************************************************/
-Rboolean qtest(SEXP x, const char *rule) {
-    checker_t checker;
-    parse_rule(&checker, rule);
-    return qtest1(x, &checker, 1);
-}
-
-SEXP qassert(SEXP x, const char *rule, const char *name) {
-    checker_t checker;
-    parse_rule(&checker, rule);
-    msg_t result = check_rule(x, &checker, TRUE);
-    if (!result.ok)
-        error("Variable '%s': %s", name, result.msg);
-    return x;
 }
