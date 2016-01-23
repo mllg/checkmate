@@ -193,22 +193,29 @@ test_that("checkmate is a sweet extension for testthat", {
 ```
 
 ## Speed considerations
+
 In comparison with tediously writing the checks yourself in R (c.f. factorial example at the beginning of the vignette), R is sometimes a tad faster while performing checks on scalars.
 This seems odd at first, because checkmate is mostly written in C and should be comparably fast.
 Yet many of the functions in the `base` package are not regular functions, but primitives.
 While primitives jump directly into the C code, checkmate has to use the considerably slower `.Call` interface.
-As a result, checks on scalars or small vectors are not necessarily faster with checkmate than with regular R functions (yet you still have to write much more code to implement these checks yourself).
+As a result, it is possible to write (very simple) checks using only the base functions which, under some circumstances, slightly outperform checkmate.
+However, if you go one step further and wrap the custom check into a function to convenient re-use it, the performance gain is often lost (see benchmark 1).
 
 For larger objects the tide has turned because checkmate avoids many unnecessary intermediate variables.
-Here is a small, unrepresentative benchmark.
+Also note that the quick/lazy implementation in `qassert`/`qtest`/`qexpect` is often a tad faster because only two arguments have to be evaluated (the object and the rule) to determine the set of checks to perform.
+
+Below you find some (probably unrepresentative) benchmark.
 But also note that this one here has been executed from inside `knitr` which is often the cause for outliers in the measured execution time.
 Better run the benchmark yourself to get unbiased results.
 
+
 ### Benchmark 1: Assert that `x` is a flag
+
 ```{r,dev="svg",fig.width=6,fig.height=4}
 library(ggplot2)
 library(microbenchmark)
 
+x = TRUE
 r = function(x, na.ok = FALSE) { stopifnot(is.logical(x), length(x) == 1, na.ok || !is.na(x)) }
 cm = function(x) assertFlag(x)
 cmq = function(x) qassert(x, "B1")
@@ -217,7 +224,9 @@ print(mb)
 autoplot(mb)
 ```
 
+
 ### Benchmark 2: Assert that `x` is a numeric of length 1000 with no missing nor NaN values
+
 ```{r,dev="svg",fig.width=6,fig.height=4}
 x = runif(1000)
 r = function(x) stopifnot(is.numeric(x) && length(x) == 1000 && all(!is.na(x) & x >= 0 & x <= 1))
@@ -228,7 +237,9 @@ print(mb)
 autoplot(mb)
 ```
 
+
 ### Benchmark 3: Assert that `x` is a character vector with no missing values nor empty strings
+
 ```{r,dev="svg",fig.width=6,fig.height=4}
 x = sample(letters, 10000, replace = TRUE)
 r = function(x) stopifnot(is.character(x) && !any(is.na(x)) && all(nzchar(x)))
@@ -239,9 +250,11 @@ print(mb)
 autoplot(mb)
 ```
 
+
 ### Benchmark 4: Assert that `x` is a data frame with no missing values
+
 ```{r,dev="svg",fig.width=6,fig.height=4}
-N = 1000
+N = 10000
 x = data.frame(a = runif(N), b = sample(letters[1:5], N, replace = TRUE), c = sample(c(FALSE, TRUE), N, replace = TRUE))
 r = function(x) is.data.frame(x) && !any(sapply(x, function(x) any(is.na(x))))
 cm = function(x) testDataFrame(x, any.missing = FALSE)
@@ -252,13 +265,13 @@ autoplot(mb)
 
 # checkmate tries to stop as early as possible
 x$a[1] = NA
-mb = microbenchmark(r(x), cm1(x), cm2(x))
+mb = microbenchmark(r(x), cm(x), cmq(x))
 print(mb)
 autoplot(mb)
 ```
 
-
 ## Calling checkmate from C/C++
+
 The package registers two functions which can be used in other packages' C/C++ code for argument checks.
 ```{c,eval=FALSE}
 SEXP qassert(SEXP x, const char *rule, const char *name);
