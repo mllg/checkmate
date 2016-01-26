@@ -22,4 +22,4 @@ A substantial part of the package was written in C to **minimize any worries abo
 Furthermore, the package provides over 30 expectations to extend the popular [testthat package](http://cran.r-project.org/package=testthat) for unit tests.
 
 For a more detailed introduction, consult the [package vignette](https://mllg.github.io/checkmate/vignettes/checkmate.html)
-or the [manual](https://mllg.github.io/checkmate/). Changes are summarized in the [NEWS](NEWS.md).
+or the [manual](https://mllg.github.io/checkmate/). Changes are summarized in the [NEWS](https://github.com/mllg/checkmate/blob/master/inst/NEWS.md).
