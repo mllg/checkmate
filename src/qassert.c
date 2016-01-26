@@ -292,6 +292,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
         if (checker->lower.op == GT) {
             checker->lower.fun = &dd_ne;
             checker->lower.cmp = R_NegInf;
+            checker->lower.op  = NE;
         } else {
             checker->lower.fun = NULL;
         }
@@ -308,13 +309,14 @@ static int parse_bounds(checker_t *checker, const char *rule) {
 
     cmp = strtod(start, &end);
     if (*end == ')') {
-        checker->upper.op = LT;
         if (start == end) {
             checker->upper.fun = &dd_ne;
             checker->upper.cmp = R_PosInf;
+            checker->upper.op = NE;
         } else {
             checker->upper.fun = &dd_lt;
             checker->upper.cmp = cmp;
+            checker->upper.op = LT;
         }
     } else if (*end == ']') {
         if (start == end) {
@@ -322,6 +324,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
         } else {
             checker->upper.fun = &dd_le;
             checker->upper.cmp = cmp;
+            checker->upper.op = LE;
         }
     } else {
         error("Invalid bound definition, error parsing upper bound or missing closing ')' or ']': %s", rule);
