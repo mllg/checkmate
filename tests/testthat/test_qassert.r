@@ -91,13 +91,21 @@ test_that("length", {
 
 test_that("bounds", {
   xx = 1:3
-  expect_succ_all(xx, "i+[1,3]")
   expect_succ_all(xx, "i+(0,4)")
   expect_succ_all(xx, "i+(0.9999,3.0001)")
   expect_succ_all(xx, "i+(0,1e2)")
-  expect_fail_all(xx, "i+(1,3]")
-  expect_fail_all(xx, "i+[1,3)")
   expect_succ_all(1, "n[0, 100]")
+
+  expect_fail_all(xx, "i+[1,2)")
+  expect_fail_all(xx, "i+[1,2]")
+  expect_fail_all(xx, "i+[1,3)")
+  expect_succ_all(xx, "i+[1,3]")
+
+  expect_fail_all(xx, "i+(2,3]")
+  expect_fail_all(xx, "i+[2,2]")
+  expect_fail_all(xx, "i+(1,3)")
+  expect_succ_all(xx, "i+[1,3]")
+
 
   expect_succ_all(xx, "i[1,)")
   expect_succ_all(xx, "i[,3]")
