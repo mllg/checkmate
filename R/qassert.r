@@ -64,12 +64,13 @@
 #'  \item{
 #'    Range check as two numbers separated by a comma, enclosed by square brackets
 #'    (endpoint included) or parentheses (endpoint excluded).
-#'    For example, \dQuote{[0, 3)} would trigger the check \code{all(x >= 0 & x < 3)}.
-#'    Endpoints may be omitted which is the equivalent of an infinite endpoint.
+#'    For example, \dQuote{[0, 3)} results in \code{all(x >= 0 & x < 3)}.
+#'    The lower and upper bound may be omitted which is the equivalent of a negative or
+#'    positive infinite bound, respectively.
 #'    By definition \code{[0,]} contains \code{Inf}, while \code{[0,)} does not.
-#'    The same holds for the left (lower) endpoint and \code{-Inf}.
+#'    The same holds for the left (lower) boundary and \code{-Inf}.
 #'    E.g., the rule \dQuote{N1()} checks for a single finite numeric which is not NA,
-#'    while \dQuote{N1[)} would allow \code{-Inf}.
+#'    while \dQuote{N1[)} allows \code{-Inf}.
 #'  }
 #' }
 #' @note

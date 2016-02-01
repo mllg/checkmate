@@ -1,4 +1,4 @@
-#' Check if an argument is a single numeric
+#' Check if an argument is a single numeric value
 #'
 #' @templateVar fn Number
 #' @template x
