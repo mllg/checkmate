@@ -243,9 +243,16 @@ test_that("logicals are not numeric", {
   expect_fail_all(TRUE, "N")
 })
 
-test_that("qexpect works", {
-  expect_fail_all(TRUE, "i")
-  expect_fail_all(TRUE, "I")
-  expect_fail_all(TRUE, "n")
-  expect_fail_all(TRUE, "N")
+test_that("error messages are properly generated", {
+  expect_error(qassert(1, "N22"), "== 22")
+  expect_error(qassert(1:3, "N?"), "<= 1")
+  expect_error(qassert(integer(0), "N+"), ">= 1")
+
+  expect_error(qassert(1, "N[2,]"), ">= 2")
+  expect_error(qassert(1, "N(2,]"), "> 2")
+  expect_error(qassert(1, "N[,0]"), "<= 0")
+  expect_error(qassert(1, "N[,0)"), "< 0")
+
+  expect_error(qassert(Inf, "N[)"), "!= inf")
+  expect_error(qassert(-Inf, "N(]"), "!= -inf")
 })
