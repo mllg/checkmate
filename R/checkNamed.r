@@ -26,7 +26,7 @@ checkNamed = function(x, type = "named") {
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkNamed
-assertNamed = makeAssertionFunction(checkNamed)
+assertNamed = makeAssertionFunction(checkNamed, c.fun = "c_check_named")
 
 #' @export
 #' @rdname checkNamed
@@ -35,7 +35,7 @@ assert_named = assertNamed
 #' @export
 #' @include makeTest.r
 #' @rdname checkNamed
-testNamed = makeTestFunction(checkNamed)
+testNamed = makeTestFunction(checkNamed, c.fun = "c_check_named")
 
 #' @export
 #' @rdname checkNamed
@@ -46,4 +46,4 @@ test_named = testNamed
 # #' @include makeExpectation.r
 # #' @template expect
 # #' @rdname checkNamed
-expect_named = makeExpectationFunction(checkNamed)
+expect_named = makeExpectationFunction(checkNamed, c.fun = "c_check_named")

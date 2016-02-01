@@ -38,7 +38,7 @@ checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkVector
-assertVector = makeAssertionFunction(checkVector)
+assertVector = makeAssertionFunction(checkVector, c.fun = "c_check_vector")
 
 #' @export
 #' @rdname checkVector
@@ -47,7 +47,7 @@ assert_vector = assertVector
 #' @export
 #' @include makeTest.r
 #' @rdname checkVector
-testVector = makeTestFunction(checkVector)
+testVector = makeTestFunction(checkVector, c.fun = "c_check_vector")
 
 #' @export
 #' @rdname checkVector
@@ -57,4 +57,4 @@ test_vector = testVector
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkVector
-expect_vector = makeExpectationFunction(checkVector)
+expect_vector = makeExpectationFunction(checkVector, c.fun = "c_check_vector")

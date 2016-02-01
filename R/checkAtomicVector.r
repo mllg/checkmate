@@ -40,7 +40,7 @@ checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NU
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkAtomicVector
-assertAtomicVector = makeAssertionFunction(checkAtomicVector)
+assertAtomicVector = makeAssertionFunction(checkAtomicVector, c.fun = "c_check_atomic_vector")
 
 #' @export
 #' @rdname checkAtomicVector
@@ -49,7 +49,7 @@ assert_atomic_vector = assertAtomicVector
 #' @export
 #' @include makeTest.r
 #' @rdname checkAtomicVector
-testAtomicVector = makeTestFunction(checkAtomicVector)
+testAtomicVector = makeTestFunction(checkAtomicVector, c.fun = "c_check_atomic_vector")
 
 #' @export
 #' @rdname checkAtomicVector
@@ -59,4 +59,4 @@ test_atomic_vector = testAtomicVector
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkAtomicVector
-expect_atomic_vector = makeExpectationFunction(checkAtomicVector)
+expect_atomic_vector = makeExpectationFunction(checkAtomicVector, c.fun = "c_check_atomic_vector")

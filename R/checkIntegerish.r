@@ -22,7 +22,7 @@ checkIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upp
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkIntegerish
-assertIntegerish = makeAssertionFunction(checkIntegerish)
+assertIntegerish = makeAssertionFunction(checkIntegerish, c.fun = "c_check_integerish")
 
 #' @export
 #' @rdname checkIntegerish
@@ -31,7 +31,7 @@ assert_integerish = assertIntegerish
 #' @export
 #' @include makeTest.r
 #' @rdname checkIntegerish
-testIntegerish = makeTestFunction(checkIntegerish)
+testIntegerish = makeTestFunction(checkIntegerish, c.fun = "c_check_integerish")
 
 #' @export
 #' @rdname checkIntegerish
@@ -41,4 +41,4 @@ test_integerish = testIntegerish
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkIntegerish
-expect_integerish = makeExpectationFunction(checkIntegerish)
+expect_integerish = makeExpectationFunction(checkIntegerish, c.fun = "c_check_integerish")

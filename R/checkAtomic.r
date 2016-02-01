@@ -23,7 +23,7 @@ checkAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkAtomic
-assertAtomic = makeAssertionFunction(checkAtomic)
+assertAtomic = makeAssertionFunction(checkAtomic, c.fun = "c_check_atomic")
 
 #' @export
 #' @rdname checkAtomic
@@ -32,7 +32,7 @@ assert_atomic = assertAtomic
 #' @export
 #' @include makeTest.r
 #' @rdname checkAtomic
-testAtomic = makeTestFunction(checkAtomic)
+testAtomic = makeTestFunction(checkAtomic, c.fun = "c_check_atomic")
 
 #' @export
 #' @rdname checkAtomic
@@ -42,4 +42,4 @@ test_atomic = testAtomic
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkAtomic
-expect_atomic = makeExpectationFunction(checkAtomic)
+expect_atomic = makeExpectationFunction(checkAtomic, c.fun = "c_check_atomic")

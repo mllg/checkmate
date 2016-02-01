@@ -23,7 +23,7 @@ checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FAL
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkNumber
-assertNumber = makeAssertionFunction(checkNumber)
+assertNumber = makeAssertionFunction(checkNumber, c.fun = "c_check_number")
 
 #' @export
 #' @rdname checkNumber
@@ -32,7 +32,7 @@ assert_number = assertNumber
 #' @export
 #' @include makeTest.r
 #' @rdname checkNumber
-testNumber = makeTestFunction(checkNumber)
+testNumber = makeTestFunction(checkNumber, c.fun = "c_check_number")
 
 #' @export
 #' @rdname checkNumber
@@ -42,4 +42,4 @@ test_number = testNumber
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkNumber
-expect_number = makeExpectationFunction(checkNumber)
+expect_number = makeExpectationFunction(checkNumber, c.fun = "c_check_number")

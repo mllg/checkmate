@@ -22,7 +22,7 @@ checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.mi
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkInteger
-assertInteger = makeAssertionFunction(checkInteger)
+assertInteger = makeAssertionFunction(checkInteger, c.fun = "c_check_integer")
 
 #' @export
 #' @rdname checkInteger
@@ -31,7 +31,7 @@ assert_integer = assertInteger
 #' @export
 #' @include makeTest.r
 #' @rdname checkInteger
-testInteger = makeTestFunction(checkInteger)
+testInteger = makeTestFunction(checkInteger, c.fun = "c_check_integer")
 
 #' @export
 #' @rdname checkInteger
@@ -41,4 +41,4 @@ test_integer = testInteger
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkInteger
-expect_integer = makeExpectationFunction(checkInteger)
+expect_integer = makeExpectationFunction(checkInteger, c.fun = "c_check_integer")

@@ -22,7 +22,7 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkInt
-assertInt = makeAssertionFunction(checkInt)
+assertInt = makeAssertionFunction(checkInt, c.fun = "c_check_int")
 
 #' @export
 #' @rdname checkInt
@@ -31,7 +31,7 @@ assert_int = assertInt
 #' @export
 #' @include makeTest.r
 #' @rdname checkInt
-testInt = makeTestFunction(checkInt)
+testInt = makeTestFunction(checkInt, c.fun = "c_check_int")
 
 #' @export
 #' @rdname checkInt
@@ -41,4 +41,4 @@ test_int = testInt
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkInt
-expect_int = makeExpectationFunction(checkInt)
+expect_int = makeExpectationFunction(checkInt, c.fun = "c_check_int")

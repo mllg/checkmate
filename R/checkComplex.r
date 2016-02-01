@@ -19,7 +19,7 @@ checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkComplex
-assertComplex = makeAssertionFunction(checkComplex)
+assertComplex = makeAssertionFunction(checkComplex, c.fun = "c_check_complex")
 
 #' @export
 #' @rdname checkComplex
@@ -28,7 +28,7 @@ assert_complex = assertComplex
 #' @export
 #' @include makeTest.r
 #' @rdname checkComplex
-testComplex = makeTestFunction(checkComplex)
+testComplex = makeTestFunction(checkComplex, c.fun = "c_check_complex")
 
 #' @export
 #' @rdname checkComplex
@@ -38,4 +38,4 @@ test_complex = testComplex
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkComplex
-expect_complex = makeExpectationFunction(checkComplex)
+expect_complex = makeExpectationFunction(checkComplex, c.fun = "c_check_complex")

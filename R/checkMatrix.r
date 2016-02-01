@@ -39,7 +39,7 @@ checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, m
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkMatrix
-assertMatrix = makeAssertionFunction(checkMatrix)
+assertMatrix = makeAssertionFunction(checkMatrix, c.fun = "c_check_matrix")
 
 #' @export
 #' @rdname checkMatrix
@@ -48,7 +48,7 @@ assert_matrix = assertMatrix
 #' @export
 #' @include makeTest.r
 #' @rdname checkMatrix
-testMatrix = makeTestFunction(checkMatrix)
+testMatrix = makeTestFunction(checkMatrix, c.fun = "c_check_matrix")
 
 #' @export
 #' @rdname checkMatrix
@@ -58,4 +58,4 @@ test_matrix = testMatrix
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkMatrix
-expect_matrix = makeExpectationFunction(checkMatrix)
+expect_matrix = makeExpectationFunction(checkMatrix, c.fun = "c_check_matrix")

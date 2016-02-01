@@ -39,19 +39,20 @@ makeExpectation = function(x, res, info = NULL, label = NULL) {
 }
 
 #' @rdname makeExpectation
-#' @param check.fun [\code{function}]\cr
-#'  Function which checks the input. Must return \code{TRUE} on success and a string with the error message otherwise.
-#' @param env [\code{environment}]\cr
-#'  The environment of the created function. Default is the \code{\link[base]{parent.frame}}.
+#' @template makeFunction
 #' @export
-makeExpectationFunction = function(check.fun, env = parent.frame()) {
+makeExpectationFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
 
   new.fun = function() TRUE
   formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = NULL))
   tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
-  body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
+  if (is.null(c.fun)) {
+    body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
+  } else {
+    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(formals(check.fun))), collapse = ", ")))
+  }
   environment(new.fun) = env
   return(new.fun)
 }
