@@ -19,7 +19,7 @@ checkLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkLogical
-assertLogical = makeAssertionFunction(checkLogical)
+assertLogical = makeAssertionFunction(checkLogical, c.fun = "c_check_logical")
 
 #' @export
 #' @rdname checkLogical
@@ -28,7 +28,7 @@ assert_logical = assertLogical
 #' @export
 #' @include makeTest.r
 #' @rdname checkLogical
-testLogical = makeTestFunction(checkLogical)
+testLogical = makeTestFunction(checkLogical, c.fun = "c_check_logical")
 
 #' @export
 #' @rdname checkLogical
@@ -38,4 +38,4 @@ test_logical = testLogical
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkLogical
-expect_logical = makeExpectationFunction(checkLogical)
+expect_logical = makeExpectationFunction(checkLogical, c.fun = "c_check_logical")

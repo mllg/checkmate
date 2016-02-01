@@ -27,7 +27,7 @@ checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$do
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkCount
-assertCount = makeAssertionFunction(checkCount)
+assertCount = makeAssertionFunction(checkCount, c.fun = "c_check_count")
 
 #' @export
 #' @rdname checkCount
@@ -36,7 +36,7 @@ assert_count = assertCount
 #' @export
 #' @include makeTest.r
 #' @rdname checkCount
-testCount = makeTestFunction(checkCount)
+testCount = makeTestFunction(checkCount, c.fun = "c_check_count")
 
 #' @export
 #' @rdname checkCount
@@ -46,4 +46,4 @@ test_count = testCount
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkCount
-expect_count = makeExpectationFunction(checkCount)
+expect_count = makeExpectationFunction(checkCount, c.fun = "c_check_count")

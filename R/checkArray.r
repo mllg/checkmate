@@ -28,7 +28,7 @@ checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkArray
-assertArray = makeAssertionFunction(checkArray)
+assertArray = makeAssertionFunction(checkArray, c.fun = "c_check_array")
 
 #' @export
 #' @rdname checkArray
@@ -37,7 +37,7 @@ assert_array = assertArray
 #' @export
 #' @include makeTest.r
 #' @rdname checkArray
-testArray = makeTestFunction(checkArray)
+testArray = makeTestFunction(checkArray, c.fun = "c_check_array")
 
 #' @export
 #' @rdname checkArray
@@ -47,4 +47,4 @@ test_array = testArray
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkArray
-expect_array = makeExpectationFunction(checkArray)
+expect_array = makeExpectationFunction(checkArray, c.fun = "c_check_array")

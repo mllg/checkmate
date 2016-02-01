@@ -23,7 +23,7 @@ checkFlag = function(x, na.ok = FALSE) {
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkFlag
-assertFlag = makeAssertionFunction(checkFlag)
+assertFlag = makeAssertionFunction(checkFlag, c.fun = "c_check_flag")
 
 #' @export
 #' @rdname checkFlag
@@ -32,7 +32,7 @@ assert_flag = assertFlag
 #' @export
 #' @include makeTest.r
 #' @rdname checkFlag
-testFlag = makeTestFunction(checkFlag)
+testFlag = makeTestFunction(checkFlag, c.fun = "c_check_flag")
 
 #' @export
 #' @rdname checkFlag
@@ -42,4 +42,4 @@ test_flag = testFlag
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkFlag
-expect_flag = makeExpectationFunction(checkFlag)
+expect_flag = makeExpectationFunction(checkFlag, c.fun = "c_check_flag")

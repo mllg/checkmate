@@ -23,7 +23,7 @@ checkString = function(x, na.ok = FALSE) {
 #' @include makeAssertion.r
 #' @template assert
 #' @rdname checkString
-assertString = makeAssertionFunction(checkString)
+assertString = makeAssertionFunction(checkString, c.fun = "c_check_string")
 
 #' @export
 #' @rdname checkString
@@ -32,7 +32,7 @@ assert_string = assertString
 #' @export
 #' @include makeTest.r
 #' @rdname checkString
-testString = makeTestFunction(checkString)
+testString = makeTestFunction(checkString, c.fun = "c_check_string")
 
 #' @export
 #' @rdname checkString
@@ -42,4 +42,4 @@ test_string = testString
 #' @include makeExpectation.r
 #' @template expect
 #' @rdname checkString
-expect_string = makeExpectationFunction(checkString)
+expect_string = makeExpectationFunction(checkString, c.fun = "c_check_string")
