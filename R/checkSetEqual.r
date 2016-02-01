@@ -1,4 +1,4 @@
-#' Check if object is a subset of a given set
+#' Check if an argument is equal to a given set
 #'
 #' @templateVar fn Subset
 #' @template x

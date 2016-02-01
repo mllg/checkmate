@@ -7,7 +7,7 @@
 \alias{expect_number}
 \alias{testNumber}
 \alias{test_number}
-\title{Check if an argument is a single numeric}
+\title{Check if an argument is a single numeric value}
 \usage{
 checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
@@ -65,7 +65,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if an argument is a single numeric
+Check if an argument is a single numeric value
 }
 \details{
 This function does not distinguish between

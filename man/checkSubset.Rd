@@ -7,7 +7,7 @@
 \alias{expect_subset}
 \alias{testSubset}
 \alias{test_subset}
-\title{Check if object is a subset of a given set}
+\title{Check if an argument is a subset of a given set}
 \usage{
 checkSubset(x, choices, empty.ok = TRUE)
 
@@ -57,7 +57,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if object is a subset of a given set
+Check if an argument is a subset of a given set
 }
 \examples{
 testSubset(c("a", "z"), letters)

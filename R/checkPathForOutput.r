@@ -1,7 +1,7 @@
-#' @title Check file path for later output
+#' @title Check if a path is suited for creating an output file
 #'
 #' @description
-#' Check whether a file path can later be safely used to create a file and write to it.
+#' Check if a file path can be safely be used to create a file and write to it.
 #'
 #' This is checked:
 #' \itemize{

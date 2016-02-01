@@ -7,7 +7,7 @@
 \alias{expect_set_equal}
 \alias{testSetEqual}
 \alias{test_set_equal}
-\title{Check if object is a subset of a given set}
+\title{Check if an argument is equal to a given set}
 \usage{
 checkSetEqual(x, y, ordered = FALSE)
 
@@ -58,7 +58,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if object is a subset of a given set
+Check if an argument is equal to a given set
 }
 \examples{
  testSetEqual(c("a", "b"), c("a", "b"))

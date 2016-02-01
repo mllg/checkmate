@@ -18,15 +18,23 @@
 #' @useDynLib checkmate c_qassert
 #' @export
 #' @examples
+#' # All list elements are integers with length >= 1?
 #' qtestr(as.list(1:10), "i+")
+#'
+#' # All list elements (i.e. data frame columns) are numeric?
 #' qtestr(iris, "n")
+#'
+#' # All list elements are numeric, w/o NAs?
+#' qtestr(list(a = 1:3, b = rnorm(1), c = letters), "N+")
+#'
+#' # All list elements are numeric OR character
+#' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
 qassertr = function(x, rules, .var.name) {
   res = .Call(c_qassert, x, rules, TRUE)
   if (!isTRUE(res))
     mstop(qamsg(x, res, .var.name, recursive = TRUE))
   invisible(x)
 }
-
 
 #' @rdname qassertr
 #' @useDynLib checkmate c_qtest
@@ -35,10 +43,10 @@ qtestr = function(x, rules) {
   .Call(c_qtest, x, rules, TRUE)
 }
 
-#' @useDynLib checkmate c_qassert
-#' @template expect
 #' @rdname qassertr
+#' @template expect
 #' @include makeExpectation.r
+#' @useDynLib checkmate c_qassert
 #' @export
 qexpectr = function(x, rules, info = NULL, label = NULL) {
   res = .Call(c_qassert, x, rules, TRUE)

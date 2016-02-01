@@ -1,4 +1,4 @@
-#' Check argument inheritance
+#' Check the class membership of an argument
 #'
 #' @templateVar fn Class
 #' @template x

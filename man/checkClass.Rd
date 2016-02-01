@@ -7,7 +7,7 @@
 \alias{expect_class}
 \alias{testClass}
 \alias{test_class}
-\title{Check argument inheritance}
+\title{Check the class membership of an argument}
 \usage{
 checkClass(x, classes, ordered = FALSE)
 
@@ -57,7 +57,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check argument inheritance
+Check the class membership of an argument
 }
 \examples{
 # Create an object with classes "foo" and "bar"
