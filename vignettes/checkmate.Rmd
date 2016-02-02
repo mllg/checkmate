@@ -164,9 +164,9 @@ You can use [assert](https://mllg.github.io/checkmate/assert) to perform multipl
 
 ## Argument Checks for the Lazy
 
-The following functions allow a special syntax to define argument checks using a special pattern.
+The following functions allow a special syntax to define argument checks using a special format specification.
 E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one element and no missing values.
-This provide a completely alternative mini-language (or style) how to perform argument checks.
+This very simple domain specific language covers a large variety of frequent argument checks with only a few keystrokes.
 You choose what you like best.
 
 * [qassert](https://mllg.github.io/checkmate/qassert)
@@ -242,7 +242,7 @@ autoplot(mb)
 
 ```{r,dev="svg",fig.width=6,fig.height=4}
 x = sample(letters, 10000, replace = TRUE)
-r = function(x) stopifnot(is.character(x) && !any(is.na(x)) && all(nzchar(x)))
+r = function(x) stopifnot(is.character(x) && !any(is.na(x)) && all(nchar(x) > 0))
 cm = function(x) assertCharacter(x, any.missing = FALSE, min.chars = 1)
 cmq = function(x) qassert(x, "S+[1,]")
 mb = microbenchmark(r(x), cm(x), cmq(x))

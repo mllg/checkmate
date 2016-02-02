@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>asInteger. checkmate 1.7.1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">checkmate 1.7.1</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Convert an argument to an integer</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>asInteger(x, ..., tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>asCount(x, na.ok&nbsp;=&nbsp;FALSE, positive&nbsp;=&nbsp;FALSE, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>asInt(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object to convert.</dd>
+      <dt>...</dt>
+      <dd>[any]
+Additional arguments passed to <code><a href='checkIntegerish.html'>assertIntegerish</a></code>.</dd>
+      <dt>tol</dt>
+      <dd>[<code>double(1)</code>]
+Numerical tolerance used to check whether a double or complex can be converted.
+Default is <code>sqrt(.Machine$double.eps)</code>.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>.var.name</dt>
+      <dd>[character(1)]
+Name for <code>x</code>. Defaults to a heuristic to determine
+the name using <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dt>na.ok</dt>
+      <dd>[<code>logical(1)</code>]
+Are missing values allowed? Default is <code>FALSE</code>.</dd>
+      <dt>positive</dt>
+      <dd>[<code>logical(1)</code>]
+Must <code>x</code> be positive (>= 1)?
+Default is <code>FALSE</code>.</dd>
+      <dt>lower</dt>
+      <dd>[<code>numeric(1)</code>]
+Lower value all elements of <code>x</code> must be greater than.</dd>
+      <dt>upper</dt>
+      <dd>[<code>numeric(1)</code>]
+Upper value all elements of <code>x</code> must be lower than.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Converted <code>x</code>.
+</dl></p>
+  
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p><code>asInteger</code> is intended to be used for vectors while <code>asInt</code> is
+a specialization for scalar integers and <code>asCount</code> for scalar
+non-negative integers.
+Convertible are (a) atomic vectors with all elements <code>NA</code>
+and (b) double vectors with all elements being within <code>tol</code>
+range of an integer.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'>asInteger(c(1, 2, 3))
+</div>
+<div class='output'>[1] 1 2 3
+</div>
+<div class='input'>asCount(1)
+</div>
+<div class='output'>[1] 1
+</div>
+<div class='input'>asInt(1)
+</div>
+<div class='output'>[1] 1
+</div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>asCount</li><li>asInt</li><li>asInteger</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
