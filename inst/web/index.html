@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>Index. checkmate 1.7</title>
+<title>Index. checkmate 1.7.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Michel Lang &lt;michellang@gmail.com&gt;,
 Bernd Bischl &lt;bernd_bischl@gmx.net&gt;">
@@ -33,7 +33,7 @@ Bernd Bischl &lt;bernd_bischl@gmx.net&gt;">
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7</a>
+      <a class="brand" href="#">checkmate 1.7.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -74,7 +74,7 @@ A substantial part of the package was written in C to <strong>minimize any worri
 Furthermore, the package provides over 30 expectations to extend the popular <a href="http://cran.r-project.org/package=testthat">testthat package</a> for unit tests.</p>
 
 <p>For a more detailed introduction, consult the <a href="https://mllg.github.io/checkmate/vignettes/checkmate.html">package vignette</a>
-or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
+or the <a href="https://mllg.github.io/checkmate/">manual</a>. Changes are summarized in the <a href="https://github.com/mllg/checkmate/blob/master/inst/NEWS.md">NEWS</a>.</p>
 
 
     <h2>Help topics</h2>
@@ -86,6 +86,9 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
         
       <li>
         <code><a href="coalesce.html">%??%</a></code><br />Coalesce operator</li>
+            
+      <li>
+        <code><a href="AssertCollection.html">AssertCollection</a></code>(makeAssertCollection, reportAssertions)<br />Collect multiple assertions</li>
             
       <li>
         <code><a href="anyMissing.html">allMissing</a></code>(anyMissing)<br />Check if an object contains missing values</li>
@@ -101,9 +104,6 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
             
       <li>
         <code><a href="assert.html">assert</a></code><br />Combine multiple checks into one assertion</li>
-            
-      <li>
-        <code><a href="AssertCollection.html">AssertCollection</a></code>(makeAssertCollection, reportAssertions)<br />Collect multiple assertions</li>
             
       <li>
         <code><a href="checkAccess.html">checkAccess</a></code>(assertAccess, assert_access, expect_access, testAccess, test_access)<br />Check file system access rights</li>
@@ -124,7 +124,7 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
         <code><a href="checkChoice.html">checkChoice</a></code>(assertChoice, assert_choice, expect_choice, testChoice, test_choice)<br />Check if an object is an element of a given set</li>
             
       <li>
-        <code><a href="checkClass.html">checkClass</a></code>(assertClass, assert_class, expect_class, testClass, test_class)<br />Check argument inheritance</li>
+        <code><a href="checkClass.html">checkClass</a></code>(assertClass, assert_class, expect_class, testClass, test_class)<br />Check the class membership of an argument</li>
             
       <li>
         <code><a href="checkComplex.html">checkComplex</a></code>(assertComplex, assert_complex, expect_complex, testComplex, test_complex)<br />Check if an argument is a vector of type complex</li>
@@ -172,9 +172,6 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
         <code><a href="checkLogical.html">checkLogical</a></code>(assertLogical, assert_logical, expect_logical, testLogical, test_logical)<br />Check if an argument is a vector of type logical</li>
             
       <li>
-        <code><a href="checkmate-package.html">checkmate-package</a></code>(checkmate)<br />Fast and Versatile Argument Checks</li>
-            
-      <li>
         <code><a href="checkMatrix.html">checkMatrix</a></code>(assertMatrix, assert_matrix, expect_matrix, testMatrix, test_matrix)<br />Check if an argument is a matrix</li>
             
       <li>
@@ -187,13 +184,13 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
         <code><a href="checkNull.html">checkNull</a></code>(assertNull, assert_null, testNull, test_null)<br />Check if an argument is NULL</li>
             
       <li>
-        <code><a href="checkNumber.html">checkNumber</a></code>(assertNumber, assert_number, expect_number, testNumber, test_number)<br />Check if an argument is a single numeric</li>
+        <code><a href="checkNumber.html">checkNumber</a></code>(assertNumber, assert_number, expect_number, testNumber, test_number)<br />Check if an argument is a single numeric value</li>
             
       <li>
         <code><a href="checkNumeric.html">checkNumeric</a></code>(assertNumeric, assert_numeric, expect_numeric, testNumeric, test_numeric)<br />Check that an argument is a vector of type numeric</li>
             
       <li>
-        <code><a href="checkPathForOutput.html">checkPathForOutput</a></code>(assertPathForOutput, assert_path_for_output, expect_path_for_output, testPathForOutput, test_path_for_output)<br />Check file path for later output</li>
+        <code><a href="checkPathForOutput.html">checkPathForOutput</a></code>(assertPathForOutput, assert_path_for_output, expect_path_for_output, testPathForOutput, test_path_for_output)<br />Check if a path is suited for creating an output file</li>
             
       <li>
         <code><a href="checkScalar.html">checkScalar</a></code>(assertScalar, assert_scalar, expect_scalar, testScalar, test_scalar)<br />Check if an argument is a single atomic value</li>
@@ -202,16 +199,19 @@ or the <a href="https://mllg.github.io/checkmate/">manual</a>.</p>
         <code><a href="checkScalarNA.html">checkScalarNA</a></code>(assertScalarNA, assert_scalar_na, expect_scalar_na, testScalarNA, test_scalar_na)<br />Check if an argument is a single missing value</li>
             
       <li>
-        <code><a href="checkSetEqual.html">checkSetEqual</a></code>(assertSetEqual, assert_set_equal, expect_set_equal, testSetEqual, test_set_equal)<br />Check if object is a subset of a given set</li>
+        <code><a href="checkSetEqual.html">checkSetEqual</a></code>(assertSetEqual, assert_set_equal, expect_set_equal, testSetEqual, test_set_equal)<br />Check if an argument is equal to a given set</li>
             
       <li>
         <code><a href="checkString.html">checkString</a></code>(assertString, assert_string, expect_string, testString, test_string)<br />Check if an argument is a string</li>
             
       <li>
-        <code><a href="checkSubset.html">checkSubset</a></code>(assertSubset, assert_subset, expect_subset, testSubset, test_subset)<br />Check if object is a subset of a given set</li>
+        <code><a href="checkSubset.html">checkSubset</a></code>(assertSubset, assert_subset, expect_subset, testSubset, test_subset)<br />Check if an argument is a subset of a given set</li>
             
       <li>
         <code><a href="checkVector.html">checkVector</a></code>(assertVector, assert_vector, expect_vector, testVector, test_vector)<br />Check if an argument is a vector</li>
+            
+      <li>
+        <code><a href="checkmate-package.html">checkmate-package</a></code>(checkmate)<br />Fast and Versatile Argument Checks</li>
             
       <li>
         <code><a href="makeAssertion.html">makeAssertion</a></code>(makeAssertionFunction)<br />Turn a Check into an Assertion</li>

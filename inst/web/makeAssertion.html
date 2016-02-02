@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>makeAssertion. checkmate 1.7</title>
+<title>makeAssertion. checkmate 1.7.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7</a>
+      <a class="brand" href="#">checkmate 1.7.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -53,7 +53,7 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>makeAssertion(x, res, var.name, collection)</div>
-<div>makeAssertionFunction(check.fun, env&nbsp;=&nbsp;parent.frame())</div></pre>
+<div>makeAssertionFunction(check.fun, c.fun&nbsp;=&nbsp;NULL, env&nbsp;=&nbsp;parent.frame())</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -75,6 +75,11 @@ in it. If <code>NULL</code> (default), an exception is raised if <code>res</code
       <dt>check.fun</dt>
       <dd>[<code>function</code>]
 Function which checks the input. Must return <code>TRUE</code> on success and a string with the error message otherwise.</dd>
+      <dt>c.fun</dt>
+      <dd>[<code>character(1)</code>]
+If not <code>NULL</code>, instead of calling the function <code>check.fun</code>, use <code>.Call</code> to call a C function &#147;c.fun&#148; with the identical
+set of parameters. The C function must be registered as a native symbol, see <code><a href='http://www.inside-r.org/r-doc/base/CallExternal'>.Call</a></code>.
+Useful if <code>check.fun</code> is just a simple wrapper.</dd>
       <dt>env</dt>
       <dd>[<code>environment</code>]
 The environment of the created function. Default is the <code><a href='http://www.inside-r.org/r-doc/base/sys.parent'>parent.frame</a></code>.</dd>
@@ -120,7 +125,7 @@ print(assertFalse)
     res = checkFalse(x)
     makeAssertion(x, res, .var.name, add)
 }
-&lt;environment: 0x7fd81fe3cb50&gt;
+&lt;environment: 0x3d7b4b0&gt;
 </div></pre>
   </div>
   <div class="span4">
