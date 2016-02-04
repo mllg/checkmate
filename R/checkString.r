@@ -8,6 +8,8 @@
 #' @template na-handling
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
+#' @param empty.ok [\code{logical(1)}]\cr
+#'  Are empty strings allowed? Default is \code{TRUE}.
 #' @template checker
 #' @family scalars
 #' @export
@@ -15,8 +17,8 @@
 #' @examples
 #' testString("a")
 #' testString(letters)
-checkString = function(x, na.ok = FALSE) {
-  .Call(c_check_string, x, na.ok)
+checkString = function(x, na.ok = FALSE, empty.ok = TRUE) {
+  .Call(c_check_string, x, na.ok, empty.ok)
 }
 
 #' @export

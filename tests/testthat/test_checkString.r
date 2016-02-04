@@ -1,10 +1,10 @@
 context("checkString")
 
 test_that("checkString", {
-  myobj = "a"
-  expect_succ_all(String, myobj)
-  myobj = 1L
-  expect_fail_all(String, myobj)
+  expect_succ_all(String, "a")
+  expect_succ_all(String, "")
+  expect_fail_all(String, "", empty.ok = FALSE)
+  expect_fail_all(String, 1L)
 
   expect_false(testString(character(0)))
   expect_false(testString(NULL))

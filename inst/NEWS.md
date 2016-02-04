@@ -1,3 +1,6 @@
+# Version 1.7.2 (2016-xx-xx)
+* New argument `empty.ok` for `*String` family of functions.
+
 # Version 1.7.1 (2016-02-02)
 * Fixed a segfault while checking an upper bound in qassert/qtest.
 * Some minor speedups

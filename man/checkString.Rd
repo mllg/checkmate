@@ -9,17 +9,18 @@
 \alias{test_string}
 \title{Check if an argument is a string}
 \usage{
-checkString(x, na.ok = FALSE)
+checkString(x, na.ok = FALSE, empty.ok = TRUE)
 
-assertString(x, na.ok = FALSE, add = NULL, .var.name)
+assertString(x, na.ok = FALSE, empty.ok = TRUE, add = NULL, .var.name)
 
-assert_string(x, na.ok = FALSE, add = NULL, .var.name)
+assert_string(x, na.ok = FALSE, empty.ok = TRUE, add = NULL, .var.name)
 
-testString(x, na.ok = FALSE)
+testString(x, na.ok = FALSE, empty.ok = TRUE)
 
-test_string(x, na.ok = FALSE)
+test_string(x, na.ok = FALSE, empty.ok = TRUE)
 
-expect_string(x, na.ok = FALSE, info = NULL, label = NULL)
+expect_string(x, na.ok = FALSE, empty.ok = TRUE, info = NULL,
+  label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -27,6 +28,9 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{empty.ok}{[\code{logical(1)}]\cr
+Are empty strings allowed? Default is \code{TRUE}.}
 
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}

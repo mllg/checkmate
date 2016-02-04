@@ -104,15 +104,6 @@ static msg_t check_names(SEXP nn, SEXP type, const char * what) {
     return MSGT;
 }
 
-static msg_t check_min_chars(SEXP x, SEXP min_chars) {
-    if (!isNull(min_chars)) {
-        R_xlen_t n = asCount(min_chars, "min.chars");
-        if (n > 0 && !all_nchar(x, n))
-            return make_msg("All elements must have at least %g characters", (double)n);
-    }
-    return MSGT;
-}
-
 static msg_t check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
     if (!isNull(len)) {
         R_xlen_t n = asCount(len, "len");
@@ -243,10 +234,15 @@ SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missin
         return make_type_error(x, "character");
     msg_t msg;
     assert(check_vector_len(x, len, min_len, max_len));
-    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
-    assert(check_min_chars(x, min_chars));
+    if (!isNull(min_chars)) {
+        R_xlen_t n = asCount(min_chars, "min.chars");
+        if (n > 0 && !all_nchar(x, n))
+            return make_result("All elements must have at least %g characters", (double)n);
+    }
     assert(check_vector_unique(x, unique));
+    assert(check_vector_names(x, names));
+
     return ScalarLogical(TRUE);
 }
 
@@ -527,12 +523,15 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_string(SEXP x, SEXP na_ok) {
+SEXP c_check_string(SEXP x, SEXP na_ok, SEXP empty_ok) {
     Rboolean is_na = is_scalar_na(x);
     if (xlength(x) != 1 || (!is_na && !isString(x)))
         return make_type_error(x, "string");
     if (is_na && !asFlag(na_ok, "na.ok"))
         return make_result("May not be NA");
+    if (!asFlag(empty_ok, "empty.ok") && !all_nchar(x, 1))
+        return make_result("May not be an empty string");
+
     return ScalarLogical(TRUE);
 }
 
