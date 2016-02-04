@@ -14,4 +14,4 @@ r_binary_packages:
   - covr
 
 after_success:
-  - Rscript -e 'library(covr); coveralls()'
+  - Rscript -e 'covr::coveralls()'

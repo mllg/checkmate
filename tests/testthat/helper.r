@@ -43,7 +43,7 @@ expect_fail_all = function(part, x, ...) {
   xn = deparse(substitute(x))
 
   fun = match.fun(paste0("check", cc))
-  expect_true(testString(fun(x, ...)))
+  expect_true(testString(fun(x, ...), empty.ok = FALSE))
 
   fun = match.fun(paste0("test", cc))
   expect_false(fun(x, ...))
