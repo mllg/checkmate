@@ -1,16 +1,5 @@
-language: r
-sudo: required
-warnings_are_errors: true
-
-r_binary_packages:
-  - data.table
-  - dplyr
-  - ggplot2
-  - knitr
-  - rmarkdown
-  - magrittr
-  - microbenchmark
-  - testthat
+language: R
+cache: packages
 
 r_github_packages:
   - jimhester/covr
