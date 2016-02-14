@@ -7,7 +7,6 @@ env:
 
 r_github_packages:
   - jimhester/covr
-  - mllg/backports
 
 after_success:
   - Rscript -e 'covr::coveralls()'
