@@ -17,6 +17,7 @@ Roxygen: list(wrap = FALSE)
 Depends:
     R (>= 3.0.0)
 Imports:
+    backports,
     utils
 Suggests:
     data.table,
@@ -39,7 +40,6 @@ Collate:
     'anyNaN.r'
     'asInteger.r'
     'assert.r'
-    'backports.r'
     'helper.r'
     'makeExpectation.r'
     'makeTest.r'
