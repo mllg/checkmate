@@ -523,14 +523,17 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_string(SEXP x, SEXP na_ok, SEXP empty_ok) {
+SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars) {
     Rboolean is_na = is_scalar_na(x);
     if (xlength(x) != 1 || (!is_na && !isString(x)))
         return make_type_error(x, "string");
     if (is_na && !asFlag(na_ok, "na.ok"))
         return make_result("May not be NA");
-    if (!asFlag(empty_ok, "empty.ok") && !all_nchar(x, 1))
-        return make_result("May not be an empty string");
+    if (!isNull(min_chars)) {
+        R_xlen_t n = asCount(min_chars, "min.chars");
+        if (!all_nchar(x, n))
+            return make_result("Must have at least %i characters", n);
+    }
 
     return ScalarLogical(TRUE);
 }

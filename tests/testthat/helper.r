@@ -12,10 +12,7 @@ expect_expectation_failed = function(expr, pattern = NULL) {
   }
 }
 
-expect_succ_all = function(part, x, ...) {
-  cc = as.character(substitute(part))
-  lc = convertCamelCase(cc)
-
+expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
   fun = match.fun(paste0("check", cc))
   expect_true(fun(x, ...))
 
@@ -37,13 +34,11 @@ expect_succ_all = function(part, x, ...) {
   invisible(TRUE)
 }
 
-expect_fail_all = function(part, x, ...) {
-  cc = as.character(substitute(part))
-  lc = convertCamelCase(cc)
+expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
   xn = deparse(substitute(x))
 
   fun = match.fun(paste0("check", cc))
-  expect_true(testString(fun(x, ...), empty.ok = FALSE))
+  expect_true(testString(fun(x, ...), min.chars = 1L))
 
   fun = match.fun(paste0("test", cc))
   expect_false(fun(x, ...))
