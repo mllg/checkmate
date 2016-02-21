@@ -72,6 +72,7 @@ Collate:
     'checkNull.r'
     'checkNumber.r'
     'checkNumeric.r'
+    'checkOS.r'
     'checkPathForOutput.r'
     'checkScalar.r'
     'checkScalarNA.r'

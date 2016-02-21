@@ -9,18 +9,23 @@
 \alias{test_string}
 \title{Check if an argument is a string}
 \usage{
-checkString(x, na.ok = FALSE, empty.ok = TRUE)
+checkString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE)
 
-assertString(x, na.ok = FALSE, empty.ok = TRUE, add = NULL, .var.name)
+assertString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE, add = NULL, .var.name)
 
-assert_string(x, na.ok = FALSE, empty.ok = TRUE, add = NULL, .var.name)
+assert_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE, add = NULL, .var.name)
 
-testString(x, na.ok = FALSE, empty.ok = TRUE)
+testString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE)
 
-test_string(x, na.ok = FALSE, empty.ok = TRUE)
+test_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE)
 
-expect_string(x, na.ok = FALSE, empty.ok = TRUE, info = NULL,
-  label = NULL)
+expect_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -29,8 +34,20 @@ Object to check.}
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
 
-\item{empty.ok}{[\code{logical(1)}]\cr
-Are empty strings allowed? Default is \code{TRUE}.}
+\item{min.chars}{[\code{integer(1)}]\cr
+Minimum number of characters in each element of \code{x}.}
+
+\item{pattern}{[\code{character(1L)}]\cr
+Regular expression as used in \code{\link[base]{grepl}}.
+All elements of \code{x} must comply to this pattern.}
+
+\item{fixed}{[\code{character(1)}]\cr
+Substring to detect in \code{x}. Will be used as \code{pattern} in \code{\link[base]{grepl}}
+with option \code{fixed} set to \code{TRUE}.
+All elements of \code{x} must contain this substring.}
+
+\item{ignore.case}{[\code{logical(1)}]\cr
+See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}

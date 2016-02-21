@@ -9,32 +9,32 @@
 \alias{test_character}
 \title{Check if an argument is a vector of type character}
 \usage{
-checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL)
 
-assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL, add = NULL, .var.name)
 
-assert_character(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+assert_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL, add = NULL, .var.name)
 
-testCharacter(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+testCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL)
 
-test_character(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+test_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL)
 
-expect_character(x, min.chars = NULL, pattern = NULL, fixed = FALSE,
+expect_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL, info = NULL, label = NULL)
@@ -48,11 +48,12 @@ Minimum number of characters in each element of \code{x}.}
 
 \item{pattern}{[\code{character(1L)}]\cr
 Regular expression as used in \code{\link[base]{grepl}}.
-All elements of \code{x} must comply to this pattern.
-Defaults to \code{NULL}.}
+All elements of \code{x} must comply to this pattern.}
 
-\item{fixed}{[\code{logical(1)}]\cr
-See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
+\item{fixed}{[\code{character(1)}]\cr
+Substring to detect in \code{x}. Will be used as \code{pattern} in \code{\link[base]{grepl}}
+with option \code{fixed} set to \code{TRUE}.
+All elements of \code{x} must contain this substring.}
 
 \item{ignore.case}{[\code{logical(1)}]\cr
 See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
