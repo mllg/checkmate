@@ -18,7 +18,7 @@ expect_fail_all = function(x, rules) {
     info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
 }
 
-test_that("qtestr", {
+test_that("qassertr / qtestr", {
   x = list(a=1:10, b=rnorm(10))
   expect_succ_all(x, "n+")
   expect_succ_all(x, "n10")
@@ -41,4 +41,8 @@ test_that("qtestr", {
 
   x = list(1, 2)
   expect_fail_all(x, "S1")
+
+  x = NULL
+  expect_error(qassertr(x, "x"), "list or data.frame")
+  expect_error(qtestr(x, "x"), "list or data.frame")
 })

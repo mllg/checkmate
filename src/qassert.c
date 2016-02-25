@@ -461,7 +461,7 @@ static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nr
 }
 
 static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules) {
-    if (!isNewList(x))
+    if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
     const R_len_t nx = xlength(x);

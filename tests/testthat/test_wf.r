@@ -21,6 +21,7 @@ test_that("wf / wl", {
 
   x = setNames(c(NA, FALSE, TRUE, FALSE, TRUE, FALSE, NA), letters[1:7])
   expect_identical(wf(x, TRUE), setNames(3L, "c"))
+  expect_identical(wf(x, FALSE), 3L)
   expect_identical(wl(x), setNames(5L, "e"))
   expect_identical(wl(x, FALSE), 5L)
   expect_equal(wf(logical(0)), integer(0))
@@ -28,4 +29,6 @@ test_that("wf / wl", {
 
   expect_error(wf(42), "logical")
   expect_error(wl(42), "logical")
+  expect_error(wf(NA, iris), "use.names")
+  expect_error(wl(NA, iris), "use.names")
 })
