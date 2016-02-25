@@ -5,7 +5,7 @@
 #include <R.h>
 #include <Rinternals.h>
 
-SEXP c_which_first(SEXP);
-SEXP c_which_last(SEXP);
+SEXP c_which_first(SEXP, SEXP);
+SEXP c_which_last(SEXP, SEXP);
 
 #endif

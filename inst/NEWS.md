@@ -4,6 +4,7 @@
   boolean value and thus can be directly be used for  substring search.
 * New arguments `min.chars`, `pattern`, `fixed` and `ignore.case`  for the
   `*String` family of functions.
+* Exported helper functions `wf` (which.first) and `wl` (which.last).
 
 # Version 1.7.1 (2016-02-02)
 * Fixed a segfault while checking an upper bound in qassert/qtest.
