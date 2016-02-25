@@ -4,6 +4,5 @@
 #'   \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
 #' }
 #' @import backports
-#' @importFrom utils head
-#' @importFrom utils tail
+#' @importFrom utils head tail
 "_PACKAGE"
