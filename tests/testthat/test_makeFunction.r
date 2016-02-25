@@ -22,6 +22,11 @@ test_that("makeTest", {
   y = makeTestFunction(checkList)
   expect_identical(formals(x), formals(y))
   expect_equal(body(x), body(y))
+
+  x = testFlag
+  y = function(x) makeTest(checkFlag(x))
+  expect_equal(x(TRUE), y(TRUE))
+  expect_equal(x(FALSE), y(FALSE))
 })
 
 test_that("makeExpectation", {

@@ -51,10 +51,17 @@ test_that("checkDataFrame name checking works", {
   expect_identical(assertDataFrame(df, col.names = "unique"), df)
   expect_error(assertDataFrame(df, col.names = "strict"), "naming rules")
 
+  rownames(df) = letters[1:2]
+  expect_succ_all(DataFrame, df, row.names = "strict")
+  expect_succ_all(DataFrame, df, row.names = "unique")
+  expect_succ_all(DataFrame, df, row.names = "named")
+  expect_fail_all(DataFrame, df, row.names = "unnamed")
+
   rownames(df) = NULL
-  expect_error(assertDataFrame(df, row.names = "unnamed"), "unnamed")
-  expect_identical(assertDataFrame(df, row.names = "named"), df)
-  expect_error(assertDataFrame(df, row.names = "strict"), "naming rules")
+  expect_fail_all(DataFrame, df, row.names = "unnamed") # no names defaults to as.character(seq_row(x))
+  expect_succ_all(DataFrame, df, row.names = "named")
+  expect_succ_all(DataFrame, df, row.names = "unique")
+  expect_fail_all(DataFrame, df, row.names = "strict")
 })
 
 test_that("dimension checks work for empty frames", {
