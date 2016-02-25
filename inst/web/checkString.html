@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkString. checkmate 1.7.1</title>
+<title>checkString. checkmate 1.7.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.1</a>
+      <a class="brand" href="#">checkmate 1.7.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,12 +52,12 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkString(x, na.ok&nbsp;=&nbsp;FALSE)</div>
-<div>assertString(x, na.ok&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
-<div>assert_string(x, na.ok&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
-<div>testString(x, na.ok&nbsp;=&nbsp;FALSE)</div>
-<div>test_string(x, na.ok&nbsp;=&nbsp;FALSE)</div>
-<div>expect_string(x, na.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
+    <pre><div>checkString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
+<div>assertString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>assert_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>testString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
+<div>test_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
+<div>expect_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -67,6 +67,21 @@ Object to check.</dd>
       <dt>na.ok</dt>
       <dd>[<code>logical(1)</code>]
 Are missing values allowed? Default is <code>FALSE</code>.</dd>
+      <dt>min.chars</dt>
+      <dd>[<code>integer(1)</code>]
+Minimum number of characters in each element of <code>x</code>.</dd>
+      <dt>pattern</dt>
+      <dd>[<code>character(1L)</code>]
+Regular expression as used in <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>.
+All elements of <code>x</code> must comply to this pattern.</dd>
+      <dt>fixed</dt>
+      <dd>[<code>character(1)</code>]
+Substring to detect in <code>x</code>. Will be used as <code>pattern</code> in <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>
+with option <code>fixed</code> set to <code>TRUE</code>.
+All elements of <code>x</code> must contain this substring.</dd>
+      <dt>ignore.case</dt>
+      <dd>[<code>logical(1)</code>]
+See <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
       <dt>add</dt>
       <dd>[<code>AssertCollection</code>]
 Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
