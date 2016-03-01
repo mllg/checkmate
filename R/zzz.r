@@ -5,4 +5,5 @@
 #' }
 #' @import backports
 #' @importFrom utils head tail
+#' @importFrom tools file_ext
 "_PACKAGE"

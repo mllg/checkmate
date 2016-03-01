@@ -27,19 +27,20 @@ checkPathForOutput = function(x, overwrite = FALSE) {
   if (!qtest(x, "S+"))
     return("No path provided")
   qassert(overwrite, "B1")
-  x = normalizePath(x, mustWork = FALSE)
 
+  x = normalizePath(x, mustWork = FALSE)
   dn = dirname(x)
-  isdir = file.info(dn)$isdir
-  w = wf(!file.exists(dn) || is.na(isdir))
+
+  w = wf(!dir.exists(dn))
   if (length(w) > 0L)
     return(sprintf("Path to file (dirname) does not exist: '%s' of '%s'", dn[w], x[w]))
 
   w = which(file.exists(x))
-  if (overwrite)
-    return(checkAccess(dn, "w") %and% checkAccess(x[w], "rw"))
-  if (length(w) > 0L)
-    return(sprintf("File at path already exists: '%s'", x[head(w, 1L)]))
+  if (length(w) > 0L) {
+    if (overwrite)
+      return(checkAccess(dn, "w") %and% checkAccess(x[w], "rw"))
+    return(sprintf("File at path already exists: '%s'", x[w]))
+  }
   return(checkAccess(dn, "w"))
 }
 
