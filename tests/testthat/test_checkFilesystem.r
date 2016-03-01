@@ -2,7 +2,7 @@ context("checkFile")
 
 td = tempfile("checkFile")
 dir.create(td, recursive=TRUE)
-fn = file.path(td, "myfile")
+fn = file.path(td, "myfile.ext")
 dn = file.path(td, "dir")
 ff = file.path(td, "xxx")
 file.create(fn)
@@ -21,6 +21,10 @@ test_that("check_file", {
   expect_error(assertFile(character(0)), "provided")
   expect_error(assertFile(ff), "exist")
   expect_error(assertFile(dn))
+
+  expect_succ_all(File, fn, extension = "ext")
+  expect_succ_all(File, fn, extension = c("foo", "ext"))
+  expect_fail_all(File, fn, extension = "foo")
 })
 
 test_that("check_directory", {

@@ -9,10 +9,14 @@
 #' @examples
 #' testOS("linux")
 checkOS = function(os) {
-  os = match.arg(os, c("windows", "mac", "linux", "solaris"), several.ok = TRUE)
-  sysname = tolower(Sys.info()["sysname"])
-  if (sysname %nin% os)
-    return(sprintf("OS must be %s", collapse(os, " or ")))
+  os.names = c("windows", "mac", "linux", "solaris")
+  sys.names = c("windows", "darwin", "linux", "sunos")
+
+  ok = match.arg(os, os.names, several.ok = TRUE)
+  os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
+
+  if (os %nin% ok)
+    return(sprintf("OS must be %s", collapse(ok, " or ")))
   return(TRUE)
 }
 

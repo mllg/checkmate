@@ -3,6 +3,8 @@
 #' @templateVar fn File
 #' @template x
 #' @inheritParams checkAccess
+#' @param extension [\code{character}]\cr
+#'  Vector of allowed file extensions, matched case insensitive.
 #' @template checker
 #' @family filesystem
 #' @export
@@ -12,19 +14,30 @@
 #'
 #' # Check if R's COPYING file is readable and writable
 #' testFile(file.path(R.home(), "COPYING"), access = "rw")
-checkFile = function(x, access = "") {
+checkFile = function(x, access = "", extension = NULL) {
   if (!qtest(x, "S+"))
     return("No file provided")
 
-  d.e = dir.exists(x)
-  w = wf(!file.exists(x) || d.e)
-  if (length(w) > 0L) {
-    if (d.e[w])
-      return(sprintf("File expected, but directory in place: '%s'", x[w]))
-    return(sprintf("File does not exist: '%s'", x[w]))
-  }
+  w = wf(dir.exists(x))
+  if (length(w) > 0L)
+    return(sprintf("File expected, but directory in place: '%s'", x[w]))
 
-  return(checkAccess(x, access))
+  w = wf(!file.exists(x))
+  if (length(w) > 0L)
+    return(sprintf("File does not exist: '%s'", x[w]))
+
+  return(checkAccess(x, access) %and% checkExtension(x, extension))
+}
+
+checkExtension = function(x, extension = NULL) {
+  if (!is.null(extension)) {
+    qassert(extension, "S+")
+    pos = regexpr("\\.([[:alnum:]]+)$", x)
+    ext = ifelse(pos > -1L, tolower(substring(x, pos + 1L)), "")
+    if (any(ext %nin% tolower(extension)))
+      return(sprintf("File extension must be in {'%s'}", collapse(extension, "','")))
+  }
+  return(TRUE)
 }
 
 #' @export

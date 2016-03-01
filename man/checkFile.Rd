@@ -9,17 +9,17 @@
 \alias{test_file}
 \title{Check existence and access rights of files}
 \usage{
-checkFile(x, access = "")
+checkFile(x, access = "", extension = NULL)
 
-assertFile(x, access = "", add = NULL, .var.name)
+assertFile(x, access = "", extension = NULL, add = NULL, .var.name)
 
-assert_file(x, access = "", add = NULL, .var.name)
+assert_file(x, access = "", extension = NULL, add = NULL, .var.name)
 
-testFile(x, access = "")
+testFile(x, access = "", extension = NULL)
 
-test_file(x, access = "")
+test_file(x, access = "", extension = NULL)
 
-expect_file(x, access = "", info = NULL, label = NULL)
+expect_file(x, access = "", extension = NULL, info = NULL, label = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -29,6 +29,9 @@ Object to check.}
 Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 force a check for read, write or execute access rights, respectively.
 Write and executable rights are not checked on Windows.}
+
+\item{extension}{[\code{character}]\cr
+Vector of allowed file extensions, matched case insensitive.}
 
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}

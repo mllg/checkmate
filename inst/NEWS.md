@@ -1,3 +1,8 @@
+# Version 1.7.3 (2016-xx-xx)
+* Fixed a bug in `*OS` functions.
+* Fixed a bug in `*Directory` functions.
+* New argument `extension` for the `*File` family of functions.
+
 # Version 1.7.2 (2016-02-25)
 * Added `checkOS()`.
 * Argument `fixed` for `*Character` functions now accepts a string instead of a
