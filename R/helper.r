@@ -1,5 +1,5 @@
 vname = function(x, var.name) {
-  if (!missing(var.name) && !is.null(var.name))
+  if (!is.null(var.name))
     return(var.name)
   collapse(deparse(substitute(x, parent.frame(2L)), width.cutoff = 500), "\n")
 }
@@ -22,7 +22,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
     item = ""
   }
 
-  if (missing(vname))
+  if (is.null(vname))
     vname = collapse(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), "\n")
   sprintf("Assertion on '%s'%s failed. %s", vname, item, msg)
 }

@@ -6,7 +6,7 @@
 \alias{qtest}
 \title{Quick argument checks on (builtin) R types}
 \usage{
-qassert(x, rules, .var.name)
+qassert(x, rules, .var.name = NULL)
 
 qtest(x, rules)
 
@@ -19,9 +19,9 @@ Object the check.}
 \item{rules}{[\code{character}]\cr
 Set of rules. See details.}
 
-\item{.var.name}{[\code{logical(1)}]\cr
-Argument name to print in error message. If missing,
-the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

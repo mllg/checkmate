@@ -10,9 +10,9 @@
 \usage{
 checkNamed(x, type = "named")
 
-assertNamed(x, type = "named", add = NULL, .var.name)
+assertNamed(x, type = "named", add = NULL, .var.name = NULL)
 
-assert_named(x, type = "named", add = NULL, .var.name)
+assert_named(x, type = "named", add = NULL, .var.name = NULL)
 
 testNamed(x, type = "named")
 
@@ -34,9 +34,9 @@ Also note that you can use \code{\link{checkSubset}} to check for a specific set
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 }
 \value{
 Depending on the function prefix:

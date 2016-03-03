@@ -6,7 +6,7 @@
 \alias{qtestr}
 \title{Quick recursive arguments checks on lists and data frames}
 \usage{
-qassertr(x, rules, .var.name)
+qassertr(x, rules, .var.name = NULL)
 
 qtestr(x, rules)
 
@@ -20,9 +20,9 @@ See details of \code{\link{qtest}} for rule explanation.}
 \item{rules}{[\code{character}]\cr
 Set of rules. See \code{\link{qtest}}}
 
-\item{.var.name}{[\code{logical(1)}]\cr
-Argument name to print in error message. If missing,
-the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

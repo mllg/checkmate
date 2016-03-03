@@ -11,9 +11,9 @@
 \usage{
 checkScalar(x, na.ok = FALSE)
 
-assertScalar(x, na.ok = FALSE, add = NULL, .var.name)
+assertScalar(x, na.ok = FALSE, add = NULL, .var.name = NULL)
 
-assert_scalar(x, na.ok = FALSE, add = NULL, .var.name)
+assert_scalar(x, na.ok = FALSE, add = NULL, .var.name = NULL)
 
 testScalar(x, na.ok = FALSE)
 
@@ -31,9 +31,9 @@ Are missing values allowed? Default is \code{FALSE}.}
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

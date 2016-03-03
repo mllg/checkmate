@@ -17,12 +17,12 @@ checkDataTable(x, key = NULL, index = NULL, types = character(0L),
 assertDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, add = NULL, .var.name)
+  col.names = NULL, add = NULL, .var.name = NULL)
 
 assert_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, add = NULL, .var.name)
+  col.names = NULL, add = NULL, .var.name = NULL)
 
 testDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
@@ -90,9 +90,9 @@ Note that you can use \code{\link{checkSubset}} to test for a specific set of na
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
