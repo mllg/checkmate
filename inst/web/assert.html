@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>assert. checkmate 1.7.2</title>
+<title>assert. checkmate 1.7.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.2</a>
+      <a class="brand" href="#">checkmate 1.7.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,7 +52,7 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>assert(..., combine&nbsp;=&nbsp;"or", .var.name)</div></pre>
+    <pre><div>assert(..., combine&nbsp;=&nbsp;"or", .var.name&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -64,9 +64,9 @@ List of calls to check functions.</dd>
 &#147;or&#148; or &#147;and&#148; to combine the check functions with an OR
 or AND, respectively.</dd>
       <dt>.var.name</dt>
-      <dd>[character(1)]
-Name of object to check. Defaults to a heuristic to determine
-the name of the first argument of the first call.</dd>
+      <dd>[<code>NULL</code> || <code>character(1)</code>]
+Name of the checked object to print in error message. If <code>NULL</code>,
+the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
     </dl>
     
     <div class="Value">

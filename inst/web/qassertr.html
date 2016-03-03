@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>qassertr. checkmate 1.7.2</title>
+<title>qassertr. checkmate 1.7.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.2</a>
+      <a class="brand" href="#">checkmate 1.7.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,7 +52,7 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>qassertr(x, rules, .var.name)</div>
+    <pre><div>qassertr(x, rules, .var.name&nbsp;=&nbsp;NULL)</div>
 <div>qtestr(x, rules)</div>
 <div>qexpectr(x, rules, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
     
@@ -66,9 +66,9 @@ See details of <code><a href='qassert.html'>qtest</a></code> for rule explanatio
       <dd>[<code>character</code>]
 Set of rules. See <code><a href='qassert.html'>qtest</a></code></dd>
       <dt>.var.name</dt>
-      <dd>[<code>logical(1)</code>]
-Argument name to print in error message. If missing,
-the name of <code>x</code> will be retrieved via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dd>[<code>NULL</code> || <code>character(1)</code>]
+Name of the checked object to print in error message. If <code>NULL</code>,
+the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.

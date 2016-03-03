@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkIntegerish. checkmate 1.7.2</title>
+<title>checkIntegerish. checkmate 1.7.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.2</a>
+      <a class="brand" href="#">checkmate 1.7.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -53,8 +53,8 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>checkIntegerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
-<div>assertIntegerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
-<div>assert_integerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name)</div>
+<div>assertIntegerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
+<div>assert_integerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
 <div>testIntegerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
 <div>test_integerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL)</div>
 <div>expect_integerish(x, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, names&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
@@ -101,9 +101,9 @@ Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to
       <dd>[<code>AssertCollection</code>]
 Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>.var.name</dt>
-      <dd>[character(1)]
-Name for <code>x</code>. Defaults to a heuristic to determine
-the name using <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dd>[<code>NULL</code> || <code>character(1)</code>]
+Name of the checked object to print in error message. If <code>NULL</code>,
+the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.

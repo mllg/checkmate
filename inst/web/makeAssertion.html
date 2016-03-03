@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>makeAssertion. checkmate 1.7.2</title>
+<title>makeAssertion. checkmate 1.7.3</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.2</a>
+      <a class="brand" href="#">checkmate 1.7.3</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -65,12 +65,13 @@ Object to check.</dd>
 The result of a check function: <code>TRUE</code> for successful checks,
 and an error message as string otherwise.</dd>
       <dt>var.name</dt>
-      <dd>[<code>character(1)</code>]
-The custom name for <code>x</code> as passed to any <code>assert*</code> function.</dd>
+      <dd>[<code>NULL</code> || <code>character(1)</code>]
+The custom name for <code>x</code> as passed to any <code>assert*</code> function.
+If <code>NULL</code>, the variable name will be heuristically determined.</dd>
       <dt>collection</dt>
       <dd>[<code><a href='AssertCollection.html'>AssertCollection</a></code>]
 If an <code><a href='AssertCollection.html'>AssertCollection</a></code> is provided, the error message is stored
-in it. If <code>NULL</code> (default), an exception is raised if <code>res</code> is not
+in it. If <code>NULL</code>, an exception is raised if <code>res</code> is not
 <code>TRUE</code>.</dd>
       <dt>check.fun</dt>
       <dd>[<code>function</code>]
@@ -111,7 +112,7 @@ function based on a check function (see example).</p>
 checkFalse = function(x) if (!identical(x, FALSE)) &quot;Must be FALSE&quot; else TRUE
 
 # Create the respective assert function
-assertFalse = function(x, add = NULL, .var.name) {
+assertFalse = function(x, add = NULL, .var.name = NULL) {
   res = checkFalse(x)
   makeAssertion(x, res, .var.name, add)
 }
@@ -120,12 +121,12 @@ assertFalse = function(x, add = NULL, .var.name) {
 assertFalse = makeAssertionFunction(checkFalse)
 print(assertFalse)
 </div>
-<div class='output'>function (x, add = NULL, .var.name) 
+<div class='output'>function (x, add = NULL, .var.name = NULL) 
 {
     res = checkFalse(x)
     makeAssertion(x, res, .var.name, add)
 }
-&lt;environment: 0x4a3ed98&gt;
+&lt;environment: 0x502d728&gt;
 </div></pre>
   </div>
   <div class="span4">
