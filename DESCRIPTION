@@ -55,6 +55,7 @@ Collate:
     'checkCount.r'
     'checkDataFrame.r'
     'checkDataTable.r'
+    'checkDate.r'
     'checkDirectory.r'
     'checkEnvironment.r'
     'checkFactor.r'

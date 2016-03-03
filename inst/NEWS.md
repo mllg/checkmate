@@ -1,4 +1,5 @@
 # Version 1.7.3 (2016-xx-xx)
+* Added `checkDate()`
 * Argument `.var.name` of assert functions now has \code{NULL} as default value
   (instead of missing).
 * Fixed a bug in `*OS` functions.
