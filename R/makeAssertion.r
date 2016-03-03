@@ -10,11 +10,12 @@
 #' @param res [\code{TRUE} | \code{character(1)}]\cr
 #'  The result of a check function: \code{TRUE} for successful checks,
 #'  and an error message as string otherwise.
-#' @param var.name [\code{character(1)}]\cr
+#' @param var.name [\code{NULL} || \code{character(1)}]\cr
 #'  The custom name for \code{x} as passed to any \code{assert*} function.
+#'  If \code{NULL}, the variable name will be heuristically determined.
 #' @param collection [\code{\link{AssertCollection}}]\cr
 #'  If an \code{\link{AssertCollection}} is provided, the error message is stored
-#'  in it. If \code{NULL} (default), an exception is raised if \code{res} is not
+#'  in it. If \code{NULL}, an exception is raised if \code{res} is not
 #'  \code{TRUE}.
 #' @return \code{makeAssertion} invisibly returns the checked object if the check was successful,
 #'  and an exception is raised (or its message stored in the collection) otherwise.
@@ -26,7 +27,7 @@
 #' checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 #'
 #' # Create the respective assert function
-#' assertFalse = function(x, add = NULL, .var.name) {
+#' assertFalse = function(x, add = NULL, .var.name = NULL) {
 #'   res = checkFalse(x)
 #'   makeAssertion(x, res, .var.name, add)
 #' }
@@ -51,7 +52,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, env = parent.frame()) 
   check.fun = match.fun(check.fun)
 
   new.fun = function() TRUE
-  formals(new.fun) = c(formals(check.fun), alist(add = NULL, .var.name =))
+  formals(new.fun) = c(formals(check.fun), alist(add = NULL, .var.name = NULL))
   tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))

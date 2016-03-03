@@ -12,10 +12,10 @@
 checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, add = NULL, .var.name)
+  finite = FALSE, add = NULL, .var.name = NULL)
 
 assert_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, add = NULL, .var.name)
+  finite = FALSE, add = NULL, .var.name = NULL)
 
 testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
@@ -43,9 +43,9 @@ Check for only finite values? Default is \code{FALSE}.}
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

@@ -8,9 +8,7 @@
 #'  Object the check.
 #' @param rules [\code{character}]\cr
 #'   Set of rules. See details.
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
+#' @template var.name
 #' @return
 #'  \code{qassert} throws an \code{R} exception if object \code{x} does
 #'  not comply to at least one of the \code{rules} and returns the tested object invisibly
@@ -102,7 +100,7 @@
 #'
 #' # data frame with at least one column and no missing value in any column
 #' qtest(iris, "D+")
-qassert = function(x, rules, .var.name) {
+qassert = function(x, rules, .var.name = NULL) {
   res = .Call(c_qassert, x, rules, FALSE)
   if (!isTRUE(res))
     mstop(qamsg(x, res, .var.name))

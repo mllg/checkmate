@@ -17,12 +17,12 @@ checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
 assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, add = NULL, .var.name)
+  names = NULL, add = NULL, .var.name = NULL)
 
 assert_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, add = NULL, .var.name)
+  names = NULL, add = NULL, .var.name = NULL)
 
 testCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
@@ -84,9 +84,9 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

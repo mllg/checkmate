@@ -10,9 +10,7 @@
 #'   See details of \code{\link{qtest}} for rule explanation.
 #' @param rules [\code{character}]\cr
 #'   Set of rules. See \code{\link{qtest}}
-#' @param .var.name [\code{logical(1)}]\cr
-#'  Argument name to print in error message. If missing,
-#'  the name of \code{x} will be retrieved via \code{\link[base]{substitute}}.
+#' @template var.name
 #' @return See \code{\link{qassert}}.
 #' @seealso \code{\link{qtest}}, \code{\link{qassert}}
 #' @useDynLib checkmate c_qassert
@@ -29,7 +27,7 @@
 #'
 #' # All list elements are numeric OR character
 #' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
-qassertr = function(x, rules, .var.name) {
+qassertr = function(x, rules, .var.name = NULL) {
   res = .Call(c_qassert, x, rules, TRUE)
   if (!isTRUE(res))
     mstop(qamsg(x, res, .var.name, recursive = TRUE))

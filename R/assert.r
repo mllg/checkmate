@@ -14,9 +14,7 @@
 #' @param combine [\code{character(1)}]\cr
 #'  \dQuote{or} or \dQuote{and} to combine the check functions with an OR
 #'  or AND, respectively.
-#' @param .var.name [character(1)]\cr
-#'  Name of object to check. Defaults to a heuristic to determine
-#'  the name of the first argument of the first call.
+#' @template var.name
 #' @return Throws an error if all checks fails and invisibly returns
 #'  \code{TRUE} otherwise.
 #' @export
@@ -27,7 +25,7 @@
 #' x = 1
 #' assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
 #' }
-assert = function(..., combine = "or", .var.name) {
+assert = function(..., combine = "or", .var.name = NULL) {
   assertChoice(combine, c("or", "and"))
   dots = match.call(expand.dots = FALSE)$...
   env = parent.frame()
@@ -39,7 +37,7 @@ assert = function(..., combine = "or", .var.name) {
         return(invisible(TRUE))
       msgs[i] = as.character(val)
     }
-    if (missing(.var.name))
+    if (is.null(.var.name))
       .var.name = as.character(dots[[1L]])[2L]
     if (length(msgs) > 1L)
       msgs = sprintf("%s: %s", lapply(dots, function(x) as.character(x)[1L]), msgs)
@@ -48,7 +46,7 @@ assert = function(..., combine = "or", .var.name) {
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
       if (!isTRUE(val)) {
-        if (missing(.var.name))
+        if (is.null(.var.name))
           .var.name = as.character(dots[[1L]])[2L]
         mstop(qamsg(NULL, val, .var.name, recursive = FALSE))
       }

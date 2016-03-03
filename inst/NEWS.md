@@ -1,4 +1,6 @@
 # Version 1.7.3 (2016-xx-xx)
+* Argument `.var.name` of assert functions now has \code{NULL} as default value
+  (instead of missing).
 * Fixed a bug in `*OS` functions.
 * Fixed a bug in `*Directory` functions.
 * New argument `extension` for the `*File` family of functions.

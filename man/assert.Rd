@@ -4,7 +4,7 @@
 \alias{assert}
 \title{Combine multiple checks into one assertion}
 \usage{
-assert(..., combine = "or", .var.name)
+assert(..., combine = "or", .var.name = NULL)
 }
 \arguments{
 \item{...}{[any]\cr
@@ -14,9 +14,9 @@ List of calls to check functions.}
 \dQuote{or} or \dQuote{and} to combine the check functions with an OR
 or AND, respectively.}
 
-\item{.var.name}{[character(1)]\cr
-Name of object to check. Defaults to a heuristic to determine
-the name of the first argument of the first call.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 }
 \value{
 Throws an error if all checks fails and invisibly returns

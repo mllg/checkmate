@@ -6,13 +6,14 @@
 \alias{asInteger}
 \title{Convert an argument to an integer}
 \usage{
-asInteger(x, ..., tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
+asInteger(x, ..., tol = sqrt(.Machine$double.eps), add = NULL,
+  .var.name = NULL)
 
 asCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL)
 
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -28,9 +29,9 @@ Default is \code{sqrt(.Machine$double.eps)}.}
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[character(1)]\cr
-Name for \code{x}. Defaults to a heuristic to determine
-the name using \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
+Name of the checked object to print in error message. If \code{NULL},
+the name will be heuristically determined via \code{\link[base]{substitute}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
