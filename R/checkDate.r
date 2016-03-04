@@ -1,29 +1,22 @@
 #' Check that an argument is a Date
 #'
 #' @description
-#' Checks that an object is of class \code{\link[base]{Date}}, \code{\link[base]{POSIXlt}} or
-#' \code{\link[base]{POSIXct}}.
+#' Checks that an object is of class \code{\link[base]{Date}}.
 #'
 #'
 #' @templateVar fn Atmoic
 #' @template x
 #' @param lower [\code{\link[base]{Date}}]\cr
-#'  All dates in \code{x} must be after this date.
-#'  Comparison is performed on the operators defined for class \code{\link[base]{Date}}.
-#'  Both \code{x} and \code{lower} will be converted using \code{\link[base]{as.Date}} with origin \dQuote{1970-01-01}.
+#'  All dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @param upper [\code{\link[base]{Date}}]\cr
-#'  All dates in \code{x} must be before this date.
-#'  Comparison is performed on the operators defined for class \code{\link[base]{Date}}.
-#'  Both \code{x} and \code{upper} will be converted using \code{\link[base]{as.Date}} with origin \dQuote{1970-01-01}.
+#'  All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @inheritParams checkVector
 #' @template checker
 #' @export
 checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE) {
-  if (!inherits(x, c("Date", "POSIXlt", "POSIXct")))
-    return("Must be of class 'Date', 'POSIXlt' or 'POSIXct'")
-
-  checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and% checkDateBounds(as.Date(x), lower = lower, upper = upper)
-
+  if (!inherits(x, "Date"))
+    return("Must be of class 'Date'")
+  checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and% checkDateBounds(x, lower, upper)
 }
 
 checkDateBounds = function(x, lower, upper) {
