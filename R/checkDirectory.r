@@ -25,7 +25,7 @@ checkDirectory = function(x, access = "") {
   if (length(w) > 0L)
     return(sprintf("Directory expected, but file in place: '%s'", x[w]))
 
-  return(checkAccess(x, access))
+  checkAccess(x, access)
 }
 
 #' @export

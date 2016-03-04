@@ -38,14 +38,10 @@ expect_date(x, lower = NULL, upper = NULL, any.missing = TRUE,
 Object to check.}
 
 \item{lower}{[\code{\link[base]{Date}}]\cr
-All dates in \code{x} must be after this date.
-Comparison is performed on the operators defined for class \code{\link[base]{Date}}.
-Both \code{x} and \code{lower} will be converted using \code{\link[base]{as.Date}} with origin \dQuote{1970-01-01}.}
+All dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{upper}{[\code{\link[base]{Date}}]\cr
-All dates in \code{x} must be before this date.
-Comparison is performed on the operators defined for class \code{\link[base]{Date}}.
-Both \code{x} and \code{upper} will be converted using \code{\link[base]{as.Date}} with origin \dQuote{1970-01-01}.}
+All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}
@@ -90,7 +86,6 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Checks that an object is of class \code{\link[base]{Date}}, \code{\link[base]{POSIXlt}} or
-\code{\link[base]{POSIXct}}.
+Checks that an object is of class \code{\link[base]{Date}}.
 }
 

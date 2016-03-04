@@ -21,7 +21,7 @@
 #' testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
   if (!requireNamespace("data.table", quietly = TRUE))
-    stop("Install 'data.table' to perform checks in data tables")
+    stop("Install 'data.table' to perform checks of data tables")
 
   if (!data.table::is.data.table(x)) {
     return("Must be a data.table")

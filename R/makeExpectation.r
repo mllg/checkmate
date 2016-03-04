@@ -34,7 +34,7 @@
 makeExpectation = function(x, res, info = NULL, label = NULL) {
   if (!requireNamespace("testthat", quietly = TRUE))
     stop("Package 'testthat' is required for 'expect_*' extensions")
-  cond = function(res) testthat::expectation(isTRUE(res), failure_msg = res, success_msg = "all good")
+  cond = function(res) testthat::expectation(identical(res, TRUE), failure_msg = res, success_msg = "all good")
   testthat::expect_that(res, cond, info = info, label = vname(x, label))
 }
 

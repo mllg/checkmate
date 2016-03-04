@@ -17,7 +17,7 @@
 #' testString("a")
 #' testString(letters)
 checkString = function(x, na.ok = FALSE, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE) {
-  .Call(c_check_string, x, na.ok, min.chars) %and% checkCharacterProps(x, pattern, fixed, ignore.case)
+  .Call(c_check_string, x, na.ok, min.chars) %and% checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 
 #' @export

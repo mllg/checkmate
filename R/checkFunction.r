@@ -45,12 +45,14 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
         return(sprintf("Must have formal arguments: %s", collapse(tmp)))
     }
   }
+
   if (!is.null(nargs)) {
     nargs = asCount(nargs)
     fnargs = length(setdiff(names(formals(x)) %??% character(0L), "..."))
     if (nargs != fnargs)
       return(sprintf("Must have exactly %i formal arguments, but has %i", nargs, fnargs))
   }
+
   return(TRUE)
 }
 

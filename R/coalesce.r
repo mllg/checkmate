@@ -1,4 +1,4 @@
-#' Coalesce operator
+#' @title Coalesce operator
 #' @rdname coalesce
 #'
 #' @description

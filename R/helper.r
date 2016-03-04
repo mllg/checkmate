@@ -28,7 +28,7 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
 }
 
 "%and%" = function(lhs, rhs) {
-  if (isTRUE(lhs)) rhs else lhs
+  if (identical(lhs, TRUE)) rhs else lhs
 }
 
 collapse = function(x, sep = ",") {
