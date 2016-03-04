@@ -28,7 +28,7 @@
 #' testFalse = makeTestFunction(checkFalse)
 #' print(testFalse)
 makeTest = function(res) {
-  isTRUE(res)
+  identical(res, TRUE)
 }
 
 #' @rdname makeTest
@@ -40,13 +40,12 @@ makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
 
   new.fun = function() TRUE
   formals(new.fun) = formals(check.fun)
-  tmpl = "{ isTRUE(%s(%s)) }"
+  tmpl = "{ identical(%s(%s), TRUE) }"
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
   } else {
     body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(formals(check.fun))), collapse = ", ")))
   }
-  body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
   environment(new.fun) = env
   return(new.fun)
 }

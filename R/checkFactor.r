@@ -30,7 +30,7 @@
 #' testFactor(x)
 #' testFactor(x, empty.levels.ok = FALSE)
 checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL) {
-  checkFactorProps = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
+  checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
     if (!is.null(levels)) {
       qassert(levels, "S")
       if (!setequal(levels(x), levels))
@@ -67,8 +67,9 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
     }
     return(TRUE)
   }
+
   .Call(c_check_factor, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
-  checkFactorProps(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
+  checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }
 
 #' @export

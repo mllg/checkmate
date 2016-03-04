@@ -25,10 +25,10 @@
 #' testCharacter("example", pattern = "xa")
 checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
   .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
-  checkCharacterProps(x, pattern, fixed, ignore.case)
+  checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 
-checkCharacterProps = function(x, pattern = NULL, fixed = NULL, ignore.case = FALSE) {
+checkCharacterPattern = function(x, pattern = NULL, fixed = NULL, ignore.case = FALSE) {
   if (!is.null(pattern)) {
     qassert(pattern, "S1")
     ok = grepl(pattern, x, fixed = FALSE, ignore.case = ignore.case)

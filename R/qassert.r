@@ -102,7 +102,7 @@
 #' qtest(iris, "D+")
 qassert = function(x, rules, .var.name = NULL) {
   res = .Call(c_qassert, x, rules, FALSE)
-  if (!isTRUE(res))
+  if (!identical(res, TRUE))
     mstop(qamsg(x, res, .var.name))
   invisible(x)
 }

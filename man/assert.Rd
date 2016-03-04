@@ -19,7 +19,7 @@ Name of the checked object to print in error message. If \code{NULL},
 the name will be heuristically determined via \code{\link[base]{substitute}}.}
 }
 \value{
-Throws an error if all checks fails and invisibly returns
+Throws an error if all checks fail and invisibly returns
  \code{TRUE} otherwise.
 }
 \description{

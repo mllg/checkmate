@@ -26,10 +26,10 @@ checkFile = function(x, access = "", extension = NULL) {
   if (length(w) > 0L)
     return(sprintf("File does not exist: '%s'", x[w]))
 
-  return(checkAccess(x, access) %and% checkExtension(x, extension))
+  checkAccess(x, access) %and% checkFileExtension(x, extension)
 }
 
-checkExtension = function(x, extension = NULL) {
+checkFileExtension = function(x, extension = NULL) {
   if (!is.null(extension)) {
     qassert(extension, "S+")
     pos = regexpr("\\.([[:alnum:]]+)$", x)

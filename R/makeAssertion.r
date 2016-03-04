@@ -36,7 +36,7 @@
 #' assertFalse = makeAssertionFunction(checkFalse)
 #' print(assertFalse)
 makeAssertion = function(x, res, var.name, collection) {
-  if (!isTRUE(res)) {
+  if (!identical(res, TRUE)) {
     if (is.null(collection))
       mstop("Assertion on '%s' failed: %s", vname(x, var.name), res)
     collection$push(sprintf("Variable '%s': %s", vname(x, var.name), res))

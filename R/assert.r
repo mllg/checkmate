@@ -15,7 +15,7 @@
 #'  \dQuote{or} or \dQuote{and} to combine the check functions with an OR
 #'  or AND, respectively.
 #' @template var.name
-#' @return Throws an error if all checks fails and invisibly returns
+#' @return Throws an error if all checks fail and invisibly returns
 #'  \code{TRUE} otherwise.
 #' @export
 #' @examples
@@ -33,7 +33,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
     msgs = character(length(dots))
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
-      if (isTRUE(val))
+      if (identical(val, TRUE))
         return(invisible(TRUE))
       msgs[i] = as.character(val)
     }
@@ -45,7 +45,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
   } else {
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
-      if (!isTRUE(val)) {
+      if (!identical(val, TRUE)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[1L]])[2L]
         mstop(qamsg(NULL, val, .var.name, recursive = FALSE))
