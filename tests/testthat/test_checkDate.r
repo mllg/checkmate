@@ -15,14 +15,6 @@ test_that("checkDate", {
   expect_true(testDate(x, lower = x - 2))
   expect_false(testDate(x, lower = x + 2))
 
-  x = as.POSIXlt(x)
-  expect_succ_all(Date, as.POSIXlt(x))
-  expect_succ_all(Date, as.POSIXlt(x), lower = as.POSIXlt(x - 2))
-
-  x = as.POSIXct(x)
-  expect_succ_all(Date, as.POSIXlt(x))
-  expect_succ_all(Date, as.POSIXlt(x), upper = as.POSIXct(x + 2))
-
   expect_error(assertDate(x, lower = 1:2), "single")
   expect_error(assertDate(x, lower = NA), "single")
   expect_error(assertDate(x, lower = integer(0)), "single")
