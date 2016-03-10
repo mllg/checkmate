@@ -66,14 +66,10 @@
 Object to check.</dd>
       <dt>lower</dt>
       <dd>[<code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>]
-All dates in <code>x</code> must be after this date.
-Comparison is performed on the operators defined for class <code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>.
-Both <code>x</code> and <code>lower</code> will be converted using <code><a href='http://www.inside-r.org/r-doc/base/as.Date'>as.Date</a></code> with origin &#147;1970-01-01&#148;.</dd>
+All dates in <code>x</code> must be after this date. Comparison is done via <code><a href='http://www.inside-r.org/r-doc/base/Ops.Date'>Ops.Date</a></code>.</dd>
       <dt>upper</dt>
       <dd>[<code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>]
-All dates in <code>x</code> must be before this date.
-Comparison is performed on the operators defined for class <code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>.
-Both <code>x</code> and <code>upper</code> will be converted using <code><a href='http://www.inside-r.org/r-doc/base/as.Date'>as.Date</a></code> with origin &#147;1970-01-01&#148;.</dd>
+All dates in <code>x</code> must be before this date. Comparison is done via <code><a href='http://www.inside-r.org/r-doc/base/Ops.Date'>Ops.Date</a></code>.</dd>
       <dt>any.missing</dt>
       <dd>[<code>logical(1)</code>]
 Are vectors with missing values allowed? Default is <code>TRUE</code>.</dd>
@@ -127,8 +123,7 @@ Depending on the function prefix:
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Checks that an object is of class <code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>, <code><a href='http://www.inside-r.org/r-doc/base/DateTimeClasses'>POSIXlt</a></code> or
-<code><a href='http://www.inside-r.org/r-doc/base/DateTimeClasses'>POSIXct</a></code>.</p>
+      <p>Checks that an object is of class <code><a href='http://www.inside-r.org/r-doc/base/Dates'>Date</a></code>.</p>
   
     </div>
       </div>
