@@ -12,17 +12,17 @@
 checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, add = NULL, .var.name = NULL)
+  finite = FALSE, .var.name = vname(x), add = NULL)
 
 assert_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, add = NULL, .var.name = NULL)
+  finite = FALSE, .var.name = vname(x), add = NULL)
 
 testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 expect_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, info = NULL, label = NULL)
+  finite = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -40,19 +40,20 @@ Upper value all elements of \code{x} must be lower than.}
 \item{finite}{[\code{logical(1)}]\cr
 Check for only finite values? Default is \code{FALSE}.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:

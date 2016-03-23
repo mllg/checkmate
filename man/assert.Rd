@@ -14,9 +14,9 @@ List of calls to check functions.}
 \dQuote{or} or \dQuote{and} to combine the check functions with an OR
 or AND, respectively.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Throws an error if all checks fail and invisibly returns

@@ -100,7 +100,7 @@
 #'
 #' # data frame with at least one column and no missing value in any column
 #' qtest(iris, "D+")
-qassert = function(x, rules, .var.name = NULL) {
+qassert = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
   if (!identical(res, TRUE))
     mstop(qamsg(x, res, .var.name))

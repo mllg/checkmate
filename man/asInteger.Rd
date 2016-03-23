@@ -7,13 +7,13 @@
 \title{Convert an argument to an integer}
 \usage{
 asInteger(x, ..., tol = sqrt(.Machine$double.eps), add = NULL,
-  .var.name = NULL)
+  .var.name = vname(x))
 
 asCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x))
 
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL)
+  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -29,9 +29,9 @@ Default is \code{sqrt(.Machine$double.eps)}.}
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertions. See \code{\link{AssertCollection}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}

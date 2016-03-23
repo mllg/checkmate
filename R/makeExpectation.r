@@ -23,7 +23,7 @@
 #' checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 #'
 #' # Create the respective expect function
-#' expect_false = function(x, info = NULL, label = NULL) {
+#' expect_false = function(x, info = NULL, label = vname(x)) {
 #'   res = checkFalse(x)
 #'   makeExpectation(res, info = info, label = label)
 #' }
@@ -35,7 +35,7 @@ makeExpectation = function(x, res, info = NULL, label = NULL) {
   if (!requireNamespace("testthat", quietly = TRUE))
     stop("Package 'testthat' is required for 'expect_*' extensions")
   cond = function(res) testthat::expectation(identical(res, TRUE), failure_msg = res, success_msg = "all good")
-  testthat::expect_that(res, cond, info = info, label = vname(x, label))
+  testthat::expect_that(res, cond, info = info, label = label)
 }
 
 #' @rdname makeExpectation
@@ -44,9 +44,10 @@ makeExpectation = function(x, res, info = NULL, label = NULL) {
 makeExpectationFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
+  x = NULL
 
   new.fun = function() TRUE
-  formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = NULL))
+  formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = vname(x)))
   tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))

@@ -11,15 +11,15 @@
 \usage{
 checkSetEqual(x, y, ordered = FALSE)
 
-assertSetEqual(x, y, ordered = FALSE, add = NULL, .var.name = NULL)
+assertSetEqual(x, y, ordered = FALSE, .var.name = vname(x), add = NULL)
 
-assert_set_equal(x, y, ordered = FALSE, add = NULL, .var.name = NULL)
+assert_set_equal(x, y, ordered = FALSE, .var.name = vname(x), add = NULL)
 
 testSetEqual(x, y, ordered = FALSE)
 
 test_set_equal(x, y, ordered = FALSE)
 
-expect_set_equal(x, y, ordered = FALSE, info = NULL, label = NULL)
+expect_set_equal(x, y, ordered = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -33,19 +33,20 @@ Check \code{x} to have the same length and order as \code{y}, i.e.
 check using \dQuote{==} while handling \code{NA}s nicely.
 Default is \code{FALSE}.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:

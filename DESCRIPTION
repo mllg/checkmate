@@ -85,5 +85,6 @@ Collate:
     'isIntegerish.r'
     'qassert.r'
     'qassertr.r'
+    'vname.r'
     'wfwl.r'
     'zzz.r'

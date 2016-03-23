@@ -10,9 +10,9 @@
 \usage{
 checkNamed(x, type = "named")
 
-assertNamed(x, type = "named", add = NULL, .var.name = NULL)
+assertNamed(x, type = "named", .var.name = vname(x), add = NULL)
 
-assert_named(x, type = "named", add = NULL, .var.name = NULL)
+assert_named(x, type = "named", .var.name = vname(x), add = NULL)
 
 testNamed(x, type = "named")
 
@@ -31,12 +31,12 @@ Select the check(s) to perform.
 Note that for zero-length \code{x} every name check evaluates to \code{TRUE}.
 Also note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
 Depending on the function prefix:

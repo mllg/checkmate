@@ -17,9 +17,9 @@ Object to check.}
 The result of a check function: \code{TRUE} for successful checks,
 and an error message as string otherwise.}
 
-\item{var.name}{[\code{NULL} || \code{character(1)}]\cr
+\item{var.name}{[\code{character(1)}]\cr
 The custom name for \code{x} as passed to any \code{assert*} function.
-If \code{NULL}, the variable name will be heuristically determined.}
+Defaults to a heuristic name lookup.}
 
 \item{collection}{[\code{\link{AssertCollection}}]\cr
 If an \code{\link{AssertCollection}} is provided, the error message is stored
@@ -53,7 +53,7 @@ function based on a check function (see example).
 checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 
 # Create the respective assert function
-assertFalse = function(x, add = NULL, .var.name = NULL) {
+assertFalse = function(x, .var.name = vname(x), add = NULL) {
   res = checkFalse(x)
   makeAssertion(x, res, .var.name, add)
 }

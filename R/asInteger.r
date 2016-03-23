@@ -22,8 +22,8 @@
 #' asInteger(c(1, 2, 3))
 #' asCount(1)
 #' asInt(1)
-asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL) {
-  assertIntegerish(x, ..., tol = tol, .var.name = vname(x, .var.name), add = NULL)
+asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x)) {
+  assertIntegerish(x, ..., tol = tol, .var.name = .var.name, add = add)
   storage.mode(x) = "integer"
   x
 }
@@ -35,8 +35,8 @@ asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), add = NULL, .var.n
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @export
-asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL) {
-  assertCount(x, na.ok, positive, tol, vname(x, .var.name), add = NULL)
+asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x)) {
+  assertCount(x, na.ok, positive, tol, .var.name = .var.name, add = add)
   storage.mode(x) = "integer"
   x
 }
@@ -44,8 +44,8 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$doubl
 #' @rdname asInteger
 #' @template bounds
 #' @export
-asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), add = NULL, .var.name = NULL) {
-  assertInt(x, na.ok, lower, upper, tol, vname(x, .var.name), add = NULL)
+asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x)) {
+  assertInt(x, na.ok, lower, upper, tol, .var.name = .var.name, add = add)
   storage.mode(x) = "integer"
   x
 }
