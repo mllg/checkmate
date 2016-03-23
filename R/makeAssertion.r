@@ -10,9 +10,9 @@
 #' @param res [\code{TRUE} | \code{character(1)}]\cr
 #'  The result of a check function: \code{TRUE} for successful checks,
 #'  and an error message as string otherwise.
-#' @param var.name [\code{NULL} || \code{character(1)}]\cr
+#' @param var.name [\code{character(1)}]\cr
 #'  The custom name for \code{x} as passed to any \code{assert*} function.
-#'  If \code{NULL}, the variable name will be heuristically determined.
+#'  Defaults to a heuristic name lookup.
 #' @param collection [\code{\link{AssertCollection}}]\cr
 #'  If an \code{\link{AssertCollection}} is provided, the error message is stored
 #'  in it. If \code{NULL}, an exception is raised if \code{res} is not
@@ -27,7 +27,7 @@
 #' checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 #'
 #' # Create the respective assert function
-#' assertFalse = function(x, add = NULL, .var.name = NULL) {
+#' assertFalse = function(x, .var.name = vname(x), add = NULL) {
 #'   res = checkFalse(x)
 #'   makeAssertion(x, res, .var.name, add)
 #' }
@@ -38,8 +38,8 @@
 makeAssertion = function(x, res, var.name, collection) {
   if (!identical(res, TRUE)) {
     if (is.null(collection))
-      mstop("Assertion on '%s' failed: %s", vname(x, var.name), res)
-    collection$push(sprintf("Variable '%s': %s", vname(x, var.name), res))
+      mstop("Assertion on '%s' failed: %s", var.name, res)
+    collection$push(sprintf("Variable '%s': %s", var.name, res))
   }
   return(invisible(x))
 }
@@ -50,9 +50,10 @@ makeAssertion = function(x, res, var.name, collection) {
 makeAssertionFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
+  x = NULL
 
   new.fun = function() TRUE
-  formals(new.fun) = c(formals(check.fun), alist(add = NULL, .var.name = NULL))
+  formals(new.fun) = c(formals(check.fun), alist(.var.name = vname(x), add = NULL))
   tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))

@@ -10,9 +10,9 @@
 \usage{
 checkNull(x)
 
-assertNull(x, add = NULL, .var.name = NULL)
+assertNull(x, .var.name = vname(x), add = NULL)
 
-assert_null(x, add = NULL, .var.name = NULL)
+assert_null(x, .var.name = vname(x), add = NULL)
 
 testNull(x)
 
@@ -22,12 +22,12 @@ test_null(x)
 \item{x}{[any]\cr
 Object to check.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
 Depending on the function prefix:

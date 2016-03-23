@@ -6,7 +6,7 @@
 \alias{qtestr}
 \title{Quick recursive arguments checks on lists and data frames}
 \usage{
-qassertr(x, rules, .var.name = NULL)
+qassertr(x, rules, .var.name = vname(x))
 
 qtestr(x, rules)
 
@@ -20,16 +20,17 @@ See details of \code{\link{qtest}} for rule explanation.}
 \item{rules}{[\code{character}]\cr
 Set of rules. See \code{\link{qtest}}}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 See \code{\link{qassert}}.

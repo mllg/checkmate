@@ -27,7 +27,7 @@
 #'
 #' # All list elements are numeric OR character
 #' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
-qassertr = function(x, rules, .var.name = NULL) {
+qassertr = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE)
   if (!identical(res, TRUE))
     mstop(qamsg(x, res, .var.name, recursive = TRUE))

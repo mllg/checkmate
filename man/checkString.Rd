@@ -13,10 +13,10 @@ checkString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
   fixed = NULL, ignore.case = FALSE)
 
 assertString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, add = NULL, .var.name = NULL)
+  fixed = NULL, ignore.case = FALSE, .var.name = vname(x), add = NULL)
 
 assert_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, add = NULL, .var.name = NULL)
+  fixed = NULL, ignore.case = FALSE, .var.name = vname(x), add = NULL)
 
 testString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
   fixed = NULL, ignore.case = FALSE)
@@ -25,7 +25,7 @@ test_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
   fixed = NULL, ignore.case = FALSE)
 
 expect_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, info = NULL, label = NULL)
+  fixed = NULL, ignore.case = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -49,19 +49,20 @@ All elements of \code{x} must contain this substring.}
 \item{ignore.case}{[\code{logical(1)}]\cr
 See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:

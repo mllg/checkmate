@@ -49,7 +49,7 @@ function based on a check function (see example).
 checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 
 # Create the respective expect function
-expect_false = function(x, info = NULL, label = NULL) {
+expect_false = function(x, info = NULL, label = vname(x)) {
   res = checkFalse(x)
   makeExpectation(res, info = info, label = label)
 }

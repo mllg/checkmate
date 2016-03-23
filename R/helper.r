@@ -1,9 +1,3 @@
-vname = function(x, var.name) {
-  if (!is.null(var.name))
-    return(var.name)
-  collapse(deparse(substitute(x, parent.frame(2L)), width.cutoff = 500), "\n")
-}
-
 mstop = function(msg, ...) {
   stop(simpleError(sprintf(msg, ...), call = sys.call(1L)))
 }

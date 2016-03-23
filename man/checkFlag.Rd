@@ -11,15 +11,15 @@
 \usage{
 checkFlag(x, na.ok = FALSE)
 
-assertFlag(x, na.ok = FALSE, add = NULL, .var.name = NULL)
+assertFlag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_flag(x, na.ok = FALSE, add = NULL, .var.name = NULL)
+assert_flag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testFlag(x, na.ok = FALSE)
 
 test_flag(x, na.ok = FALSE)
 
-expect_flag(x, na.ok = FALSE, info = NULL, label = NULL)
+expect_flag(x, na.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -28,19 +28,20 @@ Object to check.}
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:

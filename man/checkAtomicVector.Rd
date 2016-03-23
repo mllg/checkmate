@@ -14,11 +14,11 @@ checkAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 
 assertAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  add = NULL, .var.name = NULL)
+  .var.name = vname(x), add = NULL)
 
 assert_atomic_vector(x, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, add = NULL, .var.name = NULL)
+  names = NULL, .var.name = vname(x), add = NULL)
 
 testAtomicVector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
@@ -28,7 +28,7 @@ test_atomic_vector(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
 
 expect_atomic_vector(x, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, info = NULL, label = NULL)
+  names = NULL, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -56,19 +56,20 @@ Must all values be unique? Default is \code{FALSE}.}
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
+\item{.var.name}{[\code{character(1)}]\cr
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 
-\item{.var.name}{[\code{NULL} || \code{character(1)}]\cr
-Name of the checked object to print in error message. If \code{NULL},
-the name will be heuristically determined via \code{\link[base]{substitute}}.}
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 
-\item{label}{[character(1)]\cr
-Same as \code{.var.name}, but passed down to \code{\link[testthat]{expect_that}}.}
+\item{label}{[\code{character(1)}]\cr
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
