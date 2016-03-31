@@ -5,7 +5,7 @@
 #include <R.h>
 #include <Rinternals.h>
 
-enum { CMSGLEN = 256 };
+#define CMSGLEN 255
 typedef struct {
     Rboolean ok;
     char msg[CMSGLEN];
@@ -14,7 +14,5 @@ typedef struct {
 extern const msg_t MSGT;
 extern const msg_t MSGF;
 msg_t make_msg(const char *, ...);
-const char * guessType(SEXP);
-SEXP make_type_error(SEXP, const char *);
 
 #endif
