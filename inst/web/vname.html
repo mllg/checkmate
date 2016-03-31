@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>assert. checkmate 1.7.4</title>
+<title>vname. checkmate 1.7.4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -47,34 +47,25 @@
         
       </header>
       
-      <h1>Combine multiple checks into one assertion</h1>
+      <h1>Lookup a variable name</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>assert(..., combine&nbsp;=&nbsp;"or", .var.name&nbsp;=&nbsp;NULL)</div></pre>
+    <pre><div>vname(x)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
-      <dt>...</dt>
-      <dd>[any]
-List of calls to check functions.</dd>
-      <dt>combine</dt>
-      <dd>[<code>character(1)</code>]
-&#147;or&#148; or &#147;and&#148; to combine the check functions with an OR
-or AND, respectively.</dd>
-      <dt>.var.name</dt>
-      <dd>[<code>character(1)</code>]
-Name of the checked object to print in error messages. Defaults to
-the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>x</dt>
+      <dd>[ANY]
+Object.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
       <p><dl>
-Throws an error if all checks fail and invisibly returns
- <code>TRUE</code> otherwise.
+[<code>character(1)</code>] Variable name.
 </dl></p>
   
     </div>
@@ -82,28 +73,15 @@ Throws an error if all checks fail and invisibly returns
     <div class="Description">
       <h2>Description</h2>
 
-      <p>You can call this function with an arbitrary number of of <code>check*</code>
-functions, i.e. functions provided by this package or your own functions which
-return <code>TRUE</code> on success and the error message as <code>character(1)</code> otherwise.
-The resulting assertion is successful, if <code>combine</code> is
-&#147;or&#148; (default) and at least one check evaluates to <code>TRUE</code> or
-<code>combine</code> is &#147;and&#148; and all checks evaluate to <code>TRUE</code>.
-Otherwise, <code>assert</code> throws an informative error message.</p>
+      <p>Tries to heuristically determine the variable name of <code>x</code> in the parent frame
+with a combination of <code><a href='http://www.inside-r.org/r-doc/base/deparse'>deparse</a></code> and <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.
+Used for checkmate's error messages.</p>
   
     </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>x = 1:10
-assert(checkNull(x), checkInteger(x, any.missing = FALSE))
-## Not run: 
-# x = 1
-# assert(checkChoice(x, c(&quot;a&quot;, &quot;b&quot;)), checkDataFrame(x))
-# ## End(Not run)
-</div></pre>
-  </div>
+      </div>
   <div class="span4">
     <!-- <ul>
-      <li>assert</li>
+      <li>vname</li>
     </ul>
     <ul>
       

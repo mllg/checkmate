@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkNumber. checkmate 1.7.3</title>
+<title>checkNumber. checkmate 1.7.4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.3</a>
+      <a class="brand" href="#">checkmate 1.7.4</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -53,11 +53,11 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>checkNumber(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE)</div>
-<div>assertNumber(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
-<div>assert_number(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
+<div>assertNumber(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_number(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
 <div>testNumber(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE)</div>
 <div>test_number(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE)</div>
-<div>expect_number(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
+<div>expect_number(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, finite&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -76,20 +76,21 @@ Upper value all elements of <code>x</code> must be lower than.</dd>
       <dt>finite</dt>
       <dd>[<code>logical(1)</code>]
 Check for only finite values? Default is <code>FALSE</code>.</dd>
+      <dt>.var.name</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>add</dt>
       <dd>[<code>AssertCollection</code>]
-Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
-      <dt>.var.name</dt>
-      <dd>[<code>NULL</code> || <code>character(1)</code>]
-Name of the checked object to print in error message. If <code>NULL</code>,
-the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
 See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
-      <dd>[character(1)]
-Same as <code>.var.name</code>, but passed down to <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
     <div class="Value">

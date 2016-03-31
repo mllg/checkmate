@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>makeAssertion. checkmate 1.7.3</title>
+<title>makeAssertion. checkmate 1.7.4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.3</a>
+      <a class="brand" href="#">checkmate 1.7.4</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -65,9 +65,9 @@ Object to check.</dd>
 The result of a check function: <code>TRUE</code> for successful checks,
 and an error message as string otherwise.</dd>
       <dt>var.name</dt>
-      <dd>[<code>NULL</code> || <code>character(1)</code>]
+      <dd>[<code>character(1)</code>]
 The custom name for <code>x</code> as passed to any <code>assert*</code> function.
-If <code>NULL</code>, the variable name will be heuristically determined.</dd>
+Defaults to a heuristic name lookup.</dd>
       <dt>collection</dt>
       <dd>[<code><a href='AssertCollection.html'>AssertCollection</a></code>]
 If an <code><a href='AssertCollection.html'>AssertCollection</a></code> is provided, the error message is stored
@@ -112,7 +112,7 @@ function based on a check function (see example).</p>
 checkFalse = function(x) if (!identical(x, FALSE)) &quot;Must be FALSE&quot; else TRUE
 
 # Create the respective assert function
-assertFalse = function(x, add = NULL, .var.name = NULL) {
+assertFalse = function(x, .var.name = vname(x), add = NULL) {
   res = checkFalse(x)
   makeAssertion(x, res, .var.name, add)
 }
@@ -121,12 +121,12 @@ assertFalse = function(x, add = NULL, .var.name = NULL) {
 assertFalse = makeAssertionFunction(checkFalse)
 print(assertFalse)
 </div>
-<div class='output'>function (x, add = NULL, .var.name = NULL) 
+<div class='output'>function (x, .var.name = vname(x), add = NULL) 
 {
     res = checkFalse(x)
     makeAssertion(x, res, .var.name, add)
 }
-&lt;environment: 0x4357290&gt;
+&lt;environment: 0x3d89660&gt;
 </div></pre>
   </div>
   <div class="span4">

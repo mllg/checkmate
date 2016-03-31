@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>qassertr. checkmate 1.7.3</title>
+<title>qassertr. checkmate 1.7.4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.3</a>
+      <a class="brand" href="#">checkmate 1.7.4</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,9 +52,9 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>qassertr(x, rules, .var.name&nbsp;=&nbsp;NULL)</div>
-<div>qtestr(x, rules)</div>
-<div>qexpectr(x, rules, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
+    <pre><div>qassertr(x, rules, .var.name&nbsp;=&nbsp;vname(x))</div>
+<div>qtestr(x, rules, depth&nbsp;=&nbsp;1L)</div>
+<div>qexpectr(x, rules, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -66,16 +66,21 @@ See details of <code><a href='qassert.html'>qtest</a></code> for rule explanatio
       <dd>[<code>character</code>]
 Set of rules. See <code><a href='qassert.html'>qtest</a></code></dd>
       <dt>.var.name</dt>
-      <dd>[<code>NULL</code> || <code>character(1)</code>]
-Name of the checked object to print in error message. If <code>NULL</code>,
-the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in error messages. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>depth</dt>
+      <dd>[<code>integer(1)</code>]
+Maximum recursion depth. Defaults to &#147;1&#148; to directly check list elements or
+data frame columns. Set to a higher value to check lists of lists of elements.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
 See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
-      <dd>[character(1)]
-Same as <code>.var.name</code>, but passed down to <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
     <div class="Value">

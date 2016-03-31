@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkNamed. checkmate 1.7.3</title>
+<title>checkNamed. checkmate 1.7.4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.3</a>
+      <a class="brand" href="#">checkmate 1.7.4</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -53,8 +53,8 @@
   <div class="span8">
     <h2>Usage</h2>
     <pre><div>checkNamed(x, type&nbsp;=&nbsp;"named")</div>
-<div>assertNamed(x, type&nbsp;=&nbsp;"named", add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
-<div>assert_named(x, type&nbsp;=&nbsp;"named", add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
+<div>assertNamed(x, type&nbsp;=&nbsp;"named", .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_named(x, type&nbsp;=&nbsp;"named", .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
 <div>testNamed(x, type&nbsp;=&nbsp;"named")</div>
 <div>test_named(x, type&nbsp;=&nbsp;"named")</div></pre>
     
@@ -72,13 +72,13 @@ Select the check(s) to perform.
 &#147;strict&#148; checks for unique names which comply to R's variable name restrictions.
 Note that for zero-length <code>x</code> every name check evaluates to <code>TRUE</code>.
 Also note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</dd>
+      <dt>.var.name</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>add</dt>
       <dd>[<code>AssertCollection</code>]
-Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
-      <dt>.var.name</dt>
-      <dd>[<code>NULL</code> || <code>character(1)</code>]
-Name of the checked object to print in error message. If <code>NULL</code>,
-the name will be heuristically determined via <code><a href='http://www.inside-r.org/r-doc/base/substitute'>substitute</a></code>.</dd>
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
     </dl>
     
     <div class="Value">
