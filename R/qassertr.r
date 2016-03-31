@@ -28,17 +28,20 @@
 #' # All list elements are numeric OR character
 #' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
 qassertr = function(x, rules, .var.name = vname(x)) {
-  res = .Call(c_qassert, x, rules, TRUE)
+  res = .Call(c_qassert, x, rules, TRUE, 1L)
   if (!identical(res, TRUE))
     mstop(qamsg(x, res, .var.name, recursive = TRUE))
   invisible(x)
 }
 
 #' @rdname qassertr
+#' @param depth [\code{integer(1)}]\cr
+#'   Maximum recursion depth. Defaults to \dQuote{1} to directly check list elements or
+#'   data frame columns. Set to a higher value to check lists of lists of elements.
 #' @useDynLib checkmate c_qtest
 #' @export
-qtestr = function(x, rules) {
-  .Call(c_qtest, x, rules, TRUE)
+qtestr = function(x, rules, depth = 1L) {
+  .Call(c_qtest, x, rules, TRUE, depth)
 }
 
 #' @rdname qassertr
@@ -46,7 +49,9 @@ qtestr = function(x, rules) {
 #' @include makeExpectation.r
 #' @useDynLib checkmate c_qassert
 #' @export
-qexpectr = function(x, rules, info = NULL, label = NULL) {
-  res = .Call(c_qassert, x, rules, TRUE)
+qexpectr = function(x, rules, info = NULL, label = vname(x)) {
+  res = .Call(c_qassert, x, rules, TRUE, 1L)
+  if (!identical(res, TRUE))
+    res = qamsg(x, res, "x", recursive = TRUE)
   makeExpectation(x, res, info = info, label = label)
 }

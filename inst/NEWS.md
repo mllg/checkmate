@@ -6,6 +6,8 @@
 * Changed default of argument `.var.name` for assertions and `label` for
   expectations: They now default to the exported function `vname` which
   simplifies the variable name lookup.
+* New argument `depth` for `qtestr` to control the recursion depth of nested
+  lists.
 
 # Version 1.7.3 (2016-03-10)
 * Added `checkDate()`

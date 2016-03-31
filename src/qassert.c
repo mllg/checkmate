@@ -461,14 +461,26 @@ static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nr
     return FALSE;
 }
 
-static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules) {
+static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules, R_len_t depth) {
     if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
     const R_len_t nx = xlength(x);
-    for (R_xlen_t i = 0; i < nx; i++) {
-        if (!qtest1(VECTOR_ELT(x, i), checker, nrules))
-            return FALSE;
+    if (depth > 1) {
+        for (R_xlen_t i = 0; i < nx; i++) {
+            if (isRList(VECTOR_ELT(x, i))) {
+                if (!qtest_list(VECTOR_ELT(x, i), checker, nrules, depth - 1))
+                    return FALSE;
+            } else {
+                if (!qtest1(VECTOR_ELT(x, i), checker, nrules))
+                    return FALSE;
+            }
+        }
+    } else {
+        for (R_xlen_t i = 0; i < nx; i++) {
+            if (!qtest1(VECTOR_ELT(x, i), checker, nrules))
+                return FALSE;
+        }
     }
     return TRUE;
 }
@@ -480,7 +492,7 @@ Rboolean qtest(SEXP x, const char *rule) {
     return qtest1(x, &checker, 1);
 }
 
-SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
+SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     const R_len_t nrules = length(rules);
 
     if (!isString(rules))
@@ -497,7 +509,7 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive) {
         parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 
-    return LOGICAL(recursive)[0] ?
-        ScalarLogical(qtest_list(x, checker, nrules)) :
-        ScalarLogical(qtest1(x, checker, nrules));
+    if (LOGICAL(recursive)[0])
+        return ScalarLogical(qtest_list(x, checker, nrules, asCount(depth, "depth")));
+    return ScalarLogical(qtest1(x, checker, nrules));
 }
