@@ -2,9 +2,7 @@ mstop = function(msg, ...) {
   stop(simpleError(sprintf(msg, ...), call = sys.call(1L)))
 }
 
-qamsg = function(x, msg, vname, recursive=FALSE) {
-  if (length(msg) > 1L)
-    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")), "\n")
+qamsg = function(x, msg, vname, recursive = FALSE) {
   if (recursive) {
     pos = attr(msg, "pos")
     if (testNamed(x)) {
@@ -15,7 +13,8 @@ qamsg = function(x, msg, vname, recursive=FALSE) {
   } else {
     item = ""
   }
-
+  if (length(msg) > 1L)
+    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")), "\n")
   if (is.null(vname))
     vname = collapse(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), "\n")
   sprintf("Assertion on '%s'%s failed. %s", vname, item, msg)

@@ -243,6 +243,11 @@ test_that("logicals are not numeric", {
   expect_fail_all(TRUE, "N")
 })
 
+test_that("data frames are not lists", {
+  expect_fail_all(iris, "l")
+  expect_fail_all(iris, "L")
+})
+
 test_that("error messages are properly generated", {
   expect_error(qassert(1, "N22"), "== 22")
   expect_error(qassert(1:3, "N?"), "<= 1")
