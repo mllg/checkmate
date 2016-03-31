@@ -24,6 +24,10 @@ qamsg = function(x, msg, vname, recursive = FALSE) {
   if (identical(lhs, TRUE)) rhs else lhs
 }
 
+"%or%" = function(lhs, rhs) {
+  if (identical(lhs, TRUE)) lhs else rhs
+}
+
 collapse = function(x, sep = ",") {
   paste0(x, collapse = sep)
 }

@@ -14,12 +14,15 @@
 #'  Required number of arguments, without \code{...}.
 #'  Default is \code{NULL} (no check).
 #' @template checker
+#' @template null.ok
 #' @family basetypes
 #' @export
 #' @examples
 #' testFunction(mean)
 #' testFunction(mean, args = "x")
-checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
+checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE) {
+  if (identical(null.ok, TRUE) && is.null(x))
+    return(TRUE)
   qassert(ordered, "B1")
   x = try(match.fun(x), silent = TRUE)
   if (inherits(x, "try-error"))

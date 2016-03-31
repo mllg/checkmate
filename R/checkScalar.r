@@ -6,14 +6,15 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @template checker
+#' @template null.ok
 #' @family scalars
 #' @useDynLib checkmate c_check_scalar
 #' @export
 #' @examples
 #' testScalar(1)
 #' testScalar(1:10)
-checkScalar = function(x, na.ok = FALSE) {
-  .Call(c_check_scalar, x, na.ok)
+checkScalar = function(x, na.ok = FALSE, null.ok = FALSE) {
+  .Call(c_check_scalar, x, na.ok, null.ok)
 }
 
 #' @export

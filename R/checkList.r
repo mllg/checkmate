@@ -15,15 +15,16 @@
 #'  For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 #'  Defaults to \code{character(0)} (no check).
 #' @template checker
+#' @template null.ok
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_list
 #' @examples
 #' testList(list())
 #' testList(as.list(iris), types = c("numeric", "factor"))
-checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
-  checkListTypes(x, types)
+checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
+  (is.null(x) %or% checkListTypes(x, types))
 }
 
 checkListTypes = function(x, types = character(0L)) {

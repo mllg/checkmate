@@ -11,30 +11,30 @@
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL)
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 assertDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
   .var.name = vname(x), add = NULL)
 
 assert_data_frame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
   .var.name = vname(x), add = NULL)
 
 testDataFrame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL)
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 test_data_frame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL)
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 expect_data_frame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, info = NULL,
-  label = vname(x))
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -77,6 +77,11 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.
 Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
+
+\item{null.ok}{[\code{logical(1)}\cr
+Also allow \code{x} to be missing (encoded as \code{NULL}).
+In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
+check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

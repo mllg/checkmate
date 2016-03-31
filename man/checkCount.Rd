@@ -10,22 +10,25 @@
 \title{Check if an argument is a count}
 \usage{
 checkCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps))
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 assertCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 assert_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 testCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps))
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 test_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps))
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 expect_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), info = NULL, label = vname(x))
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -41,6 +44,11 @@ Default is \code{FALSE}, allowing 0.}
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
+
+\item{null.ok}{[\code{logical(1)}\cr
+Also allow \code{x} to be missing (encoded as \code{NULL}).
+In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
+check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

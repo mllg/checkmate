@@ -12,11 +12,15 @@
 #'  All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @inheritParams checkVector
 #' @template checker
+#' @template null.ok
 #' @export
-checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE) {
+checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, null.ok = FALSE) {
+  if (identical(null.ok, TRUE) && is.null(x))
+    return(TRUE)
   if (!inherits(x, "Date"))
     return("Must be of class 'Date'")
-  checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and% checkDateBounds(x, lower, upper)
+  checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique, null.ok) %and%
+  (is.null(x) %or% checkDateBounds(x, lower, upper))
 }
 
 checkDateBounds = function(x, lower, upper) {

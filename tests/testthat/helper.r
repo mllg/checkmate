@@ -16,6 +16,16 @@ expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   fun = match.fun(paste0("check", cc))
   expect_true(fun(x, ...))
 
+  if ("null.ok" %in% names(formals(fun))) {
+    args = list(...)
+    args["x"] = list(NULL)
+    args$null.ok = TRUE
+    expect_true(do.call(fun, args))
+
+    args$null.ok = FALSE
+    expect_true(is.character(do.call(fun, args)))
+  }
+
   fun = match.fun(paste0("test", cc))
   expect_true(fun(x, ...))
 
@@ -38,7 +48,18 @@ expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   xn = deparse(substitute(x))
 
   fun = match.fun(paste0("check", cc))
-  expect_true(testString(fun(x, ...), min.chars = 1L))
+  res = fun(x, ...)
+  expect_true(is.character(res) && nzchar(res))
+
+  if ("null.ok" %in% names(formals(fun))) {
+    args = list(...)
+    args["x"] = list(NULL)
+    args$null.ok = TRUE
+    expect_true(do.call(fun, args))
+
+    args$null.ok = FALSE
+    expect_true(is.character(do.call(fun, args)))
+  }
 
   fun = match.fun(paste0("test", cc))
   expect_false(fun(x, ...))

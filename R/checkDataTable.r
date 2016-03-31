@@ -10,6 +10,7 @@
 #' @param index [\code{character}]\cr
 #'   Expected secondary key(s) of the data table.
 #' @template checker
+#' @template null.ok
 #' @family basetypes
 #' @export
 #' @examples
@@ -19,13 +20,14 @@
 #' setkeyv(dt, "Sepal.Length", physical = FALSE)
 #' testDataTable(dt)
 #' testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
-checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
   if (!requireNamespace("data.table", quietly = TRUE))
     stop("Install 'data.table' to perform checks of data tables")
 
-  if (!data.table::is.data.table(x)) {
+  if (identical(null.ok, TRUE) && is.null(x))
+    return(TRUE)
+  if (!data.table::is.data.table(x))
     return("Must be a data.table")
-  }
 
   if (!is.null(key)) {
     qassert(key, "S")
