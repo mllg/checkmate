@@ -10,5 +10,5 @@ man-roxygen
 ^inst/web
 ^inst/autogen
 ^inst/staticdocs
-tests/testthat/checkmate.test.include/src/.+\.o
-tests/testthat/checkmate.test.include/src/.+\.so
+tests/checkmate.test.include/src/.+\.o
+tests/checkmate.test.include/src/.+\.so
