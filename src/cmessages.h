@@ -14,7 +14,6 @@ typedef struct {
 extern const msg_t MSGT;
 extern const msg_t MSGF;
 msg_t make_msg(const char *, ...);
-SEXP make_result(const char *, ...);
 const char * guessType(SEXP);
 SEXP make_type_error(SEXP, const char *);
 

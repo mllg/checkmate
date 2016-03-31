@@ -12,15 +12,6 @@ msg_t make_msg(const char *fmt, ...) {
     return msg;
 }
 
-SEXP make_result(const char *fmt, ...) {
-    char msg[CMSGLEN];
-    va_list vargs;
-    va_start(vargs, fmt);
-    vsnprintf(msg, CMSGLEN, fmt, vargs);
-    va_end(vargs);
-    return ScalarString(mkChar(msg));
-}
-
 const char * guessType(SEXP x) {
     SEXP attr = getAttrib(x, R_ClassSymbol);
     if (!isNull(attr))

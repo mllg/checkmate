@@ -9,14 +9,15 @@
 #' @param finite [\code{logical(1)}]\cr
 #'  Check for only finite values? Default is \code{FALSE}.
 #' @template checker
+#' @template null.ok
 #' @family scalars
 #' @useDynLib checkmate c_check_number
 #' @export
 #' @examples
 #' testNumber(1)
 #' testNumber(1:2)
-checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE) {
-  .Call(c_check_number, x, na.ok, lower, upper, finite)
+checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, null.ok = FALSE) {
+  .Call(c_check_number, x, na.ok, lower, upper, finite, null.ok)
 }
 
 #' @export

@@ -9,20 +9,20 @@
 \alias{test_environment}
 \title{Check if an argument is an environment}
 \usage{
-checkEnvironment(x, contains = character(0L))
+checkEnvironment(x, contains = character(0L), null.ok = FALSE)
 
-assertEnvironment(x, contains = character(0L), .var.name = vname(x),
-  add = NULL)
+assertEnvironment(x, contains = character(0L), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_environment(x, contains = character(0L), .var.name = vname(x),
-  add = NULL)
+assert_environment(x, contains = character(0L), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testEnvironment(x, contains = character(0L))
+testEnvironment(x, contains = character(0L), null.ok = FALSE)
 
-test_environment(x, contains = character(0L))
+test_environment(x, contains = character(0L), null.ok = FALSE)
 
-expect_environment(x, contains = character(0L), info = NULL,
-  label = vname(x))
+expect_environment(x, contains = character(0L), null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -31,6 +31,11 @@ Object to check.}
 \item{contains}{[\code{character}]\cr
 Vector of object names expected in the environment.
 Defaults to \code{character(0)}.}
+
+\item{null.ok}{[\code{logical(1)}\cr
+Also allow \code{x} to be missing (encoded as \code{NULL}).
+In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
+check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
