@@ -8,9 +8,9 @@
 \usage{
 qassertr(x, rules, .var.name = vname(x))
 
-qtestr(x, rules)
+qtestr(x, rules, depth = 1L)
 
-qexpectr(x, rules, info = NULL, label = NULL)
+qexpectr(x, rules, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[\code{list} or \code{data.frame}]\cr
@@ -23,6 +23,10 @@ Set of rules. See \code{\link{qtest}}}
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
+
+\item{depth}{[\code{integer(1)}]\cr
+Maximum recursion depth. Defaults to \dQuote{1} to directly check list elements or
+data frame columns. Set to a higher value to check lists of lists of elements.}
 
 \item{info}{[character(1)]\cr
 Extra information to be included in the message for the testthat reporter.

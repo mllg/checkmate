@@ -51,3 +51,17 @@ test_that("qassertr / qtestr", {
   expect_error(qassertr(x, "x"), "list or data.frame")
   expect_error(qtestr(x, "x"), "list or data.frame")
 })
+
+test_that("qtestr / depth", {
+  x = list(letters, 1:10, list(letters, 2:3, runif(10)))
+  rules = c("v", "l")
+  expect_true(qtestr(x, rules, depth = 1L))
+  expect_true(qtestr(x, rules, depth = 2L))
+  expect_true(qtestr(x, rules, depth = 3L))
+
+  x[[3]][[2]] = iris
+  expect_true(qtestr(x, rules, depth = 1L))
+  expect_true(qtestr(x, c(rules, "d"), depth = 1L))
+  expect_false(qtestr(x, rules, depth = 2L))
+  expect_false(qtestr(x, rules, depth = 3L))
+})
