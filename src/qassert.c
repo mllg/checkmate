@@ -435,6 +435,7 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     } else {
         failed = qassert1(x, checker, result, nrules);
     }
+
     if (failed == 0)
         return ScalarLogical(TRUE);
 

@@ -1,8 +1,11 @@
 # Version 1.7.4 (2016-xx-xx)
-* Fixed error message in convert functions: Variable name was not properly looked up.
-* Changed default of argument `.var.name` for assertions and `label` for expectations:
-  They now default to the exported function `vname` which simplifies the variable name
-  lookup.
+* Fixed error message in convert functions: Variable name was not properly
+  looked up.
+* Fixed bug in `qassertr` and `qtestr` where the error message was not properly
+  generated for multiple rules.
+* Changed default of argument `.var.name` for assertions and `label` for
+  expectations: They now default to the exported function `vname` which
+  simplifies the variable name lookup.
 
 # Version 1.7.3 (2016-03-10)
 * Added `checkDate()`
