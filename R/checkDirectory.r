@@ -5,6 +5,7 @@
 #' @inheritParams checkAccess
 #' @inheritParams checkFile
 #' @template checker
+#' @template null.ok
 #' @family filesystem
 #' @export
 #' @examples
@@ -13,7 +14,9 @@
 #'
 #' # Is R's home directory readable and writable?
 #' testDirectory(R.home(), "rw")
-checkDirectory = function(x, access = "") {
+checkDirectory = function(x, access = "", null.ok = FALSE) {
+  if (identical(null.ok, TRUE) && is.null(x))
+    return(TRUE)
   if (!qtest(x, "S+"))
     return("No directory provided")
 
