@@ -11,21 +11,23 @@ xe = new.env(); xe$foo = 1
 xf = function(x) x
 
 expect_succ_all = function(x, rules) {
+  xn = deparse(substitute(x))
   expect_true(qtest(x, rules),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+    info = sprintf("rules: %s", paste(rules, collapse=",")), label = xn)
   expect_identical(qassert(x, rules), x,
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_true(is.expectation(qexpect(x, rules)),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+    info = sprintf("rules: %s", paste(rules, collapse=",")), label = xn, expected.label = xn)
+  expect_expectation_successful(qexpect(x, rules),
+    info = sprintf("rules: %s", paste(rules, collapse=",")), label = xn)
 }
 
-expect_fail_all = function(x, rules) {
+expect_fail_all = function(x, rules, pattern = NULL) {
+  xn = deparse(substitute(x))
   expect_false(qtest(x, rules),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_true(inherits(try(qassert(x, rules), silent=TRUE), "try-error"),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_error(with_reporter(SilentReporter(), qexpect(x, rules)),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
+  expect_error(qassert(x, rules), regex = pattern,
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
+  expect_expectation_failed(qexpect(x, rules),
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
 }
 
 test_that("type and missingness", {
