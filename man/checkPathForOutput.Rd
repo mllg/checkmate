@@ -9,19 +9,19 @@
 \alias{test_path_for_output}
 \title{Check if a path is suited for creating an output file}
 \usage{
-checkPathForOutput(x, overwrite = FALSE)
+checkPathForOutput(x, overwrite = FALSE, null.ok = FALSE)
 
-assertPathForOutput(x, overwrite = FALSE, .var.name = vname(x),
-  add = NULL)
+assertPathForOutput(x, overwrite = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_path_for_output(x, overwrite = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_path_for_output(x, overwrite = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testPathForOutput(x, overwrite = FALSE)
+testPathForOutput(x, overwrite = FALSE, null.ok = FALSE)
 
-test_path_for_output(x, overwrite = FALSE)
+test_path_for_output(x, overwrite = FALSE, null.ok = FALSE)
 
-expect_path_for_output(x, overwrite = FALSE, info = NULL,
+expect_path_for_output(x, overwrite = FALSE, null.ok = FALSE, info = NULL,
   label = vname(x))
 }
 \arguments{
@@ -32,6 +32,11 @@ Object to check.}
 If \code{TRUE}, an existing file in place is allowed if it
 it is both readable and writeable.
 Default is \code{FALSE}.}
+
+\item{null.ok}{[\code{logical(1)}\cr
+Also allow \code{x} to be missing (encoded as \code{NULL}).
+In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
+check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

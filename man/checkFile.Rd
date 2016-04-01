@@ -9,20 +9,20 @@
 \alias{test_file}
 \title{Check existence and access rights of files}
 \usage{
-checkFile(x, access = "", extension = NULL)
+checkFile(x, access = "", extension = NULL, null.ok = FALSE)
 
-assertFile(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assertFile(x, access = "", extension = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_file(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assert_file(x, access = "", extension = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testFile(x, access = "", extension = NULL)
+testFile(x, access = "", extension = NULL, null.ok = FALSE)
 
-test_file(x, access = "", extension = NULL)
+test_file(x, access = "", extension = NULL, null.ok = FALSE)
 
-expect_file(x, access = "", extension = NULL, info = NULL,
-  label = vname(x))
+expect_file(x, access = "", extension = NULL, null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -35,6 +35,11 @@ Write and executable rights are not checked on Windows.}
 
 \item{extension}{[\code{character}]\cr
 Vector of allowed file extensions, matched case insensitive.}
+
+\item{null.ok}{[\code{logical(1)}\cr
+Also allow \code{x} to be missing (encoded as \code{NULL}).
+In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
+check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

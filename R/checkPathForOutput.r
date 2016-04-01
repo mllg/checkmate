@@ -18,12 +18,15 @@
 #'  it is both readable and writeable.
 #'  Default is \code{FALSE}.
 #' @template checker
+#' @template null.ok
 #' @family filesystem
 #' @export
 #' @examples
 #' # Can we create a file in the tempdir?
 #' testPathForOutput(file.path(tempdir(), "process.log"))
-checkPathForOutput = function(x, overwrite = FALSE) {
+checkPathForOutput = function(x, overwrite = FALSE, null.ok = FALSE) {
+  if (identical(null.ok, TRUE) && is.null(x))
+    return(TRUE)
   if (!qtest(x, "S+"))
     return("No path provided")
   qassert(overwrite, "B1")
