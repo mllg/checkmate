@@ -1,21 +1,23 @@
 context("qtestr")
 
 expect_succ_all = function(x, rules) {
+  xn = deparse(substitute(x))
   expect_true(qtestr(x, rules),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
   expect_identical(qassertr(x, rules), x,
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_expectation_successful(qexpectr(x, rules))
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn, expected.label = xn)
+  expect_expectation_successful(qexpectr(x, rules),
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
 }
 
 expect_fail_all = function(x, rules, pattern = NULL) {
+  xn = deparse(substitute(x))
   expect_false(qtestr(x, rules),
-    info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  res = try(qassertr(x, rules), silent = TRUE)
-  expect_true(inherits(res, "try-error"), info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  if (!is.null(pattern))
-    expect_true(grepl(x = as.character(res), pattern = pattern), info=sprintf("vector %s, rules: %s", deparse(substitute(x)), paste(rules, collapse=",")))
-  expect_expectation_failed(qexpectr(x, rules))
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
+  expect_error(qassertr(x, rules), regex = pattern,
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
+  expect_expectation_failed(qexpectr(x, rules),
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
 }
 
 test_that("qassertr / qtestr", {

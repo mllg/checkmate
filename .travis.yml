@@ -15,6 +15,7 @@ r_packages:
 
 r_github_packages:
   - mllg/checkmate-test-include
+  - hadley/testthat
 
 after_success:
   - Rscript -e 'covr::coveralls()'
