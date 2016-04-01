@@ -9,20 +9,19 @@
 \alias{test_subset}
 \title{Check if an argument is a subset of a given set}
 \usage{
-checkSubset(x, choices, empty.ok = TRUE, null.ok = FALSE)
+checkSubset(x, choices, empty.ok = TRUE)
 
-assertSubset(x, choices, empty.ok = TRUE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertSubset(x, choices, empty.ok = TRUE, .var.name = vname(x),
+  add = NULL)
 
-assert_subset(x, choices, empty.ok = TRUE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_subset(x, choices, empty.ok = TRUE, .var.name = vname(x),
+  add = NULL)
 
-testSubset(x, choices, empty.ok = TRUE, null.ok = FALSE)
+testSubset(x, choices, empty.ok = TRUE)
 
-test_subset(x, choices, empty.ok = TRUE, null.ok = FALSE)
+test_subset(x, choices, empty.ok = TRUE)
 
-expect_subset(x, choices, empty.ok = TRUE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_subset(x, choices, empty.ok = TRUE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -34,11 +33,6 @@ Set of possible values.}
 \item{empty.ok}{[\code{logical(1)}]\cr
 Treat zero-length \code{x} as subset of any set \code{choices}?
 Default is \code{TRUE}.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
