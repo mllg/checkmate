@@ -31,11 +31,10 @@
 #' # Alternative: Automatically create such a function
 #' expect_false = makeExpectationFunction(checkFalse)
 #' print(expect_false)
-makeExpectation = function(x, res, info = NULL, label = NULL) {
+makeExpectation = function(x, res, info, label) {
   if (!requireNamespace("testthat", quietly = TRUE))
-    stop("Package 'testthat' is required for 'expect_*' extensions")
-  cond = function(res) testthat::expectation(identical(res, TRUE), failure_msg = res, success_msg = "all good")
-  testthat::expect_that(res, cond, info = info, label = label)
+    stop("Package 'testthat' is required for checkmate's 'expect_*' extensions")
+  testthat::expect_true(res, info = res, label = sprintf("Check on %s", label))
 }
 
 #' @rdname makeExpectation

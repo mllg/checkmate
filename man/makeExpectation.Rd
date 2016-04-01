@@ -5,7 +5,7 @@
 \alias{makeExpectationFunction}
 \title{Turn a Check into an Expectation}
 \usage{
-makeExpectation(x, res, info = NULL, label = NULL)
+makeExpectation(x, res, info, label)
 
 makeExpectationFunction(check.fun, c.fun = NULL, env = parent.frame())
 }
