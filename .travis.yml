@@ -10,12 +10,9 @@ env:
     global:
       - secure: "NXIZ5FxxPpXgbgVy5HLQERszLC0g4jnZ94vRwHOne57nVEoaMHVDDgT8c1SzzFPUSBcr/9iaCYJhPeU/RpwXnkrP0GN1kBf5wdC9xkgYNo+JtUWQBhSv+NGH2s+Y+CyyCNPM+opfo3YklZ0w8cDH43atKL2ycK69Fb9tZ9r0f/U="
 
-r_packages:
-  - covr
-
 r_github_packages:
+  - jimhester/covr
   - mllg/checkmate-test-include
-  - hadley/testthat
 
 after_success:
   - Rscript -e 'covr::coveralls()'
