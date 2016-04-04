@@ -9,20 +9,17 @@
 \alias{test_flag}
 \title{Check if an argument is a flag}
 \usage{
-checkFlag(x, na.ok = FALSE, null.ok = FALSE)
+checkFlag(x, na.ok = FALSE)
 
-assertFlag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assertFlag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_flag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_flag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 
-testFlag(x, na.ok = FALSE, null.ok = FALSE)
+testFlag(x, na.ok = FALSE)
 
-test_flag(x, na.ok = FALSE, null.ok = FALSE)
+test_flag(x, na.ok = FALSE)
 
-expect_flag(x, na.ok = FALSE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_flag(x, na.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -30,11 +27,6 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -75,8 +67,7 @@ testFlag(1)
 }
 \seealso{
 Other scalars: \code{\link{checkCount}},
-  \code{\link{checkInt}}, \code{\link{checkNumber}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+  \code{\link{checkInt}}, \code{\link{checkScalarNA}},
+  \code{\link{checkScalar}}, \code{\link{checkString}}
 }
 

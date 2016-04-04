@@ -13,16 +13,18 @@
 #'  Default is \code{FALSE}, allowing 0.
 #' @template tol
 #' @template checker
-#' @template null.ok
 #' @family scalars
 #' @useDynLib checkmate c_check_count
 #' @export
 #' @examples
 #' testCount(1)
 #' testCount(-1)
-checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), null.ok = FALSE) {
-  .Call(c_check_count, x, na.ok, positive, tol, null.ok)
+checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
+  .Call(c_check_count, x, na.ok, positive, tol)
 }
+
+#' @include assert.R
+checkers$count = checkCount
 
 #' @export
 #' @include makeAssertion.R

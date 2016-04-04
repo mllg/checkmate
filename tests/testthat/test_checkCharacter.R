@@ -37,7 +37,4 @@ test_that("checkCharacter", {
   expect_false(testCharacter(x, any.missing=FALSE, len=5))
 
   expect_error(assertCharacter(1), "character")
-
-  expect_error(assertCharacter(NULL, pattern = "foo"), "NULL")
-  expect_true(is.null(assertCharacter(NULL, pattern = "foo", null.ok = TRUE)))
 })

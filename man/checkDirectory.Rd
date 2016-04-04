@@ -9,20 +9,17 @@
 \alias{test_directory}
 \title{Check for existence and access rights of directories}
 \usage{
-checkDirectory(x, access = "", null.ok = FALSE)
+checkDirectory(x, access = "")
 
-assertDirectory(x, access = "", null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assertDirectory(x, access = "", .var.name = vname(x), add = NULL)
 
-assert_directory(x, access = "", null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_directory(x, access = "", .var.name = vname(x), add = NULL)
 
-testDirectory(x, access = "", null.ok = FALSE)
+testDirectory(x, access = "")
 
-test_directory(x, access = "", null.ok = FALSE)
+test_directory(x, access = "")
 
-expect_directory(x, access = "", null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_directory(x, access = "", info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -32,11 +29,6 @@ Object to check.}
 Single string containing possible characters \sQuote{r}, \sQuote{w} and \sQuote{x} to
 force a check for read, write or execute access rights, respectively.
 Write and executable rights are not checked on Windows.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

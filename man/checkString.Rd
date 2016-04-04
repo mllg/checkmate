@@ -10,25 +10,22 @@
 \title{Check if an argument is a string}
 \usage{
 checkString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+  fixed = NULL, ignore.case = FALSE)
 
 assertString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  fixed = NULL, ignore.case = FALSE, .var.name = vname(x), add = NULL)
 
 assert_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  fixed = NULL, ignore.case = FALSE, .var.name = vname(x), add = NULL)
 
 testString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+  fixed = NULL, ignore.case = FALSE)
 
 test_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+  fixed = NULL, ignore.case = FALSE)
 
 expect_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+  fixed = NULL, ignore.case = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -51,11 +48,6 @@ All elements of \code{x} must contain this substring.}
 
 \item{ignore.case}{[\code{logical(1)}]\cr
 See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -97,7 +89,6 @@ testString(letters)
 \seealso{
 Other scalars: \code{\link{checkCount}},
   \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkNumber}}, \code{\link{checkScalarNA}},
-  \code{\link{checkScalar}}
+  \code{\link{checkScalarNA}}, \code{\link{checkScalar}}
 }
 

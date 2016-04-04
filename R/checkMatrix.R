@@ -24,7 +24,6 @@
 #'  See \code{\link{checkNamed}} for possible values.
 #'  Note that you can use \code{\link{checkSubset}} to test for a specific set of names.
 #' @template checker
-#' @template null.ok
 #' @family basetypes
 #' @useDynLib checkmate c_check_matrix
 #' @export
@@ -32,9 +31,12 @@
 #' x = matrix(1:9, 3)
 #' colnames(x) = letters[1:3]
 #' testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
-checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
-  .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, null.ok)
+checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
+  .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
+
+#' @include assert.R
+checkers$matrix = checkMatrix
 
 #' @export
 #' @include makeAssertion.R

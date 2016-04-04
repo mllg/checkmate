@@ -10,25 +10,22 @@
 \title{Check if an argument is a single integerish value}
 \usage{
 checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+  tol = sqrt(.Machine$double.eps))
 
 assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
 
 assert_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
 
 testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+  tol = sqrt(.Machine$double.eps))
 
 test_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+  tol = sqrt(.Machine$double.eps))
 
 expect_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, info = NULL,
-  label = vname(x))
+  tol = sqrt(.Machine$double.eps), info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -46,11 +43,6 @@ Upper value all elements of \code{x} must be lower than.}
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -91,8 +83,7 @@ testInt(-1, lower = 0)
 }
 \seealso{
 Other scalars: \code{\link{checkCount}},
-  \code{\link{checkFlag}}, \code{\link{checkNumber}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+  \code{\link{checkFlag}}, \code{\link{checkScalarNA}},
+  \code{\link{checkScalar}}, \code{\link{checkString}}
 }
 

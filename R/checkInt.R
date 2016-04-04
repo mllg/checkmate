@@ -8,16 +8,18 @@
 #' @template bounds
 #' @template tol
 #' @template checker
-#' @template null.ok
 #' @family scalars
 #' @useDynLib checkmate c_check_int
 #' @export
 #' @examples
 #' testInt(1)
 #' testInt(-1, lower = 0)
-checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), null.ok = FALSE) {
-  .Call(c_check_int, x, na.ok, lower, upper, tol, null.ok)
+checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps)) {
+  .Call(c_check_int, x, na.ok, lower, upper, tol)
 }
+
+#' @include assert.R
+checkers$int = checkInt
 
 #' @export
 #' @include makeAssertion.R

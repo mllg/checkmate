@@ -1,12 +1,9 @@
 # Version 1.7.4 (2016-xx-xx)
-* New argument `null.ok` for most functions which allows `NULL` as an
-  alternative valid value. This argument is intended to simplify dealing with
-  missing and default arguments.
 * Changed default of argument `.var.name` for assertions and `label` for
   expectations: They now default to the exported function `vname` which
   simplifies the variable name lookup.
 * New argument `depth` for `qtestr` to control the recursion depth of nested
-lists.
+  lists.
 * Fixed error message in convert functions: Variable name was not properly
   looked up.
 * Fixed bug in `qassertr` and `qtestr` where the error message was not properly
