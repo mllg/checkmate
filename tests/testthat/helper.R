@@ -1,16 +1,27 @@
+NEW_TESTTHAT = !packageVersion("testthat") <= "0.11.0"
 # FIXME: Currently expected.label has to be passed, see
 # https://github.com/hadley/testthat/issues/435
 
 # FIXME: replace with expect_success (https://github.com/hadley/testthat/issues/436)
 expect_expectation_successful = function(expr, info = NULL, label = NULL) {
-  capture_expectation <- function(expr) tryCatch(expr, expectation = function(e) e)
-  expect_is(capture_expectation(expr), "expectation_success", info = info, label = label)
+  if (NEW_TESTTHAT) {
+    x = tryCatch(expr, expectation = function(e) e)
+    expect_is(x, "expectation_success", info = info, label = label)
+  } else {
+    with_reporter(ListReporter(), x <- force(expr))
+    expect_true(x$passed, info = info, label = label)
+  }
 }
 
 # FIXME: replace with expect_success (https://github.com/hadley/testthat/issues/436)
 expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = NULL) {
-  capture_expectation <- function(expr) tryCatch(expr, expectation = function(e) e)
-  expect_is(capture_expectation(expr), "expectation_failure", info = info, label = label)
+  if (NEW_TESTTHAT) {
+    x = tryCatch(expr, expectation = function(e) e)
+    expect_is(x, "expectation_failure", info = info, label = label)
+  } else {
+    with_reporter(ListReporter(), x <- force(expr))
+    expect_false(x$passed, info = info, label = label)
+  }
 }
 
 expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
