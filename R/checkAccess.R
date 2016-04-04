@@ -43,6 +43,9 @@ checkAccess = function(x, access = "") {
   return(TRUE)
 }
 
+#' @include assert.R
+checkers$access = checkAccess
+
 #' @export
 #' @include makeAssertion.R
 #' @template assert

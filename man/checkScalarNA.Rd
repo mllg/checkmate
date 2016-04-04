@@ -61,7 +61,6 @@ testScalarNA(rep(NA, 2))
 \seealso{
 Other scalars: \code{\link{checkCount}},
   \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkNumber}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+  \code{\link{checkScalar}}, \code{\link{checkString}}
 }
 

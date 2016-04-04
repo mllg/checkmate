@@ -12,35 +12,32 @@
 checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, names = NULL)
 
 assertFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, names = NULL, .var.name = vname(x), add = NULL)
 
 assert_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, names = NULL, .var.name = vname(x), add = NULL)
 
 testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, names = NULL)
 
 test_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, names = NULL)
 
 expect_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+  unique = FALSE, names = NULL, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -93,11 +90,6 @@ Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.
 Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
 
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
-
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
@@ -133,7 +125,6 @@ testFactor(x, empty.levels.ok = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
   \code{\link{checkDataTable}},

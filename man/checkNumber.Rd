@@ -9,23 +9,20 @@
 \alias{test_number}
 \title{Check if an argument is a single numeric value}
 \usage{
-checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, .var.name = vname(x), add = NULL)
 
 assert_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, .var.name = vname(x), add = NULL)
 
-testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
-test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
 
 expect_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, null.ok = FALSE, info = NULL, label = vname(x))
+  finite = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -42,11 +39,6 @@ Upper value all elements of \code{x} must be lower than.}
 
 \item{finite}{[\code{logical(1)}]\cr
 Check for only finite values? Default is \code{FALSE}.}
-
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -84,11 +76,5 @@ This function does not distinguish between
 \examples{
 testNumber(1)
 testNumber(1:2)
-}
-\seealso{
-Other scalars: \code{\link{checkCount}},
-  \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
 }
 

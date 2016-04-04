@@ -26,16 +26,17 @@
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
 #' @template checker
-#' @template null.ok
-#' @family basetypes
 #' @family atomicvector
 #' @useDynLib checkmate c_check_atomic_vector
 #' @export
 #' @examples
 #' testAtomicVector(letters, min.len = 1L, any.missing = FALSE)
-checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
-  .Call(c_check_atomic_vector, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok)
+checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
+  .Call(c_check_atomic_vector, x, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
+
+#' @include assert.R
+checkers$atomic_vector = checkAtomicVector
 
 #' @export
 #' @include makeAssertion.R

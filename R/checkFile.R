@@ -6,7 +6,6 @@
 #' @param extension [\code{character}]\cr
 #'  Vector of allowed file extensions, matched case insensitive.
 #' @template checker
-#' @template null.ok
 #' @family filesystem
 #' @export
 #' @examples
@@ -15,9 +14,7 @@
 #'
 #' # Check if R's COPYING file is readable and writable
 #' testFile(file.path(R.home(), "COPYING"), access = "rw")
-checkFile = function(x, access = "", extension = NULL, null.ok = FALSE) {
-  if (identical(null.ok, TRUE) && is.null(x))
-    return(TRUE)
+checkFile = function(x, access = "", extension = NULL) {
   if (!qtest(x, "S+"))
     return("No file provided")
 
@@ -42,6 +39,9 @@ checkFileExtension = function(x, extension = NULL) {
   }
   return(TRUE)
 }
+
+#' @include assert.R
+checkers$file = checkFile
 
 #' @export
 #' @include makeAssertion.R

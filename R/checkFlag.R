@@ -9,16 +9,18 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{FALSE}.
 #' @template checker
-#' @template null.ok
 #' @family scalars
 #' @useDynLib checkmate c_check_flag
 #' @export
 #' @examples
 #' testFlag(TRUE)
 #' testFlag(1)
-checkFlag = function(x, na.ok = FALSE, null.ok = FALSE) {
-  .Call(c_check_flag, x, na.ok, null.ok)
+checkFlag = function(x, na.ok = FALSE) {
+  .Call(c_check_flag, x, na.ok)
 }
+
+#' @include assert.R
+checkers$flag = checkFlag
 
 #' @export
 #' @include makeAssertion.R

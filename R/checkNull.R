@@ -13,6 +13,9 @@ checkNull = function(x) {
   return(TRUE)
 }
 
+#' @include assert.R
+checkers$null = checkNull
+
 #' @export
 #' @include makeAssertion.R
 #' @template assert

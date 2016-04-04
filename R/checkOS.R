@@ -20,6 +20,9 @@ checkOS = function(os) {
   return(TRUE)
 }
 
+#' @include assert.R
+checkers$os = checkOS
+
 #' @export
 #' @include makeAssertion.R
 #' @template assert

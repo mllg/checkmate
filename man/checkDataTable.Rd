@@ -12,32 +12,32 @@
 checkDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  col.names = NULL)
 
 assertDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  col.names = NULL, .var.name = vname(x), add = NULL)
 
 assert_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  col.names = NULL, .var.name = vname(x), add = NULL)
 
 testDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  col.names = NULL)
 
 test_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  col.names = NULL)
 
 expect_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+  col.names = NULL, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -87,11 +87,6 @@ Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.
 Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
 
-\item{null.ok}{[\code{logical(1)}\cr
-Also allow \code{x} to be missing (encoded as \code{NULL}).
-In the case of \code{x} being \code{NULL}, all other checks on \code{x} are not performed and the
-check is automatically successful. Default is \code{FALSE}.}
-
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
@@ -130,7 +125,6 @@ testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
   \code{\link{checkEnvironment}},

@@ -18,15 +18,12 @@
 #'  it is both readable and writeable.
 #'  Default is \code{FALSE}.
 #' @template checker
-#' @template null.ok
 #' @family filesystem
 #' @export
 #' @examples
 #' # Can we create a file in the tempdir?
 #' testPathForOutput(file.path(tempdir(), "process.log"))
-checkPathForOutput = function(x, overwrite = FALSE, null.ok = FALSE) {
-  if (identical(null.ok, TRUE) && is.null(x))
-    return(TRUE)
+checkPathForOutput = function(x, overwrite = FALSE) {
   if (!qtest(x, "S+"))
     return("No path provided")
   qassert(overwrite, "B1")
@@ -46,6 +43,9 @@ checkPathForOutput = function(x, overwrite = FALSE, null.ok = FALSE) {
   }
   return(checkAccess(dn, "w"))
 }
+
+#' @include assert.R
+checkers$path_for_output = checkPathForOutput
 
 #' @export
 #' @include makeAssertion.R
