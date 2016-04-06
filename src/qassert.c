@@ -2,7 +2,6 @@
 #include "helper.h"
 #include "any_missing.h"
 #include "is_integerish.h"
-#include "cmessages.h"
 
 typedef enum {
     CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_LIST, CL_COMPLEX,
@@ -30,6 +29,12 @@ typedef struct {
     bound_t lower;
     bound_t upper;
 } checker_t;
+
+typedef struct {
+    Rboolean ok;
+    char msg[255];
+} msg_t;
+
 
 static inline Rboolean ii_eq(const R_xlen_t x, const R_xlen_t y) { return x == y; }
 static inline Rboolean ii_lt(const R_xlen_t x, const R_xlen_t y) { return x <  y; }
@@ -63,6 +68,18 @@ static const char * CLSTR[] = {
      "atomic", "atomic vector", "matrix", "data frame", "environment", "function", "NULL"
 };
 
+static const msg_t MSGT = { .ok = TRUE };
+static const msg_t MSGF = { .ok = FALSE };
+
+static msg_t message(const char *fmt, ...) {
+    msg_t msg = { .ok = FALSE };
+    va_list vargs;
+    va_start(vargs, fmt);
+    vsnprintf(msg.msg, 255, fmt, vargs);
+    va_end(vargs);
+    return msg;
+}
+
 /*********************************************************************************************************************/
 /* Some helper functions                                                                                             */
 /*********************************************************************************************************************/
@@ -72,14 +89,14 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
-                return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
+                return message("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
     } else if (isInteger(x)) {
         const int *xp = INTEGER(x);
         const int * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
-                return make_msg("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
+                return message("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
         }
     } else if (isString(x)) {
         const R_xlen_t nx = xlength(x);
@@ -87,7 +104,7 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
         for (R_xlen_t i = 0; i < nx; i++) {
             nchar = STRING_ELT(x, i) == NA_STRING ? 0. : (double)length(STRING_ELT(x, i));
             if (!bound.fun(nchar, bound.cmp))
-                return make_msg("All elements must have %s %g chars", CMPSTR[bound.op], bound.cmp);
+                return message("All elements must have %s %g chars", CMPSTR[bound.op], bound.cmp);
         }
     } else {
         error("Bound checks only possible for numeric variables and strings");
@@ -351,15 +368,15 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        return err_msg ? make_msg("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guessType(x)) : MSGF;
+        return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guessType(x)) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
-        return err_msg ? make_msg("May not contain missing values") : MSGF;
+        return err_msg ? message("May not contain missing values") : MSGF;
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(xlength(x), checker->len.cmp)) {
-        return err_msg ? make_msg("Must be of length %s %i, but has length %g", CMPSTR[checker->len.op], checker->len.cmp, (double)xlength(x)) : MSGF;
+        return err_msg ? message("Must be of length %s %i, but has length %g", CMPSTR[checker->len.op], checker->len.cmp, (double)xlength(x)) : MSGF;
     }
 
     if (checker->lower.fun != NULL) {

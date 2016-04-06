@@ -4,7 +4,6 @@
 #define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
-#include "cmessages.h"
 
 SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP c_check_complex(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
