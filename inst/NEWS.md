@@ -5,9 +5,9 @@
 * New argument `depth` for `qtestr` to control the recursion depth of nested
   lists.
 * Fixed error message in convert functions: Variable name was not properly
-  looked up.
-* Fixed bug in `qassertr` and `qtestr` where the error message was not properly
-  generated for multiple rules.
+  looked up by the heuristic.
+* Fixed a bug in `qassertr` and `qtestr` where the error message was not
+  properly generated if multiple rules were provided.
 
 # Version 1.7.3 (2016-03-10)
 * Added `checkDate()`
