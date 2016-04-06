@@ -260,6 +260,6 @@ test_that("error messages are properly generated", {
   expect_error(qassert(1, "N[,0]"), "<= 0")
   expect_error(qassert(1, "N[,0)"), "< 0")
 
-  expect_error(qassert(Inf, "N[)"), "!= inf")
-  expect_error(qassert(-Inf, "N(]"), "!= -inf")
+  expect_error(qassert(Inf, "N[)"), "!= Inf")
+  expect_error(qassert(-Inf, "N(]"), "!= -Inf")
 })

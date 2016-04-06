@@ -88,8 +88,13 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
         const double *xp = REAL(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp))
+            if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp)) {
+                if (bound.cmp == R_PosInf)
+                    return message("All elements must be %s Inf", CMPSTR[bound.op]);
+                if (bound.cmp == R_NegInf)
+                    return message("All elements must be %s -Inf", CMPSTR[bound.op]);
                 return message("All elements must be %s %g", CMPSTR[bound.op], bound.cmp);
+            }
         }
     } else if (isInteger(x)) {
         const int *xp = INTEGER(x);
