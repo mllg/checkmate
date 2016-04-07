@@ -20,10 +20,10 @@ checkSetEqual = function(x, y, ordered = FALSE) {
   qassert(ordered, "B1")
   if (ordered) {
     if (length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
-      return(sprintf("Must be equal to {'%s'}", collapse(y, "','")))
+      return(sprintf("Must be equal to {'%s'}", paste0(y, collapse = "','")))
   } else {
     if (any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
-      return(sprintf("Must be equal to set {'%s'}", collapse(y, "','")))
+      return(sprintf("Must be equal to set {'%s'}", paste0(y, collapse = "','")))
   }
   return(TRUE)
 }

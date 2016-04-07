@@ -12,7 +12,7 @@
 checkChoice = function(x, choices) {
   qassert(choices, "a")
   if (!qtest(x, "a1") || x %nin% choices)
-    return(sprintf("Must be element of set {'%s'}", collapse(unique(choices), "','")))
+    return(sprintf("Must be element of set {'%s'}", paste0(unique(choices), collapse = "','")))
   return(TRUE)
 }
 

@@ -16,7 +16,7 @@ checkOS = function(os) {
   os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
 
   if (os %nin% ok)
-    return(sprintf("OS must be %s", collapse(ok, " or ")))
+    return(sprintf("OS must be %s", paste0(ok, collapse = " or ")))
   return(TRUE)
 }
 
@@ -51,5 +51,5 @@ test_os = testOS
 #' @rdname checkOS
 expect_os = function(os, info = NULL, label = NULL) {
   res = checkOS(os)
-  makeExpectation(os, res, info, label = label %??% "Operating System")
+  makeExpectation(res, info, label = label %??% "Operating System")
 }

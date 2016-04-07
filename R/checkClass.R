@@ -31,14 +31,14 @@ checkClass = function(x, classes, ordered = FALSE) {
   if (length(w) > 0L) {
     cl = class(x)
     return(sprintf("Must have class '%s', but has class%s '%s'",
-        classes[w], if (length(cl) > 1L) "es" else "", collapse(cl, "','")))
+        classes[w], if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
   }
   if (ordered) {
     w = wf(ord != seq_along(ord))
     if (length(w) > 0L) {
       cl = class(x)
       return(sprintf("Must have class '%s' in position %i, but has class%s '%s'",
-        classes[w], w, if (length(cl) > 1L) "es" else "", collapse(cl, "','")))
+        classes[w], w, if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
     }
   }
   return(TRUE)
