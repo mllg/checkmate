@@ -42,4 +42,13 @@ test_that("assert w/ env", {
   x = "a"
   expect_error(assert(numeric(x), count(x), combine = "or"))
   expect_error(assert(numeric(x), count(x), combine = "and"))
+
+  foo = function(x) {
+    assert(null(x), flag(x))
+    TRUE
+  }
+
+  expect_true(foo(NULL))
+  expect_true(foo(TRUE))
+  expect_error(foo(NA), "Assertion failed")
 })

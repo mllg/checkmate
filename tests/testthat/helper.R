@@ -5,8 +5,9 @@ expect_expectation_successful = function(expr, info = NULL, label = NULL) {
     res = tryCatch(expr, expectation = function(e) e)
     expect_is(res, "expectation_success", info = info, label = label)
   } else {
-    with_reporter(ListReporter(), res <- force(expr))
-    expect_true(res$passed, info = info, label = label)
+    reporter = ListReporter()
+    with_reporter(reporter, force(expr))
+    expect_false(reporter$failed, info = info, label = label)
   }
 }
 
@@ -15,8 +16,9 @@ expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = 
     x = tryCatch(expr, expectation = function(e) e)
     expect_is(x, "expectation_failure", info = info, label = label)
   } else {
-    with_reporter(ListReporter(), x <- force(expr))
-    expect_false(x$passed, info = info, label = label)
+    reporter = ListReporter()
+    with_reporter(reporter, force(expr))
+    expect_true(reporter$failed, info = info, label = label)
   }
 }
 

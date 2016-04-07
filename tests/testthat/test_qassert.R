@@ -59,6 +59,7 @@ test_that("type and missingness", {
   expect_fail_all(xl, "d")
   expect_fail_all(xl, "f")
 
+  expect_fail_all(xl, c("f", "n"), "One of")
   expect_error(qassert(1, "O"), "Unknown class identifier")
 })
 
