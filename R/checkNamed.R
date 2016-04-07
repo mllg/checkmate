@@ -22,9 +22,6 @@ checkNamed = function(x, type = "named") {
   .Call(c_check_named, x, type)
 }
 
-#' @include assert.R
-checkers$named = checkNamed
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

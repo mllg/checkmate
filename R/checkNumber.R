@@ -18,9 +18,6 @@ checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FAL
   .Call(c_check_number, x, na.ok, lower, upper, finite)
 }
 
-#' @include assert.R
-checkers$number = checkNumber
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

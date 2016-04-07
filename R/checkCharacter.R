@@ -44,9 +44,6 @@ checkCharacterPattern = function(x, pattern = NULL, fixed = NULL, ignore.case = 
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$character = checkCharacter
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

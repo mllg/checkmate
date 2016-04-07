@@ -39,9 +39,6 @@ checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), an
   checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
-#' @include assert.R
-checkers$data_table = checkDataTable
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

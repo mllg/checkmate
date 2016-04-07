@@ -40,9 +40,6 @@ checkFileExtension = function(x, extension = NULL) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$file = checkFile
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

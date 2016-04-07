@@ -16,9 +16,6 @@ checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.miss
   checkListTypes(x, types)
 }
 
-#' @include assert.R
-checkers$data_frame = checkDataFrame
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

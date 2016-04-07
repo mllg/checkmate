@@ -18,9 +18,6 @@ checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.mi
   .Call(c_check_integer, x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$integer = checkInteger
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

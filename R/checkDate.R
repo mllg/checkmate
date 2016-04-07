@@ -40,9 +40,6 @@ checkDateBounds = function(x, lower, upper) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$date = checkDate
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

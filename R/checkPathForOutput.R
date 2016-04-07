@@ -44,9 +44,6 @@ checkPathForOutput = function(x, overwrite = FALSE) {
   return(checkAccess(dn, "w"))
 }
 
-#' @include assert.R
-checkers$path_for_output = checkPathForOutput
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

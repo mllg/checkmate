@@ -60,9 +60,6 @@ checkListTypes = function(x, types = character(0L)) {
   return(sprintf("May only contain the following types: %s", paste0(types, collapse = ",")))
 }
 
-#' @include assert.R
-checkers$list = checkList
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

@@ -19,9 +19,6 @@ checkNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missin
 }
 
 
-#' @include assert.R
-checkers$numeric = checkNumeric
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

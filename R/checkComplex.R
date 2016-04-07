@@ -15,9 +15,6 @@ checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
   .Call(c_check_complex, x, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$complex = checkComplex
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

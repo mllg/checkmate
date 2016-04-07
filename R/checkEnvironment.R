@@ -24,9 +24,6 @@ checkEnvironment = function(x, contains = character(0L)) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$environment = checkEnvironment
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

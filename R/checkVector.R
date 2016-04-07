@@ -34,9 +34,6 @@ checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE
   .Call(c_check_vector, x, strict, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$vector = checkVector
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

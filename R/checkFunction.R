@@ -56,9 +56,6 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$`function` = checkFunction
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

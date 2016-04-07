@@ -18,9 +18,6 @@ checkIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upp
   .Call(c_check_integerish, x, tol, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$integerish = checkIntegerish
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

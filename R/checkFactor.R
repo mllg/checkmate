@@ -72,9 +72,6 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
   checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }
 
-#' @include assert.R
-checkers$factor = checkFactor
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

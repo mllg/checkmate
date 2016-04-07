@@ -28,9 +28,6 @@ checkDirectory = function(x, access = "") {
   checkAccess(x, access)
 }
 
-#' @include assert.R
-checkers$directory = checkDirectory
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

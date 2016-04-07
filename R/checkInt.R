@@ -18,9 +18,6 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
   .Call(c_check_int, x, na.ok, lower, upper, tol)
 }
 
-#' @include assert.R
-checkers$int = checkInt
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

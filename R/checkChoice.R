@@ -16,9 +16,6 @@ checkChoice = function(x, choices) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$choice = checkChoice
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

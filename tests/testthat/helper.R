@@ -29,10 +29,6 @@ expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   fun = match.fun(s)
   expect_true(fun(x, ...), label = s)
 
-  s = paste0("checkers$", lc)
-  fun = checkers[[lc]]
-  expect_true(fun(x, ...), info = s, label = xn)
-
   s = paste0("test", cc)
   fun = match.fun(s)
   expect_true(fun(x, ...), info = s, label = xn)
@@ -63,10 +59,6 @@ expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   fun = match.fun(s)
   res = fun(x, ...)
   expect_true(is.character(res) && nzchar(res), info = s, label = xn)
-
-  s = paste0("checkers$", lc)
-  fun = checkers[[lc]]
-  expect_true(is.character(fun(x, ...)), info = s, label = xn)
 
   s = paste0("test", cc)
   fun = match.fun(s)
