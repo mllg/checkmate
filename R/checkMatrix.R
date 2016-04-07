@@ -35,9 +35,6 @@ checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, m
   .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
 }
 
-#' @include assert.R
-checkers$matrix = checkMatrix
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

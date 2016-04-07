@@ -24,9 +24,6 @@ checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL
   .Call(c_check_array, x, mode, any.missing, d, min.d, max.d)
 }
 
-#' @include assert.R
-checkers$array = checkArray
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

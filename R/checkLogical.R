@@ -15,9 +15,6 @@ checkLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
   .Call(c_check_logical, x, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$logical = checkLogical
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

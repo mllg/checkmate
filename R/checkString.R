@@ -21,9 +21,6 @@ checkString = function(x, na.ok = FALSE, min.chars = NULL, pattern = NULL, fixed
   checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 
-#' @include assert.R
-checkers$string = checkString
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

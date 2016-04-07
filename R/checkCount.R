@@ -23,9 +23,6 @@ checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$do
   .Call(c_check_count, x, na.ok, positive, tol)
 }
 
-#' @include assert.R
-checkers$count = checkCount
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

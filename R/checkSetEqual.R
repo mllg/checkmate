@@ -28,9 +28,6 @@ checkSetEqual = function(x, y, ordered = FALSE) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$set_equal = checkSetEqual
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

@@ -44,9 +44,6 @@ checkClass = function(x, classes, ordered = FALSE) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$class = checkClass
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

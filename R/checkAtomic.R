@@ -17,9 +17,6 @@ checkAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
   .Call(c_check_atomic, x, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
-#' @include assert.R
-checkers$atomic = checkAtomic
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

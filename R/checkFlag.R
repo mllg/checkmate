@@ -19,9 +19,6 @@ checkFlag = function(x, na.ok = FALSE) {
   .Call(c_check_flag, x, na.ok)
 }
 
-#' @include assert.R
-checkers$flag = checkFlag
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

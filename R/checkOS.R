@@ -23,9 +23,6 @@ getOS = function() {
   os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
 }
 
-#' @include assert.R
-checkers$os = checkOS
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

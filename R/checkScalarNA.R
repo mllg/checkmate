@@ -15,9 +15,6 @@ checkScalarNA = function(x) {
   return(TRUE)
 }
 
-#' @include assert.R
-checkers$scalar_na = checkScalarNA
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert

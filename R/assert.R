@@ -9,12 +9,6 @@
 #' \code{combine} is \dQuote{and} and all checks evaluate to \code{TRUE}.
 #' Otherwise, \code{assert} throws an informative error message.
 #'
-#' The check functions are evaluated in an environment where all of checkmate's functions
-#' are stored without the \dQuote{check} prefix in lowercase-underscore notation.
-#' I.e. \code{assert(null(x), data_frame(x, ncol = 2))} calls the functions
-#' \code{\link{checkNull}} and \code{\link{checkDataFrame}}.
-#'
-#'
 #' @param ... [any]\cr
 #'  List of calls to check functions.
 #' @param combine [\code{character(1)}]\cr
@@ -27,20 +21,18 @@
 #' @examples
 #' x = 1:10
 #' assert(checkNull(x), checkInteger(x, any.missing = FALSE))
-#' assert(null(x), integer(x, any.missing = FALSE))
 #' \dontrun{
 #' x = 1
 #' assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
-#' assert(choice(x, c("a", "b")), data_frame(x))
 #' }
 assert = function(..., combine = "or", .var.name = NULL) {
   assertChoice(combine, c("or", "and"))
   dots = match.call(expand.dots = FALSE)$...
-  parent.env(checkers) = parent.frame()
+  env = parent.frame()
   if (combine == "or") {
     msgs = character(length(dots))
     for (i in seq_along(dots)) {
-      val = eval(dots[[i]], envir = checkers)
+      val = eval(dots[[i]], envir = env)
       if (identical(val, TRUE))
         return(invisible(TRUE))
       msgs[i] = as.character(val)
@@ -56,7 +48,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
     }
   } else {
     for (i in seq_along(dots)) {
-      val = eval(dots[[i]], envir = checkers)
+      val = eval(dots[[i]], envir = env)
       if (!identical(val, TRUE)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[1L]])[2L]
@@ -66,5 +58,3 @@ assert = function(..., combine = "or", .var.name = NULL) {
   }
   invisible(TRUE)
 }
-
-checkers = new.env(hash = TRUE)

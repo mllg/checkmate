@@ -30,20 +30,13 @@ The resulting assertion is successful, if \code{combine} is
 \dQuote{or} (default) and at least one check evaluates to \code{TRUE} or
 \code{combine} is \dQuote{and} and all checks evaluate to \code{TRUE}.
 Otherwise, \code{assert} throws an informative error message.
-
-The check functions are evaluated in an environment where all of checkmate's functions
-are stored without the \dQuote{check} prefix in lowercase-underscore notation.
-I.e. \code{assert(null(x), data_frame(x, ncol = 2))} calls the functions
-\code{\link{checkNull}} and \code{\link{checkDataFrame}}.
 }
 \examples{
 x = 1:10
 assert(checkNull(x), checkInteger(x, any.missing = FALSE))
-assert(null(x), integer(x, any.missing = FALSE))
 \dontrun{
 x = 1
 assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
-assert(choice(x, c("a", "b")), data_frame(x))
 }
 }
 

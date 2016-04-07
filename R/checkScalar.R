@@ -16,9 +16,6 @@ checkScalar = function(x, na.ok = FALSE) {
   .Call(c_check_scalar, x, na.ok)
 }
 
-#' @include assert.R
-checkers$scalar = checkScalar
-
 #' @export
 #' @include makeAssertion.R
 #' @template assert
