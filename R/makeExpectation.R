@@ -6,6 +6,7 @@
 #' \code{makeExceptionFunction} can be used to automatically create an expectation
 #' function based on a check function (see example).
 #'
+#' @template x
 #' @param res [\code{TRUE} | \code{character(1)}]\cr
 #'  The result of a check function: \code{TRUE} for successful checks,
 #'  and an error message as string otherwise.
@@ -13,8 +14,8 @@
 #'   See \code{\link[testthat]{expect_that}}
 #' @param label [\code{character(1)}]\cr
 #'   See \code{\link[testthat]{expect_that}}
-#' @return \code{makeExpectation} returns the expectation result.
-#'  \code{makeExpectationFunction} returns a \code{function}.
+#' @return \code{makeExpectation} invisibly returns the checked object.
+#'   \code{makeExpectationFunction} returns a \code{function}.
 #' @export
 #' @include helper.R
 #' @examples
@@ -24,17 +25,18 @@
 #' # Create the respective expect function
 #' expect_false = function(x, info = NULL, label = vname(x)) {
 #'   res = checkFalse(x)
-#'   makeExpectation(res, info = info, label = label)
+#'   makeExpectation(x, res, info = info, label = label)
 #' }
 #'
 #' # Alternative: Automatically create such a function
 #' expect_false = makeExpectationFunction(checkFalse)
 #' print(expect_false)
-makeExpectation = function(res, info, label) {
+makeExpectation = function(x, res, info, label) {
   if (!requireNamespace("testthat", quietly = TRUE))
     stop("Package 'testthat' is required for checkmate's 'expect_*' extensions")
   info = if (is.null(info)) res else sprintf("%s\nAdditional info: %s", res, info)
   testthat::expect_true(res, info = info, label = sprintf("Check on %s", label))
+  invisible(x)
 }
 
 #' @rdname makeExpectation
@@ -47,7 +49,7 @@ makeExpectationFunction = function(check.fun, c.fun = NULL, env = parent.frame()
 
   new.fun = function() TRUE
   formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = vname(x)))
-  tmpl = "{ res = %s(%s); makeExpectation(res, info, label) }"
+  tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
   } else {
