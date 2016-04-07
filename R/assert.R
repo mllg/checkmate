@@ -46,17 +46,21 @@ assert = function(..., combine = "or", .var.name = NULL) {
       msgs[i] = as.character(val)
     }
     if (is.null(.var.name))
-      .var.name = as.character(dots[[1L]])[2L]
-    if (length(msgs) > 1L)
-      msgs = sprintf("%s: %s", lapply(dots, function(x) as.character(x)[1L]), msgs)
-    mstop(qamsg(NULL, msgs, .var.name, FALSE))
+      .var.name = vapply(dots, function(x) as.character(x)[2L], FUN.VALUE = NA_character_)
+    if (length(msgs) > 1L) {
+      msgs = sprintf("%s(%s): %s", vapply(dots, function(x) as.character(x)[1L], FUN.VALUE = NA_character_), .var.name, msgs)
+      msgs = paste0(c("One of the following must apply:", strwrap(msgs, prefix = " * ")), collapse = "\n")
+      mstop("Assertion failed. %s", msgs)
+    } else {
+        mstop("Assertion on '%s' failed. %s.", .var.name, msgs)
+    }
   } else {
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = checkers)
       if (!identical(val, TRUE)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[1L]])[2L]
-        mstop(qamsg(NULL, val, .var.name, recursive = FALSE))
+        mstop("Assertion on '%s' failed. %s.", .var.name, val)
       }
     }
   }

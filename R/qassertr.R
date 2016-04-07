@@ -30,7 +30,7 @@
 qassertr = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE, 1L)
   if (!identical(res, TRUE))
-    mstop(qamsg(x, res, .var.name, recursive = TRUE))
+    mstop(qrmsg(x, res, .var.name))
   invisible(x)
 }
 
@@ -52,6 +52,18 @@ qtestr = function(x, rules, depth = 1L) {
 qexpectr = function(x, rules, info = NULL, label = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE, 1L)
   if (!identical(res, TRUE))
-    res = qamsg(x, res, "x", recursive = TRUE)
+    res = qrmsg(x, res, label)
   makeExpectation(x, res, info = info, label = label)
+}
+
+qrmsg = function(x, msg, var.name) {
+  pos = attr(msg, "pos")
+  if (testNamed(x)) {
+    item = sprintf(", element '%s' (%i),", names(x)[pos], pos)
+  } else {
+    item = sprintf(", element %i,", pos)
+  }
+  if (length(msg) > 1L)
+    msg = paste0(c("One of the following must apply:", strwrap(msg, prefix = " * ")), collapse = "\n")
+  sprintf("Assertion on '%s'%s failed. %s.", var.name, item, msg)
 }

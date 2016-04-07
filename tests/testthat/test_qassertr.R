@@ -49,6 +49,8 @@ test_that("qassertr / qtestr", {
   rules = c("v", "l")
   expect_fail_all(x, c("v", "l"), pattern = "One of")
 
+  expect_fail_all(iris, c("f", "n"), pattern = "One of")
+
   x = NULL
   expect_error(qassertr(x, "x"), "list or data.frame")
   expect_error(qtestr(x, "x"), "list or data.frame")

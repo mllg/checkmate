@@ -10,7 +10,7 @@ qassert(x, rules, .var.name = vname(x))
 
 qtest(x, rules)
 
-qexpect(x, rules, info = NULL, label = NULL)
+qexpect(x, rules, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr

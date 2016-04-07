@@ -103,7 +103,7 @@
 qassert = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
   if (!identical(res, TRUE))
-    mstop(qamsg(x, res, .var.name))
+    mstop(qmsg(res, .var.name))
   invisible(x)
 }
 
@@ -119,7 +119,15 @@ qtest = function(x, rules) {
 #' @rdname qassert
 #' @include makeExpectation.R
 #' @export
-qexpect = function(x, rules, info = NULL, label = NULL) {
+qexpect = function(x, rules, info = NULL, label = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
+  if (!identical(res, TRUE))
+    res = qmsg(res, label)
   makeExpectation(x, res, info = info, label = label)
+}
+
+qmsg = function(msg, vname) {
+  if (length(msg) > 1L)
+    msg = paste0(c("One of the following must apply:", strwrap(msg, prefix = " * ")), collapse = "\n")
+  sprintf("Assertion on '%s' failed. %s.", vname, msg)
 }
