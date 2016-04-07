@@ -8,7 +8,7 @@ insert_final_newline = true
 indent_style = space
 trim_trailing_whitespace = true
 
-[*.{r,R}]
+[*.{r,R,md,Rmd}]
 indent_size = 2
 
 [*.{c,h}]
