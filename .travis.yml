@@ -1,14 +1,15 @@
 language: r
-dist: trusty
 sudo: false
 cache: packages
+
 r:
-   - release
-   - devel
+  - oldrel
+  - release
+  - devel
 
 env:
-    global:
-      - secure: "NXIZ5FxxPpXgbgVy5HLQERszLC0g4jnZ94vRwHOne57nVEoaMHVDDgT8c1SzzFPUSBcr/9iaCYJhPeU/RpwXnkrP0GN1kBf5wdC9xkgYNo+JtUWQBhSv+NGH2s+Y+CyyCNPM+opfo3YklZ0w8cDH43atKL2ycK69Fb9tZ9r0f/U="
+  global:
+    - secure: "NXIZ5FxxPpXgbgVy5HLQERszLC0g4jnZ94vRwHOne57nVEoaMHVDDgT8c1SzzFPUSBcr/9iaCYJhPeU/RpwXnkrP0GN1kBf5wdC9xkgYNo+JtUWQBhSv+NGH2s+Y+CyyCNPM+opfo3YklZ0w8cDH43atKL2ycK69Fb9tZ9r0f/U="
 
 r_github_packages:
   - jimhester/covr
