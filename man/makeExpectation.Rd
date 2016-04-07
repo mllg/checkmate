@@ -5,14 +5,11 @@
 \alias{makeExpectationFunction}
 \title{Turn a Check into an Expectation}
 \usage{
-makeExpectation(x, res, info, label)
+makeExpectation(res, info, label)
 
 makeExpectationFunction(check.fun, c.fun = NULL, env = parent.frame())
 }
 \arguments{
-\item{x}{[any]\cr
-Object to check.}
-
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
 The result of a check function: \code{TRUE} for successful checks,
 and an error message as string otherwise.}

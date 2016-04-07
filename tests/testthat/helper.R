@@ -1,8 +1,5 @@
 NEW_TESTTHAT = !packageVersion("testthat") <= "0.11.0"
-# FIXME: Currently expected.label has to be passed, see
-# https://github.com/hadley/testthat/issues/435
 
-# FIXME: replace with expect_success (https://github.com/hadley/testthat/issues/436)
 expect_expectation_successful = function(expr, info = NULL, label = NULL) {
   if (NEW_TESTTHAT) {
     x = tryCatch(expr, expectation = function(e) e)
@@ -13,7 +10,6 @@ expect_expectation_successful = function(expr, info = NULL, label = NULL) {
   }
 }
 
-# FIXME: replace with expect_success (https://github.com/hadley/testthat/issues/436)
 expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = NULL) {
   if (NEW_TESTTHAT) {
     x = tryCatch(expr, expectation = function(e) e)
@@ -45,11 +41,11 @@ expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc
 
   s = paste0("assert", cc)
   fun = match.fun(s)
-  expect_identical(fun(x, ...), x, info = s, label = xn, expected.label = xn)
+  expect_identical(fun(x, ...), x, info = s, label = xn)
 
   s = paste0("assert_", lc)
   fun = match.fun(s)
-  expect_identical(fun(x, ...), x, info = s, label = xn, expected.label = xn)
+  expect_identical(fun(x, ...), x, info = s, label = xn)
 
   s = paste0("expect_", lc)
   fun = match.fun(s)

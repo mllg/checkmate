@@ -53,5 +53,5 @@ qexpectr = function(x, rules, info = NULL, label = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE, 1L)
   if (!identical(res, TRUE))
     res = qamsg(x, res, "x", recursive = TRUE)
-  makeExpectation(x, res, info = info, label = label)
+  makeExpectation(res, info = info, label = label)
 }
