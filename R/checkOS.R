@@ -10,14 +10,17 @@
 #' testOS("linux")
 checkOS = function(os) {
   os.names = c("windows", "mac", "linux", "solaris")
-  sys.names = c("windows", "darwin", "linux", "sunos")
-
   ok = match.arg(os, os.names, several.ok = TRUE)
-  os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
 
-  if (os %nin% ok)
+  if (getOS() %nin% ok)
     return(sprintf("OS must be %s", paste0(ok, collapse = " or ")))
   return(TRUE)
+}
+
+getOS = function() {
+  os.names = c("windows", "mac", "linux", "solaris")
+  sys.names = c("windows", "darwin", "linux", "sunos")
+  os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
 }
 
 #' @include assert.R
@@ -51,5 +54,5 @@ test_os = testOS
 #' @rdname checkOS
 expect_os = function(os, info = NULL, label = NULL) {
   res = checkOS(os)
-  makeExpectation(res, info, label = label %??% "Operating System")
+  makeExpectation(getOS(), res, info, label = label %??% "Operating System")
 }

@@ -5,11 +5,14 @@
 \alias{makeExpectationFunction}
 \title{Turn a Check into an Expectation}
 \usage{
-makeExpectation(res, info, label)
+makeExpectation(x, res, info, label)
 
 makeExpectationFunction(check.fun, c.fun = NULL, env = parent.frame())
 }
 \arguments{
+\item{x}{[any]\cr
+Object to check.}
+
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
 The result of a check function: \code{TRUE} for successful checks,
 and an error message as string otherwise.}
@@ -32,8 +35,8 @@ Useful if \code{check.fun} is just a simple wrapper.}
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
 }
 \value{
-\code{makeExpectation} returns the expectation result.
- \code{makeExpectationFunction} returns a \code{function}.
+\code{makeExpectation} invisibly returns the checked object.
+  \code{makeExpectationFunction} returns a \code{function}.
 }
 \description{
 \code{makeExpectation} is the internal function used to evaluate the result of a
@@ -48,7 +51,7 @@ checkFalse = function(x) if (!identical(x, FALSE)) "Must be FALSE" else TRUE
 # Create the respective expect function
 expect_false = function(x, info = NULL, label = vname(x)) {
   res = checkFalse(x)
-  makeExpectation(res, info = info, label = label)
+  makeExpectation(x, res, info = info, label = label)
 }
 
 # Alternative: Automatically create such a function

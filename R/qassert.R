@@ -121,5 +121,5 @@ qtest = function(x, rules) {
 #' @export
 qexpect = function(x, rules, info = NULL, label = NULL) {
   res = .Call(c_qassert, x, rules, FALSE)
-  makeExpectation(res, info = info, label = label)
+  makeExpectation(x, res, info = info, label = label)
 }
