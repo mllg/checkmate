@@ -3,6 +3,7 @@ context("assert")
 test_that("assert w/ check*", {
   x = NULL
   expect_true(assert(checkNull(x), checkDataFrame(x)))
+  expect_true(assert(checkNull(x)))
   grepme = iris
   expect_true(assert(checkNull(grepme), checkDataFrame(grepme)))
   expect_error(assert(checkNull(grepme), checkNumeric(grepme)), "One of")
@@ -18,6 +19,7 @@ test_that("assert w/ check*", {
   expect_error(assert(checkNumeric(x), checkCount(x), combine = "and"))
 
   x = "a"
+  expect_true(assert(checkString(x)))
   expect_error(assert(checkNumeric(x), checkCount(x), combine = "or"))
   expect_error(assert(checkNumeric(x), checkCount(x), combine = "and"))
 })
@@ -25,6 +27,7 @@ test_that("assert w/ check*", {
 test_that("assert w/ env", {
   x = NULL
   expect_true(assert(null(x), data_frame(x)))
+  expect_true(assert(null(x)))
   grepme = iris
   expect_true(assert(null(grepme), data_frame(grepme)))
   expect_error(assert(null(grepme), numeric(grepme)), "One of")
@@ -40,6 +43,7 @@ test_that("assert w/ env", {
   expect_error(assert(numeric(x), count(x), combine = "and"))
 
   x = "a"
+  expect_true(assert(string(x)))
   expect_error(assert(numeric(x), count(x), combine = "or"))
   expect_error(assert(numeric(x), count(x), combine = "and"))
 
