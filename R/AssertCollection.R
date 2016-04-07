@@ -56,7 +56,7 @@ reportAssertions = function(collection) {
     msgs = collection$getMessages()
     context = "%i assertions failed:"
     err = c(sprintf(context, length(msgs)), strwrap(msgs, prefix = " * "))
-    stop(simpleError(collapse(err, "\n"), call = sys.call(1L)))
+    stop(simpleError(paste0(err, collapse = "\n"), call = sys.call(1L)))
   }
   invisible(TRUE)
 }

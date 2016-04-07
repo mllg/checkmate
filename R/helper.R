@@ -14,18 +14,14 @@ qamsg = function(x, msg, vname, recursive = FALSE) {
     item = ""
   }
   if (length(msg) > 1L)
-    msg = collapse(c("One of the following must apply:", strwrap(msg, prefix = " * ")), "\n")
+    msg = paste0(c("One of the following must apply:", strwrap(msg, prefix = " * ")), collapse = "\n")
   if (is.null(vname))
-    vname = collapse(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), "\n")
+    vname = paste0(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), collapse = "\n")
   sprintf("Assertion on '%s'%s failed. %s", vname, item, msg)
 }
 
 "%and%" = function(lhs, rhs) {
   if (identical(lhs, TRUE)) rhs else lhs
-}
-
-collapse = function(x, sep = ",") {
-  paste0(x, collapse = sep)
 }
 
 "%nin%" = function(x, y) {

@@ -57,7 +57,7 @@ checkListTypes = function(x, types = character(0L)) {
     if (length(ind) == 0L)
       return(TRUE)
   }
-  return(sprintf("May only contain the following types: %s", collapse(types)))
+  return(sprintf("May only contain the following types: %s", paste0(types, collapse = ",")))
 }
 
 #' @include assert.R

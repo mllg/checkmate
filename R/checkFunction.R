@@ -37,12 +37,12 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
 
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
-        return(sprintf("Must have first formal arguments (ordered): %s", collapse(args)))
+        return(sprintf("Must have first formal arguments (ordered): %s", paste0(args, collapse = ",")))
       }
     } else {
       tmp = setdiff(args, fargs)
       if (length(tmp))
-        return(sprintf("Must have formal arguments: %s", collapse(tmp)))
+        return(sprintf("Must have formal arguments: %s", paste0(tmp, collapse = ",")))
     }
   }
 

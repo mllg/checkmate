@@ -27,13 +27,13 @@ checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), an
   if (!is.null(key)) {
     qassert(key, "S")
     if (!setequal(data.table::key(x) %??% character(0L), key))
-      return(sprintf("Must have primary keys: %s", collapse(key)))
+      return(sprintf("Must have primary keys: %s", paste0(key, collapse = ",")))
   }
   if (!is.null(index)) {
     qassert(index, "S")
     indices = strsplit(data.table::key2(x) %??% "", "__", fixed = TRUE)[[1L]]
     if (!setequal(indices, index))
-      return(sprintf("Must have secondary keys (indices): %s", collapse(index)))
+      return(sprintf("Must have secondary keys (indices): %s", paste0(index, collapse = ",")))
   }
 
   checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)

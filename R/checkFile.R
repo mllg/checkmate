@@ -35,7 +35,7 @@ checkFileExtension = function(x, extension = NULL) {
     pos = regexpr("\\.([[:alnum:]]+)$", x)
     ext = ifelse(pos > -1L, tolower(substring(x, pos + 1L)), "")
     if (any(ext %nin% tolower(extension)))
-      return(sprintf("File extension must be in {'%s'}", collapse(extension, "','")))
+      return(sprintf("File extension must be in {'%s'}", paste0(extension, collapse = "','")))
   }
   return(TRUE)
 }

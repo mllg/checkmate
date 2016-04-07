@@ -34,7 +34,7 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
     if (!is.null(levels)) {
       qassert(levels, "S")
       if (!setequal(levels(x), levels))
-        return(sprintf("Must have levels: %s", collapse(levels)))
+        return(sprintf("Must have levels: %s", paste0(levels, collapse = ",")))
     }
     qassert(ordered, "b1")
     if (!is.na(ordered)) {
@@ -48,7 +48,7 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
     if (!empty.levels.ok) {
       empty = setdiff(levels(x), levels(droplevels(x)))
       if (length(empty) > 0L)
-        return(sprintf("Has has empty levels '%s'", collapse(empty, "','")))
+        return(sprintf("Has has empty levels '%s'", paste0(empty, collapse = "','")))
     }
     if (!is.null(n.levels)) {
       qassert(n.levels, "X1")
