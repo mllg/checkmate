@@ -5,7 +5,7 @@ expect_succ_all = function(x, rules) {
   expect_true(qtestr(x, rules),
     info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
   expect_identical(qassertr(x, rules), x,
-    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn, expected.label = xn)
+    info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
   expect_expectation_successful(qexpectr(x, rules),
     info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
 }
