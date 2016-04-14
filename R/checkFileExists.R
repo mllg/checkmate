@@ -1,6 +1,10 @@
 #' Check existence and access rights of files
 #'
-#' @templateVar fn File
+#' @note
+#' The functions without the suffix \dQuote{exists} are deprecated and will be removed
+#' from the package in a future version due to name clashes.
+#'
+#' @templateVar fn FileExists
 #' @template x
 #' @inheritParams checkAccess
 #' @param extension [\code{character}]\cr
@@ -10,11 +14,11 @@
 #' @export
 #' @examples
 #' # Check if R's COPYING file is readable
-#' testFile(file.path(R.home(), "COPYING"), access = "r")
+#' testFileExists(file.path(R.home(), "COPYING"), access = "r")
 #'
 #' # Check if R's COPYING file is readable and writable
-#' testFile(file.path(R.home(), "COPYING"), access = "rw")
-checkFile = function(x, access = "", extension = NULL) {
+#' testFileExists(file.path(R.home(), "COPYING"), access = "rw")
+checkFileExists = function(x, access = "", extension = NULL) {
   if (!qtest(x, "S+"))
     return("No file provided")
 
@@ -43,24 +47,48 @@ checkFileExtension = function(x, extension = NULL) {
 #' @export
 #' @include makeAssertion.R
 #' @template assert
-#' @rdname checkFile
-assertFile = makeAssertionFunction(checkFile)
+#' @rdname checkFileExists
+assertFileExists = makeAssertionFunction(checkFileExists)
 
 #' @export
-#' @rdname checkFile
-assert_file = assertFile
+#' @rdname checkFileExists
+assert_file_exists = assertFileExists
 
 #' @export
 #' @include makeTest.R
-#' @rdname checkFile
-testFile = makeTestFunction(checkFile)
+#' @rdname checkFileExists
+testFileExists = makeTestFunction(checkFileExists)
 
 #' @export
-#' @rdname checkFile
-test_file = testFile
+#' @rdname checkFileExists
+test_file_exists = testFileExists
 
 #' @export
 #' @include makeExpectation.R
 #' @template expect
-#' @rdname checkFile
-expect_file = makeExpectationFunction(checkFile)
+#' @rdname checkFileExists
+expect_file_exists = makeExpectationFunction(checkFileExists)
+
+#' @export
+#' @rdname checkFileExists
+checkFile = checkFileExists
+
+#' @export
+#' @rdname checkFileExists
+assertFile = assertFileExists
+
+#' @export
+#' @rdname checkFileExists
+assert_file = assert_file_exists
+
+#' @export
+#' @rdname checkFileExists
+testFile = testFileExists
+
+#' @export
+#' @rdname checkFileExists
+test_file = test_file_exists
+
+#' @export
+#' @rdname checkFileExists
+expect_file = expect_file_exists

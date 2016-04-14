@@ -66,7 +66,8 @@ testAccess(R.home(), "r")
 testAccess(R.home(), "w")
 }
 \seealso{
-Other filesystem: \code{\link{checkDirectory}},
-  \code{\link{checkFile}}, \code{\link{checkPathForOutput}}
+Other filesystem: \code{\link{checkDirectoryExists}},
+  \code{\link{checkFileExists}},
+  \code{\link{checkPathForOutput}}
 }
 

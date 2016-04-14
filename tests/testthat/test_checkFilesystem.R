@@ -8,37 +8,37 @@ ff = file.path(td, "xxx")
 file.create(fn)
 dir.create(dn)
 
-test_that("check_file", {
+test_that("checkFile", {
   myobj = fn
-  expect_succ_all(File, myobj)
+  expect_succ_all(FileExists, myobj)
   myobj = ff
-  expect_fail_all(File, myobj)
+  expect_fail_all(FileExists, myobj)
 
-  expect_false(testFile(character(0)))
-  expect_false(testFile(NULL))
-  expect_false(testFile(dn))
+  expect_false(testFileExists(character(0)))
+  expect_false(testFileExists(NULL))
+  expect_false(testFileExists(dn))
 
-  expect_error(assertFile(character(0)), "provided")
-  expect_error(assertFile(ff), "exist")
-  expect_error(assertFile(dn))
+  expect_error(assertFileExists(character(0)), "provided")
+  expect_error(assertFileExists(ff), "exist")
+  expect_error(assertFileExists(dn))
 
-  expect_succ_all(File, fn, extension = "ext")
-  expect_succ_all(File, fn, extension = c("foo", "ext"))
-  expect_fail_all(File, fn, extension = "foo")
+  expect_succ_all(FileExists, fn, extension = "ext")
+  expect_succ_all(FileExists, fn, extension = c("foo", "ext"))
+  expect_fail_all(FileExists, fn, extension = "foo")
 })
 
 test_that("check_directory", {
   myobj = dn
-  expect_succ_all(Directory, myobj)
+  expect_succ_all(DirectoryExists, myobj)
   myobj = ff
-  expect_fail_all(Directory, myobj)
+  expect_fail_all(DirectoryExists, myobj)
 
-  expect_false(testDirectory(character(0)))
-  expect_false(testDirectory(fn))
+  expect_false(testDirectoryExists(character(0)))
+  expect_false(testDirectoryExists(fn))
 
-  expect_error(assertDirectory(character(0)), "provided")
-  expect_error(assertDirectory(ff), "exist")
-  expect_error(assertDirectory(fn))
+  expect_error(assertDirectoryExists(character(0)), "provided")
+  expect_error(assertDirectoryExists(ff), "exist")
+  expect_error(assertDirectoryExists(fn))
 })
 
 test_that("check_access", {
