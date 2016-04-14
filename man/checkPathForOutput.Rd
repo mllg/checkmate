@@ -75,6 +75,7 @@ testPathForOutput(file.path(tempdir(), "process.log"))
 }
 \seealso{
 Other filesystem: \code{\link{checkAccess}},
-  \code{\link{checkDirectory}}, \code{\link{checkFile}}
+  \code{\link{checkDirectoryExists}},
+  \code{\link{checkFileExists}}
 }
 

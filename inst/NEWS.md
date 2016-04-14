@@ -1,3 +1,8 @@
+# Version 1.7.5 (2016-xx-xx)
+* Functions `*File` and `*Directory` are deprecated due to name clashes and will
+  be removed in a future version. Please use `*FileExists` or `*DirectoryExists`
+  instead.
+
 # Version 1.7.4 (2016-04-08)
 * Compatibility with the upcoming testthat version.
 * `expect_` functions now return the checked object invisibly.
