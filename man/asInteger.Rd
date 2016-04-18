@@ -6,14 +6,14 @@
 \alias{asInteger}
 \title{Convert an argument to an integer}
 \usage{
-asInteger(x, ..., tol = sqrt(.Machine$double.eps), add = NULL,
-  .var.name = vname(x))
+asInteger(x, ..., tol = sqrt(.Machine$double.eps), .var.name = vname(x),
+  add = NULL)
 
 asCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x))
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
 
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), add = NULL, .var.name = vname(x))
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -26,12 +26,12 @@ Additional arguments passed to \code{\link{assertIntegerish}}.}
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
 
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
-
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
