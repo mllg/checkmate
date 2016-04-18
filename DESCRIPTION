@@ -83,6 +83,7 @@ Collate:
     'checkVector.R'
     'coalesce.R'
     'isIntegerish.R'
+    'matchArg.R'
     'qassert.R'
     'qassertr.R'
     'vname.R'
