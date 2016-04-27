@@ -4,12 +4,17 @@
 \alias{assertVector}
 \alias{assert_vector}
 \alias{checkVector}
+\alias{check_vector}
 \alias{expect_vector}
 \alias{testVector}
 \alias{test_vector}
 \title{Check if an argument is a vector}
 \usage{
 checkVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
+
+check_vector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL)
 

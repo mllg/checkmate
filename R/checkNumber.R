@@ -19,6 +19,10 @@ checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FAL
 }
 
 #' @export
+#' @rdname checkNumber
+check_number = checkNumber
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNumber

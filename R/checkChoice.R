@@ -17,6 +17,10 @@ checkChoice = function(x, choices) {
 }
 
 #' @export
+#' @rdname checkChoice
+check_choice = checkChoice
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkChoice

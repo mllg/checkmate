@@ -4,12 +4,15 @@
 \alias{assertOS}
 \alias{assert_os}
 \alias{checkOS}
+\alias{check_os}
 \alias{expect_os}
 \alias{testOS}
 \alias{test_os}
 \title{Check the operating system}
 \usage{
 checkOS(os)
+
+check_os(os)
 
 assertOS(os, add = NULL, .var.name = NULL)
 

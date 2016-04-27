@@ -4,12 +4,15 @@
 \alias{assertFlag}
 \alias{assert_flag}
 \alias{checkFlag}
+\alias{check_flag}
 \alias{expect_flag}
 \alias{testFlag}
 \alias{test_flag}
 \title{Check if an argument is a flag}
 \usage{
 checkFlag(x, na.ok = FALSE)
+
+check_flag(x, na.ok = FALSE)
 
 assertFlag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 

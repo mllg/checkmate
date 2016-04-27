@@ -73,6 +73,10 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
 }
 
 #' @export
+#' @rdname checkFactor
+check_factor = checkFactor
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFactor

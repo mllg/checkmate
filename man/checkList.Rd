@@ -4,12 +4,17 @@
 \alias{assertList}
 \alias{assert_list}
 \alias{checkList}
+\alias{check_list}
 \alias{expect_list}
 \alias{testList}
 \alias{test_list}
 \title{Check if an argument is a list}
 \usage{
 checkList(x, types = character(0L), any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL)
+
+check_list(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
   unique = FALSE, names = NULL)
 

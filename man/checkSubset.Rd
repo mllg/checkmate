@@ -4,12 +4,15 @@
 \alias{assertSubset}
 \alias{assert_subset}
 \alias{checkSubset}
+\alias{check_subset}
 \alias{expect_subset}
 \alias{testSubset}
 \alias{test_subset}
 \title{Check if an argument is a subset of a given set}
 \usage{
 checkSubset(x, choices, empty.ok = TRUE)
+
+check_subset(x, choices, empty.ok = TRUE)
 
 assertSubset(x, choices, empty.ok = TRUE, .var.name = vname(x),
   add = NULL)

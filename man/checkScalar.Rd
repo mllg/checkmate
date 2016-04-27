@@ -4,12 +4,15 @@
 \alias{assertScalar}
 \alias{assert_scalar}
 \alias{checkScalar}
+\alias{check_scalar}
 \alias{expect_scalar}
 \alias{testScalar}
 \alias{test_scalar}
 \title{Check if an argument is a single atomic value}
 \usage{
 checkScalar(x, na.ok = FALSE)
+
+check_scalar(x, na.ok = FALSE)
 
 assertScalar(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
 

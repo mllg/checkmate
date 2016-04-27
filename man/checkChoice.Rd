@@ -4,12 +4,15 @@
 \alias{assertChoice}
 \alias{assert_choice}
 \alias{checkChoice}
+\alias{check_choice}
 \alias{expect_choice}
 \alias{testChoice}
 \alias{test_choice}
 \title{Check if an object is an element of a given set}
 \usage{
 checkChoice(x, choices)
+
+check_choice(x, choices)
 
 assertChoice(x, choices, .var.name = vname(x), add = NULL)
 

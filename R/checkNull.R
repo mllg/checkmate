@@ -14,6 +14,10 @@ checkNull = function(x) {
 }
 
 #' @export
+#' @rdname checkNull
+check_null = checkNull
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNull

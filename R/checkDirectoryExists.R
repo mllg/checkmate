@@ -33,6 +33,10 @@ checkDirectoryExists = function(x, access = "") {
 }
 
 #' @export
+#' @rdname checkDirectoryExists
+check_directory_exists = checkDirectoryExists
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDirectoryExists

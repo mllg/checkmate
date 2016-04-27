@@ -4,11 +4,14 @@
 \alias{assertNull}
 \alias{assert_null}
 \alias{checkNull}
+\alias{check_null}
 \alias{testNull}
 \alias{test_null}
 \title{Check if an argument is NULL}
 \usage{
 checkNull(x)
+
+check_null(x)
 
 assertNull(x, .var.name = vname(x), add = NULL)
 

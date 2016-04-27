@@ -44,6 +44,10 @@ checkAccess = function(x, access = "") {
 }
 
 #' @export
+#' @rdname checkAccess
+check_access = checkAccess
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAccess

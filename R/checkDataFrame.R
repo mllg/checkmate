@@ -17,6 +17,10 @@ checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.miss
 }
 
 #' @export
+#' @rdname checkDataFrame
+check_data_frame = checkDataFrame
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDataFrame

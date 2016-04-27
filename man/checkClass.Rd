@@ -4,12 +4,15 @@
 \alias{assertClass}
 \alias{assert_class}
 \alias{checkClass}
+\alias{check_class}
 \alias{expect_class}
 \alias{testClass}
 \alias{test_class}
 \title{Check the class membership of an argument}
 \usage{
 checkClass(x, classes, ordered = FALSE)
+
+check_class(x, classes, ordered = FALSE)
 
 assertClass(x, classes, ordered = FALSE, .var.name = vname(x), add = NULL)
 

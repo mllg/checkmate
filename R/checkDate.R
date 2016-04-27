@@ -41,6 +41,10 @@ checkDateBounds = function(x, lower, upper) {
 }
 
 #' @export
+#' @rdname checkDate
+check_date = checkDate
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDate

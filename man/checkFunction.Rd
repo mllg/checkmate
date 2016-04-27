@@ -4,12 +4,15 @@
 \alias{assertFunction}
 \alias{assert_function}
 \alias{checkFunction}
+\alias{check_function}
 \alias{expect_function}
 \alias{testFunction}
 \alias{test_function}
 \title{Check if an argument is a function}
 \usage{
 checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL)
+
+check_function(x, args = NULL, ordered = FALSE, nargs = NULL)
 
 assertFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
   .var.name = vname(x), add = NULL)

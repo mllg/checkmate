@@ -18,6 +18,9 @@ checkNumeric = function(x, lower = -Inf, upper = Inf, finite = FALSE, any.missin
   .Call(c_check_numeric, x, lower, upper, finite, any.missing, all.missing, len, min.len, max.len, unique, names)
 }
 
+#' @export
+#' @rdname checkNumeric
+check_numeric = checkNumeric
 
 #' @export
 #' @include makeAssertion.R

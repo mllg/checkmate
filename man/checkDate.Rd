@@ -4,12 +4,17 @@
 \alias{assertDate}
 \alias{assert_date}
 \alias{checkDate}
+\alias{check_date}
 \alias{expect_date}
 \alias{testDate}
 \alias{test_date}
 \title{Check that an argument is a Date}
 \usage{
 checkDate(x, lower = NULL, upper = NULL, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE)
+
+check_date(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
   unique = FALSE)
 

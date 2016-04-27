@@ -4,12 +4,15 @@
 \alias{assertScalarNA}
 \alias{assert_scalar_na}
 \alias{checkScalarNA}
+\alias{check_scalar_na}
 \alias{expect_scalar_na}
 \alias{testScalarNA}
 \alias{test_scalar_na}
 \title{Check if an argument is a single missing value}
 \usage{
 checkScalarNA(x)
+
+check_scalar_na(x)
 
 assertScalarNA(x, .var.name = vname(x), add = NULL)
 

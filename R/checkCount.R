@@ -24,6 +24,10 @@ checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$do
 }
 
 #' @export
+#' @rdname checkCount
+check_count = checkCount
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkCount

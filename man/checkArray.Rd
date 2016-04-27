@@ -4,12 +4,16 @@
 \alias{assertArray}
 \alias{assert_array}
 \alias{checkArray}
+\alias{check_array}
 \alias{expect_array}
 \alias{testArray}
 \alias{test_array}
 \title{Check if an argument is an array}
 \usage{
 checkArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
+  max.d = NULL)
+
+check_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
   max.d = NULL)
 
 assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,

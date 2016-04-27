@@ -36,7 +36,3 @@ matchArg = function(x, choices, several.ok = FALSE, .var.name = vname(x), add = 
   }
   x
 }
-
-#' @rdname matchArg
-#' @export
-match_arg = matchArg

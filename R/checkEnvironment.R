@@ -25,6 +25,10 @@ checkEnvironment = function(x, contains = character(0L)) {
 }
 
 #' @export
+#' @rdname checkEnvironment
+check_environment = checkEnvironment
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkEnvironment

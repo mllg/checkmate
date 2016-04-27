@@ -24,6 +24,10 @@ getOS = function() {
 }
 
 #' @export
+#' @rdname checkOS
+check_os = checkOS
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkOS

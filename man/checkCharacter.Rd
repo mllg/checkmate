@@ -4,12 +4,18 @@
 \alias{assertCharacter}
 \alias{assert_character}
 \alias{checkCharacter}
+\alias{check_character}
 \alias{expect_character}
 \alias{testCharacter}
 \alias{test_character}
 \title{Check if an argument is a vector of type character}
 \usage{
 checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
+  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
+  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
+  names = NULL)
+
+check_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL)

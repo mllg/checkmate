@@ -16,6 +16,10 @@ checkLogical = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 }
 
 #' @export
+#' @rdname checkLogical
+check_logical = checkLogical
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkLogical

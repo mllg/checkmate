@@ -4,12 +4,17 @@
 \alias{assertDataFrame}
 \alias{assert_data_frame}
 \alias{checkDataFrame}
+\alias{check_data_frame}
 \alias{expect_data_frame}
 \alias{testDataFrame}
 \alias{test_data_frame}
 \title{Check if an argument is a data frame}
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
+  all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL)
+
+check_data_frame(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL,
   ncols = NULL, row.names = NULL, col.names = NULL)
 

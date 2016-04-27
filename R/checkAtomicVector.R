@@ -36,6 +36,10 @@ checkAtomicVector = function(x, any.missing = TRUE, all.missing = TRUE, len = NU
 }
 
 #' @export
+#' @rdname checkAtomicVector
+check_atomic_vector = checkAtomicVector
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAtomicVector

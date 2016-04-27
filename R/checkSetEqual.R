@@ -29,6 +29,10 @@ checkSetEqual = function(x, y, ordered = FALSE) {
 }
 
 #' @export
+#' @rdname checkSetEqual
+check_set_equal = checkSetEqual
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkSetEqual

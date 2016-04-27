@@ -4,12 +4,16 @@
 \alias{assertAtomic}
 \alias{assert_atomic}
 \alias{checkAtomic}
+\alias{check_atomic}
 \alias{expect_atomic}
 \alias{testAtomic}
 \alias{test_atomic}
 \title{Check that an argument is an atomic vector}
 \usage{
 checkAtomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+
+check_atomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
 assertAtomic(x, any.missing = TRUE, all.missing = TRUE, len = NULL,

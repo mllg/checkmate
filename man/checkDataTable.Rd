@@ -4,12 +4,18 @@
 \alias{assertDataTable}
 \alias{assert_data_table}
 \alias{checkDataTable}
+\alias{check_data_table}
 \alias{expect_data_table}
 \alias{testDataTable}
 \alias{test_data_table}
 \title{Check if an argument is a data table}
 \usage{
 checkDataTable(x, key = NULL, index = NULL, types = character(0L),
+  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
+  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
+  col.names = NULL)
+
+check_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
   col.names = NULL)

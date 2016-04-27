@@ -40,6 +40,10 @@ checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), an
 }
 
 #' @export
+#' @rdname checkDataTable
+check_data_table = checkDataTable
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDataTable
