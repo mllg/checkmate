@@ -4,12 +4,16 @@
 \alias{assertNumber}
 \alias{assert_number}
 \alias{checkNumber}
+\alias{check_number}
 \alias{expect_number}
 \alias{testNumber}
 \alias{test_number}
 \title{Check if an argument is a single numeric value}
 \usage{
 checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
+
+check_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   finite = FALSE, .var.name = vname(x), add = NULL)

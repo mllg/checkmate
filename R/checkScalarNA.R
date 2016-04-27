@@ -16,6 +16,10 @@ checkScalarNA = function(x) {
 }
 
 #' @export
+#' @rdname checkScalarNA
+check_scalar_na = checkScalarNA
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkScalarNA

@@ -4,12 +4,16 @@
 \alias{assertLogical}
 \alias{assert_logical}
 \alias{checkLogical}
+\alias{check_logical}
 \alias{expect_logical}
 \alias{testLogical}
 \alias{test_logical}
 \title{Check if an argument is a vector of type logical}
 \usage{
 checkLogical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+
+check_logical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
 assertLogical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,

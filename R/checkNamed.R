@@ -23,6 +23,10 @@ checkNamed = function(x, type = "named") {
 }
 
 #' @export
+#' @rdname checkNamed
+check_named = checkNamed
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNamed

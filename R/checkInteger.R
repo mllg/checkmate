@@ -19,6 +19,10 @@ checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.mi
 }
 
 #' @export
+#' @rdname checkInteger
+check_integer = checkInteger
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkInteger

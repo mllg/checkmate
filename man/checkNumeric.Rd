@@ -4,12 +4,17 @@
 \alias{assertNumeric}
 \alias{assert_numeric}
 \alias{checkNumeric}
+\alias{check_numeric}
 \alias{expect_numeric}
 \alias{testNumeric}
 \alias{test_numeric}
 \title{Check that an argument is a vector of type numeric}
 \usage{
 checkNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL)
+
+check_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, unique = FALSE, names = NULL)
 

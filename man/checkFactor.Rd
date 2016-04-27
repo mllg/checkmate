@@ -4,12 +4,18 @@
 \alias{assertFactor}
 \alias{assert_factor}
 \alias{checkFactor}
+\alias{check_factor}
 \alias{expect_factor}
 \alias{testFactor}
 \alias{test_factor}
 \title{Check if an argument is a factor}
 \usage{
 checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
+  unique = FALSE, names = NULL)
+
+check_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
   max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL,
   unique = FALSE, names = NULL)

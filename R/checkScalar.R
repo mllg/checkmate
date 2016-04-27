@@ -17,6 +17,10 @@ checkScalar = function(x, na.ok = FALSE) {
 }
 
 #' @export
+#' @rdname checkScalar
+check_scalar = checkScalar
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkScalar

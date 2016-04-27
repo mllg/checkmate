@@ -4,12 +4,16 @@
 \alias{assertInt}
 \alias{assert_int}
 \alias{checkInt}
+\alias{check_int}
 \alias{expect_int}
 \alias{testInt}
 \alias{test_int}
 \title{Check if an argument is a single integerish value}
 \usage{
 checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  tol = sqrt(.Machine$double.eps))
+
+check_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps))
 
 assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,

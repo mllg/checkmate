@@ -16,6 +16,10 @@ checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, m
 }
 
 #' @export
+#' @rdname checkComplex
+check_complex = checkComplex
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkComplex

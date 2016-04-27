@@ -35,6 +35,10 @@ checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE
 }
 
 #' @export
+#' @rdname checkVector
+check_vector = checkVector
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkVector

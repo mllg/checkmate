@@ -19,6 +19,10 @@ checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Mac
 }
 
 #' @export
+#' @rdname checkInt
+check_int = checkInt
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkInt

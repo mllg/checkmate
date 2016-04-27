@@ -25,6 +25,10 @@ checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL
 }
 
 #' @export
+#' @rdname checkArray
+check_array = checkArray
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkArray

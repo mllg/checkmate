@@ -4,12 +4,15 @@
 \alias{assertSetEqual}
 \alias{assert_set_equal}
 \alias{checkSetEqual}
+\alias{check_set_equal}
 \alias{expect_set_equal}
 \alias{testSetEqual}
 \alias{test_set_equal}
 \title{Check if an argument is equal to a given set}
 \usage{
 checkSetEqual(x, y, ordered = FALSE)
+
+check_set_equal(x, y, ordered = FALSE)
 
 assertSetEqual(x, y, ordered = FALSE, .var.name = vname(x), add = NULL)
 

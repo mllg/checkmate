@@ -4,11 +4,14 @@
 \alias{assertNamed}
 \alias{assert_named}
 \alias{checkNamed}
+\alias{check_named}
 \alias{testNamed}
 \alias{test_named}
 \title{Check if an argument is named}
 \usage{
 checkNamed(x, type = "named")
+
+check_named(x, type = "named")
 
 assertNamed(x, type = "named", .var.name = vname(x), add = NULL)
 

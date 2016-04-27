@@ -4,12 +4,17 @@
 \alias{assertIntegerish}
 \alias{assert_integerish}
 \alias{checkIntegerish}
+\alias{check_integerish}
 \alias{expect_integerish}
 \alias{testIntegerish}
 \alias{test_integerish}
 \title{Check if an object is an integerish vector}
 \usage{
 checkIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
+  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+
+check_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 

@@ -4,12 +4,17 @@
 \alias{assertInteger}
 \alias{assert_integer}
 \alias{checkInteger}
+\alias{check_integer}
 \alias{expect_integer}
 \alias{testInteger}
 \alias{test_integer}
 \title{Check if an argument is vector of type integer}
 \usage{
 checkInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL)
+
+check_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
   unique = FALSE, names = NULL)
 

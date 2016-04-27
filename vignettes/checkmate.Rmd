@@ -75,17 +75,16 @@ The functions can be split into four functional groups, indicated by their prefi
 If prefixed with `assert`, an error is thrown if the corresponding check fails.
 Otherwise, the checked object is returned invisibly.
 There are many different coding styles out there in the wild, but most R programmers stick to either `CamelCase` or `underscore_case`.
-Therefore, `checkmate` offers all assert functions in both flavors: `assert_count` is just an alias for `assertCount` but allows you to retain your favorite style.
+Therefore, `checkmate` offers all functions in both flavors: `assert_count` is just an alias for `assertCount` but allows you to retain your favorite style.
 
 The family of functions prefixed with `test` always return the check result as logical value.
 Again, you can use `test_count` and `testCount` interchangeably.
 
 Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
-Note that this is a feature only very few advanced users need and `checkmate` currently only provides a CamelCase variant.
 
 `expect` is the last family of functions and is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
 All performed checks are logged into the `testthat` reporter.
-Because `testthat` uses the `underscore_case`, the extension functions only come in this flavor.
+Because `testthat` uses the `underscore_case`, the extension functions only come in the underscore style.
 
 
 ### Scalars

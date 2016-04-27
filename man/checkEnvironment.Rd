@@ -4,12 +4,15 @@
 \alias{assertEnvironment}
 \alias{assert_environment}
 \alias{checkEnvironment}
+\alias{check_environment}
 \alias{expect_environment}
 \alias{testEnvironment}
 \alias{test_environment}
 \title{Check if an argument is an environment}
 \usage{
 checkEnvironment(x, contains = character(0L))
+
+check_environment(x, contains = character(0L))
 
 assertEnvironment(x, contains = character(0L), .var.name = vname(x),
   add = NULL)

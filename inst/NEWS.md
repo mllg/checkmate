@@ -2,6 +2,9 @@
 * Functions `*File` and `*Directory` are deprecated due to name clashes and will
   be removed in a future version. Please use `*FileExists` or `*DirectoryExists`
   instead.
+* New helper function `matchArg` to provide a simple an easy way for partial
+  argument matching in combination with an assert collection.
+* Added alias functions for all check functions to support underscore style.
 
 # Version 1.7.4 (2016-04-08)
 * Compatibility with the upcoming testthat version.
@@ -39,7 +42,7 @@
 * Some minor speedups
 
 # Version 1.7.0 (2016-01-23)
-* Added alias functions for all functions in CamelCase style, e.g.
+* Added alias functions for all functions to support the underscore style, e.g.
   `assert_numeric` is the new alias for `assertNumeric` and `test_matrix` is the
   alias for `test_matrix`.
 * All assert functions now invisibly return the tested object instead of `TRUE`

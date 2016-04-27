@@ -20,6 +20,10 @@ checkFlag = function(x, na.ok = FALSE) {
 }
 
 #' @export
+#' @rdname checkFlag
+check_flag = checkFlag
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFlag

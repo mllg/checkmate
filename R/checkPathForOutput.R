@@ -45,6 +45,10 @@ checkPathForOutput = function(x, overwrite = FALSE) {
 }
 
 #' @export
+#' @rdname checkPathForOutput
+check_path_for_output = checkPathForOutput
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkPathForOutput

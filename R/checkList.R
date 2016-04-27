@@ -61,6 +61,10 @@ checkListTypes = function(x, types = character(0L)) {
 }
 
 #' @export
+#' @rdname checkList
+check_list = checkList
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkList

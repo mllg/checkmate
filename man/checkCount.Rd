@@ -4,12 +4,16 @@
 \alias{assertCount}
 \alias{assert_count}
 \alias{checkCount}
+\alias{check_count}
 \alias{expect_count}
 \alias{testCount}
 \alias{test_count}
 \title{Check if an argument is a count}
 \usage{
 checkCount(x, na.ok = FALSE, positive = FALSE,
+  tol = sqrt(.Machine$double.eps))
+
+check_count(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps))
 
 assertCount(x, na.ok = FALSE, positive = FALSE,

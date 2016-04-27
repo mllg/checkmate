@@ -19,6 +19,10 @@ checkIntegerish = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upp
 }
 
 #' @export
+#' @rdname checkIntegerish
+check_integerish = checkIntegerish
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkIntegerish

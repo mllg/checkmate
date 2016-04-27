@@ -7,6 +7,7 @@
 \alias{assert_directory_exists}
 \alias{checkDirectory}
 \alias{checkDirectoryExists}
+\alias{check_directory_exists}
 \alias{expect_directory}
 \alias{expect_directory_exists}
 \alias{testDirectory}
@@ -16,6 +17,8 @@
 \title{Check for existence and access rights of directories}
 \usage{
 checkDirectoryExists(x, access = "")
+
+check_directory_exists(x, access = "")
 
 assertDirectoryExists(x, access = "", .var.name = vname(x), add = NULL)
 

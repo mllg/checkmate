@@ -2,13 +2,9 @@
 % Please edit documentation in R/matchArg.R
 \name{matchArg}
 \alias{matchArg}
-\alias{match_arg}
 \title{Partial Argument Matching}
 \usage{
 matchArg(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL)
-
-match_arg(x, choices, several.ok = FALSE, .var.name = vname(x),
-  add = NULL)
 }
 \arguments{
 \item{x}{[character]\cr

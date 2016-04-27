@@ -4,12 +4,15 @@
 \alias{assertNames}
 \alias{assert_names}
 \alias{checkNames}
+\alias{check_names}
 \alias{expect_names}
 \alias{testNames}
 \alias{test_names}
 \title{Check names to comply to specific rules}
 \usage{
 checkNames(x, type = "named")
+
+check_names(x, type = "named")
 
 assertNames(x, type = "named", .var.name = vname(x), add = NULL)
 

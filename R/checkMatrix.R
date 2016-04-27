@@ -36,6 +36,10 @@ checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, m
 }
 
 #' @export
+#' @rdname checkMatrix
+check_matrix = checkMatrix
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkMatrix

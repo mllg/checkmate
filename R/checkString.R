@@ -22,6 +22,10 @@ checkString = function(x, na.ok = FALSE, min.chars = NULL, pattern = NULL, fixed
 }
 
 #' @export
+#' @rdname checkString
+check_string = checkString
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkString

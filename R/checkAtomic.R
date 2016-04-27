@@ -18,6 +18,10 @@ checkAtomic = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, mi
 }
 
 #' @export
+#' @rdname checkAtomic
+check_atomic = checkAtomic
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAtomic

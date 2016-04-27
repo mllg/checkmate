@@ -45,6 +45,10 @@ checkClass = function(x, classes, ordered = FALSE) {
 }
 
 #' @export
+#' @rdname checkClass
+check_class = checkClass
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkClass

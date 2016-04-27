@@ -4,12 +4,16 @@
 \alias{assertString}
 \alias{assert_string}
 \alias{checkString}
+\alias{check_string}
 \alias{expect_string}
 \alias{testString}
 \alias{test_string}
 \title{Check if an argument is a string}
 \usage{
 checkString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
+  fixed = NULL, ignore.case = FALSE)
+
+check_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
   fixed = NULL, ignore.case = FALSE)
 
 assertString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,

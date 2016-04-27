@@ -25,6 +25,10 @@ checkSubset = function(x, choices, empty.ok = TRUE) {
 }
 
 #' @export
+#' @rdname checkSubset
+check_subset = checkSubset
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkSubset

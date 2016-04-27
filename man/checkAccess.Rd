@@ -4,12 +4,15 @@
 \alias{assertAccess}
 \alias{assert_access}
 \alias{checkAccess}
+\alias{check_access}
 \alias{expect_access}
 \alias{testAccess}
 \alias{test_access}
 \title{Check file system access rights}
 \usage{
 checkAccess(x, access = "")
+
+check_access(x, access = "")
 
 assertAccess(x, access = "", .var.name = vname(x), add = NULL)
 

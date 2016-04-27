@@ -45,6 +45,10 @@ checkFileExtension = function(x, extension = NULL) {
 }
 
 #' @export
+#' @rdname checkFileExists
+check_file_exists = checkFileExists
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFileExists

@@ -4,12 +4,16 @@
 \alias{assertComplex}
 \alias{assert_complex}
 \alias{checkComplex}
+\alias{check_complex}
 \alias{expect_complex}
 \alias{testComplex}
 \alias{test_complex}
 \title{Check if an argument is a vector of type complex}
 \usage{
 checkComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
+
+check_complex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, names = NULL)
 
 assertComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,

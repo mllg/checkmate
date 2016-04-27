@@ -57,6 +57,10 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
 }
 
 #' @export
+#' @rdname checkFunction
+check_function = checkFunction
+
+#' @export
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFunction

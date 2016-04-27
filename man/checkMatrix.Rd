@@ -4,12 +4,17 @@
 \alias{assertMatrix}
 \alias{assert_matrix}
 \alias{checkMatrix}
+\alias{check_matrix}
 \alias{expect_matrix}
 \alias{testMatrix}
 \alias{test_matrix}
 \title{Check if an argument is a matrix}
 \usage{
 checkMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
+  min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL)
+
+check_matrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
   row.names = NULL, col.names = NULL)
 

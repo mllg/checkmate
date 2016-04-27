@@ -7,6 +7,7 @@
 \alias{assert_file_exists}
 \alias{checkFile}
 \alias{checkFileExists}
+\alias{check_file_exists}
 \alias{expect_file}
 \alias{expect_file_exists}
 \alias{testFile}
@@ -16,6 +17,8 @@
 \title{Check existence and access rights of files}
 \usage{
 checkFileExists(x, access = "", extension = NULL)
+
+check_file_exists(x, access = "", extension = NULL)
 
 assertFileExists(x, access = "", extension = NULL, .var.name = vname(x),
   add = NULL)
