@@ -12,16 +12,12 @@ checkOS = function(os) {
   os.names = c("windows", "mac", "linux", "solaris")
   ok = match.arg(os, os.names, several.ok = TRUE)
 
-  if (getOS() %nin% ok)
+  if (OS %nin% ok)
     return(sprintf("OS must be %s", paste0(ok, collapse = " or ")))
   return(TRUE)
 }
 
-getOS = function() {
-  os.names = c("windows", "mac", "linux", "solaris")
-  sys.names = c("windows", "darwin", "linux", "sunos")
-  os = os.names[match(tolower(Sys.info()["sysname"]), sys.names)]
-}
+OS = c("windows", "mac", "linux", "solaris")[match(tolower(Sys.info()["sysname"]), c("windows", "darwin", "linux", "sunos"))]
 
 #' @export
 #' @rdname checkOS
@@ -55,5 +51,5 @@ test_os = testOS
 #' @rdname checkOS
 expect_os = function(os, info = NULL, label = NULL) {
   res = checkOS(os)
-  makeExpectation(getOS(), res, info, label = label %??% "Operating System")
+  makeExpectation(OS, res, info, label = label %??% "Operating System")
 }
