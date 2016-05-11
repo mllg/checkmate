@@ -44,7 +44,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
       msgs = paste0(c("One of the following must apply:", strwrap(msgs, prefix = " * ")), collapse = "\n")
       mstop("Assertion failed. %s", msgs)
     } else {
-        mstop("Assertion on '%s' failed. %s.", .var.name, msgs)
+      mstop("Assertion on '%s' failed. %s.", .var.name, msgs)
     }
   } else {
     for (i in seq_along(dots)) {
