@@ -9,5 +9,5 @@
 "_PACKAGE"
 
 .onUnload <- function (libpath) {
-  library.dynam.unload("checkmate", libpath)
+  library.dynam.unload("checkmate", libpath) # nocov
 }
