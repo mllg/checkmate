@@ -24,3 +24,10 @@ test_that("assert w/ check*", {
   expect_error(assert(checkNumeric(x), checkCount(x), combine = "and"))
 })
 
+test_that("bug #69", {
+  sub = subset = 1:150
+  res = assert(checkIntegerish(subset), checkLogical(subset, len = 150))
+  expect_true(res)
+  res = assert(checkIntegerish(sub), checkLogical(sub, len = 150))
+  expect_true(res)
+})
