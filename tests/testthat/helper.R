@@ -1,25 +1,11 @@
-NEW_TESTTHAT = !packageVersion("testthat") <= "0.11.0"
-
 expect_expectation_successful = function(expr, info = NULL, label = NULL) {
-  if (NEW_TESTTHAT) {
-    res = tryCatch(expr, expectation = function(e) e)
-    expect_is(res, "expectation_success", info = info, label = label)
-  } else {
-    reporter = ListReporter()
-    with_reporter(reporter, force(expr))
-    expect_false(reporter$failed, info = info, label = label)
-  }
+  res = tryCatch(expr, expectation = function(e) e)
+  expect_is(res, "expectation_success", info = info, label = label)
 }
 
 expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = NULL) {
-  if (NEW_TESTTHAT) {
-    x = tryCatch(expr, expectation = function(e) e)
-    expect_is(x, "expectation_failure", info = info, label = label)
-  } else {
-    reporter = ListReporter()
-    with_reporter(reporter, force(expr))
-    expect_true(reporter$failed, info = info, label = label)
-  }
+  x = tryCatch(expr, expectation = function(e) e)
+  expect_is(x, "expectation_failure", info = info, label = label)
 }
 
 expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
