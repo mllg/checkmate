@@ -28,7 +28,7 @@ Suggests:
     rmarkdown,
     magrittr,
     microbenchmark,
-    testthat
+    testthat (>= 0.11.0)
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
