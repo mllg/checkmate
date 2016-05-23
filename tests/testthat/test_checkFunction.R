@@ -38,4 +38,5 @@ test_that("checkFunction", {
 
   expect_false(testFunction(function(x) x^2, args = character(0)))
   expect_true(testFunction(function() x^2, args = character(0)))
+  expect_error(assertFunction(letters), "character")
 })

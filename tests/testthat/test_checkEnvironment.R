@@ -20,4 +20,5 @@ test_that("checkEnvironment", {
 
   expect_error(assertEnvironment(list()), "environment")
   expect_error(assertEnvironment(ee, "xxx"), "with name")
+  expect_error(assertEnvironment(letters), "character")
 })

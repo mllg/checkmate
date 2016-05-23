@@ -46,9 +46,9 @@ checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = 
     if (!is.na(ordered)) {
       x.ordered = is.ordered(x)
       if (ordered && !x.ordered)
-        return("Must be an ordered factor")
+        return("Must be an ordered factor, but is unordered")
       else if (!ordered && x.ordered)
-        return("Must be an unordered factor")
+        return("Must be an unordered factor, but is ordered")
     }
     qassert(empty.levels.ok, "B1")
     if (!empty.levels.ok) {

@@ -21,7 +21,7 @@ checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.miss
     return("Must be of class 'Date', not 'NULL'")
   }
   if (!inherits(x, "Date"))
-    return(paste0("Must be of class 'Date'", if (isTRUE(null.ok)) " (or 'NULL')" else ""))
+    return(sprintf("Must be of class 'Date'%s, not '%s'", if (isTRUE(null.ok)) " (or 'NULL')" else "", guessType(x)))
   checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and%
     checkDateBounds(x, lower, upper)
 }
