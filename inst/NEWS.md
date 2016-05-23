@@ -1,10 +1,13 @@
 # Version 1.7.5 (2016-xx-xx)
+* Most functions now support the handling of default arguments encoded as `NULL`
+  via argument `null.ok`.
 * Functions `*File` and `*Directory` are deprecated due to name clashes and will
   be removed in a future version. Please use `*FileExists` or `*DirectoryExists`
   instead.
 * New helper function `matchArg` to provide a simple an easy way for partial
-  argument matching in combination with an assert collection.
-* Added alias functions for all check functions to support underscore style.
+  argument matching in combination with an AssertCollection.
+* Added alias functions for all check functions to provide complete support
+  for the underscore programming style.
 
 # Version 1.7.4 (2016-04-08)
 * Compatibility with the upcoming testthat version.

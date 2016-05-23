@@ -12,6 +12,7 @@
 #'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}, allowing 0.
 #' @template tol
+#' @template null.ok
 #' @template checker
 #' @family scalars
 #' @useDynLib checkmate c_check_count
@@ -19,8 +20,8 @@
 #' @examples
 #' testCount(1)
 #' testCount(-1)
-checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps)) {
-  .Call(c_check_count, x, na.ok, positive, tol)
+checkCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), null.ok = FALSE) {
+  .Call(c_check_count, x, na.ok, positive, tol, null.ok)
 }
 
 #' @export

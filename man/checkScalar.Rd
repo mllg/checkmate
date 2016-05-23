@@ -10,19 +10,22 @@
 \alias{test_scalar}
 \title{Check if an argument is a single atomic value}
 \usage{
-checkScalar(x, na.ok = FALSE)
+checkScalar(x, na.ok = FALSE, null.ok = FALSE)
 
-check_scalar(x, na.ok = FALSE)
+check_scalar(x, na.ok = FALSE, null.ok = FALSE)
 
-assertScalar(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
+assertScalar(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-assert_scalar(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_scalar(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-testScalar(x, na.ok = FALSE)
+testScalar(x, na.ok = FALSE, null.ok = FALSE)
 
-test_scalar(x, na.ok = FALSE)
+test_scalar(x, na.ok = FALSE, null.ok = FALSE)
 
-expect_scalar(x, na.ok = FALSE, info = NULL, label = vname(x))
+expect_scalar(x, na.ok = FALSE, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -30,6 +33,10 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

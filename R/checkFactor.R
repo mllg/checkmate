@@ -21,6 +21,7 @@
 #' @param max.levels [\code{integer(1)}]\cr
 #'  Maximum number of factor levels.
 #'  Default is \code{NULL} (no check).
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_factor
@@ -29,8 +30,13 @@
 #' x = factor("a", levels = c("a", "b"))
 #' testFactor(x)
 #' testFactor(x, empty.levels.ok = FALSE)
-checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL) {
-  checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
+checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, null.ok =  FALSE) {
+  .Call(c_check_factor, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
+    checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
+}
+
+checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
+  if (!is.null(x)) {
     if (!is.null(levels)) {
       qassert(levels, "S")
       if (!setequal(levels(x), levels))
@@ -65,11 +71,8 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
       if (length(levels(x)) > max.levels)
         return(sprintf("Must have at most %i levels", max.levels))
     }
-    return(TRUE)
   }
-
-  .Call(c_check_factor, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
-  checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
+  return(TRUE)
 }
 
 #' @export

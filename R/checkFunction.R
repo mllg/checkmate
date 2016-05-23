@@ -13,17 +13,22 @@
 #' @param nargs [\code{integer(1)}]\cr
 #'  Required number of arguments, without \code{...}.
 #'  Default is \code{NULL} (no check).
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @export
 #' @examples
 #' testFunction(mean)
 #' testFunction(mean, args = "x")
-checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
-  qassert(ordered, "B1")
+checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE) {
+  if (is.null(x)) {
+    if (identical(null.ok, TRUE))
+      return(TRUE)
+    return("Must be a function, not 'NULL'")
+  }
   x = try(match.fun(x), silent = TRUE)
   if (inherits(x, "try-error"))
-    return("Function not found")
+    return(paste0("Must be a function", if (isTRUE(null.ok)) " (or 'NULL')" else ""))
 
   if (!is.null(args)) {
     qassert(args, "S")
@@ -35,6 +40,7 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL) {
       return(TRUE)
     }
 
+    qassert(ordered, "B1")
     if (ordered) {
       if (any(args != head(fargs, length(args)))) {
         return(sprintf("Must have first formal arguments (ordered): %s", paste0(args, collapse = ",")))

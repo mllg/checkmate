@@ -4,6 +4,7 @@
 #' @template x
 #' @template na-handling
 #' @inheritParams checkVector
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_complex
@@ -11,8 +12,8 @@
 #' @examples
 #' testComplex(1)
 #' testComplex(1+1i)
-checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call(c_check_complex, x, any.missing, all.missing, len, min.len, max.len, unique, names)
+checkComplex = function(x, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_complex, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok)
 }
 
 #' @export

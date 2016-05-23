@@ -11,25 +11,25 @@
 \title{Check if an argument is an array}
 \usage{
 checkArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL)
+  max.d = NULL, null.ok = FALSE)
 
 check_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL)
+  max.d = NULL, null.ok = FALSE)
 
 assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, .var.name = vname(x), add = NULL)
+  max.d = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, .var.name = vname(x), add = NULL)
+  max.d = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL)
+  max.d = NULL, null.ok = FALSE)
 
 test_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL)
+  max.d = NULL, null.ok = FALSE)
 
 expect_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, info = NULL, label = vname(x))
+  max.d = NULL, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -55,6 +55,10 @@ Default is \code{NULL} (no check).}
 \item{max.d}{[\code{integer(1)}]\cr
 Maximum number of dimensions of array \code{x}.
 Default is \code{NULL} (no check).}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

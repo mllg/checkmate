@@ -14,6 +14,7 @@
 #'  \dQuote{environment} and \dQuote{null} are supported.
 #'  For other types \code{\link[base]{inherits}} is used as a fallback to check \code{x}'s inheritance.
 #'  Defaults to \code{character(0)} (no check).
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @export
@@ -21,13 +22,13 @@
 #' @examples
 #' testList(list())
 #' testList(as.list(iris), types = c("numeric", "factor"))
-checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
+checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
   checkListTypes(x, types)
 }
 
 checkListTypes = function(x, types = character(0L)) {
-  if (length(types) == 0L)
+  if (is.null(x) || length(types) == 0L)
     return(TRUE)
   qassert(types, "S")
 

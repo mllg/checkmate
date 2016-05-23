@@ -10,22 +10,26 @@
 \alias{test_function}
 \title{Check if an argument is a function}
 \usage{
-checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL)
+checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
+  null.ok = FALSE)
 
-check_function(x, args = NULL, ordered = FALSE, nargs = NULL)
+check_function(x, args = NULL, ordered = FALSE, nargs = NULL,
+  null.ok = FALSE)
 
 assertFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
-  .var.name = vname(x), add = NULL)
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  .var.name = vname(x), add = NULL)
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-testFunction(x, args = NULL, ordered = FALSE, nargs = NULL)
+testFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
+  null.ok = FALSE)
 
-test_function(x, args = NULL, ordered = FALSE, nargs = NULL)
+test_function(x, args = NULL, ordered = FALSE, nargs = NULL,
+  null.ok = FALSE)
 
 expect_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  info = NULL, label = vname(x))
+  null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -44,6 +48,10 @@ Default is \code{FALSE}.}
 \item{nargs}{[\code{integer(1)}]\cr
 Required number of arguments, without \code{...}.
 Default is \code{NULL} (no check).}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

@@ -12,31 +12,34 @@
 \usage{
 checkMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 check_matrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 assertMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, .var.name = vname(x), add = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_matrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, .var.name = vname(x), add = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testMatrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 test_matrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL)
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 expect_matrix(x, mode = NULL, any.missing = TRUE, all.missing = TRUE,
   min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, info = NULL, label = vname(x))
+  row.names = NULL, col.names = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -75,6 +78,10 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 Check for column names. Default is \dQuote{NULL} (no check).
 See \code{\link{checkNamed}} for possible values.
 Note that you can use \code{\link{checkSubset}} to test for a specific set of names.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

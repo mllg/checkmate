@@ -9,6 +9,7 @@
 #'   Expected primary key(s) of the data table.
 #' @param index [\code{character}]\cr
 #'   Expected secondary key(s) of the data table.
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @export
@@ -19,25 +20,32 @@
 #' setkeyv(dt, "Sepal.Length", physical = FALSE)
 #' testDataTable(dt)
 #' testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
-checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  if (!requireNamespace("data.table", quietly = TRUE))
-    stop("Install 'data.table' to perform checks of data tables")
-  if (!data.table::is.data.table(x))
-    return("Must be a data.table")
-  if (!is.null(key)) {
-    qassert(key, "S")
-    if (!setequal(data.table::key(x) %??% character(0L), key))
-      return(sprintf("Must have primary keys: %s", paste0(key, collapse = ",")))
-  }
-  if (!is.null(index)) {
-    qassert(index, "S")
-    indices = strsplit(data.table::key2(x) %??% "", "__", fixed = TRUE)[[1L]]
-    if (!setequal(indices, index))
-      return(sprintf("Must have secondary keys (indices): %s", paste0(index, collapse = ",")))
-  }
-
-  checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names)
+checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
+  checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, null.ok) %and%
+    checkDataTableProps(x, key, index)
 }
+
+checkDataTableProps = function(x, key = NULL, index = NULL) {
+  if (!is.null(x)) {
+    if (!requireNamespace("data.table", quietly = TRUE))
+      stop("Install 'data.table' to perform checks of data tables")
+    if (!data.table::is.data.table(x))
+      return("Must be a data.table")
+    if (!is.null(key)) {
+      qassert(key, "S")
+      if (!setequal(data.table::key(x) %??% character(0L), key))
+        return(sprintf("Must have primary keys: %s", paste0(key, collapse = ",")))
+    }
+    if (!is.null(index)) {
+      qassert(index, "S")
+      indices = strsplit(data.table::key2(x) %??% "", "__", fixed = TRUE)[[1L]]
+      if (!setequal(indices, index))
+        return(sprintf("Must have secondary keys (indices): %s", paste0(index, collapse = ",")))
+    }
+  }
+  return(TRUE)
+}
+
 
 #' @export
 #' @rdname checkDataTable

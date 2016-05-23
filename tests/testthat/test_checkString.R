@@ -5,7 +5,7 @@ test_that("checkString", {
   expect_succ_all(String, "")
   expect_fail_all(String, "", min.chars = 1)
   expect_fail_all(String, 1L)
-  expect_fail_all(String, NA_character_, na.ok = TRUE, min.chars = 1)
+  expect_succ_all(String, NA_character_, na.ok = TRUE, min.chars = 99)
   expect_succ_all(String, "xxxfooxxx", pattern = "foo")
   expect_succ_all(String, "xxxfooxxx", fixed = "foo")
   expect_fail_all(String, "xxxfooxxx", pattern = "bar")
