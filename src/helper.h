@@ -5,7 +5,6 @@
 #include <R.h>
 #include <Rinternals.h>
 
-const char * guessType(SEXP);
 Rboolean isStrictlyNumeric(SEXP);
 Rboolean isRList(SEXP);
 R_len_t get_ncols(SEXP);

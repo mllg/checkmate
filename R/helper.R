@@ -18,3 +18,8 @@ setClasses = function(x, cl) {
 convertCamelCase = function(x) {
   tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
 }
+
+#' @useDynLib checkmate c_guessType
+guessType = function(x) {
+  .Call(c_guessType, x)
+}
