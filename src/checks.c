@@ -7,6 +7,7 @@
 #include "all_missing.h"
 #include "all_nchar.h"
 #include "helper.h"
+#include "guessType.h"
 
 static char msg[255] = "";
 

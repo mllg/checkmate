@@ -10,6 +10,18 @@ test_that("guessType", {
   xm = matrix(1:9, 3)
   xa = array(1:3)
   xf = data.frame(a=1:5, b=1:5)
+  xx = 1; class(xx) = "Foo"
+
+  expect_equal(guessType(xb), "logical")
+  expect_equal(guessType(xi), "integer")
+  expect_equal(guessType(xd), "double")
+  expect_equal(guessType(xc), "complex")
+  expect_equal(guessType(xs), "character")
+  expect_equal(guessType(xl), "list")
+  expect_equal(guessType(xm), "matrix")
+  expect_equal(guessType(xa), "array")
+  expect_equal(guessType(xf), "data.frame")
+  expect_equal(guessType(xx), "Foo")
 
   expect_true(grepl("NULL'$", checkLogical(NULL)))
   expect_true(grepl("logical'$", checkInteger(xb)))
@@ -22,5 +34,5 @@ test_that("guessType", {
   expect_true(grepl("matrix'$", checkLogical(xm)))
   expect_true(grepl("array'$", checkLogical(xa)))
   expect_true(grepl("frame'$", checkLogical(xf)))
-  x = 1; class(x) = "myclass"; expect_true(grepl("myclass'$", checkLogical(x)))
+  expect_true(grepl("Foo'$", checkLogical(xx)))
 })

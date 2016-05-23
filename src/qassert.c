@@ -1,5 +1,6 @@
 #include "qassert.h"
 #include "helper.h"
+#include "guessType.h"
 #include "any_missing.h"
 #include "is_integerish.h"
 
