@@ -27,4 +27,6 @@ test_that("checkDate", {
   expect_error(assertDate(x, any.missing = FALSE), "missing")
   x = rep(Sys.Date(), 2)
   expect_error(assertDate(x, unique = TRUE), "duplicated")
+
+  expect_error(assertDate(letters, unique = TRUE), "character")
 })
