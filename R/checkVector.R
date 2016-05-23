@@ -23,6 +23,7 @@
 #'  Check for names. See \code{\link{checkNamed}} for possible values.
 #'  Default is \dQuote{any} which performs no check at all.
 #'  Note that you can use \code{\link{checkSubset}} to check for a specific set of names.
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @family atomicvector
@@ -30,8 +31,8 @@
 #' @export
 #' @examples
 #' testVector(letters, min.len = 1L, any.missing = FALSE)
-checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call(c_check_vector, x, strict, any.missing, all.missing, len, min.len, max.len, unique, names)
+checkVector = function(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_vector, x, strict, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok)
 }
 
 #' @export

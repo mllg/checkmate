@@ -15,6 +15,7 @@
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param min.chars [\code{integer(1)}]\cr
 #'  Minimum number of characters in each element of \code{x}.
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_character
@@ -23,23 +24,25 @@
 #' testCharacter(letters, min.len = 1, any.missing = FALSE)
 #' testCharacter(letters, min.chars = 2)
 #' testCharacter("example", pattern = "xa")
-checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL) {
-  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names) %and%
+checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
   checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 
 checkCharacterPattern = function(x, pattern = NULL, fixed = NULL, ignore.case = FALSE) {
-  if (!is.null(pattern)) {
-    qassert(pattern, "S1")
-    ok = grepl(pattern, x, fixed = FALSE, ignore.case = ignore.case)
-    if(!all(ok))
-      return(sprintf("Must comply to pattern '%s'", pattern))
-  }
-  if (!is.null(fixed)) {
-    qassert(fixed, "S1")
-    ok = grepl(fixed, x, fixed = TRUE, ignore.case = ignore.case)
-    if(!all(ok))
-      return(sprintf("Must contain substring '%s'", fixed))
+  if (!is.null(x)) {
+    if (!is.null(pattern)) {
+      qassert(pattern, "S1")
+      ok = grepl(pattern, x, fixed = FALSE, ignore.case = ignore.case)
+      if(!all(ok))
+        return(sprintf("Must comply to pattern '%s'", pattern))
+    }
+    if (!is.null(fixed)) {
+      qassert(fixed, "S1")
+      ok = grepl(fixed, x, fixed = TRUE, ignore.case = ignore.case)
+      if(!all(ok))
+        return(sprintf("Must contain substring '%s'", fixed))
+    }
   }
   return(TRUE)
 }

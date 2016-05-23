@@ -14,7 +14,28 @@ static char msg[255] = "";
     if (!(expr)) { \
         snprintf(msg, 255, "Must be of type '%s', not '%s'", expected, guessType(x)); \
         return ScalarString(mkChar(msg)); \
+    }
+
+#define handle_type_null(expr, expected, null_ok) \
+    if (isNull((x))) { \
+        if (asFlag((null_ok), "null.ok")) \
+            return ScalarLogical(TRUE); \
+        snprintf(msg, 255, "Must be of type '%s', not 'NULL'", expected); \
+        return ScalarString(mkChar(msg)); \
+    } else { \
+        if (!(expr)) { \
+            snprintf(msg, 255, "Must be of type '%s'%s, not '%s'", expected, asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guessType(x)); \
+            return ScalarString(mkChar(msg)); \
+        } \
+    }
+
+#define handle_na(x, na_ok) \
+    if (is_scalar_na((x))) { \
+        if (asFlag((na_ok), "na.ok")) \
+            return ScalarLogical(TRUE); \
+        return result("May not be NA"); \
     };
+
 
 #define assert(x) if (!(x)) return ScalarString(mkChar(msg));
 
@@ -250,14 +271,14 @@ static inline Rboolean is_scalar_na(SEXP x) {
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
-SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isString(x) || all_missing_atomic(x), "character");
+SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isString(x) || all_missing_atomic(x), "character", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_missings(x, any_missing, all_missing));
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
         if (n > 0 && !all_nchar(x, n))
-            return result("All elements must have at least %g characters", (double)n); // FIXME: double?
+            return result("All elements must have at least %i characters", n);
     }
     assert(check_vector_unique(x, unique));
     assert(check_vector_names(x, names));
@@ -265,8 +286,8 @@ SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missin
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isComplex(x) || all_missing_atomic(x), "complex");
+SEXP c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isComplex(x) || all_missing_atomic(x), "complex", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -274,12 +295,11 @@ SEXP c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
-    handle_type(isFrame(x), "data.frame");
+SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
+    handle_type_null(isFrame(x), "data.frame", null_ok);
     assert(check_matrix_dims(x, min_rows, min_cols, rows, cols));
 
     if (!isNull(row_names)) {
-        // FIXME
         SEXP nn = getAttrib(x, install("row.names"));
         if (isInteger(nn)) {
             nn = PROTECT(coerceVector(nn, STRSXP));
@@ -301,8 +321,8 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isFactor(x) || all_missing_atomic(x), "factor");
+SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isFactor(x) || all_missing_atomic(x), "factor", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -310,8 +330,8 @@ SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isInteger(x) || all_missing_atomic(x), "integer");
+SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isInteger(x) || all_missing_atomic(x), "integer", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -320,9 +340,9 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
+SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
-    handle_type(isIntegerish(x, dtol) || all_missing_atomic(x), "integerish");
+    handle_type_null(isIntegerish(x, dtol) || all_missing_atomic(x), "integerish", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -331,8 +351,8 @@ SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missi
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isRList(x), "list")
+SEXP c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isRList(x), "list", null_ok)
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -340,8 +360,8 @@ SEXP c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isLogical(x) || all_missing_atomic(x), "logical");
+SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isLogical(x) || all_missing_atomic(x), "logical", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -349,8 +369,8 @@ SEXP c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP 
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names) {
-    handle_type(isMatrix(x), "matrix");
+SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
+    handle_type_null(isMatrix(x), "matrix", null_ok);
     assert(check_storage(x, mode));
     assert(check_matrix_dims(x, min_rows, min_cols, rows, cols));
 
@@ -371,8 +391,8 @@ SEXP c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP 
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP max_d) {
-    handle_type(isArray(x), "array");
+SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP max_d, SEXP null_ok) {
+    handle_type_null(isArray(x), "array", null_ok);
     assert(check_storage(x, mode));
 
     if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
@@ -414,8 +434,8 @@ SEXP c_check_names(SEXP x, SEXP type) {
 }
 
 
-SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isNumeric(x) || all_missing_atomic(x), "numeric");
+SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -425,8 +445,8 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missi
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    handle_type(isVector(x), "vector");
+SEXP c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+    handle_type_null(isVector(x), "vector", null_ok);
     if (asFlag(strict, "strict")) {
         SEXP attr = ATTRIB(x);
         handle_type( (length(attr) == 0 || (TAG(attr) == R_NamesSymbol)) && CDR(attr) == R_NilValue, "vector");
@@ -456,59 +476,41 @@ SEXP c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len,
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_flag(SEXP x, SEXP na_ok) {
-    Rboolean is_na = is_scalar_na(x);
-    handle_type(xlength(x) == 1 && (is_na || isLogical(x)), "logical flag");
-    if (is_na && !asFlag(na_ok, "na.ok"))
-        return result("May not be NA");
+SEXP c_check_flag(SEXP x, SEXP na_ok, SEXP null_ok) {
+    handle_na(x, na_ok);
+    handle_type_null(xlength(x) == 1 && isLogical(x), "logical flag", null_ok);
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol) {
-    Rboolean is_na = is_scalar_na(x);
+SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol, SEXP null_ok) {
+    handle_na(x, na_ok)
     double dtol = asNumber(tol, "tol");
-    handle_type(xlength(x) == 1 && (is_na || isIntegerish(x, dtol)), "count");
-    if (is_na) {
-        if (!asFlag(na_ok, "na.ok"))
-            return result("May not be NA");
-    } else  {
-        const int pos = (int) asFlag(positive, "positive");
-        if (asInteger(x) < pos)
-            return result("Must be >= %i", pos);
-    }
+    handle_type_null(xlength(x) == 1 && isIntegerish(x, dtol), "count", null_ok);
+    const int pos = (int) asFlag(positive, "positive");
+    if (asInteger(x) < pos)
+        return result("Must be >= %i", pos);
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol) {
-    Rboolean is_na = is_scalar_na(x);
+SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
-    handle_type(xlength(x) == 1 && (is_na || isIntegerish(x, dtol)), "single integerish value");
-    if (is_na) {
-        if (!asFlag(na_ok, "na.ok"))
-            return result("May not be NA");
-    }
+    handle_na(x, na_ok);
+    handle_type_null(xlength(x) == 1 && isIntegerish(x, dtol), "single integerish value", null_ok);
     assert(check_bounds(x, lower, upper));
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite) {
-    Rboolean is_na = is_scalar_na(x);
-    handle_type(xlength(x) == 1 && (is_na || isStrictlyNumeric(x)), "number");
-    if (is_na) {
-        if (!asFlag(na_ok, "na.ok"))
-            return result("May not be NA");
-        return ScalarLogical(TRUE);
-    }
+SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEXP null_ok) {
+    handle_na(x, na_ok);
+    handle_type_null(xlength(x) == 1 && isStrictlyNumeric(x), "number", null_ok);
     assert(check_vector_finite(x, finite));
     assert(check_bounds(x, lower, upper));
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars) {
-    Rboolean is_na = is_scalar_na(x);
-    handle_type(xlength(x) == 1 && (is_na || isString(x)), "string");
-    if (is_na && !asFlag(na_ok, "na.ok"))
-        return result("May not be NA");
+SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP null_ok) {
+    handle_na(x, na_ok);
+    handle_type_null(xlength(x) == 1 && isString(x), "string", null_ok);
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
         if (!all_nchar(x, n))
@@ -518,10 +520,8 @@ SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars) {
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_scalar(SEXP x, SEXP na_ok) {
-    Rboolean is_na = is_scalar_na(x);
-    handle_type(xlength(x) == 1 && (is_na || isVectorAtomic(x)), "atomic scalar");
-    if (is_na && !asFlag(na_ok, "na.ok"))
-        return result("May not be NA");
+SEXP c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
+    handle_na(x, na_ok);
+    handle_type_null(xlength(x) == 1 && isVectorAtomic(x), "atomic scalar", null_ok);
     return ScalarLogical(TRUE);
 }

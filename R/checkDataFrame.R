@@ -4,6 +4,7 @@
 #' @template x
 #' @inheritParams checkMatrix
 #' @inheritParams checkList
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @export
@@ -11,8 +12,8 @@
 #' @examples
 #' testDataFrame(iris)
 #' testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "named")
-checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL) {
-  .Call(c_check_dataframe, x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names) %and%
+checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
+  .Call(c_check_dataframe, x, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, null.ok) %and%
   checkListTypes(x, types)
 }
 

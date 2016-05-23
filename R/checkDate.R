@@ -10,14 +10,20 @@
 #'  All dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @param upper [\code{\link[base]{Date}}]\cr
 #'  All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
+#' @template null.ok
 #' @inheritParams checkVector
 #' @template checker
 #' @export
-checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE) {
+checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, null.ok = FALSE) {
+  if (is.null(x)) {
+    if (isTRUE(null.ok))
+      return(TRUE)
+    return("Must be of class 'Date', not 'NULL'")
+  }
   if (!inherits(x, "Date"))
-    return("Must be of class 'Date'")
+    return(paste0("Must be of class 'Date'", if (isTRUE(null.ok)) " (or 'NULL')" else ""))
   checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and%
-  checkDateBounds(x, lower, upper)
+    checkDateBounds(x, lower, upper)
 }
 
 checkDateBounds = function(x, lower, upper) {
@@ -36,7 +42,6 @@ checkDateBounds = function(x, lower, upper) {
     if (any(x > upper))
       return(sprintf("Date must be <= %s", upper))
   }
-
   return(TRUE)
 }
 

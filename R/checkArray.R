@@ -14,14 +14,15 @@
 #' @param max.d [\code{integer(1)}]\cr
 #'  Maximum number of dimensions of array \code{x}.
 #'  Default is \code{NULL} (no check).
+#' @template null.ok
 #' @template checker
 #' @family basetypes
 #' @useDynLib checkmate c_check_array
 #' @export
 #' @examples
 #' checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
-checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL) {
-  .Call(c_check_array, x, mode, any.missing, d, min.d, max.d)
+checkArray = function(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL, max.d = NULL, null.ok = FALSE) {
+  .Call(c_check_array, x, mode, any.missing, d, min.d, max.d, null.ok)
 }
 
 #' @export

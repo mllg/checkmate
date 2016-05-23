@@ -10,23 +10,26 @@
 \alias{test_number}
 \title{Check if an argument is a single numeric value}
 \usage{
-checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
+checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
+  null.ok = FALSE)
 
 check_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE)
+  finite = FALSE, null.ok = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
+testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
+  null.ok = FALSE)
 
-test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE)
+test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
+  null.ok = FALSE)
 
 expect_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, info = NULL, label = vname(x))
+  finite = FALSE, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -43,6 +46,10 @@ Upper value all elements of \code{x} must be lower than.}
 
 \item{finite}{[\code{logical(1)}]\cr
 Check for only finite values? Default is \code{FALSE}.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

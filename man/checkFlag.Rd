@@ -10,19 +10,22 @@
 \alias{test_flag}
 \title{Check if an argument is a flag}
 \usage{
-checkFlag(x, na.ok = FALSE)
+checkFlag(x, na.ok = FALSE, null.ok = FALSE)
 
-check_flag(x, na.ok = FALSE)
+check_flag(x, na.ok = FALSE, null.ok = FALSE)
 
-assertFlag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
+assertFlag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-assert_flag(x, na.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_flag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-testFlag(x, na.ok = FALSE)
+testFlag(x, na.ok = FALSE, null.ok = FALSE)
 
-test_flag(x, na.ok = FALSE)
+test_flag(x, na.ok = FALSE, null.ok = FALSE)
 
-expect_flag(x, na.ok = FALSE, info = NULL, label = vname(x))
+expect_flag(x, na.ok = FALSE, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -30,6 +33,10 @@ Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

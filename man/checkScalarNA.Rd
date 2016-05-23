@@ -10,23 +10,27 @@
 \alias{test_scalar_na}
 \title{Check if an argument is a single missing value}
 \usage{
-checkScalarNA(x)
+checkScalarNA(x, null.ok = FALSE)
 
-check_scalar_na(x)
+check_scalar_na(x, null.ok = FALSE)
 
-assertScalarNA(x, .var.name = vname(x), add = NULL)
+assertScalarNA(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_scalar_na(x, .var.name = vname(x), add = NULL)
+assert_scalar_na(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-testScalarNA(x)
+testScalarNA(x, null.ok = FALSE)
 
-test_scalar_na(x)
+test_scalar_na(x, null.ok = FALSE)
 
-expect_scalar_na(x, info = NULL, label = vname(x))
+expect_scalar_na(x, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
 Object to check.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

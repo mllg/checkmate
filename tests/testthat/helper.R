@@ -11,6 +11,16 @@ expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = 
 expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
   xn = deparse(substitute(x))
 
+  # check null.ok if it is in formals
+  s = paste0("check", cc)
+  fun = match.fun(s)
+  if ("null.ok" %in% names(formals(fun))) {
+    dots = list(...)
+    dots["x"] = list(NULL)
+    dots$null.ok = TRUE
+    expect_true(do.call(fun, dots))
+  }
+
   s = paste0("check", cc)
   fun = match.fun(s)
   expect_true(fun(x, ...), label = s)
@@ -44,6 +54,16 @@ expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc
 
 expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
   xn = deparse(substitute(x))
+
+  # check null.ok if it is in formals
+  s = paste0("check", cc)
+  fun = match.fun(s)
+  if ("null.ok" %in% names(formals(fun))) {
+    dots = list(...)
+    dots["x"] = list(NULL)
+    dots$null.ok = FALSE
+    expect_true(grepl("'NULL'", do.call(fun, dots), fixed = TRUE))
+  }
 
   s = paste0("check", cc)
   fun = match.fun(s)
