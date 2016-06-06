@@ -14,5 +14,6 @@ test_that("checkScalar", {
   expect_false(testScalar(NA, na.ok = FALSE))
   expect_true(testScalar(NA, na.ok = TRUE))
 
-  expect_error(assertScalar(integer(0)), "scalar")
+  expect_error(assertScalar(integer(0)), "length 1")
+  expect_error(assertScalar(iris), "scalar")
 })
