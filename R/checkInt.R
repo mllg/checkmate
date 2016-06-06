@@ -3,8 +3,7 @@
 #' @templateVar fn Int
 #' @template x
 #' @template na-handling
-#' @param na.ok [\code{logical(1)}]\cr
-#'  Are missing values allowed? Default is \code{FALSE}.
+#' @template na.ok
 #' @template bounds
 #' @template tol
 #' @template null.ok
