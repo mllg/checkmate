@@ -6,8 +6,7 @@
 #' @templateVar fn Count
 #' @template x
 #' @template na-handling
-#' @param na.ok [\code{logical(1)}]\cr
-#'  Are missing values allowed? Default is \code{FALSE}.
+#' @template na.ok
 #' @param positive [\code{logical(1)}]\cr
 #'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}, allowing 0.

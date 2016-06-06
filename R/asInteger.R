@@ -31,8 +31,7 @@ asInteger = function(x, ..., tol = sqrt(.Machine$double.eps), .var.name = vname(
 #' @param positive [\code{logical(1)}]\cr
 #'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}.
-#' @param na.ok [\code{logical(1)}]\cr
-#'  Are missing values allowed? Default is \code{FALSE}.
+#' @template na.ok
 #' @export
 asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL) {
   assertCount(x, na.ok, positive, tol, .var.name = .var.name, add = add)
