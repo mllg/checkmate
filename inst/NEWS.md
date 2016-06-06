@@ -1,4 +1,4 @@
-# Version 1.7.5 (2016-xx-xx)
+# Version 1.8.0 (2016-06-06)
 * Most functions now support the handling of default arguments encoded as `NULL`
   via argument `null.ok`.
 * Functions `*File` and `*Directory` are deprecated due to name clashes and will
@@ -6,8 +6,8 @@
   instead.
 * New helper function `matchArg` to provide a simple an easy way for partial
   argument matching in combination with an AssertCollection.
-* Added alias functions for all check functions to provide complete support
-  for the underscore programming style.
+* Added alias functions for all check functions (`check_*`)
+  to provide support for the underscore programming style in `assert()`.
 
 # Version 1.7.4 (2016-04-08)
 * Compatibility with the upcoming testthat version.
