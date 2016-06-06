@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkScalarNA. checkmate 1.7.4</title>
+<title>checkScalarNA. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,18 +52,23 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkScalarNA(x)</div>
-<div>assertScalarNA(x, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_scalar_na(x, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testScalarNA(x)</div>
-<div>test_scalar_na(x)</div>
-<div>expect_scalar_na(x, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkScalarNA(x, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>check_scalar_na(x, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>assertScalarNA(x, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_scalar_na(x, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testScalarNA(x, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>test_scalar_na(x, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>expect_scalar_na(x, null.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
       <dd>[any]
 Object to check.</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -120,7 +125,7 @@ Depending on the function prefix:
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertScalarNA</li><li>assert_scalar_na</li><li>checkScalarNA</li><li>expect_scalar_na</li><li>testScalarNA</li><li>test_scalar_na</li>
+      <li>assertScalarNA</li><li>assert_scalar_na</li><li>checkScalarNA</li><li>check_scalar_na</li><li>expect_scalar_na</li><li>testScalarNA</li><li>test_scalar_na</li>
     </ul>
     <ul>
       

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkArray. checkmate 1.7.4</title>
+<title>checkArray. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,12 +52,13 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL)</div>
-<div>assertArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL)</div>
-<div>test_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL)</div>
-<div>expect_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>check_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>assertArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testArray(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>test_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>expect_array(x, mode&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, d&nbsp;=&nbsp;NULL, min.d&nbsp;=&nbsp;NULL, max.d&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -85,6 +86,10 @@ Default is <code>NULL</code> (no check).</dd>
       <dd>[<code>integer(1)</code>]
 Maximum number of dimensions of array <code>x</code>.
 Default is <code>NULL</code> (no check).</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -133,7 +138,7 @@ Depending on the function prefix:
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertArray</li><li>assert_array</li><li>checkArray</li><li>expect_array</li><li>testArray</li><li>test_array</li>
+      <li>assertArray</li><li>assert_array</li><li>checkArray</li><li>check_array</li><li>expect_array</li><li>testArray</li><li>test_array</li>
     </ul>
     <ul>
       

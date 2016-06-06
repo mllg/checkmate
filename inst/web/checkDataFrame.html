@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkDataFrame. checkmate 1.7.4</title>
+<title>checkDataFrame. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,12 +52,13 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL)</div>
-<div>assertDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL)</div>
-<div>test_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL)</div>
-<div>expect_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>check_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>assertDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testDataFrame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>test_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>expect_data_frame(x, types&nbsp;=&nbsp;character(0L), any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, min.rows&nbsp;=&nbsp;NULL, min.cols&nbsp;=&nbsp;NULL, nrows&nbsp;=&nbsp;NULL, ncols&nbsp;=&nbsp;NULL, row.names&nbsp;=&nbsp;NULL, col.names&nbsp;=&nbsp;NULL, null.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -102,6 +103,10 @@ Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to
 Check for column names. Default is &#147;NULL&#148; (no check).
 See <code><a href='checkNamed.html'>checkNamed</a></code> for possible values.
 Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to test for a specific set of names.</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -154,7 +159,7 @@ Depending on the function prefix:
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertDataFrame</li><li>assert_data_frame</li><li>checkDataFrame</li><li>expect_data_frame</li><li>testDataFrame</li><li>test_data_frame</li>
+      <li>assertDataFrame</li><li>assert_data_frame</li><li>checkDataFrame</li><li>check_data_frame</li><li>expect_data_frame</li><li>testDataFrame</li><li>test_data_frame</li>
     </ul>
     <ul>
       

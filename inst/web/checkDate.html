@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkDate. checkmate 1.7.4</title>
+<title>checkDate. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,12 +52,13 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE)</div>
-<div>assertDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE)</div>
-<div>test_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE)</div>
-<div>expect_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>check_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>assertDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testDate(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>test_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>expect_date(x, lower&nbsp;=&nbsp;NULL, upper&nbsp;=&nbsp;NULL, any.missing&nbsp;=&nbsp;TRUE, all.missing&nbsp;=&nbsp;TRUE, len&nbsp;=&nbsp;NULL, min.len&nbsp;=&nbsp;NULL, max.len&nbsp;=&nbsp;NULL, unique&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -88,6 +89,10 @@ Maximal length of <code>x</code>.</dd>
       <dt>unique</dt>
       <dd>[<code>logical(1)</code>]
 Must all values be unique? Default is <code>FALSE</code>.</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -130,7 +135,7 @@ Depending on the function prefix:
       </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertDate</li><li>assert_date</li><li>checkDate</li><li>expect_date</li><li>testDate</li><li>test_date</li>
+      <li>assertDate</li><li>assert_date</li><li>checkDate</li><li>check_date</li><li>expect_date</li><li>testDate</li><li>test_date</li>
     </ul>
     <ul>
       

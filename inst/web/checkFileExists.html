@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkPathForOutput. checkmate 1.8.0</title>
+<title>checkFileExists. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -47,29 +47,38 @@
         
       </header>
       
-      <h1>Check if a path is suited for creating an output file</h1>
+      <h1>Check existence and access rights of files</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE)</div>
-<div>check_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE)</div>
-<div>assertPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testPathForOutput(x, overwrite&nbsp;=&nbsp;FALSE)</div>
-<div>test_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE)</div>
-<div>expect_path_for_output(x, overwrite&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkFileExists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>check_file_exists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>assertFileExists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_file_exists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testFileExists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>test_file_exists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>expect_file_exists(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div>
+<div>checkFile(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>assertFile(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testFile(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>test_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
+<div>expect_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
       <dt>x</dt>
       <dd>[any]
 Object to check.</dd>
-      <dt>overwrite</dt>
-      <dd>[<code>logical(1)</code>]
-If <code>TRUE</code>, an existing file in place is allowed if it
-it is both readable and writeable.
-Default is <code>FALSE</code>.</dd>
+      <dt>access</dt>
+      <dd>[<code>character(1)</code>]
+Single string containing possible characters &#145;r&#146;, &#145;w&#146; and &#145;x&#146; to
+force a check for read, write or execute access rights, respectively.
+Write and executable rights are not checked on Windows.</dd>
+      <dt>extension</dt>
+      <dd>[<code>character</code>]
+Vector of allowed file extensions, matched case insensitive.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -93,11 +102,11 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <p><dl>
 Depending on the function prefix:
  If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertPathForOutput</code>/<code>assert_path_for_output</code>
- throws an error message, <code>testPathForOutput</code>/<code>test_path_for_output</code>
+ is not successful, <code>assertFileExists</code>/<code>assert_file_exists</code>
+ throws an error message, <code>testFileExists</code>/<code>test_file_exists</code>
  returns <code>FALSE</code>,
- and <code>checkPathForOutput</code> returns a string with the error message.
- The function <code>expect_path_for_output</code> always returns an
+ and <code>checkFileExists</code> returns a string with the error message.
+ The function <code>expect_file_exists</code> always returns an
  <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
 </dl></p>
   
@@ -106,32 +115,34 @@ Depending on the function prefix:
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Check if a file path can be safely be used to create a file and write to it.</p>
+      <p>Check existence and access rights of files</p>
   
-      <p>This is checked:
-<ul>
-<li>Does <code>dirname(x)</code> exist?
- </li>
-<li>Does no file under path <code>x</code> exist?
- </li>
-<li>Is <code>dirname(x)</code> writeable?
-</li>
-</ul></p>
-  
-      <p>Paths are relative to the current working directory.</p>
+    </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+
+      <p>The functions without the suffix &#147;exists&#148; are deprecated and will be removed
+from the package in a future version due to name clashes.</p>
   
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'># Can we create a file in the tempdir?
-testPathForOutput(file.path(tempdir(), &quot;process.log&quot;))
+    <pre class="examples"><div class='input'># Check if R&#39;s COPYING file is readable
+testFileExists(file.path(R.home(), &quot;COPYING&quot;), access = &quot;r&quot;)
 </div>
 <div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# Check if R&#39;s COPYING file is readable and writable
+testFileExists(file.path(R.home(), &quot;COPYING&quot;), access = &quot;rw&quot;)
+</div>
+<div class='output'>[1] FALSE
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertPathForOutput</li><li>assert_path_for_output</li><li>checkPathForOutput</li><li>check_path_for_output</li><li>expect_path_for_output</li><li>testPathForOutput</li><li>test_path_for_output</li>
+      <li>assertFile</li><li>assertFileExists</li><li>assert_file</li><li>assert_file_exists</li><li>checkFile</li><li>checkFileExists</li><li>check_file_exists</li><li>expect_file</li><li>expect_file_exists</li><li>testFile</li><li>testFileExists</li><li>test_file</li><li>test_file_exists</li>
     </ul>
     <ul>
       
@@ -141,7 +152,7 @@ testPathForOutput(file.path(tempdir(), &quot;process.log&quot;))
     
 Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
   <code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>,
-  <code><a href='checkFileExists.html'>checkFileExists</a></code>
+  <code><a href='checkPathForOutput.html'>checkPathForOutput</a></code>
 
         
   </div>

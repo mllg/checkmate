@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkString. checkmate 1.7.4</title>
+<title>checkString. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,12 +52,13 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
-<div>assertString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
-<div>test_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE)</div>
-<div>expect_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>check_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>assertString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testString(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>test_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE)</div>
+<div>expect_string(x, na.ok&nbsp;=&nbsp;FALSE, min.chars&nbsp;=&nbsp;NULL, pattern&nbsp;=&nbsp;NULL, fixed&nbsp;=&nbsp;NULL, ignore.case&nbsp;=&nbsp;FALSE, null.ok&nbsp;=&nbsp;FALSE, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -82,6 +83,10 @@ All elements of <code>x</code> must contain this substring.</dd>
       <dt>ignore.case</dt>
       <dd>[<code>logical(1)</code>]
 See <code><a href='http://www.inside-r.org/r-doc/base/grep'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -143,7 +148,7 @@ Depending on the function prefix:
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertString</li><li>assert_string</li><li>checkString</li><li>expect_string</li><li>testString</li><li>test_string</li>
+      <li>assertString</li><li>assert_string</li><li>checkString</li><li>check_string</li><li>expect_string</li><li>testString</li><li>test_string</li>
     </ul>
     <ul>
       

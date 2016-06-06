@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>asInteger. checkmate 1.7.4</title>
+<title>asInteger. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.7.4</a>
+      <a class="brand" href="#">checkmate 1.8.0</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,9 +52,9 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>asInteger(x, ..., tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x))</div>
-<div>asCount(x, na.ok&nbsp;=&nbsp;FALSE, positive&nbsp;=&nbsp;FALSE, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x))</div>
-<div>asInt(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>asInteger(x, ..., tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>asCount(x, na.ok&nbsp;=&nbsp;FALSE, positive&nbsp;=&nbsp;FALSE, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>asInt(x, na.ok&nbsp;=&nbsp;FALSE, lower&nbsp;=&nbsp;-Inf, upper&nbsp;=&nbsp;Inf, tol&nbsp;=&nbsp;sqrt(.Machine$double.eps), .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -68,13 +68,13 @@ Additional arguments passed to <code><a href='checkIntegerish.html'>assertIntege
       <dd>[<code>double(1)</code>]
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is <code>sqrt(.Machine$double.eps)</code>.</dd>
-      <dt>add</dt>
-      <dd>[<code>AssertCollection</code>]
-Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>na.ok</dt>
       <dd>[<code>logical(1)</code>]
 Are missing values allowed? Default is <code>FALSE</code>.</dd>

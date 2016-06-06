@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkOS. checkmate 1.8.0</title>
+<title>matchArg. checkmate 1.8.0</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -47,54 +47,38 @@
         
       </header>
       
-      <h1>Check the operating system</h1>
+      <h1>Partial Argument Matching</h1>
 
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkOS(os)</div>
-<div>check_os(os)</div>
-<div>assertOS(os, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
-<div>assert_os(os, add&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;NULL)</div>
-<div>testOS(os)</div>
-<div>test_os(os)</div>
-<div>expect_os(os, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;NULL)</div></pre>
+    <pre><div>matchArg(x, choices, several.ok&nbsp;=&nbsp;FALSE, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div></pre>
     
     <h2>Arguments</h2>
     <dl>
-      <dt>os</dt>
-      <dd>[<code>character(1)</code>]
-Check the operating system to be in a set with possible elements &#147;windows&#148;,
-&#147;mac&#148;, &#147;linux&#148; and &#147;solaris&#148;.</dd>
-      <dt>add</dt>
-      <dd>[<code>AssertCollection</code>]
-Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>x</dt>
+      <dd>[character]
+User provided argument to match.</dd>
+      <dt>choices</dt>
+      <dd>[character()]
+Candidates to match <code>x</code> with.</dd>
+      <dt>several.ok</dt>
+      <dd>[logical(1)]
+If <code>TRUE</code>, multiple matches are allowed, cf. <code><a href='http://www.inside-r.org/r-doc/base/match.arg'>match.arg</a></code>.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
-Name of the checked object to print in assertions. Defaults to
+Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
-      <dt>info</dt>
-      <dd>[character(1)]
-Extra information to be included in the message for the testthat reporter.
-See <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expect_that'>expect_that</a></code>.</dd>
-      <dt>label</dt>
-      <dd>[<code>character(1)</code>]
-Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertions. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
     </dl>
     
     <div class="Value">
       <h2>Value</h2>
 
       <p><dl>
-Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertOS</code>/<code>assert_os</code>
- throws an error message, <code>testOS</code>/<code>test_os</code>
- returns <code>FALSE</code>,
- and <code>checkOS</code> returns a string with the error message.
- The function <code>expect_os</code> always returns an
- <code><a href='http://www.inside-r.org/packages/cran/testthat/docs/expectation'>expectation</a></code>.
+Subset of <code>choices</code>.
 </dl></p>
   
     </div>
@@ -102,19 +86,21 @@ Depending on the function prefix:
     <div class="Description">
       <h2>Description</h2>
 
-      <p>Check the operating system</p>
+      <p>This is an extensions to <code><a href='http://www.inside-r.org/r-doc/base/match.arg'>match.arg</a></code> with support for <code><a href='AssertCollection.html'>AssertCollection</a></code>.
+The behaviour is very similar to <code><a href='http://www.inside-r.org/r-doc/base/match.arg'>match.arg</a></code>, except that <code>NULL</code> is not
+a valid value for <code>x</code>.</p>
   
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'>testOS(&quot;linux&quot;)
+    <pre class="examples"><div class='input'>matchArg(&quot;k&quot;, choices = c(&quot;kendall&quot;, &quot;pearson&quot;))
 </div>
-<div class='output'>[1] TRUE
+<div class='output'>[1] &quot;kendall&quot;
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertOS</li><li>assert_os</li><li>checkOS</li><li>check_os</li><li>expect_os</li><li>testOS</li><li>test_os</li>
+      <li>matchArg</li>
     </ul>
     <ul>
       
