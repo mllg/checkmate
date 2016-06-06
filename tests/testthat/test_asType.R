@@ -38,7 +38,8 @@ test_that("asInt", {
   expect_equal(names(asInt(xd)), names(xd))
   expect_equal(names(asInt(xc)), names(xc))
 
-  expect_error(asInt(1:2), "integerish")
+  expect_error(asInt(letters[1:2]), "integerish")
+  expect_error(asInt(1:2), "length 1")
   expect_equal(asInt(xi), xi)
   expect_equal(asInt(xd), xi)
   expect_equal(asInt(xc), xi)
@@ -65,7 +66,8 @@ test_that("asCount", {
   expect_equal(names(asCount(xd)), names(xd))
   expect_equal(names(asCount(xc)), names(xc))
 
-  expect_error(asCount(1:2), "count")
+  expect_error(asCount(letters[1:2]), "count")
+  expect_error(asCount(1:2), "length 1")
   expect_equal(asCount(xi), xi)
   expect_equal(asCount(xd), xi)
   expect_equal(asCount(xc), xi)

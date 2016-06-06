@@ -479,14 +479,18 @@ SEXP c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len,
 
 SEXP c_check_flag(SEXP x, SEXP na_ok, SEXP null_ok) {
     handle_na(x, na_ok);
-    handle_type_null(xlength(x) == 1 && isLogical(x), "logical flag", null_ok);
+    handle_type_null(isLogical(x), "logical flag", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     return ScalarLogical(TRUE);
 }
 
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol, SEXP null_ok) {
     handle_na(x, na_ok)
     double dtol = asNumber(tol, "tol");
-    handle_type_null(xlength(x) == 1 && isIntegerish(x, dtol), "count", null_ok);
+    handle_type_null(isIntegerish(x, dtol), "count", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     const int pos = (int) asFlag(positive, "positive");
     if (asInteger(x) < pos)
         return result("Must be >= %i", pos);
@@ -496,14 +500,18 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol, SEXP null_ok) {
 SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
     handle_na(x, na_ok);
-    handle_type_null(xlength(x) == 1 && isIntegerish(x, dtol), "single integerish value", null_ok);
+    handle_type_null(isIntegerish(x, dtol), "single integerish value", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     assert(check_bounds(x, lower, upper));
     return ScalarLogical(TRUE);
 }
 
 SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEXP null_ok) {
     handle_na(x, na_ok);
-    handle_type_null(xlength(x) == 1 && isStrictlyNumeric(x), "number", null_ok);
+    handle_type_null(isStrictlyNumeric(x), "number", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     assert(check_vector_finite(x, finite));
     assert(check_bounds(x, lower, upper));
     return ScalarLogical(TRUE);
@@ -511,7 +519,9 @@ SEXP c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEX
 
 SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP null_ok) {
     handle_na(x, na_ok);
-    handle_type_null(xlength(x) == 1 && isString(x), "string", null_ok);
+    handle_type_null(isString(x), "string", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
         if (!all_nchar(x, n))
@@ -523,6 +533,8 @@ SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP null_ok) {
 
 SEXP c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
     handle_na(x, na_ok);
-    handle_type_null(xlength(x) == 1 && isVectorAtomic(x), "atomic scalar", null_ok);
+    handle_type_null(isVectorAtomic(x), "atomic scalar", null_ok);
+    if (xlength(x) != 1)
+        return result("Must have length 1");
     return ScalarLogical(TRUE);
 }
