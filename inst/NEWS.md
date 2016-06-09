@@ -1,5 +1,7 @@
 # Version 1.8.1 (2016-06-06)
 * `*Function` does not longer lookup functions referenced via a string.
+* `qassert` now treats `f` as type specifier (first char in rule) as factor
+  (before: function).
 
 # Version 1.8.0 (2016-06-06)
 * Most functions now support the handling of default arguments encoded as `NULL`

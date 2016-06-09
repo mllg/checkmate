@@ -5,13 +5,20 @@
 #include "is_integerish.h"
 
 typedef enum {
-    CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_LIST, CL_COMPLEX,
-    CL_ATOMIC, CL_ATOMIC_VECTOR, CL_MATRIX, CL_DATAFRAME, CL_ENVIRONMENT, CL_FUNCTION, CL_NULL, CL_NONE
+    CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_FACTOR, CL_LIST, CL_COMPLEX,
+    CL_ATOMIC, CL_ATOMIC_VECTOR, CL_MATRIX, CL_DATAFRAME, CL_FUNCTION, CL_ENVIRONMENT, CL_NULL, CL_NONE
 } class_t;
+
+static const char * CLSTR[] = {
+     "logical", "integer", "integerish", "numeric", "double", "string", "factor", "list", "complex",
+     "atomic", "atomic vector", "matrix", "data frame", "function", "environment", "NULL"
+};
+
+typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
+static const char * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
 
 typedef Rboolean(*dd_cmp)(double, double);
 typedef Rboolean(*ll_cmp)(R_xlen_t, R_xlen_t);
-typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
 typedef struct { dd_cmp fun; double cmp; cmp_t op; } bound_t;
 
 typedef struct {
@@ -54,6 +61,7 @@ static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
 static inline Rboolean is_class_numeric(SEXP x) { return isStrictlyNumeric(x); }
 static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
+static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); }
 static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
 static inline Rboolean is_class_atomic_vector(SEXP x) { return isVectorAtomic(x); }
 static inline Rboolean is_class_list(SEXP x) { return isRList(x); }
@@ -62,12 +70,6 @@ static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
 static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
 static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
-
-static const char * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
-static const char * CLSTR[] = {
-     "logical", "integer", "integerish", "numeric", "double", "string", "list", "complex",
-     "atomic", "atomic vector", "matrix", "data frame", "environment", "function", "NULL"
-};
 
 static const msg_t MSGT = { .ok = TRUE };
 static const msg_t MSGF = { .ok = FALSE };
@@ -112,8 +114,10 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
             if (!bound.fun(nchar, bound.cmp))
                 return message("All elements must have %s %g chars", CMPSTR[bound.op], bound.cmp);
         }
+    } else if (isFactor(x)) {
+        return check_bound(getAttrib(x, R_LevelsSymbol), bound);
     } else {
-        error("Bound checks only possible for numeric variables and strings");
+        error("Bound checks only possible for numeric variables, strings and factors, not %s", guessType(x));
     }
 
     return MSGT;
@@ -161,6 +165,12 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.fun = &is_class_string;
             checker->class.name = CL_STRING;
             break;
+        case 'F':
+            checker->missing.fun = &any_missing_integer;
+        case 'f':
+            checker->class.fun = &is_class_factor;
+            checker->class.name = CL_FACTOR;
+            break;
         case 'L':
             checker->missing.fun = &any_missing_list;
         case 'l':
@@ -197,13 +207,13 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.fun = &is_class_frame;
             checker->class.name = CL_DATAFRAME;
             break;
+        /* case 'g': */
+        /*     checker->class.fun = &is_class_function; */
+        /*     checker->class.name = CL_FUNCTION; */
+        /*     break; */
         case 'e':
             checker->class.fun = &is_class_environment;
             checker->class.name = CL_ENVIRONMENT;
-            break;
-        case 'f':
-            checker->class.fun = &is_class_function;
-            checker->class.name = CL_FUNCTION;
             break;
         case '0':
             checker->class.fun = &is_class_null;
