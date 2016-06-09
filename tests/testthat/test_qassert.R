@@ -7,8 +7,8 @@ xc = complex(10); xc[5] = NA
 xl = as.list(1:10); xl[5] = list(NULL)
 xm = matrix(1:9, 3); xm[2, 3] = NA
 xd = data.frame(a=1:5, b=1:5); xd$b[3] = NA
+xf = factor(letters[1:10]); xf[5] = NA
 xe = new.env(); xe$foo = 1
-xf = function(x) x
 
 expect_succ_all = function(x, rules) {
   xn = deparse(substitute(x))
@@ -109,7 +109,6 @@ test_that("bounds", {
   expect_fail_all(xx, "i+(1,3)")
   expect_succ_all(xx, "i+[1,3]")
 
-
   expect_succ_all(xx, "i[1,)")
   expect_succ_all(xx, "i[,3]")
   expect_succ_all(Inf, "n(1,]")
@@ -126,6 +125,14 @@ test_that("bounds", {
   expect_fail_all(xx, "s+[2]")
   expect_fail_all(NA_character_, "s+[1]")
   expect_fail_all(NA, "s+[1]")
+
+  xx = factor(letters[1:3])
+  expect_succ_all(xx, "f+[1,]")
+  expect_succ_all(xx, "f+[1,1]")
+  expect_fail_all(xx, "f+[2]")
+  expect_fail_all(NA_integer_, "f+[1]")
+  expect_fail_all(NA_character_, "f+[1]")
+  expect_fail_all(NA, "f+[1]")
 
   expect_succ_all(1, "n+()")
   expect_succ_all(1, "n+[]")
@@ -170,7 +177,7 @@ test_that("atomic types", {
   expect_fail_all(xl, "a+")
   expect_fail_all(xl, "A+")
   expect_fail_all(xe, "a+")
-  expect_fail_all(xf, "a+")
+  expect_succ_all(xf, "a+")
 
   expect_fail_all(NULL, "v")
   expect_succ_all(xb, "v+")

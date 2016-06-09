@@ -60,13 +60,13 @@ The rule is specified in up to three parts.
      \code{[cC]} \tab Complex.\cr
      \code{[nN]} \tab Numeric (integer or double).\cr
      \code{[sS]} \tab String / character.\cr
+     \code{[fF]} \tab Factor\cr
      \code{[aA]} \tab Atomic.\cr
      \code{[vV]} \tab Atomic vector (see \code{\link{checkAtomicVector}}).\cr
      \code{[lL]} \tab List. Missingness is defined as \code{NULL} element.\cr
      \code{[mM]} \tab Matrix.\cr
      \code{[dD]} \tab Data.frame. Missingness is checked recursively on columns.\cr
      \code{[e]}  \tab Environment.\cr
-     \code{[f]}  \tab Function.\cr
      \code{[0]}  \tab \code{NULL}.\cr
      \code{[*]}  \tab placeholder to allow any type.
    }
