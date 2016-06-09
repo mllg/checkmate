@@ -1,3 +1,6 @@
+# Version 1.8.1 (2016-06-06)
+* `*Function` does not longer lookup functions referenced via a string.
+
 # Version 1.8.0 (2016-06-06)
 * Most functions now support the handling of default arguments encoded as `NULL`
   via argument `null.ok`.
