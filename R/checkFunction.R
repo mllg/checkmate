@@ -26,13 +26,13 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok 
       return(TRUE)
     return("Must be a function, not 'NULL'")
   }
-  xf = try(match.fun(x), silent = TRUE)
-  if (inherits(xf, "try-error"))
+
+  if (!is.function(x))
     return(sprintf("Must be a function%s, not '%s'", if (isTRUE(null.ok)) " (or 'NULL')" else "", guessType(x)))
 
   if (!is.null(args)) {
     qassert(args, "S")
-    fargs = names(formals(xf)) %??% character(0L)
+    fargs = names(formals(x)) %??% character(0L)
 
     if (length(args) == 0L) {
       if (length(fargs) > 0L)
@@ -54,7 +54,7 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok 
 
   if (!is.null(nargs)) {
     nargs = asCount(nargs)
-    fnargs = length(setdiff(names(formals(xf)) %??% character(0L), "..."))
+    fnargs = length(setdiff(names(formals(x)) %??% character(0L), "..."))
     if (nargs != fnargs)
       return(sprintf("Must have exactly %i formal arguments, but has %i", nargs, fnargs))
   }

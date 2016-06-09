@@ -11,8 +11,8 @@ test_that("checkFunction", {
   expect_false(testFunction(NULL))
   expect_true(testFunction(identity))
   expect_true(testFunction(myfun))
-  # expect_true(testFunction("myfun"))
-  expect_false(testFunction("fff"))
+  expect_false(testFunction("myfun"))
+  expect_false(testFunction("myfun"))
 
   expect_true(testFunction(myfun, args = "x"))
   expect_true(testFunction(myfun, args = "..."))
