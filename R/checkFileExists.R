@@ -3,6 +3,7 @@
 #' @note
 #' The functions without the suffix \dQuote{exists} are deprecated and will be removed
 #' from the package in a future version due to name clashes.
+#' \code{test_file} has been unexported already.
 #'
 #' @templateVar fn FileExists
 #' @template x
@@ -89,9 +90,9 @@ assert_file = assert_file_exists
 #' @rdname checkFileExists
 testFile = testFileExists
 
-#' @export
-#' @rdname checkFileExists
-test_file = test_file_exists
+##' @export
+##' @rdname checkFileExists
+## test_file = test_file_exists
 
 #' @export
 #' @rdname checkFileExists
