@@ -12,7 +12,6 @@
 \alias{expect_file_exists}
 \alias{testFile}
 \alias{testFileExists}
-\alias{test_file}
 \alias{test_file_exists}
 \title{Check existence and access rights of files}
 \usage{
@@ -42,8 +41,6 @@ assert_file(x, access = "", extension = NULL, .var.name = vname(x),
   add = NULL)
 
 testFile(x, access = "", extension = NULL)
-
-test_file(x, access = "", extension = NULL)
 
 expect_file(x, access = "", extension = NULL, info = NULL,
   label = vname(x))
@@ -91,6 +88,7 @@ Check existence and access rights of files
 \note{
 The functions without the suffix \dQuote{exists} are deprecated and will be removed
 from the package in a future version due to name clashes.
+\code{test_file} has been unexported already.
 }
 \examples{
 # Check if R's COPYING file is readable
