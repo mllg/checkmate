@@ -34,26 +34,7 @@ checkListTypes = function(x, types = character(0L)) {
 
   ind = seq_along(x)
   for (type in types) {
-    f = switch(type,
-      "logical" = is.logical,
-      "integer" = is.integer,
-      "integerish" = isIntegerish,
-      "double" = is.double,
-      "numeric" = is.numeric,
-      "complex" = is.complex,
-      "character" = is.character,
-      "factor" = is.factor,
-      "atomic" = is.atomic,
-      "vector" = is.vector,
-      "atomicvector" = function(x) !is.null(x) && is.atomic(x),
-      "array" = is.array,
-      "matrix" = is.matrix,
-      "function" = is.function,
-      "environment" = is.environment,
-      "list" = is.list,
-      "null" = is.null,
-      function(x) inherits(x, type)
-    )
+    f = .CHECKLISTTYPEFUNS[[type]] %??% function(x) inherits(x, type)
     ind = ind[!vapply(x[ind], f, FUN.VALUE = NA, USE.NAMES = FALSE)]
     if (length(ind) == 0L)
       return(TRUE)
