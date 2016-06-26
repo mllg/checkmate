@@ -47,5 +47,5 @@ test_os = testOS
 #' @rdname checkOS
 expect_os = function(os, info = NULL, label = NULL) {
   res = checkOS(os)
-  makeExpectation(OS, res, info, label = label %??% "Operating System")
+  makeExpectation(.OS, res, info, label = label %??% "Operating System")
 }
