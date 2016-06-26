@@ -160,6 +160,20 @@ Because `testthat` uses the `underscore_case`, the extension functions only come
 
 You can use [assert](https://mllg.github.io/checkmate/assert) to perform multiple checks at once and throw an assertion if all checks fail.
 
+Here is an example where we check that x is either of class `foo` or class `bar`:
+
+```{r}
+f <- function(x) {
+  assert(
+    checkClass(x, "foo"),
+    checkClass(x, "bar")
+  )
+}
+```
+
+Note that `assert(, combine = "or") and `assert(, combine = "and")` allow to control the logical
+combination of the specified checks, and that the former is the default.
+
 
 ## Argument Checks for the Lazy
 
