@@ -20,6 +20,13 @@
 #' # is x of class "foo" and "bar"?
 #' testClass(x, c("foo", "bar"))
 #'
+#' # is x of class "foo" or "bar"?
+#' \dontrun{
+#' assert(
+#'   checkClass(x, "foo"),
+#'   checkClass(x, "bar")
+#' )
+#' }
 #' # is x most specialized as "bar"?
 #' testClass(x, "bar", ordered = TRUE)
 checkClass = function(x, classes, ordered = FALSE) {
