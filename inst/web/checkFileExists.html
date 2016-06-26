@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkFileExists. checkmate 1.8.0</title>
+<title>checkFileExists. checkmate 1.8.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.0</a>
+      <a class="brand" href="#">checkmate 1.8.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -63,7 +63,6 @@
 <div>assertFile(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
 <div>assert_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
 <div>testFile(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
-<div>test_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL)</div>
 <div>expect_file(x, access&nbsp;=&nbsp;"", extension&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
@@ -123,7 +122,8 @@ Depending on the function prefix:
       <h2>Note</h2>
 
       <p>The functions without the suffix &#147;exists&#148; are deprecated and will be removed
-from the package in a future version due to name clashes.</p>
+from the package in a future version due to name clashes.
+<code>test_file</code> has been unexported already.</p>
   
     </div>
     
@@ -137,12 +137,12 @@ testFileExists(file.path(R.home(), &quot;COPYING&quot;), access = &quot;r&quot;)
 # Check if R&#39;s COPYING file is readable and writable
 testFileExists(file.path(R.home(), &quot;COPYING&quot;), access = &quot;rw&quot;)
 </div>
-<div class='output'>[1] FALSE
+<div class='output'>[1] TRUE
 </div></pre>
   </div>
   <div class="span4">
     <!-- <ul>
-      <li>assertFile</li><li>assertFileExists</li><li>assert_file</li><li>assert_file_exists</li><li>checkFile</li><li>checkFileExists</li><li>check_file_exists</li><li>expect_file</li><li>expect_file_exists</li><li>testFile</li><li>testFileExists</li><li>test_file</li><li>test_file_exists</li>
+      <li>assertFile</li><li>assertFileExists</li><li>assert_file</li><li>assert_file_exists</li><li>checkFile</li><li>checkFileExists</li><li>check_file_exists</li><li>expect_file</li><li>expect_file_exists</li><li>testFile</li><li>testFileExists</li><li>test_file_exists</li>
     </ul>
     <ul>
       

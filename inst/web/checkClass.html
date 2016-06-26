@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkClass. checkmate 1.8.0</title>
+<title>checkClass. checkmate 1.8.1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.0</a>
+      <a class="brand" href="#">checkmate 1.8.1</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -129,6 +129,13 @@ testClass(x, c(&quot;foo&quot;, &quot;bar&quot;))
 <div class='output'>[1] TRUE
 </div>
 <div class='input'>
+# is x of class &quot;foo&quot; or &quot;bar&quot;?
+## Not run: 
+# assert(
+#   checkClass(x, &quot;foo&quot;),
+#   checkClass(x, &quot;bar&quot;)
+# )
+# ## End(Not run)
 # is x most specialized as &quot;bar&quot;?
 testClass(x, &quot;bar&quot;, ordered = TRUE)
 </div>
