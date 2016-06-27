@@ -275,6 +275,7 @@ static inline Rboolean is_scalar_na(SEXP x) {
 SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     handle_type_null(isString(x) || all_missing_atomic(x), "character", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
+    assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
@@ -282,8 +283,6 @@ SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missin
             return result("All elements must have at least %i characters", n);
     }
     assert(check_vector_unique(x, unique));
-    assert(check_vector_names(x, names));
-
     return ScalarLogical(TRUE);
 }
 
