@@ -1,9 +1,9 @@
-# Version 1.8.1 (2016-xx-xx)
+# Version 1.8.1 (2016-06-27)
 * Function `test_file` is longer exported.
 * `*Function` does not longer lookup functions with `match.fun`. As a result,
   passing functions via the string of the function name stopped working.
-* `qassert` now treats `f` as type specifier (first char in rule) as factor
-  (before: function).
+* In `qassert` using `f` as first char in a rule now specifies factor (before:
+  function).
 
 # Version 1.8.0 (2016-06-06)
 * Most functions now support the handling of default arguments encoded as `NULL`
