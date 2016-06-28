@@ -4,7 +4,7 @@ Title: Fast and Versatile Argument Checks
 Description: Tests and assertions to perform frequent argument checks. A
     substantial part of the package was written in C to minimize any worries
     about execution time overhead.
-Version: 1.8.1
+Version: 1.8.2
 Author: Michel Lang <michellang@gmail.com>,
     Bernd Bischl <bernd_bischl@gmx.net>
 Maintainer: Michel Lang <michellang@gmail.com>
