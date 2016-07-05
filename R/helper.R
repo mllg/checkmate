@@ -19,7 +19,7 @@ convertCamelCase = function(x) {
   tolower(gsub("((?<=[a-z0-9])[A-Z]|(?!^)[A-Z](?=[a-z]))", "_\\1", x, perl = TRUE))
 }
 
-#' @useDynLib checkmate c_guessType
+#' @useDynLib checkmate c_guess_type
 guessType = function(x) {
-  .Call(c_guessType, x)
+  .Call(c_guess_type, x)
 }

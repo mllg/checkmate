@@ -1,7 +1,7 @@
-#include "guessType.h"
+#include "guess_type.h"
 #include <string.h>
 
-const char * guessType(SEXP x) {
+const char * guess_type(SEXP x) {
     SEXP attr = getAttrib(x, R_ClassSymbol);
     if (!isNull(attr)) {
         const R_len_t n = length(attr);
@@ -29,6 +29,6 @@ const char * guessType(SEXP x) {
     return type2char(TYPEOF(x));
 }
 
-SEXP c_guessType(SEXP x) {
-    return ScalarString(mkChar(guessType(x)));
+SEXP c_guess_type(SEXP x) {
+    return ScalarString(mkChar(guess_type(x)));
 }

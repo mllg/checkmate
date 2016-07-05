@@ -7,13 +7,13 @@
 #include "all_missing.h"
 #include "all_nchar.h"
 #include "helper.h"
-#include "guessType.h"
+#include "guess_type.h"
 
 static char msg[255] = "";
 
 #define handle_type(expr, expected) \
     if (!(expr)) { \
-        snprintf(msg, 255, "Must be of type '%s', not '%s'", expected, guessType(x)); \
+        snprintf(msg, 255, "Must be of type '%s', not '%s'", expected, guess_type(x)); \
         return ScalarString(mkChar(msg)); \
     }
 
@@ -25,7 +25,7 @@ static char msg[255] = "";
         return ScalarString(mkChar(msg)); \
     } else { \
         if (!(expr)) { \
-            snprintf(msg, 255, "Must be of type '%s'%s, not '%s'", expected, asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guessType(x)); \
+            snprintf(msg, 255, "Must be of type '%s'%s, not '%s'", expected, asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); \
             return ScalarString(mkChar(msg)); \
         } \
     }

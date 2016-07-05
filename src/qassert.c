@@ -1,6 +1,6 @@
 #include "qassert.h"
 #include "helper.h"
-#include "guessType.h"
+#include "guess_type.h"
 #include "any_missing.h"
 #include "is_integerish.h"
 
@@ -117,7 +117,7 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
     } else if (isFactor(x)) {
         return check_bound(getAttrib(x, R_LevelsSymbol), bound);
     } else {
-        error("Bound checks only possible for numeric variables, strings and factors, not %s", guessType(x));
+        error("Bound checks only possible for numeric variables, strings and factors, not %s", guess_type(x));
     }
 
     return MSGT;
@@ -384,7 +384,7 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
-        return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guessType(x)) : MSGF;
+        return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guess_type(x)) : MSGF;
     }
 
     if (checker->missing.fun != NULL && checker->missing.fun(x)) {
