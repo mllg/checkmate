@@ -1,3 +1,6 @@
+# Version 1.8.2 (2016-xx-xx)
+* Use conditions package to throw assertion errors.
+
 # Version 1.8.1 (2016-06-27)
 * Function `test_file` is longer exported.
 * `*Function` does not longer lookup functions with `match.fun`. As a result,
