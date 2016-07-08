@@ -13,7 +13,6 @@ env:
 
 r_github_packages:
   - jimhester/covr
-  - mllg/checkmate-test-include
   - mllg/conditions
 
 after_success:
