@@ -31,11 +31,9 @@ NULL
 #' @rdname AssertCollection
 makeAssertCollection = function() {
   msgs = character(0L)
-  setClasses(list(
-    push = function(msg) msgs <<- c(msgs, msg),
-    getMessages = function() msgs,
-    isEmpty = function() length(msgs) == 0L
-  ), "AssertCollection")
+  x = list(push = function(msg) msgs <<- c(msgs, msg), getMessages = function() msgs, isEmpty = function() length(msgs) == 0L)
+  class(x) = "AssertCollection"
+  x
 }
 
 #' @export
