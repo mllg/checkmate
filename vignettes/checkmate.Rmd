@@ -297,29 +297,13 @@ For detailed background information on the register mechanism, see the [Exportin
 Here is a step-by-step guide to get you started:
 
 1. Add `checkmate` to your "Imports" and LinkingTo" sections in your DESCRIPTION file.
-2. Include the provided header file `checkmate.h`.
-   Unfortunately, the include is a bit tedious at the moment and you have to make sure to include the header only once.
-   To work around this issue, write your own header file "include_checkmate.h" (see below for an example).
-3. In every file you want to use `qtest` or `qassert`, include `checkmate.h` or `include_checkmate.h`, respectively.
+2. Create a stub file C source file which pulls in the provided C functions in order to compile them for your package. See example below.
+3. Include the provided header file `<checkmate.h>` in each compilation unit where you want to use checkmate.
 
 ```{c,eval=FALSE}
-/* Examplary header file as workaround for (2) */
-#ifndef INCLUDE_CHECKMATE_H_
-#define INCLUDE_CHECKMATE_H_
+/* Example for (2), "checkmate_stub.c":*/
 #include <checkmate.h>
-#endif
-```
-```{c,eval=FALSE}
-#include "include_checkmate.h"
-/* alternative: #include <checkmate.h> */
-
-SEXP double(SEXP x) {
-  /* x must be a numeric, not NA and must have length 1 */
-  qassert(x, "N1");
-
-  num = REAL(x)[0];
-  return ScalarReal(num * num);
-}
+#include <checkmate_stub.c>
 ```
 
 ## Session Info

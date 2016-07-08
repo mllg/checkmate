@@ -20,6 +20,8 @@ Imports:
     backports,
     conditions,
     utils
+LinkingTo:
+    conditions
 Suggests:
     data.table,
     devtools,

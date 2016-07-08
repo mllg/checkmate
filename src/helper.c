@@ -1,3 +1,4 @@
+#include <conditions.h>
 #include "helper.h"
 #include "any_missing.h"
 #include "is_integerish.h"
@@ -31,7 +32,7 @@ Rboolean isRList(SEXP x) {
  * */
 R_len_t get_nrows(SEXP x) {
     if (!isVector(x) && !isList(x))
-        error("Object does not have a dimension");
+        signal_condition(length_error("Object does not have a dimension", R_NilValue));
 
     if (isFrame(x))
         return length(getAttrib(x, R_RowNamesSymbol));
@@ -41,7 +42,7 @@ R_len_t get_nrows(SEXP x) {
 
 R_len_t get_ncols(SEXP x) {
     if (!isVector(x) && !isList(x))
-        error("Object does not have a dimension");
+        signal_condition(length_error("Object does not have a dimension", R_NilValue));
 
     if (isFrame(x))
         return length(x);
@@ -52,37 +53,37 @@ R_len_t get_ncols(SEXP x) {
 
 double asNumber(SEXP x, const char *vname) {
     if (!isNumeric(x) || xlength(x) != 1)
-        error("Argument '%s' must be a number", vname);
+        signal_condition(type_error("Argument '%s' must be a number", R_NilValue, vname));
     double xd = asReal(x);
     if (ISNAN(xd))
-        error("Argument '%s' may not be missing", vname);
+        signal_condition(missing_error("Argument '%s' may not be missing", R_NilValue, vname));
     return xd;
 }
 
 const char * asString(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
-        error("Argument '%s' must be a string", vname);
+        signal_condition(type_error("Argument '%s' must be a string", R_NilValue, vname));
     if (any_missing_string(x))
-        error("Argument '%s' may not be missing", vname);
+        signal_condition(missing_error("Argument '%s' may not be missing", R_NilValue, vname));
     return CHAR(STRING_ELT(x, 0));
 }
 
 R_xlen_t asCount(SEXP x, const char *vname) {
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL) || xlength(x) != 1)
-        error("Argument '%s' must be a count", vname);
+        signal_condition(type_error("Argument '%s' must be a count", R_NilValue, vname));
     int xi = asInteger(x);
     if (xi == NA_INTEGER)
-        error("Argument '%s' may not be missing", vname);
+        signal_condition(type_error("Argument '%s' may not be missing", R_NilValue, vname));
     if (xi < 0)
-        error("Argument '%s' must be >= 0", vname);
+        signal_condition(value_error("Argument '%s' must be >= 0", R_NilValue, vname));
     return xi;
 }
 
 Rboolean asFlag(SEXP x, const char *vname) {
     if (!isLogical(x) || xlength(x) != 1)
-        error("Argument '%s' must be a flag", vname);
+        signal_condition(type_error("Argument '%s' must be a flag", R_NilValue, vname));
     Rboolean xb = LOGICAL(x)[0];
     if (xb == NA_LOGICAL)
-        error("Argument '%s' may not be missing", vname);
+        signal_condition(missing_error("Argument '%s' may not be missing", R_NilValue, vname));
     return xb;
 }

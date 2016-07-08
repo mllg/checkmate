@@ -1,3 +1,4 @@
+#include <conditions.h>
 #include "which_first.h"
 
 static inline SEXP named_return(R_len_t ind, SEXP names) {
@@ -13,9 +14,9 @@ static inline SEXP named_return(R_len_t ind, SEXP names) {
 
 SEXP c_which_first(SEXP x, SEXP use_names) {
     if (!isLogical(x))
-        error("Argument 'x' must be logical");
+        signal_condition(type_error("Argument 'x' must be logical", R_NilValue));
     if (!isLogical(use_names) || length(use_names) != 1)
-        error("Argument 'use.names' must be a flag");
+        signal_condition(type_error("Argument 'use.names' must be a flag", R_NilValue));
     const R_len_t n = length(x);
     int *xp = LOGICAL(x);
 
@@ -32,9 +33,9 @@ SEXP c_which_first(SEXP x, SEXP use_names) {
 
 SEXP c_which_last(SEXP x, SEXP use_names) {
     if (!isLogical(x))
-        error("Argument 'x' must be logical");
+        signal_condition(type_error("Argument 'x' must be logical", R_NilValue));
     if (!isLogical(use_names) || length(use_names) != 1)
-        error("Argument 'use.names' must be a flag");
+        signal_condition(type_error("Argument 'use.names' must be a flag", R_NilValue));
     int *xp = LOGICAL(x);
 
     for (R_len_t i = length(x) - 1; i >= 0; i--) {
