@@ -72,9 +72,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertInt}/\code{assert_int}
- throws an error message, \code{testInt}/\code{test_int}
+ If the check is successful, the functions 
+ \code{assertInt}/\code{assert_int} return 
+ \code{x} invisibly, whereas
+ \code{checkInt}/\code{check_int} and 
+ \code{testInt}/\code{test_int} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertInt}/\code{assert_int}
+ throws an error message, 
+ \code{testInt}/\code{test_int}
  returns \code{FALSE},
  and \code{checkInt} returns a string with the error message.
  The function \code{expect_int} always returns an

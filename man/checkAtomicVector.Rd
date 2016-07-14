@@ -77,9 +77,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertAtomicVector}/\code{assert_atomic_vector}
- throws an error message, \code{testAtomicVector}/\code{test_atomic_vector}
+ If the check is successful, the functions 
+ \code{assertAtomicVector}/\code{assert_atomic_vector} return 
+ \code{x} invisibly, whereas
+ \code{checkAtomicVector}/\code{check_atomic_vector} and 
+ \code{testAtomicVector}/\code{test_atomic_vector} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertAtomicVector}/\code{assert_atomic_vector}
+ throws an error message, 
+ \code{testAtomicVector}/\code{test_atomic_vector}
  returns \code{FALSE},
  and \code{checkAtomicVector} returns a string with the error message.
  The function \code{expect_atomic_vector} always returns an

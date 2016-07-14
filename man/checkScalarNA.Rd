@@ -49,9 +49,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertScalarNA}/\code{assert_scalar_na}
- throws an error message, \code{testScalarNA}/\code{test_scalar_na}
+ If the check is successful, the functions 
+ \code{assertScalarNA}/\code{assert_scalar_na} return 
+ \code{x} invisibly, whereas
+ \code{checkScalarNA}/\code{check_scalar_na} and 
+ \code{testScalarNA}/\code{test_scalar_na} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertScalarNA}/\code{assert_scalar_na}
+ throws an error message, 
+ \code{testScalarNA}/\code{test_scalar_na}
  returns \code{FALSE},
  and \code{checkScalarNA} returns a string with the error message.
  The function \code{expect_scalar_na} always returns an

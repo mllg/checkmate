@@ -54,9 +54,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertSubset}/\code{assert_subset}
- throws an error message, \code{testSubset}/\code{test_subset}
+ If the check is successful, the functions 
+ \code{assertSubset}/\code{assert_subset} return 
+ \code{x} invisibly, whereas
+ \code{checkSubset}/\code{check_subset} and 
+ \code{testSubset}/\code{test_subset} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertSubset}/\code{assert_subset}
+ throws an error message, 
+ \code{testSubset}/\code{test_subset}
  returns \code{FALSE},
  and \code{checkSubset} returns a string with the error message.
  The function \code{expect_subset} always returns an

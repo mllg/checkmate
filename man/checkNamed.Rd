@@ -43,9 +43,16 @@ Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertNamed}/\code{assert_named}
- throws an error message, \code{testNamed}/\code{test_named}
+ If the check is successful, the functions 
+ \code{assertNamed}/\code{assert_named} return 
+ \code{x} invisibly, whereas
+ \code{checkNamed}/\code{check_named} and 
+ \code{testNamed}/\code{test_named} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertNamed}/\code{assert_named}
+ throws an error message, 
+ \code{testNamed}/\code{test_named}
  returns \code{FALSE},
  and \code{checkNamed} returns a string with the error message.
  The function \code{expect_named} always returns an

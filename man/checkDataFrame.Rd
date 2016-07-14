@@ -104,9 +104,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertDataFrame}/\code{assert_data_frame}
- throws an error message, \code{testDataFrame}/\code{test_data_frame}
+ If the check is successful, the functions 
+ \code{assertDataFrame}/\code{assert_data_frame} return 
+ \code{x} invisibly, whereas
+ \code{checkDataFrame}/\code{check_data_frame} and 
+ \code{testDataFrame}/\code{test_data_frame} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertDataFrame}/\code{assert_data_frame}
+ throws an error message, 
+ \code{testDataFrame}/\code{test_data_frame}
  returns \code{FALSE},
  and \code{checkDataFrame} returns a string with the error message.
  The function \code{expect_data_frame} always returns an

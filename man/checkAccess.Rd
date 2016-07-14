@@ -50,9 +50,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertAccess}/\code{assert_access}
- throws an error message, \code{testAccess}/\code{test_access}
+ If the check is successful, the functions 
+ \code{assertAccess}/\code{assert_access} return 
+ \code{x} invisibly, whereas
+ \code{checkAccess}/\code{check_access} and 
+ \code{testAccess}/\code{test_access} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertAccess}/\code{assert_access}
+ throws an error message, 
+ \code{testAccess}/\code{test_access}
  returns \code{FALSE},
  and \code{checkAccess} returns a string with the error message.
  The function \code{expect_access} always returns an

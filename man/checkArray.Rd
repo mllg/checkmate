@@ -77,9 +77,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertArray}/\code{assert_array}
- throws an error message, \code{testArray}/\code{test_array}
+ If the check is successful, the functions 
+ \code{assertArray}/\code{assert_array} return 
+ \code{x} invisibly, whereas
+ \code{checkArray}/\code{check_array} and 
+ \code{testArray}/\code{test_array} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertArray}/\code{assert_array}
+ throws an error message, 
+ \code{testArray}/\code{test_array}
  returns \code{FALSE},
  and \code{checkArray} returns a string with the error message.
  The function \code{expect_array} always returns an
