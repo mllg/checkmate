@@ -46,9 +46,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertOS}/\code{assert_os}
- throws an error message, \code{testOS}/\code{test_os}
+ If the check is successful, the functions 
+ \code{assertOS}/\code{assert_os} return 
+ \code{x} invisibly, whereas
+ \code{checkOS}/\code{check_os} and 
+ \code{testOS}/\code{test_os} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertOS}/\code{assert_os}
+ throws an error message, 
+ \code{testOS}/\code{test_os}
  returns \code{FALSE},
  and \code{checkOS} returns a string with the error message.
  The function \code{expect_os} always returns an

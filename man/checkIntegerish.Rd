@@ -103,9 +103,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertIntegerish}/\code{assert_integerish}
- throws an error message, \code{testIntegerish}/\code{test_integerish}
+ If the check is successful, the functions 
+ \code{assertIntegerish}/\code{assert_integerish} return 
+ \code{x} invisibly, whereas
+ \code{checkIntegerish}/\code{check_integerish} and 
+ \code{testIntegerish}/\code{test_integerish} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertIntegerish}/\code{assert_integerish}
+ throws an error message, 
+ \code{testIntegerish}/\code{test_integerish}
  returns \code{FALSE},
  and \code{checkIntegerish} returns a string with the error message.
  The function \code{expect_integerish} always returns an

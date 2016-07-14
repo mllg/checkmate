@@ -53,9 +53,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertPathForOutput}/\code{assert_path_for_output}
- throws an error message, \code{testPathForOutput}/\code{test_path_for_output}
+ If the check is successful, the functions 
+ \code{assertPathForOutput}/\code{assert_path_for_output} return 
+ \code{x} invisibly, whereas
+ \code{checkPathForOutput}/\code{check_path_for_output} and 
+ \code{testPathForOutput}/\code{test_path_for_output} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertPathForOutput}/\code{assert_path_for_output}
+ throws an error message, 
+ \code{testPathForOutput}/\code{test_path_for_output}
  returns \code{FALSE},
  and \code{checkPathForOutput} returns a string with the error message.
  The function \code{expect_path_for_output} always returns an

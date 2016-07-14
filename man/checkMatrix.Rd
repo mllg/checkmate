@@ -100,9 +100,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertMatrix}/\code{assert_matrix}
- throws an error message, \code{testMatrix}/\code{test_matrix}
+ If the check is successful, the functions 
+ \code{assertMatrix}/\code{assert_matrix} return 
+ \code{x} invisibly, whereas
+ \code{checkMatrix}/\code{check_matrix} and 
+ \code{testMatrix}/\code{test_matrix} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertMatrix}/\code{assert_matrix}
+ throws an error message, 
+ \code{testMatrix}/\code{test_matrix}
  returns \code{FALSE},
  and \code{checkMatrix} returns a string with the error message.
  The function \code{expect_matrix} always returns an

@@ -68,9 +68,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertDirectoryExists}/\code{assert_directory_exists}
- throws an error message, \code{testDirectoryExists}/\code{test_directory_exists}
+ If the check is successful, the functions 
+ \code{assertDirectoryExists}/\code{assert_directory_exists} return 
+ \code{x} invisibly, whereas
+ \code{checkDirectoryExists}/\code{check_directory_exists} and 
+ \code{testDirectoryExists}/\code{test_directory_exists} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertDirectoryExists}/\code{assert_directory_exists}
+ throws an error message, 
+ \code{testDirectoryExists}/\code{test_directory_exists}
  returns \code{FALSE},
  and \code{checkDirectoryExists} returns a string with the error message.
  The function \code{expect_directory_exists} always returns an

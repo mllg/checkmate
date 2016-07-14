@@ -92,9 +92,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertVector}/\code{assert_vector}
- throws an error message, \code{testVector}/\code{test_vector}
+ If the check is successful, the functions 
+ \code{assertVector}/\code{assert_vector} return 
+ \code{x} invisibly, whereas
+ \code{checkVector}/\code{check_vector} and 
+ \code{testVector}/\code{test_vector} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertVector}/\code{assert_vector}
+ throws an error message, 
+ \code{testVector}/\code{test_vector}
  returns \code{FALSE},
  and \code{checkVector} returns a string with the error message.
  The function \code{expect_vector} always returns an

@@ -70,9 +70,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertFunction}/\code{assert_function}
- throws an error message, \code{testFunction}/\code{test_function}
+ If the check is successful, the functions 
+ \code{assertFunction}/\code{assert_function} return 
+ \code{x} invisibly, whereas
+ \code{checkFunction}/\code{check_function} and 
+ \code{testFunction}/\code{test_function} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertFunction}/\code{assert_function}
+ throws an error message, 
+ \code{testFunction}/\code{test_function}
  returns \code{FALSE},
  and \code{checkFunction} returns a string with the error message.
  The function \code{expect_function} always returns an

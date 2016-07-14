@@ -55,9 +55,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertScalar}/\code{assert_scalar}
- throws an error message, \code{testScalar}/\code{test_scalar}
+ If the check is successful, the functions 
+ \code{assertScalar}/\code{assert_scalar} return 
+ \code{x} invisibly, whereas
+ \code{checkScalar}/\code{check_scalar} and 
+ \code{testScalar}/\code{test_scalar} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertScalar}/\code{assert_scalar}
+ throws an error message, 
+ \code{testScalar}/\code{test_scalar}
  returns \code{FALSE},
  and \code{checkScalar} returns a string with the error message.
  The function \code{expect_scalar} always returns an
