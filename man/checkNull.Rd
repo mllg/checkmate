@@ -34,9 +34,16 @@ Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertNull}/\code{assert_null}
- throws an error message, \code{testNull}/\code{test_null}
+ If the check is successful, the functions 
+ \code{assertNull}/\code{assert_null} return 
+ \code{x} invisibly, whereas
+ \code{checkNull}/\code{check_null} and 
+ \code{testNull}/\code{test_null} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertNull}/\code{assert_null}
+ throws an error message, 
+ \code{testNull}/\code{test_null}
  returns \code{FALSE},
  and \code{checkNull} returns a string with the error message.
  The function \code{expect_null} always returns an

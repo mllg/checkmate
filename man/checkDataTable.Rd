@@ -114,9 +114,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertDataTable}/\code{assert_data_table}
- throws an error message, \code{testDataTable}/\code{test_data_table}
+ If the check is successful, the functions 
+ \code{assertDataTable}/\code{assert_data_table} return 
+ \code{x} invisibly, whereas
+ \code{checkDataTable}/\code{check_data_table} and 
+ \code{testDataTable}/\code{test_data_table} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertDataTable}/\code{assert_data_table}
+ throws an error message, 
+ \code{testDataTable}/\code{test_data_table}
  returns \code{FALSE},
  and \code{checkDataTable} returns a string with the error message.
  The function \code{expect_data_table} always returns an

@@ -98,9 +98,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertNumeric}/\code{assert_numeric}
- throws an error message, \code{testNumeric}/\code{test_numeric}
+ If the check is successful, the functions 
+ \code{assertNumeric}/\code{assert_numeric} return 
+ \code{x} invisibly, whereas
+ \code{checkNumeric}/\code{check_numeric} and 
+ \code{testNumeric}/\code{test_numeric} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertNumeric}/\code{assert_numeric}
+ throws an error message, 
+ \code{testNumeric}/\code{test_numeric}
  returns \code{FALSE},
  and \code{checkNumeric} returns a string with the error message.
  The function \code{expect_numeric} always returns an

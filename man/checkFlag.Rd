@@ -55,9 +55,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertFlag}/\code{assert_flag}
- throws an error message, \code{testFlag}/\code{test_flag}
+ If the check is successful, the functions 
+ \code{assertFlag}/\code{assert_flag} return 
+ \code{x} invisibly, whereas
+ \code{checkFlag}/\code{check_flag} and 
+ \code{testFlag}/\code{test_flag} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertFlag}/\code{assert_flag}
+ throws an error message, 
+ \code{testFlag}/\code{test_flag}
  returns \code{FALSE},
  and \code{checkFlag} returns a string with the error message.
  The function \code{expect_flag} always returns an

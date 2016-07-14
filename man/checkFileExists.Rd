@@ -74,9 +74,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertFileExists}/\code{assert_file_exists}
- throws an error message, \code{testFileExists}/\code{test_file_exists}
+ If the check is successful, the functions 
+ \code{assertFileExists}/\code{assert_file_exists} return 
+ \code{x} invisibly, whereas
+ \code{checkFileExists}/\code{check_file_exists} and 
+ \code{testFileExists}/\code{test_file_exists} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertFileExists}/\code{assert_file_exists}
+ throws an error message, 
+ \code{testFileExists}/\code{test_file_exists}
  returns \code{FALSE},
  and \code{checkFileExists} returns a string with the error message.
  The function \code{expect_file_exists} always returns an

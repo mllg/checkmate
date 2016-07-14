@@ -48,9 +48,16 @@ the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:
- If the check is successful, the functions return \code{TRUE}. If the check
- is not successful, \code{assertChoice}/\code{assert_choice}
- throws an error message, \code{testChoice}/\code{test_choice}
+ If the check is successful, the functions 
+ \code{assertChoice}/\code{assert_choice} return 
+ \code{x} invisibly, whereas
+ \code{checkChoice}/\code{check_choice} and 
+ \code{testChoice}/\code{test_choice} return 
+ \code{TRUE}.
+ If the check is not successful, 
+ \code{assertChoice}/\code{assert_choice}
+ throws an error message, 
+ \code{testChoice}/\code{test_choice}
  returns \code{FALSE},
  and \code{checkChoice} returns a string with the error message.
  The function \code{expect_choice} always returns an
