@@ -118,32 +118,90 @@ static Rboolean check_strict_names(SEXP x) {
     return TRUE;
 }
 
+static Rboolean match_all(SEXP x, SEXP y) {
+    SEXP matched = PROTECT(Rf_match(x, y, -1));
+    const int * m = INTEGER(matched);
+    const R_len_t n = length(matched);
+    for (R_len_t i = 0; i < n; i++) {
+        if (m[i] < 0) {
+            UNPROTECT(1);
+            return FALSE;
+        }
+    }
+    UNPROTECT(1);
+    return TRUE;
+}
+
+
+static R_len_t join_str(char * out, R_len_t size, SEXP str) {
+    char *ptr = out;
+    const char *end = out + size;
+    const char *tmp;
+    const R_len_t n = length(str);
+
+    for (R_len_t i = 0; i < n && ptr < end; i++) {
+        tmp = CHAR(STRING_ELT(str, i));
+        if (i > 0 && ptr < end)
+            *ptr++ = ',';
+        while (ptr < end && *tmp)
+            *ptr++ = *tmp++;
+    }
+    return ptr - out;
+}
+
 static Rboolean check_names(SEXP nn, SEXP type, const char * what) {
-    typedef enum { T_NAMED, T_UNIQUE, T_STRICT } name_t;
-    const char * expected = asString(type, "names");
+    SEXP named = getAttrib(type, install("named.cmp"));
+    if (isNull(named)) {
+        typedef enum { T_NAMED, T_UNIQUE, T_STRICT } name_t;
+        name_t checks;
+        const char * expected = asString(type, "names");
 
-    if (strcmp(expected, "unnamed") == 0)
-        return isNull(nn) ? TRUE : message("%s must be unnamed, but has names", what);
+        if (strcmp(expected, "unnamed") == 0)
+            return isNull(nn) ? TRUE : message("%s must be unnamed, but has names", what);
 
-    name_t checks;
-    if (strcmp(expected, "named") == 0) {
-        checks = T_NAMED;
-    } else if (strcmp(expected, "unique") == 0) {
-        checks = T_UNIQUE;
-    } else if (strcmp(expected, "strict") == 0) {
-        checks = T_STRICT;
+        if (strcmp(expected, "named") == 0) {
+            checks = T_NAMED;
+        } else if (strcmp(expected, "unique") == 0) {
+            checks = T_UNIQUE;
+        } else if (strcmp(expected, "strict") == 0) {
+            checks = T_STRICT;
+        } else {
+            error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", expected);
+        }
+
+        if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
+            return message("%s must be named", what);
+        if (checks >= T_UNIQUE) {
+            if (any_duplicated(nn, FALSE) != 0)
+                return message("%s must be uniquely named", what);
+            if (checks >= T_STRICT && !check_strict_names(nn))
+                return message("%s must be named according to R's variable naming rules", what);
+        }
     } else {
-        error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", expected);
+        const char * cmp = asString(named, "named type");
+        if (strcmp(cmp, "setequal") == 0) {
+            if (length(nn) != length(type) || match_all(nn, type) || match_all(nn, type)) {
+                char buf[8192] = "\0";
+                join_str(buf, 8191, type);
+                return message("Names of %s must be a subset of {%s}", what, buf);
+            }
+        } else if (strcmp(cmp, "equal") == 0) {
+            if (!R_compute_identical(nn, type, 16)) {
+                char buf[8192] = "\0";
+                join_str(buf, 8191, type);
+                return message("Names of %s must be equal to (%s)", what, buf);
+            }
+        } else if (strcmp(cmp, "in") == 0) {
+            if (!match_all(type, nn)) {
+                char buf[8192] = "\0";
+                join_str(buf, 8191, type);
+                return message("Names of %s must be a subset of {%s}", what, buf);
+            }
+        } else {
+            error("Unknown name comparison type '%s'. Supported are 'setequal', 'equal', and 'in'.", cmp);
+        }
     }
 
-    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
-        return message("%s must be named", what);
-    if (checks >= T_UNIQUE) {
-        if (any_duplicated(nn, FALSE) != 0)
-            return message("%s must be uniquely named", what);
-        if (checks >= T_STRICT && !check_strict_names(nn))
-            return message("%s must be named according to R's variable naming rules", what);
-    }
     return TRUE;
 }
 
