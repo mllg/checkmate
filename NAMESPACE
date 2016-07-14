@@ -2,6 +2,9 @@
 
 S3method(print,AssertCollection)
 export("%??%")
+export(.equal)
+export(.in)
+export(.setequal)
 export(allMissing)
 export(anyInfinite)
 export(anyMissing)
