@@ -8,12 +8,16 @@
 #'  Treat zero-length \code{x} as subset of any set \code{choices}?
 #'  Default is \code{TRUE}.
 #' @template checker
+#' @template set
 #' @family set
 #' @export
 #' @examples
 #' testSubset(c("a", "z"), letters)
 #' testSubset("ab", letters)
 #' testSubset("Species", names(iris))
+#'
+#' # x is converted before the comparison if necessary
+#' testSubset(1, "1")
 checkSubset = function(x, choices, empty.ok = TRUE) {
   qassert(choices, "a+")
   qassert(empty.ok, "B1")

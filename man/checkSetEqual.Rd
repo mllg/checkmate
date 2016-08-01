@@ -71,9 +71,16 @@ Depending on the function prefix:
 \description{
 Check if an argument is equal to a given set
 }
+\note{
+The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
+Thus, \code{x} is automatically type-casted if necessary.
+}
 \examples{
- testSetEqual(c("a", "b"), c("a", "b"))
- testSetEqual(1:3, 1:4)
+testSetEqual(c("a", "b"), c("a", "b"))
+testSetEqual(1:3, 1:4)
+
+# x is converted before the comparison if necessary
+testSetEqual(1, "1")
 }
 \seealso{
 Other set: \code{\link{checkChoice}},
