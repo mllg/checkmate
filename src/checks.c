@@ -132,6 +132,19 @@ static Rboolean match_all(SEXP x, SEXP y) {
     return TRUE;
 }
 
+static Rboolean match_equal(SEXP x, SEXP y) {
+    SEXP matched = PROTECT(Rf_match(x, y, -1));
+    const int * m = INTEGER(matched);
+    const R_len_t n = length(matched);
+    for (R_len_t i = 0; i < n; i++) {
+        if (m[i] != i + 1) {
+            UNPROTECT(1);
+            return FALSE;
+        }
+    }
+    UNPROTECT(1);
+    return TRUE;
+}
 
 static R_len_t join_str(char * out, R_len_t size, SEXP str) {
     char *ptr = out;
@@ -180,13 +193,13 @@ static Rboolean check_names(SEXP nn, SEXP type, const char * what) {
     } else {
         const char * cmp = asString(named, "named type");
         if (strcmp(cmp, "setequal") == 0) {
-            if (length(nn) != length(type) || match_all(nn, type) || match_all(nn, type)) {
+            if (length(nn) != length(type) || !match_all(nn, type)) {
                 char buf[8192] = "\0";
                 join_str(buf, 8191, type);
-                return message("Names of %s must be a subset of {%s}", what, buf);
+                return message("Names of %s must be set-equal to {%s}", what, buf);
             }
         } else if (strcmp(cmp, "equal") == 0) {
-            if (!R_compute_identical(nn, type, 16)) {
+            if (length(nn) != length(type) || !match_equal(nn, type)) {
                 char buf[8192] = "\0";
                 join_str(buf, 8191, type);
                 return message("Names of %s must be equal to (%s)", what, buf);

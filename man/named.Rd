@@ -24,7 +24,9 @@ Little helper function to be used if you want to check that the names of an obje
 equal or a subset of certain names.
 }
 \examples{
-checkNumeric(1, names = .setequal(letters))
-checkDataFrame(iris, col.names = .in("Species"))
+x = setNames(1:3, letters[1:3])
+checkNumeric(x, names = .in(letters))
+checkNumeric(x, names = .setequal(letters[1:3]))
+checkDataFrame(iris, col.names = .setequal(sample(names(iris))))
 }
 
