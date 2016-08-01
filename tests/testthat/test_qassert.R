@@ -47,6 +47,7 @@ test_that("type and missingness", {
   expect_fail_all(xd, "D")
   expect_succ_all(xe, "e")
   expect_succ_all(xf, "f")
+  expect_fail_all(xf, "F")
 
   expect_fail_all(xd, "b")
   expect_fail_all(xd, "i")

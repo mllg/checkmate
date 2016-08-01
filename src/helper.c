@@ -32,9 +32,6 @@ Rboolean isRList(SEXP x) {
  * Here are our own wrappers
  * */
 R_len_t get_nrows(SEXP x) {
-    if (!isVector(x) && !isList(x))
-        cstop(condition_error("length", "Object does not have a dimension", R_NilValue));
-
     if (isFrame(x))
         return length(getAttrib(x, R_RowNamesSymbol));
     SEXP dim = getAttrib(x, R_DimSymbol);
@@ -42,9 +39,6 @@ R_len_t get_nrows(SEXP x) {
 }
 
 R_len_t get_ncols(SEXP x) {
-    if (!isVector(x) && !isList(x))
-        cstop(condition_error("length", "Object does not have a dimension", R_NilValue));
-
     if (isFrame(x))
         return length(x);
     SEXP dim = getAttrib(x, R_DimSymbol);
