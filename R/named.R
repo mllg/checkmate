@@ -4,10 +4,10 @@
 #' Little helper function to be used if you want to check that the names of an object are setequal,
 #' equal or a subset of certain names.
 #'
-#'
 #' @param x [\code{character}]\cr
 #'   Character vector of names.
 #' @return [\code{character}]. Returns \code{x} with an attribute attached.
+#' @rdname named
 #' @export
 #' @examples
 #' checkNumeric(1, names = .setequal(letters))
@@ -18,7 +18,7 @@
   x
 }
 
-#' @rdname .setequal
+#' @rdname named
 #' @export
 .in = function(x) {
   x = unique(x)
@@ -26,7 +26,7 @@
   x
 }
 
-#' @rdname .setequal
+#' @rdname named
 #' @export
 .equal = function(x) {
   attr(x, "named.cmp") = "equal"

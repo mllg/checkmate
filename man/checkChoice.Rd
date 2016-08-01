@@ -66,8 +66,15 @@ Depending on the function prefix:
 \description{
 Check if an object is an element of a given set
 }
+\note{
+The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
+Thus, \code{x} is automatically type-casted if necessary.
+}
 \examples{
 testChoice("x", letters)
+
+# x is converted before the comparison if necessary
+testChoice(1, "1")
 }
 \seealso{
 Other set: \code{\link{checkSetEqual}},

@@ -72,10 +72,17 @@ Depending on the function prefix:
 \description{
 Check if an argument is a subset of a given set
 }
+\note{
+The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
+Thus, \code{x} is automatically type-casted if necessary.
+}
 \examples{
 testSubset(c("a", "z"), letters)
 testSubset("ab", letters)
 testSubset("Species", names(iris))
+
+# x is converted before the comparison if necessary
+testSubset(1, "1")
 }
 \seealso{
 Other set: \code{\link{checkChoice}},

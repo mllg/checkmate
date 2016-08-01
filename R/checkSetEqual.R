@@ -9,11 +9,15 @@
 #' check using \dQuote{==} while handling \code{NA}s nicely.
 #' Default is \code{FALSE}.
 #' @template checker
+#' @template set
 #' @family set
 #' @export
 #' @examples
-#'  testSetEqual(c("a", "b"), c("a", "b"))
-#'  testSetEqual(1:3, 1:4)
+#' testSetEqual(c("a", "b"), c("a", "b"))
+#' testSetEqual(1:3, 1:4)
+#'
+#' # x is converted before the comparison if necessary
+#' testSetEqual(1, "1")
 checkSetEqual = function(x, y, ordered = FALSE) {
   qassert(x, "a")
   qassert(y, "a")
