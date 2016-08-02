@@ -8,6 +8,8 @@ test_that("checkCount", {
 
   expect_false(testCount(integer(0)))
   expect_false(testCount(NULL))
+  expect_false(testCount(FALSE))
+  expect_false(testCount(TRUE))
 
   expect_true(testCount(0L))
   expect_false(testCount(0L, positive = TRUE))

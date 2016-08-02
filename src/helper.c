@@ -64,7 +64,7 @@ const char * asString(SEXP x, const char *vname) {
 }
 
 R_xlen_t asCount(SEXP x, const char *vname) {
-    if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL) || xlength(x) != 1)
+    if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE) || xlength(x) != 1)
         cstop(condition_error("type", "Argument '%s' must be a count", R_NilValue, vname));
     int xi = asInteger(x);
     if (xi == NA_INTEGER)

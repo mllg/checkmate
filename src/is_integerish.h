@@ -6,7 +6,7 @@
 #include <Rinternals.h>
 
 #define INTEGERISH_DEFAULT_TOL sqrt(DOUBLE_EPS)
-Rboolean isIntegerish(SEXP, double);
+Rboolean isIntegerish(SEXP, double, Rboolean);
 SEXP c_is_integerish(SEXP, SEXP);
 
 #endif

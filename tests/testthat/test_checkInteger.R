@@ -9,6 +9,7 @@ test_that("checkInteger", {
   expect_true(testInteger(integer(0)))
   expect_false(testInteger(NULL))
   expect_false(testInteger(TRUE))
+  expect_false(testInteger(FALSE))
   expect_true(testInteger(NA))
   expect_false(testInteger(NA, any.missing = FALSE))
   expect_false(testInteger(NA, all.missing = FALSE))
