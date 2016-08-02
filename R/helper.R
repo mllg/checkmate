@@ -20,5 +20,5 @@ guessType = function(x) {
 }
 
 isSameType = function(x, y) {
-  if (is.numeric(x) && is.numeric(y)) TRUE else identical(typeof(x), typeof(y))
+  identical(typeof(x), typeof(y)) || (is.numeric(x) && is.numeric(y))
 }
