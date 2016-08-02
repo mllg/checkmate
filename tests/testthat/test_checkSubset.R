@@ -9,7 +9,9 @@ test_that("checkSubset", {
   expect_false(testSubset(character(0), letters, empty.ok = FALSE))
   expect_true(testSubset(character(0), letters, empty.ok = TRUE))
   expect_false(testSubset(NULL, letters, empty.ok = FALSE))
-  expect_true(testSubset(NULL, letters, empty.ok = TRUE))
+  expect_true(testSubset(character(0), letters, empty.ok = TRUE))
+  expect_false(testSubset(factor("a"), letters))
+  expect_true(testSubset(factor("a"), factor(letters)))
 
   expect_true(testSubset(1L, 1:10))
   expect_true(testSubset(3:4, 1:10))

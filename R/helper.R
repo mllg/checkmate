@@ -18,3 +18,7 @@ convertCamelCase = function(x) {
 guessType = function(x) {
   .Call(c_guess_type, x)
 }
+
+isSameType = function(x, y) {
+  if (is.numeric(x) && is.numeric(y)) TRUE else identical(typeof(x), typeof(y))
+}
