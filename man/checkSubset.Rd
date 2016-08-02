@@ -73,16 +73,18 @@ Depending on the function prefix:
 Check if an argument is a subset of a given set
 }
 \note{
-The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
-Thus, \code{x} is automatically type-casted if necessary.
+The object \code{x} must be of the same type as the set w.r.t. \code{\link[base]{typeof}}.
+Integers and doubles are both treated as numeric.
 }
 \examples{
 testSubset(c("a", "z"), letters)
 testSubset("ab", letters)
 testSubset("Species", names(iris))
 
-# x is converted before the comparison if necessary
+# x is not converted before the comparison (except for numerics)
+testSubset(factor("a"), "a")
 testSubset(1, "1")
+testSubset(1, as.integer(1))
 }
 \seealso{
 Other set: \code{\link{checkChoice}},

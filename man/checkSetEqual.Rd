@@ -72,15 +72,17 @@ Depending on the function prefix:
 Check if an argument is equal to a given set
 }
 \note{
-The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
-Thus, \code{x} is automatically type-casted if necessary.
+The object \code{x} must be of the same type as the set w.r.t. \code{\link[base]{typeof}}.
+Integers and doubles are both treated as numeric.
 }
 \examples{
 testSetEqual(c("a", "b"), c("a", "b"))
 testSetEqual(1:3, 1:4)
 
-# x is converted before the comparison if necessary
+# x is not converted before the comparison (except for numerics)
+testSetEqual(factor("a"), "a")
 testSetEqual(1, "1")
+testSetEqual(1, as.integer(1))
 }
 \seealso{
 Other set: \code{\link{checkChoice}},

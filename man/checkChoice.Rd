@@ -67,14 +67,16 @@ Depending on the function prefix:
 Check if an object is an element of a given set
 }
 \note{
-The set functions internally call \code{\link[base]{match}} or \code{==} to check \code{x}.
-Thus, \code{x} is automatically type-casted if necessary.
+The object \code{x} must be of the same type as the set w.r.t. \code{\link[base]{typeof}}.
+Integers and doubles are both treated as numeric.
 }
 \examples{
 testChoice("x", letters)
 
-# x is converted before the comparison if necessary
+# x is not converted before the comparison (except for numerics)
+testChoice(factor("a"), "a")
 testChoice(1, "1")
+testChoice(1, as.integer(1))
 }
 \seealso{
 Other set: \code{\link{checkSetEqual}},
