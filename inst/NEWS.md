@@ -1,5 +1,7 @@
 # Version 1.8.2 (2016-xx-xx)
-* Use conditions package to throw assertion errors.
+* The conditions package is used to throw errors or class assertions.
+* Functions `*Count`, `*Int`, `*Number`, `*Integer` and `*Numeric` do not accept
+  logical values any more. `*Integerish` still does.
 
 # Version 1.8.1 (2016-06-27)
 * Function `test_file` is longer exported.

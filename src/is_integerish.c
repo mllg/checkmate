@@ -27,9 +27,9 @@ static Rboolean is_integerish_complex(SEXP x, const double tol) {
     return TRUE;
 }
 
-Rboolean isIntegerish(SEXP x, double tol) {
+Rboolean isIntegerish(SEXP x, const double tol, Rboolean logicals_ok) {
     switch(TYPEOF(x)) {
-        case LGLSXP: return TRUE;
+        case LGLSXP: return logicals_ok;
         case INTSXP: return TRUE;
         case REALSXP: return is_integerish_double(x, tol);
         case CPLXSXP: return is_integerish_complex(x, tol);
@@ -38,5 +38,5 @@ Rboolean isIntegerish(SEXP x, double tol) {
 }
 
 SEXP c_is_integerish(SEXP x, SEXP tolerance) {
-    return ScalarLogical(isIntegerish(x, REAL(tolerance)[0]));
+    return ScalarLogical(isIntegerish(x, REAL(tolerance)[0], FALSE));
 }

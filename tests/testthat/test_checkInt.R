@@ -8,6 +8,8 @@ test_that("checkInt", {
 
   expect_false(testInt(integer(0)))
   expect_false(testInt(NULL))
+  expect_false(testInt(FALSE))
+  expect_false(testInt(TRUE))
 
   expect_true(testInt(1L))
   expect_true(testInt(1.))

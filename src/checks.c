@@ -413,7 +413,7 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
 
 SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
-    handle_type_null(isIntegerish(x, dtol) || all_missing_atomic(x), "integerish", null_ok);
+    handle_type_null(isIntegerish(x, dtol, TRUE) || all_missing_atomic(x), "integerish", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -506,7 +506,7 @@ SEXP c_check_names(SEXP x, SEXP type) {
 
 
 SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    handle_type_null(isNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
+    handle_type_null(isStrictlyNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));
@@ -558,7 +558,7 @@ SEXP c_check_flag(SEXP x, SEXP na_ok, SEXP null_ok) {
 SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol, SEXP null_ok) {
     handle_na(x, na_ok)
     double dtol = asNumber(tol, "tol");
-    handle_type_null(isIntegerish(x, dtol), "count", null_ok);
+    handle_type_null(isIntegerish(x, dtol, FALSE), "count", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
     const int pos = (int) asFlag(positive, "positive");
@@ -570,7 +570,7 @@ SEXP c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol, SEXP null_ok) {
 SEXP c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
     handle_na(x, na_ok);
-    handle_type_null(isIntegerish(x, dtol), "single integerish value", null_ok);
+    handle_type_null(isIntegerish(x, dtol, FALSE), "single integerish value", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
     assert(check_bounds(x, lower, upper));

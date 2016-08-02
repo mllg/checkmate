@@ -9,6 +9,8 @@ test_that("checkNumber", {
   expect_false(testNumber(integer(0)))
   expect_false(testNumber(NULL))
 
+  expect_false(testNumber(TRUE))
+  expect_false(testNumber(FALSE))
   expect_true(testNumber(1L))
   expect_true(testNumber(1.))
   expect_false(testNumber(NA))
