@@ -25,7 +25,7 @@ checkSubset = function(x, choices, empty.ok = TRUE) {
   qassert(empty.ok, "B1")
   if (!empty.ok && length(x) == 0L)
     return(sprintf("Must be a subset of {'%s'}, not empty", paste0(choices, collapse = "','")))
-  if (!isSameType(x, choices) || any(x %nin% choices))
+  if (!is.null(x) && (!isSameType(x, choices) || any(x %nin% choices)))
     return(sprintf("Must be a subset of {'%s'}", paste0(choices, collapse = "','")))
   return(TRUE)
 }
