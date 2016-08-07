@@ -37,7 +37,6 @@ static char msg[255] = "";
         return result("May not be NA"); \
     };
 
-
 #define assert(x) if (!(x)) return ScalarString(mkChar(msg));
 
 
@@ -608,3 +607,8 @@ SEXP c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
         return result("Must have length 1");
     return ScalarLogical(TRUE);
 }
+
+#undef handle_type
+#undef handle_type_null
+#undef handle_na
+#undef assert
