@@ -10,31 +10,52 @@
 \alias{test_names}
 \title{Check names to comply to specific rules}
 \usage{
-checkNames(x, type = "named")
+checkNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL)
 
-check_names(x, type = "named")
+check_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL)
 
-assertNames(x, type = "named", .var.name = vname(x), add = NULL)
+assertNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL, .var.name = vname(x), add = NULL)
 
-assert_names(x, type = "named", .var.name = vname(x), add = NULL)
+assert_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL, .var.name = vname(x), add = NULL)
 
-testNames(x, type = "named")
+testNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL)
 
-test_names(x, type = "named")
+test_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL)
 
-expect_names(x, type = "named", info = NULL, label = vname(x))
+expect_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
+  identical.to = NULL, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[\code{character} || \code{NULL}]\cr
 Names to check using rules defined via \code{type}.}
 
 \item{type}{[character(1)]\cr
-Select the check(s) to perform.
+Type of formal check(s) to perform on the names.
 \dQuote{unnamed} checks \code{x} to be \code{NULL}.
 \dQuote{named} (default) checks \code{x} for regular names which excludes names to be \code{NA} or empty (\code{""}).
 \dQuote{unique} additionally tests for non-duplicated names.
 \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
-Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+Note that for zero-length \code{x} all these name checks evaluate to \code{TRUE}.}
+
+\item{permutation.of}{[\code{character}]\cr
+Names provided in \code{x} must be a permutation of the set \code{permutation.of}.
+Duplicated names in \code{permutation.of} are stripped out and duplicated names in \code{x}
+thus lead to a failed check.
+Use this argument instead of \code{identical.to} if the order of the names is not relevant.}
+
+\item{subset.of}{[\code{character}]\cr
+Names provided in \code{x} must be subset of the set \code{subset.of}.
+Use this argument if duplicated names are okay.}
+
+\item{identical.to}{[\code{character}]\cr
+Names provided in \code{x} must be identical to the vector \code{identical.to}.
+Use this argument instead of \code{permutation.of} if the order of the names is relevant.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -76,5 +97,8 @@ x = 1:3
 testNames(x, "unnamed")
 names(x) = letters[1:3]
 testNames(x, "unique")
+
+cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
+assertNames(names(iris), permutation.of = cn)
 }
 

@@ -87,7 +87,6 @@ Collate:
     'constants.R'
     'isIntegerish.R'
     'matchArg.R'
-    'named.R'
     'qassert.R'
     'qassertr.R'
     'vname.R'

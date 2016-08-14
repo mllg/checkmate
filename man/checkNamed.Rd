@@ -31,8 +31,7 @@ Select the check(s) to perform.
 \dQuote{named} (default) checks \code{x} to be named which excludes names to be \code{NA} or empty (\code{""}).
 \dQuote{unique} additionally tests for non-duplicated names.
 \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
-Note that for zero-length \code{x} every name check evaluates to \code{TRUE}.
-Also note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+Note that for zero-length \code{x} every name check evaluates to \code{TRUE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -60,6 +59,10 @@ Depending on the function prefix:
 }
 \description{
 Check if an argument is named
+}
+\note{
+These function are deprecated and will be removed in a future version.
+Please use \code{\link{checkNames}} instead.
 }
 \examples{
 x = 1:3
