@@ -9,8 +9,10 @@
 #'  \dQuote{unique} additionally tests for non-duplicated names.
 #'  \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 #'  Note that for zero-length \code{x} every name check evaluates to \code{TRUE}.
-#'  Also note that you can use \code{\link{checkSubset}} to check for a specific set of names.
 #' @template checker
+#' @note
+#' These function are deprecated and will be removed in a future version.
+#' Please use \code{\link{checkNames}} instead.
 #' @useDynLib checkmate c_check_named
 #' @export
 #' @examples
