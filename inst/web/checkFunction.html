@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkFunction. checkmate 1.8.1</title>
+<title>checkFunction. checkmate 1.8.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.1</a>
+      <a class="brand" href="#">checkmate 1.8.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -105,9 +105,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertFunction</code>/<code>assert_function</code>
- throws an error message, <code>testFunction</code>/<code>test_function</code>
+ If the check is successful, the functions 
+ <code>assertFunction</code>/<code>assert_function</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkFunction</code>/<code>check_function</code> and 
+ <code>testFunction</code>/<code>test_function</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertFunction</code>/<code>assert_function</code>
+ throws an error message, 
+ <code>testFunction</code>/<code>test_function</code>
  returns <code>FALSE</code>,
  and <code>checkFunction</code> returns a string with the error message.
  The function <code>expect_function</code> always returns an

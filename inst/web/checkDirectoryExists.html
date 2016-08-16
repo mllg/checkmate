@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkDirectoryExists. checkmate 1.8.1</title>
+<title>checkDirectoryExists. checkmate 1.8.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.1</a>
+      <a class="brand" href="#">checkmate 1.8.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -98,9 +98,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertDirectoryExists</code>/<code>assert_directory_exists</code>
- throws an error message, <code>testDirectoryExists</code>/<code>test_directory_exists</code>
+ If the check is successful, the functions 
+ <code>assertDirectoryExists</code>/<code>assert_directory_exists</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkDirectoryExists</code>/<code>check_directory_exists</code> and 
+ <code>testDirectoryExists</code>/<code>test_directory_exists</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertDirectoryExists</code>/<code>assert_directory_exists</code>
+ throws an error message, 
+ <code>testDirectoryExists</code>/<code>test_directory_exists</code>
  returns <code>FALSE</code>,
  and <code>checkDirectoryExists</code> returns a string with the error message.
  The function <code>expect_directory_exists</code> always returns an
@@ -134,7 +141,7 @@ testDirectory(R.home(), &quot;r&quot;)
 # Is R&#39;s home directory readable and writable?
 testDirectory(R.home(), &quot;rw&quot;)
 </div>
-<div class='output'>[1] TRUE
+<div class='output'>[1] FALSE
 </div></pre>
   </div>
   <div class="span4">

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkArray. checkmate 1.8.1</title>
+<title>checkArray. checkmate 1.8.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.1</a>
+      <a class="brand" href="#">checkmate 1.8.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -68,7 +68,7 @@ Object to check.</dd>
       <dt>mode</dt>
       <dd>[<code>character(1)</code>]
 Storage mode of the array. Arrays can hold vectors, i.e. &#147;logical&#148;,
-&#147;integer&#148;, &#147;double&#148;, &#147;numeric&#148;, &#147;complex&#148;,
+&#147;integer&#148;, &#147;integerish&#148;, &#147;double&#148;, &#147;numeric&#148;, &#147;complex&#148;,
 &#147;character&#148; and &#147;list&#148;. You can also specify &#147;atomic&#148;
 here to explicitly prohibit lists. Default is <code>NULL</code> (no check).</dd>
       <dt>any.missing</dt>
@@ -112,9 +112,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertArray</code>/<code>assert_array</code>
- throws an error message, <code>testArray</code>/<code>test_array</code>
+ If the check is successful, the functions 
+ <code>assertArray</code>/<code>assert_array</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkArray</code>/<code>check_array</code> and 
+ <code>testArray</code>/<code>test_array</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertArray</code>/<code>assert_array</code>
+ throws an error message, 
+ <code>testArray</code>/<code>test_array</code>
  returns <code>FALSE</code>,
  and <code>checkArray</code> returns a string with the error message.
  The function <code>expect_array</code> always returns an

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkChoice. checkmate 1.8.1</title>
+<title>checkChoice. checkmate 1.8.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.1</a>
+      <a class="brand" href="#">checkmate 1.8.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -90,9 +90,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertChoice</code>/<code>assert_choice</code>
- throws an error message, <code>testChoice</code>/<code>test_choice</code>
+ If the check is successful, the functions 
+ <code>assertChoice</code>/<code>assert_choice</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkChoice</code>/<code>check_choice</code> and 
+ <code>testChoice</code>/<code>test_choice</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertChoice</code>/<code>assert_choice</code>
+ throws an error message, 
+ <code>testChoice</code>/<code>test_choice</code>
  returns <code>FALSE</code>,
  and <code>checkChoice</code> returns a string with the error message.
  The function <code>expect_choice</code> always returns an
@@ -107,9 +114,31 @@ Depending on the function prefix:
       <p>Check if an object is an element of a given set</p>
   
     </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+
+      <p>The object <code>x</code> must be of the same type as the set w.r.t. <code><a href='http://www.inside-r.org/r-doc/base/typeof'>typeof</a></code>.
+Integers and doubles are both treated as numeric.</p>
+  
+    </div>
     
     <h2 id="examples">Examples</h2>
     <pre class="examples"><div class='input'>testChoice(&quot;x&quot;, letters)
+</div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+# x is not converted before the comparison (except for numerics)
+testChoice(factor(&quot;a&quot;), &quot;a&quot;)
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>testChoice(1, &quot;1&quot;)
+</div>
+<div class='output'>[1] FALSE
+</div>
+<div class='input'>testChoice(1, as.integer(1))
 </div>
 <div class='output'>[1] TRUE
 </div></pre>

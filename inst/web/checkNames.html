@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-<title>checkNames. checkmate 1.8.1</title>
+<title>checkNames. checkmate 1.8.2</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="">
 
@@ -32,7 +32,7 @@
     <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">checkmate 1.8.1</a>
+      <a class="brand" href="#">checkmate 1.8.2</a>
       <div class="nav">
         <ul class="nav">
           <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
@@ -52,13 +52,13 @@
 <div class="row">
   <div class="span8">
     <h2>Usage</h2>
-    <pre><div>checkNames(x, type&nbsp;=&nbsp;"named")</div>
-<div>check_names(x, type&nbsp;=&nbsp;"named")</div>
-<div>assertNames(x, type&nbsp;=&nbsp;"named", .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>assert_names(x, type&nbsp;=&nbsp;"named", .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
-<div>testNames(x, type&nbsp;=&nbsp;"named")</div>
-<div>test_names(x, type&nbsp;=&nbsp;"named")</div>
-<div>expect_names(x, type&nbsp;=&nbsp;"named", info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
+    <pre><div>checkNames(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL)</div>
+<div>check_names(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL)</div>
+<div>assertNames(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>assert_names(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL, .var.name&nbsp;=&nbsp;vname(x), add&nbsp;=&nbsp;NULL)</div>
+<div>testNames(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL)</div>
+<div>test_names(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL)</div>
+<div>expect_names(x, type&nbsp;=&nbsp;"named", permutation.of&nbsp;=&nbsp;NULL, subset.of&nbsp;=&nbsp;NULL, identical.to&nbsp;=&nbsp;NULL, info&nbsp;=&nbsp;NULL, label&nbsp;=&nbsp;vname(x))</div></pre>
     
     <h2>Arguments</h2>
     <dl>
@@ -67,12 +67,26 @@
 Names to check using rules defined via <code>type</code>.</dd>
       <dt>type</dt>
       <dd>[character(1)]
-Select the check(s) to perform.
+Type of formal check(s) to perform on the names.
 &#147;unnamed&#148; checks <code>x</code> to be <code>NULL</code>.
 &#147;named&#148; (default) checks <code>x</code> for regular names which excludes names to be <code>NA</code> or empty (<code>""</code>).
 &#147;unique&#148; additionally tests for non-duplicated names.
 &#147;strict&#148; checks for unique names which comply to R's variable name restrictions.
-Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</dd>
+Note that for zero-length <code>x</code> all these name checks evaluate to <code>TRUE</code>.</dd>
+      <dt>permutation.of</dt>
+      <dd>[<code>character</code>]
+Names provided in <code>x</code> must be a permutation of the set <code>permutation.of</code>.
+Duplicated names in <code>permutation.of</code> are stripped out and duplicated names in <code>x</code>
+thus lead to a failed check.
+Use this argument instead of <code>identical.to</code> if the order of the names is not relevant.</dd>
+      <dt>subset.of</dt>
+      <dd>[<code>character</code>]
+Names provided in <code>x</code> must be subset of the set <code>subset.of</code>.
+Use this argument if duplicated names are okay.</dd>
+      <dt>identical.to</dt>
+      <dd>[<code>character</code>]
+Names provided in <code>x</code> must be identical to the vector <code>identical.to</code>.
+Use this argument instead of <code>permutation.of</code> if the order of the names is relevant.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
@@ -95,9 +109,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
 
       <p><dl>
 Depending on the function prefix:
- If the check is successful, the functions return <code>TRUE</code>. If the check
- is not successful, <code>assertNamed</code>/<code>assert_named</code>
- throws an error message, <code>testNamed</code>/<code>test_named</code>
+ If the check is successful, the functions 
+ <code>assertNamed</code>/<code>assert_named</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkNamed</code>/<code>check_named</code> and 
+ <code>testNamed</code>/<code>test_named</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertNamed</code>/<code>assert_named</code>
+ throws an error message, 
+ <code>testNamed</code>/<code>test_named</code>
  returns <code>FALSE</code>,
  and <code>checkNamed</code> returns a string with the error message.
  The function <code>expect_named</code> always returns an
@@ -123,6 +144,10 @@ testNames(x, &quot;unnamed&quot;)
 testNames(x, &quot;unique&quot;)
 </div>
 <div class='output'>[1] FALSE
+</div>
+<div class='input'>
+cn = c(&quot;Species&quot;, &quot;Sepal.Length&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;)
+assertNames(names(iris), permutation.of = cn)
 </div></pre>
   </div>
   <div class="span4">
