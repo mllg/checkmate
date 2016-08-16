@@ -38,6 +38,9 @@ test_that("checkMatrix", {
   expect_false(testMatrix(xl, "character"))
   expect_false(testMatrix(xx, "numeric"))
   expect_false(testMatrix(xx, "atomic"))
+  expect_true(testMatrix(xi, "integerish"))
+  expect_true(testMatrix(xr, "integerish"))
+  expect_false(testMatrix(xi+0.1, "integerish"))
 
   expect_true(testMatrix(x, min.rows = 1, min.cols = 1))
   expect_true(testMatrix(x, nrows = 3, ncols = 3))
