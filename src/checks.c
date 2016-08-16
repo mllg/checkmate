@@ -231,6 +231,9 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
         } else if (strcmp(storage, "double") == 0) {
             if (!isReal(x))
                 return message("Must store doubles");
+        } else if (strcmp(storage, "integerish") == 0) {
+            if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
+                return message("Must store integerish values");
         } else if (strcmp(storage, "numeric") == 0) {
             if (!isStrictlyNumeric(x))
                 return message("Must store numerics");
@@ -247,7 +250,7 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
             if (!isVectorAtomic(x))
                 return message("Must be atomic");
         } else {
-            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'double', 'numeric', 'complex', 'character', 'list' or 'atomic'");
+            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'integerish', 'double', 'numeric', 'complex', 'character', 'list' or 'atomic'");
         }
     }
     return TRUE;
