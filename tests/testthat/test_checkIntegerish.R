@@ -10,8 +10,8 @@ test_that("checkIntegerish", {
 
   expect_true(testIntegerish(integer(0)))
   expect_false(testIntegerish(NULL))
-  expect_true(testIntegerish(TRUE))
-  expect_true(testIntegerish(FALSE))
+  expect_false(testIntegerish(TRUE))
+  expect_false(testIntegerish(FALSE))
   expect_true(testIntegerish(1L))
   expect_true(testIntegerish(c(-1, 0, 1)))
   expect_true(testIntegerish(1.))

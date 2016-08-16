@@ -1,7 +1,8 @@
+#' @include isIntegerish.R
 .CHECKLISTTYPEFUNS = list2env(list(
   "logical" = is.logical,
   "integer" = is.integer,
-  "integerish" = function(x) isIntegerish(x),
+  "integerish" = isIntegerish,
   "double" = is.double,
   "numeric" = is.numeric,
   "complex" = is.complex,

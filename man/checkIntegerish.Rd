@@ -119,7 +119,9 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if an object is an integerish vector
+An integerish value is defined as value safely convertible to integer.
+This includes integers and numeric values which are close to an integer
+w.r.t. a numeric tolerance.
 }
 \details{
 This function does not distinguish between

@@ -342,7 +342,7 @@ SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_
 
 SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
-    handle_type_null(isIntegerish(x, dtol, TRUE) || all_missing_atomic(x), "integerish", null_ok);
+    handle_type_null(isIntegerish(x, dtol, FALSE) || all_missing_atomic(x), "integerish", null_ok);
     assert(check_vector_len(x, len, min_len, max_len));
     assert(check_vector_names(x, names));
     assert(check_vector_missings(x, any_missing, all_missing));

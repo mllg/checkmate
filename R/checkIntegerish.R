@@ -1,4 +1,9 @@
-#' Check if an object is an integerish vector
+#' @title Check if an object is an integerish vector
+#'
+#' @description
+#' An integerish value is defined as value safely convertible to integer.
+#' This includes integers and numeric values which are close to an integer
+#' w.r.t. a numeric tolerance.
 #'
 #' @templateVar fn Integerish
 #' @template x
