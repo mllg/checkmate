@@ -283,6 +283,45 @@ print(mb)
 autoplot(mb)
 ```
 
+## Extending checkmate
+
+To extend checkmate a custom `check*` function has to be written.
+For example, to check for a square matrix one can re-use parts of checkmate and extend the check with additional functionality:
+```{r}
+checkSquareMatrix = function(x, mode = NULL) {
+  # check functions must return TRUE on success
+  # and a custom error message otherwise
+  res = checkMatrix(x, mode = mode)
+  if (!isTRUE(res))
+    return(res)
+  if (nrow(x) != ncol(x))
+    return("Must be square")
+  return(TRUE)
+}
+
+# a quick test:
+X = matrix(1:9, nrow = 3)
+checkSquareMatrix(X)
+checkSquareMatrix(X, mode = "character")
+checkSquareMatrix(X[1:2, ])
+```
+The respective counterparts to the `check`-function can be created using the constructors [makeAssertionFunction](https://mllg.github.io/checkmate/makeAssertion), [makeTestFunction](https://mllg.github.io/checkmate/makeTest) and [makeExpectationFunction](https://mllg.github.io/checkmate/makeExpectation):
+```{r}
+# For assertions:
+assert_square_matrix = assertSquareMatrix = makeAssertionFunction(checkSquareMatrix)
+print(assertSquareMatrix)
+
+# For tests:
+test_square_matrix = testSquareMatrix = makeTestFunction(checkSquareMatrix)
+print(testSquareMatrix)
+
+# For expectations:
+expect_square_matrix = makeExpectationFunction(checkSquareMatrix)
+print(expect_square_matrix)
+```
+Note that all the additional arguments `.var.name`, `add`, `info` and `label` are automatically joined with the function arguments of your custom check function.
+Also note that if you define these functions inside an R package, the constructors are called at build-time (thus, there is no negative impact on the runtime).
+
 ## Calling checkmate from C/C++
 
 The package registers two functions which can be used in other packages' C/C++ code for argument checks.

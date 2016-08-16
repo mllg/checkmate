@@ -21,6 +21,7 @@
 #'  and an exception is raised (or its message stored in the collection) otherwise.
 #'  \code{makeAssertionFunction} returns a \code{function}.
 #' @export
+#' @family CustomConstructors
 #' @include helper.R
 #' @examples
 #' # Simple custom check function

@@ -62,4 +62,8 @@ assertFalse = function(x, .var.name = vname(x), add = NULL) {
 assertFalse = makeAssertionFunction(checkFalse)
 print(assertFalse)
 }
+\seealso{
+Other CustomConstructors: \code{\link{makeExpectation}},
+  \code{\link{makeTest}}
+}
 

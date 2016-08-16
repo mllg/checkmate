@@ -58,4 +58,8 @@ expect_false = function(x, info = NULL, label = vname(x)) {
 expect_false = makeExpectationFunction(checkFalse)
 print(expect_false)
 }
+\seealso{
+Other CustomConstructors: \code{\link{makeAssertion}},
+  \code{\link{makeTest}}
+}
 

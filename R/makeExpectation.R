@@ -17,6 +17,7 @@
 #' @return \code{makeExpectation} invisibly returns the checked object.
 #'   \code{makeExpectationFunction} returns a \code{function}.
 #' @export
+#' @family CustomConstructors
 #' @include helper.R
 #' @examples
 #' # Simple custom check function
