@@ -13,6 +13,7 @@
 #' @return \code{makeTest} returns \code{TRUE} if the check is successful and \code{FALSE} otherwise.
 #'  \code{makeTestFunction} returns a \code{function}.
 #' @export
+#' @family CustomConstructors
 #' @include helper.R
 #' @examples
 #' # Simple custom check function

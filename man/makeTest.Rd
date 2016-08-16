@@ -50,4 +50,8 @@ testFalse = function(x) {
 testFalse = makeTestFunction(checkFalse)
 print(testFalse)
 }
+\seealso{
+Other CustomConstructors: \code{\link{makeAssertion}},
+  \code{\link{makeExpectation}}
+}
 
