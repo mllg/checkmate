@@ -1,7 +1,6 @@
 # Version 1.8.2 (2016-xx-xx)
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage
   type via argument "mode".
-* The conditions package is used to throw errors or class assertions.
 * Functions `*Count`, `*Int`, `*Number`, `*Integer` and `*Numeric` do not accept
   logical values any more. `*Integerish` still does.
 * The set functions are now more restrict regarding the class, e.g. distinguish
