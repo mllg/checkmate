@@ -22,13 +22,13 @@ Imports:
 Suggests:
     data.table,
     devtools,
-    dplyr,
     ggplot2,
     knitr,
     rmarkdown,
     magrittr,
     microbenchmark,
-    testthat (>= 0.11.0)
+    testthat (>= 0.11.0),
+    tibble
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
