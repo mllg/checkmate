@@ -5,7 +5,7 @@
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to check.
-#' @return [\code{logical(1)}] Returns \code{TRUE} if any element if \code{-Inf} or \code{Inf}.
+#' @return [\code{logical(1)}] Returns \code{TRUE} if any element is \code{-Inf} or \code{Inf}.
 #' @useDynLib checkmate c_any_infinite
 #' @export
 #' @examples

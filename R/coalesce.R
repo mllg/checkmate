@@ -6,9 +6,9 @@
 #' the right hand side otherwise.
 #'
 #' @param lhs [any]\cr
-#' Left hand side of the operator. Is returned, if not missing or \code{NULL}.
+#' Left hand side of the operator. Is returned if not missing or \code{NULL}.
 #' @param rhs [any]\cr
-#' Right hand side of the operator. Is returned, if \code{lhs} is missing or \code{NULL}.
+#' Right hand side of the operator. Is returned if \code{lhs} is missing or \code{NULL}.
 #' @return Either \code{lhs} or \code{rhs}.
 #' @export
 #' @examples

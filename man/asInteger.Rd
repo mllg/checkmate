@@ -6,32 +6,56 @@
 \alias{asInteger}
 \title{Convert an argument to an integer}
 \usage{
-asInteger(x, ..., tol = sqrt(.Machine$double.eps), .var.name = vname(x),
-  add = NULL)
+asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf,
+  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
+  max.len = NULL, unique = FALSE, names = NULL, .var.name = vname(x))
 
 asCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x))
 
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x), add = NULL)
+  tol = sqrt(.Machine$double.eps), .var.name = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
 Object to convert.}
 
-\item{...}{[any]\cr
-Additional arguments passed to \code{\link{assertIntegerish}}.}
-
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is \code{sqrt(.Machine$double.eps)}.}
 
+\item{lower}{[\code{numeric(1)}]\cr
+Lower value all elements of \code{x} must be greater than.}
+
+\item{upper}{[\code{numeric(1)}]\cr
+Upper value all elements of \code{x} must be lower than.}
+
+\item{any.missing}{[\code{logical(1)}]\cr
+Are vectors with missing values allowed? Default is \code{TRUE}.}
+
+\item{all.missing}{[\code{logical(1)}]\cr
+Are vectors with only missing values allowed? Default is \code{TRUE}.}
+
+\item{len}{[\code{integer(1)}]\cr
+Exact expected length of \code{x}.}
+
+\item{min.len}{[\code{integer(1)}]\cr
+Minimal length of \code{x}.}
+
+\item{max.len}{[\code{integer(1)}]\cr
+Maximal length of \code{x}.}
+
+\item{unique}{[\code{logical(1)}]\cr
+Must all values be unique? Default is \code{FALSE}.}
+
+\item{names}{[\code{character(1)}]\cr
+Check for names. See \code{\link{checkNamed}} for possible values.
+Default is \dQuote{any} which performs no check at all.
+Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
-
-\item{add}{[\code{AssertCollection}]\cr
-Collection to store assertions. See \code{\link{AssertCollection}}.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
@@ -39,12 +63,6 @@ Are missing values allowed? Default is \code{FALSE}.}
 \item{positive}{[\code{logical(1)}]\cr
 Must \code{x} be positive (>= 1)?
 Default is \code{FALSE}.}
-
-\item{lower}{[\code{numeric(1)}]\cr
-Lower value all elements of \code{x} must be greater than.}
-
-\item{upper}{[\code{numeric(1)}]\cr
-Upper value all elements of \code{x} must be lower than.}
 }
 \value{
 Converted \code{x}.
@@ -56,6 +74,11 @@ non-negative integers.
 Convertible are (a) atomic vectors with all elements \code{NA}
 and (b) double vectors with all elements being within \code{tol}
 range of an integer.
+}
+\details{
+This function does not distinguish between
+\code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
+\code{NA_character_} and \code{NaN}.
 }
 \examples{
 asInteger(c(1, 2, 3))

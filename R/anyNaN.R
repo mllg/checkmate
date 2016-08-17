@@ -5,7 +5,7 @@
 #'
 #' @param x [\code{ANY}]\cr
 #'  Object to check.
-#' @return [\code{logical(1)}] Returns \code{TRUE} if any element if \code{NaN}.
+#' @return [\code{logical(1)}] Returns \code{TRUE} if any element is \code{NaN}.
 #' @useDynLib checkmate c_any_nan
 #' @export
 #' @examples

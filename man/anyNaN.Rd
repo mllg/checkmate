@@ -11,7 +11,7 @@ anyNaN(x)
 Object to check.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} if any element if \code{NaN}.
+[\code{logical(1)}] Returns \code{TRUE} if any element is \code{NaN}.
 }
 \description{
 Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.

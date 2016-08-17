@@ -11,7 +11,7 @@ anyInfinite(x)
 Object to check.}
 }
 \value{
-[\code{logical(1)}] Returns \code{TRUE} if any element if \code{-Inf} or \code{Inf}.
+[\code{logical(1)}] Returns \code{TRUE} if any element is \code{-Inf} or \code{Inf}.
 }
 \description{
 Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.

@@ -5,6 +5,8 @@
   `*Numeric` do not accept logical values any more.
 * The set functions are now more restrict regarding the class, e.g. distinguish
   between factors and characters.
+* Dropped support for AssertCollections in convert functions (`asInt`,
+  `asInteger` and `asCount`).
 
 
 # Version 1.8.1 (2016-06-27)

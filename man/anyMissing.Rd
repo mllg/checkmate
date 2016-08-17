@@ -37,5 +37,10 @@ all(sapply(x, allMissing))
 anyMissing(c(1, 1))
 anyMissing(c(1, NA))
 anyMissing(list(1, NULL))
+
+x = iris
+x[, "Species"] = NA
+anyMissing(x)
+allMissing(x)
 }
 
