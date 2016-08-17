@@ -123,6 +123,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkMatrix}}, \code{\link{checkNumeric}},
-  \code{\link{checkVector}}
+  \code{\link{checkTibble}}, \code{\link{checkVector}}
 }
 

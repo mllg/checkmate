@@ -126,6 +126,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNumeric}}
+  \code{\link{checkNumeric}}, \code{\link{checkTibble}}
 }
 

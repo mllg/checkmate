@@ -142,6 +142,7 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNumeric}}, \code{\link{checkVector}}
+  \code{\link{checkNumeric}}, \code{\link{checkTibble}},
+  \code{\link{checkVector}}
 }
 

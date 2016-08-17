@@ -80,6 +80,7 @@ Collate:
     'checkSetEqual.R'
     'checkString.R'
     'checkSubset.R'
+    'checkTibble.R'
     'checkVector.R'
     'coalesce.R'
     'isIntegerish.R'

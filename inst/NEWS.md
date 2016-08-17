@@ -7,6 +7,7 @@
   between factors and characters.
 * Dropped support for AssertCollections in convert functions (`asInt`,
   `asInteger` and `asCount`).
+* Added `checkTibble`.
 
 
 # Version 1.8.1 (2016-06-27)
@@ -41,7 +42,7 @@
   checking nested lists.
 
 # Version 1.7.3 (2016-03-10)
-* Added `checkDate()`
+* Added `checkDate()`.
 * Argument `.var.name` of assert functions now has \code{NULL} as default value
   (instead of missing).
 * Fixed a bug in `*OS` functions.
