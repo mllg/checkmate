@@ -1,4 +1,4 @@
-context("checkDataFrame")
+context("checkDataTable")
 
 test_that("checkDataTable", {
   skip_if_not_installed("data.table")
