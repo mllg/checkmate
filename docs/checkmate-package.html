@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>checkmate-package. checkmate 1.8.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">checkmate 1.8.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Fast and Versatile Argument Checks</h1>
+
+<div class="row">
+  <div class="span8">
+        
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p><dl>
+  <dt>Homepage:</dt><dd><a href = 'https://github.com/mllg/checkmate'>https://github.com/mllg/checkmate</a></dd></p>
+
+      <p><dt>Bug Reports:</dt><dd><a href = 'https://github.com/mllg/checkmate/issues'>https://github.com/mllg/checkmate/issues</a></dd></p>
+
+      <p></dl></p>
+
+      <p></p>
+
+    </div>
+
+    <div class="Overview of implemented functions">
+      <h2>Overview of implemented functions</h2>
+
+      <p></p>
+
+      <p>Check scalars:
+<ul>
+<li><code><a href='checkFlag.html'>checkFlag</a></code>
+  </li>
+<li><code><a href='checkCount.html'>checkCount</a></code>
+  </li>
+<li><code><a href='checkNumber.html'>checkNumber</a></code>
+  </li>
+<li><code><a href='checkInt.html'>checkInt</a></code>
+  </li>
+<li><code><a href='checkString.html'>checkString</a></code>
+  </li>
+<li><code><a href='checkScalar.html'>checkScalar</a></code>
+  </li>
+<li><code><a href='checkScalarNA.html'>checkScalarNA</a></code>
+</li>
+</ul></p>
+
+      <p>Check vectors:
+<ul>
+<li><code><a href='checkLogical.html'>checkLogical</a></code>
+  </li>
+<li><code><a href='checkNumeric.html'>checkNumeric</a></code>
+  </li>
+<li><code><a href='checkInteger.html'>checkInteger</a></code>
+  </li>
+<li><code><a href='checkIntegerish.html'>checkIntegerish</a></code>
+  </li>
+<li><code><a href='checkComplex.html'>checkComplex</a></code>
+  </li>
+<li><code><a href='checkFactor.html'>checkFactor</a></code>
+  </li>
+<li><code><a href='checkList.html'>checkList</a></code>
+  </li>
+<li><code><a href='checkVector.html'>checkVector</a></code>
+  </li>
+<li><code><a href='checkAtomic.html'>checkAtomic</a></code>
+  </li>
+<li><code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>
+</li>
+</ul></p>
+
+      <p>Check attributes:
+<ul>
+<li><code><a href='checkClass.html'>checkClass</a></code>
+  </li>
+<li><code><a href='checkNames.html'>checkNames</a></code>
+  </li>
+<li><code><a href='checkNamed.html'>checkNamed</a></code>
+</li>
+</ul></p>
+
+      <p>Check compound types:
+<ul>
+<li><code><a href='checkMatrix.html'>checkMatrix</a></code>
+  </li>
+<li><code><a href='checkArray.html'>checkArray</a></code>
+  </li>
+<li><code><a href='checkDataFrame.html'>checkDataFrame</a></code>
+  </li>
+<li><code><a href='checkDataTable.html'>checkDataTable</a></code>
+  </li>
+<li><code><a href='checkTibble.html'>checkTibble</a></code>
+</li>
+</ul></p>
+
+      <p>Check other built-in R types:
+<ul>
+<li><code><a href='checkNull.html'>checkNull</a></code>
+  </li>
+<li><code><a href='checkEnvironment.html'>checkEnvironment</a></code>
+  </li>
+<li><code><a href='checkFunction.html'>checkFunction</a></code>
+  </li>
+<li><code><a href='checkDate.html'>checkDate</a></code>
+</li>
+</ul></p>
+
+      <p>Check sets:
+<ul>
+<li><code><a href='checkChoice.html'>checkChoice</a></code>
+  </li>
+<li><code><a href='checkSubset.html'>checkSubset</a></code>
+  </li>
+<li><code><a href='checkSetEqual.html'>checkSetEqual</a></code>
+</li>
+</ul></p>
+
+      <p>File IO:
+<ul>
+<li><code><a href='checkFileExists.html'>checkFileExists</a></code>
+  </li>
+<li><code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>
+  </li>
+<li><code><a href='checkPathForOutput.html'>checkPathForOutput</a></code>
+  </li>
+<li><code><a href='checkAccess.html'>checkAccess</a></code>
+</li>
+</ul></p>
+
+      <p>Safe coercion to integer:
+<ul>
+<li><code><a href='asInteger.html'>asCount</a></code>
+  </li>
+<li><code><a href='asInteger.html'>asInt</a></code>
+  </li>
+<li><code><a href='asInteger.html'>asInteger</a></code>
+</li>
+</ul></p>
+
+      <p>Quick argument checks using a DSL:
+<ul>
+<li><code><a href='qassert.html'>qassert</a></code>
+  </li>
+<li><code><a href='qassertr.html'>qassertr</a></code>
+</li>
+</ul></p>
+
+      <p>Misc:
+<ul>
+<li><code><a href='checkOS.html'>checkOS</a></code> (check operating system)
+  </li>
+<li><code><a href='assert.html'>assert</a></code> (combine multiple checks into an assertion)
+  </li>
+<li><code><a href='anyMissing.html'>anyMissing</a></code>
+  </li>
+<li><code><a href='anyMissing.html'>allMissing</a></code>
+  </li>
+<li><code><a href='anyNaN.html'>anyNaN</a></code>
+  </li>
+<li><code><a href='wf.html'>wf</a></code> (which.first and which.last)
+</li>
+</ul></p>
+
+      <p></p>
+
+    </div>
+      </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>checkmate</li><li>checkmate-package</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

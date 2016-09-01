@@ -101,14 +101,17 @@ checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 \seealso{
 Other basetypes: \code{\link{checkAtomic}},
   \code{\link{checkCharacter}}, \code{\link{checkComplex}},
-  \code{\link{checkDataFrame}},
-  \code{\link{checkDataTable}},
+  \code{\link{checkDataFrame}}, \code{\link{checkDate}},
   \code{\link{checkEnvironment}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNumeric}}, \code{\link{checkTibble}},
+  \code{\link{checkNull}}, \code{\link{checkNumeric}},
   \code{\link{checkVector}}
+
+Other compound: \code{\link{checkDataFrame}},
+  \code{\link{checkDataTable}}, \code{\link{checkMatrix}},
+  \code{\link{checkTibble}}
 }
 

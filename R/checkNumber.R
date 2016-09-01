@@ -10,6 +10,7 @@
 #' @template null.ok
 #' @template checker
 #' @useDynLib checkmate c_check_number
+#' @family scalars
 #' @export
 #' @examples
 #' testNumber(1)

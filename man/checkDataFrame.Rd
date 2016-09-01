@@ -129,13 +129,17 @@ testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "n
 \seealso{
 Other basetypes: \code{\link{checkArray}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataTable}},
+  \code{\link{checkComplex}}, \code{\link{checkDate}},
   \code{\link{checkEnvironment}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNumeric}}, \code{\link{checkTibble}},
+  \code{\link{checkNull}}, \code{\link{checkNumeric}},
   \code{\link{checkVector}}
+
+Other compound: \code{\link{checkArray}},
+  \code{\link{checkDataTable}}, \code{\link{checkMatrix}},
+  \code{\link{checkTibble}}
 }
 

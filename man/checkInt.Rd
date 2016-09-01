@@ -101,7 +101,8 @@ testInt(-1, lower = 0)
 }
 \seealso{
 Other scalars: \code{\link{checkCount}},
-  \code{\link{checkFlag}}, \code{\link{checkScalarNA}},
-  \code{\link{checkScalar}}, \code{\link{checkString}}
+  \code{\link{checkFlag}}, \code{\link{checkNumber}},
+  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
+  \code{\link{checkString}}
 }
 

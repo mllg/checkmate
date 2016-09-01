@@ -92,4 +92,8 @@ assert(
 # is x most specialized as "bar"?
 testClass(x, "bar", ordered = TRUE)
 }
+\seealso{
+Other attributes: \code{\link{checkNamed}},
+  \code{\link{checkNames}}
+}
 

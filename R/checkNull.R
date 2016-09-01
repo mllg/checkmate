@@ -3,6 +3,7 @@
 #' @templateVar fn Null
 #' @template x
 #' @template checker
+#' @family basetypes
 #' @export
 #' @examples
 #' testNull(NULL)

@@ -26,6 +26,7 @@
 #'  Use this argument instead of \code{permutation.of} if the order of the names is relevant.
 #' @template checker
 #' @useDynLib checkmate c_check_names
+#' @family attributes
 #' @export
 #' @examples
 #' x = 1:3

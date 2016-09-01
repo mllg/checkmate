@@ -14,6 +14,7 @@
 #' These function are deprecated and will be removed in a future version.
 #' Please use \code{\link{checkNames}} instead.
 #' @useDynLib checkmate c_check_named
+#' @family attributes
 #' @export
 #' @examples
 #' x = 1:3

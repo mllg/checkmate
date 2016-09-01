@@ -95,4 +95,10 @@ This function does not distinguish between
 testNumber(1)
 testNumber(1:2)
 }
+\seealso{
+Other scalars: \code{\link{checkCount}},
+  \code{\link{checkFlag}}, \code{\link{checkInt}},
+  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
+  \code{\link{checkString}}
+}
 

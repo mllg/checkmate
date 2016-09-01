@@ -141,15 +141,8 @@ testDataTable(dt)
 testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNumeric}}, \code{\link{checkTibble}},
-  \code{\link{checkVector}}
+Other compound: \code{\link{checkArray}},
+  \code{\link{checkDataFrame}}, \code{\link{checkMatrix}},
+  \code{\link{checkTibble}}
 }
 

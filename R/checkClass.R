@@ -8,6 +8,7 @@
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.
 #' @template checker
+#' @family attributes
 #' @export
 #' @examples
 #' # Create an object with classes "foo" and "bar"

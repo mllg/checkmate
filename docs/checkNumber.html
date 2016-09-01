@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>checkNumber. checkmate 1.8.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">checkmate 1.8.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Check if an argument is a single numeric value</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='checkNumber.html'>checkNumber</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span> <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span>
+  <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>check_number</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span>
+  <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>assertNumber</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span>
+  <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>assert_number</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span>
+  <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>testNumber</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span> <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span>
+  <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>test_number</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span> <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span>
+  <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkNumber.html'>expect_number</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">na.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">lower</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="keyword">-</span><span class="number">Inf</span><span class="keyword">,</span> <span class="argument">upper</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">,</span>
+  <span class="argument">finite</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">null.ok</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="argument">info</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">label</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object to check.</dd>
+      <dt>na.ok</dt>
+      <dd>[<code>logical(1)</code>]
+Are missing values allowed? Default is <code>FALSE</code>.</dd>
+      <dt>lower</dt>
+      <dd>[<code>numeric(1)</code>]
+Lower value all elements of <code>x</code> must be greater than.</dd>
+      <dt>upper</dt>
+      <dd>[<code>numeric(1)</code>]
+Upper value all elements of <code>x</code> must be lower than.</dd>
+      <dt>finite</dt>
+      <dd>[<code>logical(1)</code>]
+Check for only finite values? Default is <code>FALSE</code>.</dd>
+      <dt>null.ok</dt>
+      <dd>[<code>logical(1)</code>]
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</dd>
+      <dt>.var.name</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>info</dt>
+      <dd>[character(1)]
+Extra information to be included in the message for the testthat reporter.
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
+      <dt>label</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Depending on the function prefix:
+ If the check is successful, the functions 
+ <code>assertNumber</code>/<code>assert_number</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkNumber</code>/<code>check_number</code> and 
+ <code>testNumber</code>/<code>test_number</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertNumber</code>/<code>assert_number</code>
+ throws an error message, 
+ <code>testNumber</code>/<code>test_number</code>
+ returns <code>FALSE</code>,
+ and <code>checkNumber</code> returns a string with the error message.
+ The function <code>expect_number</code> always returns an
+ <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Check if an argument is a single numeric value</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>This function does not distinguish between
+<code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>
+<code>NA_character_</code> and <code>NaN</code>.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='checkNumber.html'>testNumber</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">)</span></div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'><span class="functioncall"><a href='checkNumber.html'>testNumber</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">:</span><span class="number">2</span><span class="keyword">)</span></div>
+<div class='output'>[1] FALSE
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>assertNumber</li><li>assert_number</li><li>checkNumber</li><li>check_number</li><li>expect_number</li><li>testNumber</li><li>test_number</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+    <h2>See also</h2>
+      <p>Other scalars: <code><a href='checkCount.html'>checkCount</a></code>,
+  <code><a href='checkFlag.html'>checkFlag</a></code>, <code><a href='checkInt.html'>checkInt</a></code>,
+  <code><a href='checkScalarNA.html'>checkScalarNA</a></code>, <code><a href='checkScalar.html'>checkScalar</a></code>,
+  <code><a href='checkString.html'>checkString</a></code></p>
+
+    
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

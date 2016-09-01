@@ -26,6 +26,7 @@
 #' @template null.ok
 #' @template checker
 #' @family basetypes
+#' @family compound
 #' @useDynLib checkmate c_check_matrix
 #' @export
 #' @examples

@@ -70,4 +70,8 @@ testNamed(x, "unnamed")
 names(x) = letters[1:3]
 testNamed(x, "unique")
 }
+\seealso{
+Other attributes: \code{\link{checkClass}},
+  \code{\link{checkNames}}
+}
 

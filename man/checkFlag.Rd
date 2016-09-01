@@ -84,7 +84,8 @@ testFlag(1)
 }
 \seealso{
 Other scalars: \code{\link{checkCount}},
-  \code{\link{checkInt}}, \code{\link{checkScalarNA}},
-  \code{\link{checkScalar}}, \code{\link{checkString}}
+  \code{\link{checkInt}}, \code{\link{checkNumber}},
+  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
+  \code{\link{checkString}}
 }
 

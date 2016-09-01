@@ -5,15 +5,16 @@ Description: Tests and assertions to perform frequent argument checks. A
     substantial part of the package was written in C to minimize any worries
     about execution time overhead.
 Version: 1.8.2
-Author: Michel Lang <michellang@gmail.com>,
-    Bernd Bischl <bernd_bischl@gmx.net>
-Maintainer: Michel Lang <michellang@gmail.com>
+Authors@R: c(
+    person("Michel", "Lang", NULL, "michellang@gmail.com", role = c("cre", "aut")),
+    person("Bernd", "Bischl", NULL, "bernd_bischl@gmx.de", role = "ctb")
+    )
 URL: https://github.com/mllg/checkmate
+URLNote: https://github.com/mllg/checkmate
 BugReports: https://github.com/mllg/checkmate/issues
 NeedsCompilation: yes
 ByteCompile: yes
 Encoding: UTF-8
-Roxygen: list(wrap = FALSE)
 Depends:
     R (>= 3.0.0)
 Imports:

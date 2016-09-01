@@ -6,6 +6,7 @@
 #' @inheritParams checkList
 #' @template null.ok
 #' @template checker
+#' @family compound
 #' @family basetypes
 #' @export
 #' @useDynLib checkmate c_check_dataframe

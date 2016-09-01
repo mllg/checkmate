@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>checkFileExists. checkmate 1.8.2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">checkmate 1.8.2</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Check existence and access rights of files</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='checkFileExists.html'>checkFileExists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>check_file_exists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>assertFileExists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>assert_file_exists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>testFileExists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>test_file_exists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>expect_file_exists</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">info</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">label</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>checkFile</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>assertFile</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>assert_file</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">.var.name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">add</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>testFile</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">)</span>
+
+<span class="functioncall"><a href='checkFileExists.html'>expect_file</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">,</span> <span class="argument">access</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">""</span><span class="keyword">,</span> <span class="argument">extension</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">info</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span>
+  <span class="argument">label</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='vname.html'>vname</a></span><span class="keyword">(</span><span class="symbol">x</span><span class="keyword">)</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>x</dt>
+      <dd>[any]
+Object to check.</dd>
+      <dt>access</dt>
+      <dd>[<code>character(1)</code>]
+Single string containing possible characters &#145;r&#146;, &#145;w&#146; and &#145;x&#146; to
+force a check for read, write or execute access rights, respectively.
+Write and executable rights are not checked on Windows.</dd>
+      <dt>extension</dt>
+      <dd>[<code>character</code>]
+Vector of allowed file extensions, matched case insensitive.</dd>
+      <dt>.var.name</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in assertions. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+      <dt>add</dt>
+      <dd>[<code>AssertCollection</code>]
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
+      <dt>info</dt>
+      <dd>[character(1)]
+Extra information to be included in the message for the testthat reporter.
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
+      <dt>label</dt>
+      <dd>[<code>character(1)</code>]
+Name of the checked object to print in messages. Defaults to
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
+    </dl>
+    
+    <div class="Value">
+      <h2>Value</h2>
+
+      <p><dl>
+Depending on the function prefix:
+ If the check is successful, the functions 
+ <code>assertFileExists</code>/<code>assert_file_exists</code> return 
+ <code>x</code> invisibly, whereas
+ <code>checkFileExists</code>/<code>check_file_exists</code> and 
+ <code>testFileExists</code>/<code>test_file_exists</code> return 
+ <code>TRUE</code>.
+ If the check is not successful, 
+ <code>assertFileExists</code>/<code>assert_file_exists</code>
+ throws an error message, 
+ <code>testFileExists</code>/<code>test_file_exists</code>
+ returns <code>FALSE</code>,
+ and <code>checkFileExists</code> returns a string with the error message.
+ The function <code>expect_file_exists</code> always returns an
+ <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.
+</dl></p>
+
+    </div>
+
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Check existence and access rights of files</p>
+
+    </div>
+
+    <div class="Note">
+      <h2>Note</h2>
+
+      <p>The functions without the suffix &#147;exists&#148; are deprecated and will be removed
+from the package in a future version due to name clashes.
+<code>test_file</code> has been unexported already.</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment"># Check if R's COPYING file is readable</span>
+<span class="functioncall"><a href='checkFileExists.html'>testFileExists</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/Rhome'>R.home</a></span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">,</span> <span class="string">"COPYING"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">access</span> <span class="argument">=</span> <span class="string">"r"</span><span class="keyword">)</span></div>
+<div class='output'>[1] TRUE
+</div>
+<div class='input'>
+<span class="comment"># Check if R's COPYING file is readable and writable</span>
+<span class="functioncall"><a href='checkFileExists.html'>testFileExists</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/Rhome'>R.home</a></span><span class="keyword">(</span><span class="keyword">)</span><span class="keyword">,</span> <span class="string">"COPYING"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">access</span> <span class="argument">=</span> <span class="string">"rw"</span><span class="keyword">)</span></div>
+<div class='output'>[1] FALSE
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>assertFile</li><li>assertFileExists</li><li>assert_file</li><li>assert_file_exists</li><li>checkFile</li><li>checkFileExists</li><li>check_file_exists</li><li>expect_file</li><li>expect_file_exists</li><li>testFile</li><li>testFileExists</li><li>test_file_exists</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+    <h2>See also</h2>
+      <p>Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
+  <code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>,
+  <code><a href='checkPathForOutput.html'>checkPathForOutput</a></code></p>
+
+    
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

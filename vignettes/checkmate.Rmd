@@ -74,7 +74,7 @@ The functions can be split into four functional groups, indicated by their prefi
 
 If prefixed with `assert`, an error is thrown if the corresponding check fails.
 Otherwise, the checked object is returned invisibly.
-There are many different coding styles out there in the wild, but most R programmers stick to either `CamelCase` or `underscore_case`.
+There are many different coding styles out there in the wild, but most R programmers stick to either `camelBack` or `underscore_case`.
 Therefore, `checkmate` offers all functions in both flavors: `assert_count` is just an alias for `assertCount` but allows you to retain your favorite style.
 
 The family of functions prefixed with `test` always return the check result as logical value.
@@ -86,75 +86,7 @@ Functions starting with `check` return the error message as a string (or `TRUE` 
 All performed checks are logged into the `testthat` reporter.
 Because `testthat` uses the `underscore_case`, the extension functions only come in the underscore style.
 
-
-### Scalars
-
-* [checkFlag](https://mllg.github.io/checkmate/checkFlag)
-* [checkCount](https://mllg.github.io/checkmate/checkCount)
-* [checkInt](https://mllg.github.io/checkmate/checkInt)
-* [checkNumber](https://mllg.github.io/checkmate/checkNumber)
-* [checkString](https://mllg.github.io/checkmate/checkString)
-* [checkScalar](https://mllg.github.io/checkmate/checkScalar)
-* [checkScalarNA](https://mllg.github.io/checkmate/checkScalarNA)
-
-
-### Vectors
-
-* [checkLogical](https://mllg.github.io/checkmate/checkLogical)
-* [checkNumeric](https://mllg.github.io/checkmate/checkNumeric)
-* [checkInteger](https://mllg.github.io/checkmate/checkInteger)
-* [checkIntegerish](https://mllg.github.io/checkmate/checkIntegerish)
-* [checkComplex](https://mllg.github.io/checkmate/checkComplex)
-* [checkCharacter](https://mllg.github.io/checkmate/checkCharacter)
-* [checkFactor](https://mllg.github.io/checkmate/checkFactor)
-* [checkList](https://mllg.github.io/checkmate/checkList)
-* [checkVector](https://mllg.github.io/checkmate/checkVector)
-* [checkAtomic](https://mllg.github.io/checkmate/checkAtomic)
-* [checkAtomicVector](https://mllg.github.io/checkmate/checkAtomicVector)
-
-
-### Attributes
-
-* [checkClass](https://mllg.github.io/checkmate/checkClass)
-* [checkNames](https://mllg.github.io/checkmate/checkNames)
-* [checkNamed](https://mllg.github.io/checkmate/checkNamed)
-
-
-### Choices and Subsets
-
-* [checkChoice](https://mllg.github.io/checkmate/checkChoice)
-* [checkSubset](https://mllg.github.io/checkmate/checkSubset)
-* [checkSetEqual](https://mllg.github.io/checkmate/checkSetEqual)
-
-
-### Matrices, Arrays and Data Frame
-
-* [checkMatrix](https://mllg.github.io/checkmate/checkMatrix)
-* [checkArray](https://mllg.github.io/checkmate/checkArray)
-* [checkDataFrame](https://mllg.github.io/checkmate/checkDataFrame)
-* [checkDataTable](https://mllg.github.io/checkmate/checkDataTable)
-
-
-### Safe Coercion to integer
-
-* [asCount](https://mllg.github.io/checkmate/asInteger)
-* [asInt](https://mllg.github.io/checkmate/asInteger)
-* [asInteger](https://mllg.github.io/checkmate/asInteger)
-
-
-### Other builtin
-
-* [checkNull](https://mllg.github.io/checkmate/checkNull)
-* [checkEnvironment](https://mllg.github.io/checkmate/checkEnvironment)
-* [checkFunction](https://mllg.github.io/checkmate/checkFunction)
-
-
-### File IO:
-
-* [checkFile](https://mllg.github.io/checkmate/checkFile)
-* [checkDirectory](https://mllg.github.io/checkmate/checkDirectory)
-* [checkPathForOutput](https://mllg.github.io/checkmate/checkPathForOutput)
-
+All functions are categorized into objects to check on the [package help page](https://mllg.github.io/checkmate/checkmate-package).
 
 ## In case you miss flexibility
 

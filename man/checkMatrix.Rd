@@ -127,12 +127,15 @@ testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
 Other basetypes: \code{\link{checkArray}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDataTable}},
-  \code{\link{checkEnvironment}},
+  \code{\link{checkDate}}, \code{\link{checkEnvironment}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkNumeric}},
-  \code{\link{checkTibble}}, \code{\link{checkVector}}
+  \code{\link{checkLogical}}, \code{\link{checkNull}},
+  \code{\link{checkNumeric}}, \code{\link{checkVector}}
+
+Other compound: \code{\link{checkArray}},
+  \code{\link{checkDataFrame}},
+  \code{\link{checkDataTable}}, \code{\link{checkTibble}}
 }
 

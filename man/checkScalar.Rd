@@ -85,6 +85,7 @@ testScalar(1:10)
 \seealso{
 Other scalars: \code{\link{checkCount}},
   \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkScalarNA}}, \code{\link{checkString}}
+  \code{\link{checkNumber}}, \code{\link{checkScalarNA}},
+  \code{\link{checkString}}
 }
 

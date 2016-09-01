@@ -107,6 +107,7 @@ testString(letters)
 \seealso{
 Other scalars: \code{\link{checkCount}},
   \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}}
+  \code{\link{checkNumber}}, \code{\link{checkScalarNA}},
+  \code{\link{checkScalar}}
 }
 

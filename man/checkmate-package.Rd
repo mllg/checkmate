@@ -6,13 +6,99 @@
 \alias{checkmate-package}
 \title{Fast and Versatile Argument Checks}
 \description{
-Tests and assertions to perform frequent argument checks. A
-substantial part of the package was written in C to minimize any worries
-about execution time overhead.
-}
-\details{
 \describe{
   \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
+  \item{Bug Reports:}{\url{https://github.com/mllg/checkmate/issues}}
+}
+}
+\section{Overview of implemented functions}{
+
+
+Check scalars:
+\itemize{
+  \item{\code{\link{checkFlag}}}
+  \item{\code{\link{checkCount}}}
+  \item{\code{\link{checkNumber}}}
+  \item{\code{\link{checkInt}}}
+  \item{\code{\link{checkString}}}
+  \item{\code{\link{checkScalar}}}
+  \item{\code{\link{checkScalarNA}}}
+}
+
+Check vectors:
+\itemize{
+  \item{\code{\link{checkLogical}}}
+  \item{\code{\link{checkNumeric}}}
+  \item{\code{\link{checkInteger}}}
+  \item{\code{\link{checkIntegerish}}}
+  \item{\code{\link{checkComplex}}}
+  \item{\code{\link{checkFactor}}}
+  \item{\code{\link{checkList}}}
+  \item{\code{\link{checkVector}}}
+  \item{\code{\link{checkAtomic}}}
+  \item{\code{\link{checkAtomicVector}}}
+}
+
+Check attributes:
+\itemize{
+  \item{\code{\link{checkClass}}}
+  \item{\code{\link{checkNames}}}
+  \item{\code{\link{checkNamed}}}
+}
+
+Check compound types:
+\itemize{
+  \item{\code{\link{checkMatrix}}}
+  \item{\code{\link{checkArray}}}
+  \item{\code{\link{checkDataFrame}}}
+  \item{\code{\link{checkDataTable}}}
+  \item{\code{\link{checkTibble}}}
+}
+
+Check other built-in R types:
+\itemize{
+  \item{\code{\link{checkNull}}}
+  \item{\code{\link{checkEnvironment}}}
+  \item{\code{\link{checkFunction}}}
+  \item{\code{\link{checkDate}}}
+}
+
+Check sets:
+\itemize{
+  \item{\code{\link{checkChoice}}}
+  \item{\code{\link{checkSubset}}}
+  \item{\code{\link{checkSetEqual}}}
+}
+
+File IO:
+\itemize{
+  \item{\code{\link{checkFileExists}}}
+  \item{\code{\link{checkDirectoryExists}}}
+  \item{\code{\link{checkPathForOutput}}}
+  \item{\code{\link{checkAccess}}}
+}
+
+Safe coercion to integer:
+\itemize{
+  \item{\code{\link{asCount}}}
+  \item{\code{\link{asInt}}}
+  \item{\code{\link{asInteger}}}
+}
+
+Quick argument checks using a DSL:
+\itemize{
+  \item{\code{\link{qassert}}}
+  \item{\code{\link{qassertr}}}
+}
+
+Misc:
+\itemize{
+  \item{\code{\link{checkOS}} (check operating system)}
+  \item{\code{\link{assert}} (combine multiple checks into an assertion)}
+  \item{\code{\link{anyMissing}}}
+  \item{\code{\link{allMissing}}}
+  \item{\code{\link{anyNaN}}}
+  \item{\code{\link{wf}} (which.first and which.last)}
 }
 }
 

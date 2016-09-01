@@ -7,7 +7,7 @@
 #' @inheritParams checkDataFrame
 #' @template null.ok
 #' @template checker
-#' @family basetypes
+#' @family compound
 #' @export
 #' @examples
 #' library(tibble)

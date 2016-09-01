@@ -101,4 +101,8 @@ testNames(x, "unique")
 cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 assertNames(names(iris), permutation.of = cn)
 }
+\seealso{
+Other attributes: \code{\link{checkClass}},
+  \code{\link{checkNamed}}
+}
 
