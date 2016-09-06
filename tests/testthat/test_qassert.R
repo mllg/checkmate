@@ -187,7 +187,7 @@ test_that("atomic types", {
   expect_fail_all(xi, "V+")
   expect_succ_all(xr, "v+")
   expect_fail_all(xr, "V+")
-  expect_succ_all(xm, "v+")
+  expect_fail_all(xm, "v+")
   expect_fail_all(xm, "V+")
   expect_fail_all(xl, "v+")
   expect_fail_all(xl, "V+")

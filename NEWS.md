@@ -5,6 +5,7 @@
   `*Numeric` do not accept logical values any more.
 * The set functions are now more restrict regarding the class, e.g. distinguish
   between factors and characters.
+* `checkAtomicVector` is now more restrictive and prohibits a dimension symbol.
 * Dropped support for AssertCollections in convert functions (`asInt`,
   `asInteger` and `asCount`).
 * Added `checkTibble`.

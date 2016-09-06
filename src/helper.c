@@ -2,13 +2,18 @@
 #include "any_missing.h"
 #include "is_integerish.h"
 
-
 Rboolean isStrictlyNumeric(SEXP x) {
     switch(TYPEOF(x)) {
         case REALSXP: return TRUE;
         case INTSXP: return !inherits(x, "factor");
     }
     return FALSE;
+}
+
+Rboolean isAtomicVector(SEXP x) {
+    if (!isVectorAtomic(x))
+        return FALSE;
+    return isNull(getAttrib(x, R_DimSymbol));
 }
 
 /* Checks for a regular list, i.e. not a data frame, not NULL */

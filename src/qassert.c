@@ -63,7 +63,7 @@ static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 static inline Rboolean is_class_string(SEXP x) { return isString(x); }
 static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); }
 static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
-static inline Rboolean is_class_atomic_vector(SEXP x) { return isVectorAtomic(x); }
+static inline Rboolean is_class_atomic_vector(SEXP x) { return isAtomicVector(x); }
 static inline Rboolean is_class_list(SEXP x) { return isRList(x); }
 static inline Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
 static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }

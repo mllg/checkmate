@@ -1,13 +1,5 @@
 context("checkAtomicVector")
 
-li = list(
-  list = list(1, 2),
-  factor = factor("a"),
-  integer = 1:2,
-  NULL = NULL,
-  data.frame = iris
-)
-
 test_that("checkAtomicVector", {
   myobj = 1:2
   expect_succ_all(AtomicVector, myobj)
@@ -47,7 +39,8 @@ test_that("checkAtomicVector", {
 
   expect_error(assertAtomicVector(iris), "atomic")
 
-  expected = setNames(c(FALSE, TRUE, TRUE, FALSE, FALSE), c("list", "factor", "integer", "NULL", "data.frame"))
+  li = list(list = list(1, 2), factor = factor("a"), integer = 1:2, NULL = NULL, data.frame = iris, matrix = matrix(1:9))
+  expected = setNames(c(FALSE, TRUE, TRUE, FALSE, FALSE, FALSE), names(li))
   expect_equal(expected, sapply(li, testAtomicVector))
 })
 

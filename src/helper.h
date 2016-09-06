@@ -6,6 +6,7 @@
 #include <Rinternals.h>
 
 Rboolean isStrictlyNumeric(SEXP);
+Rboolean isAtomicVector(SEXP);
 Rboolean isRList(SEXP);
 R_len_t get_ncols(SEXP);
 R_len_t get_nrows(SEXP);

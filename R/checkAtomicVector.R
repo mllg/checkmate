@@ -4,9 +4,10 @@
 #' An atomic vector is defined slightly different from specifications in
 #' \code{\link[base]{is.atomic}} and \code{\link[base]{is.vector}}:
 #' An atomic vector is either \code{logical}, \code{integer}, \code{numeric},
-#' \code{complex}, \code{character} or \code{raw} and can have any attributes.
-#' I.e., a \code{factor} is an atomic vector, but \code{NULL} is not.
-#' In short, this is equivalent to \code{is.atomic(x) && !is.null(x)}.
+#' \code{complex}, \code{character} or \code{raw} and can have any attributes except a
+#' dimension attribute (like matrices).
+#' I.e., a \code{factor} is an atomic vector, but a matrix or \code{NULL} are not.
+#' In short, this is mostly equivalent to \code{is.atomic(x) && !is.null(x) && is.null(dim(x))}.
 #'
 #' @templateVar fn AtomicVector
 #' @template x
