@@ -3,13 +3,13 @@
   type via argument "mode".
 * Functions `*Count`, `*Int`, `*Number`, `*Integer`, `*Integerish` and
   `*Numeric` do not accept logical values any more.
-* The set functions are now more restrict regarding the class, e.g. distinguish
-  between factors and characters.
+* The set family of functions is now more restrict regarding the class, e.g.
+  they differentiate between factors and characters.
 * `checkAtomicVector` is now more restrictive and prohibits a dimension symbol.
+  Thus, a matrix is not considered an atomic vector any more.
 * Dropped support for AssertCollections in convert functions (`asInt`,
   `asInteger` and `asCount`).
 * Added `checkTibble`.
-
 
 # Version 1.8.1 (2016-06-27)
 * Function `test_file` is longer exported.
