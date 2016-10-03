@@ -38,8 +38,7 @@ checkDataTableProps = function(x, key = NULL, index = NULL) {
     }
     if (!is.null(index)) {
       qassert(index, "S")
-      # indices = if (packageVersion("data.table") >= "1.9.7") data.table::indices else data.table::key2
-      indices = strsplit(data.table::key2(x) %??% "", "__", fixed = TRUE)[[1L]]
+      indices = strsplit(getDataTableIndexFun()(x) %??% "", "__", fixed = TRUE)[[1L]]
       if (!setequal(indices, index))
         return(sprintf("Must have secondary keys (indices): %s", paste0(index, collapse = ",")))
     }
@@ -47,6 +46,11 @@ checkDataTableProps = function(x, key = NULL, index = NULL) {
   return(TRUE)
 }
 
+getDataTableIndexFun = function() {
+  if (is.null(checkmate$data.table.index.fun))
+    checkmate$data.table.index.fun = if (packageVersion("data.table") >= "1.9.7") data.table::indices else data.table::key2
+  checkmate$data.table.index.fun
+}
 
 #' @export
 #' @rdname checkDataTable

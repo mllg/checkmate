@@ -34,7 +34,7 @@ checkListTypes = function(x, types = character(0L)) {
 
   ind = seq_along(x)
   for (type in types) {
-    f = .CHECKLISTTYPEFUNS[[type]] %??% function(x) inherits(x, type)
+    f = checkmate$listtypefuns[[type]] %??% function(x) inherits(x, type)
     ind = ind[!vapply(x[ind], f, FUN.VALUE = NA, USE.NAMES = FALSE)]
     if (length(ind) == 0L)
       return(TRUE)

@@ -85,7 +85,6 @@ Collate:
     'checkVector.R'
     'coalesce.R'
     'isIntegerish.R'
-    'constants.R'
     'matchArg.R'
     'qassert.R'
     'qassertr.R'

@@ -10,7 +10,7 @@
 #' testOS("linux")
 checkOS = function(os) {
   ok = match.arg(os, c("windows", "mac", "linux", "solaris"), several.ok = TRUE)
-  if (.OS %nin% ok)
+  if (checkmate$os %nin% ok)
     return(sprintf("OS must be %s", paste0(ok, collapse = " or ")))
   return(TRUE)
 }
@@ -47,5 +47,5 @@ test_os = testOS
 #' @rdname checkOS
 expect_os = function(os, info = NULL, label = NULL) {
   res = checkOS(os)
-  makeExpectation(.OS, res, info, label = label %??% "Operating System")
+  makeExpectation(checkmate$os, res, info, label = label %??% "Operating System")
 }
