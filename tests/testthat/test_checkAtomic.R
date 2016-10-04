@@ -47,5 +47,5 @@ test_that("checkAtomic", {
 
   expect_error(assertAtomic(iris), "atomic")
 
-  expect_equal(sapply(li, is.atomic), sapply(li, testAtomic))
+  expect_equal(vlapply(li, is.atomic), vlapply(li, testAtomic))
 })

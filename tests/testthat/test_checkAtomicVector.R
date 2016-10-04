@@ -41,7 +41,7 @@ test_that("checkAtomicVector", {
 
   li = list(list = list(1, 2), factor = factor("a"), integer = 1:2, NULL = NULL, data.frame = iris, matrix = matrix(1:9))
   expected = setNames(c(FALSE, TRUE, TRUE, FALSE, FALSE, FALSE), names(li))
-  expect_equal(expected, sapply(li, testAtomicVector))
+  expect_equal(expected, vlapply(li, testAtomicVector))
 })
 
 test_that("type guessing works (#48)", {

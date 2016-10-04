@@ -91,5 +91,5 @@ test_that("anyMissing and allMissing work correctly with data.frames", {
   df$b[2] = NA
   expect_true(anyMissing(df))
   expect_true(allMissing(df))
-  expect_false(all(sapply(df, allMissing)))
+  expect_false(all(vlapply(df, allMissing)))
 })

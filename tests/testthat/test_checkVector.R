@@ -46,9 +46,9 @@ test_that("checkVector", {
   expect_true(testVector(setNames(1, "x"), names="named"))
   expect_false(testVector(1, names="unique"))
 
-  expect_equal(sapply(li, is.vector), sapply(li, testVector, strict = TRUE))
+  expect_equal(vlapply(li, is.vector), vlapply(li, testVector, strict = TRUE))
   expected = setNames(c(TRUE, TRUE, TRUE, FALSE, TRUE), c("list", "factor", "integer", "NULL", "data.frame"))
-  expect_equal(expected, sapply(li, testVector, strict = FALSE))
+  expect_equal(expected, vlapply(li, testVector, strict = FALSE))
 
   expect_error(assertVector(iris, strict = TRUE), "vector")
 })

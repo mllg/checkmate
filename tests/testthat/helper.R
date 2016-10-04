@@ -97,3 +97,7 @@ expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc
 
   invisible(TRUE)
 }
+
+vlapply = function (x, fun, ..., use.names = TRUE) {
+    vapply(X = x, FUN = fun, ..., FUN.VALUE = NA, USE.NAMES = use.names)
+}
