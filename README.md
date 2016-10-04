@@ -1,6 +1,6 @@
 # checkmate
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/checkmate)](http://cran.r-project.org/package=checkmate)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/checkmate)](https://cran.r-project.org/package=checkmate)
 [![Build Status](https://travis-ci.org/mllg/checkmate.svg?branch=master)](https://travis-ci.org/mllg/checkmate)
 [![Build status](https://ci.appveyor.com/api/projects/status/y4ayps61hjd3375o/branch/master?svg=true)](https://ci.appveyor.com/project/mllg/checkmate/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/r/mllg/checkmate?branch=master)
@@ -19,15 +19,15 @@ Enter checkmate.
 Virtually **every standard type of user error** when passing arguments into function can be
 caught with a simple, readable line which produces an **informative error message** in case.
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
-Furthermore, the package provides over 30 expectations to extend the popular [testthat package](http://cran.r-project.org/package=testthat) for unit tests.
+Furthermore, the package provides over 30 expectations to extend the popular [testthat package](https://cran.r-project.org/package=testthat) for unit tests.
 
 
 ## Installation
-For the stable release, just install the latest version from [CRAN](http://cran.r-project.org/package=checkmate):
+For the stable release, just install the latest version from [CRAN](https://cran.r-project.org/package=checkmate):
 ```{R}
 install.packages("checkmate")
 ```
-For the development version, use [devtools](http://cran.r-project.org/package=devtools):
+For the development version, use [devtools](https://cran.r-project.org/package=devtools):
 ```{R}
 devtools::install_github("mllg/checkmate")
 ```
