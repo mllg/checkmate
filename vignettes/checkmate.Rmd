@@ -82,7 +82,7 @@ Again, you can use `test_count` and `testCount` interchangeably.
 
 Functions starting with `check` return the error message as a string (or `TRUE` otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.
 
-`expect` is the last family of functions and is intended to be used with the [testthat package](http://cran.r-project.org/package=testthat).
+`expect` is the last family of functions and is intended to be used with the [testthat package](https://cran.r-project.org/package=testthat).
 All performed checks are logged into the `testthat` reporter.
 Because `testthat` uses the `underscore_case`, the extension functions only come in the underscore style.
 
@@ -119,7 +119,7 @@ You choose what you like best.
 
 
 ## checkmate as testthat extension
-To extend [testthat](http://cran.r-project.org/package=testthat), you need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
+To extend [testthat](https://cran.r-project.org/package=testthat), you need to IMPORT, DEPEND or SUGGEST on the `checkmate` package.
 Here is a minimal example:
 ```{r,eval=FALSE}
 # file: tests/test-all.R
