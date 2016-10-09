@@ -86,11 +86,11 @@ Functions starting with `check` return the error message as a string (or `TRUE` 
 All performed checks are logged into the `testthat` reporter.
 Because `testthat` uses the `underscore_case`, the extension functions only come in the underscore style.
 
-All functions are categorized into objects to check on the [package help page](https://mllg.github.io/checkmate/checkmate-package).
+All functions are categorized into objects to check on the [package help page](https://mllg.github.io/checkmate/reference/checkmate-package).
 
 ## In case you miss flexibility
 
-You can use [assert](https://mllg.github.io/checkmate/assert) to perform multiple checks at once and throw an assertion if all checks fail.
+You can use [assert](https://mllg.github.io/checkmate/reference/assert) to perform multiple checks at once and throw an assertion if all checks fail.
 
 Here is an example where we check that x is either of class `foo` or class `bar`:
 
@@ -103,7 +103,7 @@ f <- function(x) {
 }
 ```
 
-Note that `assert(, combine = "or") and `assert(, combine = "and")` allow to control the logical
+Note that `assert(, combine = "or")` and `assert(, combine = "and")` allow to control the logical
 combination of the specified checks, and that the former is the default.
 
 
@@ -114,8 +114,8 @@ E.g., `qassert(x, "I+")` asserts that `x` is an integer vector with at least one
 This very simple domain specific language covers a large variety of frequent argument checks with only a few keystrokes.
 You choose what you like best.
 
-* [qassert](https://mllg.github.io/checkmate/qassert)
-* [qassertr](https://mllg.github.io/checkmate/qassert)
+* [qassert](https://mllg.github.io/checkmate/reference/qassert)
+* [qassertr](https://mllg.github.io/checkmate/reference/qassert)
 
 
 ## checkmate as testthat extension
@@ -237,7 +237,7 @@ checkSquareMatrix(X)
 checkSquareMatrix(X, mode = "character")
 checkSquareMatrix(X[1:2, ])
 ```
-The respective counterparts to the `check`-function can be created using the constructors [makeAssertionFunction](https://mllg.github.io/checkmate/makeAssertion), [makeTestFunction](https://mllg.github.io/checkmate/makeTest) and [makeExpectationFunction](https://mllg.github.io/checkmate/makeExpectation):
+The respective counterparts to the `check`-function can be created using the constructors [makeAssertionFunction](https://mllg.github.io/checkmate/reference/makeAssertion), [makeTestFunction](https://mllg.github.io/checkmate/reference/makeTest) and [makeExpectationFunction](https://mllg.github.io/checkmate/reference/makeExpectation):
 ```{r}
 # For assertions:
 assert_square_matrix = assertSquareMatrix = makeAssertionFunction(checkSquareMatrix)
@@ -261,7 +261,7 @@ The package registers two functions which can be used in other packages' C/C++ c
 SEXP qassert(SEXP x, const char *rule, const char *name);
 Rboolean qtest(SEXP x, const char *rule);
 ```
-These are the counterparts to [qassert](https://mllg.github.io/checkmate/qassert) and [qtest](https://mllg.github.io/checkmate/qassert).
+These are the counterparts to [qassert](https://mllg.github.io/checkmate/reference/qassert) and [qtest](https://mllg.github.io/checkmate/reference/qassert).
 Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.
 
 For detailed background information on the register mechanism, see the [Exporting C Code](http://r-pkgs.had.co.nz/src.html#clang) section in Hadley's Book "R Packages" or [WRE](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).
