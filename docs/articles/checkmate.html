@@ -101,11 +101,11 @@
 <p>The family of functions prefixed with <code>test</code> always return the check result as logical value. Again, you can use <code>test_count</code> and <code>testCount</code> interchangeably.</p>
 <p>Functions starting with <code>check</code> return the error message as a string (or <code>TRUE</code> otherwise) and can be used if you need more control and, e.g., want to grep on the returned error message.</p>
 <p><code>expect</code> is the last family of functions and is intended to be used with the <a href="https://cran.r-project.org/package=testthat">testthat package</a>. All performed checks are logged into the <code>testthat</code> reporter. Because <code>testthat</code> uses the <code>underscore_case</code>, the extension functions only come in the underscore style.</p>
-<p>All functions are categorized into objects to check on the <a href="https://mllg.github.io/checkmate/checkmate-package">package help page</a>.</p>
+<p>All functions are categorized into objects to check on the <a href="https://mllg.github.io/checkmate/reference/checkmate-package">package help page</a>.</p>
 </div>
 <div id="in-case-you-miss-flexibility" class="section level2">
 <h2>In case you miss flexibility</h2>
-<p>You can use <a href="https://mllg.github.io/checkmate/assert">assert</a> to perform multiple checks at once and throw an assertion if all checks fail.</p>
+<p>You can use <a href="https://mllg.github.io/checkmate/reference/assert">assert</a> to perform multiple checks at once and throw an assertion if all checks fail.</p>
 <p>Here is an example where we check that x is either of class <code>foo</code> or class <code>bar</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(x) {
   <span class="kw"><a href="../reference/assert.html">assert</a></span>(
@@ -113,13 +113,13 @@
     <span class="kw"><a href="../reference/checkClass.html">checkClass</a></span>(x, <span class="st">"bar"</span>)
   )
 }</code></pre></div>
-<p>Note that <code>assert(, combine = "or") and</code>assert(, combine = &ldquo;and&rdquo;)` allow to control the logical combination of the specified checks, and that the former is the default.</p>
+<p>Note that <code><a href="../reference/assert.html">assert(, combine = "or")</a></code> and <code><a href="../reference/assert.html">assert(, combine = "and")</a></code> allow to control the logical combination of the specified checks, and that the former is the default.</p>
 </div>
 <div id="argument-checks-for-the-lazy" class="section level2">
 <h2>Argument Checks for the Lazy</h2>
 <p>The following functions allow a special syntax to define argument checks using a special format specification. E.g., <code><a href="../reference/qassert.html">qassert(x, "I+")</a></code> asserts that <code>x</code> is an integer vector with at least one element and no missing values. This very simple domain specific language covers a large variety of frequent argument checks with only a few keystrokes. You choose what you like best.</p>
-<ul><li><a href="https://mllg.github.io/checkmate/qassert">qassert</a></li>
-<li><a href="https://mllg.github.io/checkmate/qassert">qassertr</a></li>
+<ul><li><a href="https://mllg.github.io/checkmate/reference/qassert">qassert</a></li>
+<li><a href="https://mllg.github.io/checkmate/reference/qassert">qassertr</a></li>
 </ul></div>
 <div id="checkmate-as-testthat-extension" class="section level2">
 <h2>checkmate as testthat extension</h2>
@@ -154,9 +154,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr   min     lq    mean median     uq    max neval cld
-##    r(x) 4.600 5.0090 6.07663 5.1880 5.5825 27.316   100   b
-##   cm(x) 2.153 2.3695 2.83629 2.5100 2.8100 12.681   100  a 
-##  cmq(x) 1.677 1.8420 2.21678 2.0235 2.2030  9.102   100  a</code></pre>
+##    r(x) 4.751 5.1835 6.32474  5.353 5.7610 32.763   100   b
+##   cm(x) 2.208 2.3585 3.14810  2.616 2.9315 29.602   100  a 
+##  cmq(x) 1.659 1.8635 2.29127  2.076 2.2805  9.774   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.svg" width="576"></p>
 </div>
@@ -170,9 +170,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq    max neval cld
-##    r(x) 12.857 13.3390 14.33894 13.6860 14.0250 33.650   100   c
-##   cm(x)  5.497  5.9625  7.11478  6.2180  6.5315 26.955   100  b 
-##  cmq(x)  4.931  5.1735  5.91227  5.4425  5.7160 28.301   100 a</code></pre>
+##    r(x) 13.061 13.5555 15.30308 13.8460 14.3855 41.647   100   c
+##   cm(x)  5.605  5.9785  7.90095  6.3080  6.6825 54.937   100  b 
+##  cmq(x)  4.873  5.1500  6.17332  5.3725  5.5620 21.566   100 a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.svg" width="576"></p>
 </div>
@@ -186,9 +186,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr      min        lq       mean    median        uq      max neval
-##    r(x) 1134.221 1135.5070 1191.80704 1165.3815 1192.3475 1959.563   100
-##   cm(x)   30.729   31.3825   33.85051   32.2245   32.7965   66.642   100
-##  cmq(x)   40.832   43.4835   45.85700   43.8535   44.7400  101.641   100
+##    r(x) 1135.161 1137.2655 1186.42620 1164.6810 1172.6980 1995.258   100
+##   cm(x)   30.846   31.3955   33.36411   32.1585   32.7665   49.061   100
+##  cmq(x)   40.759   43.3430   45.56214   43.7580   44.3665   96.532   100
 ##  cld
 ##    b
 ##   a 
@@ -206,10 +206,10 @@ cmq =<span class="st"> </span>function(x) <span class="kw"><a href="../reference
 mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq     mean median      uq     max neval cld
-##    r(x) 51.249 52.5385 65.01004 53.779 55.7500 846.308   100   b
-##   cm(x) 15.294 16.0875 18.07901 16.604 17.2035  55.168   100  a 
-##  cmq(x) 10.086 10.3830 11.97894 10.677 10.9650  40.610   100  a</code></pre>
+##    expr    min      lq     mean  median      uq     max neval cld
+##    r(x) 52.383 53.8225 66.99724 54.2830 56.4275 859.952   100   b
+##   cm(x) 15.794 16.3370 19.09791 16.8940 17.3330  49.595   100  a 
+##  cmq(x) 10.351 10.4920 11.77781 10.7925 10.9895  37.739   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.svg" width="576"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># checkmate tries to stop as early as possible</span>
@@ -217,10 +217,10 @@ x$a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</sp
 mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: nanoseconds
-##    expr   min      lq     mean  median      uq     max neval cld
-##    r(x) 44144 45824.0 60724.91 46793.0 49721.5 1066619   100   b
-##   cm(x)  4156  4627.0  5767.41  5188.5  5425.5   24011   100  a 
-##  cmq(x)   669   801.5  1287.87  1035.0  1302.0   17429   100  a</code></pre>
+##    expr   min      lq     mean  median    uq     max neval cld
+##    r(x) 45227 45864.0 58959.70 46405.5 47489 1051166   100   b
+##   cm(x)  4218  4505.5  5685.53  5126.0  5427   31743   100  a 
+##  cmq(x)   672   837.5  1236.93  1019.0  1280   12409   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.svg" width="576"></p>
 </div>
@@ -247,7 +247,7 @@ X =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</s
 <pre><code>## [1] "Must store characters"</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">checkSquareMatrix</span>(X[<span class="dv">1</span>:<span class="dv">2</span>, ])</code></pre></div>
 <pre><code>## [1] "Must be square"</code></pre>
-<p>The respective counterparts to the <code>check</code>-function can be created using the constructors <a href="https://mllg.github.io/checkmate/makeAssertion">makeAssertionFunction</a>, <a href="https://mllg.github.io/checkmate/makeTest">makeTestFunction</a> and <a href="https://mllg.github.io/checkmate/makeExpectation">makeExpectationFunction</a>:</p>
+<p>The respective counterparts to the <code>check</code>-function can be created using the constructors <a href="https://mllg.github.io/checkmate/reference/makeAssertion">makeAssertionFunction</a>, <a href="https://mllg.github.io/checkmate/reference/makeTest">makeTestFunction</a> and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExpectationFunction</a>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For assertions:</span>
 assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span>(checkSquareMatrix)
 <span class="kw">print</span>(assertSquareMatrix)</code></pre></div>
@@ -256,7 +256,7 @@ assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="
 ##     res = checkSquareMatrix(x, mode)
 ##     makeAssertion(x, res, .var.name, add)
 ## }
-## &lt;environment: 0x5c8cf98&gt;</code></pre>
+## &lt;environment: 0x46b9978&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For tests:</span>
 test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)
 <span class="kw">print</span>(testSquareMatrix)</code></pre></div>
@@ -264,7 +264,7 @@ test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st">
 ## {
 ##     identical(checkSquareMatrix(x, mode), TRUE)
 ## }
-## &lt;environment: 0x5c8cf98&gt;</code></pre>
+## &lt;environment: 0x46b9978&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For expectations:</span>
 expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)
 <span class="kw">print</span>(expect_square_matrix)</code></pre></div>
@@ -273,7 +273,7 @@ expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../refe
 ##     res = checkSquareMatrix(x, mode)
 ##     makeExpectation(x, res, info, label)
 ## }
-## &lt;environment: 0x5c8cf98&gt;</code></pre>
+## &lt;environment: 0x46b9978&gt;</code></pre>
 <p>Note that all the additional arguments <code>.var.name</code>, <code>add</code>, <code>info</code> and <code>label</code> are automatically joined with the function arguments of your custom check function. Also note that if you define these functions inside an R package, the constructors are called at build-time (thus, there is no negative impact on the runtime).</p>
 </div>
 <div id="calling-checkmate-from-cc" class="section level2">
@@ -281,7 +281,7 @@ expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../refe
 <p>The package registers two functions which can be used in other packages&rsquo; C/C++ code for argument checks.</p>
 <div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">SEXP qassert(SEXP x, <span class="dt">const</span> <span class="dt">char</span> *rule, <span class="dt">const</span> <span class="dt">char</span> *name);
 Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span> *rule);</code></pre></div>
-<p>These are the counterparts to <a href="https://mllg.github.io/checkmate/qassert">qassert</a> and <a href="https://mllg.github.io/checkmate/qassert">qtest</a>. Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.</p>
+<p>These are the counterparts to <a href="https://mllg.github.io/checkmate/reference/qassert">qassert</a> and <a href="https://mllg.github.io/checkmate/reference/qassert">qtest</a>. Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.</p>
 <p>For detailed background information on the register mechanism, see the <a href="http://r-pkgs.had.co.nz/src.html#clang">Exporting C Code</a> section in Hadley&rsquo;s Book &ldquo;R Packages&rdquo; or <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines">WRE</a>. Here is a step-by-step guide to get you started:</p>
 <ol style="list-style-type: decimal"><li>Add <code>checkmate</code> to your &ldquo;Imports&rdquo; and LinkingTo" sections in your DESCRIPTION file.</li>
 <li>Create a stub file C source file which pulls in the provided C functions in order to compile them for your package. See example below.</li>
