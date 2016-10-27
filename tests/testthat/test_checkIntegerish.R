@@ -53,3 +53,9 @@ test_that("bounds of vectors with only missings are not checked", {
   expect_fail_all(Integerish, 0, lower = 1L)
   expect_fail_all(Integerish, 100, upper = 10L)
 })
+
+test_that("isIntegerish internal function", {
+  expect_true(isIntegerish(1))
+  expect_true(isIntegerish(1.))
+  expect_false(isIntegerish(1.1))
+})
