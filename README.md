@@ -34,5 +34,5 @@ devtools::install_github("mllg/checkmate")
 
 ## Resources
 * [NEWS](https://github.com/mllg/checkmate/blob/master/NEWS.md)
-* [Documentation and Vignettes](https://mllg.github.io/checkmate/)
-* [Grouped function reference](https://mllg.github.io/checkmate/checkmate-package)
+* [Documentation/Vignettes](https://mllg.github.io/checkmate/)
+* [Grouped function reference](https://mllg.github.io/checkmate/reference/checkmate-package)

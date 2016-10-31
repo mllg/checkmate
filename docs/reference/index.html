@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference. checkmate</title>
+<title>Function reference • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-index">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,135 +70,258 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Function reference <small>version&nbsp;1.8.2</small></h1>
-</div>
-
-<div class="row">
+      <div class="row">
   <div class="col-md-9">
-    <div class="section ">
-      <h2>All functions</h2>
+    <div class="page-header">
+      <h1>Function reference</h1>
+      <h4>version&nbsp;1.8.2</h4>
+    </div>
+
+    <div class="contents">
+      <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="anyInfinite.html">anyInfinite</a></dt>
-        <dd>Check if an object contains infinite values</dd>
-        <dt><a href="anyMissing.html">allMissing</a></dt><dt><a href="anyMissing.html">anyMissing</a></dt>
-        <dd>Check if an object contains missing values</dd>
-        <dt><a href="anyNaN.html">anyNaN</a></dt>
-        <dd>Check if an object contains NaN values</dd>
-        <dt><a href="asInteger.html">asCount</a></dt><dt><a href="asInteger.html">asInt</a></dt><dt><a href="asInteger.html">asInteger</a></dt>
-        <dd>Convert an argument to an integer</dd>
-        <dt><a href="AssertCollection.html">AssertCollection</a></dt><dt><a href="AssertCollection.html">makeAssertCollection</a></dt><dt><a href="AssertCollection.html">reportAssertions</a></dt>
-        <dd>Collect multiple assertions</dd>
-        <dt><a href="assert.html">assert</a></dt>
-        <dd>Combine multiple checks into one assertion</dd>
-        <dt><a href="checkAccess.html">assertAccess</a></dt><dt><a href="checkAccess.html">assert_access</a></dt><dt><a href="checkAccess.html">checkAccess</a></dt><dt><a href="checkAccess.html">check_access</a></dt><dt><a href="checkAccess.html">expect_access</a></dt><dt><a href="checkAccess.html">testAccess</a></dt><dt><a href="checkAccess.html">test_access</a></dt>
-        <dd>Check file system access rights</dd>
-        <dt><a href="checkArray.html">assertArray</a></dt><dt><a href="checkArray.html">assert_array</a></dt><dt><a href="checkArray.html">checkArray</a></dt><dt><a href="checkArray.html">check_array</a></dt><dt><a href="checkArray.html">expect_array</a></dt><dt><a href="checkArray.html">testArray</a></dt><dt><a href="checkArray.html">test_array</a></dt>
-        <dd>Check if an argument is an array</dd>
-        <dt><a href="checkAtomic.html">assertAtomic</a></dt><dt><a href="checkAtomic.html">assert_atomic</a></dt><dt><a href="checkAtomic.html">checkAtomic</a></dt><dt><a href="checkAtomic.html">check_atomic</a></dt><dt><a href="checkAtomic.html">expect_atomic</a></dt><dt><a href="checkAtomic.html">testAtomic</a></dt><dt><a href="checkAtomic.html">test_atomic</a></dt>
-        <dd>Check that an argument is an atomic vector</dd>
-        <dt><a href="checkAtomicVector.html">assertAtomicVector</a></dt><dt><a href="checkAtomicVector.html">assert_atomic_vector</a></dt><dt><a href="checkAtomicVector.html">checkAtomicVector</a></dt><dt><a href="checkAtomicVector.html">check_atomic_vector</a></dt><dt><a href="checkAtomicVector.html">expect_atomic_vector</a></dt><dt><a href="checkAtomicVector.html">testAtomicVector</a></dt><dt><a href="checkAtomicVector.html">test_atomic_vector</a></dt>
-        <dd>Check that an argument is an atomic vector</dd>
-        <dt><a href="checkCharacter.html">assertCharacter</a></dt><dt><a href="checkCharacter.html">assert_character</a></dt><dt><a href="checkCharacter.html">checkCharacter</a></dt><dt><a href="checkCharacter.html">check_character</a></dt><dt><a href="checkCharacter.html">expect_character</a></dt><dt><a href="checkCharacter.html">testCharacter</a></dt><dt><a href="checkCharacter.html">test_character</a></dt>
-        <dd>Check if an argument is a vector of type character</dd>
-        <dt><a href="checkChoice.html">assertChoice</a></dt><dt><a href="checkChoice.html">assert_choice</a></dt><dt><a href="checkChoice.html">checkChoice</a></dt><dt><a href="checkChoice.html">check_choice</a></dt><dt><a href="checkChoice.html">expect_choice</a></dt><dt><a href="checkChoice.html">testChoice</a></dt><dt><a href="checkChoice.html">test_choice</a></dt>
-        <dd>Check if an object is an element of a given set</dd>
-        <dt><a href="checkClass.html">assertClass</a></dt><dt><a href="checkClass.html">assert_class</a></dt><dt><a href="checkClass.html">checkClass</a></dt><dt><a href="checkClass.html">check_class</a></dt><dt><a href="checkClass.html">expect_class</a></dt><dt><a href="checkClass.html">testClass</a></dt><dt><a href="checkClass.html">test_class</a></dt>
-        <dd>Check the class membership of an argument</dd>
-        <dt><a href="checkComplex.html">assertComplex</a></dt><dt><a href="checkComplex.html">assert_complex</a></dt><dt><a href="checkComplex.html">checkComplex</a></dt><dt><a href="checkComplex.html">check_complex</a></dt><dt><a href="checkComplex.html">expect_complex</a></dt><dt><a href="checkComplex.html">testComplex</a></dt><dt><a href="checkComplex.html">test_complex</a></dt>
-        <dd>Check if an argument is a vector of type complex</dd>
-        <dt><a href="checkCount.html">assertCount</a></dt><dt><a href="checkCount.html">assert_count</a></dt><dt><a href="checkCount.html">checkCount</a></dt><dt><a href="checkCount.html">check_count</a></dt><dt><a href="checkCount.html">expect_count</a></dt><dt><a href="checkCount.html">testCount</a></dt><dt><a href="checkCount.html">test_count</a></dt>
-        <dd>Check if an argument is a count</dd>
-        <dt><a href="checkDataFrame.html">assertDataFrame</a></dt><dt><a href="checkDataFrame.html">assert_data_frame</a></dt><dt><a href="checkDataFrame.html">checkDataFrame</a></dt><dt><a href="checkDataFrame.html">check_data_frame</a></dt><dt><a href="checkDataFrame.html">expect_data_frame</a></dt><dt><a href="checkDataFrame.html">testDataFrame</a></dt><dt><a href="checkDataFrame.html">test_data_frame</a></dt>
-        <dd>Check if an argument is a data frame</dd>
-        <dt><a href="checkDataTable.html">assertDataTable</a></dt><dt><a href="checkDataTable.html">assert_data_table</a></dt><dt><a href="checkDataTable.html">checkDataTable</a></dt><dt><a href="checkDataTable.html">check_data_table</a></dt><dt><a href="checkDataTable.html">expect_data_table</a></dt><dt><a href="checkDataTable.html">testDataTable</a></dt><dt><a href="checkDataTable.html">test_data_table</a></dt>
-        <dd>Check if an argument is a data table</dd>
-        <dt><a href="checkDate.html">assertDate</a></dt><dt><a href="checkDate.html">assert_date</a></dt><dt><a href="checkDate.html">checkDate</a></dt><dt><a href="checkDate.html">check_date</a></dt><dt><a href="checkDate.html">expect_date</a></dt><dt><a href="checkDate.html">testDate</a></dt><dt><a href="checkDate.html">test_date</a></dt>
-        <dd>Check that an argument is a Date</dd>
-        <dt><a href="checkDirectoryExists.html">assertDirectory</a></dt><dt><a href="checkDirectoryExists.html">assertDirectoryExists</a></dt><dt><a href="checkDirectoryExists.html">assert_directory</a></dt><dt><a href="checkDirectoryExists.html">assert_directory_exists</a></dt><dt><a href="checkDirectoryExists.html">checkDirectory</a></dt><dt><a href="checkDirectoryExists.html">checkDirectoryExists</a></dt><dt><a href="checkDirectoryExists.html">check_directory_exists</a></dt><dt><a href="checkDirectoryExists.html">expect_directory</a></dt><dt><a href="checkDirectoryExists.html">expect_directory_exists</a></dt><dt><a href="checkDirectoryExists.html">testDirectory</a></dt><dt><a href="checkDirectoryExists.html">testDirectoryExists</a></dt><dt><a href="checkDirectoryExists.html">test_directory</a></dt><dt><a href="checkDirectoryExists.html">test_directory_exists</a></dt>
-        <dd>Check for existence and access rights of directories</dd>
-        <dt><a href="checkEnvironment.html">assertEnvironment</a></dt><dt><a href="checkEnvironment.html">assert_environment</a></dt><dt><a href="checkEnvironment.html">checkEnvironment</a></dt><dt><a href="checkEnvironment.html">check_environment</a></dt><dt><a href="checkEnvironment.html">expect_environment</a></dt><dt><a href="checkEnvironment.html">testEnvironment</a></dt><dt><a href="checkEnvironment.html">test_environment</a></dt>
-        <dd>Check if an argument is an environment</dd>
-        <dt><a href="checkFactor.html">assertFactor</a></dt><dt><a href="checkFactor.html">assert_factor</a></dt><dt><a href="checkFactor.html">checkFactor</a></dt><dt><a href="checkFactor.html">check_factor</a></dt><dt><a href="checkFactor.html">expect_factor</a></dt><dt><a href="checkFactor.html">testFactor</a></dt><dt><a href="checkFactor.html">test_factor</a></dt>
-        <dd>Check if an argument is a factor</dd>
-        <dt><a href="checkFileExists.html">assertFile</a></dt><dt><a href="checkFileExists.html">assertFileExists</a></dt><dt><a href="checkFileExists.html">assert_file</a></dt><dt><a href="checkFileExists.html">assert_file_exists</a></dt><dt><a href="checkFileExists.html">checkFile</a></dt><dt><a href="checkFileExists.html">checkFileExists</a></dt><dt><a href="checkFileExists.html">check_file_exists</a></dt><dt><a href="checkFileExists.html">expect_file</a></dt><dt><a href="checkFileExists.html">expect_file_exists</a></dt><dt><a href="checkFileExists.html">testFile</a></dt><dt><a href="checkFileExists.html">testFileExists</a></dt><dt><a href="checkFileExists.html">test_file_exists</a></dt>
-        <dd>Check existence and access rights of files</dd>
-        <dt><a href="checkFlag.html">assertFlag</a></dt><dt><a href="checkFlag.html">assert_flag</a></dt><dt><a href="checkFlag.html">checkFlag</a></dt><dt><a href="checkFlag.html">check_flag</a></dt><dt><a href="checkFlag.html">expect_flag</a></dt><dt><a href="checkFlag.html">testFlag</a></dt><dt><a href="checkFlag.html">test_flag</a></dt>
-        <dd>Check if an argument is a flag</dd>
-        <dt><a href="checkFunction.html">assertFunction</a></dt><dt><a href="checkFunction.html">assert_function</a></dt><dt><a href="checkFunction.html">checkFunction</a></dt><dt><a href="checkFunction.html">check_function</a></dt><dt><a href="checkFunction.html">expect_function</a></dt><dt><a href="checkFunction.html">testFunction</a></dt><dt><a href="checkFunction.html">test_function</a></dt>
-        <dd>Check if an argument is a function</dd>
-        <dt><a href="checkIntegerish.html">assertIntegerish</a></dt><dt><a href="checkIntegerish.html">assert_integerish</a></dt><dt><a href="checkIntegerish.html">checkIntegerish</a></dt><dt><a href="checkIntegerish.html">check_integerish</a></dt><dt><a href="checkIntegerish.html">expect_integerish</a></dt><dt><a href="checkIntegerish.html">testIntegerish</a></dt><dt><a href="checkIntegerish.html">test_integerish</a></dt>
-        <dd>Check if an object is an integerish vector</dd>
-        <dt><a href="checkInteger.html">assertInteger</a></dt><dt><a href="checkInteger.html">assert_integer</a></dt><dt><a href="checkInteger.html">checkInteger</a></dt><dt><a href="checkInteger.html">check_integer</a></dt><dt><a href="checkInteger.html">expect_integer</a></dt><dt><a href="checkInteger.html">testInteger</a></dt><dt><a href="checkInteger.html">test_integer</a></dt>
-        <dd>Check if an argument is vector of type integer</dd>
-        <dt><a href="checkInt.html">assertInt</a></dt><dt><a href="checkInt.html">assert_int</a></dt><dt><a href="checkInt.html">checkInt</a></dt><dt><a href="checkInt.html">check_int</a></dt><dt><a href="checkInt.html">expect_int</a></dt><dt><a href="checkInt.html">testInt</a></dt><dt><a href="checkInt.html">test_int</a></dt>
-        <dd>Check if an argument is a single integerish value</dd>
-        <dt><a href="checkList.html">assertList</a></dt><dt><a href="checkList.html">assert_list</a></dt><dt><a href="checkList.html">checkList</a></dt><dt><a href="checkList.html">check_list</a></dt><dt><a href="checkList.html">expect_list</a></dt><dt><a href="checkList.html">testList</a></dt><dt><a href="checkList.html">test_list</a></dt>
-        <dd>Check if an argument is a list</dd>
-        <dt><a href="checkLogical.html">assertLogical</a></dt><dt><a href="checkLogical.html">assert_logical</a></dt><dt><a href="checkLogical.html">checkLogical</a></dt><dt><a href="checkLogical.html">check_logical</a></dt><dt><a href="checkLogical.html">expect_logical</a></dt><dt><a href="checkLogical.html">testLogical</a></dt><dt><a href="checkLogical.html">test_logical</a></dt>
-        <dd>Check if an argument is a vector of type logical</dd>
-        <dt><a href="checkmate-package.html">checkmate</a></dt><dt><a href="checkmate-package.html">checkmate-package</a></dt>
-        <dd>Fast and Versatile Argument Checks</dd>
-        <dt><a href="checkMatrix.html">assertMatrix</a></dt><dt><a href="checkMatrix.html">assert_matrix</a></dt><dt><a href="checkMatrix.html">checkMatrix</a></dt><dt><a href="checkMatrix.html">check_matrix</a></dt><dt><a href="checkMatrix.html">expect_matrix</a></dt><dt><a href="checkMatrix.html">testMatrix</a></dt><dt><a href="checkMatrix.html">test_matrix</a></dt>
-        <dd>Check if an argument is a matrix</dd>
-        <dt><a href="checkNamed.html">assertNamed</a></dt><dt><a href="checkNamed.html">assert_named</a></dt><dt><a href="checkNamed.html">checkNamed</a></dt><dt><a href="checkNamed.html">check_named</a></dt><dt><a href="checkNamed.html">testNamed</a></dt><dt><a href="checkNamed.html">test_named</a></dt>
-        <dd>Check if an argument is named</dd>
-        <dt><a href="checkNames.html">assertNames</a></dt><dt><a href="checkNames.html">assert_names</a></dt><dt><a href="checkNames.html">checkNames</a></dt><dt><a href="checkNames.html">check_names</a></dt><dt><a href="checkNames.html">expect_names</a></dt><dt><a href="checkNames.html">testNames</a></dt><dt><a href="checkNames.html">test_names</a></dt>
-        <dd>Check names to comply to specific rules</dd>
-        <dt><a href="checkNull.html">assertNull</a></dt><dt><a href="checkNull.html">assert_null</a></dt><dt><a href="checkNull.html">checkNull</a></dt><dt><a href="checkNull.html">check_null</a></dt><dt><a href="checkNull.html">testNull</a></dt><dt><a href="checkNull.html">test_null</a></dt>
-        <dd>Check if an argument is NULL</dd>
-        <dt><a href="checkNumber.html">assertNumber</a></dt><dt><a href="checkNumber.html">assert_number</a></dt><dt><a href="checkNumber.html">checkNumber</a></dt><dt><a href="checkNumber.html">check_number</a></dt><dt><a href="checkNumber.html">expect_number</a></dt><dt><a href="checkNumber.html">testNumber</a></dt><dt><a href="checkNumber.html">test_number</a></dt>
-        <dd>Check if an argument is a single numeric value</dd>
-        <dt><a href="checkNumeric.html">assertNumeric</a></dt><dt><a href="checkNumeric.html">assert_numeric</a></dt><dt><a href="checkNumeric.html">checkNumeric</a></dt><dt><a href="checkNumeric.html">check_numeric</a></dt><dt><a href="checkNumeric.html">expect_numeric</a></dt><dt><a href="checkNumeric.html">testNumeric</a></dt><dt><a href="checkNumeric.html">test_numeric</a></dt>
-        <dd>Check that an argument is a vector of type numeric</dd>
-        <dt><a href="checkOS.html">assertOS</a></dt><dt><a href="checkOS.html">assert_os</a></dt><dt><a href="checkOS.html">checkOS</a></dt><dt><a href="checkOS.html">check_os</a></dt><dt><a href="checkOS.html">expect_os</a></dt><dt><a href="checkOS.html">testOS</a></dt><dt><a href="checkOS.html">test_os</a></dt>
-        <dd>Check the operating system</dd>
-        <dt><a href="checkPathForOutput.html">assertPathForOutput</a></dt><dt><a href="checkPathForOutput.html">assert_path_for_output</a></dt><dt><a href="checkPathForOutput.html">checkPathForOutput</a></dt><dt><a href="checkPathForOutput.html">check_path_for_output</a></dt><dt><a href="checkPathForOutput.html">expect_path_for_output</a></dt><dt><a href="checkPathForOutput.html">testPathForOutput</a></dt><dt><a href="checkPathForOutput.html">test_path_for_output</a></dt>
-        <dd>Check if a path is suited for creating an output file</dd>
-        <dt><a href="checkScalarNA.html">assertScalarNA</a></dt><dt><a href="checkScalarNA.html">assert_scalar_na</a></dt><dt><a href="checkScalarNA.html">checkScalarNA</a></dt><dt><a href="checkScalarNA.html">check_scalar_na</a></dt><dt><a href="checkScalarNA.html">expect_scalar_na</a></dt><dt><a href="checkScalarNA.html">testScalarNA</a></dt><dt><a href="checkScalarNA.html">test_scalar_na</a></dt>
-        <dd>Check if an argument is a single missing value</dd>
-        <dt><a href="checkScalar.html">assertScalar</a></dt><dt><a href="checkScalar.html">assert_scalar</a></dt><dt><a href="checkScalar.html">checkScalar</a></dt><dt><a href="checkScalar.html">check_scalar</a></dt><dt><a href="checkScalar.html">expect_scalar</a></dt><dt><a href="checkScalar.html">testScalar</a></dt><dt><a href="checkScalar.html">test_scalar</a></dt>
-        <dd>Check if an argument is a single atomic value</dd>
-        <dt><a href="checkSetEqual.html">assertSetEqual</a></dt><dt><a href="checkSetEqual.html">assert_set_equal</a></dt><dt><a href="checkSetEqual.html">checkSetEqual</a></dt><dt><a href="checkSetEqual.html">check_set_equal</a></dt><dt><a href="checkSetEqual.html">expect_set_equal</a></dt><dt><a href="checkSetEqual.html">testSetEqual</a></dt><dt><a href="checkSetEqual.html">test_set_equal</a></dt>
-        <dd>Check if an argument is equal to a given set</dd>
-        <dt><a href="checkString.html">assertString</a></dt><dt><a href="checkString.html">assert_string</a></dt><dt><a href="checkString.html">checkString</a></dt><dt><a href="checkString.html">check_string</a></dt><dt><a href="checkString.html">expect_string</a></dt><dt><a href="checkString.html">testString</a></dt><dt><a href="checkString.html">test_string</a></dt>
-        <dd>Check if an argument is a string</dd>
-        <dt><a href="checkSubset.html">assertSubset</a></dt><dt><a href="checkSubset.html">assert_subset</a></dt><dt><a href="checkSubset.html">checkSubset</a></dt><dt><a href="checkSubset.html">check_subset</a></dt><dt><a href="checkSubset.html">expect_subset</a></dt><dt><a href="checkSubset.html">testSubset</a></dt><dt><a href="checkSubset.html">test_subset</a></dt>
-        <dd>Check if an argument is a subset of a given set</dd>
-        <dt><a href="checkTibble.html">assertTibble</a></dt><dt><a href="checkTibble.html">assert_tibble</a></dt><dt><a href="checkTibble.html">checkTibble</a></dt><dt><a href="checkTibble.html">check_tibble</a></dt><dt><a href="checkTibble.html">expect_tibble</a></dt><dt><a href="checkTibble.html">testTibble</a></dt><dt><a href="checkTibble.html">test_tibble</a></dt>
-        <dd>Check if an argument is a tibble</dd>
-        <dt><a href="checkVector.html">assertVector</a></dt><dt><a href="checkVector.html">assert_vector</a></dt><dt><a href="checkVector.html">checkVector</a></dt><dt><a href="checkVector.html">check_vector</a></dt><dt><a href="checkVector.html">expect_vector</a></dt><dt><a href="checkVector.html">testVector</a></dt><dt><a href="checkVector.html">test_vector</a></dt>
-        <dd>Check if an argument is a vector</dd>
-        <dt><a href="coalesce.html">%??%</a></dt>
-        <dd>Coalesce operator</dd>
-        <dt><a href="makeAssertion.html">makeAssertion</a></dt><dt><a href="makeAssertion.html">makeAssertionFunction</a></dt>
-        <dd>Turn a Check into an Assertion</dd>
-        <dt><a href="makeExpectation.html">makeExpectation</a></dt><dt><a href="makeExpectation.html">makeExpectationFunction</a></dt>
-        <dd>Turn a Check into an Expectation</dd>
-        <dt><a href="makeTest.html">makeTest</a></dt><dt><a href="makeTest.html">makeTestFunction</a></dt>
-        <dd>Turn a Check into a Test</dd>
-        <dt><a href="matchArg.html">matchArg</a></dt>
-        <dd>Partial Argument Matching</dd>
-        <dt><a href="qassert.html">qassert</a></dt><dt><a href="qassert.html">qexpect</a></dt><dt><a href="qassert.html">qtest</a></dt>
-        <dd>Quick argument checks on (builtin) R types</dd>
-        <dt><a href="qassertr.html">qassertr</a></dt><dt><a href="qassertr.html">qexpectr</a></dt><dt><a href="qassertr.html">qtestr</a></dt>
-        <dd>Quick recursive arguments checks on lists and data frames</dd>
-        <dt><a href="vname.html">vname</a></dt>
-        <dd>Lookup a variable name</dd>
-        <dt><a href="wf.html">wf</a></dt><dt><a href="wf.html">wl</a></dt>
-        <dd>Get the index of the first/last TRUE</dd>
-      </dl>
+      <p><a href="anyInfinite.html">Check if an object contains infinite values</a></p>
+      <ul>
+        <li><code><a href="anyInfinite.html">anyInfinite</a></code></li>
+      </ul>
+      <p><a href="anyMissing.html">Check if an object contains missing values</a></p>
+      <ul>
+        <li><code><a href="anyMissing.html">allMissing</a></code></li><li><code><a href="anyMissing.html">anyMissing</a></code></li>
+      </ul>
+      <p><a href="anyNaN.html">Check if an object contains NaN values</a></p>
+      <ul>
+        <li><code><a href="anyNaN.html">anyNaN</a></code></li>
+      </ul>
+      <p><a href="asInteger.html">Convert an argument to an integer</a></p>
+      <ul>
+        <li><code><a href="asInteger.html">asCount</a></code></li><li><code><a href="asInteger.html">asInt</a></code></li><li><code><a href="asInteger.html">asInteger</a></code></li>
+      </ul>
+      <p><a href="AssertCollection.html">Collect multiple assertions</a></p>
+      <ul>
+        <li><code><a href="AssertCollection.html">AssertCollection</a></code></li><li><code><a href="AssertCollection.html">makeAssertCollection</a></code></li><li><code><a href="AssertCollection.html">reportAssertions</a></code></li>
+      </ul>
+      <p><a href="assert.html">Combine multiple checks into one assertion</a></p>
+      <ul>
+        <li><code><a href="assert.html">assert</a></code></li>
+      </ul>
+      <p><a href="checkAccess.html">Check file system access rights</a></p>
+      <ul>
+        <li><code><a href="checkAccess.html">assertAccess</a></code></li><li><code><a href="checkAccess.html">assert_access</a></code></li><li><code><a href="checkAccess.html">checkAccess</a></code></li><li><code><a href="checkAccess.html">check_access</a></code></li><li><code><a href="checkAccess.html">expect_access</a></code></li><li><code><a href="checkAccess.html">testAccess</a></code></li><li><code><a href="checkAccess.html">test_access</a></code></li>
+      </ul>
+      <p><a href="checkArray.html">Check if an argument is an array</a></p>
+      <ul>
+        <li><code><a href="checkArray.html">assertArray</a></code></li><li><code><a href="checkArray.html">assert_array</a></code></li><li><code><a href="checkArray.html">checkArray</a></code></li><li><code><a href="checkArray.html">check_array</a></code></li><li><code><a href="checkArray.html">expect_array</a></code></li><li><code><a href="checkArray.html">testArray</a></code></li><li><code><a href="checkArray.html">test_array</a></code></li>
+      </ul>
+      <p><a href="checkAtomic.html">Check that an argument is an atomic vector</a></p>
+      <ul>
+        <li><code><a href="checkAtomic.html">assertAtomic</a></code></li><li><code><a href="checkAtomic.html">assert_atomic</a></code></li><li><code><a href="checkAtomic.html">checkAtomic</a></code></li><li><code><a href="checkAtomic.html">check_atomic</a></code></li><li><code><a href="checkAtomic.html">expect_atomic</a></code></li><li><code><a href="checkAtomic.html">testAtomic</a></code></li><li><code><a href="checkAtomic.html">test_atomic</a></code></li>
+      </ul>
+      <p><a href="checkAtomicVector.html">Check that an argument is an atomic vector</a></p>
+      <ul>
+        <li><code><a href="checkAtomicVector.html">assertAtomicVector</a></code></li><li><code><a href="checkAtomicVector.html">assert_atomic_vector</a></code></li><li><code><a href="checkAtomicVector.html">checkAtomicVector</a></code></li><li><code><a href="checkAtomicVector.html">check_atomic_vector</a></code></li><li><code><a href="checkAtomicVector.html">expect_atomic_vector</a></code></li><li><code><a href="checkAtomicVector.html">testAtomicVector</a></code></li><li><code><a href="checkAtomicVector.html">test_atomic_vector</a></code></li>
+      </ul>
+      <p><a href="checkCharacter.html">Check if an argument is a vector of type character</a></p>
+      <ul>
+        <li><code><a href="checkCharacter.html">assertCharacter</a></code></li><li><code><a href="checkCharacter.html">assert_character</a></code></li><li><code><a href="checkCharacter.html">checkCharacter</a></code></li><li><code><a href="checkCharacter.html">check_character</a></code></li><li><code><a href="checkCharacter.html">expect_character</a></code></li><li><code><a href="checkCharacter.html">testCharacter</a></code></li><li><code><a href="checkCharacter.html">test_character</a></code></li>
+      </ul>
+      <p><a href="checkChoice.html">Check if an object is an element of a given set</a></p>
+      <ul>
+        <li><code><a href="checkChoice.html">assertChoice</a></code></li><li><code><a href="checkChoice.html">assert_choice</a></code></li><li><code><a href="checkChoice.html">checkChoice</a></code></li><li><code><a href="checkChoice.html">check_choice</a></code></li><li><code><a href="checkChoice.html">expect_choice</a></code></li><li><code><a href="checkChoice.html">testChoice</a></code></li><li><code><a href="checkChoice.html">test_choice</a></code></li>
+      </ul>
+      <p><a href="checkClass.html">Check the class membership of an argument</a></p>
+      <ul>
+        <li><code><a href="checkClass.html">assertClass</a></code></li><li><code><a href="checkClass.html">assert_class</a></code></li><li><code><a href="checkClass.html">checkClass</a></code></li><li><code><a href="checkClass.html">check_class</a></code></li><li><code><a href="checkClass.html">expect_class</a></code></li><li><code><a href="checkClass.html">testClass</a></code></li><li><code><a href="checkClass.html">test_class</a></code></li>
+      </ul>
+      <p><a href="checkComplex.html">Check if an argument is a vector of type complex</a></p>
+      <ul>
+        <li><code><a href="checkComplex.html">assertComplex</a></code></li><li><code><a href="checkComplex.html">assert_complex</a></code></li><li><code><a href="checkComplex.html">checkComplex</a></code></li><li><code><a href="checkComplex.html">check_complex</a></code></li><li><code><a href="checkComplex.html">expect_complex</a></code></li><li><code><a href="checkComplex.html">testComplex</a></code></li><li><code><a href="checkComplex.html">test_complex</a></code></li>
+      </ul>
+      <p><a href="checkCount.html">Check if an argument is a count</a></p>
+      <ul>
+        <li><code><a href="checkCount.html">assertCount</a></code></li><li><code><a href="checkCount.html">assert_count</a></code></li><li><code><a href="checkCount.html">checkCount</a></code></li><li><code><a href="checkCount.html">check_count</a></code></li><li><code><a href="checkCount.html">expect_count</a></code></li><li><code><a href="checkCount.html">testCount</a></code></li><li><code><a href="checkCount.html">test_count</a></code></li>
+      </ul>
+      <p><a href="checkDataFrame.html">Check if an argument is a data frame</a></p>
+      <ul>
+        <li><code><a href="checkDataFrame.html">assertDataFrame</a></code></li><li><code><a href="checkDataFrame.html">assert_data_frame</a></code></li><li><code><a href="checkDataFrame.html">checkDataFrame</a></code></li><li><code><a href="checkDataFrame.html">check_data_frame</a></code></li><li><code><a href="checkDataFrame.html">expect_data_frame</a></code></li><li><code><a href="checkDataFrame.html">testDataFrame</a></code></li><li><code><a href="checkDataFrame.html">test_data_frame</a></code></li>
+      </ul>
+      <p><a href="checkDataTable.html">Check if an argument is a data table</a></p>
+      <ul>
+        <li><code><a href="checkDataTable.html">assertDataTable</a></code></li><li><code><a href="checkDataTable.html">assert_data_table</a></code></li><li><code><a href="checkDataTable.html">checkDataTable</a></code></li><li><code><a href="checkDataTable.html">check_data_table</a></code></li><li><code><a href="checkDataTable.html">expect_data_table</a></code></li><li><code><a href="checkDataTable.html">testDataTable</a></code></li><li><code><a href="checkDataTable.html">test_data_table</a></code></li>
+      </ul>
+      <p><a href="checkDate.html">Check that an argument is a Date</a></p>
+      <ul>
+        <li><code><a href="checkDate.html">assertDate</a></code></li><li><code><a href="checkDate.html">assert_date</a></code></li><li><code><a href="checkDate.html">checkDate</a></code></li><li><code><a href="checkDate.html">check_date</a></code></li><li><code><a href="checkDate.html">expect_date</a></code></li><li><code><a href="checkDate.html">testDate</a></code></li><li><code><a href="checkDate.html">test_date</a></code></li>
+      </ul>
+      <p><a href="checkDirectoryExists.html">Check for existence and access rights of directories</a></p>
+      <ul>
+        <li><code><a href="checkDirectoryExists.html">assertDirectory</a></code></li><li><code><a href="checkDirectoryExists.html">assertDirectoryExists</a></code></li><li><code><a href="checkDirectoryExists.html">assert_directory</a></code></li><li><code><a href="checkDirectoryExists.html">assert_directory_exists</a></code></li><li><code><a href="checkDirectoryExists.html">checkDirectory</a></code></li><li><code><a href="checkDirectoryExists.html">checkDirectoryExists</a></code></li><li><code><a href="checkDirectoryExists.html">check_directory_exists</a></code></li><li><code><a href="checkDirectoryExists.html">expect_directory</a></code></li><li><code><a href="checkDirectoryExists.html">expect_directory_exists</a></code></li><li><code><a href="checkDirectoryExists.html">testDirectory</a></code></li><li><code><a href="checkDirectoryExists.html">testDirectoryExists</a></code></li><li><code><a href="checkDirectoryExists.html">test_directory</a></code></li><li><code><a href="checkDirectoryExists.html">test_directory_exists</a></code></li>
+      </ul>
+      <p><a href="checkEnvironment.html">Check if an argument is an environment</a></p>
+      <ul>
+        <li><code><a href="checkEnvironment.html">assertEnvironment</a></code></li><li><code><a href="checkEnvironment.html">assert_environment</a></code></li><li><code><a href="checkEnvironment.html">checkEnvironment</a></code></li><li><code><a href="checkEnvironment.html">check_environment</a></code></li><li><code><a href="checkEnvironment.html">expect_environment</a></code></li><li><code><a href="checkEnvironment.html">testEnvironment</a></code></li><li><code><a href="checkEnvironment.html">test_environment</a></code></li>
+      </ul>
+      <p><a href="checkFactor.html">Check if an argument is a factor</a></p>
+      <ul>
+        <li><code><a href="checkFactor.html">assertFactor</a></code></li><li><code><a href="checkFactor.html">assert_factor</a></code></li><li><code><a href="checkFactor.html">checkFactor</a></code></li><li><code><a href="checkFactor.html">check_factor</a></code></li><li><code><a href="checkFactor.html">expect_factor</a></code></li><li><code><a href="checkFactor.html">testFactor</a></code></li><li><code><a href="checkFactor.html">test_factor</a></code></li>
+      </ul>
+      <p><a href="checkFileExists.html">Check existence and access rights of files</a></p>
+      <ul>
+        <li><code><a href="checkFileExists.html">assertFile</a></code></li><li><code><a href="checkFileExists.html">assertFileExists</a></code></li><li><code><a href="checkFileExists.html">assert_file</a></code></li><li><code><a href="checkFileExists.html">assert_file_exists</a></code></li><li><code><a href="checkFileExists.html">checkFile</a></code></li><li><code><a href="checkFileExists.html">checkFileExists</a></code></li><li><code><a href="checkFileExists.html">check_file_exists</a></code></li><li><code><a href="checkFileExists.html">expect_file</a></code></li><li><code><a href="checkFileExists.html">expect_file_exists</a></code></li><li><code><a href="checkFileExists.html">testFile</a></code></li><li><code><a href="checkFileExists.html">testFileExists</a></code></li><li><code><a href="checkFileExists.html">test_file_exists</a></code></li>
+      </ul>
+      <p><a href="checkFlag.html">Check if an argument is a flag</a></p>
+      <ul>
+        <li><code><a href="checkFlag.html">assertFlag</a></code></li><li><code><a href="checkFlag.html">assert_flag</a></code></li><li><code><a href="checkFlag.html">checkFlag</a></code></li><li><code><a href="checkFlag.html">check_flag</a></code></li><li><code><a href="checkFlag.html">expect_flag</a></code></li><li><code><a href="checkFlag.html">testFlag</a></code></li><li><code><a href="checkFlag.html">test_flag</a></code></li>
+      </ul>
+      <p><a href="checkFunction.html">Check if an argument is a function</a></p>
+      <ul>
+        <li><code><a href="checkFunction.html">assertFunction</a></code></li><li><code><a href="checkFunction.html">assert_function</a></code></li><li><code><a href="checkFunction.html">checkFunction</a></code></li><li><code><a href="checkFunction.html">check_function</a></code></li><li><code><a href="checkFunction.html">expect_function</a></code></li><li><code><a href="checkFunction.html">testFunction</a></code></li><li><code><a href="checkFunction.html">test_function</a></code></li>
+      </ul>
+      <p><a href="checkIntegerish.html">Check if an object is an integerish vector</a></p>
+      <ul>
+        <li><code><a href="checkIntegerish.html">assertIntegerish</a></code></li><li><code><a href="checkIntegerish.html">assert_integerish</a></code></li><li><code><a href="checkIntegerish.html">checkIntegerish</a></code></li><li><code><a href="checkIntegerish.html">check_integerish</a></code></li><li><code><a href="checkIntegerish.html">expect_integerish</a></code></li><li><code><a href="checkIntegerish.html">testIntegerish</a></code></li><li><code><a href="checkIntegerish.html">test_integerish</a></code></li>
+      </ul>
+      <p><a href="checkInteger.html">Check if an argument is vector of type integer</a></p>
+      <ul>
+        <li><code><a href="checkInteger.html">assertInteger</a></code></li><li><code><a href="checkInteger.html">assert_integer</a></code></li><li><code><a href="checkInteger.html">checkInteger</a></code></li><li><code><a href="checkInteger.html">check_integer</a></code></li><li><code><a href="checkInteger.html">expect_integer</a></code></li><li><code><a href="checkInteger.html">testInteger</a></code></li><li><code><a href="checkInteger.html">test_integer</a></code></li>
+      </ul>
+      <p><a href="checkInt.html">Check if an argument is a single integerish value</a></p>
+      <ul>
+        <li><code><a href="checkInt.html">assertInt</a></code></li><li><code><a href="checkInt.html">assert_int</a></code></li><li><code><a href="checkInt.html">checkInt</a></code></li><li><code><a href="checkInt.html">check_int</a></code></li><li><code><a href="checkInt.html">expect_int</a></code></li><li><code><a href="checkInt.html">testInt</a></code></li><li><code><a href="checkInt.html">test_int</a></code></li>
+      </ul>
+      <p><a href="checkList.html">Check if an argument is a list</a></p>
+      <ul>
+        <li><code><a href="checkList.html">assertList</a></code></li><li><code><a href="checkList.html">assert_list</a></code></li><li><code><a href="checkList.html">checkList</a></code></li><li><code><a href="checkList.html">check_list</a></code></li><li><code><a href="checkList.html">expect_list</a></code></li><li><code><a href="checkList.html">testList</a></code></li><li><code><a href="checkList.html">test_list</a></code></li>
+      </ul>
+      <p><a href="checkLogical.html">Check if an argument is a vector of type logical</a></p>
+      <ul>
+        <li><code><a href="checkLogical.html">assertLogical</a></code></li><li><code><a href="checkLogical.html">assert_logical</a></code></li><li><code><a href="checkLogical.html">checkLogical</a></code></li><li><code><a href="checkLogical.html">check_logical</a></code></li><li><code><a href="checkLogical.html">expect_logical</a></code></li><li><code><a href="checkLogical.html">testLogical</a></code></li><li><code><a href="checkLogical.html">test_logical</a></code></li>
+      </ul>
+      <p><a href="checkmate-package.html">Fast and Versatile Argument Checks</a></p>
+      <ul>
+        <li><code><a href="checkmate-package.html">checkmate</a></code></li><li><code><a href="checkmate-package.html">checkmate-package</a></code></li>
+      </ul>
+      <p><a href="checkMatrix.html">Check if an argument is a matrix</a></p>
+      <ul>
+        <li><code><a href="checkMatrix.html">assertMatrix</a></code></li><li><code><a href="checkMatrix.html">assert_matrix</a></code></li><li><code><a href="checkMatrix.html">checkMatrix</a></code></li><li><code><a href="checkMatrix.html">check_matrix</a></code></li><li><code><a href="checkMatrix.html">expect_matrix</a></code></li><li><code><a href="checkMatrix.html">testMatrix</a></code></li><li><code><a href="checkMatrix.html">test_matrix</a></code></li>
+      </ul>
+      <p><a href="checkNamed.html">Check if an argument is named</a></p>
+      <ul>
+        <li><code><a href="checkNamed.html">assertNamed</a></code></li><li><code><a href="checkNamed.html">assert_named</a></code></li><li><code><a href="checkNamed.html">checkNamed</a></code></li><li><code><a href="checkNamed.html">check_named</a></code></li><li><code><a href="checkNamed.html">testNamed</a></code></li><li><code><a href="checkNamed.html">test_named</a></code></li>
+      </ul>
+      <p><a href="checkNames.html">Check names to comply to specific rules</a></p>
+      <ul>
+        <li><code><a href="checkNames.html">assertNames</a></code></li><li><code><a href="checkNames.html">assert_names</a></code></li><li><code><a href="checkNames.html">checkNames</a></code></li><li><code><a href="checkNames.html">check_names</a></code></li><li><code><a href="checkNames.html">expect_names</a></code></li><li><code><a href="checkNames.html">testNames</a></code></li><li><code><a href="checkNames.html">test_names</a></code></li>
+      </ul>
+      <p><a href="checkNull.html">Check if an argument is NULL</a></p>
+      <ul>
+        <li><code><a href="checkNull.html">assertNull</a></code></li><li><code><a href="checkNull.html">assert_null</a></code></li><li><code><a href="checkNull.html">checkNull</a></code></li><li><code><a href="checkNull.html">check_null</a></code></li><li><code><a href="checkNull.html">testNull</a></code></li><li><code><a href="checkNull.html">test_null</a></code></li>
+      </ul>
+      <p><a href="checkNumber.html">Check if an argument is a single numeric value</a></p>
+      <ul>
+        <li><code><a href="checkNumber.html">assertNumber</a></code></li><li><code><a href="checkNumber.html">assert_number</a></code></li><li><code><a href="checkNumber.html">checkNumber</a></code></li><li><code><a href="checkNumber.html">check_number</a></code></li><li><code><a href="checkNumber.html">expect_number</a></code></li><li><code><a href="checkNumber.html">testNumber</a></code></li><li><code><a href="checkNumber.html">test_number</a></code></li>
+      </ul>
+      <p><a href="checkNumeric.html">Check that an argument is a vector of type numeric</a></p>
+      <ul>
+        <li><code><a href="checkNumeric.html">assertNumeric</a></code></li><li><code><a href="checkNumeric.html">assert_numeric</a></code></li><li><code><a href="checkNumeric.html">checkNumeric</a></code></li><li><code><a href="checkNumeric.html">check_numeric</a></code></li><li><code><a href="checkNumeric.html">expect_numeric</a></code></li><li><code><a href="checkNumeric.html">testNumeric</a></code></li><li><code><a href="checkNumeric.html">test_numeric</a></code></li>
+      </ul>
+      <p><a href="checkOS.html">Check the operating system</a></p>
+      <ul>
+        <li><code><a href="checkOS.html">assertOS</a></code></li><li><code><a href="checkOS.html">assert_os</a></code></li><li><code><a href="checkOS.html">checkOS</a></code></li><li><code><a href="checkOS.html">check_os</a></code></li><li><code><a href="checkOS.html">expect_os</a></code></li><li><code><a href="checkOS.html">testOS</a></code></li><li><code><a href="checkOS.html">test_os</a></code></li>
+      </ul>
+      <p><a href="checkPathForOutput.html">Check if a path is suited for creating an output file</a></p>
+      <ul>
+        <li><code><a href="checkPathForOutput.html">assertPathForOutput</a></code></li><li><code><a href="checkPathForOutput.html">assert_path_for_output</a></code></li><li><code><a href="checkPathForOutput.html">checkPathForOutput</a></code></li><li><code><a href="checkPathForOutput.html">check_path_for_output</a></code></li><li><code><a href="checkPathForOutput.html">expect_path_for_output</a></code></li><li><code><a href="checkPathForOutput.html">testPathForOutput</a></code></li><li><code><a href="checkPathForOutput.html">test_path_for_output</a></code></li>
+      </ul>
+      <p><a href="checkScalarNA.html">Check if an argument is a single missing value</a></p>
+      <ul>
+        <li><code><a href="checkScalarNA.html">assertScalarNA</a></code></li><li><code><a href="checkScalarNA.html">assert_scalar_na</a></code></li><li><code><a href="checkScalarNA.html">checkScalarNA</a></code></li><li><code><a href="checkScalarNA.html">check_scalar_na</a></code></li><li><code><a href="checkScalarNA.html">expect_scalar_na</a></code></li><li><code><a href="checkScalarNA.html">testScalarNA</a></code></li><li><code><a href="checkScalarNA.html">test_scalar_na</a></code></li>
+      </ul>
+      <p><a href="checkScalar.html">Check if an argument is a single atomic value</a></p>
+      <ul>
+        <li><code><a href="checkScalar.html">assertScalar</a></code></li><li><code><a href="checkScalar.html">assert_scalar</a></code></li><li><code><a href="checkScalar.html">checkScalar</a></code></li><li><code><a href="checkScalar.html">check_scalar</a></code></li><li><code><a href="checkScalar.html">expect_scalar</a></code></li><li><code><a href="checkScalar.html">testScalar</a></code></li><li><code><a href="checkScalar.html">test_scalar</a></code></li>
+      </ul>
+      <p><a href="checkSetEqual.html">Check if an argument is equal to a given set</a></p>
+      <ul>
+        <li><code><a href="checkSetEqual.html">assertSetEqual</a></code></li><li><code><a href="checkSetEqual.html">assert_set_equal</a></code></li><li><code><a href="checkSetEqual.html">checkSetEqual</a></code></li><li><code><a href="checkSetEqual.html">check_set_equal</a></code></li><li><code><a href="checkSetEqual.html">expect_set_equal</a></code></li><li><code><a href="checkSetEqual.html">testSetEqual</a></code></li><li><code><a href="checkSetEqual.html">test_set_equal</a></code></li>
+      </ul>
+      <p><a href="checkString.html">Check if an argument is a string</a></p>
+      <ul>
+        <li><code><a href="checkString.html">assertString</a></code></li><li><code><a href="checkString.html">assert_string</a></code></li><li><code><a href="checkString.html">checkString</a></code></li><li><code><a href="checkString.html">check_string</a></code></li><li><code><a href="checkString.html">expect_string</a></code></li><li><code><a href="checkString.html">testString</a></code></li><li><code><a href="checkString.html">test_string</a></code></li>
+      </ul>
+      <p><a href="checkSubset.html">Check if an argument is a subset of a given set</a></p>
+      <ul>
+        <li><code><a href="checkSubset.html">assertSubset</a></code></li><li><code><a href="checkSubset.html">assert_subset</a></code></li><li><code><a href="checkSubset.html">checkSubset</a></code></li><li><code><a href="checkSubset.html">check_subset</a></code></li><li><code><a href="checkSubset.html">expect_subset</a></code></li><li><code><a href="checkSubset.html">testSubset</a></code></li><li><code><a href="checkSubset.html">test_subset</a></code></li>
+      </ul>
+      <p><a href="checkTibble.html">Check if an argument is a tibble</a></p>
+      <ul>
+        <li><code><a href="checkTibble.html">assertTibble</a></code></li><li><code><a href="checkTibble.html">assert_tibble</a></code></li><li><code><a href="checkTibble.html">checkTibble</a></code></li><li><code><a href="checkTibble.html">check_tibble</a></code></li><li><code><a href="checkTibble.html">expect_tibble</a></code></li><li><code><a href="checkTibble.html">testTibble</a></code></li><li><code><a href="checkTibble.html">test_tibble</a></code></li>
+      </ul>
+      <p><a href="checkVector.html">Check if an argument is a vector</a></p>
+      <ul>
+        <li><code><a href="checkVector.html">assertVector</a></code></li><li><code><a href="checkVector.html">assert_vector</a></code></li><li><code><a href="checkVector.html">checkVector</a></code></li><li><code><a href="checkVector.html">check_vector</a></code></li><li><code><a href="checkVector.html">expect_vector</a></code></li><li><code><a href="checkVector.html">testVector</a></code></li><li><code><a href="checkVector.html">test_vector</a></code></li>
+      </ul>
+      <p><a href="coalesce.html">Coalesce operator</a></p>
+      <ul>
+        <li><code><a href="coalesce.html">%??%</a></code></li>
+      </ul>
+      <p><a href="makeAssertion.html">Turn a Check into an Assertion</a></p>
+      <ul>
+        <li><code><a href="makeAssertion.html">makeAssertion</a></code></li><li><code><a href="makeAssertion.html">makeAssertionFunction</a></code></li>
+      </ul>
+      <p><a href="makeExpectation.html">Turn a Check into an Expectation</a></p>
+      <ul>
+        <li><code><a href="makeExpectation.html">makeExpectation</a></code></li><li><code><a href="makeExpectation.html">makeExpectationFunction</a></code></li>
+      </ul>
+      <p><a href="makeTest.html">Turn a Check into a Test</a></p>
+      <ul>
+        <li><code><a href="makeTest.html">makeTest</a></code></li><li><code><a href="makeTest.html">makeTestFunction</a></code></li>
+      </ul>
+      <p><a href="matchArg.html">Partial Argument Matching</a></p>
+      <ul>
+        <li><code><a href="matchArg.html">matchArg</a></code></li>
+      </ul>
+      <p><a href="qassert.html">Quick argument checks on (builtin) R types</a></p>
+      <ul>
+        <li><code><a href="qassert.html">qassert</a></code></li><li><code><a href="qassert.html">qexpect</a></code></li><li><code><a href="qassert.html">qtest</a></code></li>
+      </ul>
+      <p><a href="qassertr.html">Quick recursive arguments checks on lists and data frames</a></p>
+      <ul>
+        <li><code><a href="qassertr.html">qassertr</a></code></li><li><code><a href="qassertr.html">qexpectr</a></code></li><li><code><a href="qassertr.html">qtestr</a></code></li>
+      </ul>
+      <p><a href="vname.html">Lookup a variable name</a></p>
+      <ul>
+        <li><code><a href="vname.html">vname</a></code></li>
+      </ul>
+      <p><a href="wf.html">Get the index of the first/last TRUE</a></p>
+      <ul>
+        <li><code><a href="wf.html">wf</a></code></li><li><code><a href="wf.html">wl</a></code></li>
+      </ul>
+    
     </div>
+  </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-all-functions">All functions</a></li>
+    </ul>
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

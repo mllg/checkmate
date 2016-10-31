@@ -48,7 +48,7 @@ checkDataTableProps = function(x, key = NULL, index = NULL) {
 
 getDataTableIndexFun = function() {
   if (is.null(checkmate$data.table.index.fun))
-    checkmate$data.table.index.fun = if (packageVersion("data.table") >= "1.9.7") data.table::indices else data.table::key2
+    checkmate$data.table.index.fun = if (packageVersion("data.table") >= "1.9.7") getFromNamespace("indices", "data.table") else data.table::key2
   checkmate$data.table.index.fun
 }
 
