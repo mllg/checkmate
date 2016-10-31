@@ -95,7 +95,7 @@
 #' }
 #'
 #' @import backports
-#' @importFrom utils head tail packageVersion
+#' @importFrom utils head tail packageVersion getFromNamespace
 "_PACKAGE"
 
 checkmate = new.env(parent = emptyenv())
