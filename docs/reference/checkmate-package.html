@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>checkmate-package. checkmate</title>
+<title>Fast and Versatile Argument Checks — checkmate-package • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,15 +70,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Fast and Versatile Argument Checks</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Fast and Versatile Argument Checks</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p><dl class='dl-horizontal'>
   <dt>Homepage:</dt><dd><a href = 'https://github.com/mllg/checkmate'>https://github.com/mllg/checkmate</a></dd>
@@ -90,142 +88,155 @@
     
 
         
-    <div class="Overview of implemented functions">
-      <h2>Overview of implemented functions</h2>
+    <h2 class="hasAnchor" id="overview-of-implemented-functions"><a class="anchor" href="#overview-of-implemented-functions"></a>Overview of implemented functions</h2>
 
-      <p></p>
-      <p>Check scalars:
+    <p></p>
+    <p>Check scalars:
 <ul>
-<li><code>checkFlag</code>
+<li><code><a href='checkFlag.html'>checkFlag</a></code>
   </li>
-<li><code>checkCount</code>
+<li><code><a href='checkCount.html'>checkCount</a></code>
   </li>
-<li><code>checkNumber</code>
+<li><code><a href='checkNumber.html'>checkNumber</a></code>
   </li>
-<li><code>checkInt</code>
+<li><code><a href='checkInt.html'>checkInt</a></code>
   </li>
-<li><code>checkString</code>
+<li><code><a href='checkString.html'>checkString</a></code>
   </li>
-<li><code>checkScalar</code>
+<li><code><a href='checkScalar.html'>checkScalar</a></code>
   </li>
-<li><code>checkScalarNA</code>
+<li><code><a href='checkScalarNA.html'>checkScalarNA</a></code>
 </li>
 </ul></p>
-      <p>Check vectors:
+    <p>Check vectors:
 <ul>
-<li><code>checkLogical</code>
+<li><code><a href='checkLogical.html'>checkLogical</a></code>
   </li>
-<li><code>checkNumeric</code>
+<li><code><a href='checkNumeric.html'>checkNumeric</a></code>
   </li>
-<li><code>checkInteger</code>
+<li><code><a href='checkInteger.html'>checkInteger</a></code>
   </li>
-<li><code>checkIntegerish</code>
+<li><code><a href='checkIntegerish.html'>checkIntegerish</a></code>
   </li>
-<li><code>checkComplex</code>
+<li><code><a href='checkComplex.html'>checkComplex</a></code>
   </li>
-<li><code>checkFactor</code>
+<li><code><a href='checkFactor.html'>checkFactor</a></code>
   </li>
-<li><code>checkList</code>
+<li><code><a href='checkList.html'>checkList</a></code>
   </li>
-<li><code>checkVector</code>
+<li><code><a href='checkVector.html'>checkVector</a></code>
   </li>
-<li><code>checkAtomic</code>
+<li><code><a href='checkAtomic.html'>checkAtomic</a></code>
   </li>
-<li><code>checkAtomicVector</code>
+<li><code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>
 </li>
 </ul></p>
-      <p>Check attributes:
+    <p>Check attributes:
 <ul>
-<li><code>checkClass</code>
+<li><code><a href='checkClass.html'>checkClass</a></code>
   </li>
-<li><code>checkNames</code>
+<li><code><a href='checkNames.html'>checkNames</a></code>
   </li>
-<li><code>checkNamed</code>
+<li><code><a href='checkNamed.html'>checkNamed</a></code>
 </li>
 </ul></p>
-      <p>Check compound types:
+    <p>Check compound types:
 <ul>
-<li><code>checkMatrix</code>
+<li><code><a href='checkMatrix.html'>checkMatrix</a></code>
   </li>
-<li><code>checkArray</code>
+<li><code><a href='checkArray.html'>checkArray</a></code>
   </li>
-<li><code>checkDataFrame</code>
+<li><code><a href='checkDataFrame.html'>checkDataFrame</a></code>
   </li>
-<li><code>checkDataTable</code>
+<li><code><a href='checkDataTable.html'>checkDataTable</a></code>
   </li>
-<li><code>checkTibble</code>
+<li><code><a href='checkTibble.html'>checkTibble</a></code>
 </li>
 </ul></p>
-      <p>Check other built-in R types:
+    <p>Check other built-in R types:
 <ul>
-<li><code>checkNull</code>
+<li><code><a href='checkNull.html'>checkNull</a></code>
   </li>
-<li><code>checkEnvironment</code>
+<li><code><a href='checkEnvironment.html'>checkEnvironment</a></code>
   </li>
-<li><code>checkFunction</code>
+<li><code><a href='checkFunction.html'>checkFunction</a></code>
   </li>
-<li><code>checkDate</code>
+<li><code><a href='checkDate.html'>checkDate</a></code>
 </li>
 </ul></p>
-      <p>Check sets:
+    <p>Check sets:
 <ul>
-<li><code>checkChoice</code>
+<li><code><a href='checkChoice.html'>checkChoice</a></code>
   </li>
-<li><code>checkSubset</code>
+<li><code><a href='checkSubset.html'>checkSubset</a></code>
   </li>
-<li><code>checkSetEqual</code>
+<li><code><a href='checkSetEqual.html'>checkSetEqual</a></code>
 </li>
 </ul></p>
-      <p>File IO:
+    <p>File IO:
 <ul>
-<li><code>checkFileExists</code>
+<li><code><a href='checkFileExists.html'>checkFileExists</a></code>
   </li>
-<li><code>checkDirectoryExists</code>
+<li><code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>
   </li>
-<li><code>checkPathForOutput</code>
+<li><code><a href='checkPathForOutput.html'>checkPathForOutput</a></code>
   </li>
-<li><code>checkAccess</code>
+<li><code><a href='checkAccess.html'>checkAccess</a></code>
 </li>
 </ul></p>
-      <p>Safe coercion to integer:
+    <p>Safe coercion to integer:
 <ul>
-<li><code>asCount</code>
+<li><code><a href='asInteger.html'>asCount</a></code>
   </li>
-<li><code>asInt</code>
+<li><code><a href='asInteger.html'>asInt</a></code>
   </li>
-<li><code>asInteger</code>
+<li><code><a href='asInteger.html'>asInteger</a></code>
 </li>
 </ul></p>
-      <p>Quick argument checks using a DSL:
+    <p>Quick argument checks using a DSL:
 <ul>
-<li><code>qassert</code>
+<li><code><a href='qassert.html'>qassert</a></code>
   </li>
-<li><code>qassertr</code>
+<li><code><a href='qassertr.html'>qassertr</a></code>
 </li>
 </ul></p>
-      <p>Misc:
+    <p>Misc:
 <ul>
-<li><code>checkOS</code> (check operating system)
+<li><code><a href='checkOS.html'>checkOS</a></code> (check operating system)
   </li>
-<li><code>assert</code> (combine multiple checks into an assertion)
+<li><code><a href='assert.html'>assert</a></code> (combine multiple checks into an assertion)
   </li>
-<li><code>anyMissing</code>
+<li><code><a href='allMissing.html'>anyMissing</a></code>
   </li>
-<li><code>allMissing</code>
+<li><code><a href='allMissing.html'>allMissing</a></code>
   </li>
-<li><code>anyNaN</code>
+<li><code><a href='anyNaN.html'>anyNaN</a></code>
   </li>
-<li><code>wf</code> (which.first and which.last)
+<li><code><a href='wf.html'>wf</a></code> (which.first and which.last)
 </li>
 </ul></p>
-    </div>
-      </div>
-  <div class="col-md-3">
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#overview-of-implemented-functions">Overview of implemented functions</a></li>
+          </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

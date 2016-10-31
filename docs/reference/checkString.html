@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>checkString. checkmate</title>
+<title>Check if an argument is a string — checkString • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,15 +70,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Check if an argument is a string</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Check if an argument is a string</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>A string is defined as a scalar character vector.</p>
     
@@ -94,11 +92,11 @@
 
 <span class='fu'>assertString</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min.chars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>assert_string</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min.chars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>testString</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min.chars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -108,9 +106,9 @@
 
 <span class='fu'>expect_string</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>min.chars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>fixed</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ignore.case</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>[any]
@@ -123,16 +121,16 @@ Are missing values allowed? Default is <code>FALSE</code>.</dd>
 Minimum number of characters in each element of <code>x</code>.</dd>
       <dt>pattern</dt>
       <dd>[<code>character(1L)</code>]
-Regular expression as used in <code><a href='http://www.rdocumentation.org/packages/grep/topics/base'>grepl</a></code>.
+Regular expression as used in <code><a href='http://www.rdocumentation.org/packages/base/topics/grep'>grepl</a></code>.
 All elements of <code>x</code> must comply to this pattern.</dd>
       <dt>fixed</dt>
       <dd>[<code>character(1)</code>]
-Substring to detect in <code>x</code>. Will be used as <code>pattern</code> in <code><a href='http://www.rdocumentation.org/packages/grep/topics/base'>grepl</a></code>
+Substring to detect in <code>x</code>. Will be used as <code>pattern</code> in <code><a href='http://www.rdocumentation.org/packages/base/topics/grep'>grepl</a></code>
 with option <code>fixed</code> set to <code>TRUE</code>.
 All elements of <code>x</code> must contain this substring.</dd>
       <dt>ignore.case</dt>
       <dd>[<code>logical(1)</code>]
-See <code><a href='http://www.rdocumentation.org/packages/grep/topics/base'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
+See <code><a href='http://www.rdocumentation.org/packages/base/topics/grep'>grepl</a></code>. Default is <code>FALSE</code>.</dd>
       <dt>null.ok</dt>
       <dd>[<code>logical(1)</code>]
 If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
@@ -140,24 +138,23 @@ In this case only a type check of <code>x</code> is performed, all additional ch
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>add</dt>
       <dd>[<code>AssertCollection</code>]
-Collection to store assertion messages. See <code>AssertCollection</code>.</dd>
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='http://www.rdocumentation.org/packages/expect_that/topics/testthat'>expect_that</a></code>.</dd>
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>Depending on the function prefix:
+    <p>Depending on the function prefix:
  If the check is successful, the functions 
  <code>assertString</code>/<code>assert_string</code> return 
  <code>x</code> invisibly, whereas
@@ -171,37 +168,56 @@ the heuristic implemented in <code>vname</code>.</dd>
  returns <code>FALSE</code>,
  and <code>checkString</code> returns a string with the error message.
  The function <code>expect_string</code> always returns an
- <code><a href='http://www.rdocumentation.org/packages/expectation/topics/testthat'>expectation</a></code>.</p>
-    </div>
+ <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class="Details">
-      <h2>Details</h2>
-
-      <p>This function does not distinguish between
+    <p>This function does not distinguish between
 <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>
 <code>NA_character_</code> and <code>NaN</code>.</p>
-    </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p>Other scalars: <code>checkCount</code>,
-  <code>checkFlag</code>, <code>checkInt</code>,
-  <code>checkNumber</code>, <code>checkScalarNA</code>,
-  <code>checkScalar</code></p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other scalars: <code><a href='checkCount.html'>checkCount</a></code>,
+  <code><a href='checkFlag.html'>checkFlag</a></code>, <code><a href='checkInt.html'>checkInt</a></code>,
+  <code><a href='checkNumber.html'>checkNumber</a></code>, <code><a href='checkScalarNA.html'>checkScalarNA</a></code>,
+  <code><a href='checkScalar.html'>checkScalar</a></code></p>
+    
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='fu'>testString</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div><div class='input'><span class='fu'>testString</span>(<span class='no'>letters</span>)</div><div class='output co'>#&gt; [1] FALSE
 #&gt; </div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

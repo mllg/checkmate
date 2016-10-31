@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>checkPathForOutput. checkmate</title>
+<title>Check if a path is suited for creating an output file — checkPathForOutput • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,15 +70,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Check if a path is suited for creating an output file</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Check if a path is suited for creating an output file</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>Check if a file path can be safely be used to create a file and write to it.</p>
 
@@ -102,10 +100,10 @@
 
 <span class='fu'>check_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>),
+<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>),
+<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>testPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
@@ -113,9 +111,9 @@
 <span class='fu'>test_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>expect_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>[any]
@@ -128,24 +126,23 @@ Default is <code>FALSE</code>.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in assertions. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>add</dt>
       <dd>[<code>AssertCollection</code>]
-Collection to store assertion messages. See <code>AssertCollection</code>.</dd>
+Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='http://www.rdocumentation.org/packages/expect_that/topics/testthat'>expect_that</a></code>.</dd>
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>Depending on the function prefix:
+    <p>Depending on the function prefix:
  If the check is successful, the functions 
  <code>assertPathForOutput</code>/<code>assert_path_for_output</code> return 
  <code>x</code> invisibly, whereas
@@ -159,28 +156,47 @@ the heuristic implemented in <code>vname</code>.</dd>
  returns <code>FALSE</code>,
  and <code>checkPathForOutput</code> returns a string with the error message.
  The function <code>expect_path_for_output</code> always returns an
- <code><a href='http://www.rdocumentation.org/packages/expectation/topics/testthat'>expectation</a></code>.</p>
-    </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p>Other filesystem: <code>checkAccess</code>,
-  <code>checkDirectoryExists</code>,
-  <code>checkFileExists</code></p>
-    </div>
+ <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
     
-    <h2 id="examples">Examples</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
+  <code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>,
+  <code><a href='checkFileExists.html'>checkFileExists</a></code></p>
+    
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='co'># Can we create a file in the tempdir?</span>
 <span class='fu'>testPathForOutput</span>(<span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"process.log"</span>))</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

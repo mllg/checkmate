@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>qassert. checkmate</title>
+<title>Quick argument checks on (builtin) R types — qassert • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,27 +70,28 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Quick argument checks on (builtin) R types</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Quick argument checks on (builtin) R types</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>The provided functions parse rules which allow to express some of the most
 frequent argument checks by typing just a few letters.</p>
     
 
-    <pre><span class='fu'>qassert</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))
+    <pre><span class='fu'>qassert</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
 
 <span class='fu'>qtest</span>(<span class='no'>x</span>, <span class='no'>rules</span>)
 
-<span class='fu'>qexpect</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))</pre>
+<span class='fu'>qexpect</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>[any]
@@ -104,33 +102,30 @@ Set of rules. See details.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in error messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='http://www.rdocumentation.org/packages/expect_that/topics/testthat'>expect_that</a></code>.</dd>
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p><code>qassert</code> throws an <code>R</code> exception if object <code>x</code> does
+    <p><code>qassert</code> throws an <code>R</code> exception if object <code>x</code> does
  not comply to at least one of the <code>rules</code> and returns the tested object invisibly
  otherwise.
  <code>qtest</code> behaves the same way but returns <code>FALSE</code> if none of the
  <code>rules</code> comply.
  <code>qexpect</code> is intended to be inside the unit test framework <code><a href='http://www.rdocumentation.org/packages/testthat/topics/testthat'>testthat</a></code> and
- returns an <code><a href='http://www.rdocumentation.org/packages/expectation/topics/testthat'>expectation</a></code>.</p>
-    </div>
+ returns an <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class="Details">
-      <h2>Details</h2>
-
-      <p>The rule is specified in up to three parts.
+    <p>The rule is specified in up to three parts.
 <ol>
 <li>
    Class and missingness check.
@@ -145,7 +140,7 @@ the heuristic implemented in <code>vname</code>.</dd>
 </tr><tr><td> Integer.</td>
 </tr><tr><td>
      <code>[xX]</code> </td>
-</tr><tr><td> Integerish (numeric convertible to integer, see <code>checkIntegerish</code>).</td>
+</tr><tr><td> Integerish (numeric convertible to integer, see <code><a href='checkIntegerish.html'>checkIntegerish</a></code>).</td>
 </tr><tr><td>
      <code>[rR]</code> </td>
 </tr><tr><td> Real / double.</td>
@@ -166,7 +161,7 @@ the heuristic implemented in <code>vname</code>.</dd>
 </tr><tr><td> Atomic.</td>
 </tr><tr><td>
      <code>[vV]</code> </td>
-</tr><tr><td> Atomic vector (see <code>checkAtomicVector</code>).</td>
+</tr><tr><td> Atomic vector (see <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>).</td>
 </tr><tr><td>
      <code>[lL]</code> </td>
 </tr><tr><td> List. Missingness is defined as <code>NULL</code> element.</td>
@@ -186,7 +181,7 @@ the heuristic implemented in <code>vname</code>.</dd>
    Note that the check for missingness does not distinguish between
    <code>NaN</code> and <code>NA</code>. Infinite values are not treated as missing, but
    can be caught using boundary checks (part 3).</p>
-      <p></li>
+    <p></li>
 <li>
    Length definition. This can be one of
    <table><tr><td>
@@ -201,7 +196,7 @@ the heuristic implemented in <code>vname</code>.</dd>
 </tr></table>
    Preceding the exact length with one of the comparison operators <code>=</code>/<code>==</code>,
    <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code> or <code>&gt;</code> is also supported.</p>
-      <p></li>
+    <p></li>
 <li>
    Range check as two numbers separated by a comma, enclosed by square brackets
    (endpoint included) or parentheses (endpoint excluded).
@@ -212,26 +207,25 @@ the heuristic implemented in <code>vname</code>.</dd>
    The same holds for the left (lower) boundary and <code>-Inf</code>.
    E.g., the rule &#8220;N1()&#8221; checks for a single finite numeric which is not NA,
    while &#8220;N1[)&#8221; allows <code>-Inf</code>.</p>
-      <p></li>
+    <p></li>
 </ol></p>
-    </div>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <div class="Note">
-      <h2>Note</h2>
-
-      <p>The functions are inspired by the blog post of Bogumił Kamiński:
+    <p>The functions are inspired by the blog post of Bogumił Kamiński:
 <a href = 'http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html'>http://rsnippets.blogspot.de/2013/06/testing-function-agruments-in-gnu-r.html</a>.
 The implementation is mostly written in C to minimize the overhead.</p>
-    </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p><code>qtestr</code> and <code>qassertr</code> for efficient checks
-of list elements and data frame columns.</p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='qassertr.html'>qtestr</a></code> and <code><a href='qassertr.html'>qassertr</a></code> for efficient checks
+of list elements and data frame columns.</p>
+    
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='co'># logical of length 1</span>
 <span class='fu'>qtest</span>(<span class='fl'>NA</span>, <span class='st'>"b1"</span>)</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div><div class='input'>
@@ -254,12 +248,34 @@ of list elements and data frame columns.</p>
 <span class='fu'>qtest</span>(<span class='no'>iris</span>, <span class='st'>"D+"</span>)</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#note">Note</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

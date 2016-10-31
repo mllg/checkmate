@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>asInteger. checkmate</title>
+<title>Convert an argument to an integer — asInteger • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,15 +70,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Convert an argument to an integer</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Convert an argument to an integer</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p><code>asInteger</code> is intended to be used for vectors while <code>asInt</code> is
 a specialization for scalar integers and <code>asCount</code> for scalar
@@ -93,15 +91,15 @@ range of an integer.</p>
 
     <pre><span class='fu'>asInteger</span>(<span class='no'>x</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
   <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
 
 <span class='fu'>asCount</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>positive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))
+  <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
 
 <span class='fu'>asInt</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>[any]
@@ -136,13 +134,13 @@ Maximal length of <code>x</code>.</dd>
 Must all values be unique? Default is <code>FALSE</code>.</dd>
       <dt>names</dt>
       <dd>[<code>character(1)</code>]
-Check for names. See <code>checkNamed</code> for possible values.
+Check for names. See <code><a href='checkNamed.html'>checkNamed</a></code> for possible values.
 Default is &#8220;any&#8221; which performs no check at all.
-Note that you can use <code>checkSubset</code> to check for a specific set of names.</dd>
+Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in error messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>na.ok</dt>
       <dd>[<code>logical(1)</code>]
 Are missing values allowed? Default is <code>FALSE</code>.</dd>
@@ -152,32 +150,50 @@ Must <code>x</code> be positive (&gt;= 1)?
 Default is <code>FALSE</code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>Converted <code>x</code>.</p>
-    </div>
+    <p>Converted <code>x</code>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <div class="Details">
-      <h2>Details</h2>
-
-      <p>This function does not distinguish between
+    <p>This function does not distinguish between
 <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>
 <code>NA_character_</code> and <code>NaN</code>.</p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='fu'>asInteger</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] 1 2 3
 #&gt; </div><div class='input'><span class='fu'>asCount</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 1
 #&gt; </div><div class='input'><span class='fu'>asInt</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] 1
 #&gt; </div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

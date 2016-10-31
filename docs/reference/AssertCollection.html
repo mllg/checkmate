@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AssertCollection. checkmate</title>
+<title>Collect multiple assertions — AssertCollection • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,15 +70,16 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Collect multiple assertions</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Collect multiple assertions</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>The function <code>makeAssertCollection()</code> returns a simple stack-like
 closure you can pass to all functions of the <code>assert*</code>-family.
@@ -95,27 +93,29 @@ See the example on how to push custom messages or retrieve all stored messages.<
 
 <span class='fu'>reportAssertions</span>(<span class='no'>collection</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>collection</dt>
       <dd>[<code>AssertCollection</code>]
 Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertCollection</code>).</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p><code>makeAssertCollection()</code> returns an object of class &#8220;AssertCollection&#8221; and
+    <p><code>makeAssertCollection()</code> returns an object of class &#8220;AssertCollection&#8221; and
  <code>reportCollection</code> returns invisibly <code>TRUE</code> if no error is thrown (i.e., no message was
  collected).</p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='st'>"a"</span>
 <span class='no'>coll</span> <span class='kw'>=</span> <span class='fu'>makeAssertCollection</span>()
 
 <span class='fu'>print</span>(<span class='no'>coll</span>$<span class='fu'>isEmpty</span>())</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'><span class='fu'>assertNumeric</span>(<span class='no'>x</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>coll</span>)
+#&gt; </div><div class='input'><span class='fu'><a href='checkNumeric.html'>assertNumeric</a></span>(<span class='no'>x</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>coll</span>)
 <span class='no'>coll</span>$<span class='fu'>isEmpty</span>()</div><div class='output co'>#&gt; [1] FALSE
 #&gt; </div><div class='input'><span class='no'>coll</span>$<span class='fu'>push</span>(<span class='st'>"Custom error message"</span>)
 <span class='no'>coll</span>$<span class='fu'>getMessages</span>()</div><div class='output co'>#&gt; [1] &quot;Variable &#39;x&#39;: Must be of type &#39;numeric&#39;, not &#39;character&#39;.&quot;
@@ -124,12 +124,28 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
 <span class='co'>#   reportAssertions(coll)</span>
 <span class='co'>## ---------------------------------------------</span></div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

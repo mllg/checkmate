@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>qassertr. checkmate</title>
+<title>Quick recursive arguments checks on lists and data frames — qassertr • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,6 +58,7 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
@@ -73,40 +70,41 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Quick recursive arguments checks on lists and data frames</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>Quick recursive arguments checks on lists and data frames</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
-    <p>These functions are the tuned counterparts of <code>qtest</code>,
-<code>qassert</code> and <code>qexpect</code> tailored for recursive
+    <p>These functions are the tuned counterparts of <code><a href='qassert.html'>qtest</a></code>,
+<code><a href='qassert.html'>qassert</a></code> and <code><a href='qassert.html'>qexpect</a></code> tailored for recursive
 checks of list elements or data frame columns.</p>
     
 
-    <pre><span class='fu'>qassertr</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))
+    <pre><span class='fu'>qassertr</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
 
 <span class='fu'>qtestr</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>depth</span> <span class='kw'>=</span> <span class='fl'>1L</span>)
 
-<span class='fu'>qexpectr</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'>vname</span>(<span class='no'>x</span>))</pre>
+<span class='fu'>qexpectr</span>(<span class='no'>x</span>, <span class='no'>rules</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>x</dt>
       <dd>[<code>list</code> or <code>data.frame</code>]
 List or data frame to check for compliance with at least one of <code>rules</code>.
-See details of <code>qtest</code> for rule explanation.</dd>
+See details of <code><a href='qassert.html'>qtest</a></code> for rule explanation.</dd>
       <dt>rules</dt>
       <dd>[<code>character</code>]
-Set of rules. See <code>qtest</code></dd>
+Set of rules. See <code><a href='qassert.html'>qtest</a></code></dd>
       <dt>.var.name</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in error messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
       <dt>depth</dt>
       <dd>[<code>integer(1)</code>]
 Maximum recursion depth. Defaults to &#8220;1&#8221; to directly check list elements or
@@ -114,26 +112,26 @@ data frame columns. Set to a higher value to check lists of lists of elements.</
       <dt>info</dt>
       <dd>[character(1)]
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='http://www.rdocumentation.org/packages/expect_that/topics/testthat'>expect_that</a></code>.</dd>
+See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</dd>
       <dt>label</dt>
       <dd>[<code>character(1)</code>]
 Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code>vname</code>.</dd>
+the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     </dl>
     
-    <div class="Value">
-      <h2>Value</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-      <p>See <code>qassert</code>.</p>
-    </div>
-
-    <div class="See also">
-      <h2>See also</h2>
-
-      <p><code>qtest</code>, <code>qassert</code></p>
-    </div>
+    <p>See <code><a href='qassert.html'>qassert</a></code>.</p>
     
-    <h2 id="examples">Examples</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code><a href='qassert.html'>qtest</a></code>, <code><a href='qassert.html'>qassert</a></code></p>
+    
+
+    <h2 class="hasAnchor" id="examples">
+      <a class="anchor" href="#examples"></a>
+      Examples
+    </h2>
     <pre class="examples"><div class='input'><span class='co'># All list elements are integers with length &gt;= 1?</span>
 <span class='fu'>qtestr</span>(<span class='fu'>as.list</span>(<span class='fl'>1</span>:<span class='fl'>10</span>), <span class='st'>"i+"</span>)</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div><div class='input'>
@@ -147,12 +145,30 @@ the heuristic implemented in <code>vname</code>.</dd>
 <span class='fu'>qtestr</span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>1</span>), <span class='kw'>c</span> <span class='kw'>=</span> <span class='no'>letters</span>), <span class='fu'>c</span>(<span class='st'>"N+"</span>, <span class='st'>"S+"</span>))</div><div class='output co'>#&gt; [1] TRUE
 #&gt; </div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Michel Lang.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 
