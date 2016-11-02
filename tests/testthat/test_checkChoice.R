@@ -10,7 +10,7 @@ test_that("checkChoice", {
   expect_false(testChoice(NULL, letters))
   expect_false(testChoice(1, NULL))
   expect_error(testChoice(list(1), as.list(iris)), "atomic")
-  expect_false(testChoice(factor("a"), letters))
+  expect_true(testChoice(factor("a"), letters))
   expect_true(testChoice(factor("a"), factor(letters)))
 
   expect_true(testChoice(1L, 1:10))

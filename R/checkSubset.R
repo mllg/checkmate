@@ -16,7 +16,8 @@
 #' testSubset("ab", letters)
 #' testSubset("Species", names(iris))
 #'
-#' # x is not converted before the comparison (except for numerics)
+#' # x is converted before the comparison if necessary
+#' # note that this is subject to change in a future version
 #' testSubset(factor("a"), "a")
 #' testSubset(1, "1")
 #' testSubset(1, as.integer(1))
@@ -25,7 +26,7 @@ checkSubset = function(x, choices, empty.ok = TRUE) {
   qassert(empty.ok, "B1")
   if (!empty.ok && length(x) == 0L)
     return(sprintf("Must be a subset of {'%s'}, not empty", paste0(choices, collapse = "','")))
-  if (!is.null(x) && (!isSameType(x, choices) || any(x %nin% choices)))
+  if (!is.null(x) && any(x %nin% choices))
     return(sprintf("Must be a subset of {'%s'}", paste0(choices, collapse = "','")))
   return(TRUE)
 }
