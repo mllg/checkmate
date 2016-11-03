@@ -73,8 +73,7 @@ Integers and doubles are both treated as numeric.
 \examples{
 testChoice("x", letters)
 
-# x is converted before the comparison if necessary
-# note that this is subject to change in a future version
+# x is not converted before the comparison (except for numerics)
 testChoice(factor("a"), "a")
 testChoice(1, "1")
 testChoice(1, as.integer(1))

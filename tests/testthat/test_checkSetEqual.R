@@ -15,7 +15,7 @@ test_that("checkSetEqual", {
   expect_false(testSetEqual(NULL, letters, ordered = TRUE))
   expect_false(testSetEqual(factor("a"), letters))
   expect_true(testSetEqual(factor(letters), factor(letters)))
-  expect_true(testSetEqual(letters, factor(letters)))
+  expect_false(testSetEqual(letters, factor(letters)))
 
   expect_true(testSetEqual(1L, 1L))
   expect_true(testSetEqual(1, 1L))

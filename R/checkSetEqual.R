@@ -16,8 +16,7 @@
 #' testSetEqual(c("a", "b"), c("a", "b"))
 #' testSetEqual(1:3, 1:4)
 #'
-#' # x is converted before the comparison if necessary
-#' # note that this is subject to change in a future version
+#' # x is not converted before the comparison (except for numerics)
 #' testSetEqual(factor("a"), "a")
 #' testSetEqual(1, "1")
 #' testSetEqual(1, as.integer(1))
@@ -26,10 +25,10 @@ checkSetEqual = function(x, y, ordered = FALSE) {
   qassert(y, "a")
   qassert(ordered, "B1")
   if (ordered) {
-    if (length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
+    if (!isSameType(x, y) || length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
       return(sprintf("Must be equal to {'%s'}", paste0(y, collapse = "','")))
   } else {
-    if (any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
+    if (!isSameType(x, y) || any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
       return(sprintf("Must be equal to set {'%s'}", paste0(y, collapse = "','")))
   }
   return(TRUE)

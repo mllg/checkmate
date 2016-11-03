@@ -11,14 +11,13 @@
 #' @examples
 #' testChoice("x", letters)
 #'
-#' # x is converted before the comparison if necessary
-#' # note that this is subject to change in a future version
+#' # x is not converted before the comparison (except for numerics)
 #' testChoice(factor("a"), "a")
 #' testChoice(1, "1")
 #' testChoice(1, as.integer(1))
 checkChoice = function(x, choices) {
   qassert(choices, "a")
-  if (!qtest(x, "a1") || x %nin% choices)
+  if (!qtest(x, "a1") || !isSameType(x, choices) || x %nin% choices)
     return(sprintf("Must be element of set {'%s'}", paste0(unique(choices), collapse = "','")))
   return(TRUE)
 }
