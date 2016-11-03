@@ -1,5 +1,5 @@
 mstop = function(msg, ...) {
-  stop(simpleError(message = sprintf(msg, ...), call = sys.call(1L)))
+  stop(assertion_error(sprintf(msg, ...), call = sys.call(1L)))
 }
 
 "%and%" = function(lhs, rhs) {

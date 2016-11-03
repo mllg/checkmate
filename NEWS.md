@@ -1,5 +1,7 @@
 # Version 1.9.0
-
+* Preliminary support for the
+  [conditions package](https://github.com/mllg/conditions).
+  All assertions now signal an `assertion_error`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
 

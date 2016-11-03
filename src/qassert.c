@@ -1,3 +1,4 @@
+#include <conditions.h>
 #include "qassert.h"
 #include "helper.h"
 #include "guess_type.h"
@@ -117,7 +118,7 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
     } else if (isFactor(x)) {
         return check_bound(getAttrib(x, R_LevelsSymbol), bound);
     } else {
-        error("Bound checks only possible for numeric variables, strings and factors, not %s", guess_type(x));
+        cstop(condition_error("runtime", "Bound checks only possible for numeric variables, strings and factors, not %s", guess_type(x)));
     }
 
     return MSGT;
@@ -224,7 +225,7 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.name = CL_NONE;
             break;
         default:
-            error("Unknown class identifier '%c'", rule[0]);
+            cstop(condition_error("type", "Unknown class identifier '%c'", rule[0]));
     }
     return 1;
 }
@@ -290,11 +291,11 @@ static int parse_length(checker_t *checker, const char *rule) {
     char *end;
     long int cmp = strtol(start, &end, 10);
     if (start == end)
-        error("Invalid length definition: %s", rule);
+        cstop(condition_error("runtime", "Invalid length definition: %s", rule));
     if (cmp >= INT_MAX)
-        error("Cannot handle length >= %i", INT_MAX);
+        cstop(condition_error("runtime", "Cannot handle length >= %i", INT_MAX));
     if (cmp < 0)
-        error("Cannot check for negative length");
+        cstop(condition_error("runtime", "Cannot check for negative length"));
 
     checker->len.cmp = (int)cmp;
     return end - rule;
@@ -315,7 +316,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
             checker->lower.op = GE;
             break;
         default:
-            error("Invalid bound definition, missing opening '(' or '[': %s", rule);
+            cstop(condition_error("runtime", "Invalid bound definition, missing opening '(' or '[': %s", rule));
     }
 
     char *end;
@@ -337,7 +338,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
         case ',' : start = end + 1;
         case ')' :
         case ']' : break;
-        default  : error("Invalid bound definition, error parsing lower bound, missing separator ',' or missing closing ')' or ']': %s", rule);
+        default  : cstop(condition_error("runtime", "Invalid bound definition, error parsing lower bound, missing separator ',' or missing closing ')' or ']': %s", rule));
     }
 
     cmp = strtod(start, &end);
@@ -360,7 +361,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
             checker->upper.op = LE;
         }
     } else {
-        error("Invalid bound definition, error parsing upper bound or missing closing ')' or ']': %s", rule);
+        cstop(condition_error("runtime", "Invalid bound definition, error parsing upper bound or missing closing ')' or ']': %s", rule));
     }
 
     return end - rule + 1;
@@ -369,14 +370,14 @@ static int parse_bounds(checker_t *checker, const char *rule) {
 static void parse_rule(checker_t *checker, const char *rule) {
     const R_len_t nchars = strlen(rule);
     if (nchars == 0)
-        error("Empty rule");
+        cstop(condition_error("runtime", "Empty rule"));
 
     rule += parse_class(checker, rule);
     rule += parse_length(checker, rule);
     rule += parse_bounds(checker, rule);
     if (rule[0] == '\0')
         return;
-    error("Additional chars found!");
+    cstop(condition_error("runtime", "Additional chars found in rule!"));
 }
 
 /*********************************************************************************************************************/
@@ -424,7 +425,7 @@ static inline R_len_t qassert1(SEXP x, const checker_t *checker, msg_t *result, 
 
 static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
     if (!isNewList(x) || isNull(x))
-        error("Argument 'x' must be a list or data.frame");
+        cstop(condition_error("type", "Argument 'x' must be a list or data.frame"));
 
     const R_len_t nx = xlength(x);
     for (R_xlen_t i = 0; i < nx; i++) {
@@ -440,7 +441,7 @@ SEXP qassert(SEXP x, const char *rule, const char *name) {
     parse_rule(&checker, rule);
     msg_t result = check_rule(x, &checker, TRUE);
     if (!result.ok)
-        error("Variable '%s': %s", name, result.msg);
+        cstop(condition_error("assertion", "Variable '%s': %s", name, result.msg));
     return x;
 }
 
@@ -448,7 +449,7 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     const Rboolean nrules = length(rules);
     R_len_t failed;
     if (!isString(rules))
-        error("Argument 'rules' must be a string");
+        cstop(condition_error("type", "Argument 'rules' must be a string"));
     if (nrules == 0)
         return ScalarLogical(TRUE);
 
@@ -458,7 +459,7 @@ SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     for (R_len_t i = 0; i < nrules; i++) {
         tmp = STRING_ELT(rules, i);
         if (tmp == NA_STRING)
-            error("Rule may not be NA");
+            cstop(condition_error("missing", "Rule may not be NA"));
         parse_rule(&checker[i], CHAR(tmp));
         result[i].ok = TRUE;
     }
@@ -496,7 +497,7 @@ static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nr
 
 static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules, R_len_t depth) {
     if (!isNewList(x) || isNull(x))
-        error("Argument 'x' must be a list or data.frame");
+        cstop(condition_error("type", "Argument 'x' must be a list or data.frame"));
 
     const R_len_t nx = xlength(x);
     if (depth > 1) {
@@ -529,7 +530,7 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     const R_len_t nrules = length(rules);
 
     if (!isString(rules))
-        error("Argument 'rules' must be a string");
+        cstop(condition_error("type", "Argument 'rules' must be a string"));
     if (nrules == 0)
         return ScalarLogical(TRUE);
 
@@ -538,7 +539,7 @@ SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     for (R_len_t i = 0; i < nrules; i++) {
         tmp = STRING_ELT(rules, i);
         if (tmp == NA_STRING)
-            error("Rule may not be NA");
+            cstop(condition_error("missing", "Rule may not be NA"));
         parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 

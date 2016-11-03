@@ -19,7 +19,10 @@ Depends:
     R (>= 3.0.0)
 Imports:
     backports,
+    conditions,
     utils
+LinkingTo:
+    conditions
 Suggests:
     data.table,
     devtools,
@@ -30,6 +33,7 @@ Suggests:
     microbenchmark,
     testthat (>= 0.11.0),
     tibble
+Remotes: github::mllg/conditions
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1

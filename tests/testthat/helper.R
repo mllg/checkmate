@@ -82,13 +82,13 @@ expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   fun = match.fun(s)
   expect_error(fun(x, ..., .var.name = xn), xn, info = s, label = xn)
   expect_error(fun(x, ...), "'x'", info = s, label = xn)
-  expect_is(tryCatch(fun(x, ...), condition = function(c) c), c("assertion_error", "error", "condition"))
+  expect_is(tryCatch(fun(x, ...), condition = function(c) c), "assertion_error")
 
   s = paste0("assert_", lc)
   fun = match.fun(s)
   expect_error(fun(x, ..., .var.name = xn), xn, info = s, label = xn)
   expect_error(fun(x, ...), "'x'", info = s, label = xn)
-  expect_is(tryCatch(fun(x, ...), condition = function(c) c), c("assertion_error", "error", "condition"))
+  expect_is(tryCatch(fun(x, ...), condition = function(c) c), "assertion_error")
 
   s = paste0("expect_", lc)
   fun = match.fun(s)
