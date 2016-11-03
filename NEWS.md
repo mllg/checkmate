@@ -1,4 +1,4 @@
-# Version 1.8.2 (2016-xx-xx)
+# Version 1.8.2 (2016-11-02)
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage
   type via argument "mode".
 * Functions `*Count`, `*Int`, `*Number`, `*Integer`, `*Integerish` and
