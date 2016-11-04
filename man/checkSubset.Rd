@@ -34,7 +34,7 @@ Object to check.}
 Set of possible values.}
 
 \item{empty.ok}{[\code{logical(1)}]\cr
-Treat zero-length \code{x} as subset of any set \code{choices}?
+Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?
 Default is \code{TRUE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr

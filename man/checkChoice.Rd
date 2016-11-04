@@ -10,19 +10,21 @@
 \alias{test_choice}
 \title{Check if an object is an element of a given set}
 \usage{
-checkChoice(x, choices)
+checkChoice(x, choices, null.ok = FALSE)
 
-check_choice(x, choices)
+check_choice(x, choices, null.ok = FALSE)
 
-assertChoice(x, choices, .var.name = vname(x), add = NULL)
+assertChoice(x, choices, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-assert_choice(x, choices, .var.name = vname(x), add = NULL)
+assert_choice(x, choices, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-testChoice(x, choices)
+testChoice(x, choices, null.ok = FALSE)
 
-test_choice(x, choices)
+test_choice(x, choices, null.ok = FALSE)
 
-expect_choice(x, choices, info = NULL, label = vname(x))
+expect_choice(x, choices, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -30,6 +32,10 @@ Object to check.}
 
 \item{choices}{[\code{atomic}]\cr
 Set of possible values.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

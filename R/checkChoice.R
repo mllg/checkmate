@@ -4,6 +4,7 @@
 #' @template x
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.
+#' @template null.ok
 #' @template checker
 #' @template set
 #' @family set
@@ -15,8 +16,14 @@
 #' testChoice(factor("a"), "a")
 #' testChoice(1, "1")
 #' testChoice(1, as.integer(1))
-checkChoice = function(x, choices) {
+checkChoice = function(x, choices, null.ok = FALSE) {
   qassert(choices, "a")
+  qassert(null.ok, "B1")
+  if (is.null(x)) {
+    if (null.ok)
+      return(TRUE)
+    return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(choices, collapse = "','")))
+  }
   if (!qtest(x, "a1") || !isSameType(x, choices) || x %nin% choices)
     return(sprintf("Must be element of set {'%s'}", paste0(unique(choices), collapse = "','")))
   return(TRUE)

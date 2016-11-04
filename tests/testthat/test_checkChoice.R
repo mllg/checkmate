@@ -14,6 +14,10 @@ test_that("checkChoice", {
   expect_true(testChoice(factor("a"), factor(letters)))
   expect_true(testChoice(1., 1:2))
 
+  expect_false(testChoice(NULL, NULL))
+  expect_false(testChoice(NULL, letters, null.ok = FALSE))
+  expect_true(checkChoice(NULL, letters, null.ok = TRUE))
+
   expect_true(testChoice(1L, 1:10))
   expect_false(testChoice("ab", letters))
   expect_false(testChoice(NA_integer_, 1:10))

@@ -21,14 +21,15 @@
 #' testFunction(mean)
 #' testFunction(mean, args = "x")
 checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE) {
+  qassert(null.ok, "B1")
   if (is.null(x)) {
-    if (identical(null.ok, TRUE))
+    if (null.ok)
       return(TRUE)
     return("Must be a function, not 'NULL'")
   }
 
   if (!is.function(x))
-    return(sprintf("Must be a function%s, not '%s'", if (isTRUE(null.ok)) " (or 'NULL')" else "", guessType(x)))
+    return(sprintf("Must be a function%s, not '%s'", if (null.ok) " (or 'NULL')" else "", guessType(x)))
 
   if (!is.null(args)) {
     qassert(args, "S")

@@ -15,13 +15,14 @@
 #' testEnvironment(ee, contains = "a")
 checkEnvironment = function(x, contains = character(0L), null.ok = FALSE) {
   qassert(contains, "S")
+  qassert(null.ok, "B1")
   if (is.null(x)) {
-    if (identical(null.ok, TRUE))
+    if (null.ok)
       return(TRUE)
     return("Must be an environment, not 'NULL'")
   }
   if (!is.environment(x))
-    return(sprintf("Must be an environment%s, not '%s'", if (isTRUE(null.ok)) " (or 'NULL')" else "", guessType(x)))
+    return(sprintf("Must be an environment%s, not '%s'", if (null.ok) " (or 'NULL')" else "", guessType(x)))
   if (length(contains) > 0L) {
     w = wf(contains %nin% ls(x, all.names = TRUE))
     if (length(w) > 0L)

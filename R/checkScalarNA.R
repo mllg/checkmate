@@ -11,13 +11,14 @@
 #' testScalarNA(NA_real_)
 #' testScalarNA(rep(NA, 2))
 checkScalarNA = function(x, null.ok = FALSE) {
+  qassert(null.ok, "B1")
   if (is.null(x)) {
-    if (identical(null.ok, TRUE))
+    if (null.ok)
       return(TRUE)
     return("Must be a scalar missing value, not 'NULL'")
   }
   if (length(x) != 1L || !is.na(x))
-    return(paste0("Must be a scalar missing value", if (isTRUE(null.ok)) " (or 'NULL')" else ""))
+    return(paste0("Must be a scalar missing value", if (null.ok) " (or 'NULL')" else ""))
   return(TRUE)
 }
 

@@ -16,13 +16,14 @@
 #' @family basetypes
 #' @export
 checkDate = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, null.ok = FALSE) {
+  qassert(null.ok, "B1")
   if (is.null(x)) {
-    if (isTRUE(null.ok))
+    if (null.ok)
       return(TRUE)
     return("Must be of class 'Date', not 'NULL'")
   }
   if (!inherits(x, "Date"))
-    return(sprintf("Must be of class 'Date'%s, not '%s'", if (isTRUE(null.ok)) " (or 'NULL')" else "", guessType(x)))
+    return(sprintf("Must be of class 'Date'%s, not '%s'", if (null.ok) " (or 'NULL')" else "", guessType(x)))
   checkInteger(as.integer(x), any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique) %and%
     checkDateBounds(x, lower, upper)
 }

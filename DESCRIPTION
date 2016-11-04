@@ -21,8 +21,7 @@ Imports:
     backports,
     conditions,
     utils
-LinkingTo:
-    conditions
+LinkingTo: conditions
 Suggests:
     data.table,
     devtools,
@@ -63,6 +62,7 @@ Collate:
     'checkDate.R'
     'checkDirectoryExists.R'
     'checkEnvironment.R'
+    'checkFALSE.R'
     'checkFactor.R'
     'checkFileExists.R'
     'checkFlag.R'
@@ -85,6 +85,7 @@ Collate:
     'checkSetEqual.R'
     'checkString.R'
     'checkSubset.R'
+    'checkTRUE.R'
     'checkTibble.R'
     'checkVector.R'
     'coalesce.R'

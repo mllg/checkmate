@@ -5,7 +5,7 @@
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.
 #' @param empty.ok [\code{logical(1)}]\cr
-#'  Treat zero-length \code{x} as subset of any set \code{choices}?
+#'  Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?
 #'  Default is \code{TRUE}.
 #' @template checker
 #' @template set
