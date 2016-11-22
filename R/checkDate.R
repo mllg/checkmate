@@ -32,7 +32,7 @@ checkDateBounds = function(x, lower, upper) {
   if (!is.null(lower)) {
     lower = as.Date(lower, origin = "1970-01-01")
     if (length(lower) != 1L || is.na(lower))
-      stop("Argument 'lower' must be a single (non-missing) date")
+      value_error("Argument 'lower' must be a single (non-missing) date")
     if (any(x < lower))
       return(sprintf("Date must be >= %s", lower))
   }
@@ -40,7 +40,7 @@ checkDateBounds = function(x, lower, upper) {
   if (!is.null(upper)) {
     upper = as.Date(upper, origin = "1970-01-01")
     if (length(upper) != 1L || is.na(upper))
-      stop("Argument 'upper' must be a single (non-missing) date")
+      value_error("Argument 'upper' must be a single (non-missing) date")
     if (any(x > upper))
       return(sprintf("Date must be <= %s", upper))
   }

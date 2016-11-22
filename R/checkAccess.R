@@ -20,7 +20,7 @@ checkAccess = function(x, access = "") {
   if (nzchar(access)) {
     access = match(strsplit(access, "")[[1L]], c("r", "w", "x"))
     if (anyMissing(access) || anyDuplicated(access) > 0L)
-      stop("Access pattern invalid, allowed are 'r', 'w' and 'x'")
+      type_error("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
     if (1L %in% access) {
       w = wf(file.access(x, 4L) != 0L)

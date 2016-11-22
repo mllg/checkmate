@@ -95,7 +95,7 @@
 #' }
 #'
 #' @import backports
-#' @importFrom conditions assertion_error
+#' @importFrom conditions assertion_error value_error type_error library_error
 #' @importFrom utils head tail packageVersion getFromNamespace
 "_PACKAGE"
 

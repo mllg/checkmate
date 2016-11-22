@@ -28,7 +28,7 @@ checkDataTable = function(x, key = NULL, index = NULL, types = character(0L), an
 checkDataTableProps = function(x, key = NULL, index = NULL) {
   if (!is.null(x)) {
     if (!requireNamespace("data.table", quietly = TRUE))
-      stop("Install 'data.table' to perform checks of data tables")
+      library_error("Install 'data.table' to perform checks of data tables")
     if (!data.table::is.data.table(x))
       return("Must be a data.table")
     if (!is.null(key)) {
