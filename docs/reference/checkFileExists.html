@@ -175,16 +175,11 @@ from the package in a future version due to name clashes.
   <code><a href='checkPathForOutput.html'>checkPathForOutput</a></code></p>
     
 
-    <h2 class="hasAnchor" id="examples">
-      <a class="anchor" href="#examples"></a>
-      Examples
-    </h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Check if R's COPYING file is readable</span>
-<span class='fu'>testFileExists</span>(<span class='fu'>file.path</span>(<span class='fu'>R.home</span>(), <span class='st'>"COPYING"</span>), <span class='kw'>access</span> <span class='kw'>=</span> <span class='st'>"r"</span>)</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'>
+<span class='fu'>testFileExists</span>(<span class='fu'>file.path</span>(<span class='fu'>R.home</span>(), <span class='st'>"COPYING"</span>), <span class='kw'>access</span> <span class='kw'>=</span> <span class='st'>"r"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># Check if R's COPYING file is readable and writable</span>
-<span class='fu'>testFileExists</span>(<span class='fu'>file.path</span>(<span class='fu'>R.home</span>(), <span class='st'>"COPYING"</span>), <span class='kw'>access</span> <span class='kw'>=</span> <span class='st'>"rw"</span>)</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div></pre>
+<span class='fu'>testFileExists</span>(<span class='fu'>file.path</span>(<span class='fu'>R.home</span>(), <span class='st'>"COPYING"</span>), <span class='kw'>access</span> <span class='kw'>=</span> <span class='st'>"rw"</span>)</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

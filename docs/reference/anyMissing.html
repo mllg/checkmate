@@ -107,26 +107,13 @@ Object to check.</dd>
  elements of <code>x</code> are missing (see details), <code>FALSE</code> otherwise.</p>
     
 
-    <h2 class="hasAnchor" id="examples">
-      <a class="anchor" href="#examples"></a>
-      Examples
-    </h2>
-    <pre class="examples"><div class='input'><span class='fu'>allMissing</span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'><span class='fu'>allMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'><span class='fu'>allMissing</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>allMissing</span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>allMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>allMissing</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 <span class='co'># Note how allMissing combines the results for data frames:</span>
-<span class='fu'>allMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'><span class='fu'>all</span>(<span class='fu'>sapply</span>(<span class='no'>x</span>, <span class='no'>allMissing</span>))</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>list</span>(<span class='fl'>1</span>, <span class='kw'>NULL</span>))</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'>
+<span class='fu'>allMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>all</span>(<span class='fu'>sapply</span>(<span class='no'>x</span>, <span class='no'>allMissing</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>anyMissing</span>(<span class='fu'>list</span>(<span class='fl'>1</span>, <span class='kw'>NULL</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='no'>x</span> <span class='kw'>=</span> <span class='no'>iris</span>
 <span class='no'>x</span>[, <span class='st'>"Species"</span>] <span class='kw'>=</span> <span class='fl'>NA</span>
-<span class='fu'>anyMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'><span class='fu'>allMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div></pre>
+<span class='fu'>anyMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>allMissing</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

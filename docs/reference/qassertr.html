@@ -128,22 +128,15 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</dd>
     <p><code><a href='qassert.html'>qtest</a></code>, <code><a href='qassert.html'>qassert</a></code></p>
     
 
-    <h2 class="hasAnchor" id="examples">
-      <a class="anchor" href="#examples"></a>
-      Examples
-    </h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># All list elements are integers with length &gt;= 1?</span>
-<span class='fu'>qtestr</span>(<span class='fu'>as.list</span>(<span class='fl'>1</span>:<span class='fl'>10</span>), <span class='st'>"i+"</span>)</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div><div class='input'>
+<span class='fu'>qtestr</span>(<span class='fu'>as.list</span>(<span class='fl'>1</span>:<span class='fl'>10</span>), <span class='st'>"i+"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># All list elements (i.e. data frame columns) are numeric?</span>
-<span class='fu'>qtestr</span>(<span class='no'>iris</span>, <span class='st'>"n"</span>)</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'>
+<span class='fu'>qtestr</span>(<span class='no'>iris</span>, <span class='st'>"n"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># All list elements are numeric, w/o NAs?</span>
-<span class='fu'>qtestr</span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>1</span>), <span class='kw'>c</span> <span class='kw'>=</span> <span class='no'>letters</span>), <span class='st'>"N+"</span>)</div><div class='output co'>#&gt; [1] FALSE
-#&gt; </div><div class='input'>
+<span class='fu'>qtestr</span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>1</span>), <span class='kw'>c</span> <span class='kw'>=</span> <span class='no'>letters</span>), <span class='st'>"N+"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># All list elements are numeric OR character</span>
-<span class='fu'>qtestr</span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>1</span>), <span class='kw'>c</span> <span class='kw'>=</span> <span class='no'>letters</span>), <span class='fu'>c</span>(<span class='st'>"N+"</span>, <span class='st'>"S+"</span>))</div><div class='output co'>#&gt; [1] TRUE
-#&gt; </div></pre>
+<span class='fu'>qtestr</span>(<span class='fu'>list</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>rnorm</span>(<span class='fl'>1</span>), <span class='kw'>c</span> <span class='kw'>=</span> <span class='no'>letters</span>), <span class='fu'>c</span>(<span class='st'>"N+"</span>, <span class='st'>"S+"</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

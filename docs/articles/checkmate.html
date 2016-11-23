@@ -41,7 +41,7 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2016-10-31</h4>
+            <h4 class="date">2016-11-23</h4>
           </div>
 
     
@@ -153,9 +153,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr   min    lq    mean median     uq    max neval cld
-##    r(x) 5.960 6.550 8.29585  6.738 7.2335 55.900   100   b
-##   cm(x) 2.710 3.047 4.22825  3.326 3.6155 45.699   100  a 
-##  cmq(x) 2.127 2.418 2.98231  2.637 2.8220 12.170   100  a</code></pre>
+##    r(x) 6.116 6.474 7.87064 6.6870 7.1880 34.004   100   c
+##   cm(x) 2.756 2.998 4.09356 3.2525 3.5410 20.901   100  b 
+##  cmq(x) 2.092 2.280 2.84089 2.5405 2.7795 13.063   100 a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.svg" width="576"></p>
 </div>
@@ -169,9 +169,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq    max neval cld
-##    r(x) 16.468 17.3320 19.37291 17.9610 18.5265 59.226   100   b
-##   cm(x)  7.141  7.6845  9.81790  8.0660  8.5010 79.376   100  a 
-##  cmq(x)  6.523  6.7885  7.96365  7.1415  7.3980 29.047   100  a</code></pre>
+##    r(x) 16.533 17.2395 18.96073 17.6660 18.3460 47.230   100   b
+##   cm(x)  7.311  7.7975  9.06704  8.1440  8.4735 22.644   100  a 
+##  cmq(x)  7.050  7.3235  8.59220  7.6305  8.0165 34.819   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.svg" width="576"></p>
 </div>
@@ -184,14 +184,14 @@ cmq =<span class="st"> </span>function(x) <span class="kw"><a href="../reference
 mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr      min       lq       mean    median        uq      max neval
-##    r(x) 1167.834 1272.937 1463.92653 1363.9180 1552.6295 3494.840   100
-##   cm(x)   31.872   34.200   49.70660   40.0630   53.6595  230.376   100
-##  cmq(x)   41.785   45.585   54.17562   49.7115   60.3970  117.900   100
+##    expr      min        lq       mean    median        uq      max neval
+##    r(x) 1178.647 1181.5680 1250.41799 1189.0420 1250.0025 2092.516   100
+##   cm(x)   34.291   35.1975   39.78548   36.2865   37.7510  111.846   100
+##  cmq(x)   65.546   65.9590   69.86458   66.5455   67.2615  158.359   100
 ##  cld
-##    b
-##   a 
-##   a</code></pre>
+##    c
+##  a  
+##   b</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.svg" width="576"></p>
 </div>
@@ -206,9 +206,9 @@ mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class=
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq      max neval cld
-##    r(x) 63.986 68.4335 84.12797 70.5030 74.2615 1061.073   100   b
-##   cm(x) 19.168 20.6380 25.71624 21.6105 23.0005  174.688   100  a 
-##  cmq(x) 12.776 13.3265 14.78741 13.8320 14.3840   58.029   100  a</code></pre>
+##    r(x) 63.077 67.1805 81.35905 68.7940 72.4145 1025.402   100   b
+##   cm(x) 18.840 19.8875 22.08478 20.7515 21.4725   50.982   100  a 
+##  cmq(x) 12.308 12.8840 13.46008 13.2545 13.6865   17.943   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.svg" width="576"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># checkmate tries to stop as early as possible</span>
@@ -216,10 +216,10 @@ x$a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</sp
 mb =<span class="st"> </span><span class="kw">microbenchmark</span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: nanoseconds
-##    expr   min      lq     mean  median      uq     max neval cld
-##    r(x) 65380 67338.5 88072.41 68327.0 72747.5 1312461   100   b
-##   cm(x)  5964  6520.5  8748.21  7269.5  7801.0   54684   100  a 
-##  cmq(x)   956  1139.0  1773.98  1457.0  1935.5   21892   100  a</code></pre>
+##    expr   min      lq     mean  median    uq     max neval cld
+##    r(x) 63947 67579.0 82722.33 68340.5 71743 1314431   100   b
+##   cm(x)  6020  6538.5  8734.72  7436.5  7874   29458   100  a 
+##  cmq(x)   942  1126.5  1662.21  1546.5  2006   10126   100  a</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">autoplot</span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.svg" width="576"></p>
 </div>
@@ -255,7 +255,7 @@ assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="
 ##     res = checkSquareMatrix(x, mode)
 ##     makeAssertion(x, res, .var.name, add)
 ## }
-## &lt;environment: 0x4cbeec0&gt;</code></pre>
+## &lt;environment: 0x43d2f68&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For tests:</span>
 test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)
 <span class="kw">print</span>(testSquareMatrix)</code></pre></div>
@@ -263,7 +263,7 @@ test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st">
 ## {
 ##     identical(checkSquareMatrix(x, mode), TRUE)
 ## }
-## &lt;environment: 0x4cbeec0&gt;</code></pre>
+## &lt;environment: 0x43d2f68&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For expectations:</span>
 expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)
 <span class="kw">print</span>(expect_square_matrix)</code></pre></div>
@@ -272,7 +272,7 @@ expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../refe
 ##     res = checkSquareMatrix(x, mode)
 ##     makeExpectation(x, res, info, label)
 ## }
-## &lt;environment: 0x4cbeec0&gt;</code></pre>
+## &lt;environment: 0x43d2f68&gt;</code></pre>
 <p>Note that all the additional arguments <code>.var.name</code>, <code>add</code>, <code>info</code> and <code>label</code> are automatically joined with the function arguments of your custom check function. Also note that if you define these functions inside an R package, the constructors are called at build-time (thus, there is no negative impact on the runtime).</p>
 </div>
 <div id="calling-checkmate-from-cc" class="section level2">
@@ -293,7 +293,7 @@ Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span
 <h2 class="hasAnchor"><html><body><a href="#session-info" class="anchor"> </a></body></html>Session Info</h2>
 <p>For the sake of completeness, here the <code>sessionInfo()</code> for the benchmark (but remember the note before on <code>knitr</code> possibly biasing the results).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.3.1 (2016-06-21)
+<pre><code>## R version 3.3.2 (2016-10-31)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Arch Linux
 ## 
@@ -309,27 +309,27 @@ Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span
 ## [1] methods   stats     graphics  grDevices utils     datasets  base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-2.1 ggplot2_2.1.0          tibble_1.2            
-## [4] data.table_1.9.7       checkmate_1.8.2        rt_0.1                
+## [1] microbenchmark_1.4-2.1 ggplot2_2.2.0          tibble_1.2            
+## [4] data.table_1.9.6       checkmate_1.9.0        rt_0.1                
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.7        plyr_1.8.4         formatR_1.4       
-##  [4] tools_3.3.1        highlight_0.4.7    testthat_1.0.2    
-##  [7] digest_0.6.10      docopt_0.4.5       lattice_0.20-34   
-## [10] memoise_1.0.0      evaluate_0.10      gtable_0.2.0      
-## [13] Matrix_1.2-7.1     yaml_2.1.13        parallel_3.3.1    
+##  [1] Rcpp_0.12.8        plyr_1.8.4         tools_3.3.2       
+##  [4] highlight_0.4.7    testthat_1.0.2     digest_0.6.10     
+##  [7] docopt_0.4.5       pkgload_0.0.0.9000 lattice_0.20-34   
+## [10] gtable_0.2.0       memoise_1.0.0      evaluate_0.10     
+## [13] Matrix_1.2-7.1     yaml_2.1.14        parallel_3.3.2    
 ## [16] mvtnorm_1.0-5      pkgdown_0.1.0.9000 withr_1.0.2       
-## [19] stringr_1.1.0      roxygen2_5.0.1     xml2_1.0.0.9001   
-## [22] knitr_1.14         desc_1.0.1         devtools_1.12.0   
-## [25] rprojroot_1.1      grid_3.3.1         R6_2.2.0          
-## [28] survival_2.40-1    rmarkdown_1.1.9012 multcomp_1.4-6    
-## [31] TH.data_1.0-7      purrr_0.2.2        magrittr_1.5      
-## [34] whisker_0.3-2      codetools_0.2-15   MASS_7.3-45       
-## [37] splines_3.3.1      backports_1.0.5    scales_0.4.0      
-## [40] htmltools_0.3.5    assertthat_0.1     colorspace_1.2-7  
-## [43] brew_1.0-6         sandwich_2.3-4     stringi_1.1.2     
-## [46] munsell_0.4.3      lazyeval_0.2.0     crayon_1.3.2      
-## [49] zoo_1.7-13</code></pre>
+## [19] stringr_1.1.0      roxygen2_5.0.1     knitr_1.15.1      
+## [22] xml2_1.0.0.9001    desc_1.0.1         conditions_0.1    
+## [25] devtools_1.12.0    grid_3.3.2         rprojroot_1.1     
+## [28] R6_2.2.0           survival_2.40-1    rmarkdown_1.2.9000
+## [31] multcomp_1.4-6     TH.data_1.0-7      purrr_0.2.2       
+## [34] magrittr_1.5       whisker_0.3-2      codetools_0.2-15  
+## [37] MASS_7.3-45        splines_3.3.2      scales_0.4.1      
+## [40] backports_1.0.4    htmltools_0.3.5    assertthat_0.1    
+## [43] colorspace_1.3-1   brew_1.0-6         sandwich_2.3-4    
+## [46] stringi_1.1.2      munsell_0.4.3      lazyeval_0.2.0    
+## [49] chron_2.3-47       crayon_1.3.2       zoo_1.7-13</code></pre>
 </div>
 </div>
   </div>
