@@ -104,6 +104,7 @@ Other atomicvector: \code{\link{checkAtomicVector}},
   \code{\link{checkVector}}
 
 Other basetypes: \code{\link{checkArray}},
+  \code{\link{checkAtomicVector}},
   \code{\link{checkCharacter}}, \code{\link{checkComplex}},
   \code{\link{checkDataFrame}}, \code{\link{checkDate}},
   \code{\link{checkEnvironment}},

@@ -115,6 +115,7 @@ testComplex(1+1i)
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},
+  \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkDataFrame}}, \code{\link{checkDate}},
   \code{\link{checkEnvironment}},

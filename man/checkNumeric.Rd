@@ -127,6 +127,7 @@ testNumeric(1, min.len = 1, lower = 0)
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},
+  \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
   \code{\link{checkDate}}, \code{\link{checkEnvironment}},

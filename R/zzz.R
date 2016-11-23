@@ -24,12 +24,14 @@
 #'   \item{\code{\link{checkNumeric}}}
 #'   \item{\code{\link{checkInteger}}}
 #'   \item{\code{\link{checkIntegerish}}}
+#'   \item{\code{\link{checkCharacter}}}
 #'   \item{\code{\link{checkComplex}}}
 #'   \item{\code{\link{checkFactor}}}
 #'   \item{\code{\link{checkList}}}
 #'   \item{\code{\link{checkVector}}}
 #'   \item{\code{\link{checkAtomic}}}
 #'   \item{\code{\link{checkAtomicVector}}}
+#'   \item{\code{\link{checkDate}}}
 #' }
 #'
 #' Check attributes:

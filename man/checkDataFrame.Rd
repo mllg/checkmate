@@ -128,6 +128,7 @@ testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "n
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},
+  \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDate}},
   \code{\link{checkEnvironment}},

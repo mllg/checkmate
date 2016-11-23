@@ -99,10 +99,10 @@ Check if an argument is an array
 checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 }
 \seealso{
-Other basetypes: \code{\link{checkAtomic}},
-  \code{\link{checkCharacter}}, \code{\link{checkComplex}},
-  \code{\link{checkDataFrame}}, \code{\link{checkDate}},
-  \code{\link{checkEnvironment}},
+Other basetypes: \code{\link{checkAtomicVector}},
+  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
+  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
+  \code{\link{checkDate}}, \code{\link{checkEnvironment}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
