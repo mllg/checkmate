@@ -23,7 +23,7 @@ Imports:
     utils
 LinkingTo: conditions
 Suggests:
-    data.table,
+    data.table (>= 1.9.8),
     devtools,
     ggplot2,
     knitr,
