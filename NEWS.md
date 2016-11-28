@@ -2,9 +2,11 @@
 * Preliminary support for the
   [conditions package](https://github.com/mllg/conditions).
   All assertions now signal an `assertion_error`.
+  The checked object `x` is always attached to the raised assertion and can
+  be retrieved using `inspectAssertion` or `tryCatch`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
-* New argument `null.ok` (defaults to `FALSE`) for `*Choice`.
+* New argument `null.ok` for `*Choice` (defaults to `FALSE`) .
 
 # Version 1.8.2
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage

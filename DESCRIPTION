@@ -30,6 +30,7 @@ Suggests:
     rmarkdown,
     magrittr,
     microbenchmark,
+    pryr,
     testthat (>= 0.11.0),
     tibble
 Remotes: github::mllg/conditions
@@ -89,6 +90,7 @@ Collate:
     'checkTibble.R'
     'checkVector.R'
     'coalesce.R'
+    'inspectAssertion.R'
     'isIntegerish.R'
     'matchArg.R'
     'qassert.R'

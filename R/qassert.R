@@ -103,7 +103,7 @@
 qassert = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
   if (!identical(res, TRUE))
-    mstop(qmsg(res, .var.name))
+    mstop(qmsg(res, .var.name), attach = x)
   invisible(x)
 }
 
