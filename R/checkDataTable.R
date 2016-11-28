@@ -38,7 +38,7 @@ checkDataTableProps = function(x, key = NULL, index = NULL) {
     }
     if (!is.null(index)) {
       qassert(index, "S")
-      indices = strsplit(data.table::key2(x) %??% "", "__", fixed = TRUE)[[1L]]
+      indices = strsplit(data.table::indices(x) %??% "", "__", fixed = TRUE)[[1L]]
       if (!setequal(indices, index))
         return(sprintf("Must have secondary keys (indices): %s", paste0(index, collapse = ",")))
     }
