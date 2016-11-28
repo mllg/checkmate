@@ -1,6 +1,11 @@
 context("checkNamed")
 
 test_that("checkNamed", {
+  # checkNamed is deprecated. Skip tests on all platforms except local.
+  skip_on_cran()
+  skip_on_travis()
+  skip_on_appveyor()
+
   myobj = setNames(1:3, letters[1:3])
   expect_succ_all(Named, myobj)
   myobj = 1:3
