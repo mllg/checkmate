@@ -24,8 +24,12 @@ checkChoice = function(x, choices, null.ok = FALSE) {
       return(TRUE)
     return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(choices, collapse = "','")))
   }
-  if (!qtest(x, "a1") || !isSameType(x, choices) || x %nin% choices)
-    return(sprintf("Must be element of set {'%s'}", paste0(unique(choices), collapse = "','")))
+  if (!qtest(x, "a1"))
+    return(sprintf("Must be element of set {'%s'}, but is not atomic scalar", paste0(unique(choices), collapse = "','")))
+  if (!isSameType(x, choices))
+    return(sprintf("Must be element of set {'%s'}, but types do not match (%s != %s)", paste0(unique(choices), collapse = "','"), class(x)[1L], class(choices)[1L]))
+  if (x %nin% choices)
+    return(sprintf("Must be element of set {'%s'}, but is '%s'", paste0(unique(choices), collapse = "','"), x))
   return(TRUE)
 }
 

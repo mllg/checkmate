@@ -25,4 +25,9 @@ test_that("checkChoice", {
 
   expect_error(assertChoice(-1, 1:2), "element of")
   expect_error(assertChoice(1L, list()), "atomic")
+
+
+  expect_true(grepl("atomic scalar", checkChoice(1:2, 1:10), fixed = TRUE))
+  expect_true(grepl("types do not match", checkChoice(factor("a"), letters), fixed = TRUE))
+  expect_true(grepl("'foo'", checkChoice("foo", letters), fixed = TRUE))
 })
