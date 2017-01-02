@@ -18,25 +18,30 @@
 checkAccess = function(x, access = "") {
   qassert(access, "S1")
   if (nzchar(access)) {
-    access = match(strsplit(access, "")[[1L]], c("r", "w", "x"))
-    if (anyMissing(access) || anyDuplicated(access) > 0L)
+    access = strsplit(access, "")[[1L]]
+    if (anyDuplicated(access) > 0L || !all(access %in% c("r", "w", "x")))
       type_error("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
-    if (1L %in% access) {
+    is.win = .Platform$OS.type == "windows"
+    is.root = (!is.win && Sys.info()["user"] == "root")
+
+    if ("r" %in% access || is.root) {
       w = wf(file.access(x, 4L) != 0L)
       if (length(w) > 0L)
         return(sprintf("'%s' not readable", x[w]))
     }
-    if (.Platform$OS.type != "windows") {
-      if (2L %in% access) {
+
+    if (!is.win) {
+      if ("w" %in% access || is.root) {
         w = wf(file.access(x, 2L) != 0L)
         if (length(w) > 0L)
           return(sprintf("'%s' not writeable", x[w]))
       }
-      if (3L %in% access) {
+
+      if ("x" %in% access) {
         w = wf(file.access(x, 1L) != 0L)
         if (length(w) > 0L)
-          return(sprintf("'%s' not executeable", x[w]))
+          return(sprintf("'%s' not executable", x[w]))
       }
     }
   }
