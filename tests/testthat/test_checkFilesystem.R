@@ -48,9 +48,15 @@ test_that("check_access", {
   if (.Platform$OS.type != "windows") {
     Sys.chmod(fn, "0000")
     expect_true(testAccess(fn, ""))
-    expect_false(testAccess(fn, "r"))
-    expect_false(testAccess(fn, "w"))
     expect_false(testAccess(fn, "x"))
+    if (Sys.info()["user"] == "root") {
+      expect_true(testAccess(fn, "r"))
+      expect_true(testAccess(fn, "w"))
+    } else {
+      expect_false(testAccess(fn, "r"))
+      expect_false(testAccess(fn, "w"))
+    }
+
     Sys.chmod(fn, "0700")
     expect_true(testAccess(fn, ""))
     expect_true(testAccess(fn, "r"))
