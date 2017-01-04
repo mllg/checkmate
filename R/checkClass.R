@@ -7,6 +7,7 @@
 #' @param ordered [\code{logical(1)}]\cr
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.
+#' @template null.ok
 #' @template checker
 #' @family attributes
 #' @export
@@ -30,9 +31,12 @@
 #' }
 #' # is x most specialized as "bar"?
 #' testClass(x, "bar", ordered = TRUE)
-checkClass = function(x, classes, ordered = FALSE) {
-  qassert(classes, "S")
+checkClass = function(x, classes, ordered = FALSE, null.ok = FALSE) {
+  qassert(classes, "S+")
   qassert(ordered, "B1")
+  qassert(null.ok, "B1")
+  if (is.null(x) && null.ok)
+    return(TRUE)
   ord = inherits(x, classes, TRUE)
   w = wf(ord == 0L)
 

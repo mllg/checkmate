@@ -6,6 +6,7 @@ test_that("checkClass", {
   expect_fail_all(Class, myobj, "integer")
 
   expect_true(testClass(NULL, "NULL"))
+  expect_false(testClass(NULL, ""))
   expect_true(testClass(1, "numeric"))
   expect_true(testClass(1L, "integer"))
   expect_false(testClass(1, "integer"))

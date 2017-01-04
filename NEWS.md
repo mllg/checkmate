@@ -6,9 +6,8 @@
   be retrieved using `inspectAssertion` or `tryCatch`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
-* New argument `null.ok` for `*Choice` (defaults to `FALSE`) .
-* Improved error message for `*Choice`
-
+* New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
+* Improved error message for `*Choice`.
 
 # Version 1.8.2
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage

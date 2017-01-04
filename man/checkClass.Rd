@@ -10,20 +10,22 @@
 \alias{test_class}
 \title{Check the class membership of an argument}
 \usage{
-checkClass(x, classes, ordered = FALSE)
+checkClass(x, classes, ordered = FALSE, null.ok = FALSE)
 
-check_class(x, classes, ordered = FALSE)
+check_class(x, classes, ordered = FALSE, null.ok = FALSE)
 
-assertClass(x, classes, ordered = FALSE, .var.name = vname(x), add = NULL)
+assertClass(x, classes, ordered = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_class(x, classes, ordered = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_class(x, classes, ordered = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testClass(x, classes, ordered = FALSE)
+testClass(x, classes, ordered = FALSE, null.ok = FALSE)
 
-test_class(x, classes, ordered = FALSE)
+test_class(x, classes, ordered = FALSE, null.ok = FALSE)
 
-expect_class(x, classes, ordered = FALSE, info = NULL, label = vname(x))
+expect_class(x, classes, ordered = FALSE, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -35,6 +37,10 @@ Class names to check for inheritance with \code{\link[base]{inherits}}.}
 \item{ordered}{[\code{logical(1)}]\cr
 Expect \code{x} to be specialized in provided order.
 Default is \code{FALSE}.}
+
+\item{null.ok}{[\code{logical(1)}]\cr
+If set to \code{TRUE}, \code{x} may also be \code{NULL}.
+In this case only a type check of \code{x} is performed, all additional checks are disabled.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
