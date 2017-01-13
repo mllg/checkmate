@@ -33,7 +33,6 @@ Suggests:
     pryr,
     testthat (>= 0.11.0),
     tibble
-Remotes: github::mllg/conditions
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
