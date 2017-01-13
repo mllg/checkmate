@@ -1,7 +1,7 @@
 ^src/.+\.o$
 ^src/.+\.so$
 \.swp$
-^\.agignore$
+^\.ignore$
 ^\.editorconfig$
 ^.travis.yml$
 ^man-roxygen$
