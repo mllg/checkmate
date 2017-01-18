@@ -115,7 +115,7 @@ This very simple domain specific language covers a large variety of frequent arg
 You choose what you like best.
 
 * [qassert](https://mllg.github.io/checkmate/reference/qassert)
-* [qassertr](https://mllg.github.io/checkmate/reference/qassert)
+* [qassertr](https://mllg.github.io/checkmate/reference/qassertr)
 
 
 ## checkmate as testthat extension
