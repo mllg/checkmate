@@ -1,11 +1,9 @@
 context("registered c functions")
 
 test_that("include of registered C functions works", {
+  skip_on_travis()
   skip_on_cran()
-  if (length(find.package("checkmate.test.include", quiet = TRUE)) == 0L) {
-    requireNamespace("devtools")
-    devtools::install_github("mllg/checkmate-test-include")
-  }
+  devtools::install_github("mllg/checkmate-test-include")
   library(checkmate.test.include)
 
   expect_true(reexported_qtest(1, "N1"))
