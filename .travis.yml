@@ -16,5 +16,5 @@ r_packages:
   - covr
 
 after_success:
-  - echo "R version is ${TRAVIS_R_VERSION}"
+  - env
   - if [[ "${TRAVIS_R_VERSION}" == "stable" ]]; then Rscript -e 'covr::coveralls()'; fi
