@@ -4,7 +4,7 @@
 \name{checkmate-package}
 \alias{checkmate}
 \alias{checkmate-package}
-\title{Fast and Versatile Argument Checks}
+\title{checkmate: Fast and Versatile Argument Checks}
 \description{
 \describe{
   \item{Homepage:}{\url{https://github.com/mllg/checkmate}}
@@ -104,3 +104,20 @@ Misc:
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/mllg/checkmate}
+  \item Report bugs at \url{https://github.com/mllg/checkmate/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Michel Lang \email{michellang@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Bernd Bischl \email{bernd_bischl@gmx.de} [contributor]
+}
+
+}

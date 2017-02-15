@@ -40,4 +40,3 @@ coll$getMessages()
   reportAssertions(coll)
 }
 }
-

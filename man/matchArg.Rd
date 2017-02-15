@@ -34,4 +34,3 @@ a valid value for \code{x}.
 \examples{
 matchArg("k", choices = c("kendall", "pearson"))
 }
-

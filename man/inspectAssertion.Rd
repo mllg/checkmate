@@ -29,4 +29,3 @@ inspectAssertion(getElement(NULL, 1))
 inspectAssertion(getElement(iris[1:3, ], 1))
 inspectAssertion(getElement(1:10, -2))
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/qassert.R
 \name{qassert}
 \alias{qassert}
-\alias{qexpect}
 \alias{qtest}
+\alias{qexpect}
 \title{Quick argument checks on (builtin) R types}
 \usage{
 qassert(x, rules, .var.name = vname(x))
@@ -129,4 +129,3 @@ qtest(iris, "D+")
 \code{\link{qtestr}} and \code{\link{qassertr}} for efficient checks
 of list elements and data frame columns.
 }
-

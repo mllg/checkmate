@@ -35,7 +35,7 @@ Suggests:
     tibble
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Collate:
     'AssertCollection.R'
     'allMissing.R'

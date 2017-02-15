@@ -39,4 +39,3 @@ x = 1
 assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
 }
 }
-

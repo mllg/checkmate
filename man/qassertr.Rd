@@ -2,8 +2,8 @@
 % Please edit documentation in R/qassertr.R
 \name{qassertr}
 \alias{qassertr}
-\alias{qexpectr}
 \alias{qtestr}
+\alias{qexpectr}
 \title{Quick recursive arguments checks on lists and data frames}
 \usage{
 qassertr(x, rules, .var.name = vname(x))
@@ -60,4 +60,3 @@ qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
 \seealso{
 \code{\link{qtest}}, \code{\link{qassert}}
 }
-

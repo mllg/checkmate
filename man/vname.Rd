@@ -18,4 +18,3 @@ Tries to heuristically determine the variable name of \code{x} in the parent fra
 with a combination of \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.
 Used for checkmate's error messages.
 }
-

@@ -66,4 +66,3 @@ print(assertFalse)
 Other CustomConstructors: \code{\link{makeExpectation}},
   \code{\link{makeTest}}
 }
-
