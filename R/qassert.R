@@ -111,7 +111,7 @@ qassert = function(x, rules, .var.name = vname(x)) {
 #' @rdname qassert
 #' @export
 qtest = function(x, rules) {
-  .Call(c_qtest, x, rules, FALSE)
+  .Call(c_qtest, x, rules, FALSE, 1L)
 }
 
 #' @useDynLib checkmate c_qassert

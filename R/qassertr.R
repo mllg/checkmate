@@ -28,7 +28,7 @@
 #' # All list elements are numeric OR character
 #' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
 qassertr = function(x, rules, .var.name = vname(x)) {
-  res = .Call(c_qassert, x, rules, TRUE, 1L)
+  res = .Call(c_qassert, x, rules, TRUE)
   if (!identical(res, TRUE))
     mstop(qrmsg(x, res, .var.name))
   invisible(x)
@@ -50,7 +50,7 @@ qtestr = function(x, rules, depth = 1L) {
 #' @useDynLib checkmate c_qassert
 #' @export
 qexpectr = function(x, rules, info = NULL, label = vname(x)) {
-  res = .Call(c_qassert, x, rules, TRUE, 1L)
+  res = .Call(c_qassert, x, rules, TRUE)
   if (!identical(res, TRUE))
     res = qrmsg(x, res, label)
   makeExpectation(x, res, info = info, label = label)
