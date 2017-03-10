@@ -52,7 +52,7 @@ checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = 
     }
     qassert(empty.levels.ok, "B1")
     if (!empty.levels.ok) {
-      empty = setdiff(levels(x), levels(droplevels(x)))
+      empty = setdiff(levels(x), x)
       if (length(empty) > 0L)
         return(sprintf("Has has empty levels '%s'", paste0(empty, collapse = "','")))
     }
