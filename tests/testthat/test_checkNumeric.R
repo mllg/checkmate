@@ -65,7 +65,7 @@ test_that("sorted works", {
 
   for (i in 1:10) {
     x = sample(10)
-    x[sample(10, 8)] = NA
+    x[sample(10, sample(7:9, 1))] = NA
     if (is.unsorted(na.omit(x)))
       expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
     else
