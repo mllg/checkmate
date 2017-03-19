@@ -12,38 +12,38 @@
 \usage{
 checkIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 check_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 assertIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 test_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 expect_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -76,6 +76,9 @@ Maximal length of \code{x}.}
 
 \item{unique}{[\code{logical(1)}]\cr
 Must all values be unique? Default is \code{FALSE}.}
+
+\item{sorted}{[\code{logical(1)}]\cr
+Elements must be sorted in ascending order. Missing values are ignored.}
 
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.

@@ -47,3 +47,27 @@ test_that("bounds of vectors with only missings are not checked", {
   expect_fail_all(Numeric, 0:5, lower = 1L)
   expect_fail_all(Numeric, 5:15, upper = 10L)
 })
+
+
+test_that("sorted works", {
+  xu = runif(10)
+  while(!is.unsorted(xu))
+    xu = runif(10)
+  xs = sort(xu)
+
+  expect_true(checkNumeric(xs, sorted = TRUE))
+  expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
+
+  expect_true(checkNumeric(1., sorted = TRUE))
+  expect_true(checkNumeric(double(0), sorted = TRUE))
+  expect_true(checkNumeric(NA_real_, sorted = TRUE))
+
+  for (i in 1:10) {
+    x = sample(10)
+    x[sample(10, 8)] = NA
+    if (is.unsorted(na.omit(x)))
+      expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
+    else
+      expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
+  }
+})
