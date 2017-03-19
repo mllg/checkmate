@@ -272,7 +272,6 @@ static inline Rboolean is_scalar_na(SEXP x) {
 
 static Rboolean is_sorted_integer(SEXP x) {
     const int * xi = INTEGER(x);
-    const int * xn = xi;
     const int const * xe = xi + length(x);
 
     while(*xi == NA_INTEGER) {
@@ -280,7 +279,7 @@ static Rboolean is_sorted_integer(SEXP x) {
         if (xi == xe)
             return TRUE;
     }
-
+    const int * xn = xi;
 
     while(1) {
         do {
@@ -297,7 +296,6 @@ static Rboolean is_sorted_integer(SEXP x) {
 
 static Rboolean is_sorted_double(SEXP x) {
     const double * xi = REAL(x);
-    const double * xn = xi;
     const double const * xe = xi + length(x);
 
     while(*xi == NA_REAL) {
@@ -305,6 +303,7 @@ static Rboolean is_sorted_double(SEXP x) {
         if (xi == xe)
             return TRUE;
     }
+    const double * xn = xi;
 
     while(1) {
         do {
