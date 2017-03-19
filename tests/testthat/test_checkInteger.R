@@ -42,6 +42,7 @@ test_that("sorted works", {
   expect_true(checkInteger(1L, sorted = TRUE))
   expect_true(checkInteger(integer(0), sorted = TRUE))
   expect_true(checkInteger(NA_integer_, sorted = TRUE))
+  expect_true(checkInteger(rep(NA_integer_, 10), sorted = TRUE))
 
   for (i in 1:10) {
     x = sample(10)

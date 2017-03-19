@@ -61,6 +61,7 @@ test_that("sorted works", {
   expect_true(checkNumeric(1., sorted = TRUE))
   expect_true(checkNumeric(double(0), sorted = TRUE))
   expect_true(checkNumeric(NA_real_, sorted = TRUE))
+  expect_true(checkInteger(rep(NA_real_, 10), sorted = TRUE))
 
   for (i in 1:10) {
     x = sample(10)
