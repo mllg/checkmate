@@ -8,7 +8,8 @@
 \usage{
 asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, .var.name = vname(x))
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  .var.name = vname(x))
 
 asCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), .var.name = vname(x))
@@ -47,6 +48,9 @@ Maximal length of \code{x}.}
 
 \item{unique}{[\code{logical(1)}]\cr
 Must all values be unique? Default is \code{FALSE}.}
+
+\item{sorted}{[\code{logical(1)}]\cr
+Elements must be sorted in ascending order. Missing values are ignored.}
 
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.

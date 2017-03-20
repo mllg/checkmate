@@ -21,8 +21,8 @@
 #' asInteger(c(1, 2, 3))
 #' asCount(1)
 #' asInt(1)
-asInteger = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, .var.name = vname(x)) {
-  assertIntegerish(x, tol = tol, lower = lower, upper = upper, any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique, names = names, null.ok = FALSE, .var.name = .var.name)
+asInteger = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, .var.name = vname(x)) {
+  assertIntegerish(x, tol = tol, lower = lower, upper = upper, any.missing = any.missing, all.missing = all.missing, len = len, min.len = min.len, max.len = max.len, unique = unique, sorted = sorted, names = names, null.ok = FALSE, .var.name = .var.name)
   storage.mode(x) = "integer"
   x
 }
