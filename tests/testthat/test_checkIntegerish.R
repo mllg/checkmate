@@ -59,3 +59,8 @@ test_that("isIntegerish internal function", {
   expect_true(isIntegerish(1.))
   expect_false(isIntegerish(1.1))
 })
+
+test_that("sorted works", {
+  expect_true(checkIntegerish(1:3, sorted = TRUE))
+  expect_true(grepl("sorted", checkIntegerish(3:1, sorted = TRUE), fixed = TRUE))
+})

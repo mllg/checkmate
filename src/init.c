@@ -19,15 +19,15 @@ extern SEXP c_check_dataframe(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SE
 extern SEXP c_check_factor(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_flag(SEXP, SEXP, SEXP);
 extern SEXP c_check_int(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_integer(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_integer(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_list(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_logical(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_matrix(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_named(SEXP, SEXP);
 extern SEXP c_check_names(SEXP, SEXP);
 extern SEXP c_check_number(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_scalar(SEXP, SEXP, SEXP);
 extern SEXP c_check_string(SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -53,15 +53,15 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_factor",        (DL_FUNC) &c_check_factor,         9},
     {"c_check_flag",          (DL_FUNC) &c_check_flag,           3},
     {"c_check_int",           (DL_FUNC) &c_check_int,            6},
-    {"c_check_integer",       (DL_FUNC) &c_check_integer,       11},
-    {"c_check_integerish",    (DL_FUNC) &c_check_integerish,    12},
+    {"c_check_integer",       (DL_FUNC) &c_check_integer,       12},
+    {"c_check_integerish",    (DL_FUNC) &c_check_integerish,    13},
     {"c_check_list",          (DL_FUNC) &c_check_list,           9},
     {"c_check_logical",       (DL_FUNC) &c_check_logical,        9},
     {"c_check_matrix",        (DL_FUNC) &c_check_matrix,        11},
     {"c_check_named",         (DL_FUNC) &c_check_named,          2},
     {"c_check_names",         (DL_FUNC) &c_check_names,          2},
     {"c_check_number",        (DL_FUNC) &c_check_number,         6},
-    {"c_check_numeric",       (DL_FUNC) &c_check_numeric,       12},
+    {"c_check_numeric",       (DL_FUNC) &c_check_numeric,       13},
     {"c_check_scalar",        (DL_FUNC) &c_check_scalar,         3},
     {"c_check_string",        (DL_FUNC) &c_check_string,         4},
     {"c_check_vector",        (DL_FUNC) &c_check_vector,        10},

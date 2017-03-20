@@ -270,6 +270,62 @@ static inline Rboolean is_scalar_na(SEXP x) {
 }
 
 
+static Rboolean is_sorted_integer(SEXP x) {
+    R_len_t i = 0;
+    const int * const xi = INTEGER(x);
+    const R_len_t n = length(x);
+    while(xi[i] == NA_INTEGER) {
+        i++;
+        if (i == n)
+            return TRUE;
+    }
+
+    for (R_len_t j = i + 1; j < n; j++) {
+        if (xi[j] != NA_INTEGER) {
+            if (xi[i] > xi[j])
+                return FALSE;
+            i = j;
+        }
+    }
+    return TRUE;
+}
+
+
+static Rboolean is_sorted_double(SEXP x) {
+    R_len_t i = 0;
+    const double * const xr = REAL(x);
+    const R_len_t n = length(x);
+    while(xr[i] == NA_REAL) {
+        i++;
+        if (i == n)
+            return TRUE;
+    }
+
+    for (R_len_t j = i + 1; j < n; j++) {
+        if (xr[j] != NA_REAL) {
+            if (xr[i] > xr[j])
+                return FALSE;
+            i = j;
+        }
+    }
+    return TRUE;
+}
+
+
+static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
+    if (asFlag(sorted, "sorted") && length(x) >= 2) {
+        Rboolean ok;
+        switch(TYPEOF(x)) {
+            case INTSXP: ok = is_sorted_integer(x); break;
+            case REALSXP: ok = is_sorted_double(x); break;
+            default: error("Checking for sorted vector only possible for integer and double");
+        }
+        if (!ok)
+            return message("Must be sorted");
+    }
+    return TRUE;
+}
+
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
@@ -331,17 +387,18 @@ SEXP c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP m
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+SEXP c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isInteger(x) || all_missing_atomic(x), "integer", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     ASSERT_TRUE(check_bounds(x, lower, upper));
     ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
-SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
     HANDLE_TYPE_NULL(isIntegerish(x, dtol, FALSE) || all_missing_atomic(x), "integerish", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
@@ -349,6 +406,7 @@ SEXP c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missi
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     ASSERT_TRUE(check_bounds(x, lower, upper));
     ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
@@ -435,7 +493,7 @@ SEXP c_check_names(SEXP x, SEXP type) {
 }
 
 
-SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isStrictlyNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
@@ -443,6 +501,7 @@ SEXP c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missi
     ASSERT_TRUE(check_bounds(x, lower, upper));
     ASSERT_TRUE(check_vector_finite(x, finite));
     ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 

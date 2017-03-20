@@ -12,34 +12,34 @@
 \usage{
 checkInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
 
 check_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
 
 assertInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
 
 test_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
 
 expect_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -68,6 +68,9 @@ Maximal length of \code{x}.}
 
 \item{unique}{[\code{logical(1)}]\cr
 Must all values be unique? Default is \code{FALSE}.}
+
+\item{sorted}{[\code{logical(1)}]\cr
+Elements must be sorted in ascending order. Missing values are ignored.}
 
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.

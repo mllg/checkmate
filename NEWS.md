@@ -6,6 +6,8 @@
   be retrieved using `inspectAssertion` or `tryCatch`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
+* New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
+  `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
 * Improved error message for `*Choice`.
 

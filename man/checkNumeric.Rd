@@ -12,34 +12,38 @@
 \usage{
 checkNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE)
 
 check_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE)
 
 assertNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE)
 
 test_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE)
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE)
 
 expect_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
   any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE,
-  info = NULL, label = vname(x))
+  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
+  null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -71,6 +75,9 @@ Maximal length of \code{x}.}
 
 \item{unique}{[\code{logical(1)}]\cr
 Must all values be unique? Default is \code{FALSE}.}
+
+\item{sorted}{[\code{logical(1)}]\cr
+Elements must be sorted in ascending order. Missing values are ignored.}
 
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.
