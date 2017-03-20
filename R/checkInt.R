@@ -8,6 +8,7 @@
 #' @template tol
 #' @template null.ok
 #' @template checker
+#' @template note-convert
 #' @family scalars
 #' @useDynLib checkmate c_check_int
 #' @export

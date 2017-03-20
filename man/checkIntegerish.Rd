@@ -128,6 +128,9 @@ This function does not distinguish between
 \code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
 \code{NA_character_} and \code{NaN}.
 }
+\note{
+To convert from integerish to integer, use \code{\link{asInteger}}.
+}
 \examples{
 testIntegerish(1L)
 testIntegerish(1.)
