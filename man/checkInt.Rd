@@ -95,6 +95,10 @@ This function does not distinguish between
 \code{NA}, \code{NA_integer_}, \code{NA_real_}, \code{NA_complex_}
 \code{NA_character_} and \code{NaN}.
 }
+\note{
+To perform an asssertion and then convert to integer, use \code{\link{asInt}}.
+\code{assertInt} will not convert numerics to integer.
+}
 \examples{
 testInt(1)
 testInt(-1, lower = 0)
