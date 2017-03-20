@@ -271,55 +271,48 @@ static inline Rboolean is_scalar_na(SEXP x) {
 
 
 static Rboolean is_sorted_integer(SEXP x) {
-    const int * xi = INTEGER(x);
-    const int const * xe = xi + length(x);
-
-    while(*xi == NA_INTEGER) {
-        xi++;
-        if (xi == xe)
+    R_len_t i = 0;
+    const int * const xi = INTEGER(x);
+    const R_len_t n = length(x);
+    while(xi[i] == NA_INTEGER) {
+        i++;
+        if (i == n)
             return TRUE;
     }
-    const int * xn = xi;
 
-    while(1) {
-        do {
-            xn++;
-            if (xn == xe)
-                return TRUE;
-        } while(*xn == NA_INTEGER);
-
-        if (*xi > *xn)
-            return FALSE;
-        xi = xn;
+    for (R_len_t j = i + 1; j < n; j++) {
+        if (xi[j] != NA_INTEGER) {
+            if (xi[i] > xi[j])
+                return FALSE;
+            i = j;
+        }
     }
+    return TRUE;
 }
+
 
 static Rboolean is_sorted_double(SEXP x) {
-    const double * xi = REAL(x);
-    const double const * xe = xi + length(x);
-
-    while(*xi == NA_REAL) {
-        xi++;
-        if (xi == xe)
+    R_len_t i = 0;
+    const double * const xr = REAL(x);
+    const R_len_t n = length(x);
+    while(xr[i] == NA_REAL) {
+        i++;
+        if (i == n)
             return TRUE;
     }
-    const double * xn = xi;
 
-    while(1) {
-        do {
-            xn++;
-            if (xn == xe)
-                return TRUE;
-        } while(*xn == NA_REAL);
-
-        if (*xi > *xn)
-            return FALSE;
-        xi = xn;
+    for (R_len_t j = i + 1; j < n; j++) {
+        if (xr[j] != NA_REAL) {
+            if (xr[i] > xr[j])
+                return FALSE;
+            i = j;
+        }
     }
+    return TRUE;
 }
 
 
-Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
+static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
     if (asFlag(sorted, "sorted") && length(x) >= 2) {
         Rboolean ok;
         switch(TYPEOF(x)) {
