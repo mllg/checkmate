@@ -38,3 +38,11 @@ test_that("checkCharacter", {
 
   expect_error(assertCharacter(1), "character")
 })
+
+
+test_that("NAs are ignored for regexp matching (#106)", {
+  expect_true(testCharacter(c("a", NA, "b"), pattern = "^[ab]$", any.missing = TRUE))
+  expect_false(testCharacter(c("a", NA, "b"), pattern = "^[cd]$", any.missing = TRUE))
+  expect_true(testCharacter(c("a", NA, "bbbabbb"), fixed = "a", any.missing = TRUE))
+  expect_false(testCharacter(c("a", NA, "bbbabbb"), fixed = "b", any.missing = TRUE))
+})

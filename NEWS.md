@@ -10,6 +10,8 @@
   `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
 * Improved error message for `*Choice`.
+* `*Character` and `*String` now ignores missing values in regular expressions.
+  To disallow missing values, set `any.missing` or `na.ok`, respectively.
 
 # Version 1.8.2
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage
