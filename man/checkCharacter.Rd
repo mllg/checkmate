@@ -54,12 +54,12 @@ Minimum number of characters in each element of \code{x}.}
 
 \item{pattern}{[\code{character(1L)}]\cr
 Regular expression as used in \code{\link[base]{grepl}}.
-All elements of \code{x} must comply to this pattern.}
+All non-missing elements of \code{x} must comply to this pattern.}
 
 \item{fixed}{[\code{character(1)}]\cr
 Substring to detect in \code{x}. Will be used as \code{pattern} in \code{\link[base]{grepl}}
 with option \code{fixed} set to \code{TRUE}.
-All elements of \code{x} must contain this substring.}
+All non-missing elements of \code{x} must contain this substring.}
 
 \item{ignore.case}{[\code{logical(1)}]\cr
 See \code{\link[base]{grepl}}. Default is \code{FALSE}.}

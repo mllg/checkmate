@@ -179,8 +179,10 @@ static Rboolean check_vector_unique(SEXP x, SEXP unique) {
 }
 
 static Rboolean check_vector_names(SEXP x, SEXP names) {
-    if (!isNull(names) && xlength(x) > 0)
-        return check_names(getAttrib(x, R_NamesSymbol), asString(names, "names"), "Vector");
+    if (!isNull(names) && xlength(x) > 0) {
+        SEXP nn = getAttrib(x, R_NamesSymbol);
+        return check_names(nn, asString(names, "names"), "Vector");
+    }
     return TRUE;
 }
 
@@ -369,8 +371,10 @@ SEXP c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows
         }
     }
 
-    if (!isNull(col_names))
-        ASSERT_TRUE(check_names(getAttrib(x, R_NamesSymbol), asString(col_names, "col.names"), "Columns"));
+    if (!isNull(col_names)) {
+        SEXP nn = getAttrib(x, R_NamesSymbol);
+        ASSERT_TRUE(check_names(nn, asString(col_names, "col.names"), "Columns"));
+    }
     if (!asFlag(any_missing, "any.missing") && any_missing_frame(x))
         return result("Contains missing values");
     if (!asFlag(all_missing, "all.missing") && all_missing_frame(x))
@@ -480,8 +484,10 @@ SEXP c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP
 }
 
 SEXP c_check_named(SEXP x, SEXP type) {
-    if (!isNull(type) && xlength(x) > 0)
-        ASSERT_TRUE(check_names(getAttrib(x, R_NamesSymbol), asString(type, "type"), "Object"));
+    if (!isNull(type) && xlength(x) > 0) {
+        SEXP nn = getAttrib(x, R_NamesSymbol);
+        ASSERT_TRUE(check_names(nn, asString(type, "type"), "Object"));
+    }
     return ScalarLogical(TRUE);
 }
 

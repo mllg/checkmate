@@ -6,11 +6,11 @@
 #' @inheritParams checkVector
 #' @param pattern [\code{character(1L)}]\cr
 #'  Regular expression as used in \code{\link[base]{grepl}}.
-#'  All elements of \code{x} must comply to this pattern.
+#'  All non-missing elements of \code{x} must comply to this pattern.
 #' @param fixed [\code{character(1)}]\cr
 #'  Substring to detect in \code{x}. Will be used as \code{pattern} in \code{\link[base]{grepl}}
 #'  with option \code{fixed} set to \code{TRUE}.
-#'  All elements of \code{x} must contain this substring.
+#'  All non-missing elements of \code{x} must contain this substring.
 #' @param ignore.case [\code{logical(1)}]\cr
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param min.chars [\code{integer(1)}]\cr
@@ -33,14 +33,14 @@ checkCharacterPattern = function(x, pattern = NULL, fixed = NULL, ignore.case = 
   if (!is.null(x)) {
     if (!is.null(pattern)) {
       qassert(pattern, "S1")
-      ok = grepl(pattern, x, fixed = FALSE, ignore.case = ignore.case)
-      if(!all(ok))
+      ok = grepl(pattern, x[!is.na(x)], fixed = FALSE, ignore.case = ignore.case)
+      if (!all(ok))
         return(sprintf("Must comply to pattern '%s'", pattern))
     }
     if (!is.null(fixed)) {
       qassert(fixed, "S1")
-      ok = grepl(fixed, x, fixed = TRUE, ignore.case = ignore.case)
-      if(!all(ok))
+      ok = grepl(fixed, x[!is.na(x)], fixed = TRUE, ignore.case = ignore.case)
+      if (!all(ok))
         return(sprintf("Must contain substring '%s'", fixed))
     }
   }

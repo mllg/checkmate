@@ -68,7 +68,6 @@ static inline Rboolean is_class_atomic_vector(SEXP x) { return isAtomicVector(x)
 static inline Rboolean is_class_list(SEXP x) { return isRList(x); }
 static inline Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
 static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
-static inline Rboolean is_class_function(SEXP x) { return isFunction(x); }
 static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
 
@@ -208,10 +207,6 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.fun = &is_class_frame;
             checker->class.name = CL_DATAFRAME;
             break;
-        /* case 'g': */
-        /*     checker->class.fun = &is_class_function; */
-        /*     checker->class.name = CL_FUNCTION; */
-        /*     break; */
         case 'e':
             checker->class.fun = &is_class_environment;
             checker->class.name = CL_ENVIRONMENT;

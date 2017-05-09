@@ -3,13 +3,15 @@
   [conditions package](https://github.com/mllg/conditions).
   All assertions now signal an `assertion_error`.
   The checked object `x` is always attached to the raised assertion and can
-  be retrieved using `inspectAssertion` or `tryCatch`.
+  be retrieved using `inspectAssertion()` or `tryCatch()`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
   `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
 * Improved error message for `*Choice`.
+* `*Character` and `*String` now ignores missing values in regular expressions.
+  To disallow missing values, set `any.missing` or `na.ok`, respectively.
 
 # Version 1.8.2
 * `*Matrix` and `*Array` now additionally allow to check for integerish storage
