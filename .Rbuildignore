@@ -11,3 +11,4 @@
 ^inst/autogen
 ^docs$
 ^src/Makevars$
+^inst/benchmarks
