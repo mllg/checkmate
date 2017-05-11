@@ -14,7 +14,7 @@
 #' @param ignore.case [\code{logical(1)}]\cr
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param min.chars [\code{integer(1)}]\cr
-#'  Minimum number of characters in each element of \code{x}.
+#'  Minimum number of characters for each element of \code{x}.
 #' @template null.ok
 #' @template checker
 #' @family basetypes
