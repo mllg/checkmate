@@ -96,7 +96,6 @@
 #'   \item{\code{\link{wf}} (which.first and which.last)}
 #' }
 #'
-#' @import backports
 #' @importFrom conditions assertion_error value_error type_error library_error
 #' @importFrom utils head tail packageVersion getFromNamespace
 "_PACKAGE"
@@ -123,6 +122,10 @@ checkmate$listtypefuns = list2env(list(
   "null"         = is.null
 ))
 
-.onUnload <- function (libpath) {
+.onAttach = function(libpath, pkgname) {
+  backports::import(pkgname, "dir.exists")
+}
+
+.onUnload = function (libpath) {
   library.dynam.unload("checkmate", libpath) # nocov
 }
