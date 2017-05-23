@@ -122,7 +122,7 @@ checkmate$listtypefuns = list2env(list(
   "null"         = is.null
 ))
 
-.onAttach = function(libpath, pkgname) {
+.onLoad = function(libpath, pkgname) {
   backports::import(pkgname, "dir.exists")
 }
 
