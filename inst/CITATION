@@ -1,0 +1,13 @@
+bibentry(
+  bibtype = "Article",
+  key = "checkmate",
+  title = "{checkmate}: Fast Argument Checks for Defensive R Programming",
+  author = person("Michel", "Lang"),
+  journal = "The R Journal",
+  year = 2017L,
+  volume = 9L,
+  number = 1L,
+  url = "https://journal.r-project.org/archive/2017/RJ-2017-028/index.html"
+)
+
+# vim: ft=r
