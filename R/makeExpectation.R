@@ -34,7 +34,7 @@
 #' print(expect_false)
 makeExpectation = function(x, res, info, label) {
   if (!requireNamespace("testthat", quietly = TRUE))
-    library_error("Package 'testthat' is required for checkmate's 'expect_*' extensions")
+    stop("Package 'testthat' is required for checkmate's 'expect_*' extensions")
   info = if (is.null(info)) res else sprintf("%s\nAdditional info: %s", res, info)
   testthat::expect_true(res, info = info, label = sprintf("Check on %s", label))
   invisible(x)

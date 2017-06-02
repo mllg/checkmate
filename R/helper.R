@@ -1,5 +1,5 @@
-mstop = function(msg, ..., attach = NULL) {
-  assertion_error(sprintf(msg, ...), call = sys.call(1L), attach = attach)
+mstop = function(msg, ...) {
+  stop(sprintf(msg, ...), call = sys.call(1L))
 }
 
 "%and%" = function(lhs, rhs) {

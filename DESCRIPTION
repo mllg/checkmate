@@ -19,9 +19,7 @@ Depends:
     R (>= 3.0.0)
 Imports:
     backports (>= 1.1.0),
-    conditions,
     utils
-LinkingTo: conditions
 Suggests:
     data.table (>= 1.9.8),
     devtools,
@@ -89,7 +87,6 @@ Collate:
     'checkTibble.R'
     'checkVector.R'
     'coalesce.R'
-    'inspectAssertion.R'
     'isIntegerish.R'
     'matchArg.R'
     'qassert.R'
