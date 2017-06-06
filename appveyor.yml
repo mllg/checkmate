@@ -7,8 +7,8 @@ init:
 install:
   ps: Bootstrap
 
-cache:
-  - C:\RLibrary
+# cache:
+  # - C:\RLibrary
 
 environment:
   matrix:
