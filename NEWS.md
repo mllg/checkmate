@@ -1,9 +1,4 @@
 # Version 1.9.0
-* Preliminary support for the
-  [conditions package](https://github.com/mllg/conditions).
-  All assertions now signal an `assertion_error`.
-  The checked object `x` is always attached to the raised assertion and can
-  be retrieved using `inspectAssertion()` or `tryCatch()`.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and

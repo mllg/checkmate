@@ -20,7 +20,7 @@ checkAccess = function(x, access = "") {
   if (nzchar(access)) {
     access = strsplit(access, "")[[1L]]
     if (anyDuplicated(access) > 0L || !all(access %in% c("r", "w", "x")))
-      type_error("Access pattern invalid, allowed are 'r', 'w' and 'x'")
+      stop("Access pattern invalid, allowed are 'r', 'w' and 'x'")
 
     is.win = .Platform$OS.type == "windows"
     is.root = (!is.win && Sys.info()["user"] == "root")

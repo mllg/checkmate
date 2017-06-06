@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <string.h>
-#include <conditions.h>
 #include "checks.h"
 #include "is_integerish.h"
 #include "any_missing.h"
@@ -131,7 +130,7 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
     } else if (strcmp(type, "strict") == 0) {
         checks = T_STRICT;
     } else {
-        cstop(condition_error("value", "Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type));
+        error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type);
     }
 
     if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
@@ -253,7 +252,7 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
             if (!isVectorAtomic(x))
                 return message("Must be atomic");
         } else {
-            cstop(condition_error("value", "Invalid argument 'mode'. Must be one of 'logical', 'integer', 'integerish', 'double', 'numeric', 'complex', 'character', 'list' or 'atomic'"));
+            error("Invalid argument 'mode'. Must be one of 'logical', 'integer', 'integerish', 'double', 'numeric', 'complex', 'character', 'list' or 'atomic'");
         }
     }
     return TRUE;

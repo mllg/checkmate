@@ -29,7 +29,6 @@ install.packages("checkmate")
 ```
 For the development version, use [devtools](https://cran.r-project.org/package=devtools):
 ```{R}
-devtools::install_github("mllg/conditions")
 devtools::install_github("mllg/checkmate")
 ```
 

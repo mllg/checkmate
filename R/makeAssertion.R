@@ -39,7 +39,7 @@
 makeAssertion = function(x, res, var.name, collection) {
   if (!identical(res, TRUE)) {
     if (is.null(collection))
-      mstop("Assertion on '%s' failed: %s.", var.name, res, attach = x)
+      mstop("Assertion on '%s' failed: %s.", var.name, res)
     collection$push(sprintf("Variable '%s': %s.", var.name, res))
   }
   return(invisible(x))
