@@ -28,7 +28,6 @@ Suggests:
     rmarkdown,
     magrittr,
     microbenchmark,
-    pryr,
     testthat (>= 0.11.0),
     tibble
 License: BSD_3_clause + file LICENSE
