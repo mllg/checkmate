@@ -1,6 +1,7 @@
 # Version 1.8.3
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
+* `*Subset` now allows to pass empty vectors to `choices`.
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
   `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.

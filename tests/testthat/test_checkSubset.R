@@ -23,4 +23,9 @@ test_that("checkSubset", {
 
   expect_error(assertSubset(-1, 1:2), "subset of")
   expect_error(assertSubset(1L, list()), "atomic")
+
+  # issue #109
+  expect_true(testSubset(character(0), character(0)))
+  expect_true(testSubset(integer(0), character(0)))
+  expect_error(assertSubset(1, integer(0)), "empty set")
 })

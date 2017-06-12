@@ -31,7 +31,7 @@ expect_subset(x, choices, empty.ok = TRUE, info = NULL, label = vname(x))
 Object to check.}
 
 \item{choices}{[\code{atomic}]\cr
-Set of possible values.}
+Set of possible values. May be empty.}
 
 \item{empty.ok}{[\code{logical(1)}]\cr
 Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?

@@ -3,7 +3,7 @@
 #' @templateVar fn Subset
 #' @template x
 #' @param choices [\code{atomic}]\cr
-#'  Set of possible values.
+#'  Set of possible values. May be empty.
 #' @param empty.ok [\code{logical(1)}]\cr
 #'  Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?
 #'  Default is \code{TRUE}.
@@ -21,10 +21,15 @@
 #' testSubset(1, "1")
 #' testSubset(1, as.integer(1))
 checkSubset = function(x, choices, empty.ok = TRUE) {
-  qassert(choices, "a+")
+  qassert(choices, "a")
   qassert(empty.ok, "B1")
   if (!empty.ok && length(x) == 0L)
     return(sprintf("Must be a subset of {'%s'}, not empty", paste0(choices, collapse = "','")))
+  if (length(choices) == 0L) {
+    if (length(x) == 0L)
+      return(TRUE)
+    return("Must be a subset of the empty set, i.e. also empty")
+  }
   if (!is.null(x) && (!isSameType(x, choices) || any(x %nin% choices)))
     return(sprintf("Must be a subset of {'%s'}", paste0(choices, collapse = "','")))
   return(TRUE)
