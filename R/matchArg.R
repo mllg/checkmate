@@ -2,7 +2,7 @@
 #'
 #' @description
 #' This is an extensions to \code{\link[base]{match.arg}} with support for \code{\link{AssertCollection}}.
-#' The behaviour is very similar to \code{\link[base]{match.arg}}, except that \code{NULL} is not
+#' The behavior is very similar to \code{\link[base]{match.arg}}, except that \code{NULL} is not
 #' a valid value for \code{x}.
 #'
 #' @param x [character]\cr

@@ -33,7 +33,7 @@ Object to check.}
 
 \item{overwrite}{[\code{logical(1)}]\cr
 If \code{TRUE}, an existing file in place is allowed if it
-it is both readable and writeable.
+it is both readable and writable.
 Default is \code{FALSE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
@@ -75,7 +75,7 @@ This is checked:
 \itemize{
  \item{Does \code{dirname(x)} exist?}
  \item{Does no file under path \code{x} exist?}
- \item{Is \code{dirname(x)} writeable?}
+ \item{Is \code{dirname(x)} writable?}
 }
 Paths are relative to the current working directory.
 }

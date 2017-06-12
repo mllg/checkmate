@@ -96,7 +96,7 @@ This function does not distinguish between
 \code{NA_character_} and \code{NaN}.
 }
 \note{
-To perform an asssertion and then convert to integer, use \code{\link{asInt}}.
+To perform an assertion and then convert to integer, use \code{\link{asInt}}.
 \code{assertInt} will not convert numerics to integer.
 }
 \examples{
