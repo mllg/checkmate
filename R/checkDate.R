@@ -7,9 +7,9 @@
 #' @templateVar fn Atmoic
 #' @template x
 #' @param lower [\code{\link[base]{Date}}]\cr
-#'  All dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.
+#'  All non-missing dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @param upper [\code{\link[base]{Date}}]\cr
-#'  All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
+#'  All non-missing dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @template null.ok
 #' @inheritParams checkVector
 #' @template checker
@@ -33,7 +33,7 @@ checkDateBounds = function(x, lower, upper) {
     lower = as.Date(lower, origin = "1970-01-01")
     if (length(lower) != 1L || is.na(lower))
       stop("Argument 'lower' must be a single (non-missing) date")
-    if (any(x < lower))
+    if (any(x[!is.na(x)] < lower))
       return(sprintf("Date must be >= %s", lower))
   }
 
@@ -41,7 +41,7 @@ checkDateBounds = function(x, lower, upper) {
     upper = as.Date(upper, origin = "1970-01-01")
     if (length(upper) != 1L || is.na(upper))
       stop("Argument 'upper' must be a single (non-missing) date")
-    if (any(x > upper))
+    if (any(x[!is.na(x)] > upper))
       return(sprintf("Date must be <= %s", upper))
   }
   return(TRUE)
