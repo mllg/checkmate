@@ -116,6 +116,7 @@ static Rboolean check_strict_names(SEXP x) {
     }
     return TRUE;
 }
+
 static Rboolean check_names(SEXP nn, const char * type, const char * what) {
     typedef enum { T_UNNAMED, T_NAMED, T_UNIQUE, T_STRICT } name_t;
     name_t checks = T_UNNAMED;
@@ -133,7 +134,7 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type);
     }
 
-    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1))
+    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1, FALSE))
         return message("%s must be named", what);
     if (checks >= T_UNIQUE) {
         if (any_duplicated(nn, FALSE) != 0)
@@ -337,7 +338,7 @@ SEXP c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missin
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
-        if (n > 0 && !all_nchar(x, n))
+        if (n > 0 && !all_nchar(x, n, TRUE))
             return result("All elements must have at least %i characters", n);
     }
     ASSERT_TRUE(check_vector_unique(x, unique));
@@ -588,7 +589,7 @@ SEXP c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP null_ok) {
         return result("Must have length 1");
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
-        if (!all_nchar(x, n))
+        if (!all_nchar(x, n, TRUE))
             return result("Must have at least %i characters", n);
     }
 

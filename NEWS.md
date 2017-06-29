@@ -6,7 +6,8 @@
   `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
 * Improved error message for `*Choice`.
-* `*Character` and `*String` now ignores missing values in regular expressions.
+* `*Character` and `*String` now ignores missing values in regular expressions
+  and for string length checks (using argument `min.chars`).
   To disallow missing values, set `any.missing` or `na.ok`, respectively.
 * `*Date` now ignores missing values in for lower/upper bound checks.
   To disallow missing values, set `any.missing` to `FALSE`.
