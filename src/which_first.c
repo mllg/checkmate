@@ -11,7 +11,7 @@ static inline SEXP named_return(R_len_t ind, SEXP names) {
     return res;
 }
 
-SEXP c_which_first(SEXP x, SEXP use_names) {
+SEXP attribute_hidden c_which_first(SEXP x, SEXP use_names) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
     if (!isLogical(use_names) || length(use_names) != 1)
@@ -30,7 +30,7 @@ SEXP c_which_first(SEXP x, SEXP use_names) {
     return allocVector(INTSXP, 0);
 }
 
-SEXP c_which_last(SEXP x, SEXP use_names) {
+SEXP attribute_hidden c_which_last(SEXP x, SEXP use_names) {
     if (!isLogical(x))
         error("Argument 'x' must be logical");
     if (!isLogical(use_names) || length(use_names) != 1)

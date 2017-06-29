@@ -39,6 +39,6 @@ Rboolean any_infinite(SEXP x) {
     return FALSE;
 }
 
-SEXP c_any_infinite(SEXP x) {
+SEXP attribute_hidden c_any_infinite(SEXP x) {
     return ScalarLogical(any_infinite(x));
 }

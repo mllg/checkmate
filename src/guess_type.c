@@ -29,6 +29,6 @@ const char * guess_type(SEXP x) {
     return type2char(TYPEOF(x));
 }
 
-SEXP c_guess_type(SEXP x) {
+SEXP attribute_hidden c_guess_type(SEXP x) {
     return ScalarString(mkChar(guess_type(x)));
 }

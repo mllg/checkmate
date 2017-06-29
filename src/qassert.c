@@ -439,7 +439,7 @@ SEXP qassert(SEXP x, const char *rule, const char *name) {
     return x;
 }
 
-SEXP c_qassert(SEXP x, SEXP rules, SEXP recursive) {
+SEXP attribute_hidden c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     const Rboolean nrules = length(rules);
     R_len_t failed;
     if (!isString(rules))
@@ -520,7 +520,7 @@ Rboolean qtest(SEXP x, const char *rule) {
     return qtest1(x, &checker, 1);
 }
 
-SEXP c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
+SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     const R_len_t nrules = length(rules);
 
     if (!isString(rules))

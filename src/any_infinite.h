@@ -4,8 +4,9 @@
 #define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
+#include <R_ext/Visibility.h>
 
-SEXP c_any_infinite(SEXP);
 Rboolean any_infinite(SEXP);
+SEXP attribute_hidden c_any_infinite(SEXP);
 
 #endif

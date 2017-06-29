@@ -38,6 +38,6 @@ Rboolean any_nan(SEXP x) {
     return FALSE;
 }
 
-SEXP c_any_nan(SEXP x) {
+SEXP attribute_hidden c_any_nan(SEXP x) {
     return ScalarLogical(any_nan(x));
 }

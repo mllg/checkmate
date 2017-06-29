@@ -37,6 +37,6 @@ Rboolean isIntegerish(SEXP x, const double tol, Rboolean logicals_ok) {
     return FALSE;
 }
 
-SEXP c_is_integerish(SEXP x, SEXP tolerance) {
+SEXP attribute_hidden c_is_integerish(SEXP x, SEXP tolerance) {
     return ScalarLogical(isIntegerish(x, REAL(tolerance)[0], FALSE));
 }

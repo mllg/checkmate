@@ -2,7 +2,7 @@
 #include "any_missing.h"
 #include "is_integerish.h"
 
-Rboolean isStrictlyNumeric(SEXP x) {
+Rboolean attribute_hidden isStrictlyNumeric(SEXP x) {
     switch(TYPEOF(x)) {
         case REALSXP: return TRUE;
         case INTSXP: return !inherits(x, "factor");
@@ -10,14 +10,14 @@ Rboolean isStrictlyNumeric(SEXP x) {
     return FALSE;
 }
 
-Rboolean isAtomicVector(SEXP x) {
+Rboolean attribute_hidden isAtomicVector(SEXP x) {
     if (!isVectorAtomic(x))
         return FALSE;
     return isNull(getAttrib(x, R_DimSymbol));
 }
 
 /* Checks for a regular list, i.e. not a data frame, not NULL */
-Rboolean isRList(SEXP x) {
+Rboolean attribute_hidden isRList(SEXP x) {
     if (TYPEOF(x) == VECSXP) {
         SEXP cl = getAttrib(x, R_ClassSymbol);
         const R_len_t n = length(cl);
@@ -35,14 +35,14 @@ Rboolean isRList(SEXP x) {
  * (b) reports wrong dimension for zero-column data frames
  * Here are our own wrappers
  * */
-R_len_t get_nrows(SEXP x) {
+R_len_t attribute_hidden get_nrows(SEXP x) {
     if (isFrame(x))
         return length(getAttrib(x, R_RowNamesSymbol));
     SEXP dim = getAttrib(x, R_DimSymbol);
     return (dim == R_NilValue) ? length(x) : INTEGER(dim)[0];
 }
 
-R_len_t get_ncols(SEXP x) {
+R_len_t attribute_hidden get_ncols(SEXP x) {
     if (isFrame(x))
         return length(x);
     SEXP dim = getAttrib(x, R_DimSymbol);
@@ -50,7 +50,7 @@ R_len_t get_ncols(SEXP x) {
 }
 
 
-double asNumber(SEXP x, const char *vname) {
+double attribute_hidden asNumber(SEXP x, const char *vname) {
     if (!isNumeric(x) || xlength(x) != 1)
         error("Argument '%s' must be a number", vname);
     double xd = asReal(x);
@@ -59,7 +59,7 @@ double asNumber(SEXP x, const char *vname) {
     return xd;
 }
 
-const char * asString(SEXP x, const char *vname) {
+const char attribute_hidden * asString(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
         error("Argument '%s' must be a string", vname);
     if (any_missing_string(x))
@@ -67,7 +67,7 @@ const char * asString(SEXP x, const char *vname) {
     return CHAR(STRING_ELT(x, 0));
 }
 
-R_xlen_t asCount(SEXP x, const char *vname) {
+R_xlen_t attribute_hidden asCount(SEXP x, const char *vname) {
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE) || xlength(x) != 1)
         error("Argument '%s' must be a count", vname);
     int xi = asInteger(x);
@@ -78,7 +78,7 @@ R_xlen_t asCount(SEXP x, const char *vname) {
     return xi;
 }
 
-Rboolean asFlag(SEXP x, const char *vname) {
+Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
     if (!isLogical(x) || xlength(x) != 1)
         error("Argument '%s' must be a flag", vname);
     Rboolean xb = LOGICAL(x)[0];

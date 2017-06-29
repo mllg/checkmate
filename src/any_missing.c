@@ -1,6 +1,6 @@
 #include "any_missing.h"
 
-Rboolean any_missing_logical(SEXP x) {
+Rboolean attribute_hidden any_missing_logical(SEXP x) {
     const int * xp = LOGICAL(x);
     const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
@@ -10,7 +10,7 @@ Rboolean any_missing_logical(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_integer(SEXP x) {
+Rboolean attribute_hidden any_missing_integer(SEXP x) {
     const int * xp = INTEGER(x);
     const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
@@ -20,7 +20,7 @@ Rboolean any_missing_integer(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_integerish(SEXP x) {
+Rboolean attribute_hidden any_missing_integerish(SEXP x) {
     switch(TYPEOF(x)) {
         case LGLSXP: return any_missing_logical(x);
         case INTSXP: return any_missing_integer(x);
@@ -29,7 +29,7 @@ Rboolean any_missing_integerish(SEXP x) {
     }
 }
 
-Rboolean any_missing_double(SEXP x) {
+Rboolean attribute_hidden any_missing_double(SEXP x) {
     const double * xp = REAL(x);
     const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
@@ -39,7 +39,7 @@ Rboolean any_missing_double(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_numeric(SEXP x) {
+Rboolean attribute_hidden any_missing_numeric(SEXP x) {
     switch(TYPEOF(x)) {
         case INTSXP: return any_missing_integer(x);
         case REALSXP: return any_missing_double(x);
@@ -47,7 +47,7 @@ Rboolean any_missing_numeric(SEXP x) {
     }
 }
 
-Rboolean any_missing_complex(SEXP x) {
+Rboolean attribute_hidden any_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX(x);
     const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
@@ -57,7 +57,7 @@ Rboolean any_missing_complex(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_string(SEXP x) {
+Rboolean attribute_hidden any_missing_string(SEXP x) {
     const R_xlen_t nx = xlength(x);
     for (R_xlen_t i = 0; i < nx; i++) {
         if (STRING_ELT(x, i) == NA_STRING)
@@ -66,7 +66,7 @@ Rboolean any_missing_string(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_atomic(SEXP x) {
+Rboolean attribute_hidden any_missing_atomic(SEXP x) {
     switch(TYPEOF(x)) {
         case LGLSXP:  return any_missing_logical(x);
         case INTSXP:  return any_missing_integer(x);
@@ -77,7 +77,7 @@ Rboolean any_missing_atomic(SEXP x) {
     }
 }
 
-Rboolean any_missing_list(SEXP x) {
+Rboolean attribute_hidden any_missing_list(SEXP x) {
     const R_xlen_t nx = xlength(x);
     for (R_xlen_t i = 0; i < nx; i++) {
         if (isNull(VECTOR_ELT(x, i)))
@@ -86,11 +86,11 @@ Rboolean any_missing_list(SEXP x) {
     return FALSE;
 }
 
-Rboolean any_missing_matrix(SEXP x) {
+Rboolean attribute_hidden any_missing_matrix(SEXP x) {
     return any_missing_atomic(x);
 }
 
-Rboolean any_missing_frame(SEXP x) {
+Rboolean attribute_hidden any_missing_frame(SEXP x) {
     const R_xlen_t nc = xlength(x);
     for (R_xlen_t i = 0; i < nc; i++) {
         if (any_missing_atomic(VECTOR_ELT(x, i)))
@@ -112,6 +112,7 @@ Rboolean any_missing(SEXP x) {
         default: error("Object of type '%s' not supported", type2char(TYPEOF(x)));
     }
 }
-SEXP c_any_missing(SEXP x) {
+
+SEXP attribute_hidden c_any_missing(SEXP x) {
     return ScalarLogical(any_missing(x));
 }

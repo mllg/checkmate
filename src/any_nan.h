@@ -4,8 +4,9 @@
 #define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
+#include <R_ext/Visibility.h>
 
-SEXP c_any_nan(SEXP);
 Rboolean any_nan(SEXP);
+SEXP attribute_hidden c_any_nan(SEXP);
 
 #endif
