@@ -43,10 +43,10 @@ expect_date(x, lower = NULL, upper = NULL, any.missing = TRUE,
 Object to check.}
 
 \item{lower}{[\code{\link[base]{Date}}]\cr
-All dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
+All non-missing dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{upper}{[\code{\link[base]{Date}}]\cr
-All dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
+All non-missing dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}
