@@ -8,6 +8,9 @@
 * Improved error message for `*Choice`.
 * `*Character` and `*String` now ignores missing values in regular expressions.
   To disallow missing values, set `any.missing` or `na.ok`, respectively.
+* `*Date` now ignores missing values in for lower/upper bound checks.
+  To disallow missing values, set `any.missing` to `FALSE`.
+  Thanks to Will Beasley (@wibeasley) for the PR.
 * Package `microbenchmark` is no longer strictly required to build the vignette.
   If not installed, some output and figures will be missing though.
 
