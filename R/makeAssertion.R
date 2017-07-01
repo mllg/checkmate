@@ -39,6 +39,7 @@
 makeAssertion = function(x, res, var.name, collection) {
   if (!identical(res, TRUE)) {
     if (is.null(collection))
+      assertClass(collection, "AssertCollection", .var.name = "add")
       mstop("Assertion on '%s' failed: %s.", var.name, res)
     collection$push(sprintf("Variable '%s': %s.", var.name, res))
   }
