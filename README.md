@@ -33,6 +33,7 @@ devtools::install_github("mllg/checkmate")
 ```
 
 ## Resources
+* [R Journal Paper](https://journal.r-project.org/archive/2017/RJ-2017-028/index.html)
 * [NEWS](https://github.com/mllg/checkmate/blob/master/NEWS.md)
 * [Documentation/Vignettes](https://mllg.github.io/checkmate/)
 * [Grouped function reference](https://mllg.github.io/checkmate/reference/checkmate-package)
