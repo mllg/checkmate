@@ -1,3 +1,6 @@
+# Version 1.8.4
+* Fixed possible protection stack imbalance as reported by `rchk`.
+
 # Version 1.8.3
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
