@@ -3,10 +3,10 @@
 
 # Version 1.8.3
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
+  `Numeric` to check for ascending order of vector elements.
 * New argument `null.ok` (defaults to `FALSE`) for `*Choice` and `*Class`.
 * `*Subset` now allows to pass empty vectors to `choices`.
 * Improved error message for `*Choice`.
-`Numeric` to check for ascending order of vector elements.
 * The set family of functions is now more restrict regarding the class, e.g.
   they differentiate between factors and characters.
 * `*Character` and `*String` now ignores missing values in regular expressions
