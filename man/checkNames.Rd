@@ -10,26 +10,29 @@
 \alias{expect_names}
 \title{Check names to comply to specific rules}
 \usage{
-checkNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL)
+checkNames(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL)
 
-check_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL)
+check_names(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL)
 
-assertNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL, .var.name = vname(x), add = NULL)
+assertNames(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL, .var.name = vname(x),
+  add = NULL)
 
-assert_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL, .var.name = vname(x), add = NULL)
+assert_names(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL, .var.name = vname(x),
+  add = NULL)
 
-testNames(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL)
+testNames(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL)
 
-test_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL)
+test_names(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL)
 
-expect_names(x, type = "named", permutation.of = NULL, subset.of = NULL,
-  identical.to = NULL, info = NULL, label = vname(x))
+expect_names(x, type = "named", subset.of = NULL, must.include = NULL,
+  permutation.of = NULL, identical.to = NULL, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[\code{character} || \code{NULL}]\cr
@@ -43,15 +46,17 @@ Type of formal check(s) to perform on the names.
 \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 Note that for zero-length \code{x} all these name checks evaluate to \code{TRUE}.}
 
+\item{subset.of}{[\code{character}]\cr
+Names provided in \code{x} must be subset of the set \code{subset.of}.}
+
+\item{must.include}{[\code{character}]\cr
+Names provided in \code{x} must be a superset of the set \code{must.include}.}
+
 \item{permutation.of}{[\code{character}]\cr
 Names provided in \code{x} must be a permutation of the set \code{permutation.of}.
 Duplicated names in \code{permutation.of} are stripped out and duplicated names in \code{x}
 thus lead to a failed check.
 Use this argument instead of \code{identical.to} if the order of the names is not relevant.}
-
-\item{subset.of}{[\code{character}]\cr
-Names provided in \code{x} must be subset of the set \code{subset.of}.
-Use this argument if duplicated names are okay.}
 
 \item{identical.to}{[\code{character}]\cr
 Names provided in \code{x} must be identical to the vector \code{identical.to}.

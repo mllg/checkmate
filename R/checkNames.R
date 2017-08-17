@@ -13,14 +13,15 @@
 #'  \dQuote{unique} additionally tests for non-duplicated names.
 #'  \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
 #'  Note that for zero-length \code{x} all these name checks evaluate to \code{TRUE}.
+#' @param subset.of [\code{character}]\cr
+#'  Names provided in \code{x} must be subset of the set \code{subset.of}.
+#' @param must.include [\code{character}]\cr
+#'  Names provided in \code{x} must be a superset of the set \code{must.include}.
 #' @param permutation.of [\code{character}]\cr
 #'  Names provided in \code{x} must be a permutation of the set \code{permutation.of}.
 #'  Duplicated names in \code{permutation.of} are stripped out and duplicated names in \code{x}
 #'  thus lead to a failed check.
 #'  Use this argument instead of \code{identical.to} if the order of the names is not relevant.
-#' @param subset.of [\code{character}]\cr
-#'  Names provided in \code{x} must be subset of the set \code{subset.of}.
-#'  Use this argument if duplicated names are okay.
 #' @param identical.to [\code{character}]\cr
 #'  Names provided in \code{x} must be identical to the vector \code{identical.to}.
 #'  Use this argument instead of \code{permutation.of} if the order of the names is relevant.
@@ -36,21 +37,26 @@
 #'
 #' cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 #' assertNames(names(iris), permutation.of = cn)
-checkNames = function(x, type = "named", permutation.of = NULL, subset.of = NULL, identical.to = NULL) {
+checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL) {
   .Call(c_check_names, x, type) %and%
-    checkNamesCmp(x, permutation.of, subset.of, identical.to)
+    checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to)
 }
 
-checkNamesCmp = function(x, permutation.of, subset.of, identical.to) {
-  if (!is.null(permutation.of)) {
-    permutation.of = unique(qassert(permutation.of, "S"))
-    if (length(x) != length(permutation.of) || !setequal(x, permutation.of))
-      return(sprintf("Must be a permutation of set {%s}", paste0(permutation.of, collapse = ",")))
-  }
+checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
     if (anyMissing(match(x, subset.of)))
       return(sprintf("Must be a subset of set {%s}", paste0(subset.of, collapse = ",")))
+  }
+  if (!is.null(must.include)) {
+    qassert(must.include, "S")
+    if (anyMissing(match(must.include, x)))
+      return(sprintf("Must include the elements {%s}", paste0(must.include, collapse = ",")))
+  }
+  if (!is.null(permutation.of)) {
+    permutation.of = unique(qassert(permutation.of, "S"))
+    if (length(x) != length(permutation.of) || !setequal(x, permutation.of))
+      return(sprintf("Must be a permutation of set {%s}", paste0(permutation.of, collapse = ",")))
   }
   if (!is.null(identical.to)) {
     qassert(identical.to, "S")
