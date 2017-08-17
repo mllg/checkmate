@@ -95,6 +95,10 @@ test_that("checkNames / must.include", {
   expect_true(testNames(names(x), must.include = "a"))
   expect_true(testNames(names(x), must.include = letters[3:1]))
   expect_false(testNames(names(x), must.include = letters))
+  expect_true(testNames(names(x), must.include = character(0)))
+  expect_false(testNames(NULL, must.include = character(0)))
+  expect_true(testNames(character(0), must.include = character(0)))
+  expect_true(testNames(character(0), must.include = NULL))
 })
 
 test_that("checkNames / errors are useful", {
