@@ -491,7 +491,7 @@ SEXP attribute_hidden c_check_named(SEXP x, SEXP type) {
 }
 
 SEXP attribute_hidden c_check_names(SEXP x, SEXP type) {
-    if (!isString(x))
+    if (!(isString(x) || isNull(x))
         return result("Must be a character vector of names");
     ASSERT_TRUE(check_names(x, asString(type, "type"), "Names"));
     return ScalarLogical(TRUE);
