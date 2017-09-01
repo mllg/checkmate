@@ -3,6 +3,9 @@ sudo: false
 language: r
 cache: packages
 
+env:
+  - _R_CHECK_LENGTH_1_CONDITION_=true
+
 r:
   - oldrel
   - release
