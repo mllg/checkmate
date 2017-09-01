@@ -112,3 +112,8 @@ test_that("checkNames / errors are useful", {
     "rownames\\(foo\\)"
   )
 })
+
+test_that("checkNames / NULL (#120)", {
+  expect_true(testNames(NULL, type = "unnamed"))
+  expect_false(testNames(NULL, type = "named"))
+})
