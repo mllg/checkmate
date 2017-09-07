@@ -1,6 +1,7 @@
 # Version 1.8.4
 * `*Names` with `type="unnamed"` now works with `NULL`.
 * Fixed possible protection stack imbalance as reported by `rchk`.
+* New argument `must.include` for `*Names`.
 
 # Version 1.8.3
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
