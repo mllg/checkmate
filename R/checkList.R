@@ -1,5 +1,10 @@
 #' Check if an argument is a list
 #'
+#' @note
+#' The test for uniqueness does differentiate between the different NA types in R.
+#' This is require to be consistent with \code{\link[base]{unique}} while checking
+#' scalar missing values. Also see the example.
+#'
 #' @templateVar fn List
 #' @template x
 #' @inheritParams checkVector
@@ -22,6 +27,10 @@
 #' @examples
 #' testList(list())
 #' testList(as.list(iris), types = c("numeric", "factor"))
+#'
+#' # Uniqueness differentiates between different NA types:
+#' testList(list(NA, NA), unique = TRUE)
+#' testList(list(NA, NA_real_), unique = TRUE)
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
   .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
   checkListTypes(x, types)
