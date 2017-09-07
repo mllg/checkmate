@@ -35,7 +35,7 @@ test_that("checkNames", {
   expect_error(assertNames(c("a", "a"), "unique"), "unique")
 
   x = c("a", "1")
-  expect_error(assertNames(x, "strict"), "naming rules")
+  expect_error(assertNames(x, "strict"), "naming conventions")
 })
 
 test_that("argument 'type' is checked", {

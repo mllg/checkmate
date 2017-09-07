@@ -56,5 +56,5 @@ test_that("checkNamed", {
   expect_error(assertNamed(x, "unique"), "uniquely")
 
   x = setNames(1:2, c("a", "1"))
-  expect_error(assertNamed(x, "strict"), "naming rules")
+  expect_error(assertNamed(x, "strict"), "naming conventions")
 })

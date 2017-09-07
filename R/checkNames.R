@@ -8,11 +8,13 @@
 #'  Names to check using rules defined via \code{type}.
 #' @param type [character(1)]\cr
 #'  Type of formal check(s) to perform on the names.
-#'  \dQuote{unnamed} checks \code{x} to be \code{NULL}.
-#'  \dQuote{named} (default) checks \code{x} for regular names which excludes names to be \code{NA} or empty (\code{""}).
-#'  \dQuote{unique} additionally tests for non-duplicated names.
-#'  \dQuote{strict} checks for unique names which comply to R's variable name restrictions.
-#'  Note that for zero-length \code{x} all these name checks evaluate to \code{TRUE}.
+#'  \describe{
+#'  \item{unnamed:}{Checks \code{x} to be \code{NULL}.}
+#'  \item{named:}{Checks \code{x} for regular names which excludes names to be \code{NA} or empty (\code{""}).}
+#'  \item{unique:}{Performs checks like with \dQuote{named} and additionally tests for non-duplicated names.}
+#'  \item{strict:}{Performs checks like with \dQuote{unique} and additionally fails for names with UTF-8 characters and names which do not comply to R's variable name restrictions. As regular expression, this is \dQuote{^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$}.}
+#'  }
+#'  Note that for zero-length \code{x}, all these name checks evaluate to \code{TRUE}.
 #' @param subset.of [\code{character}]\cr
 #'  Names provided in \code{x} must be subset of the set \code{subset.of}.
 #' @param must.include [\code{character}]\cr

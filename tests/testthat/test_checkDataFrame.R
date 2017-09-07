@@ -49,7 +49,7 @@ test_that("checkDataFrame name checking works", {
   names(df) = c("x", "1")
   expect_identical(assertDataFrame(df, col.names = "named"), df)
   expect_identical(assertDataFrame(df, col.names = "unique"), df)
-  expect_error(assertDataFrame(df, col.names = "strict"), "naming rules")
+  expect_error(assertDataFrame(df, col.names = "strict"), "naming conventions")
 
   rownames(df) = letters[1:2]
   expect_succ_all(DataFrame, df, row.names = "strict")
