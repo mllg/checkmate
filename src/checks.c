@@ -206,12 +206,12 @@ static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP min_cols, SEXP row
     if (!isNull(min_rows) || !isNull(rows)) {
         R_len_t xrows = get_nrows(x);
         if (!isNull(min_rows)) {
-            R_len_t cmp = asCount(min_rows, "min.rows");
+            R_len_t cmp = asLength(min_rows, "min.rows");
             if (xrows < cmp)
                 return message("Must have at least %i rows, but has %i rows", cmp, xrows);
         }
         if (!isNull(rows)) {
-            R_len_t cmp = asCount(rows, "rows");
+            R_len_t cmp = asLength(rows, "rows");
             if (xrows != cmp)
                 return message("Must have exactly %i rows, but has %i rows", cmp, xrows);
         }
@@ -219,7 +219,7 @@ static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP min_cols, SEXP row
     if (!isNull(min_cols) || !isNull(cols)) {
         R_len_t xcols = get_ncols(x);
         if (!isNull(min_cols)) {
-            R_len_t cmp = asCount(min_cols, "min.cols");
+            R_len_t cmp = asLength(min_cols, "min.cols");
             if (xcols < cmp)
                 return message("Must have at least %i cols, but has %i cols", cmp, xcols);
         }
@@ -283,16 +283,16 @@ static inline Rboolean is_scalar_na(SEXP x) {
 
 
 static Rboolean is_sorted_integer(SEXP x) {
-    R_len_t i = 0;
+    R_xlen_t i = 0;
     const int * const xi = INTEGER(x);
-    const R_len_t n = length(x);
+    const R_xlen_t n = xlength(x);
     while(xi[i] == NA_INTEGER) {
         i++;
         if (i == n)
             return TRUE;
     }
 
-    for (R_len_t j = i + 1; j < n; j++) {
+    for (R_xlen_t j = i + 1; j < n; j++) {
         if (xi[j] != NA_INTEGER) {
             if (xi[i] > xi[j])
                 return FALSE;
@@ -304,16 +304,16 @@ static Rboolean is_sorted_integer(SEXP x) {
 
 
 static Rboolean is_sorted_double(SEXP x) {
-    R_len_t i = 0;
+    R_xlen_t i = 0;
     const double * const xr = REAL(x);
-    const R_len_t n = length(x);
+    const R_xlen_t n = xlength(x);
     while(xr[i] == NA_REAL) {
         i++;
         if (i == n)
             return TRUE;
     }
 
-    for (R_len_t j = i + 1; j < n; j++) {
+    for (R_xlen_t j = i + 1; j < n; j++) {
         if (xr[j] != NA_REAL) {
             if (xr[i] > xr[j])
                 return FALSE;
@@ -325,7 +325,7 @@ static Rboolean is_sorted_double(SEXP x) {
 
 
 static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
-    if (asFlag(sorted, "sorted") && length(x) >= 2) {
+    if (asFlag(sorted, "sorted") && xlength(x) > 1) {
         Rboolean ok;
         switch(TYPEOF(x)) {
             case INTSXP: ok = is_sorted_integer(x); break;

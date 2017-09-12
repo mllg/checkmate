@@ -8,7 +8,7 @@ static inline Rboolean is_unconvertible(const double x, const double tol) {
 
 static Rboolean is_integerish_double(SEXP x, const double tol) {
     const double *xr = REAL(x);
-    const double * const xend = xr + length(x);
+    const double * const xend = xr + xlength(x);
 
     for (; xr != xend; xr++) {
         if (is_unconvertible(*xr, tol))
@@ -19,7 +19,7 @@ static Rboolean is_integerish_double(SEXP x, const double tol) {
 
 static Rboolean is_integerish_complex(SEXP x, const double tol) {
     const Rcomplex * xc = COMPLEX(x);
-    const Rcomplex * const xe = xc + length(x);
+    const Rcomplex * const xe = xc + xlength(x);
     for (; xc != xe; xc++) {
         if (fabs((*xc).i) >= tol || is_unconvertible((*xc).r, tol))
             return FALSE;
