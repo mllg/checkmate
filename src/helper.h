@@ -13,7 +13,8 @@ R_len_t attribute_hidden get_ncols(SEXP);
 R_len_t attribute_hidden get_nrows(SEXP);
 double attribute_hidden asNumber(SEXP, const char *);
 const char attribute_hidden * asString(SEXP, const char *);
-R_xlen_t attribute_hidden asCount(SEXP, const char *);
+R_len_t attribute_hidden asCount(SEXP, const char *);
+R_xlen_t attribute_hidden asLength(SEXP, const char *);
 Rboolean attribute_hidden asFlag(SEXP, const char *);
 
 #endif

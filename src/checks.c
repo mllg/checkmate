@@ -159,17 +159,17 @@ static Rboolean check_named(SEXP x, const char * type, const char * what) {
 
 static Rboolean check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
     if (!isNull(len)) {
-        R_xlen_t n = asCount(len, "len");
+        R_xlen_t n = asLength(len, "len");
         if (xlength(x) != n)
             return message("Must have length %g, but has length %g", (double)n, (double)xlength(x));
     }
     if (!isNull(min_len)) {
-        R_xlen_t n = asCount(min_len, "min.len");
+        R_xlen_t n = asLength(min_len, "min.len");
         if (xlength(x) < n)
             return message("Must have length >= %g, but has length %g", (double)n, (double)xlength(x));
     }
     if (!isNull(max_len)) {
-        R_xlen_t n = asCount(max_len, "max.len");
+        R_xlen_t n = asLength(max_len, "max.len");
         if (xlength(x) > n)
             return message("Must have length <= %g, but has length %g", (double)n, (double)xlength(x));
     }

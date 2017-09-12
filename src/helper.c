@@ -1,3 +1,4 @@
+#include <math.h>
 #include "helper.h"
 #include "any_missing.h"
 #include "is_integerish.h"
@@ -67,15 +68,41 @@ const char attribute_hidden * asString(SEXP x, const char *vname) {
     return CHAR(STRING_ELT(x, 0));
 }
 
-R_xlen_t attribute_hidden asCount(SEXP x, const char *vname) {
-    if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE) || xlength(x) != 1)
-        error("Argument '%s' must be a count", vname);
+R_len_t attribute_hidden asCount(SEXP x, const char *vname) {
+    if (length(x) != 1)
+        error("Argument '%x' must have length 1", vname);
+    if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
+        error("Argument '%s' must be close to an integer", vname);
     int xi = asInteger(x);
     if (xi == NA_INTEGER)
         error("Argument '%s' may not be missing", vname);
     if (xi < 0)
         error("Argument '%s' must be >= 0", vname);
     return xi;
+}
+
+R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
+    if (length(x) != 1)
+        error("Argument '%x' must have length 1", vname);
+    switch(TYPEOF(x)) {
+        case INTSXP:;
+            int xi = INTEGER(x)[0];
+            if (xi == NA_INTEGER)
+                error("Argument '%s' may not be missing", vname);
+            if (xi < 0)
+                error("Argument '%s' must be >= 0", vname);
+            return (R_xlen_t) xi;
+        case REALSXP:;
+            double xr = REAL(x)[0];
+            if (xr == NA_REAL)
+                error("Argument '%s' may not be missing", vname);
+            if (xr < 0)
+                error("Argument '%s' must be >= 0", vname);
+            if (fabs(xr - nearbyint(xr)) >= INTEGERISH_DEFAULT_TOL)
+                error("Argument '%s' is not close to an integer", vname);
+            return (R_xlen_t) xr;
+    }
+    error("Argument '%s' must be a length", vname);
 }
 
 Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
