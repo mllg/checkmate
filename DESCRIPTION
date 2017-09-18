@@ -21,6 +21,7 @@ Imports:
     backports (>= 1.1.0),
     utils
 Suggests:
+    bit,
     data.table (>= 1.9.8),
     devtools,
     ggplot2,
@@ -49,6 +50,7 @@ Collate:
     'checkArray.R'
     'checkAtomic.R'
     'checkAtomicVector.R'
+    'checkBit.R'
     'checkCharacter.R'
     'checkChoice.R'
     'checkClass.R'
