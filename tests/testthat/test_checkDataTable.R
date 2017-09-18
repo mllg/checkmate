@@ -2,9 +2,10 @@ context("checkDataTable")
 
 test_that("checkDataTable", {
   skip_if_not_installed("data.table")
-  library(data.table)
+  requireNamespace("data.table")
 
-  dt = as.data.table(iris)
+  dt = data.table::as.data.table(iris)
+  expect_succ_all("DataFrame", dt)
   expect_succ_all("DataTable", dt)
   expect_fail_all("DataTable", iris)
 
@@ -14,18 +15,18 @@ test_that("checkDataTable", {
   expect_true(testDataTable(dt, key = character(0)))
   expect_true(testDataTable(dt, index = character(0)))
 
-  setkeyv(dt, "Species")
+  data.table::setkeyv(dt, "Species")
   expect_true(testDataTable(dt, key = "Species"))
   expect_false(testDataTable(dt, index = "Species"))
 
-  dt = as.data.table(iris)
-  setkeyv(dt, "Species", physical = FALSE)
+  dt = data.table::as.data.table(iris)
+  data.table::setkeyv(dt, "Species", physical = FALSE)
   expect_false(testDataTable(dt, key = "Species"))
   expect_true(testDataTable(dt, index = "Species"))
 
-  dt = as.data.table(iris)
-  setkeyv(dt, c("Petal.Width", "Petal.Length"), physical = TRUE)
-  setkeyv(dt, c("Sepal.Length", "Sepal.Width"), physical = FALSE)
+  dt = data.table::as.data.table(iris)
+  data.table::setkeyv(dt, c("Petal.Width", "Petal.Length"), physical = TRUE)
+  data.table::setkeyv(dt, c("Sepal.Length", "Sepal.Width"), physical = FALSE)
   expect_true(testDataTable(dt, key = c("Petal.Width", "Petal.Length"), index = c("Sepal.Width", "Sepal.Length")))
 
   expect_error(testDataTable(dt, key = 1), "string")

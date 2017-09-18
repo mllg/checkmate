@@ -21,20 +21,21 @@ Imports:
     backports (>= 1.1.0),
     utils
 Suggests:
+    R6,
     bit,
     data.table (>= 1.9.8),
     devtools,
     ggplot2,
     knitr,
-    rmarkdown,
     magrittr,
     microbenchmark,
+    rmarkdown,
     testthat (>= 0.11.0),
     tibble
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-Collate:
+Collate: 
     'AssertCollection.R'
     'allMissing.R'
     'anyInfinite.R'
@@ -79,6 +80,7 @@ Collate:
     'checkNumeric.R'
     'checkOS.R'
     'checkPathForOutput.R'
+    'checkR6.R'
     'checkScalar.R'
     'checkScalarNA.R'
     'checkSetEqual.R'

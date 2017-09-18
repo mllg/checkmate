@@ -9,7 +9,7 @@ test_that("checkOS linux", {
   skip_on_os("solaris")
   skip_on_os("mac")
   expect_succ_all(OS, "linux", lc = "os")
-  expect_string(checkOS("windows"), fixed = "windows")
+  expect_error(assertOS("windows"), "windows")
 })
 
 test_that("checkOS mac", {
@@ -17,7 +17,7 @@ test_that("checkOS mac", {
   skip_on_os("solaris")
   skip_on_os("linux")
   expect_succ_all(OS, "mac", lc = "os")
-  expect_string(checkOS("windows"), fixed = "windows")
+  expect_error(assertOS("windows"), "windows")
 })
 
 test_that("checkOS win", {
@@ -25,5 +25,5 @@ test_that("checkOS win", {
   skip_on_os("solaris")
   skip_on_os("linux")
   expect_succ_all(OS, "windows", lc = "os")
-  expect_string(checkOS("mac"), fixed = "mac")
+  expect_error(assertOS("mac"), "mac")
 })

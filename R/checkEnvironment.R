@@ -24,7 +24,7 @@ checkEnvironment = function(x, contains = character(0L), null.ok = FALSE) {
   if (!is.environment(x))
     return(sprintf("Must be an environment%s, not '%s'", if (null.ok) " (or 'NULL')" else "", guessType(x)))
   if (length(contains) > 0L) {
-    w = wf(contains %nin% ls(x, all.names = TRUE))
+    w = wf(contains %nin% ls(x, all.names = TRUE, sorted = FALSE))
     if (length(w) > 0L)
       return(sprintf("Must contain an object with name '%s'", contains[w]))
   }

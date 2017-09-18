@@ -3,6 +3,7 @@
 * Fixed possible protection stack imbalance as reported by `rchk`.
 * New argument `must.include` for `*Names`.
 * New functions to test bit vectors implemented in package `bit`
+* New functions to test R6 classes implemented in package `R6`
 
 # Version 1.8.3
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
