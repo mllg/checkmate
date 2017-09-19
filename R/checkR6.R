@@ -3,6 +3,13 @@
 #' @templateVar fn Class
 #' @template x
 #' @inheritParams checkClass
+#' @param cloneable [\code{logical(1)}]\cr
+#'  If \code{TRUE}, check that \code{x} has a \code{clone} method. If \code{FALSE}, ensure that
+#'  \code{x} is not cloneable.
+#' @param public [\code{character}]\cr
+#'  Names of expected public slots. This includes active bindings.
+#' @param private [\code{character}]\cr
+#'  Names of expected private slots.
 #' @template null.ok
 #' @template checker
 #' @export

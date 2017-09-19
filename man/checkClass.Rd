@@ -99,6 +99,8 @@ assert(
 testClass(x, "bar", ordered = TRUE)
 }
 \seealso{
+\code{\link{checkR6}}
+
 Other attributes: \code{\link{checkNamed}},
   \code{\link{checkNames}}
 }

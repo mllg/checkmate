@@ -10,6 +10,7 @@
 #' @template null.ok
 #' @template checker
 #' @family attributes
+#' @seealso \code{\link{checkR6}}
 #' @export
 #' @examples
 #' # Create an object with classes "foo" and "bar"

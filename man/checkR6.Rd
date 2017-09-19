@@ -45,6 +45,16 @@ Class names to check for inheritance with \code{\link[base]{inherits}}.}
 Expect \code{x} to be specialized in provided order.
 Default is \code{FALSE}.}
 
+\item{cloneable}{[\code{logical(1)}]\cr
+If \code{TRUE}, check that \code{x} has a \code{clone} method. If \code{FALSE}, ensure that
+\code{x} is not cloneable.}
+
+\item{public}{[\code{character}]\cr
+Names of expected public slots. This includes active bindings.}
+
+\item{private}{[\code{character}]\cr
+Names of expected private slots.}
+
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}

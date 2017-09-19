@@ -114,6 +114,8 @@ testLogical(TRUE)
 testLogical(TRUE, min.len = 1)
 }
 \seealso{
+\code{\link{checkBit}}
+
 Other basetypes: \code{\link{checkArray}},
   \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
