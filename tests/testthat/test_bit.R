@@ -1,8 +1,10 @@
 context("checkBit")
 
 test_that("checkBit", {
-  skip_if_not_installed("bit")
-  requireNamespace("bit")
+  skip_if_not_physically_installed("bit")
+
+  expect_false(testBit(FALSE))
+  expect_true("bit" %in% loadedNamespaces())
 
   xl = c(TRUE, FALSE)
   xb = bit::as.bit(xl)

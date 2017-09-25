@@ -15,6 +15,9 @@
 #' x = as.bit(replace(logical(10), sample(10, 5), TRUE))
 #' testBit(x, len = 10, min.0 = 1)
 checkBit = function(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL, min.1 = NULL, null.ok = FALSE) {
+  if (!requireNamespace("bit", quietly = TRUE))
+    stop("Install package 'bit' to perform checks of bit vectors")
+
   qassert(null.ok, "B1")
   if (is.null(x)) {
     if (null.ok)
@@ -25,7 +28,7 @@ checkBit = function(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
   if (!requireNamespace("bit", quietly = TRUE))
     stop("Install 'bit' to perform checks of bits")
 
-  if (!inherits(x, "bit"))
+  if (!bit::is.bit(x))
     return(paste0("Must be a bit", if (null.ok) " (or 'NULL')" else "", sprintf(", not %s", guessType(x))))
 
   n = length(x)

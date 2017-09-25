@@ -8,6 +8,12 @@ expect_expectation_failed = function(expr, pattern = NULL, info = NULL, label = 
   expect_is(x, "expectation_failure", info = info, label = label)
 }
 
+skip_if_not_physically_installed = function(x) {
+  loc = find.package(x, quiet = TRUE)
+  if (length(loc) == 0L)
+    skip(sprintf("Package '%s' is not installed", x))
+}
+
 expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc = convertCamelCase(cc)) {
   xn = deparse(substitute(x))
 

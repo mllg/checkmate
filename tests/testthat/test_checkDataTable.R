@@ -1,8 +1,10 @@
 context("checkDataTable")
 
 test_that("checkDataTable", {
-  skip_if_not_installed("data.table")
-  requireNamespace("data.table")
+  skip_if_not_physically_installed("data.table")
+
+  expect_false(testDataTable(iris))
+  expect_true("data.table" %in% loadedNamespaces())
 
   dt = data.table::as.data.table(iris)
   expect_succ_all("DataFrame", dt)

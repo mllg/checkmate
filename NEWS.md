@@ -1,4 +1,8 @@
 # Version 1.8.4
+* Always load (not attach) the respective namespace if checking for objects of
+  type `data.table`, `tibble`, `R6` or `bit`. This ensures that all operations
+  work as expected after the check, e.g. after using `readRDS()` to retrieve
+  such an object from the file system.
 * `*Names` with `type="unnamed"` now works with `NULL`.
 * Fixed possible protection stack imbalance as reported by `rchk`.
 * New argument `must.include` for `*Names`.

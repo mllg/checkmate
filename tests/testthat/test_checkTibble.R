@@ -1,8 +1,10 @@
 context("checkTibble")
 
 test_that("checkTibble", {
-  skip_if_not_installed("tibble")
-  requireNamespace("tibble")
+  skip_if_not_physically_installed("tibble")
+
+  expect_false(testTibble(iris))
+  expect_true("tibble" %in% loadedNamespaces())
 
   x = tibble::as_tibble(iris)
   expect_succ_all("DataFrame", x)

@@ -23,12 +23,14 @@
 #' x = generator$new()
 #' checkR6(x, "Bar", cloneable = TRUE, public = "a")
 checkR6 = function(x, classes = NULL, ordered = FALSE, cloneable = NULL, public = NULL, private = NULL, null.ok = FALSE) {
+  if (!requireNamespace("R6", quietly = TRUE))
+    stop("Install package 'R6' to perform checks of R6 classes")
   if (is.null(x)) {
     if (null.ok)
       return(TRUE)
-    return("Must be a an R6 class, not 'NULL'")
+    return("Must be an R6 class, not 'NULL'")
   }
-  if (!inherits(x, "R6"))
+  if (!R6::is.R6(x))
     return(paste0("Must be an R6 class", if (null.ok) " (or 'NULL')" else "", sprintf(", not %s", guessType(x))))
   checkClass(x, c(classes, "R6"), ordered) %and% checkR6Props(x, cloneable, public, private)
 }

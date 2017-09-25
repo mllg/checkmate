@@ -1,8 +1,11 @@
 context("checkR6")
 
 test_that("checkR6", {
-  skip_if_not_installed("R6")
-  requireNamespace("R6")
+  skip_if_not_physically_installed("R6")
+
+  expect_false(testR6(1))
+  expect_true("R6" %in% loadedNamespaces())
+
   x = R6::R6Class("Bar",
     public = list(a = 5),
     private = list(b = 42),
