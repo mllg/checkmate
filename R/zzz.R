@@ -31,31 +31,28 @@
 #'   \item{\code{\link{checkVector}}}
 #'   \item{\code{\link{checkAtomic}}}
 #'   \item{\code{\link{checkAtomicVector}}}
-#'   \item{\code{\link{checkDate}}}
 #' }
 #'
 #' Check attributes:
 #' \itemize{
 #'   \item{\code{\link{checkClass}}}
 #'   \item{\code{\link{checkNames}}}
-#'   \item{\code{\link{checkNamed}}}
+#'   \item{\code{\link{checkNamed}}} (deprecated)
 #' }
 #'
 #' Check compound types:
 #' \itemize{
-#'   \item{\code{\link{checkMatrix}}}
 #'   \item{\code{\link{checkArray}}}
 #'   \item{\code{\link{checkDataFrame}}}
-#'   \item{\code{\link{checkDataTable}}}
-#'   \item{\code{\link{checkTibble}}}
+#'   \item{\code{\link{checkMatrix}}}
 #' }
 #'
 #' Check other built-in R types:
 #' \itemize{
-#'   \item{\code{\link{checkNull}}}
+#'   \item{\code{\link{checkDate}}}
 #'   \item{\code{\link{checkEnvironment}}}
 #'   \item{\code{\link{checkFunction}}}
-#'   \item{\code{\link{checkDate}}}
+#'   \item{\code{\link{checkNull}}}
 #' }
 #'
 #' Check sets:
@@ -71,6 +68,14 @@
 #'   \item{\code{\link{checkDirectoryExists}}}
 #'   \item{\code{\link{checkPathForOutput}}}
 #'   \item{\code{\link{checkAccess}}}
+#' }
+#'
+#' Popular data types in external packages:
+#' \itemize{
+#'   \item{\code{\link{checkBit}}}
+#'   \item{\code{\link{checkDataTable}}}
+#'   \item{\code{\link{checkR6}}}
+#'   \item{\code{\link{checkTibble}}}
 #' }
 #'
 #' Safe coercion to integer:

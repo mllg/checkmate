@@ -1,12 +1,12 @@
 # Version 1.8.4
+* New functions to test bit vectors implemented in package `bit`.
+* New functions to test R6 classes implemented in package `R6`.
 * Always load (not attach) the respective namespace if checking for objects of
   type `data.table`, `tibble`, `R6` or `bit`. This ensures that all operations
-  work as expected after the check
+  work as expected after the check.
 * `*Names` with `type="unnamed"` now works with `NULL`.
-* Fixed possible protection stack imbalance as reported by `rchk`.
 * New argument `must.include` for `*Names`.
-* New functions to test bit vectors implemented in package `bit`
-* New functions to test R6 classes implemented in package `R6`
+* Fixed possible protection stack imbalance as reported by `rchk`.
 
 # Version 1.8.3
 * New argument `sorted` (defaults to `FALSE`) for `*Integer`, `*Integerish` and
