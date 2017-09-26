@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -29,10 +29,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="/index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="articles/index.html">Articles</a>
+  <a href="articles/checkmate.html">Get Started</a>
+</li>
+<li>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
   <a href="news/index.html">News</a>
@@ -58,7 +64,7 @@
   <div class="contents col-md-9">
     <div id="checkmate" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#checkmate" class="anchor"> </a>checkmate</h1></div>
+<a href="#checkmate" class="anchor"></a>checkmate</h1></div>
 
 <p>Fast and versatile argument checks for R.</p>
 <p>Ever used an R function that produced a not-very-helpful error message, just to discover after minutes of debugging that you simply passed a wrong argument?</p>
@@ -67,16 +73,17 @@
 <p>Virtually <strong>every standard type of user error</strong> when passing arguments into function can be caught with a simple, readable line which produces an <strong>informative error message</strong> in case. A substantial part of the package was written in C to <strong>minimize any worries about execution time overhead</strong>. Furthermore, the package provides over 30 expectations to extend the popular <a href="https://cran.r-project.org/package=testthat">testthat package</a> for unit tests.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"> </a>Installation</h2>
+<a href="#installation" class="anchor"></a>Installation</h2>
 <p>For the stable release, just install the latest version from <a href="https://cran.r-project.org/package=checkmate">CRAN</a>:</p>
 <pre class="{r}"><code>install.packages("checkmate")</code></pre>
 <p>For the development version, use <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
-<pre class="{r}"><code>devtools::install_github("mllg/checkmate")</code></pre>
+<pre class="{r}"><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github("mllg/checkmate")</a></code></pre>
 </div>
 <div id="resources" class="section level2">
 <h2 class="hasAnchor">
-<a href="#resources" class="anchor"> </a>Resources</h2>
+<a href="#resources" class="anchor"></a>Resources</h2>
 <ul>
+<li><a href="https://journal.r-project.org/archive/2017/RJ-2017-028/index.html">R Journal Paper</a></li>
 <li><a href="https://github.com/mllg/checkmate/blob/master/NEWS.md">NEWS</a></li>
 <li><a href="https://mllg.github.io/checkmate/">Documentation/Vignettes</a></li>
 <li><a href="https://mllg.github.io/checkmate/reference/checkmate-package">Grouped function reference</a></li>
@@ -96,13 +103,16 @@
 </li>
 </ul>
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/BSD-3-Clause">BSD_3_clause</a> + file <a href="LICENSE">LICENSE</a></p>
+<p><a href="https://opensource.org/licenses/BSD-3-Clause">BSD_3_clause</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<h2>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html">Citing checkmate</a></li>
+</ul>
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Michel Lang <br><small class="roles"> Maintainer, author </small> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
-<html><body>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=checkmate"><img src="http://www.r-pkg.org/badges/version/checkmate" alt="CRAN_Status_Badge"></a></li>
@@ -110,7 +120,6 @@
 <li><a href="https://ci.appveyor.com/project/mllg/checkmate/branch/master"><img src="https://ci.appveyor.com/api/projects/status/y4ayps61hjd3375o/branch/master?svg=true" alt="Build status"></a></li>
 <li><a href="https://coveralls.io/r/mllg/checkmate?branch=master"><img src="https://img.shields.io/coveralls/mllg/checkmate.svg" alt="Coverage Status"></a></li>
 </ul>
-</body></html>
 </div>
 </div>
 

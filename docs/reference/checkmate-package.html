@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fast and Versatile Argument Checks — checkmate-package • checkmate</title>
+<title>checkmate: Fast and Versatile Argument Checks — checkmate-package • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -49,10 +52,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../articles/checkmate.html">Get Started</a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -77,148 +86,99 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Fast and Versatile Argument Checks</h1>
+    <h1>checkmate: Fast and Versatile Argument Checks</h1>
     </div>
 
     
-    <p><dl class='dl-horizontal'>
-  <dt>Homepage:</dt><dd><a href = 'https://github.com/mllg/checkmate'>https://github.com/mllg/checkmate</a></dd>
-  <dt>Bug Reports:</dt><dd><a href = 'https://github.com/mllg/checkmate/issues'>https://github.com/mllg/checkmate/issues</a></dd>
-</dl></p>
+    <dl class='dl-horizontal'>
+  <dt>Homepage:</dt><dd><p><a href='https://github.com/mllg/checkmate'>https://github.com/mllg/checkmate</a></p></dd>
+  <dt>Bug Reports:</dt><dd><p><a href='https://github.com/mllg/checkmate/issues'>https://github.com/mllg/checkmate/issues</a></p></dd>
+</dl>
     
 
         
     <h2 class="hasAnchor" id="overview-of-implemented-functions"><a class="anchor" href="#overview-of-implemented-functions"></a>Overview of implemented functions</h2>
 
-    <p></p>
-    <p>Check scalars:
-<ul>
-<li><code><a href='checkFlag.html'>checkFlag</a></code>
-  </li>
-<li><code><a href='checkCount.html'>checkCount</a></code>
-  </li>
-<li><code><a href='checkNumber.html'>checkNumber</a></code>
-  </li>
-<li><code><a href='checkInt.html'>checkInt</a></code>
-  </li>
-<li><code><a href='checkString.html'>checkString</a></code>
-  </li>
-<li><code><a href='checkScalar.html'>checkScalar</a></code>
-  </li>
-<li><code><a href='checkScalarNA.html'>checkScalarNA</a></code>
-</li>
-</ul></p>
-    <p>Check vectors:
-<ul>
-<li><code><a href='checkLogical.html'>checkLogical</a></code>
-  </li>
-<li><code><a href='checkNumeric.html'>checkNumeric</a></code>
-  </li>
-<li><code><a href='checkInteger.html'>checkInteger</a></code>
-  </li>
-<li><code><a href='checkIntegerish.html'>checkIntegerish</a></code>
-  </li>
-<li><code><a href='checkCharacter.html'>checkCharacter</a></code>
-  </li>
-<li><code><a href='checkComplex.html'>checkComplex</a></code>
-  </li>
-<li><code><a href='checkFactor.html'>checkFactor</a></code>
-  </li>
-<li><code><a href='checkList.html'>checkList</a></code>
-  </li>
-<li><code><a href='checkVector.html'>checkVector</a></code>
-  </li>
-<li><code><a href='checkAtomic.html'>checkAtomic</a></code>
-  </li>
-<li><code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>
-  </li>
-<li><code><a href='checkDate.html'>checkDate</a></code>
-</li>
-</ul></p>
-    <p>Check attributes:
-<ul>
-<li><code><a href='checkClass.html'>checkClass</a></code>
-  </li>
-<li><code><a href='checkNames.html'>checkNames</a></code>
-  </li>
-<li><code><a href='checkNamed.html'>checkNamed</a></code>
-</li>
-</ul></p>
-    <p>Check compound types:
-<ul>
-<li><code><a href='checkMatrix.html'>checkMatrix</a></code>
-  </li>
-<li><code><a href='checkArray.html'>checkArray</a></code>
-  </li>
-<li><code><a href='checkDataFrame.html'>checkDataFrame</a></code>
-  </li>
-<li><code><a href='checkDataTable.html'>checkDataTable</a></code>
-  </li>
-<li><code><a href='checkTibble.html'>checkTibble</a></code>
-</li>
-</ul></p>
-    <p>Check other built-in R types:
-<ul>
-<li><code><a href='checkNull.html'>checkNull</a></code>
-  </li>
-<li><code><a href='checkEnvironment.html'>checkEnvironment</a></code>
-  </li>
-<li><code><a href='checkFunction.html'>checkFunction</a></code>
-  </li>
-<li><code><a href='checkDate.html'>checkDate</a></code>
-</li>
-</ul></p>
-    <p>Check sets:
-<ul>
-<li><code><a href='checkChoice.html'>checkChoice</a></code>
-  </li>
-<li><code><a href='checkSubset.html'>checkSubset</a></code>
-  </li>
-<li><code><a href='checkSetEqual.html'>checkSetEqual</a></code>
-</li>
-</ul></p>
-    <p>File IO:
-<ul>
-<li><code><a href='checkFileExists.html'>checkFileExists</a></code>
-  </li>
-<li><code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>
-  </li>
-<li><code><a href='checkPathForOutput.html'>checkPathForOutput</a></code>
-  </li>
-<li><code><a href='checkAccess.html'>checkAccess</a></code>
-</li>
-</ul></p>
-    <p>Safe coercion to integer:
-<ul>
-<li><code><a href='asInteger.html'>asCount</a></code>
-  </li>
-<li><code><a href='asInteger.html'>asInt</a></code>
-  </li>
-<li><code><a href='asInteger.html'>asInteger</a></code>
-</li>
-</ul></p>
-    <p>Quick argument checks using a DSL:
-<ul>
-<li><code><a href='qassert.html'>qassert</a></code>
-  </li>
-<li><code><a href='qassertr.html'>qassertr</a></code>
-</li>
-</ul></p>
-    <p>Misc:
-<ul>
-<li><code><a href='checkOS.html'>checkOS</a></code> (check operating system)
-  </li>
-<li><code><a href='assert.html'>assert</a></code> (combine multiple checks into an assertion)
-  </li>
-<li><code><a href='allMissing.html'>anyMissing</a></code>
-  </li>
-<li><code><a href='allMissing.html'>allMissing</a></code>
-  </li>
-<li><code><a href='anyNaN.html'>anyNaN</a></code>
-  </li>
-<li><code><a href='wf.html'>wf</a></code> (which.first and which.last)
-</li>
-</ul></p>
+    
+    <p>Check scalars:</p><ul>
+<li><p><code><a href='checkFlag.html'>checkFlag</a></code></p></li>
+<li><p><code><a href='checkCount.html'>checkCount</a></code></p></li>
+<li><p><code><a href='checkNumber.html'>checkNumber</a></code></p></li>
+<li><p><code><a href='checkInt.html'>checkInt</a></code></p></li>
+<li><p><code><a href='checkString.html'>checkString</a></code></p></li>
+<li><p><code><a href='checkScalar.html'>checkScalar</a></code></p></li>
+<li><p><code><a href='checkScalarNA.html'>checkScalarNA</a></code></p></li>
+</ul>
+    <p>Check vectors:</p><ul>
+<li><p><code><a href='checkLogical.html'>checkLogical</a></code></p></li>
+<li><p><code><a href='checkNumeric.html'>checkNumeric</a></code></p></li>
+<li><p><code><a href='checkInteger.html'>checkInteger</a></code></p></li>
+<li><p><code><a href='checkIntegerish.html'>checkIntegerish</a></code></p></li>
+<li><p><code><a href='checkCharacter.html'>checkCharacter</a></code></p></li>
+<li><p><code><a href='checkComplex.html'>checkComplex</a></code></p></li>
+<li><p><code><a href='checkFactor.html'>checkFactor</a></code></p></li>
+<li><p><code><a href='checkList.html'>checkList</a></code></p></li>
+<li><p><code><a href='checkVector.html'>checkVector</a></code></p></li>
+<li><p><code><a href='checkAtomic.html'>checkAtomic</a></code></p></li>
+<li><p><code><a href='checkAtomicVector.html'>checkAtomicVector</a></code></p></li>
+</ul>
+    <p>Check attributes:</p><ul>
+<li><p><code><a href='checkClass.html'>checkClass</a></code></p></li>
+<li><p><code><a href='checkNames.html'>checkNames</a></code></p></li>
+<li><p><code><a href='checkNamed.html'>checkNamed</a></code> (deprecated)</p></li>
+</ul>
+    <p>Check compound types:</p><ul>
+<li><p><code><a href='checkArray.html'>checkArray</a></code></p></li>
+<li><p><code><a href='checkDataFrame.html'>checkDataFrame</a></code></p></li>
+<li><p><code><a href='checkMatrix.html'>checkMatrix</a></code></p></li>
+</ul>
+    <p>Check other built-in R types:</p><ul>
+<li><p><code><a href='checkDate.html'>checkDate</a></code></p></li>
+<li><p><code><a href='checkEnvironment.html'>checkEnvironment</a></code></p></li>
+<li><p><code><a href='checkFunction.html'>checkFunction</a></code></p></li>
+<li><p><code><a href='checkNull.html'>checkNull</a></code></p></li>
+</ul>
+    <p>Check sets:</p><ul>
+<li><p><code><a href='checkChoice.html'>checkChoice</a></code></p></li>
+<li><p><code><a href='checkSubset.html'>checkSubset</a></code></p></li>
+<li><p><code><a href='checkSetEqual.html'>checkSetEqual</a></code></p></li>
+</ul>
+    <p>File IO:</p><ul>
+<li><p><code><a href='checkFileExists.html'>checkFileExists</a></code></p></li>
+<li><p><code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code></p></li>
+<li><p><code><a href='checkPathForOutput.html'>checkPathForOutput</a></code></p></li>
+<li><p><code><a href='checkAccess.html'>checkAccess</a></code></p></li>
+</ul>
+    <p>Popular data types in external packages:</p><ul>
+<li><p><code><a href='checkBit.html'>checkBit</a></code></p></li>
+<li><p><code><a href='checkDataTable.html'>checkDataTable</a></code></p></li>
+<li><p><code><a href='checkR6.html'>checkR6</a></code></p></li>
+<li><p><code><a href='checkTibble.html'>checkTibble</a></code></p></li>
+</ul>
+    <p>Safe coercion to integer:</p><ul>
+<li><p><code><a href='asInteger.html'>asCount</a></code></p></li>
+<li><p><code><a href='asInteger.html'>asInt</a></code></p></li>
+<li><p><code><a href='asInteger.html'>asInteger</a></code></p></li>
+</ul>
+    <p>Quick argument checks using a DSL:</p><ul>
+<li><p><code><a href='qassert.html'>qassert</a></code></p></li>
+<li><p><code><a href='qassertr.html'>qassertr</a></code></p></li>
+</ul>
+    <p>Misc:</p><ul>
+<li><p><code><a href='checkOS.html'>checkOS</a></code> (check operating system)</p></li>
+<li><p><code><a href='assert.html'>assert</a></code> (combine multiple checks into an assertion)</p></li>
+<li><p><code><a href='anyMissing.html'>anyMissing</a></code></p></li>
+<li><p><code><a href='anyMissing.html'>allMissing</a></code></p></li>
+<li><p><code><a href='anyNaN.html'>anyNaN</a></code></p></li>
+<li><p><code><a href='wf.html'>wf</a></code> (which.first and which.last)</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Useful links:</p><ul>
+<li><p><a href='https://github.com/mllg/checkmate'>https://github.com/mllg/checkmate</a></p></li>
+<li><p>Report bugs at <a href='https://github.com/mllg/checkmate/issues'>https://github.com/mllg/checkmate/issues</a></p></li>
+</ul>
     
 
   </div>
@@ -227,7 +187,19 @@
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#overview-of-implemented-functions">Overview of implemented functions</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
+
+    <h2>Author</h2>
+    
+<strong>Maintainer</strong>: Michel Lang <a href='mailto:michellang@gmail.com'>michellang@gmail.com</a>
+
+Other contributors:
+<ul>
+<li><p>Bernd Bischl <a href='mailto:bernd_bischl@gmx.de'>bernd_bischl@gmx.de</a> [contributor]</p></li>
+</ul>
+
 
   </div>
 </div>

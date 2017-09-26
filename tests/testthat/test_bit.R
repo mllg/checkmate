@@ -22,6 +22,7 @@ test_that("checkBit", {
   expect_error(assertBit(xb, max.len = 1), regexp = "<=")
   expect_error(assertBit(xb, min.0 = 2), regexp = "'0'")
   expect_error(assertBit(xb, min.1 = 2), regexp = "'1'")
+  expect_error(assertBit(xb, min.1 = 2), regexp = "has 1")
 
   expect_error(checkBit(xb, len = NA), "missing")
   expect_error(checkBit(xb, min.len = NA), "missing")

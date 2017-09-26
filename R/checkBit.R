@@ -16,7 +16,7 @@
 #' testBit(x, len = 10, min.0 = 1)
 checkBit = function(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL, min.1 = NULL, null.ok = FALSE) {
   if (!requireNamespace("bit", quietly = TRUE))
-    stop("Install package 'bit' to perform checks of bit vectors")
+    stop("Install package 'bit' to perform checks on bit vectors")
 
   qassert(null.ok, "B1")
   if (is.null(x)) {
@@ -25,13 +25,10 @@ checkBit = function(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
     return("Must be a bit, not 'NULL'")
   }
 
-  if (!requireNamespace("bit", quietly = TRUE))
-    stop("Install 'bit' to perform checks of bits")
-
   if (!bit::is.bit(x))
     return(paste0("Must be a bit", if (null.ok) " (or 'NULL')" else "", sprintf(", not %s", guessType(x))))
 
-  n = length(x)
+  n = bit::length.bit(x)
   if (!is.null(len)) {
     qassert(len, "X1")
     if (len != n)
@@ -50,18 +47,20 @@ checkBit = function(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
       return(sprintf("Must have length <= %i, but has length %i", max.len, n))
   }
 
-  if (!is.null(min.0)) {
-    qassert(min.0, "X1[0,)")
-    n = sum(!x)
-    if (n < min.0)
-      return(sprintf("Must have at least %i elements being '0'", n))
-  }
+  if (!is.null(min.0) || !is.null(min.1)) {
+    s = bit::sum.bit(x)
 
-  if (!is.null(min.1)) {
-    qassert(min.1, "X1[0,)")
-    n = sum(x)
-    if (n < min.1)
-      return(sprintf("Must have at least %i elements being '1'", n))
+    if (!is.null(min.0)) {
+      qassert(min.0, "X1[0,)")
+      if (n - s < min.0)
+        return(sprintf("Must have at least %i elements being '0', has %i", n, n - s))
+    }
+
+    if (!is.null(min.1)) {
+      qassert(min.1, "X1[0,)")
+      if (s < min.1)
+        return(sprintf("Must have at least %i elements being '1', has %i", n, s))
+    }
   }
 
   return(TRUE)
