@@ -29,3 +29,17 @@ test_that("checkSubset", {
   expect_true(testSubset(integer(0), character(0)))
   expect_error(assertSubset(1, integer(0)), "empty set")
 })
+
+
+test_that("checkSubset / fastmatch", {
+  x = "c"
+  y = letters[1:5]
+
+  res = testSubset(x, y)
+  expect_true(res)
+  expect_null(attr(y, ".match.hash"))
+
+  res = testSubset(x, y, fmatch = TRUE)
+  expect_true(res)
+  expect_class(attr(y, ".match.hash"), "match.hash")
+})

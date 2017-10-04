@@ -31,3 +31,17 @@ test_that("checkChoice", {
   expect_true(grepl("types do not match", checkChoice(factor("a"), letters), fixed = TRUE))
   expect_true(grepl("'foo'", checkChoice("foo", letters), fixed = TRUE))
 })
+
+
+test_that("checkChoice / fastmatch", {
+  x = "c"
+  y = letters[1:5]
+
+  res = testChoice(x, y)
+  expect_true(res)
+  expect_null(attr(y, ".match.hash"))
+
+  res = testChoice(x, y, fmatch = TRUE)
+  expect_true(res)
+  expect_class(attr(y, ".match.hash"), "match.hash")
+})

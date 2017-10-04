@@ -33,3 +33,17 @@ test_that("checkSetEqual", {
   expect_error(assertSetEqual(1, 1:2), "equal to")
   expect_error(assertSetEqual(1L, list()), "atomic")
 })
+
+
+test_that("checkSetEqual / fastmatch", {
+  x = letters[5:1]
+  y = letters[1:5]
+
+  res = testSetEqual(x, y)
+  expect_true(res)
+  expect_null(attr(y, ".match.hash"))
+
+  res = testSetEqual(x, y, fmatch = TRUE)
+  expect_true(res)
+  expect_class(attr(y, ".match.hash"), "match.hash")
+})

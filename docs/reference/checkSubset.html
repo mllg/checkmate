@@ -93,21 +93,22 @@
     <p>Check if an argument is a subset of a given set</p>
     
 
-    <pre class="usage"><span class='fu'>checkSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>checkSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>check_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
-  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assertSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
-  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assert_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>testSubset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>test_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+<span class='fu'>expect_subset</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>empty.ok</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -127,6 +128,14 @@ Set of possible values. May be empty.</p></td>
       <td><p>[<code>logical(1)</code>]
 Treat zero-length <code>x</code> as subset of any set <code>choices</code> (this includes <code>NULL</code>)?
 Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fmatch</th>
+      <td><p>[<code>logical(1)</code>]
+Use the set operations implemented in <code><a href='http://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> in package <span class="pkg">fastmatch</span>.
+If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href='http://www.rdocumentation.org/packages/base/topics/match'>match</a></code>.
+<code><a href='http://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> modifies <code>y</code> by reference:
+A hash table is added as attribute which is used in subsequent calls.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>

@@ -66,7 +66,7 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2017-09-25</h4>
+            <h4 class="date">2017-10-04</h4>
           </div>
 
     
@@ -187,9 +187,9 @@ mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr   min     lq     mean median     uq      max neval
-##    r(x) 7.473 7.8350 39.76346 8.6215 9.0595 3093.366   100
-##   cm(x) 1.890 2.1575 14.10387 2.3505 2.6155  978.698   100
-##  cmq(x) 1.232 1.4710 21.31853 1.5725 1.7560 1405.459   100</code></pre>
+##    r(x) 7.517 7.7845 37.72355 8.0000 8.3425 2935.436   100
+##   cm(x) 1.868 2.0600 13.34766 2.2600 2.3835  976.548   100
+##  cmq(x) 1.170 1.3415 13.87440 1.4685 1.5750 1169.487   100</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.svg" width="576"></p>
 </div>
@@ -203,10 +203,10 @@ cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="k
 mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq     mean  median      uq      max neval
-##    r(x) 21.928 22.9505 79.05644 23.2400 24.1375 5406.364   100
-##   cm(x)  5.757  6.2655 21.11187  6.5950  7.0175 1337.546   100
-##  cmq(x)  6.767  7.0705 18.48976  7.2595  7.4690 1112.730   100</code></pre>
+##    expr    min      lq      mean  median      uq      max neval
+##    r(x) 22.189 44.6000 106.39258 63.8515 65.1365 5038.072   100
+##   cm(x)  6.163 11.6905  24.50787 12.4320 13.2330 1077.757   100
+##  cmq(x)  6.723 13.5165  22.30972 13.9610 14.5905  898.670   100</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.svg" width="576"></p>
 </div>
@@ -220,10 +220,10 @@ cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="k
 mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr      min        lq       mean    median        uq      max neval
-##    r(x) 1711.251 1720.5520 1882.76476 1760.9710 1771.3435 5889.198   100
-##   cm(x)   56.628   58.1185   74.42987   59.6730   61.8155 1036.251   100
-##  cmq(x)   64.354   65.9260   78.80730   66.5395   67.6140 1093.695   100</code></pre>
+##    expr      min        lq       mean   median        uq      max neval
+##    r(x) 1708.434 1712.7175 1899.17408 1762.528 1788.0715 5662.779   100
+##   cm(x)   56.501   58.2970   79.17383   59.848   63.2115 1412.380   100
+##  cmq(x)   62.119   65.8275   85.40613   67.038   68.0600 1625.299   100</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.svg" width="576"></p>
 </div>
@@ -238,21 +238,21 @@ cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="k
 mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq      mean  median       uq      max neval
-##    r(x) 96.052 97.3305 184.78598 97.9675 105.3560 3762.353   100
-##   cm(x) 23.332 24.3195  39.58351 25.5490  26.5055 1088.691   100
-##  cmq(x) 16.115 16.5210  32.96119 17.1235  18.1600 1425.183   100</code></pre>
+##    expr    min       lq      mean   median      uq      max neval
+##    r(x) 97.155 105.9695 228.56120 131.3115 164.459 3783.264   100
+##   cm(x) 22.769  24.3785  43.37364  26.4890  30.198 1130.628   100
+##  cmq(x) 15.791  16.4565  31.81895  18.0450  21.292 1179.186   100</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.svg" width="576"></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># checkmate tries to stop as early as possible</span>
 x<span class="op">$</span>a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</span>
 mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
 <span class="kw">print</span>(mb)</code></pre></div>
-<pre><code>## Unit: microseconds
-##    expr    min      lq      mean   median       uq      max neval
-##    r(x) 80.093 88.8285 171.03868 110.2555 141.7335 4502.965   100
-##   cm(x)  5.923  7.2990  10.81839   8.6655  12.1680   50.337   100
-##  cmq(x)  1.141  1.5150   2.40153   2.1580   2.8280    5.789   100</code></pre>
+<pre><code>## Unit: nanoseconds
+##    expr   min      lq      mean median       uq     max neval
+##    r(x) 79346 81122.0 142004.08 106762 143802.0 1877324   100
+##   cm(x)  6070  7549.0  10053.25   8771  11733.5   21524   100
+##  cmq(x)   963  1412.5   2228.56   1966   2488.5    8317   100</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.svg" width="576"></p>
 </div>
@@ -343,15 +343,17 @@ Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span
 ## [1] stats     graphics  grDevices utils     datasets  base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-2.1 ggplot2_2.2.1          checkmate_1.8.4       
+## [1] microbenchmark_1.4-2.1 ggplot2_2.2.1          checkmate_1.8.4-9000  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12     digest_0.6.12    rprojroot_1.2    plyr_1.8.4      
-##  [5] grid_3.4.1       gtable_0.2.0     backports_1.1.1  magrittr_1.5    
-##  [9] scales_0.5.0     evaluate_0.10.1  rlang_0.1.2.9000 stringi_1.1.5   
-## [13] lazyeval_0.2.0   rmarkdown_1.6    tools_3.4.1      stringr_1.2.0   
-## [17] munsell_0.4.3    yaml_2.1.14      compiler_3.4.1   colorspace_1.3-2
-## [21] htmltools_0.3.6  knitr_1.17       tibble_1.3.4     methods_3.4.1</code></pre>
+##  [1] Rcpp_0.12.13         digest_0.6.12        rprojroot_1.2       
+##  [4] plyr_1.8.4           grid_3.4.1           gtable_0.2.0        
+##  [7] backports_1.1.1-9000 magrittr_1.5         scales_0.5.0        
+## [10] evaluate_0.10.1      rlang_0.1.2.9000     stringi_1.1.5       
+## [13] lazyeval_0.2.0       rmarkdown_1.6        tools_3.4.1         
+## [16] stringr_1.2.0        munsell_0.4.3        yaml_2.1.14         
+## [19] compiler_3.4.1       colorspace_1.3-2     htmltools_0.3.6     
+## [22] knitr_1.17           tibble_1.3.4         methods_3.4.1</code></pre>
 </div>
 </div>
   </div>

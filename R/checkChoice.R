@@ -5,6 +5,7 @@
 #' @param choices [\code{atomic}]\cr
 #'  Set of possible values.
 #' @template null.ok
+#' @template fmatch
 #' @template checker
 #' @template set
 #' @family set
@@ -16,19 +17,25 @@
 #' testChoice(factor("a"), "a")
 #' testChoice(1, "1")
 #' testChoice(1, as.integer(1))
-checkChoice = function(x, choices, null.ok = FALSE) {
+checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
   qassert(choices, "a")
   qassert(null.ok, "B1")
+
   if (is.null(x)) {
     if (null.ok)
       return(TRUE)
     return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(choices, collapse = "','")))
   }
+
   if (!qtest(x, "a1"))
     return(sprintf("Must be element of set {'%s'}, but is not atomic scalar", paste0(unique(choices), collapse = "','")))
   if (!isSameType(x, choices))
     return(sprintf("Must be element of set {'%s'}, but types do not match (%s != %s)", paste0(unique(choices), collapse = "','"), class(x)[1L], class(choices)[1L]))
-  if (x %nin% choices)
+
+  if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
+    match = fastmatch::fmatch
+
+  if (match(x, choices, 0L) == 0L)
     return(sprintf("Must be element of set {'%s'}, but is '%s'", paste0(unique(choices), collapse = "','"), x))
   return(TRUE)
 }

@@ -7,6 +7,7 @@
 #' @param empty.ok [\code{logical(1)}]\cr
 #'  Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?
 #'  Default is \code{TRUE}.
+#' @template fmatch
 #' @template checker
 #' @template set
 #' @family set
@@ -20,7 +21,7 @@
 #' testSubset(factor("a"), "a")
 #' testSubset(1, "1")
 #' testSubset(1, as.integer(1))
-checkSubset = function(x, choices, empty.ok = TRUE) {
+checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
   qassert(choices, "a")
   qassert(empty.ok, "B1")
   if (!empty.ok && length(x) == 0L)
@@ -30,7 +31,11 @@ checkSubset = function(x, choices, empty.ok = TRUE) {
       return(TRUE)
     return("Must be a subset of the empty set, i.e. also empty")
   }
-  if (!is.null(x) && (!isSameType(x, choices) || any(x %nin% choices)))
+
+  if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
+    match = fastmatch::fmatch
+
+  if (!is.null(x) && (!isSameType(x, choices) || any(match(x, choices, 0L) == 0L)))
     return(sprintf("Must be a subset of {'%s'}", paste0(choices, collapse = "','")))
   return(TRUE)
 }

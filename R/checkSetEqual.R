@@ -8,6 +8,7 @@
 #' Check \code{x} to have the same length and order as \code{y}, i.e.
 #' check using \dQuote{==} while handling \code{NA}s nicely.
 #' Default is \code{FALSE}.
+#' @template fmatch
 #' @template checker
 #' @template set
 #' @family set
@@ -20,14 +21,17 @@
 #' testSetEqual(factor("a"), "a")
 #' testSetEqual(1, "1")
 #' testSetEqual(1, as.integer(1))
-checkSetEqual = function(x, y, ordered = FALSE) {
+checkSetEqual = function(x, y, ordered = FALSE, fmatch = FALSE) {
   qassert(x, "a")
   qassert(y, "a")
   qassert(ordered, "B1")
+
   if (ordered) {
     if (!isSameType(x, y) || length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
       return(sprintf("Must be equal to {'%s'}", paste0(y, collapse = "','")))
   } else {
+    if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
+      match = fastmatch::fmatch
     if (!isSameType(x, y) || any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
       return(sprintf("Must be equal to set {'%s'}", paste0(y, collapse = "','")))
   }

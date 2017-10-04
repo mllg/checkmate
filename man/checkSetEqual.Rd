@@ -10,19 +10,22 @@
 \alias{expect_set_equal}
 \title{Check if an argument is equal to a given set}
 \usage{
-checkSetEqual(x, y, ordered = FALSE)
+checkSetEqual(x, y, ordered = FALSE, fmatch = FALSE)
 
-check_set_equal(x, y, ordered = FALSE)
+check_set_equal(x, y, ordered = FALSE, fmatch = FALSE)
 
-assertSetEqual(x, y, ordered = FALSE, .var.name = vname(x), add = NULL)
+assertSetEqual(x, y, ordered = FALSE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_set_equal(x, y, ordered = FALSE, .var.name = vname(x), add = NULL)
+assert_set_equal(x, y, ordered = FALSE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testSetEqual(x, y, ordered = FALSE)
+testSetEqual(x, y, ordered = FALSE, fmatch = FALSE)
 
-test_set_equal(x, y, ordered = FALSE)
+test_set_equal(x, y, ordered = FALSE, fmatch = FALSE)
 
-expect_set_equal(x, y, ordered = FALSE, info = NULL, label = vname(x))
+expect_set_equal(x, y, ordered = FALSE, fmatch = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -35,6 +38,12 @@ Set to compare with.}
 Check \code{x} to have the same length and order as \code{y}, i.e.
 check using \dQuote{==} while handling \code{NA}s nicely.
 Default is \code{FALSE}.}
+
+\item{fmatch}{[\code{logical(1)}]\cr
+Use the set operations implemented in \code{\link[fastmatch]{fmatch}} in package \pkg{fastmatch}.
+If \pkg{fastmatch} is not installed, this silently falls back to \code{\link[base]{match}}.
+\code{\link[fastmatch]{fmatch}} modifies \code{y} by reference:
+A hash table is added as attribute which is used in subsequent calls.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

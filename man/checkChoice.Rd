@@ -10,21 +10,22 @@
 \alias{expect_choice}
 \title{Check if an object is an element of a given set}
 \usage{
-checkChoice(x, choices, null.ok = FALSE)
+checkChoice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-check_choice(x, choices, null.ok = FALSE)
+check_choice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-assertChoice(x, choices, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assertChoice(x, choices, null.ok = FALSE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_choice(x, choices, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_choice(x, choices, null.ok = FALSE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testChoice(x, choices, null.ok = FALSE)
+testChoice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-test_choice(x, choices, null.ok = FALSE)
+test_choice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-expect_choice(x, choices, null.ok = FALSE, info = NULL, label = vname(x))
+expect_choice(x, choices, null.ok = FALSE, fmatch = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -36,6 +37,12 @@ Set of possible values.}
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{fmatch}{[\code{logical(1)}]\cr
+Use the set operations implemented in \code{\link[fastmatch]{fmatch}} in package \pkg{fastmatch}.
+If \pkg{fastmatch} is not installed, this silently falls back to \code{\link[base]{match}}.
+\code{\link[fastmatch]{fmatch}} modifies \code{y} by reference:
+A hash table is added as attribute which is used in subsequent calls.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

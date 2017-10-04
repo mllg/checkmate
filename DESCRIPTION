@@ -23,6 +23,7 @@ Imports:
 Suggests:
     R6,
     bit,
+    fastmatch,
     data.table (>= 1.9.8),
     devtools,
     ggplot2,

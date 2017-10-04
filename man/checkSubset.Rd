@@ -10,21 +10,22 @@
 \alias{expect_subset}
 \title{Check if an argument is a subset of a given set}
 \usage{
-checkSubset(x, choices, empty.ok = TRUE)
+checkSubset(x, choices, empty.ok = TRUE, fmatch = FALSE)
 
-check_subset(x, choices, empty.ok = TRUE)
+check_subset(x, choices, empty.ok = TRUE, fmatch = FALSE)
 
-assertSubset(x, choices, empty.ok = TRUE, .var.name = vname(x),
-  add = NULL)
+assertSubset(x, choices, empty.ok = TRUE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_subset(x, choices, empty.ok = TRUE, .var.name = vname(x),
-  add = NULL)
+assert_subset(x, choices, empty.ok = TRUE, fmatch = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testSubset(x, choices, empty.ok = TRUE)
+testSubset(x, choices, empty.ok = TRUE, fmatch = FALSE)
 
-test_subset(x, choices, empty.ok = TRUE)
+test_subset(x, choices, empty.ok = TRUE, fmatch = FALSE)
 
-expect_subset(x, choices, empty.ok = TRUE, info = NULL, label = vname(x))
+expect_subset(x, choices, empty.ok = TRUE, fmatch = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -36,6 +37,12 @@ Set of possible values. May be empty.}
 \item{empty.ok}{[\code{logical(1)}]\cr
 Treat zero-length \code{x} as subset of any set \code{choices} (this includes \code{NULL})?
 Default is \code{TRUE}.}
+
+\item{fmatch}{[\code{logical(1)}]\cr
+Use the set operations implemented in \code{\link[fastmatch]{fmatch}} in package \pkg{fastmatch}.
+If \pkg{fastmatch} is not installed, this silently falls back to \code{\link[base]{match}}.
+\code{\link[fastmatch]{fmatch}} modifies \code{y} by reference:
+A hash table is added as attribute which is used in subsequent calls.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

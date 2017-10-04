@@ -1,3 +1,6 @@
+# Version 1.8.5
+* The set functions optionally support the package `fastmatch` now.
+
 # Version 1.8.4
 * New functions to test bit vectors implemented in package `bit`.
 * New functions to test R6 classes implemented in package `R6`.

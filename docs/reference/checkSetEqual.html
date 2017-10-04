@@ -93,19 +93,22 @@
     <p>Check if an argument is equal to a given set</p>
     
 
-    <pre class="usage"><span class='fu'>checkSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assertSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assert_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testSetEqual</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+<span class='fu'>expect_set_equal</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>ordered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -126,6 +129,14 @@ Set to compare with.</p></td>
 Check <code>x</code> to have the same length and order as <code>y</code>, i.e.
 check using &#8220;==&#8221; while handling <code>NA</code>s nicely.
 Default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fmatch</th>
+      <td><p>[<code>logical(1)</code>]
+Use the set operations implemented in <code><a href='http://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> in package <span class="pkg">fastmatch</span>.
+If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href='http://www.rdocumentation.org/packages/base/topics/match'>match</a></code>.
+<code><a href='http://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> modifies <code>y</code> by reference:
+A hash table is added as attribute which is used in subsequent calls.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
