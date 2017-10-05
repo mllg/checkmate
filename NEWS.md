@@ -1,5 +1,7 @@
 # Version 1.8.5
 * The set functions optionally support the package `fastmatch` now.
+* Argument `sorted = TRUE` is not passed anymore to `ls()` internally to support
+  R versions prior to v3.2.0.
 
 # Version 1.8.4
 * New functions to test bit vectors implemented in package `bit`.
