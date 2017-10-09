@@ -604,6 +604,18 @@ SEXP attribute_hidden c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
     return ScalarLogical(TRUE);
 }
 
+Rboolean static inline isPOSIXct(SEXP x) {
+    SEXP cl = getAttrib(x, R_ClassSymbol);
+    return isReal(x) && strcmp(CHAR(STRING_ELT(cl, 0)), "POSIXct");
+}
+
+SEXP attribute_hidden c_check_posixct(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP null_ok) {
+    HANDLE_TYPE_NULL(isPOSIXct(x), "POSIXct", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    return ScalarLogical(TRUE);
+}
+
 #undef HANDLE_TYPE
 #undef HANDLE_TYPE_NULL
 #undef HANDLE_NA
