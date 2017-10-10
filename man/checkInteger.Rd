@@ -138,5 +138,5 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkIntegerish}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
 }

@@ -43,7 +43,6 @@ static char msg[255] = "";
     UNPROTECT((p)); \
     if (!TMP) return ScalarString(mkChar(msg));
 
-
 /*********************************************************************************************************************/
 /* Some helpers                                                                                                      */
 /*********************************************************************************************************************/
@@ -61,6 +60,21 @@ static SEXP result(const char *fmt, ...) {
     vsnprintf(msg, 255, fmt, vargs);
     va_end(vargs);
     return ScalarString(mkChar(msg));
+}
+
+static Rboolean is_posixct(SEXP x) {
+    SEXP cl = getAttrib(x, R_ClassSymbol);
+    return isReal(x) && inherits(x, "POSIXct");
+}
+
+static const char * fmt_posixct(SEXP x) {
+    SEXP call = PROTECT(allocVector(LANGSXP, 2));
+    SETCAR(call, install("format.POSIXct"));
+    SETCADR(call, x);
+
+    SEXP result = PROTECT(eval(call, R_GlobalEnv));
+    UNPROTECT(2);
+    return CHAR(STRING_ELT(result, 0));
 }
 
 static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
@@ -101,6 +115,49 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
             }
         }
     }
+    return TRUE;
+}
+
+
+Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
+    if (isNull(lower) && isNull(upper))
+        return TRUE;
+
+    SEXP tz = getAttrib(x, install("tzone"));
+    const Rboolean null_tz = isNull(tz);
+
+    if (!isNull(lower)) {
+        if (!is_posixct(lower) || length(lower) != 1)
+            error("Argument 'lower' must be provided as single POSIXct time");
+        SEXP lower_tz = getAttrib(lower, install("tzone"));
+        if ((null_tz && !isNull(lower_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0))
+            return message("Timezones of 'x' and 'lower' must match");
+
+        const double tmp = REAL(lower)[0];
+        const double *xp = REAL(x);
+        const double * const xend = xp + xlength(x);
+        for (; xp != xend; xp++) {
+            if (!ISNAN(*xp) && *xp < tmp)
+                return message("All times must be >= %s", fmt_posixct(lower));
+        }
+    }
+
+    if (!isNull(upper)) {
+        if (!is_posixct(upper) || length(upper) != 1)
+            error("Argument 'upper' must be provided as single POSIXct time");
+        SEXP upper_tz = getAttrib(upper, install("tzone"));
+        if ((null_tz && !isNull(upper_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0))
+            return message("Timezones of 'x' and 'upper' must match");
+
+        const double tmp = REAL(upper)[0];
+        const double *xp = REAL(x);
+        const double * const xend = xp + xlength(x);
+        for (; xp != xend; xp++) {
+            if (!ISNAN(*xp) && *xp > tmp)
+                return message("All times must be <= %s", fmt_posixct(upper));
+        }
+    }
+
     return TRUE;
 }
 
@@ -280,7 +337,6 @@ static inline Rboolean is_scalar_na(SEXP x) {
     }
     return FALSE;
 }
-
 
 static Rboolean is_sorted_integer(SEXP x) {
     R_xlen_t i = 0;
@@ -604,15 +660,13 @@ SEXP attribute_hidden c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
     return ScalarLogical(TRUE);
 }
 
-Rboolean static inline isPOSIXct(SEXP x) {
-    SEXP cl = getAttrib(x, R_ClassSymbol);
-    return isReal(x) && strcmp(CHAR(STRING_ELT(cl, 0)), "POSIXct");
-}
-
 SEXP attribute_hidden c_check_posixct(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isPOSIXct(x), "POSIXct", null_ok);
+    HANDLE_TYPE_NULL(is_posixct(x), "POSIXct", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_posix_bounds(x, lower, upper));
+
     return ScalarLogical(TRUE);
 }
 

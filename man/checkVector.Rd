@@ -123,7 +123,8 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}}
+  \code{\link{checkNull}}, \code{\link{checkNumeric}},
+  \code{\link{checkPOSIXct}}
 
 Other atomicvector: \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}

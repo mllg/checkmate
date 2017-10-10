@@ -108,7 +108,7 @@ Other basetypes: \code{\link{checkAtomicVector}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
 
 Other compound: \code{\link{checkDataFrame}},
   \code{\link{checkDataTable}}, \code{\link{checkMatrix}},

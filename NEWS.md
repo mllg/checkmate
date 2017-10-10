@@ -1,4 +1,5 @@
 # Version 1.8.5
+* Added `*POSIXct` to check POSIXct data-time objects in POSIXct format.
 * The set functions optionally support the package `fastmatch` now.
 * Argument `sorted = TRUE` is not passed anymore to `ls()` internally to support
   R versions prior to v3.2.0.

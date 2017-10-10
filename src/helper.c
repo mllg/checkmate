@@ -2,6 +2,7 @@
 #include "helper.h"
 #include "any_missing.h"
 #include "is_integerish.h"
+#include "guess_type.h"
 
 Rboolean attribute_hidden isStrictlyNumeric(SEXP x) {
     switch(TYPEOF(x)) {
@@ -52,8 +53,10 @@ R_len_t attribute_hidden get_ncols(SEXP x) {
 
 
 double attribute_hidden asNumber(SEXP x, const char *vname) {
-    if (!isNumeric(x) || xlength(x) != 1)
-        error("Argument '%s' must be a number", vname);
+    if (!isNumeric(x))
+        error("Argument '%s' must be a number, but is %s", vname, guess_type(x));
+    if (xlength(x) != 1)
+        error("Argument '%s' must have length 1, but has length %i", vname, xlength(x));
     double xd = asReal(x);
     if (ISNAN(xd))
         error("Argument '%s' may not be missing", vname);
@@ -62,7 +65,7 @@ double attribute_hidden asNumber(SEXP x, const char *vname) {
 
 const char attribute_hidden * asString(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
-        error("Argument '%s' must be a string", vname);
+        error("Argument '%s' must be a string, but is %s", vname, guess_type(x));
     if (any_missing_string(x))
         error("Argument '%s' may not be missing", vname);
     return CHAR(STRING_ELT(x, 0));
@@ -72,7 +75,7 @@ R_len_t attribute_hidden asCount(SEXP x, const char *vname) {
     if (length(x) != 1)
         error("Argument '%x' must have length 1", vname);
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
-        error("Argument '%s' must be close to an integer", vname);
+        error("Argument '%s' must be numeric and close to an integer", vname);
     int xi = asInteger(x);
     if (xi == NA_INTEGER)
         error("Argument '%s' may not be missing", vname);
@@ -102,14 +105,15 @@ R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
                 error("Argument '%s' is not close to an integer", vname);
             return (R_xlen_t) xr;
     }
-    error("Argument '%s' must be a length", vname);
+    error("Argument '%s' must be a length, but is %s", vname, guess_type(x));
 }
 
 Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
     if (!isLogical(x) || xlength(x) != 1)
-        error("Argument '%s' must be a flag", vname);
+        error("Argument '%s' must be a flag, but is %s", vname, guess_type(x));
     Rboolean xb = LOGICAL(x)[0];
     if (xb == NA_LOGICAL)
         error("Argument '%s' may not be missing", vname);
     return xb;
 }
+
