@@ -67,14 +67,14 @@ static Rboolean is_posixct(SEXP x) {
     return isReal(x) && inherits(x, "POSIXct");
 }
 
-static const char * fmt_posixct(SEXP x) {
+static void fmt_posixct(char * out, SEXP x) {
     SEXP call = PROTECT(allocVector(LANGSXP, 2));
     SETCAR(call, install("format.POSIXct"));
     SETCADR(call, x);
-
     SEXP result = PROTECT(eval(call, R_GlobalEnv));
+
+    strncpy(out, CHAR(STRING_ELT(result, 0)), 255);
     UNPROTECT(2);
-    return CHAR(STRING_ELT(result, 0));
 }
 
 static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
@@ -123,41 +123,56 @@ Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (isNull(lower) && isNull(upper))
         return TRUE;
 
-    SEXP tz = getAttrib(x, install("tzone"));
+    SEXP tz = PROTECT(getAttrib(x, install("tzone")));
     const Rboolean null_tz = isNull(tz);
 
     if (!isNull(lower)) {
         if (!is_posixct(lower) || length(lower) != 1)
             error("Argument 'lower' must be provided as single POSIXct time");
-        SEXP lower_tz = getAttrib(lower, install("tzone"));
-        if ((null_tz && !isNull(lower_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0))
+        SEXP lower_tz = PROTECT(getAttrib(lower, install("tzone")));
+        if ((null_tz && !isNull(lower_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0)) {
+            UNPROTECT(2);
             return message("Timezones of 'x' and 'lower' must match");
+        }
 
         const double tmp = REAL(lower)[0];
         const double *xp = REAL(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && *xp < tmp)
-                return message("All times must be >= %s", fmt_posixct(lower));
+            if (!ISNAN(*xp) && *xp < tmp) {
+                char fmt[255];
+                fmt_posixct(fmt, lower);
+                UNPROTECT(2);
+                return message("All times must be >= %s", fmt);
+            }
         }
+        UNPROTECT(1);
     }
 
     if (!isNull(upper)) {
         if (!is_posixct(upper) || length(upper) != 1)
             error("Argument 'upper' must be provided as single POSIXct time");
-        SEXP upper_tz = getAttrib(upper, install("tzone"));
-        if ((null_tz && !isNull(upper_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0))
+        SEXP upper_tz = PROTECT(getAttrib(upper, install("tzone")));
+        if ((null_tz && !isNull(upper_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0)) {
+            UNPROTECT(2);
             return message("Timezones of 'x' and 'upper' must match");
+        }
 
         const double tmp = REAL(upper)[0];
         const double *xp = REAL(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && *xp > tmp)
-                return message("All times must be <= %s", fmt_posixct(upper));
+            if (!ISNAN(*xp) && *xp > tmp) {
+                char fmt[255];
+                fmt_posixct(fmt, upper);
+                UNPROTECT(2);
+                return message("All times must be <= %s", fmt);
+            }
         }
+        UNPROTECT(1);
     }
 
+    UNPROTECT(1);
     return TRUE;
 }
 

@@ -27,6 +27,12 @@ test_that("checkPOSIXct", {
   expect_error(assertPOSIXct(dates, lower = now), ">=")
   expect_error(assertPOSIXct(dates, upper = now), "<=")
 
+  x = checkPOSIXct(dates, lower = now)
+  expect_true(grepl("[0-9]{4}-[0-9]{2}-[0-9]{2}", x))
+
+  x = checkPOSIXct(dates, upper = now)
+  expect_true(grepl("[0-9]{4}-[0-9]{2}-[0-9]{2}", x))
+
   # timezone checks
   expect_error(assertPOSIXct(now_est, lower = yesterday), "Timezones")
   expect_error(assertPOSIXct(now_est, upper = tomorrow), "Timezones")
