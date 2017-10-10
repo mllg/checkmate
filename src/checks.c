@@ -130,7 +130,8 @@ Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
         if (!is_posixct(lower) || length(lower) != 1)
             error("Argument 'lower' must be provided as single POSIXct time");
         SEXP lower_tz = PROTECT(getAttrib(lower, install("tzone")));
-        if ((null_tz && !isNull(lower_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0)) {
+        if (null_tz != isNull(lower_tz) ||
+            (!null_tz && !isNull(lower_tz) && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0)) {
             UNPROTECT(2);
             return message("Timezones of 'x' and 'lower' must match");
         }
@@ -153,7 +154,8 @@ Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
         if (!is_posixct(upper) || length(upper) != 1)
             error("Argument 'upper' must be provided as single POSIXct time");
         SEXP upper_tz = PROTECT(getAttrib(upper, install("tzone")));
-        if ((null_tz && !isNull(upper_tz)) || (!null_tz && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0)) {
+        if (null_tz != isNull(upper_tz) ||
+            (!null_tz && !isNull(upper_tz) && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0)) {
             UNPROTECT(2);
             return message("Timezones of 'x' and 'upper' must match");
         }
