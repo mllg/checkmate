@@ -3,7 +3,7 @@
 #' @description
 #' Checks that an object is of class \code{\link[base]{Date}}.
 #'
-#' @templateVar fn Atmoic
+#' @templateVar fn Atomic
 #' @template x
 #' @param lower [\code{\link[base]{Date}}]\cr
 #'  All non-missing dates in \code{x} must be >= this date. Comparison is done via \code{\link[base]{Ops.Date}}.
