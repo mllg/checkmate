@@ -18,8 +18,11 @@ test_that("checkPOSIXct", {
   expect_true(testPOSIXct(dates, len = 4))
   expect_true(testPOSIXct(dates, unique = TRUE))
   expect_true(testPOSIXct(dates, all.missing = FALSE))
+  expect_true(testPOSIXct(dates, sorted = TRUE))
+  expect_true(testPOSIXct(c(now, now), sorted = TRUE))
   expect_error(assertPOSIXct(c(dates, dates), unique = TRUE))
   expect_error(assertPOSIXct(dates, any.missing = FALSE), "missing")
+  expect_error(assertPOSIXct(rev(dates), sorted = TRUE), "sorted")
 
 
   expect_true(testPOSIXct(dates, lower = yesterday))

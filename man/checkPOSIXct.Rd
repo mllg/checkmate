@@ -12,31 +12,34 @@
 \usage{
 checkPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE)
+  unique = FALSE, sorted = NULL, null.ok = FALSE)
 
 check_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE)
+  unique = FALSE, sorted = NULL, null.ok = FALSE)
 
 assertPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  unique = FALSE, sorted = NULL, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 assert_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  unique = FALSE, sorted = NULL, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 testPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE)
+  unique = FALSE, sorted = NULL, null.ok = FALSE)
 
 test_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE)
+  unique = FALSE, sorted = NULL, null.ok = FALSE)
 
 expect_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, null.ok = FALSE, info = NULL, label = vname(x))
+  unique = FALSE, sorted = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -88,18 +91,18 @@ the heuristic implemented in \code{\link{vname}}.}
 \value{
 Depending on the function prefix:
  If the check is successful, the functions 
- \code{assertAtmoic}/\code{assert_atmoic} return 
+ \code{assertAtomic}/\code{assert_atomic} return 
  \code{x} invisibly, whereas
- \code{checkAtmoic}/\code{check_atmoic} and 
- \code{testAtmoic}/\code{test_atmoic} return 
+ \code{checkAtomic}/\code{check_atomic} and 
+ \code{testAtomic}/\code{test_atomic} return 
  \code{TRUE}.
  If the check is not successful, 
- \code{assertAtmoic}/\code{assert_atmoic}
+ \code{assertAtomic}/\code{assert_atomic}
  throws an error message, 
- \code{testAtmoic}/\code{test_atmoic}
+ \code{testAtomic}/\code{test_atomic}
  returns \code{FALSE},
- and \code{checkAtmoic} returns a string with the error message.
- The function \code{expect_atmoic} always returns an
+ and \code{checkAtomic} returns a string with the error message.
+ The function \code{expect_atomic} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{

@@ -16,8 +16,8 @@
 #' @export
 #' @useDynLib checkmate c_check_posixct
 #' @export
-checkPOSIXct = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, null.ok = FALSE) {
-  .Call(c_check_posixct, x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, null.ok)
+checkPOSIXct = function(x, lower = NULL, upper = NULL, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, null.ok = FALSE) {
+  .Call(c_check_posixct, x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, sorted, null.ok)
 }
 
 #' @export
@@ -28,7 +28,7 @@ check_posixct = checkPOSIXct
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkPOSIXct
-assertPOSIXct = makeAssertionFunction(checkPOSIXct)
+assertPOSIXct = makeAssertionFunction(checkPOSIXct, c.fun = "c_check_posixct")
 
 #' @export
 #' @rdname checkPOSIXct
@@ -37,7 +37,7 @@ assert_posixct = assertPOSIXct
 #' @export
 #' @include makeTest.R
 #' @rdname checkPOSIXct
-testPOSIXct = makeTestFunction(checkPOSIXct)
+testPOSIXct = makeTestFunction(checkPOSIXct, c.fun = "c_check_posixct")
 
 #' @export
 #' @rdname checkPOSIXct
@@ -47,4 +47,4 @@ test_posixct = testPOSIXct
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkPOSIXct
-expect_posixct = makeExpectationFunction(checkPOSIXct)
+expect_posixct = makeExpectationFunction(checkPOSIXct, c.fun = "c_check_posixct")

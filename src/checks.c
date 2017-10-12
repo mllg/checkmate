@@ -677,12 +677,13 @@ SEXP attribute_hidden c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_posixct(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP null_ok) {
+SEXP attribute_hidden c_check_posixct(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP null_ok) {
     HANDLE_TYPE_NULL(is_posixct(x), "POSIXct", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_posix_bounds(x, lower, upper));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
 
     return ScalarLogical(TRUE);
 }
