@@ -3,7 +3,7 @@
 #' @description
 #' Checks that an object is of class \code{\link[base]{POSIXct}}.
 #'
-#' @templateVar fn Atmoic
+#' @templateVar fn Atomic
 #' @template x
 #' @param lower [\code{\link[base]{Date}}]\cr
 #'  All non-missing dates in \code{x} must be >= this POSIXct time. Must be provided in the same timezone as \code{x}.
