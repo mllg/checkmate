@@ -3,7 +3,7 @@
 #' @description
 #' For the definition of \dQuote{atomic}, see \code{\link[base]{is.atomic}}.
 #'
-#' @templateVar fn Atmoic
+#' @templateVar fn Atomic
 #' @template x
 #' @inheritParams checkVector
 #' @template checker

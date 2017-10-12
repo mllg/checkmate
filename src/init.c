@@ -31,6 +31,7 @@ extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP
 extern SEXP c_check_scalar(SEXP, SEXP, SEXP);
 extern SEXP c_check_string(SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_posixct(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_guess_type(SEXP);
 extern SEXP c_is_integerish(SEXP, SEXP);
 extern SEXP c_qassert(SEXP, SEXP, SEXP);
@@ -65,6 +66,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_scalar",        (DL_FUNC) &c_check_scalar,         3},
     {"c_check_string",        (DL_FUNC) &c_check_string,         4},
     {"c_check_vector",        (DL_FUNC) &c_check_vector,        10},
+    {"c_check_posixct",       (DL_FUNC) &c_check_posixct,       11},
     {"c_guess_type",          (DL_FUNC) &c_guess_type,           1},
     {"c_is_integerish",       (DL_FUNC) &c_is_integerish,        2},
     {"c_qassert",             (DL_FUNC) &c_qassert,              3},

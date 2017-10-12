@@ -12,7 +12,7 @@ cache:
 
 environment:
   matrix:
-    - R_VERSION: devel
+    # - R_VERSION: devel
     - R_VERSION: release
     - R_VERSION: oldrel
 

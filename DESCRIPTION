@@ -36,7 +36,7 @@ Suggests:
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-Collate:
+Collate: 
     'AssertCollection.R'
     'allMissing.R'
     'anyInfinite.R'
@@ -80,6 +80,7 @@ Collate:
     'checkNumber.R'
     'checkNumeric.R'
     'checkOS.R'
+    'checkPOSIXct.R'
     'checkPathForOutput.R'
     'checkR6.R'
     'checkScalar.R'

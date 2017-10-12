@@ -34,10 +34,10 @@ test_that("checkNumeric", {
 
 test_that("bounds are checked", {
   expect_error(checkNumeric(1, lower = "a"), "number")
-  expect_error(checkNumeric(1, lower = 1:2), "number")
+  expect_error(checkNumeric(1, lower = 1:2), "length")
   expect_error(checkNumeric(1, lower = NA_real_), "missing")
   expect_error(checkNumeric(1, upper = "a"), "number")
-  expect_error(checkNumeric(1, upper = 1:2), "number")
+  expect_error(checkNumeric(1, upper = 1:2), "length")
   expect_error(checkNumeric(1, upper = NA_real_), "missing")
 })
 

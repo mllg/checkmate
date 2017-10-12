@@ -43,10 +43,10 @@ expect_date(x, lower = NULL, upper = NULL, any.missing = TRUE,
 Object to check.}
 
 \item{lower}{[\code{\link[base]{Date}}]\cr
-All non-missing dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
+All non-missing dates in \code{x} must be >= this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{upper}{[\code{\link[base]{Date}}]\cr
-All non-missing dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
+All non-missing dates in \code{x} must be before <= this date. Comparison is done via \code{\link[base]{Ops.Date}}.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}
@@ -88,18 +88,18 @@ the heuristic implemented in \code{\link{vname}}.}
 \value{
 Depending on the function prefix:
  If the check is successful, the functions 
- \code{assertAtmoic}/\code{assert_atmoic} return 
+ \code{assertAtomic}/\code{assert_atomic} return 
  \code{x} invisibly, whereas
- \code{checkAtmoic}/\code{check_atmoic} and 
- \code{testAtmoic}/\code{test_atmoic} return 
+ \code{checkAtomic}/\code{check_atomic} and 
+ \code{testAtomic}/\code{test_atomic} return 
  \code{TRUE}.
  If the check is not successful, 
- \code{assertAtmoic}/\code{assert_atmoic}
+ \code{assertAtomic}/\code{assert_atomic}
  throws an error message, 
- \code{testAtmoic}/\code{test_atmoic}
+ \code{testAtomic}/\code{test_atomic}
  returns \code{FALSE},
- and \code{checkAtmoic} returns a string with the error message.
- The function \code{expect_atmoic} always returns an
+ and \code{checkAtomic} returns a string with the error message.
+ The function \code{expect_atomic} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{
@@ -116,5 +116,5 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
 }

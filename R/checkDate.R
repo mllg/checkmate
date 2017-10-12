@@ -1,15 +1,14 @@
-#' Check that an argument is a Date
+#' @title Check that an argument is a Date
 #'
 #' @description
 #' Checks that an object is of class \code{\link[base]{Date}}.
 #'
-#'
-#' @templateVar fn Atmoic
+#' @templateVar fn Atomic
 #' @template x
 #' @param lower [\code{\link[base]{Date}}]\cr
-#'  All non-missing dates in \code{x} must be after this date. Comparison is done via \code{\link[base]{Ops.Date}}.
+#'  All non-missing dates in \code{x} must be >= this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @param upper [\code{\link[base]{Date}}]\cr
-#'  All non-missing dates in \code{x} must be before this date. Comparison is done via \code{\link[base]{Ops.Date}}.
+#'  All non-missing dates in \code{x} must be before <= this date. Comparison is done via \code{\link[base]{Ops.Date}}.
 #' @template null.ok
 #' @inheritParams checkVector
 #' @template checker
