@@ -12,33 +12,33 @@
 \usage{
 checkPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE)
 
 check_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE)
 
 assertPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE, .var.name = vname(x),
+  unique = FALSE, sorted = FALSE, null.ok = FALSE, .var.name = vname(x),
   add = NULL)
 
 assert_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE, .var.name = vname(x),
+  unique = FALSE, sorted = FALSE, null.ok = FALSE, .var.name = vname(x),
   add = NULL)
 
 testPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE)
 
 test_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE)
 
 expect_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = NULL, null.ok = FALSE, info = NULL,
+  unique = FALSE, sorted = FALSE, null.ok = FALSE, info = NULL,
   label = vname(x))
 }
 \arguments{
