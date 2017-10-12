@@ -9,6 +9,7 @@
 #'  All non-missing dates in \code{x} must be >= this POSIXct time. Must be provided in the same timezone as \code{x}.
 #' @param upper [\code{\link[base]{Date}}]\cr
 #'  All non-missing dates in \code{x} must be <= this POSIXct time. Must be provided in the same timezone as \code{x}.
+#' @template sorted
 #' @template null.ok
 #' @inheritParams checkVector
 #' @template checker
