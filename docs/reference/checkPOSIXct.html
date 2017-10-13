@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check that an argument is a Date — checkDate • checkmate</title>
+<title>Check that an argument is a date/time object in POSIXct format — checkPOSIXct • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,40 +86,43 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check that an argument is a Date</h1>
+    <h1>Check that an argument is a date/time object in POSIXct format</h1>
     </div>
 
     
-    <p>Checks that an object is of class <code><a href='http://www.rdocumentation.org/packages/base/topics/Dates'>Date</a></code>.</p>
+    <p>Checks that an object is of class <code><a href='http://www.rdocumentation.org/packages/base/topics/DateTimeClasses'>POSIXct</a></code>.</p>
     
 
-    <pre class="usage"><span class='fu'>checkDate</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>checkPOSIXct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_date</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>check_posixct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertDate</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>assertPOSIXct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_date</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>assert_posixct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testDate</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>testPOSIXct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_date</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>test_posixct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_date</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+<span class='fu'>expect_posixct</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -132,12 +135,12 @@ Object to check.</p></td>
     <tr>
       <th>lower</th>
       <td><p>[<code><a href='http://www.rdocumentation.org/packages/base/topics/Dates'>Date</a></code>]
-All non-missing dates in <code>x</code> must be &gt;= this date. Comparison is done via <code><a href='http://www.rdocumentation.org/packages/base/topics/Ops.Date'>Ops.Date</a></code>.</p></td>
+All non-missing dates in <code>x</code> must be &gt;= this POSIXct time. Must be provided in the same timezone as <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>upper</th>
       <td><p>[<code><a href='http://www.rdocumentation.org/packages/base/topics/Dates'>Date</a></code>]
-All non-missing dates in <code>x</code> must be before &lt;= this date. Comparison is done via <code><a href='http://www.rdocumentation.org/packages/base/topics/Ops.Date'>Ops.Date</a></code>.</p></td>
+All non-missing dates in <code>x</code> must be &lt;= this POSIXct time. Must be provided in the same timezone as <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>any.missing</th>
@@ -168,6 +171,11 @@ Maximal length of <code>x</code>.</p></td>
       <th>unique</th>
       <td><p>[<code>logical(1)</code>]
 Must all values be unique? Default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>sorted</th>
+      <td><p>[<code>logical(1)</code>]
+Elements must be sorted in ascending order. Missing values are ignored.</p></td>
     </tr>
     <tr>
       <th>null.ok</th>
@@ -224,13 +232,13 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
   <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>,
   <code><a href='checkAtomic.html'>checkAtomic</a></code>, <code><a href='checkCharacter.html'>checkCharacter</a></code>,
   <code><a href='checkComplex.html'>checkComplex</a></code>, <code><a href='checkDataFrame.html'>checkDataFrame</a></code>,
-  <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
+  <code><a href='checkDate.html'>checkDate</a></code>, <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
   <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFunction.html'>checkFunction</a></code>,
   <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
   <code><a href='checkInteger.html'>checkInteger</a></code>, <code><a href='checkList.html'>checkList</a></code>,
   <code><a href='checkLogical.html'>checkLogical</a></code>, <code><a href='checkMatrix.html'>checkMatrix</a></code>,
   <code><a href='checkNull.html'>checkNull</a></code>, <code><a href='checkNumeric.html'>checkNumeric</a></code>,
-  <code><a href='checkPOSIXct.html'>checkPOSIXct</a></code>, <code><a href='checkVector.html'>checkVector</a></code></p>
+  <code><a href='checkVector.html'>checkVector</a></code></p>
     
 
   </div>
