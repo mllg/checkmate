@@ -63,7 +63,6 @@ static SEXP result(const char *fmt, ...) {
 }
 
 static Rboolean is_posixct(SEXP x) {
-    SEXP cl = getAttrib(x, R_ClassSymbol);
     return isReal(x) && inherits(x, "POSIXct");
 }
 
