@@ -18,15 +18,16 @@
 #' testChoice(1, "1")
 #' testChoice(1, as.integer(1))
 checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
-  qassert(choices, "a")
   qassert(null.ok, "B1")
 
   if (is.null(x)) {
     if (null.ok)
       return(TRUE)
+    qassert(choices, "a")
     return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(choices, collapse = "','")))
   }
 
+  qassert(choices, "a")
   if (!qtest(x, "a1"))
     return(sprintf("Must be element of set {'%s'}, but is not atomic scalar", paste0(unique(choices), collapse = "','")))
   if (!isSameType(x, choices))
