@@ -39,10 +39,10 @@ checkR6Props = function(x, cloneable = NULL, public = NULL, private = NULL) {
   if (!is.null(cloneable)) {
     qassert(cloneable, "B1")
     if (cloneable) {
-      if (is.null(x$clone))
+      if (!exists("clone", envir = x))
         return("Must be cloneable")
     } else {
-      if (!is.null(x$clone))
+      if (exists("clone", envir = x))
         return("May not be cloneable")
     }
   }
