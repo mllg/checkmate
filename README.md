@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/mllg/checkmate.svg?branch=master)](https://travis-ci.org/mllg/checkmate)
 [![Build status](https://ci.appveyor.com/api/projects/status/y4ayps61hjd3375o/branch/master?svg=true)](https://ci.appveyor.com/project/mllg/checkmate/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/r/mllg/checkmate?branch=master)
+[![Download Stats](http://cranlogs.r-pkg.org/badges/checkmate)](https://cran.r-project.org/package=checkmate)
 
 Fast and versatile argument checks for R.
 
