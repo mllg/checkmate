@@ -6,7 +6,8 @@ Description: Tests and assertions to perform frequent argument checks. A
     about execution time overhead.
 Version: 1.8.5
 Authors@R: c(
-    person("Michel", "Lang", NULL, "michellang@gmail.com", role = c("cre", "aut")),
+    person("Michel", "Lang", NULL, "michellang@gmail.com",
+      role = c("cre", "aut"), comment = c(ORCID = "0000-0001-9754-0393")),
     person("Bernd", "Bischl", NULL, "bernd_bischl@gmx.de", role = "ctb")
     )
 URL: https://github.com/mllg/checkmate
