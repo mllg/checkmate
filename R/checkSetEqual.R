@@ -28,12 +28,12 @@ checkSetEqual = function(x, y, ordered = FALSE, fmatch = FALSE) {
 
   if (ordered) {
     if (!isSameType(x, y) || length(x) != length(y) || any(xor(is.na(x), is.na(y)) | x != y, na.rm = TRUE))
-      return(sprintf("Must be equal to {'%s'}", paste0(y, collapse = "','")))
+      return(sprintf("Must be equal to {'%s'}", paste0(unique(y), collapse = "','")))
   } else {
     if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
       match = fastmatch::fmatch
     if (!isSameType(x, y) || any(match(x, y, 0L) == 0L) || any(match(y, x, 0L) == 0L))
-      return(sprintf("Must be equal to set {'%s'}", paste0(y, collapse = "','")))
+      return(sprintf("Must be equal to set {'%s'}", paste0(unique(y), collapse = "','")))
   }
   return(TRUE)
 }

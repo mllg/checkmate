@@ -24,7 +24,7 @@ checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
     if (null.ok)
       return(TRUE)
     qassert(choices, "a")
-    return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(choices, collapse = "','")))
+    return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(unique(choices), collapse = "','")))
   }
 
   qassert(choices, "a")
