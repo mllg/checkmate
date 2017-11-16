@@ -257,7 +257,7 @@ Also note that if you define these functions inside an R package, the constructo
 ## Calling checkmate from C/C++
 
 The package registers two functions which can be used in other packages' C/C++ code for argument checks.
-```{c,eval=FALSE}
+```{r, eval = FALSE, hilang = "c"}
 SEXP qassert(SEXP x, const char *rule, const char *name);
 Rboolean qtest(SEXP x, const char *rule);
 ```
@@ -268,11 +268,12 @@ For detailed background information on the register mechanism, see the [Exportin
 Here is a step-by-step guide to get you started:
 
 1. Add `checkmate` to your "Imports" and "LinkingTo" sections in your DESCRIPTION file.
-2. Create a stub C source file `"checkmate_stub.c"`. See example below.
+2. Create a stub C source file `"checkmate_stub.c"`, see below.
 3. Include the provided header file `<checkmate.h>` in each compilation unit where you want to use checkmate.
 
-```{c,eval=FALSE}
-/* Example for (2), "checkmate_stub.c":*/
+
+File contents for (2):
+```{r, eval = FALSE, hilang = "c"}
 #include <checkmate.h>
 #include <checkmate_stub.c>
 ```
