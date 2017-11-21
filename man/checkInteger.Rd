@@ -46,10 +46,10 @@ expect_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
 Object to check.}
 
 \item{lower}{[\code{numeric(1)}]\cr
-Lower value all elements of \code{x} must be greater than.}
+Lower value all elements of \code{x} must be greater than or equal to.}
 
 \item{upper}{[\code{numeric(1)}]\cr
-Upper value all elements of \code{x} must be lower than.}
+Upper value all elements of \code{x} must be lower than or equal to.}
 
 \item{any.missing}{[\code{logical(1)}]\cr
 Are vectors with missing values allowed? Default is \code{TRUE}.}

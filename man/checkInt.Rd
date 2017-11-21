@@ -42,10 +42,10 @@ Object to check.}
 Are missing values allowed? Default is \code{FALSE}.}
 
 \item{lower}{[\code{numeric(1)}]\cr
-Lower value all elements of \code{x} must be greater than.}
+Lower value all elements of \code{x} must be greater than or equal to.}
 
 \item{upper}{[\code{numeric(1)}]\cr
-Upper value all elements of \code{x} must be lower than.}
+Upper value all elements of \code{x} must be lower than or equal to.}
 
 \item{tol}{[\code{double(1)}]\cr
 Numerical tolerance used to check whether a double or complex can be converted.
