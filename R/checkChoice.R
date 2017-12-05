@@ -24,20 +24,20 @@ checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
     if (null.ok)
       return(TRUE)
     qassert(choices, "a")
-    return(sprintf("Must be a subset of {'%s'}, not 'NULL'", paste0(unique(choices), collapse = "','")))
+    return(sprintf("Must be a subset of %s, not 'NULL'", set_collapse(choices)))
   }
 
   qassert(choices, "a")
   if (!qtest(x, "a1"))
-    return(sprintf("Must be element of set {'%s'}, but is not atomic scalar", paste0(unique(choices), collapse = "','")))
+    return(sprintf("Must be element of set %s, but is not atomic scalar", set_collapse(choices)))
   if (!isSameType(x, choices))
-    return(sprintf("Must be element of set {'%s'}, but types do not match (%s != %s)", paste0(unique(choices), collapse = "','"), class(x)[1L], class(choices)[1L]))
+    return(sprintf("Must be element of set %s, but types do not match (%s != %s)", set_collapse(choices), class(x)[1L], class(choices)[1L]))
 
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
     match = fastmatch::fmatch
 
   if (match(x, choices, 0L) == 0L)
-    return(sprintf("Must be element of set {'%s'}, but is '%s'", paste0(unique(choices), collapse = "','"), x))
+    return(sprintf("Must be element of set %s, but is '%s'", set_collapse(x), x))
   return(TRUE)
 }
 

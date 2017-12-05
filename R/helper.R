@@ -22,3 +22,15 @@ guessType = function(x) {
 isSameType = function(x, y) {
   identical(typeof(x), typeof(y)) || (is.numeric(x) && is.numeric(y))
 }
+
+array_collapse = function(x) {
+  if (length(x) == 0L)
+    return("[]")
+  sprintf("['%s']", paste0(x, collapse = "','"))
+}
+
+set_collapse = function(x) {
+  if (length(x) == 0L)
+    return("{}")
+  sprintf("{'%s'}", paste0(sort(unique(x)), collapse = "','"))
+}

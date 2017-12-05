@@ -25,7 +25,7 @@ checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
   qassert(empty.ok, "B1")
   if (length(x) == 0L) {
     if (!empty.ok)
-      return(sprintf("Must be a subset of {'%s'}, not empty", paste0(unique(choices), collapse = "','")))
+      return(sprintf("Must be a subset of %s, not empty", set_collapse(choices)))
     return(TRUE)
   }
 
@@ -40,7 +40,7 @@ checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
     match = fastmatch::fmatch
 
   if (!is.null(x) && (!isSameType(x, choices) || any(match(x, choices, 0L) == 0L)))
-    return(sprintf("Must be a subset of {'%s'}", paste0(unique(choices), collapse = "','")))
+    return(sprintf("Must be a subset of %s, but is %s", set_collapse(choices), set_collapse(x)))
   return(TRUE)
 }
 
