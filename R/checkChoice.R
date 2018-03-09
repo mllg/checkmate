@@ -37,7 +37,7 @@ checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
     match = fastmatch::fmatch
 
   if (match(x, choices, 0L) == 0L)
-    return(sprintf("Must be element of set %s, but is '%s'", set_collapse(x), x))
+    return(sprintf("Must be element of set %s, but is '%s'", set_collapse(choices), x))
   return(TRUE)
 }
 
