@@ -18,13 +18,24 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Collect multiple assertions — AssertCollection" />
+
+<meta property="og:description" content="The function makeAssertCollection() returns a simple stack-like
+closure you can pass to all functions of the assert*-family.
+All messages get collected and can be reported with reportAssertions().
+Alternatively, you can easily write your own report function or customize the the output of
+the report function to a certain degree.
+See the example on how to push custom messages or retrieve all stored messages." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,24 +58,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">checkmate</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">checkmate</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/checkmate.html">Get Started</a>
+  <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -87,6 +102,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Collect multiple assertions</h1>
+    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/AssertCollection.R'><code>R/AssertCollection.R</code></a></small>
     </div>
 
     
@@ -102,12 +118,12 @@ See the example on how to push custom messages or retrieve all stored messages.<
 
 <span class='fu'>reportAssertions</span>(<span class='no'>collection</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>collection</th>
-      <td><p>[<code>AssertCollection</code>]
+      <td><p>[<code>AssertCollection</code>]<br />
 Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertCollection</code>).</p></td>
     </tr>
     </table>
@@ -149,7 +165,7 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -157,3 +173,4 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
 
   </body>
 </html>
+

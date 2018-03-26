@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Check that an argument is an atomic vector — checkAtomic" />
+
+<meta property="og:description" content="For the definition of &#8220;atomic&#8221;, see is.atomic." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,24 +53,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">checkmate</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">checkmate</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/checkmate.html">Get Started</a>
+  <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -87,6 +97,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Check that an argument is an atomic vector</h1>
+    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkAtomic.R'><code>R/checkAtomic.R</code></a></small>
     </div>
 
     
@@ -117,71 +128,71 @@
   <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>[any]
+      <td><p>[any]<br />
 Object to check.</p></td>
     </tr>
     <tr>
       <th>any.missing</th>
-      <td><p>[<code>logical(1)</code>]
+      <td><p>[<code>logical(1)</code>]<br />
 Are vectors with missing values allowed? Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>all.missing</th>
-      <td><p>[<code>logical(1)</code>]
+      <td><p>[<code>logical(1)</code>]<br />
 Are vectors with only missing values allowed? Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>len</th>
-      <td><p>[<code>integer(1)</code>]
+      <td><p>[<code>integer(1)</code>]<br />
 Exact expected length of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>min.len</th>
-      <td><p>[<code>integer(1)</code>]
+      <td><p>[<code>integer(1)</code>]<br />
 Minimal length of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>max.len</th>
-      <td><p>[<code>integer(1)</code>]
+      <td><p>[<code>integer(1)</code>]<br />
 Maximal length of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>unique</th>
-      <td><p>[<code>logical(1)</code>]
+      <td><p>[<code>logical(1)</code>]<br />
 Must all values be unique? Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>names</th>
-      <td><p>[<code>character(1)</code>]
+      <td><p>[<code>character(1)</code>]<br />
 Check for names. See <code><a href='checkNamed.html'>checkNamed</a></code> for possible values.
 Default is &#8220;any&#8221; which performs no check at all.
 Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code>character(1)</code>]
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
     <tr>
       <th>add</th>
-      <td><p>[<code>AssertCollection</code>]
+      <td><p>[<code>AssertCollection</code>]<br />
 Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</p></td>
     </tr>
     <tr>
       <th>info</th>
-      <td><p>[character(1)]
+      <td><p>[character(1)]<br />
 Extra information to be included in the message for the testthat reporter.
 See <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>[<code>character(1)</code>]
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -211,6 +222,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
   <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>,
   <code><a href='checkCharacter.html'>checkCharacter</a></code>, <code><a href='checkComplex.html'>checkComplex</a></code>,
   <code><a href='checkDataFrame.html'>checkDataFrame</a></code>, <code><a href='checkDate.html'>checkDate</a></code>,
+  <code><a href='checkDouble.html'>checkDouble</a></code>,
   <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
   <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFunction.html'>checkFunction</a></code>,
   <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
@@ -246,7 +258,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -254,3 +266,4 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
   </body>
 </html>
+

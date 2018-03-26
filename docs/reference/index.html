@@ -18,13 +18,16 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,24 +50,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">checkmate</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">checkmate</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/checkmate.html">Get Started</a>
+  <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -86,10 +93,7 @@
       <div class="row">
   <div class="col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;1.8.5</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
     <div class="contents">
@@ -110,189 +114,303 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="anyInfinite.html">anyInfinite</a></code> </p>
-          </td>
-          <td><p>Check if an object contains infinite values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="anyMissing.html">allMissing</a></code> <code><a href="anyMissing.html">anyMissing</a></code> </p>
-          </td>
-          <td><p>Check if an object contains missing values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="anyNaN.html">anyNaN</a></code> </p>
-          </td>
-          <td><p>Check if an object contains NaN values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="asInteger.html">asInteger</a></code> <code><a href="asInteger.html">asCount</a></code> <code><a href="asInteger.html">asInt</a></code> </p>
-          </td>
-          <td><p>Convert an argument to an integer</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="assert.html">assert</a></code> </p>
-          </td>
-          <td><p>Combine multiple checks into one assertion</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="AssertCollection.html">makeAssertCollection</a></code> <code><a href="AssertCollection.html">reportAssertions</a></code> </p>
+            <p><code><a href="AssertCollection.html">makeAssertCollection()</a></code> <code><a href="AssertCollection.html">reportAssertions()</a></code> </p>
           </td>
           <td><p>Collect multiple assertions</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkAccess.html">checkAccess</a></code> <code><a href="checkAccess.html">check_access</a></code> <code><a href="checkAccess.html">assertAccess</a></code> <code><a href="checkAccess.html">assert_access</a></code> <code><a href="checkAccess.html">testAccess</a></code> <code><a href="checkAccess.html">test_access</a></code> <code><a href="checkAccess.html">expect_access</a></code> </p>
+            <p><code><a href="anyInfinite.html">anyInfinite()</a></code> </p>
+          </td>
+          <td><p>Check if an object contains infinite values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="anyMissing.html">allMissing()</a></code> <code><a href="anyMissing.html">anyMissing()</a></code> </p>
+          </td>
+          <td><p>Check if an object contains missing values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="anyNaN.html">anyNaN()</a></code> </p>
+          </td>
+          <td><p>Check if an object contains NaN values</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="asInteger.html">asInteger()</a></code> <code><a href="asInteger.html">asCount()</a></code> <code><a href="asInteger.html">asInt()</a></code> </p>
+          </td>
+          <td><p>Convert an argument to an integer</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="assert.html">assert()</a></code> </p>
+          </td>
+          <td><p>Combine multiple checks into one assertion</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkAccess.html">checkAccess()</a></code> <code><a href="checkAccess.html">check_access()</a></code> <code><a href="checkAccess.html">assertAccess()</a></code> <code><a href="checkAccess.html">assert_access()</a></code> <code><a href="checkAccess.html">testAccess()</a></code> <code><a href="checkAccess.html">test_access()</a></code> <code><a href="checkAccess.html">expect_access()</a></code> </p>
           </td>
           <td><p>Check file system access rights</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkArray.html">checkArray</a></code> <code><a href="checkArray.html">check_array</a></code> <code><a href="checkArray.html">assertArray</a></code> <code><a href="checkArray.html">assert_array</a></code> <code><a href="checkArray.html">testArray</a></code> <code><a href="checkArray.html">test_array</a></code> <code><a href="checkArray.html">expect_array</a></code> </p>
+            <p><code><a href="checkArray.html">checkArray()</a></code> <code><a href="checkArray.html">check_array()</a></code> <code><a href="checkArray.html">assertArray()</a></code> <code><a href="checkArray.html">assert_array()</a></code> <code><a href="checkArray.html">testArray()</a></code> <code><a href="checkArray.html">test_array()</a></code> <code><a href="checkArray.html">expect_array()</a></code> </p>
           </td>
           <td><p>Check if an argument is an array</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkAtomic.html">checkAtomic</a></code> <code><a href="checkAtomic.html">check_atomic</a></code> <code><a href="checkAtomic.html">assertAtomic</a></code> <code><a href="checkAtomic.html">assert_atomic</a></code> <code><a href="checkAtomic.html">testAtomic</a></code> <code><a href="checkAtomic.html">test_atomic</a></code> <code><a href="checkAtomic.html">expect_atomic</a></code> </p>
+            <p><code><a href="checkAtomic.html">checkAtomic()</a></code> <code><a href="checkAtomic.html">check_atomic()</a></code> <code><a href="checkAtomic.html">assertAtomic()</a></code> <code><a href="checkAtomic.html">assert_atomic()</a></code> <code><a href="checkAtomic.html">testAtomic()</a></code> <code><a href="checkAtomic.html">test_atomic()</a></code> <code><a href="checkAtomic.html">expect_atomic()</a></code> </p>
           </td>
           <td><p>Check that an argument is an atomic vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkAtomicVector.html">checkAtomicVector</a></code> <code><a href="checkAtomicVector.html">check_atomic_vector</a></code> <code><a href="checkAtomicVector.html">assertAtomicVector</a></code> <code><a href="checkAtomicVector.html">assert_atomic_vector</a></code> <code><a href="checkAtomicVector.html">testAtomicVector</a></code> <code><a href="checkAtomicVector.html">test_atomic_vector</a></code> <code><a href="checkAtomicVector.html">expect_atomic_vector</a></code> </p>
+            <p><code><a href="checkAtomicVector.html">checkAtomicVector()</a></code> <code><a href="checkAtomicVector.html">check_atomic_vector()</a></code> <code><a href="checkAtomicVector.html">assertAtomicVector()</a></code> <code><a href="checkAtomicVector.html">assert_atomic_vector()</a></code> <code><a href="checkAtomicVector.html">testAtomicVector()</a></code> <code><a href="checkAtomicVector.html">test_atomic_vector()</a></code> <code><a href="checkAtomicVector.html">expect_atomic_vector()</a></code> </p>
           </td>
           <td><p>Check that an argument is an atomic vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkBit.html">checkBit</a></code> <code><a href="checkBit.html">check_bit</a></code> <code><a href="checkBit.html">assertBit</a></code> <code><a href="checkBit.html">assert_bit</a></code> <code><a href="checkBit.html">testBit</a></code> <code><a href="checkBit.html">test_bit</a></code> <code><a href="checkBit.html">expect_bit</a></code> </p>
+            <p><code><a href="checkBit.html">checkBit()</a></code> <code><a href="checkBit.html">check_bit()</a></code> <code><a href="checkBit.html">assertBit()</a></code> <code><a href="checkBit.html">assert_bit()</a></code> <code><a href="checkBit.html">testBit()</a></code> <code><a href="checkBit.html">test_bit()</a></code> <code><a href="checkBit.html">expect_bit()</a></code> </p>
           </td>
           <td><p>Check if an argument is a bit vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkCharacter.html">checkCharacter</a></code> <code><a href="checkCharacter.html">check_character</a></code> <code><a href="checkCharacter.html">assertCharacter</a></code> <code><a href="checkCharacter.html">assert_character</a></code> <code><a href="checkCharacter.html">testCharacter</a></code> <code><a href="checkCharacter.html">test_character</a></code> <code><a href="checkCharacter.html">expect_character</a></code> </p>
+            <p><code><a href="checkCharacter.html">checkCharacter()</a></code> <code><a href="checkCharacter.html">check_character()</a></code> <code><a href="checkCharacter.html">assertCharacter()</a></code> <code><a href="checkCharacter.html">assert_character()</a></code> <code><a href="checkCharacter.html">testCharacter()</a></code> <code><a href="checkCharacter.html">test_character()</a></code> <code><a href="checkCharacter.html">expect_character()</a></code> </p>
           </td>
           <td><p>Check if an argument is a vector of type character</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkChoice.html">checkChoice</a></code> <code><a href="checkChoice.html">check_choice</a></code> <code><a href="checkChoice.html">assertChoice</a></code> <code><a href="checkChoice.html">assert_choice</a></code> <code><a href="checkChoice.html">testChoice</a></code> <code><a href="checkChoice.html">test_choice</a></code> <code><a href="checkChoice.html">expect_choice</a></code> </p>
+            <p><code><a href="checkChoice.html">checkChoice()</a></code> <code><a href="checkChoice.html">check_choice()</a></code> <code><a href="checkChoice.html">assertChoice()</a></code> <code><a href="checkChoice.html">assert_choice()</a></code> <code><a href="checkChoice.html">testChoice()</a></code> <code><a href="checkChoice.html">test_choice()</a></code> <code><a href="checkChoice.html">expect_choice()</a></code> </p>
           </td>
           <td><p>Check if an object is an element of a given set</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkClass.html">checkClass</a></code> <code><a href="checkClass.html">check_class</a></code> <code><a href="checkClass.html">assertClass</a></code> <code><a href="checkClass.html">assert_class</a></code> <code><a href="checkClass.html">testClass</a></code> <code><a href="checkClass.html">test_class</a></code> <code><a href="checkClass.html">expect_class</a></code> </p>
+            <p><code><a href="checkClass.html">checkClass()</a></code> <code><a href="checkClass.html">check_class()</a></code> <code><a href="checkClass.html">assertClass()</a></code> <code><a href="checkClass.html">assert_class()</a></code> <code><a href="checkClass.html">testClass()</a></code> <code><a href="checkClass.html">test_class()</a></code> <code><a href="checkClass.html">expect_class()</a></code> </p>
           </td>
           <td><p>Check the class membership of an argument</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkComplex.html">checkComplex</a></code> <code><a href="checkComplex.html">check_complex</a></code> <code><a href="checkComplex.html">assertComplex</a></code> <code><a href="checkComplex.html">assert_complex</a></code> <code><a href="checkComplex.html">testComplex</a></code> <code><a href="checkComplex.html">test_complex</a></code> <code><a href="checkComplex.html">expect_complex</a></code> </p>
+            <p><code><a href="checkComplex.html">checkComplex()</a></code> <code><a href="checkComplex.html">check_complex()</a></code> <code><a href="checkComplex.html">assertComplex()</a></code> <code><a href="checkComplex.html">assert_complex()</a></code> <code><a href="checkComplex.html">testComplex()</a></code> <code><a href="checkComplex.html">test_complex()</a></code> <code><a href="checkComplex.html">expect_complex()</a></code> </p>
           </td>
           <td><p>Check if an argument is a vector of type complex</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkCount.html">checkCount</a></code> <code><a href="checkCount.html">check_count</a></code> <code><a href="checkCount.html">assertCount</a></code> <code><a href="checkCount.html">assert_count</a></code> <code><a href="checkCount.html">testCount</a></code> <code><a href="checkCount.html">test_count</a></code> <code><a href="checkCount.html">expect_count</a></code> </p>
+            <p><code><a href="checkCount.html">checkCount()</a></code> <code><a href="checkCount.html">check_count()</a></code> <code><a href="checkCount.html">assertCount()</a></code> <code><a href="checkCount.html">assert_count()</a></code> <code><a href="checkCount.html">testCount()</a></code> <code><a href="checkCount.html">test_count()</a></code> <code><a href="checkCount.html">expect_count()</a></code> </p>
           </td>
           <td><p>Check if an argument is a count</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkDataFrame.html">checkDataFrame</a></code> <code><a href="checkDataFrame.html">check_data_frame</a></code> <code><a href="checkDataFrame.html">assertDataFrame</a></code> <code><a href="checkDataFrame.html">assert_data_frame</a></code> <code><a href="checkDataFrame.html">testDataFrame</a></code> <code><a href="checkDataFrame.html">test_data_frame</a></code> <code><a href="checkDataFrame.html">expect_data_frame</a></code> </p>
+            <p><code><a href="checkDataFrame.html">checkDataFrame()</a></code> <code><a href="checkDataFrame.html">check_data_frame()</a></code> <code><a href="checkDataFrame.html">assertDataFrame()</a></code> <code><a href="checkDataFrame.html">assert_data_frame()</a></code> <code><a href="checkDataFrame.html">testDataFrame()</a></code> <code><a href="checkDataFrame.html">test_data_frame()</a></code> <code><a href="checkDataFrame.html">expect_data_frame()</a></code> </p>
           </td>
           <td><p>Check if an argument is a data frame</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkDataTable.html">checkDataTable</a></code> <code><a href="checkDataTable.html">check_data_table</a></code> <code><a href="checkDataTable.html">assertDataTable</a></code> <code><a href="checkDataTable.html">assert_data_table</a></code> <code><a href="checkDataTable.html">testDataTable</a></code> <code><a href="checkDataTable.html">test_data_table</a></code> <code><a href="checkDataTable.html">expect_data_table</a></code> </p>
+            <p><code><a href="checkDataTable.html">checkDataTable()</a></code> <code><a href="checkDataTable.html">check_data_table()</a></code> <code><a href="checkDataTable.html">assertDataTable()</a></code> <code><a href="checkDataTable.html">assert_data_table()</a></code> <code><a href="checkDataTable.html">testDataTable()</a></code> <code><a href="checkDataTable.html">test_data_table()</a></code> <code><a href="checkDataTable.html">expect_data_table()</a></code> </p>
           </td>
           <td><p>Check if an argument is a data table</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkDate.html">checkDate</a></code> <code><a href="checkDate.html">check_date</a></code> <code><a href="checkDate.html">assertDate</a></code> <code><a href="checkDate.html">assert_date</a></code> <code><a href="checkDate.html">testDate</a></code> <code><a href="checkDate.html">test_date</a></code> <code><a href="checkDate.html">expect_date</a></code> </p>
+            <p><code><a href="checkDate.html">checkDate()</a></code> <code><a href="checkDate.html">check_date()</a></code> <code><a href="checkDate.html">assertDate()</a></code> <code><a href="checkDate.html">assert_date()</a></code> <code><a href="checkDate.html">testDate()</a></code> <code><a href="checkDate.html">test_date()</a></code> <code><a href="checkDate.html">expect_date()</a></code> </p>
           </td>
           <td><p>Check that an argument is a Date</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkDirectoryExists.html">checkDirectoryExists</a></code> <code><a href="checkDirectoryExists.html">check_directory_exists</a></code> <code><a href="checkDirectoryExists.html">assertDirectoryExists</a></code> <code><a href="checkDirectoryExists.html">assert_directory_exists</a></code> <code><a href="checkDirectoryExists.html">testDirectoryExists</a></code> <code><a href="checkDirectoryExists.html">test_directory_exists</a></code> <code><a href="checkDirectoryExists.html">expect_directory_exists</a></code> <code><a href="checkDirectoryExists.html">checkDirectory</a></code> <code><a href="checkDirectoryExists.html">assertDirectory</a></code> <code><a href="checkDirectoryExists.html">assert_directory</a></code> <code><a href="checkDirectoryExists.html">testDirectory</a></code> <code><a href="checkDirectoryExists.html">test_directory</a></code> <code><a href="checkDirectoryExists.html">expect_directory</a></code> </p>
+            <p><code><a href="checkDirectoryExists.html">checkDirectoryExists()</a></code> <code><a href="checkDirectoryExists.html">check_directory_exists()</a></code> <code><a href="checkDirectoryExists.html">assertDirectoryExists()</a></code> <code><a href="checkDirectoryExists.html">assert_directory_exists()</a></code> <code><a href="checkDirectoryExists.html">testDirectoryExists()</a></code> <code><a href="checkDirectoryExists.html">test_directory_exists()</a></code> <code><a href="checkDirectoryExists.html">expect_directory_exists()</a></code> <code><a href="checkDirectoryExists.html">checkDirectory()</a></code> <code><a href="checkDirectoryExists.html">assertDirectory()</a></code> <code><a href="checkDirectoryExists.html">assert_directory()</a></code> <code><a href="checkDirectoryExists.html">testDirectory()</a></code> <code><a href="checkDirectoryExists.html">test_directory()</a></code> <code><a href="checkDirectoryExists.html">expect_directory()</a></code> </p>
           </td>
           <td><p>Check for existence and access rights of directories</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkEnvironment.html">checkEnvironment</a></code> <code><a href="checkEnvironment.html">check_environment</a></code> <code><a href="checkEnvironment.html">assertEnvironment</a></code> <code><a href="checkEnvironment.html">assert_environment</a></code> <code><a href="checkEnvironment.html">testEnvironment</a></code> <code><a href="checkEnvironment.html">test_environment</a></code> <code><a href="checkEnvironment.html">expect_environment</a></code> </p>
+            <p><code><a href="checkDouble.html">checkDouble()</a></code> <code><a href="checkDouble.html">check_double()</a></code> <code><a href="checkDouble.html">assertDouble()</a></code> <code><a href="checkDouble.html">assert_double()</a></code> <code><a href="checkDouble.html">testDouble()</a></code> <code><a href="checkDouble.html">test_double()</a></code> <code><a href="checkDouble.html">expect_double()</a></code> </p>
+          </td>
+          <td><p>Check that an argument is a vector of type double</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkEnvironment.html">checkEnvironment()</a></code> <code><a href="checkEnvironment.html">check_environment()</a></code> <code><a href="checkEnvironment.html">assertEnvironment()</a></code> <code><a href="checkEnvironment.html">assert_environment()</a></code> <code><a href="checkEnvironment.html">testEnvironment()</a></code> <code><a href="checkEnvironment.html">test_environment()</a></code> <code><a href="checkEnvironment.html">expect_environment()</a></code> </p>
           </td>
           <td><p>Check if an argument is an environment</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkFactor.html">checkFactor</a></code> <code><a href="checkFactor.html">check_factor</a></code> <code><a href="checkFactor.html">assertFactor</a></code> <code><a href="checkFactor.html">assert_factor</a></code> <code><a href="checkFactor.html">testFactor</a></code> <code><a href="checkFactor.html">test_factor</a></code> <code><a href="checkFactor.html">expect_factor</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a factor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkFALSE.html">checkFALSE</a></code> <code><a href="checkFALSE.html">check_false</a></code> <code><a href="checkFALSE.html">assertFALSE</a></code> <code><a href="checkFALSE.html">assert_false</a></code> <code><a href="checkFALSE.html">testFALSE</a></code> <code><a href="checkFALSE.html">test_false</a></code> </p>
+            <p><code><a href="checkFALSE.html">checkFALSE()</a></code> <code><a href="checkFALSE.html">check_false()</a></code> <code><a href="checkFALSE.html">assertFALSE()</a></code> <code><a href="checkFALSE.html">assert_false()</a></code> <code><a href="checkFALSE.html">testFALSE()</a></code> <code><a href="checkFALSE.html">test_false()</a></code> </p>
           </td>
           <td><p>Check if an argument is FALSE</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkFileExists.html">checkFileExists</a></code> <code><a href="checkFileExists.html">check_file_exists</a></code> <code><a href="checkFileExists.html">assertFileExists</a></code> <code><a href="checkFileExists.html">assert_file_exists</a></code> <code><a href="checkFileExists.html">testFileExists</a></code> <code><a href="checkFileExists.html">test_file_exists</a></code> <code><a href="checkFileExists.html">expect_file_exists</a></code> <code><a href="checkFileExists.html">checkFile</a></code> <code><a href="checkFileExists.html">assertFile</a></code> <code><a href="checkFileExists.html">assert_file</a></code> <code><a href="checkFileExists.html">testFile</a></code> <code><a href="checkFileExists.html">expect_file</a></code> </p>
+            <p><code><a href="checkFactor.html">checkFactor()</a></code> <code><a href="checkFactor.html">check_factor()</a></code> <code><a href="checkFactor.html">assertFactor()</a></code> <code><a href="checkFactor.html">assert_factor()</a></code> <code><a href="checkFactor.html">testFactor()</a></code> <code><a href="checkFactor.html">test_factor()</a></code> <code><a href="checkFactor.html">expect_factor()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a factor</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkFileExists.html">checkFileExists()</a></code> <code><a href="checkFileExists.html">check_file_exists()</a></code> <code><a href="checkFileExists.html">assertFileExists()</a></code> <code><a href="checkFileExists.html">assert_file_exists()</a></code> <code><a href="checkFileExists.html">testFileExists()</a></code> <code><a href="checkFileExists.html">test_file_exists()</a></code> <code><a href="checkFileExists.html">expect_file_exists()</a></code> <code><a href="checkFileExists.html">checkFile()</a></code> <code><a href="checkFileExists.html">assertFile()</a></code> <code><a href="checkFileExists.html">assert_file()</a></code> <code><a href="checkFileExists.html">testFile()</a></code> <code><a href="checkFileExists.html">expect_file()</a></code> </p>
           </td>
           <td><p>Check existence and access rights of files</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkFlag.html">checkFlag</a></code> <code><a href="checkFlag.html">check_flag</a></code> <code><a href="checkFlag.html">assertFlag</a></code> <code><a href="checkFlag.html">assert_flag</a></code> <code><a href="checkFlag.html">testFlag</a></code> <code><a href="checkFlag.html">test_flag</a></code> <code><a href="checkFlag.html">expect_flag</a></code> </p>
+            <p><code><a href="checkFlag.html">checkFlag()</a></code> <code><a href="checkFlag.html">check_flag()</a></code> <code><a href="checkFlag.html">assertFlag()</a></code> <code><a href="checkFlag.html">assert_flag()</a></code> <code><a href="checkFlag.html">testFlag()</a></code> <code><a href="checkFlag.html">test_flag()</a></code> <code><a href="checkFlag.html">expect_flag()</a></code> </p>
           </td>
           <td><p>Check if an argument is a flag</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkFunction.html">checkFunction</a></code> <code><a href="checkFunction.html">check_function</a></code> <code><a href="checkFunction.html">assertFunction</a></code> <code><a href="checkFunction.html">assert_function</a></code> <code><a href="checkFunction.html">testFunction</a></code> <code><a href="checkFunction.html">test_function</a></code> <code><a href="checkFunction.html">expect_function</a></code> </p>
+            <p><code><a href="checkFunction.html">checkFunction()</a></code> <code><a href="checkFunction.html">check_function()</a></code> <code><a href="checkFunction.html">assertFunction()</a></code> <code><a href="checkFunction.html">assert_function()</a></code> <code><a href="checkFunction.html">testFunction()</a></code> <code><a href="checkFunction.html">test_function()</a></code> <code><a href="checkFunction.html">expect_function()</a></code> </p>
           </td>
           <td><p>Check if an argument is a function</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkInt.html">checkInt</a></code> <code><a href="checkInt.html">check_int</a></code> <code><a href="checkInt.html">assertInt</a></code> <code><a href="checkInt.html">assert_int</a></code> <code><a href="checkInt.html">testInt</a></code> <code><a href="checkInt.html">test_int</a></code> <code><a href="checkInt.html">expect_int</a></code> </p>
+            <p><code><a href="checkInt.html">checkInt()</a></code> <code><a href="checkInt.html">check_int()</a></code> <code><a href="checkInt.html">assertInt()</a></code> <code><a href="checkInt.html">assert_int()</a></code> <code><a href="checkInt.html">testInt()</a></code> <code><a href="checkInt.html">test_int()</a></code> <code><a href="checkInt.html">expect_int()</a></code> </p>
           </td>
           <td><p>Check if an argument is a single integerish value</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkInteger.html">checkInteger</a></code> <code><a href="checkInteger.html">check_integer</a></code> <code><a href="checkInteger.html">assertInteger</a></code> <code><a href="checkInteger.html">assert_integer</a></code> <code><a href="checkInteger.html">testInteger</a></code> <code><a href="checkInteger.html">test_integer</a></code> <code><a href="checkInteger.html">expect_integer</a></code> </p>
+            <p><code><a href="checkInteger.html">checkInteger()</a></code> <code><a href="checkInteger.html">check_integer()</a></code> <code><a href="checkInteger.html">assertInteger()</a></code> <code><a href="checkInteger.html">assert_integer()</a></code> <code><a href="checkInteger.html">testInteger()</a></code> <code><a href="checkInteger.html">test_integer()</a></code> <code><a href="checkInteger.html">expect_integer()</a></code> </p>
           </td>
           <td><p>Check if an argument is vector of type integer</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkIntegerish.html">checkIntegerish</a></code> <code><a href="checkIntegerish.html">check_integerish</a></code> <code><a href="checkIntegerish.html">assertIntegerish</a></code> <code><a href="checkIntegerish.html">assert_integerish</a></code> <code><a href="checkIntegerish.html">testIntegerish</a></code> <code><a href="checkIntegerish.html">test_integerish</a></code> <code><a href="checkIntegerish.html">expect_integerish</a></code> </p>
+            <p><code><a href="checkIntegerish.html">checkIntegerish()</a></code> <code><a href="checkIntegerish.html">check_integerish()</a></code> <code><a href="checkIntegerish.html">assertIntegerish()</a></code> <code><a href="checkIntegerish.html">assert_integerish()</a></code> <code><a href="checkIntegerish.html">testIntegerish()</a></code> <code><a href="checkIntegerish.html">test_integerish()</a></code> <code><a href="checkIntegerish.html">expect_integerish()</a></code> </p>
           </td>
           <td><p>Check if an object is an integerish vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkList.html">checkList</a></code> <code><a href="checkList.html">check_list</a></code> <code><a href="checkList.html">assertList</a></code> <code><a href="checkList.html">assert_list</a></code> <code><a href="checkList.html">testList</a></code> <code><a href="checkList.html">test_list</a></code> <code><a href="checkList.html">expect_list</a></code> </p>
+            <p><code><a href="checkList.html">checkList()</a></code> <code><a href="checkList.html">check_list()</a></code> <code><a href="checkList.html">assertList()</a></code> <code><a href="checkList.html">assert_list()</a></code> <code><a href="checkList.html">testList()</a></code> <code><a href="checkList.html">test_list()</a></code> <code><a href="checkList.html">expect_list()</a></code> </p>
           </td>
           <td><p>Check if an argument is a list</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkLogical.html">checkLogical</a></code> <code><a href="checkLogical.html">check_logical</a></code> <code><a href="checkLogical.html">assertLogical</a></code> <code><a href="checkLogical.html">assert_logical</a></code> <code><a href="checkLogical.html">testLogical</a></code> <code><a href="checkLogical.html">test_logical</a></code> <code><a href="checkLogical.html">expect_logical</a></code> </p>
+            <p><code><a href="checkLogical.html">checkLogical()</a></code> <code><a href="checkLogical.html">check_logical()</a></code> <code><a href="checkLogical.html">assertLogical()</a></code> <code><a href="checkLogical.html">assert_logical()</a></code> <code><a href="checkLogical.html">testLogical()</a></code> <code><a href="checkLogical.html">test_logical()</a></code> <code><a href="checkLogical.html">expect_logical()</a></code> </p>
           </td>
           <td><p>Check if an argument is a vector of type logical</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkMatrix.html">checkMatrix()</a></code> <code><a href="checkMatrix.html">check_matrix()</a></code> <code><a href="checkMatrix.html">assertMatrix()</a></code> <code><a href="checkMatrix.html">assert_matrix()</a></code> <code><a href="checkMatrix.html">testMatrix()</a></code> <code><a href="checkMatrix.html">test_matrix()</a></code> <code><a href="checkMatrix.html">expect_matrix()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a matrix</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkNamed.html">checkNamed()</a></code> <code><a href="checkNamed.html">check_named()</a></code> <code><a href="checkNamed.html">assertNamed()</a></code> <code><a href="checkNamed.html">assert_named()</a></code> <code><a href="checkNamed.html">testNamed()</a></code> <code><a href="checkNamed.html">test_named()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is named</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkNames.html">checkNames()</a></code> <code><a href="checkNames.html">check_names()</a></code> <code><a href="checkNames.html">assertNames()</a></code> <code><a href="checkNames.html">assert_names()</a></code> <code><a href="checkNames.html">testNames()</a></code> <code><a href="checkNames.html">test_names()</a></code> <code><a href="checkNames.html">expect_names()</a></code> </p>
+          </td>
+          <td><p>Check names to comply to specific rules</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkNull.html">checkNull()</a></code> <code><a href="checkNull.html">check_null()</a></code> <code><a href="checkNull.html">assertNull()</a></code> <code><a href="checkNull.html">assert_null()</a></code> <code><a href="checkNull.html">testNull()</a></code> <code><a href="checkNull.html">test_null()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is NULL</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkNumber.html">checkNumber()</a></code> <code><a href="checkNumber.html">check_number()</a></code> <code><a href="checkNumber.html">assertNumber()</a></code> <code><a href="checkNumber.html">assert_number()</a></code> <code><a href="checkNumber.html">testNumber()</a></code> <code><a href="checkNumber.html">test_number()</a></code> <code><a href="checkNumber.html">expect_number()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a single numeric value</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkNumeric.html">checkNumeric()</a></code> <code><a href="checkNumeric.html">check_numeric()</a></code> <code><a href="checkNumeric.html">assertNumeric()</a></code> <code><a href="checkNumeric.html">assert_numeric()</a></code> <code><a href="checkNumeric.html">testNumeric()</a></code> <code><a href="checkNumeric.html">test_numeric()</a></code> <code><a href="checkNumeric.html">expect_numeric()</a></code> </p>
+          </td>
+          <td><p>Check that an argument is a vector of type numeric</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkOS.html">checkOS()</a></code> <code><a href="checkOS.html">check_os()</a></code> <code><a href="checkOS.html">assertOS()</a></code> <code><a href="checkOS.html">assert_os()</a></code> <code><a href="checkOS.html">testOS()</a></code> <code><a href="checkOS.html">test_os()</a></code> <code><a href="checkOS.html">expect_os()</a></code> </p>
+          </td>
+          <td><p>Check the operating system</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkPOSIXct.html">checkPOSIXct()</a></code> <code><a href="checkPOSIXct.html">check_posixct()</a></code> <code><a href="checkPOSIXct.html">assertPOSIXct()</a></code> <code><a href="checkPOSIXct.html">assert_posixct()</a></code> <code><a href="checkPOSIXct.html">testPOSIXct()</a></code> <code><a href="checkPOSIXct.html">test_posixct()</a></code> <code><a href="checkPOSIXct.html">expect_posixct()</a></code> </p>
+          </td>
+          <td><p>Check that an argument is a date/time object in POSIXct format</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkPathForOutput.html">checkPathForOutput()</a></code> <code><a href="checkPathForOutput.html">check_path_for_output()</a></code> <code><a href="checkPathForOutput.html">assertPathForOutput()</a></code> <code><a href="checkPathForOutput.html">assert_path_for_output()</a></code> <code><a href="checkPathForOutput.html">testPathForOutput()</a></code> <code><a href="checkPathForOutput.html">test_path_for_output()</a></code> <code><a href="checkPathForOutput.html">expect_path_for_output()</a></code> </p>
+          </td>
+          <td><p>Check if a path is suited for creating an output file</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkR6.html">checkR6()</a></code> <code><a href="checkR6.html">check_r6()</a></code> <code><a href="checkR6.html">assertR6()</a></code> <code><a href="checkR6.html">assert_r6()</a></code> <code><a href="checkR6.html">testR6()</a></code> <code><a href="checkR6.html">test_r6()</a></code> <code><a href="checkR6.html">expect_r6()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a R6 class</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkScalar.html">checkScalar()</a></code> <code><a href="checkScalar.html">check_scalar()</a></code> <code><a href="checkScalar.html">assertScalar()</a></code> <code><a href="checkScalar.html">assert_scalar()</a></code> <code><a href="checkScalar.html">testScalar()</a></code> <code><a href="checkScalar.html">test_scalar()</a></code> <code><a href="checkScalar.html">expect_scalar()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a single atomic value</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkScalarNA.html">checkScalarNA()</a></code> <code><a href="checkScalarNA.html">check_scalar_na()</a></code> <code><a href="checkScalarNA.html">assertScalarNA()</a></code> <code><a href="checkScalarNA.html">assert_scalar_na()</a></code> <code><a href="checkScalarNA.html">testScalarNA()</a></code> <code><a href="checkScalarNA.html">test_scalar_na()</a></code> <code><a href="checkScalarNA.html">expect_scalar_na()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a single missing value</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkSetEqual.html">checkSetEqual()</a></code> <code><a href="checkSetEqual.html">check_set_equal()</a></code> <code><a href="checkSetEqual.html">assertSetEqual()</a></code> <code><a href="checkSetEqual.html">assert_set_equal()</a></code> <code><a href="checkSetEqual.html">testSetEqual()</a></code> <code><a href="checkSetEqual.html">test_set_equal()</a></code> <code><a href="checkSetEqual.html">expect_set_equal()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is equal to a given set</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkString.html">checkString()</a></code> <code><a href="checkString.html">check_string()</a></code> <code><a href="checkString.html">assertString()</a></code> <code><a href="checkString.html">assert_string()</a></code> <code><a href="checkString.html">testString()</a></code> <code><a href="checkString.html">test_string()</a></code> <code><a href="checkString.html">expect_string()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a string</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkSubset.html">checkSubset()</a></code> <code><a href="checkSubset.html">check_subset()</a></code> <code><a href="checkSubset.html">assertSubset()</a></code> <code><a href="checkSubset.html">assert_subset()</a></code> <code><a href="checkSubset.html">testSubset()</a></code> <code><a href="checkSubset.html">test_subset()</a></code> <code><a href="checkSubset.html">expect_subset()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a subset of a given set</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkTRUE.html">checkTRUE()</a></code> <code><a href="checkTRUE.html">check_true()</a></code> <code><a href="checkTRUE.html">assertTRUE()</a></code> <code><a href="checkTRUE.html">assert_true()</a></code> <code><a href="checkTRUE.html">testTRUE()</a></code> <code><a href="checkTRUE.html">test_true()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is TRUE</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkTibble.html">checkTibble()</a></code> <code><a href="checkTibble.html">check_tibble()</a></code> <code><a href="checkTibble.html">assertTibble()</a></code> <code><a href="checkTibble.html">assert_tibble()</a></code> <code><a href="checkTibble.html">testTibble()</a></code> <code><a href="checkTibble.html">test_tibble()</a></code> <code><a href="checkTibble.html">expect_tibble()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a tibble</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="checkVector.html">checkVector()</a></code> <code><a href="checkVector.html">check_vector()</a></code> <code><a href="checkVector.html">assertVector()</a></code> <code><a href="checkVector.html">assert_vector()</a></code> <code><a href="checkVector.html">testVector()</a></code> <code><a href="checkVector.html">test_vector()</a></code> <code><a href="checkVector.html">expect_vector()</a></code> </p>
+          </td>
+          <td><p>Check if an argument is a vector</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -302,163 +420,55 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="checkMatrix.html">checkMatrix</a></code> <code><a href="checkMatrix.html">check_matrix</a></code> <code><a href="checkMatrix.html">assertMatrix</a></code> <code><a href="checkMatrix.html">assert_matrix</a></code> <code><a href="checkMatrix.html">testMatrix</a></code> <code><a href="checkMatrix.html">test_matrix</a></code> <code><a href="checkMatrix.html">expect_matrix</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a matrix</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkNamed.html">checkNamed</a></code> <code><a href="checkNamed.html">check_named</a></code> <code><a href="checkNamed.html">assertNamed</a></code> <code><a href="checkNamed.html">assert_named</a></code> <code><a href="checkNamed.html">testNamed</a></code> <code><a href="checkNamed.html">test_named</a></code> </p>
-          </td>
-          <td><p>Check if an argument is named</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkNames.html">checkNames</a></code> <code><a href="checkNames.html">check_names</a></code> <code><a href="checkNames.html">assertNames</a></code> <code><a href="checkNames.html">assert_names</a></code> <code><a href="checkNames.html">testNames</a></code> <code><a href="checkNames.html">test_names</a></code> <code><a href="checkNames.html">expect_names</a></code> </p>
-          </td>
-          <td><p>Check names to comply to specific rules</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkNull.html">checkNull</a></code> <code><a href="checkNull.html">check_null</a></code> <code><a href="checkNull.html">assertNull</a></code> <code><a href="checkNull.html">assert_null</a></code> <code><a href="checkNull.html">testNull</a></code> <code><a href="checkNull.html">test_null</a></code> </p>
-          </td>
-          <td><p>Check if an argument is NULL</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkNumber.html">checkNumber</a></code> <code><a href="checkNumber.html">check_number</a></code> <code><a href="checkNumber.html">assertNumber</a></code> <code><a href="checkNumber.html">assert_number</a></code> <code><a href="checkNumber.html">testNumber</a></code> <code><a href="checkNumber.html">test_number</a></code> <code><a href="checkNumber.html">expect_number</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a single numeric value</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkNumeric.html">checkNumeric</a></code> <code><a href="checkNumeric.html">check_numeric</a></code> <code><a href="checkNumeric.html">assertNumeric</a></code> <code><a href="checkNumeric.html">assert_numeric</a></code> <code><a href="checkNumeric.html">testNumeric</a></code> <code><a href="checkNumeric.html">test_numeric</a></code> <code><a href="checkNumeric.html">expect_numeric</a></code> </p>
-          </td>
-          <td><p>Check that an argument is a vector of type numeric</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkOS.html">checkOS</a></code> <code><a href="checkOS.html">check_os</a></code> <code><a href="checkOS.html">assertOS</a></code> <code><a href="checkOS.html">assert_os</a></code> <code><a href="checkOS.html">testOS</a></code> <code><a href="checkOS.html">test_os</a></code> <code><a href="checkOS.html">expect_os</a></code> </p>
-          </td>
-          <td><p>Check the operating system</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkPathForOutput.html">checkPathForOutput</a></code> <code><a href="checkPathForOutput.html">check_path_for_output</a></code> <code><a href="checkPathForOutput.html">assertPathForOutput</a></code> <code><a href="checkPathForOutput.html">assert_path_for_output</a></code> <code><a href="checkPathForOutput.html">testPathForOutput</a></code> <code><a href="checkPathForOutput.html">test_path_for_output</a></code> <code><a href="checkPathForOutput.html">expect_path_for_output</a></code> </p>
-          </td>
-          <td><p>Check if a path is suited for creating an output file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkPOSIXct.html">checkPOSIXct</a></code> <code><a href="checkPOSIXct.html">check_posixct</a></code> <code><a href="checkPOSIXct.html">assertPOSIXct</a></code> <code><a href="checkPOSIXct.html">assert_posixct</a></code> <code><a href="checkPOSIXct.html">testPOSIXct</a></code> <code><a href="checkPOSIXct.html">test_posixct</a></code> <code><a href="checkPOSIXct.html">expect_posixct</a></code> </p>
-          </td>
-          <td><p>Check that an argument is a date/time object in POSIXct format</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkR6.html">checkR6</a></code> <code><a href="checkR6.html">check_r6</a></code> <code><a href="checkR6.html">assertR6</a></code> <code><a href="checkR6.html">assert_r6</a></code> <code><a href="checkR6.html">testR6</a></code> <code><a href="checkR6.html">test_r6</a></code> <code><a href="checkR6.html">expect_r6</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a R6 class</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkScalar.html">checkScalar</a></code> <code><a href="checkScalar.html">check_scalar</a></code> <code><a href="checkScalar.html">assertScalar</a></code> <code><a href="checkScalar.html">assert_scalar</a></code> <code><a href="checkScalar.html">testScalar</a></code> <code><a href="checkScalar.html">test_scalar</a></code> <code><a href="checkScalar.html">expect_scalar</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a single atomic value</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkScalarNA.html">checkScalarNA</a></code> <code><a href="checkScalarNA.html">check_scalar_na</a></code> <code><a href="checkScalarNA.html">assertScalarNA</a></code> <code><a href="checkScalarNA.html">assert_scalar_na</a></code> <code><a href="checkScalarNA.html">testScalarNA</a></code> <code><a href="checkScalarNA.html">test_scalar_na</a></code> <code><a href="checkScalarNA.html">expect_scalar_na</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a single missing value</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkSetEqual.html">checkSetEqual</a></code> <code><a href="checkSetEqual.html">check_set_equal</a></code> <code><a href="checkSetEqual.html">assertSetEqual</a></code> <code><a href="checkSetEqual.html">assert_set_equal</a></code> <code><a href="checkSetEqual.html">testSetEqual</a></code> <code><a href="checkSetEqual.html">test_set_equal</a></code> <code><a href="checkSetEqual.html">expect_set_equal</a></code> </p>
-          </td>
-          <td><p>Check if an argument is equal to a given set</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkString.html">checkString</a></code> <code><a href="checkString.html">check_string</a></code> <code><a href="checkString.html">assertString</a></code> <code><a href="checkString.html">assert_string</a></code> <code><a href="checkString.html">testString</a></code> <code><a href="checkString.html">test_string</a></code> <code><a href="checkString.html">expect_string</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a string</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkSubset.html">checkSubset</a></code> <code><a href="checkSubset.html">check_subset</a></code> <code><a href="checkSubset.html">assertSubset</a></code> <code><a href="checkSubset.html">assert_subset</a></code> <code><a href="checkSubset.html">testSubset</a></code> <code><a href="checkSubset.html">test_subset</a></code> <code><a href="checkSubset.html">expect_subset</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a subset of a given set</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkTibble.html">checkTibble</a></code> <code><a href="checkTibble.html">check_tibble</a></code> <code><a href="checkTibble.html">assertTibble</a></code> <code><a href="checkTibble.html">assert_tibble</a></code> <code><a href="checkTibble.html">testTibble</a></code> <code><a href="checkTibble.html">test_tibble</a></code> <code><a href="checkTibble.html">expect_tibble</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a tibble</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkTRUE.html">checkTRUE</a></code> <code><a href="checkTRUE.html">check_true</a></code> <code><a href="checkTRUE.html">assertTRUE</a></code> <code><a href="checkTRUE.html">assert_true</a></code> <code><a href="checkTRUE.html">testTRUE</a></code> <code><a href="checkTRUE.html">test_true</a></code> </p>
-          </td>
-          <td><p>Check if an argument is TRUE</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="checkVector.html">checkVector</a></code> <code><a href="checkVector.html">check_vector</a></code> <code><a href="checkVector.html">assertVector</a></code> <code><a href="checkVector.html">assert_vector</a></code> <code><a href="checkVector.html">testVector</a></code> <code><a href="checkVector.html">test_vector</a></code> <code><a href="checkVector.html">expect_vector</a></code> </p>
-          </td>
-          <td><p>Check if an argument is a vector</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="coalesce.html">%??%</a></code> </p>
+            <p><code><a href="coalesce.html">`%??%`()</a></code> </p>
           </td>
           <td><p>Coalesce operator</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeAssertion.html">makeAssertion</a></code> <code><a href="makeAssertion.html">makeAssertionFunction</a></code> </p>
+            <p><code><a href="makeAssertion.html">makeAssertion()</a></code> <code><a href="makeAssertion.html">makeAssertionFunction()</a></code> </p>
           </td>
           <td><p>Turn a Check into an Assertion</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeExpectation.html">makeExpectation</a></code> <code><a href="makeExpectation.html">makeExpectationFunction</a></code> </p>
+            <p><code><a href="makeExpectation.html">makeExpectation()</a></code> <code><a href="makeExpectation.html">makeExpectationFunction()</a></code> </p>
           </td>
           <td><p>Turn a Check into an Expectation</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="makeTest.html">makeTest</a></code> <code><a href="makeTest.html">makeTestFunction</a></code> </p>
+            <p><code><a href="makeTest.html">makeTest()</a></code> <code><a href="makeTest.html">makeTestFunction()</a></code> </p>
           </td>
           <td><p>Turn a Check into a Test</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="matchArg.html">matchArg</a></code> </p>
+            <p><code><a href="matchArg.html">matchArg()</a></code> </p>
           </td>
           <td><p>Partial Argument Matching</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="qassert.html">qassert</a></code> <code><a href="qassert.html">qtest</a></code> <code><a href="qassert.html">qexpect</a></code> </p>
+            <p><code><a href="qassert.html">qassert()</a></code> <code><a href="qassert.html">qtest()</a></code> <code><a href="qassert.html">qexpect()</a></code> </p>
           </td>
           <td><p>Quick argument checks on (builtin) R types</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="qassertr.html">qassertr</a></code> <code><a href="qassertr.html">qtestr</a></code> <code><a href="qassertr.html">qexpectr</a></code> </p>
+            <p><code><a href="qassertr.html">qassertr()</a></code> <code><a href="qassertr.html">qtestr()</a></code> <code><a href="qassertr.html">qexpectr()</a></code> </p>
           </td>
           <td><p>Quick recursive arguments checks on lists and data frames</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="vname.html">vname</a></code> </p>
+            <p><code><a href="vname.html">vname()</a></code> </p>
           </td>
           <td><p>Lookup a variable name</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="wf.html">wf</a></code> <code><a href="wf.html">wl</a></code> </p>
+            <p><code><a href="wf.html">wf()</a></code> <code><a href="wf.html">wl()</a></code> </p>
           </td>
           <td><p>Get the index of the first/last TRUE</p></td>
         </tr>
@@ -481,7 +491,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -489,3 +499,4 @@
 
   </body>
 </html>
+

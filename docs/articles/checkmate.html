@@ -8,8 +8,11 @@
 <title>Checkmate • checkmate</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Checkmate">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -24,24 +27,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">checkmate</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">checkmate</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/checkmate.html">Get Started</a>
+  <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -66,8 +73,11 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2017-10-12</h4>
-          </div>
+            <h4 class="date">2018-03-26</h4>
+      
+      <small>Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd"><code>vignettes/checkmate.Rmd</code></a></small>
+
+    </div>
 
     
     
@@ -80,44 +90,44 @@
 <h2 class="hasAnchor">
 <a href="#intro" class="anchor"></a>Intro</h2>
 <p>As a motivational example, consider you have a function to calculate the faculty of a natural number and the user may choose between using either the stirling approximation or R’s <code>factorial</code> function (which internally uses the gamma function). Thus, you have two arguments, <code>n</code> and <code>method</code>. Argument <code>n</code> must obviously be a positive natural number and <code>method</code> must be either <code>"stirling"</code> or <code>"factorial"</code>. Here is a version of all the hoops you need to jump through to ensure that these simple requirements are met:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fact &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">method =</span> <span class="st">"stirling"</span>) {
-  <span class="cf">if</span> (<span class="kw">length</span>(n) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)
-    <span class="kw">stop</span>(<span class="st">"Argument 'n' must have length 1"</span>)
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(n))
-    <span class="kw">stop</span>(<span class="st">"Argument 'n' must be numeric"</span>)
-  <span class="cf">if</span> (<span class="kw">is.na</span>(n))
-    <span class="kw">stop</span>(<span class="st">"Argument 'n' may not be NA"</span>)
-  <span class="cf">if</span> (<span class="kw">is.double</span>(n)) {
-    <span class="cf">if</span> (<span class="kw">is.nan</span>(n))
-      <span class="kw">stop</span>(<span class="st">"Argument 'n' may not be NaN"</span>)
-    <span class="cf">if</span> (<span class="kw">is.infinite</span>(n))
-      <span class="kw">stop</span>(<span class="st">"Argument 'n' must be finite"</span>)
-    <span class="cf">if</span> (<span class="kw">abs</span>(n <span class="op">-</span><span class="st"> </span><span class="kw">round</span>(n, <span class="dv">0</span>)) <span class="op">&gt;</span><span class="st"> </span><span class="kw">sqrt</span>(.Machine<span class="op">$</span>double.eps))
-      <span class="kw">stop</span>(<span class="st">"Argument 'n' must be an integerish value"</span>)
-    n &lt;-<span class="st"> </span><span class="kw">as.integer</span>(n)
-  }
-  <span class="cf">if</span> (n <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>)
-    <span class="kw">stop</span>(<span class="st">"Argument 'n' must be &gt;= 0"</span>)
-  <span class="cf">if</span> (<span class="kw">length</span>(method) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)
-    <span class="kw">stop</span>(<span class="st">"Argument 'method' must have length 1"</span>)
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.character</span>(method) <span class="op">||</span><span class="st"> </span><span class="op">!</span>method <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"stirling"</span>, <span class="st">"factorial"</span>))
-    <span class="kw">stop</span>(<span class="st">"Argument 'method' must be either 'stirling' or 'factorial'"</span>)
-
-  <span class="cf">if</span> (method <span class="op">==</span><span class="st"> "factorial"</span>)
-    <span class="kw">factorial</span>(n)
-  <span class="cf">else</span>
-    <span class="kw">sqrt</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>n) <span class="op">*</span><span class="st"> </span>(n <span class="op">/</span><span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))<span class="op">^</span>n
-}</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">fact &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">method =</span> <span class="st">"stirling"</span>) {</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="cf">if</span> (<span class="kw">length</span>(n) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="kw">stop</span>(<span class="st">"Argument 'n' must have length 1"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(n))</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">    <span class="kw">stop</span>(<span class="st">"Argument 'n' must be numeric"</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="cf">if</span> (<span class="kw">is.na</span>(n))</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">    <span class="kw">stop</span>(<span class="st">"Argument 'n' may not be NA"</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="cf">if</span> (<span class="kw">is.double</span>(n)) {</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9">    <span class="cf">if</span> (<span class="kw">is.nan</span>(n))</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10">      <span class="kw">stop</span>(<span class="st">"Argument 'n' may not be NaN"</span>)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11">    <span class="cf">if</span> (<span class="kw">is.infinite</span>(n))</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">      <span class="kw">stop</span>(<span class="st">"Argument 'n' must be finite"</span>)</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13">    <span class="cf">if</span> (<span class="kw">abs</span>(n <span class="op">-</span><span class="st"> </span><span class="kw">round</span>(n, <span class="dv">0</span>)) <span class="op">&gt;</span><span class="st"> </span><span class="kw">sqrt</span>(.Machine<span class="op">$</span>double.eps))</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14">      <span class="kw">stop</span>(<span class="st">"Argument 'n' must be an integerish value"</span>)</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">    n &lt;-<span class="st"> </span><span class="kw">as.integer</span>(n)</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">  }</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">  <span class="cf">if</span> (n <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">    <span class="kw">stop</span>(<span class="st">"Argument 'n' must be &gt;= 0"</span>)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">  <span class="cf">if</span> (<span class="kw">length</span>(method) <span class="op">!=</span><span class="st"> </span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">    <span class="kw">stop</span>(<span class="st">"Argument 'method' must have length 1"</span>)</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.character</span>(method) <span class="op">||</span><span class="st"> </span><span class="op">!</span>method <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">"stirling"</span>, <span class="st">"factorial"</span>))</a>
+<a class="sourceLine" id="cb1-22" data-line-number="22">    <span class="kw">stop</span>(<span class="st">"Argument 'method' must be either 'stirling' or 'factorial'"</span>)</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">  <span class="cf">if</span> (method <span class="op">==</span><span class="st"> "factorial"</span>)</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">    <span class="kw">factorial</span>(n)</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26">  <span class="cf">else</span></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">    <span class="kw">sqrt</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>n) <span class="op">*</span><span class="st"> </span>(n <span class="op">/</span><span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))<span class="op">^</span>n</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28">}</a></code></pre></div>
 <p>And for comparison, here is the same function using checkmate:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fact &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">method =</span> <span class="st">"stirling"</span>) {
-  <span class="kw"><a href="../reference/checkCount.html">assertCount</a></span>(n)
-  <span class="kw"><a href="../reference/checkChoice.html">assertChoice</a></span>(method, <span class="kw">c</span>(<span class="st">"stirling"</span>, <span class="st">"factorial"</span>))
-
-  <span class="cf">if</span> (method <span class="op">==</span><span class="st"> "factorial"</span>)
-    <span class="kw">factorial</span>(n)
-  <span class="cf">else</span>
-    <span class="kw">sqrt</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>n) <span class="op">*</span><span class="st"> </span>(n <span class="op">/</span><span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))<span class="op">^</span>n
-}</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">fact &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">method =</span> <span class="st">"stirling"</span>) {</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="kw"><a href="../reference/checkCount.html">assertCount</a></span>(n)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="kw"><a href="../reference/checkChoice.html">assertChoice</a></span>(method, <span class="kw">c</span>(<span class="st">"stirling"</span>, <span class="st">"factorial"</span>))</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">  <span class="cf">if</span> (method <span class="op">==</span><span class="st"> "factorial"</span>)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="kw">factorial</span>(n)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="cf">else</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="kw">sqrt</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>n) <span class="op">*</span><span class="st"> </span>(n <span class="op">/</span><span class="st"> </span><span class="kw">exp</span>(<span class="dv">1</span>))<span class="op">^</span>n</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">}</a></code></pre></div>
 </div>
 <div id="function-overview" class="section level2">
 <h2 class="hasAnchor">
@@ -134,12 +144,12 @@
 <a href="#in-case-you-miss-flexibility" class="anchor"></a>In case you miss flexibility</h2>
 <p>You can use <a href="https://mllg.github.io/checkmate/reference/assert">assert</a> to perform multiple checks at once and throw an assertion if all checks fail.</p>
 <p>Here is an example where we check that x is either of class <code>foo</code> or class <code>bar</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-  <span class="kw"><a href="../reference/assert.html">assert</a></span>(
-    <span class="kw"><a href="../reference/checkClass.html">checkClass</a></span>(x, <span class="st">"foo"</span>),
-    <span class="kw"><a href="../reference/checkClass.html">checkClass</a></span>(x, <span class="st">"bar"</span>)
-  )
-}</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw"><a href="../reference/assert.html">assert</a></span>(</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    <span class="kw"><a href="../reference/checkClass.html">checkClass</a></span>(x, <span class="st">"foo"</span>),</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    <span class="kw"><a href="../reference/checkClass.html">checkClass</a></span>(x, <span class="st">"bar"</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">  )</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">}</a></code></pre></div>
 <p>Note that <code><a href="../reference/assert.html">assert(, combine = "or")</a></code> and <code><a href="../reference/assert.html">assert(, combine = "and")</a></code> allow to control the logical combination of the specified checks, and that the former is the default.</p>
 </div>
 <div id="argument-checks-for-the-lazy" class="section level2">
@@ -155,17 +165,17 @@
 <h2 class="hasAnchor">
 <a href="#checkmate-as-testthat-extension" class="anchor"></a>checkmate as testthat extension</h2>
 <p>To extend <a href="https://cran.r-project.org/package=testthat">testthat</a>, you need to IMPORT, DEPEND or SUGGEST on the <code>checkmate</code> package. Here is a minimal example:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># file: tests/test-all.R</span>
-<span class="kw">library</span>(testthat)
-<span class="kw">library</span>(checkmate) <span class="co"># for testthat extensions</span>
-<span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_package">test_check</a></span>(<span class="st">"mypkg"</span>)</code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># file: tests/test-all.R</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>(testthat)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">library</span>(checkmate) <span class="co"># for testthat extensions</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_dir">test_check</a></span>(<span class="st">"mypkg"</span>)</a></code></pre></div>
 <p>Now you are all set and can use more than 30 new expectations in your tests.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(<span class="st">"checkmate is a sweet extension for testthat"</span>, {
-  x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>)
-  <span class="kw"><a href="../reference/checkNumeric.html">expect_numeric</a></span>(x, <span class="dt">len =</span> <span class="dv">100</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)
-  <span class="co"># or, equivalent, using the lazy style:</span>
-  <span class="kw"><a href="../reference/qassert.html">qexpect</a></span>(x, <span class="st">"N100[0,1]"</span>)
-})</code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/testthat/topics/test_that">test_that</a></span>(<span class="st">"checkmate is a sweet extension for testthat"</span>, {</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="kw"><a href="../reference/checkNumeric.html">expect_numeric</a></span>(x, <span class="dt">len =</span> <span class="dv">100</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="co"># or, equivalent, using the lazy style:</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">  <span class="kw"><a href="../reference/qassert.html">qexpect</a></span>(x, <span class="st">"N100[0,1]"</span>)</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">})</a></code></pre></div>
 </div>
 <div id="speed-considerations" class="section level2">
 <h2 class="hasAnchor">
@@ -176,88 +186,88 @@
 <div id="benchmark-1-assert-that-x-is-a-flag" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-1-assert-that-x-is-a-flag" class="anchor"></a>Benchmark 1: Assert that <code>x</code> is a flag</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
-<span class="kw">library</span>(microbenchmark)
-
-x =<span class="st"> </span><span class="ot">TRUE</span>
-r =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.ok =</span> <span class="ot">FALSE</span>) { <span class="kw">stopifnot</span>(<span class="kw">is.logical</span>(x), <span class="kw">length</span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, na.ok <span class="op">||</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(x)) }
-cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkFlag.html">assertFlag</a></span>(x)
-cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"B1"</span>)
-mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
-<span class="kw">print</span>(mb)</code></pre></div>
-<pre><code>## Unit: nanoseconds
-##    expr  min     lq     mean median     uq     max neval cld
-##    r(x) 6096 6324.0 26661.65 6611.5 6973.0 1967740   100   a
-##   cm(x) 1417 1562.5  8681.94 1768.0 1942.5  610412   100   a
-##  cmq(x)  883 1019.0 10335.84 1195.5 1312.0  853494   100   a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(microbenchmark)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">x =<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">r =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.ok =</span> <span class="ot">FALSE</span>) { <span class="kw">stopifnot</span>(<span class="kw">is.logical</span>(x), <span class="kw">length</span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, na.ok <span class="op">||</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(x)) }</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkFlag.html">assertFlag</a></span>(x)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"B1"</span>)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">print</span>(mb)</a></code></pre></div>
+<pre><code>## Unit: microseconds
+##    expr    min      lq      mean  median      uq      max neval cld
+##    r(x) 11.253 11.6850  69.69213 11.9815 12.4935 5618.906   100   a
+##   cm(x)  2.592  2.9925  18.97063  3.1190  3.3030 1365.212   100   a
+##  cmq(x)  1.700  1.9460 109.36515  2.1180  2.3325 8416.143   100   a</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.svg" width="576"></p>
 </div>
 <div id="benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values" class="anchor"></a>Benchmark 2: Assert that <code>x</code> is a numeric of length 1000 with no missing nor NaN values</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1000</span>)
-r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">length</span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1000</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="op">!</span><span class="kw">is.na</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1</span>))
-cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkNumeric.html">assertNumeric</a></span>(x, <span class="dt">len =</span> <span class="dv">1000</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)
-cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"N1000[0,1]"</span>)
-mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
-<span class="kw">print</span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">x =<span class="st"> </span><span class="kw">runif</span>(<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">stopifnot</span>(<span class="kw">is.numeric</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">length</span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1000</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="op">!</span><span class="kw">is.na</span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkNumeric.html">assertNumeric</a></span>(x, <span class="dt">len =</span> <span class="dv">1000</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"N1000[0,1]"</span>)</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">print</span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq      max neval cld
-##    r(x) 17.653 18.5760 54.37662 18.8775 19.1455 3517.817   100   a
-##   cm(x)  5.867  6.1420 15.45784  6.5050  6.7265  824.293   100   a
-##  cmq(x)  6.476  6.6745 15.86392  6.9835  7.1760  889.543   100   a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
+##    r(x) 22.226 23.3975 103.5009 30.4840 31.1030 7461.963   100   a
+##   cm(x)  5.638  6.7190 100.9138  7.7595  8.6695 7917.376   100   a
+##  cmq(x)  6.720  7.7445  31.9128  9.3760  9.7535 2249.278   100   a</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.svg" width="576"></p>
 </div>
 <div id="benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings" class="anchor"></a>Benchmark 3: Assert that <code>x</code> is a character vector with no missing values nor empty strings</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x =<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">10000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
-r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">any</span>(<span class="kw">is.na</span>(x)) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="kw">nchar</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))
-cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkCharacter.html">assertCharacter</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">min.chars =</span> <span class="dv">1</span>)
-cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"S+[1,]"</span>)
-mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
-<span class="kw">print</span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">x =<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">10000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">stopifnot</span>(<span class="kw">is.character</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">any</span>(<span class="kw">is.na</span>(x)) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="kw">nchar</span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkCharacter.html">assertCharacter</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">min.chars =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"S+[1,]"</span>)</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw">print</span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr      min        lq       mean    median        uq      max neval
-##    r(x) 1307.376 1315.9475 1413.36211 1335.8655 1383.0330 4052.187   100
-##   cm(x)   36.729   37.3880   49.41881   38.1525   41.0635  762.513   100
-##  cmq(x)   45.961   46.2935   57.23689   46.9740   48.5875  905.126   100
+##    r(x) 1659.608 1666.5560 1922.59460 1744.6670 1930.1830 5589.241   100
+##   cm(x)   63.446   65.0005   94.73766   67.7775   74.5825 1597.922   100
+##  cmq(x)   67.407   67.9085   85.88809   69.0890   71.8920 1150.803   100
 ##  cld
 ##    b
 ##   a 
 ##   a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.svg" width="576"></p>
 </div>
 <div id="benchmark-4-assert-that-x-is-a-data-frame-with-no-missing-values" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-4-assert-that-x-is-a-data-frame-with-no-missing-values" class="anchor"></a>Benchmark 4: Assert that <code>x</code> is a data frame with no missing values</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N =<span class="st"> </span><span class="dv">10000</span>
-x =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">runif</span>(N), <span class="dt">b =</span> <span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], N, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">c =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), N, <span class="dt">replace =</span> <span class="ot">TRUE</span>))
-r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">is.data.frame</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">any</span>(<span class="kw">sapply</span>(x, <span class="cf">function</span>(x) <span class="kw">any</span>(<span class="kw">is.na</span>(x))))
-cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkDataFrame.html">testDataFrame</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>)
-cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(x, <span class="st">"D"</span>)
-mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
-<span class="kw">print</span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">N =<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">x =<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">a =</span> <span class="kw">runif</span>(N), <span class="dt">b =</span> <span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], N, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">c =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), N, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">is.data.frame</span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">any</span>(<span class="kw">sapply</span>(x, <span class="cf">function</span>(x) <span class="kw">any</span>(<span class="kw">is.na</span>(x))))</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkDataFrame.html">testDataFrame</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(x, <span class="st">"D"</span>)</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb15-7" data-line-number="7"><span class="kw">print</span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq      mean  median      uq      max neval cld
-##    r(x) 59.224 60.8230 111.62029 61.8430 76.9550 2329.441   100   b
-##   cm(x) 15.413 16.0795  26.90227 16.4405 16.8675  819.508   100  a 
-##  cmq(x) 11.315 11.5860  18.51955 11.8815 12.1370  640.654   100  a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
+##    expr    min     lq      mean  median       uq      max neval cld
+##    r(x) 87.570 90.091 155.71101 94.6040 164.6570 4028.684   100   b
+##   cm(x) 22.310 23.802  40.41638 25.4825  27.7000 1189.467   100  a 
+##  cmq(x) 15.627 16.046  32.53940 17.2960  19.0295 1423.283   100  a</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.svg" width="576"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># checkmate tries to stop as early as possible</span>
-x<span class="op">$</span>a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</span>
-mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))
-<span class="kw">print</span>(mb)</code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="co"># checkmate tries to stop as early as possible</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">x<span class="op">$</span>a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw">cm</span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">print</span>(mb)</a></code></pre></div>
 <pre><code>## Unit: nanoseconds
-##    expr   min      lq     mean  median      uq     max neval cld
-##    r(x) 55030 55890.0 68828.33 57308.5 58632.0 1104969   100   b
-##   cm(x)  3478  3720.5  4409.32  4211.5  4683.0   17054   100  a 
-##  cmq(x)   637   736.5  1124.67   943.5  1284.5   11211   100  a</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</code></pre></div>
+##    expr   min      lq     mean  median      uq    max neval cld
+##    r(x) 73619 74900.5 80499.23 75587.5 81001.5 185630   100   c
+##   cm(x)  5565  6803.0  8459.24  8447.0  9123.0  33653   100  b 
+##  cmq(x)   817  1327.0  1784.25  1697.5  1982.0  10823   100 a</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.svg" width="576"></p>
 </div>
 </div>
@@ -265,44 +275,44 @@ mb =<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation
 <h2 class="hasAnchor">
 <a href="#extending-checkmate" class="anchor"></a>Extending checkmate</h2>
 <p>To extend checkmate a custom <code>check*</code> function has to be written. For example, to check for a square matrix one can re-use parts of checkmate and extend the check with additional functionality:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">checkSquareMatrix =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">mode =</span> <span class="ot">NULL</span>) {
-  <span class="co"># check functions must return TRUE on success</span>
-  <span class="co"># and a custom error message otherwise</span>
-  res =<span class="st"> </span><span class="kw"><a href="../reference/checkMatrix.html">checkMatrix</a></span>(x, <span class="dt">mode =</span> mode)
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">isTRUE</span>(res))
-    <span class="kw">return</span>(res)
-  <span class="cf">if</span> (<span class="kw">nrow</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">ncol</span>(x))
-    <span class="kw">return</span>(<span class="st">"Must be square"</span>)
-  <span class="kw">return</span>(<span class="ot">TRUE</span>)
-}
-
-<span class="co"># a quick test:</span>
-X =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)
-<span class="kw">checkSquareMatrix</span>(X)</code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">checkSquareMatrix =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">mode =</span> <span class="ot">NULL</span>) {</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">  <span class="co"># check functions must return TRUE on success</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">  <span class="co"># and a custom error message otherwise</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">  res =<span class="st"> </span><span class="kw"><a href="../reference/checkMatrix.html">checkMatrix</a></span>(x, <span class="dt">mode =</span> mode)</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">isTRUE</span>(res))</a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">    <span class="kw">return</span>(res)</a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">  <span class="cf">if</span> (<span class="kw">nrow</span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw">ncol</span>(x))</a>
+<a class="sourceLine" id="cb21-8" data-line-number="8">    <span class="kw">return</span>(<span class="st">"Must be square"</span>)</a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">  <span class="kw">return</span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"><span class="co"># a quick test:</span></a>
+<a class="sourceLine" id="cb21-13" data-line-number="13">X =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb21-14" data-line-number="14"><span class="kw">checkSquareMatrix</span>(X)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">checkSquareMatrix</span>(X, <span class="dt">mode =</span> <span class="st">"character"</span>)</code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">checkSquareMatrix</span>(X, <span class="dt">mode =</span> <span class="st">"character"</span>)</a></code></pre></div>
 <pre><code>## [1] "Must store characters"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">checkSquareMatrix</span>(X[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">checkSquareMatrix</span>(X[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a></code></pre></div>
 <pre><code>## [1] "Must be square"</code></pre>
 <p>The respective counterparts to the <code>check</code>-function can be created using the constructors <a href="https://mllg.github.io/checkmate/reference/makeAssertion">makeAssertionFunction</a>, <a href="https://mllg.github.io/checkmate/reference/makeTest">makeTestFunction</a> and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExpectationFunction</a>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For assertions:</span>
-assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span>(checkSquareMatrix)
-<span class="kw">print</span>(assertSquareMatrix)</code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># For assertions:</span></a>
+<a class="sourceLine" id="cb27-2" data-line-number="2">assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">print</span>(assertSquareMatrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL, .var.name = vname(x), add = NULL) 
 ## {
 ##     res = checkSquareMatrix(x, mode)
 ##     makeAssertion(x, res, .var.name, add)
 ## }</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For tests:</span>
-test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)
-<span class="kw">print</span>(testSquareMatrix)</code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># For tests:</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw">print</span>(testSquareMatrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL) 
 ## {
 ##     identical(checkSquareMatrix(x, mode), TRUE)
 ## }</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># For expectations:</span>
-expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)
-<span class="kw">print</span>(expect_square_matrix)</code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># For expectations:</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw">print</span>(expect_square_matrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL, info = NULL, label = vname(x)) 
 ## {
 ##     res = checkSquareMatrix(x, mode)
@@ -314,55 +324,58 @@ expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../refe
 <h2 class="hasAnchor">
 <a href="#calling-checkmate-from-cc" class="anchor"></a>Calling checkmate from C/C++</h2>
 <p>The package registers two functions which can be used in other packages’ C/C++ code for argument checks.</p>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c">SEXP qassert(SEXP x, <span class="dt">const</span> <span class="dt">char</span> *rule, <span class="dt">const</span> <span class="dt">char</span> *name);
-Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span> *rule);</code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">SEXP <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(SEXP x, const char <span class="op">*</span>rule, const char <span class="op">*</span>name);</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">Rboolean <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(SEXP x, const char <span class="op">*</span>rule);</a></code></pre></div>
 <p>These are the counterparts to <a href="https://mllg.github.io/checkmate/reference/qassert">qassert</a> and <a href="https://mllg.github.io/checkmate/reference/qassert">qtest</a>. Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.</p>
 <p>For detailed background information on the register mechanism, see the <a href="http://r-pkgs.had.co.nz/src.html#clang">Exporting C Code</a> section in Hadley’s Book “R Packages” or <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines">WRE</a>. Here is a step-by-step guide to get you started:</p>
 <ol style="list-style-type: decimal">
 <li>Add <code>checkmate</code> to your “Imports” and “LinkingTo” sections in your DESCRIPTION file.</li>
-<li>Create a stub C source file <code>"checkmate_stub.c"</code>. See example below.</li>
+<li>Create a stub C source file <code>"checkmate_stub.c"</code>, see below.</li>
 <li>Include the provided header file <code>&lt;checkmate.h&gt;</code> in each compilation unit where you want to use checkmate.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode c"><code class="sourceCode c"><span class="co">/* Example for (2), "checkmate_stub.c":*/</span>
-<span class="pp">#include </span><span class="im">&lt;checkmate.h&gt;</span>
-<span class="pp">#include </span><span class="im">&lt;checkmate_stub.c&gt;</span></code></pre></div>
+<p>File contents for (2):</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co">#include &lt;checkmate.h&gt;</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#include &lt;checkmate_stub.c&gt;</span></a></code></pre></div>
 </div>
 <div id="session-info" class="section level2">
 <h2 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session Info</h2>
 <p>For the sake of completeness, here the <code>sessionInfo()</code> for the benchmark (but remember the note before on <code>knitr</code> possibly biasing the results).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sessionInfo</span>()</code></pre></div>
-<pre><code>## R version 3.4.2 (2017-09-28)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Arch Linux
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<pre><code>## R version 3.4.4 (2018-03-15)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS High Sierra 10.13.3
 ## 
 ## Matrix products: default
-## BLAS/LAPACK: /usr/lib/libopenblas_haswellp-r0.2.20.so
+## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
-##  [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8    
-##  [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8   
-##  [7] LC_PAPER=de_DE.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C       
+## [1] de_DE.UTF-8/de_DE.UTF-8/de_DE.UTF-8/C/de_DE.UTF-8/de_DE.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-2.1 ggplot2_2.2.1          checkmate_1.8.4-9000  
+## [1] microbenchmark_1.4-4 ggplot2_2.2.1        checkmate_1.8.5-9000
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.13     knitr_1.17       magrittr_1.5     MASS_7.3-47     
-##  [5] splines_3.4.2    munsell_0.4.3    lattice_0.20-35  colorspace_1.3-2
-##  [9] rlang_0.1.2.9000 multcomp_1.4-7   stringr_1.2.0    plyr_1.8.4      
-## [13] tools_3.4.2      grid_3.4.2       gtable_0.2.0     TH.data_1.0-8   
-## [17] htmltools_0.3.6  survival_2.41-3  yaml_2.1.14      lazyeval_0.2.0  
-## [21] rprojroot_1.2    digest_0.6.12    tibble_1.3.4     Matrix_1.2-11   
-## [25] codetools_0.2-15 evaluate_0.10.1  rmarkdown_1.6    sandwich_2.4-0  
-## [29] stringi_1.1.5    compiler_3.4.2   methods_3.4.2    scales_0.5.0    
-## [33] backports_1.1.1  mvtnorm_1.0-6    zoo_1.8-0</code></pre>
+##  [1] Rcpp_0.12.16       compiler_3.4.4     pillar_1.2.1      
+##  [4] plyr_1.8.4         methods_3.4.4      tools_3.4.4       
+##  [7] digest_0.6.15      evaluate_0.10.1    memoise_1.1.0     
+## [10] tibble_1.4.2       gtable_0.2.0       lattice_0.20-35   
+## [13] rlang_0.2.0.9001   Matrix_1.2-12      commonmark_1.4    
+## [16] yaml_2.1.18        mvtnorm_1.0-7      pkgdown_0.1.0.9000
+## [19] stringr_1.3.0      roxygen2_6.0.1     xml2_1.2.0.9000   
+## [22] knitr_1.20         desc_1.1.1         fs_1.2.2          
+## [25] rprojroot_1.3-2    grid_3.4.4         R6_2.2.2          
+## [28] survival_2.41-3    rmarkdown_1.9      multcomp_1.4-8    
+## [31] TH.data_1.0-8      magrittr_1.5       codetools_0.2-15  
+## [34] backports_1.1.2    scales_0.5.0       htmltools_0.3.6   
+## [37] MASS_7.3-49        splines_3.4.4      assertthat_0.2.0  
+## [40] colorspace_1.3-2   sandwich_2.4-0     stringi_1.1.7     
+## [43] lazyeval_0.2.1     munsell_0.4.3      crayon_1.3.4      
+## [46] zoo_1.8-1</code></pre>
 </div>
 </div>
   </div>
@@ -393,7 +406,7 @@ Rboolean qtest(SEXP x, <span class="dt">const</span> <span class="dt">char</span
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

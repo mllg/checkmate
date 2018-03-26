@@ -18,13 +18,25 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Combine multiple checks into one assertion — assert" />
+
+<meta property="og:description" content="You can call this function with an arbitrary number of of check*
+functions, i.e. functions provided by this package or your own functions which
+return TRUE on success and the error message as character(1) otherwise.
+The resulting assertion is successful, if combine is
+&#8220;or&#8221; (default) and at least one check evaluates to TRUE or
+combine is &#8220;and&#8221; and all checks evaluate to TRUE.
+Otherwise, assert throws an informative error message." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,24 +59,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">checkmate</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">checkmate</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/checkmate.html">Get Started</a>
+  <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -87,6 +103,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Combine multiple checks into one assertion</h1>
+    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
     </div>
 
     
@@ -101,23 +118,23 @@ Otherwise, <code>assert</code> throws an informative error message.</p>
 
     <pre class="usage"><span class='fu'>assert</span>(<span class='no'>...</span>, <span class='kw'>combine</span> <span class='kw'>=</span> <span class='st'>"or"</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>[any]
+      <td><p>[any]<br />
 List of calls to check functions.</p></td>
     </tr>
     <tr>
       <th>combine</th>
-      <td><p>[<code>character(1)</code>]
+      <td><p>[<code>character(1)</code>]<br />
 &#8220;or&#8221; or &#8220;and&#8221; to combine the check functions with an OR
 or AND, respectively.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code>character(1)</code>]
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -155,7 +172,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
@@ -163,3 +180,4 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
   </body>
 </html>
+

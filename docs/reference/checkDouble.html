@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if an argument is a vector of type complex — checkComplex • checkmate</title>
+<title>Check that an argument is a vector of type double — checkDouble • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Check if an argument is a vector of type complex — checkComplex" />
+<meta property="og:title" content="Check that an argument is a vector of type double — checkDouble" />
 
-<meta property="og:description" content="Check if an argument is a vector of type complex" />
+<meta property="og:description" content="Check that an argument is a vector of type double" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -96,40 +96,47 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if an argument is a vector of type complex</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkComplex.R'><code>R/checkComplex.R</code></a></small>
+    <h1>Check that an argument is a vector of type double</h1>
+    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkDouble.R'><code>R/checkDouble.R</code></a></small>
     </div>
 
     
-    <p>Check if an argument is a vector of type complex</p>
+    <p>Check that an argument is a vector of type double</p>
     
 
-    <pre class="usage"><span class='fu'>checkComplex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>checkDouble</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_complex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>check_double</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertComplex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>assertDouble</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_complex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>assert_double</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testComplex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>testDouble</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_complex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>test_double</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_complex</span>(<span class='no'>x</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>expect_double</span>(<span class='no'>x</span>, <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>finite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -139,6 +146,21 @@
       <th>x</th>
       <td><p>[any]<br />
 Object to check.</p></td>
+    </tr>
+    <tr>
+      <th>lower</th>
+      <td><p>[<code>numeric(1)</code>]<br />
+Lower value all elements of <code>x</code> must be greater than or equal to.</p></td>
+    </tr>
+    <tr>
+      <th>upper</th>
+      <td><p>[<code>numeric(1)</code>]<br />
+Upper value all elements of <code>x</code> must be lower than or equal to.</p></td>
+    </tr>
+    <tr>
+      <th>finite</th>
+      <td><p>[<code>logical(1)</code>]<br />
+Check for only finite values? Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>any.missing</th>
@@ -169,6 +191,11 @@ Maximal length of <code>x</code>.</p></td>
       <th>unique</th>
       <td><p>[<code>logical(1)</code>]<br />
 Must all values be unique? Default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>sorted</th>
+      <td><p>[<code>logical(1)</code>]<br />
+Elements must be sorted in ascending order. Missing values are ignored.</p></td>
     </tr>
     <tr>
       <th>names</th>
@@ -212,18 +239,18 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <p>Depending on the function prefix:
  If the check is successful, the functions 
- <code>assertComplex</code>/<code>assert_complex</code> return 
+ <code>assertDouble</code>/<code>assert_double</code> return 
  <code>x</code> invisibly, whereas
- <code>checkComplex</code>/<code>check_complex</code> and 
- <code>testComplex</code>/<code>test_complex</code> return 
+ <code>checkDouble</code>/<code>check_double</code> and 
+ <code>testDouble</code>/<code>test_double</code> return 
  <code>TRUE</code>.
  If the check is not successful, 
- <code>assertComplex</code>/<code>assert_complex</code>
+ <code>assertDouble</code>/<code>assert_double</code>
  throws an error message, 
- <code>testComplex</code>/<code>test_complex</code>
+ <code>testDouble</code>/<code>test_double</code>
  returns <code>FALSE</code>,
- and <code>checkComplex</code> returns a string with the error message.
- The function <code>expect_complex</code> always returns an
+ and <code>checkDouble</code> returns a string with the error message.
+ The function <code>expect_double</code> always returns an
  <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -237,9 +264,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
     <p>Other basetypes: <code><a href='checkArray.html'>checkArray</a></code>,
   <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>,
   <code><a href='checkAtomic.html'>checkAtomic</a></code>, <code><a href='checkCharacter.html'>checkCharacter</a></code>,
-  <code><a href='checkDataFrame.html'>checkDataFrame</a></code>, <code><a href='checkDate.html'>checkDate</a></code>,
-  <code><a href='checkDouble.html'>checkDouble</a></code>,
-  <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
+  <code><a href='checkComplex.html'>checkComplex</a></code>, <code><a href='checkDataFrame.html'>checkDataFrame</a></code>,
+  <code><a href='checkDate.html'>checkDate</a></code>, <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
   <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFunction.html'>checkFunction</a></code>,
   <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
   <code><a href='checkInteger.html'>checkInteger</a></code>, <code><a href='checkList.html'>checkList</a></code>,
@@ -249,7 +275,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>testComplex</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testComplex</span>(<span class='fl'>1</span>+<span class='fl'>1i</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>testDouble</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testDouble</span>(<span class='fl'>1L</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testDouble</span>(<span class='fl'>1</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
