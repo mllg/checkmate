@@ -36,6 +36,7 @@ test_that("checkSetEqual", {
 
 
 test_that("checkSetEqual / fastmatch", {
+  skip_if_not_installed("fastmatch")
   x = letters[5:1]
   y = letters[1:5]
 

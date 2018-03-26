@@ -34,6 +34,7 @@ test_that("checkChoice", {
 
 
 test_that("checkChoice / fastmatch", {
+  skip_if_not_installed("fastmatch")
   x = "c"
   y = letters[1:5]
 

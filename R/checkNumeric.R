@@ -1,5 +1,10 @@
 #' Check that an argument is a vector of type numeric
 #'
+#' @description
+#' Vectors of storage type \dQuote{integer} and \dQuote{double} count as \dQuote{numeric}, c.f. \code{\link[base]{is.numeric}}.
+#' To explicitly check for real integer or double vectors, see \code{\link{checkInteger}}, \code{\link{checkIntegerish}} or
+#' \code{\link{checkDouble}}.
+#'
 #' @templateVar fn Numeric
 #' @template x
 #' @template na-handling

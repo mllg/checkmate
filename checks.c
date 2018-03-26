@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <string.h>
+#include <Rversion.h>
 #include "checks.h"
 #include "is_integerish.h"
 #include "any_missing.h"
@@ -8,7 +9,6 @@
 #include "all_nchar.h"
 #include "helper.h"
 #include "guess_type.h"
-
 static char msg[255] = "";
 
 #define HANDLE_TYPE(expr, expected) \
@@ -355,6 +355,9 @@ static inline Rboolean is_scalar_na(SEXP x) {
 }
 
 static Rboolean is_sorted_integer(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+
+#else
     R_xlen_t i = 0;
     const int * const xi = INTEGER(x);
     const R_xlen_t n = xlength(x);
@@ -372,6 +375,7 @@ static Rboolean is_sorted_integer(SEXP x) {
         }
     }
     return TRUE;
+#endif
 }
 
 
@@ -573,18 +577,6 @@ SEXP attribute_hidden c_check_names(SEXP x, SEXP type) {
 
 SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isStrictlyNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
-    ASSERT_TRUE(check_vector_finite(x, finite));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    ASSERT_TRUE(check_vector_sorted(x, sorted));
-    return ScalarLogical(TRUE);
-}
-
-SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isReal(x) || all_missing_atomic(x), "double", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));

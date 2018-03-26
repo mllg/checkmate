@@ -1,3 +1,7 @@
+# Version 1.8.6
+* Added `checkDouble` to explicitly check for non-integer numerics.
+* Fixed an error message in `checkChoice`.
+
 # Version 1.8.5
 * Added `*POSIXct` to check POSIXct data-time objects in POSIXct format.
 * The set functions optionally support the package `fastmatch` now.

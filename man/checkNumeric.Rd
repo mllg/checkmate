@@ -121,7 +121,9 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check that an argument is a vector of type numeric
+Vectors of storage type \dQuote{integer} and \dQuote{double} count as \dQuote{numeric}, c.f. \code{\link[base]{is.numeric}}.
+To explicitly check for real integer or double vectors, see \code{\link{checkInteger}}, \code{\link{checkIntegerish}} or
+\code{\link{checkDouble}}.
 }
 \details{
 This function does not distinguish between
@@ -137,7 +139,8 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkEnvironment}},
+  \code{\link{checkDate}}, \code{\link{checkDouble}},
+  \code{\link{checkEnvironment}},
   \code{\link{checkFactor}}, \code{\link{checkFunction}},
   \code{\link{checkIntegerish}},
   \code{\link{checkInteger}}, \code{\link{checkList}},

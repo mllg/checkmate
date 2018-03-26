@@ -32,6 +32,7 @@ test_that("checkSubset", {
 
 
 test_that("checkSubset / fastmatch", {
+  skip_if_not_installed("fastmatch")
   x = "c"
   y = letters[1:5]
 
