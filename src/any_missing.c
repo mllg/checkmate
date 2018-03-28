@@ -11,6 +11,10 @@ Rboolean attribute_hidden any_missing_logical(SEXP x) {
 }
 
 Rboolean attribute_hidden any_missing_integer(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+    if (ALTREP(x) && INTEGER_NO_NA(x))
+        return FALSE;
+#endif
     const int * xp = INTEGER(x);
     const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
