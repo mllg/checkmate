@@ -1,4 +1,6 @@
 # Version 1.8.6
+* The calling frame reported in assertions is now identical to the calling
+  frame reported by R's `stop()` function (#117).
 * Added `checkDouble` to explicitly check for non-integer numerics.
 * Fixed an error message in `checkChoice`.
 
