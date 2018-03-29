@@ -4,7 +4,6 @@
 #define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
-#include <R_ext/Visibility.h>
 #include <Rversion.h>
 
 Rboolean isSorted(SEXP x);

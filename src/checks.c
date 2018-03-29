@@ -119,7 +119,7 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
 }
 
 
-Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
+static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (isNull(lower) && isNull(upper))
         return TRUE;
 
