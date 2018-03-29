@@ -80,38 +80,36 @@ static void fmt_posixct(char * out, SEXP x) {
 static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     double tmp = asNumber(lower, "lower");
     if (R_FINITE(tmp)) {
+        const R_xlen_t n = length(x);
         if (isReal(x)) {
             const double *xp = REAL(x);
-            const double * const xend = xp + xlength(x);
-            for (; xp != xend; xp++) {
-                if (!ISNAN(*xp) && *xp < tmp)
-                    return message("All elements must be >= %g", tmp);
+            for (R_xlen_t i = 0; i < n; i++) {
+                if (!ISNAN(xp[i]) && xp[i] < tmp)
+                    return message("Element %i is not >= %g", i + i, tmp);
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER(x);
-            const int * const xend = xp + xlength(x);
-            for (; xp != xend; xp++) {
-                if (*xp != NA_INTEGER && *xp < tmp)
-                    return message("All elements must be >= %g", tmp);
+            for (R_xlen_t i = 0; i < n; i++) {
+                if (xp[i] != NA_INTEGER && xp[i] < tmp)
+                    return message("Element %i is not >= %g", i + 1, tmp);
             }
         }
     }
 
     tmp = asNumber(upper, "upper");
     if (R_FINITE(tmp)) {
+        const R_xlen_t n = length(x);
         if (isReal(x)) {
             const double *xp = REAL(x);
-            const double * const xend = xp + xlength(x);
-            for (; xp != xend; xp++) {
-                if (!ISNAN(*xp) && *xp > tmp)
-                    return message("All elements must be <= %g", tmp);
+            for (R_xlen_t i = 0; i < n; i++) {
+                if (!ISNAN(xp[i]) && xp[i] > tmp)
+                    return message("Element %i is not <= %g", i + 1, tmp);
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER(x);
-            const int * const xend = xp + xlength(x);
-            for (; xp != xend; xp++) {
-                if (*xp != NA_INTEGER && *xp > tmp)
-                    return message("All elements must be <= %g", tmp);
+            for (R_xlen_t i = 0; i < n; i++) {
+                if (xp[i] != NA_INTEGER && xp[i] > tmp)
+                    return message("Element %i is not <= %g", i + 1, tmp);
             }
         }
     }
@@ -212,7 +210,7 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type);
     }
 
-    if (isNull(nn) || any_missing_string(nn) || !all_nchar(nn, 1, FALSE))
+    if (isNull(nn) || find_missing_string(nn) > 0 || !all_nchar(nn, 1, FALSE))
         return message("%s must be named", what);
     if (checks >= T_UNIQUE) {
         if (any_duplicated(nn, FALSE) != 0)
@@ -251,8 +249,11 @@ static Rboolean check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
 }
 
 static Rboolean check_vector_missings(SEXP x, SEXP any_missing, SEXP all_missing) {
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
-        return message("Contains missing values");
+    if (!asFlag(any_missing, "any.missing")) {
+        R_xlen_t pos = find_missing_atomic(x);
+        if (pos > 0)
+            return message("Contains missing values, first at position %i", pos);
+    }
     if (!asFlag(all_missing, "all.missing") && all_missing_atomic(x))
         return message("Contains only missing values");
     return TRUE;
@@ -496,7 +497,7 @@ SEXP attribute_hidden c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d,
     HANDLE_TYPE_NULL(isArray(x), "array", null_ok);
     ASSERT_TRUE(check_storage(x, mode));
 
-    if (!asFlag(any_missing, "any.missing") && any_missing_atomic(x))
+    if (!asFlag(any_missing, "any.missing") && find_missing_atomic(x) > 0)
         return result("Contains missing values");
 
     R_len_t ndim = length(getAttrib(x, R_DimSymbol));

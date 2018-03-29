@@ -66,7 +66,7 @@ double attribute_hidden asNumber(SEXP x, const char *vname) {
 const char attribute_hidden * asString(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
         error("Argument '%s' must be a string, but is %s", vname, guess_type(x));
-    if (any_missing_string(x))
+    if (find_missing_string(x) > 0)
         error("Argument '%s' may not be missing", vname);
     return CHAR(STRING_ELT(x, 0));
 }
