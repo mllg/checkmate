@@ -1,4 +1,5 @@
 # Version 1.8.6
+* Checks for missingness and sort order optimized for ALTREPs.
 * Added `checkDouble` to explicitly check for non-integer numerics.
 * Fixed an error message in `checkChoice`.
 

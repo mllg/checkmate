@@ -13,37 +13,40 @@
 checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+  sorted = FALSE, names = NULL, null.ok = FALSE)
 
 check_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+  sorted = FALSE, names = NULL, null.ok = FALSE)
 
 assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  sorted = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 assert_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  sorted = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 testCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+  sorted = FALSE, names = NULL, null.ok = FALSE)
 
 test_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+  sorted = FALSE, names = NULL, null.ok = FALSE)
 
 expect_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+  sorted = FALSE, names = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr

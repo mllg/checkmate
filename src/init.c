@@ -12,7 +12,7 @@ extern SEXP c_any_nan(SEXP);
 extern SEXP c_check_array(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_atomic(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_atomic_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_complex(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_count(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_dataframe(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -48,7 +48,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_array",         (DL_FUNC) &c_check_array,          7},
     {"c_check_atomic",        (DL_FUNC) &c_check_atomic,         8},
     {"c_check_atomic_vector", (DL_FUNC) &c_check_atomic_vector,  8},
-    {"c_check_character",     (DL_FUNC) &c_check_character,     10},
+    {"c_check_character",     (DL_FUNC) &c_check_character,     11},
     {"c_check_complex",       (DL_FUNC) &c_check_complex,        9},
     {"c_check_count",         (DL_FUNC) &c_check_count,          5},
     {"c_check_dataframe",     (DL_FUNC) &c_check_dataframe,     10},

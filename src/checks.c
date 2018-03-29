@@ -361,13 +361,9 @@ static Rboolean is_sorted_integer(SEXP x) {
         return KNOWN_INCR(sorted);
 #endif
     R_xlen_t i = 0;
-    const int * const xi = INTEGER(x);
     const R_xlen_t n = xlength(x);
-    while(xi[i] == NA_INTEGER) {
-        i++;
-        if (i == n)
-            return TRUE;
-    }
+    const int * const xi = INTEGER(x);
+    while(i < n && xi[i] == NA_INTEGER) i++;
 
     for (R_xlen_t j = i + 1; j < n; j++) {
         if (xi[j] != NA_INTEGER) {
@@ -387,13 +383,9 @@ static Rboolean is_sorted_double(SEXP x) {
         return KNOWN_INCR(sorted);
 #endif
     R_xlen_t i = 0;
-    const double * const xr = REAL(x);
     const R_xlen_t n = xlength(x);
-    while(xr[i] == NA_REAL) {
-        i++;
-        if (i == n)
-            return TRUE;
-    }
+    const double * const xr = REAL(x);
+    while(i < n && xr[i] == NA_REAL) i++;
 
     for (R_xlen_t j = i + 1; j < n; j++) {
         if (xr[j] != NA_REAL) {
@@ -405,6 +397,32 @@ static Rboolean is_sorted_double(SEXP x) {
     return TRUE;
 }
 
+static Rboolean is_sorted_character(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+    int sorted = STRING_IS_SORTED(x);
+    if (sorted != UNKNOWN_SORTEDNESS)
+        return KNOWN_INCR(sorted);
+#endif
+    const R_xlen_t n = length(x);
+    R_xlen_t i = 0;
+    SEXP xi, xj;
+
+    while(i < n) {
+        xi = STRING_ELT(x, i);
+        if (xi != NA_STRING)
+            break;
+    }
+
+    for (R_xlen_t j = i + 1; j < n; j++) {
+        xj = STRING_ELT(x, j);
+        if (xj != NA_STRING) {
+            if (strcmp(CHAR(xi), CHAR(xj)) > 0)
+                return FALSE;
+            xi = xj;
+        }
+    }
+    return TRUE;
+}
 
 static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
     if (asFlag(sorted, "sorted") && xlength(x) > 1) {
@@ -412,6 +430,7 @@ static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
         switch(TYPEOF(x)) {
             case INTSXP: ok = is_sorted_integer(x); break;
             case REALSXP: ok = is_sorted_double(x); break;
+            case STRSXP: ok = is_sorted_character(x); break;
             default: error("Checking for sorted vector only possible for integer and double");
         }
         if (!ok)
@@ -423,7 +442,7 @@ static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
-SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
+SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isString(x) || all_missing_atomic(x), "character", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
@@ -434,6 +453,7 @@ SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing
             return result("All elements must have at least %i characters", n);
     }
     ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
