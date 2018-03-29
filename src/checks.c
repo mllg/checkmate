@@ -360,7 +360,6 @@ static Rboolean is_sorted_integer(SEXP x) {
     if (sorted != UNKNOWN_SORTEDNESS)
         return KNOWN_INCR(sorted);
 #endif
-    Rprintf("PASSED ALTREP");
     R_xlen_t i = 0;
     const int * const xi = INTEGER(x);
     const R_xlen_t n = xlength(x);
