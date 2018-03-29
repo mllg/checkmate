@@ -85,6 +85,9 @@ Maximal length of \code{x}.}
 \item{unique}{[\code{logical(1)}]\cr
 Must all values be unique? Default is \code{FALSE}.}
 
+\item{sorted}{[\code{logical(1)}]\cr
+Elements must be sorted in ascending order. Missing values are ignored.}
+
 \item{names}{[\code{character(1)}]\cr
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.
