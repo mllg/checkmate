@@ -5,6 +5,7 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>
+#include <Rversion.h>
 
 Rboolean attribute_hidden any_missing_logical(SEXP);
 Rboolean attribute_hidden any_missing_integer(SEXP);

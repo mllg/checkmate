@@ -50,3 +50,13 @@ test_that("NAs are ignored for regexp matching (#106)", {
   expect_true(testCharacter(c("a", NA, "bbbabbb"), fixed = "a", any.missing = TRUE))
   expect_false(testCharacter(c("a", NA, "bbbabbb"), fixed = "b", any.missing = TRUE))
 })
+
+test_that("Sorted strings", {
+  x = letters[1:3]
+  expect_true(testCharacter(x, sorted = TRUE))
+  expect_error(assertCharacter(rev(x), sorted = TRUE), "sorted")
+
+  x = c("aaa", "aab", "aac")
+  expect_true(testCharacter(x, sorted = TRUE))
+  expect_error(assertCharacter(rev(x), sorted = TRUE), "sorted")
+})

@@ -15,6 +15,7 @@
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
 #' @param min.chars [\code{integer(1)}]\cr
 #'  Minimum number of characters for each element of \code{x}.
+#' @template sorted
 #' @template null.ok
 #' @template checker
 #' @family basetypes
@@ -24,8 +25,8 @@
 #' testCharacter(letters, min.len = 1, any.missing = FALSE)
 #' testCharacter(letters, min.chars = 2)
 #' testCharacter("example", pattern = "xa")
-checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
-  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
+checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE) {
+  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, null.ok) %and%
   checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 

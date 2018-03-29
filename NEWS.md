@@ -1,4 +1,5 @@
 # Version 1.8.6
+* Checks for missingness and sort order optimized for ALTREPs.
 * The calling frame reported in assertions is now identical to the calling
   frame reported by R's `stop()` function (#117).
 * Added `checkDouble` to explicitly check for non-integer numerics.
