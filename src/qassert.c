@@ -3,6 +3,7 @@
 #include "guess_type.h"
 #include "any_missing.h"
 #include "is_integerish.h"
+#include "backports.h"
 
 typedef enum {
     CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_FACTOR, CL_LIST, CL_COMPLEX,
@@ -90,7 +91,7 @@ static msg_t message(const char *fmt, ...) {
 /*********************************************************************************************************************/
 static msg_t check_bound(SEXP x, const bound_t bound) {
     if (isReal(x)) {
-        const double *xp = REAL(x);
+        const double *xp = REAL_RO(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && !bound.fun(*xp, bound.cmp)) {
@@ -102,7 +103,7 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
             }
         }
     } else if (isInteger(x)) {
-        const int *xp = INTEGER(x);
+        const int *xp = INTEGER_RO(x);
         const int * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (*xp != NA_INTEGER && !bound.fun((double) *xp, bound.cmp))
@@ -468,7 +469,7 @@ SEXP attribute_hidden c_qassert(SEXP x, SEXP rules, SEXP recursive) {
         result[i].ok = TRUE;
     }
 
-    if (LOGICAL(recursive)[0]) {
+    if (LOGICAL_RO(recursive)[0]) {
         failed = qassert_list(x, checker, result, nrules);
     } else {
         failed = qassert1(x, checker, result, nrules);
@@ -547,7 +548,7 @@ SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
         parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 
-    if (LOGICAL(recursive)[0])
+    if (LOGICAL_RO(recursive)[0])
         return ScalarLogical(qtest_list(x, checker, nrules, asCount(depth, "depth")));
     return ScalarLogical(qtest1(x, checker, nrules));
 }

@@ -1,8 +1,9 @@
 #include "any_missing.h"
+#include "backports.h"
 
 R_xlen_t attribute_hidden find_missing_logical(SEXP x) {
     const R_xlen_t n = xlength(x);
-    const int * xp = LOGICAL(x);
+    const int * xp = LOGICAL_RO(x);
     for (R_xlen_t i = 0; i < n; i++) {
         if (xp[i] == NA_LOGICAL)
             return i + 1;
@@ -16,7 +17,7 @@ R_xlen_t attribute_hidden find_missing_integer(SEXP x) {
         return 0;
 #endif
     const R_xlen_t n = xlength(x);
-    const int * xp = INTEGER(x);
+    const int * xp = INTEGER_RO(x);
     for (R_xlen_t i = 0; i < n; i++) {
         if (xp[i] == NA_INTEGER)
             return i + 1;
@@ -39,7 +40,7 @@ R_xlen_t attribute_hidden find_missing_double(SEXP x) {
         return 0;
 #endif
     const R_xlen_t n = xlength(x);
-    const double * xp = REAL(x);
+    const double * xp = REAL_RO(x);
     for (R_xlen_t i = 0; i < n; i++) {
         if (ISNAN(xp[i]))
             return i + 1;
@@ -57,7 +58,7 @@ R_xlen_t attribute_hidden find_missing_numeric(SEXP x) {
 
 R_xlen_t attribute_hidden find_missing_complex(SEXP x) {
     const R_xlen_t n = xlength(x);
-    const Rcomplex * xp = COMPLEX(x);
+    const Rcomplex * xp = COMPLEX_RO(x);
     for (R_xlen_t i = 0; i < n; i++) {
         if (ISNAN((xp[i]).r) || ISNAN((xp[i]).i))
             return i + 1;

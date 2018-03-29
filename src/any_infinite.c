@@ -1,7 +1,8 @@
 #include "any_infinite.h"
+#include "backports.h"
 
 static Rboolean any_infinite_double(SEXP x) {
-    const double * xp = REAL(x);
+    const double * xp = REAL_RO(x);
     const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp == R_PosInf || *xp == R_NegInf)
@@ -11,7 +12,7 @@ static Rboolean any_infinite_double(SEXP x) {
 }
 
 static Rboolean any_infinite_complex(SEXP x) {
-    const Rcomplex * xp = COMPLEX(x);
+    const Rcomplex * xp = COMPLEX_RO(x);
     const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if ((*xp).r == R_PosInf || (*xp).i == R_PosInf ||

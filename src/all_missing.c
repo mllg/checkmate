@@ -1,7 +1,8 @@
 #include "all_missing.h"
+#include "backports.h"
 
 Rboolean attribute_hidden all_missing_logical(SEXP x) {
-    const int * xp = LOGICAL(x);
+    const int * xp = LOGICAL_RO(x);
     const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp != NA_LOGICAL)
@@ -15,7 +16,7 @@ Rboolean attribute_hidden all_missing_integer(SEXP x) {
     if (INTEGER_NO_NA(x))
         return FALSE;
 #endif
-    const int * xp = INTEGER(x);
+    const int * xp = INTEGER_RO(x);
     const int * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (*xp != NA_INTEGER)
@@ -29,7 +30,7 @@ Rboolean attribute_hidden all_missing_double(SEXP x) {
     if (REAL_NO_NA(x))
         return FALSE;
 #endif
-    const double * xp = REAL(x);
+    const double * xp = REAL_RO(x);
     const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (!ISNAN(*xp))
@@ -39,7 +40,7 @@ Rboolean attribute_hidden all_missing_double(SEXP x) {
 }
 
 Rboolean attribute_hidden all_missing_complex(SEXP x) {
-    const Rcomplex * xp = COMPLEX(x);
+    const Rcomplex * xp = COMPLEX_RO(x);
     const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
         if (!ISNAN((*xp).r) || !ISNAN((*xp).i))

@@ -1,4 +1,5 @@
 #include "is_sorted.h"
+#include "backports.h"
 
 static Rboolean is_sorted_integer(SEXP x) {
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
@@ -8,7 +9,7 @@ static Rboolean is_sorted_integer(SEXP x) {
 #endif
     R_xlen_t i = 0;
     const R_xlen_t n = xlength(x);
-    const int * const xi = INTEGER(x);
+    const int * const xi = INTEGER_RO(x);
     while(i < n && xi[i] == NA_INTEGER) i++;
 
     for (R_xlen_t j = i + 1; j < n; j++) {
@@ -29,7 +30,7 @@ static Rboolean is_sorted_double(SEXP x) {
 #endif
     R_xlen_t i = 0;
     const R_xlen_t n = xlength(x);
-    const double * const xr = REAL(x);
+    const double * const xr = REAL_RO(x);
     while(i < n && xr[i] == NA_REAL) i++;
 
     for (R_xlen_t j = i + 1; j < n; j++) {

@@ -3,6 +3,7 @@
 #include "any_missing.h"
 #include "is_integerish.h"
 #include "guess_type.h"
+#include "backports.h"
 
 Rboolean attribute_hidden isStrictlyNumeric(SEXP x) {
     switch(TYPEOF(x)) {
@@ -41,14 +42,14 @@ R_len_t attribute_hidden get_nrows(SEXP x) {
     if (isFrame(x))
         return length(getAttrib(x, R_RowNamesSymbol));
     SEXP dim = getAttrib(x, R_DimSymbol);
-    return (dim == R_NilValue) ? length(x) : INTEGER(dim)[0];
+    return (dim == R_NilValue) ? length(x) : INTEGER_RO(dim)[0];
 }
 
 R_len_t attribute_hidden get_ncols(SEXP x) {
     if (isFrame(x))
         return length(x);
     SEXP dim = getAttrib(x, R_DimSymbol);
-    return (length(dim) >= 2) ? INTEGER(dim)[1] : 1;
+    return (length(dim) >= 2) ? INTEGER_RO(dim)[1] : 1;
 }
 
 
@@ -89,14 +90,14 @@ R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
         error("Argument '%x' must have length 1", vname);
     switch(TYPEOF(x)) {
         case INTSXP:;
-            int xi = INTEGER(x)[0];
+            int xi = INTEGER_RO(x)[0];
             if (xi == NA_INTEGER)
                 error("Argument '%s' may not be missing", vname);
             if (xi < 0)
                 error("Argument '%s' must be >= 0", vname);
             return (R_xlen_t) xi;
         case REALSXP:;
-            double xr = REAL(x)[0];
+            double xr = REAL_RO(x)[0];
             if (xr == NA_REAL)
                 error("Argument '%s' may not be missing", vname);
             if (xr < 0)
@@ -111,7 +112,7 @@ R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
 Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
     if (!isLogical(x) || xlength(x) != 1)
         error("Argument '%s' must be a flag, but is %s", vname, guess_type(x));
-    Rboolean xb = LOGICAL(x)[0];
+    Rboolean xb = LOGICAL_RO(x)[0];
     if (xb == NA_LOGICAL)
         error("Argument '%s' may not be missing", vname);
     return xb;

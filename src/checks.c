@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <string.h>
+#include "backports.h"
 #include "checks.h"
 #include "is_integerish.h"
 #include "is_sorted.h"
@@ -82,13 +83,13 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (R_FINITE(tmp)) {
         const R_xlen_t n = length(x);
         if (isReal(x)) {
-            const double *xp = REAL(x);
+            const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
                 if (!ISNAN(xp[i]) && xp[i] < tmp)
                     return message("Element %i is not >= %g", i + i, tmp);
             }
         } else if (isInteger(x)) {
-            const int *xp = INTEGER(x);
+            const int *xp = INTEGER_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
                 if (xp[i] != NA_INTEGER && xp[i] < tmp)
                     return message("Element %i is not >= %g", i + 1, tmp);
@@ -100,13 +101,13 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     if (R_FINITE(tmp)) {
         const R_xlen_t n = length(x);
         if (isReal(x)) {
-            const double *xp = REAL(x);
+            const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
                 if (!ISNAN(xp[i]) && xp[i] > tmp)
                     return message("Element %i is not <= %g", i + 1, tmp);
             }
         } else if (isInteger(x)) {
-            const int *xp = INTEGER(x);
+            const int *xp = INTEGER_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
                 if (xp[i] != NA_INTEGER && xp[i] > tmp)
                     return message("Element %i is not <= %g", i + 1, tmp);
@@ -134,8 +135,8 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
             return message("Timezones of 'x' and 'lower' must match");
         }
 
-        const double tmp = REAL(lower)[0];
-        const double *xp = REAL(x);
+        const double tmp = REAL_RO(lower)[0];
+        const double *xp = REAL_RO(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && *xp < tmp) {
@@ -158,8 +159,8 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
             return message("Timezones of 'x' and 'upper' must match");
         }
 
-        const double tmp = REAL(upper)[0];
-        const double *xp = REAL(x);
+        const double tmp = REAL_RO(upper)[0];
+        const double *xp = REAL_RO(x);
         const double * const xend = xp + xlength(x);
         for (; xp != xend; xp++) {
             if (!ISNAN(*xp) && *xp > tmp) {
@@ -357,9 +358,9 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
 static inline Rboolean is_scalar_na(SEXP x) {
     if (xlength(x) == 1) {
         switch(TYPEOF(x)) {
-            case LGLSXP: return (LOGICAL(x)[0] == NA_LOGICAL);
-            case INTSXP: return (INTEGER(x)[0] == NA_INTEGER);
-            case REALSXP: return ISNAN(REAL(x)[0]);
+            case LGLSXP: return (LOGICAL_RO(x)[0] == NA_LOGICAL);
+            case INTSXP: return (INTEGER_RO(x)[0] == NA_INTEGER);
+            case REALSXP: return ISNAN(REAL_RO(x)[0]);
             case STRSXP: return (STRING_ELT(x, 0) == NA_STRING);
         }
     }
