@@ -5,6 +5,8 @@
 * Added `checkDouble` to explicitly check for non-integer numerics.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
   (#100).
+* New arguments `max.rows` and `max.cols` to check for maximum number
+  of rows and columns for matrices, data.frames, tibbles and data.tables.
 * Fixed an error message in `checkChoice`.
 
 # Version 1.8.5

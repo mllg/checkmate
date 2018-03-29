@@ -9,8 +9,12 @@
 #'  Are matrices with only missing values allowed? Default is \code{TRUE}.
 #' @param min.rows [\code{integer(1)}]\cr
 #'  Minimum number of rows.
+#' @param max.rows [\code{integer(1)}]\cr
+#'  Maximum number of rows.
 #' @param min.cols [\code{integer(1)}]\cr
 #'  Minimum number of columns.
+#' @param max.cols [\code{integer(1)}]\cr
+#'  Maximum number of columns.
 #' @param nrows [\code{integer(1)}]\cr
 #'  Exact number of rows.
 #' @param ncols [\code{integer(1)}]\cr
@@ -33,8 +37,8 @@
 #' x = matrix(1:9, 3)
 #' colnames(x) = letters[1:3]
 #' testMatrix(x, nrows = 3, min.cols = 1, col.names = "named")
-checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
-  .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, null.ok)
+checkMatrix = function(x, mode = NULL, any.missing = TRUE, all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
+  .Call(c_check_matrix, x, mode, any.missing, all.missing, min.rows, max.rows, min.cols, max.cols, nrows, ncols, row.names, col.names, null.ok)
 }
 
 #' @export

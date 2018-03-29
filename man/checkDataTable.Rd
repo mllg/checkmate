@@ -12,38 +12,41 @@
 \usage{
 checkDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 check_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 assertDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 test_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 expect_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
+  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -74,8 +77,14 @@ Are matrices with only missing values allowed? Default is \code{TRUE}.}
 \item{min.rows}{[\code{integer(1)}]\cr
 Minimum number of rows.}
 
+\item{max.rows}{[\code{integer(1)}]\cr
+Maximum number of rows.}
+
 \item{min.cols}{[\code{integer(1)}]\cr
 Minimum number of columns.}
+
+\item{max.cols}{[\code{integer(1)}]\cr
+Maximum number of columns.}
 
 \item{nrows}{[\code{integer(1)}]\cr
 Exact number of rows.}

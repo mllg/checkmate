@@ -13,4 +13,8 @@ test_that("checkTibble", {
 
   expect_true(testTibble(x, min.rows = 1, ncols = 5))
   expect_false(testTibble(x, min.rows = 1000, ncols = 5))
+
+  expect_true(testTibble(x, max.rows = 200, max.cols = 5))
+  expect_false(testTibble(x, max.rows = 100))
+  expect_false(testTibble(x, max.cols = 3))
 })

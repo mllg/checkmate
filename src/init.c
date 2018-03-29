@@ -15,7 +15,7 @@ extern SEXP c_check_atomic_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP
 extern SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_complex(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_count(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_dataframe(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_dataframe(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_factor(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_flag(SEXP, SEXP, SEXP);
 extern SEXP c_check_int(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -51,7 +51,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_character",     (DL_FUNC) &c_check_character,     11},
     {"c_check_complex",       (DL_FUNC) &c_check_complex,        9},
     {"c_check_count",         (DL_FUNC) &c_check_count,          5},
-    {"c_check_dataframe",     (DL_FUNC) &c_check_dataframe,     10},
+    {"c_check_dataframe",     (DL_FUNC) &c_check_dataframe,     12},
     {"c_check_factor",        (DL_FUNC) &c_check_factor,         9},
     {"c_check_flag",          (DL_FUNC) &c_check_flag,           3},
     {"c_check_int",           (DL_FUNC) &c_check_int,            6},
@@ -59,7 +59,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_integerish",    (DL_FUNC) &c_check_integerish,    13},
     {"c_check_list",          (DL_FUNC) &c_check_list,           9},
     {"c_check_logical",       (DL_FUNC) &c_check_logical,        9},
-    {"c_check_matrix",        (DL_FUNC) &c_check_matrix,        11},
+    {"c_check_matrix",        (DL_FUNC) &c_check_matrix,        13},
     {"c_check_named",         (DL_FUNC) &c_check_named,          2},
     {"c_check_names",         (DL_FUNC) &c_check_names,          2},
     {"c_check_number",        (DL_FUNC) &c_check_number,         6},

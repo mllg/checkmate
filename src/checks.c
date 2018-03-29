@@ -276,13 +276,18 @@ static Rboolean check_vector_finite(SEXP x, SEXP finite) {
     return TRUE;
 }
 
-static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols) {
-    if (!isNull(min_rows) || !isNull(rows)) {
+static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP max_rows, SEXP min_cols, SEXP max_cols, SEXP rows, SEXP cols) {
+    if (!isNull(min_rows) || !isNull(max_rows) || !isNull(rows)) {
         R_len_t xrows = get_nrows(x);
         if (!isNull(min_rows)) {
             R_len_t cmp = asLength(min_rows, "min.rows");
             if (xrows < cmp)
                 return message("Must have at least %i rows, but has %i rows", cmp, xrows);
+        }
+        if (!isNull(max_rows)) {
+            R_len_t cmp = asLength(max_rows, "max.rows");
+            if (xrows > cmp)
+                return message("Must have at most %i rows, but has %i rows", cmp, xrows);
         }
         if (!isNull(rows)) {
             R_len_t cmp = asLength(rows, "rows");
@@ -290,12 +295,17 @@ static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP min_cols, SEXP row
                 return message("Must have exactly %i rows, but has %i rows", cmp, xrows);
         }
     }
-    if (!isNull(min_cols) || !isNull(cols)) {
+    if (!isNull(min_cols) || !isNull(max_cols) || !isNull(cols)) {
         R_len_t xcols = get_ncols(x);
         if (!isNull(min_cols)) {
             R_len_t cmp = asLength(min_cols, "min.cols");
             if (xcols < cmp)
                 return message("Must have at least %i cols, but has %i cols", cmp, xcols);
+        }
+        if (!isNull(max_cols)) {
+            R_len_t cmp = asLength(max_cols, "max.cols");
+            if (xcols > cmp)
+                return message("Must have at most %i cols, but has %i cols", cmp, xcols);
         }
         if (!isNull(cols)) {
             R_len_t cmp = asCount(cols, "cols");
@@ -390,9 +400,9 @@ SEXP attribute_hidden c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
+SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP max_rows, SEXP min_cols, SEXP max_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isFrame(x), "data.frame", null_ok);
-    ASSERT_TRUE(check_matrix_dims(x, min_rows, min_cols, rows, cols));
+    ASSERT_TRUE(check_matrix_dims(x, min_rows, max_rows, min_cols, max_cols, rows, cols));
 
     if (!isNull(row_names)) {
         SEXP nn = PROTECT(getAttrib(x, install("row.names")));
@@ -460,10 +470,10 @@ SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP min_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
+SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP max_rows, SEXP min_cols, SEXP max_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isMatrix(x), "matrix", null_ok);
     ASSERT_TRUE(check_storage(x, mode));
-    ASSERT_TRUE(check_matrix_dims(x, min_rows, min_cols, rows, cols));
+    ASSERT_TRUE(check_matrix_dims(x, min_rows, max_rows, min_cols, max_cols, rows, cols));
 
     if (!isNull(row_names) && xlength(x) > 0) {
         SEXP nn = PROTECT(getAttrib(x, R_DimNamesSymbol));

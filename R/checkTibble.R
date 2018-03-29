@@ -14,7 +14,7 @@
 #' x = as_tibble(iris)
 #' testTibble(x)
 #' testTibble(x, nrow = 150, any.missing = FALSE)
-checkTibble = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, min.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
+checkTibble = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
   if (!requireNamespace("tibble", quietly = TRUE))
     stop("Install package 'tibble' to perform checks of tibbles")
   qassert(null.ok, "B1")
@@ -25,7 +25,7 @@ checkTibble = function(x, types = character(0L), any.missing = TRUE, all.missing
   }
   if (!tibble::is_tibble(x))
     return(paste0("Must be a tibble", if (null.ok) " (or 'NULL')" else "", sprintf(", not %s", guessType(x))))
-  checkDataFrame(x, types, any.missing, all.missing, min.rows, min.cols, nrows, ncols, row.names, col.names, null.ok)
+  checkDataFrame(x, types, any.missing, all.missing, min.rows, max.rows, min.cols, max.cols, nrows, ncols, row.names, col.names, null.ok)
 }
 
 #' @export

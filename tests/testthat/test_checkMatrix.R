@@ -43,9 +43,12 @@ test_that("checkMatrix", {
   expect_false(testMatrix(xi+0.1, "integerish"))
 
   expect_true(testMatrix(x, min.rows = 1, min.cols = 1))
+  expect_true(testMatrix(x, max.rows = 5, max.cols = 5))
   expect_true(testMatrix(x, nrows = 3, ncols = 3))
   expect_true(testMatrix(xx, nrows = 1, ncols = 2))
   expect_true(testMatrix(xe, nrows = 0, ncols = 0))
+  expect_false(testMatrix(x, max.rows = 1))
+  expect_false(testMatrix(x, max.cols = 1))
   expect_false(testMatrix(x, min.rows = 5))
   expect_false(testMatrix(x, min.cols = 5))
   expect_false(testMatrix(x, nrows = 5))

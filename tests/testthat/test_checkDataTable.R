@@ -35,4 +35,9 @@ test_that("checkDataTable", {
   expect_error(testDataTable(dt, index = 1), "string")
   expect_error(assertDataTable(dt, key = "Species"), "primary keys")
   expect_error(assertDataTable(dt, index = "Species"), "secondary keys")
+
+  x = data.table::as.data.table(iris)
+  expect_true(testDataTable(x, max.rows = 200, max.cols = 5))
+  expect_false(testDataTable(x, max.rows = 100))
+  expect_false(testDataTable(x, max.cols = 3))
 })

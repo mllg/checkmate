@@ -28,6 +28,10 @@ test_that("checkDataFrame", {
   expect_true(testDataFrame(x, min.rows = 2L, min.cols = 4L))
   expect_false(testDataFrame(x, min.rows = 151L, min.cols = 4L))
   expect_false(testDataFrame(x, min.rows = 1L, min.cols = 6L))
+  expect_true(testDataFrame(x, max.rows = 200L))
+  expect_false(testDataFrame(x, max.rows = 100L))
+  expect_true(testDataFrame(x, max.cols = 10L))
+  expect_false(testDataFrame(x, max.cols = 2L))
 })
 
 
@@ -67,12 +71,16 @@ test_that("checkDataFrame name checking works", {
 test_that("dimension checks work for empty frames", {
   x = iris[, -c(1:5)]
   expect_true(testDataFrame(x, min.rows = 5))
+  expect_true(testDataFrame(x, max.rows = 200))
+  expect_false(testDataFrame(x, max.rows = 100))
   expect_true(testDataFrame(x, nrows = 150))
   expect_false(testDataFrame(x, min.rows = 151))
   expect_false(testDataFrame(x, nrows = 1))
 
   x = iris[-c(1:150), ]
   expect_true(testDataFrame(x, min.cols = 1))
+  expect_true(testDataFrame(x, max.cols = 5))
+  expect_false(testDataFrame(x, max.cols = 2))
   expect_true(testDataFrame(x, ncols = 5))
   expect_false(testDataFrame(x, min.cols = 6))
   expect_false(testDataFrame(x, ncols = 1))
