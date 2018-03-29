@@ -12,7 +12,7 @@ Rboolean attribute_hidden any_missing_logical(SEXP x) {
 
 Rboolean attribute_hidden any_missing_integer(SEXP x) {
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    if (ALTREP(x) && INTEGER_NO_NA(x))
+    if (INTEGER_NO_NA(x))
         return FALSE;
 #endif
     const int * xp = INTEGER(x);
@@ -34,6 +34,10 @@ Rboolean attribute_hidden any_missing_integerish(SEXP x) {
 }
 
 Rboolean attribute_hidden any_missing_double(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+    if (REAL_NO_NA(x))
+        return FALSE;
+#endif
     const double * xp = REAL(x);
     const double * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
@@ -62,6 +66,10 @@ Rboolean attribute_hidden any_missing_complex(SEXP x) {
 }
 
 Rboolean attribute_hidden any_missing_string(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+    if (STRING_NO_NA(x))
+        return FALSE;
+#endif
     const R_xlen_t nx = xlength(x);
     for (R_xlen_t i = 0; i < nx; i++) {
         if (STRING_ELT(x, i) == NA_STRING)

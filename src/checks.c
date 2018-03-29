@@ -1,6 +1,5 @@
 #include <ctype.h>
 #include <string.h>
-#include <Rversion.h>
 #include "checks.h"
 #include "is_integerish.h"
 #include "any_missing.h"
@@ -357,9 +356,11 @@ static inline Rboolean is_scalar_na(SEXP x) {
 
 static Rboolean is_sorted_integer(SEXP x) {
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    if (ALTREP(x) && KNOWN_INCR(INTEGER_IS_SORTED(x)))
-        return TRUE;
+    int sorted = INTEGER_IS_SORTED(x);
+    if (sorted != UNKNOWN_SORTEDNESS)
+        return KNOWN_INCR(sorted);
 #endif
+    Rprintf("PASSED ALTREP");
     R_xlen_t i = 0;
     const int * const xi = INTEGER(x);
     const R_xlen_t n = xlength(x);
@@ -382,8 +383,9 @@ static Rboolean is_sorted_integer(SEXP x) {
 
 static Rboolean is_sorted_double(SEXP x) {
 #if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    if (ALTREP(x) && KNOWN_INCR(REAL_IS_SORTED(x)))
-        return TRUE;
+    int sorted = REAL_IS_SORTED(x);
+    if (sorted != UNKNOWN_SORTEDNESS)
+        return KNOWN_INCR(sorted);
 #endif
     R_xlen_t i = 0;
     const double * const xr = REAL(x);
