@@ -5,7 +5,6 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>
-#include <Rversion.h>
 
 SEXP attribute_hidden c_check_array(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_atomic(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);

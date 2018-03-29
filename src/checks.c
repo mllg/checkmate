@@ -2,6 +2,7 @@
 #include <string.h>
 #include "checks.h"
 #include "is_integerish.h"
+#include "is_sorted.h"
 #include "any_missing.h"
 #include "any_infinite.h"
 #include "all_missing.h"
@@ -354,86 +355,9 @@ static inline Rboolean is_scalar_na(SEXP x) {
     return FALSE;
 }
 
-static Rboolean is_sorted_integer(SEXP x) {
-#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    int sorted = INTEGER_IS_SORTED(x);
-    if (sorted != UNKNOWN_SORTEDNESS)
-        return KNOWN_INCR(sorted);
-#endif
-    R_xlen_t i = 0;
-    const R_xlen_t n = xlength(x);
-    const int * const xi = INTEGER(x);
-    while(i < n && xi[i] == NA_INTEGER) i++;
-
-    for (R_xlen_t j = i + 1; j < n; j++) {
-        if (xi[j] != NA_INTEGER) {
-            if (xi[i] > xi[j])
-                return FALSE;
-            i = j;
-        }
-    }
-    return TRUE;
-}
-
-
-static Rboolean is_sorted_double(SEXP x) {
-#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    int sorted = REAL_IS_SORTED(x);
-    if (sorted != UNKNOWN_SORTEDNESS)
-        return KNOWN_INCR(sorted);
-#endif
-    R_xlen_t i = 0;
-    const R_xlen_t n = xlength(x);
-    const double * const xr = REAL(x);
-    while(i < n && xr[i] == NA_REAL) i++;
-
-    for (R_xlen_t j = i + 1; j < n; j++) {
-        if (xr[j] != NA_REAL) {
-            if (xr[i] > xr[j])
-                return FALSE;
-            i = j;
-        }
-    }
-    return TRUE;
-}
-
-static Rboolean is_sorted_character(SEXP x) {
-#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
-    int sorted = STRING_IS_SORTED(x);
-    if (sorted != UNKNOWN_SORTEDNESS)
-        return KNOWN_INCR(sorted);
-#endif
-    const R_xlen_t n = length(x);
-    R_xlen_t i = 0;
-    SEXP xi, xj;
-
-    while(i < n) {
-        xi = STRING_ELT(x, i);
-        if (xi != NA_STRING)
-            break;
-    }
-
-    for (R_xlen_t j = i + 1; j < n; j++) {
-        xj = STRING_ELT(x, j);
-        if (xj != NA_STRING) {
-            if (strcmp(CHAR(xi), CHAR(xj)) > 0)
-                return FALSE;
-            xi = xj;
-        }
-    }
-    return TRUE;
-}
-
 static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
     if (asFlag(sorted, "sorted") && xlength(x) > 1) {
-        Rboolean ok;
-        switch(TYPEOF(x)) {
-            case INTSXP: ok = is_sorted_integer(x); break;
-            case REALSXP: ok = is_sorted_double(x); break;
-            case STRSXP: ok = is_sorted_character(x); break;
-            default: error("Checking for sorted vector only possible for integer and double");
-        }
-        if (!ok)
+        if (!isSorted(x))
             return message("Must be sorted");
     }
     return TRUE;
