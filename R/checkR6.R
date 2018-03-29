@@ -12,6 +12,7 @@
 #'  Names of expected private slots.
 #' @template null.ok
 #' @template checker
+#' @family classes
 #' @export
 #' @examples
 #' library(R6)

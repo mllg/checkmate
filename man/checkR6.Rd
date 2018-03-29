@@ -39,7 +39,8 @@ expect_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
 Object to check.}
 
 \item{classes}{[\code{character}]\cr
-Class names to check for inheritance with \code{\link[base]{inherits}}.}
+Class names to check for inheritance with \code{\link[base]{inherits}}.
+\code{x} must inherit from all specified classes.}
 
 \item{ordered}{[\code{logical(1)}]\cr
 Expect \code{x} to be specialized in provided order.
@@ -103,4 +104,8 @@ generator = R6Class("Bar",
 )
 x = generator$new()
 checkR6(x, "Bar", cloneable = TRUE, public = "a")
+}
+\seealso{
+Other classes: \code{\link{checkClass}},
+  \code{\link{checkMultiClass}}
 }

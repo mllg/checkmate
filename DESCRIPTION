@@ -76,6 +76,7 @@ Collate:
     'checkList.R'
     'checkLogical.R'
     'checkMatrix.R'
+    'checkMultiClass.R'
     'checkNamed.R'
     'checkNames.R'
     'checkNull.R'

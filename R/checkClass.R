@@ -4,13 +4,14 @@
 #' @template x
 #' @param classes [\code{character}]\cr
 #'  Class names to check for inheritance with \code{\link[base]{inherits}}.
+#'  \code{x} must inherit from all specified classes.
 #' @param ordered [\code{logical(1)}]\cr
 #'  Expect \code{x} to be specialized in provided order.
 #'  Default is \code{FALSE}.
 #' @template null.ok
 #' @template checker
 #' @family attributes
-#' @seealso \code{\link{checkR6}}
+#' @family classes
 #' @export
 #' @examples
 #' # Create an object with classes "foo" and "bar"
@@ -43,7 +44,7 @@ checkClass = function(x, classes, ordered = FALSE, null.ok = FALSE) {
 
   if (length(w) > 0L) {
     cl = class(x)
-    return(sprintf("Must have class '%s', but has class%s '%s'",
+    return(sprintf("Must inherit from class '%s', but has class%s '%s'",
         classes[w], if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
   }
   if (ordered) {

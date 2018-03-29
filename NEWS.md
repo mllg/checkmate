@@ -3,6 +3,8 @@
 * The calling frame reported in assertions is now identical to the calling
   frame reported by R's `stop()` function (#117).
 * Added `checkDouble` to explicitly check for non-integer numerics.
+* Added `checkMultiClass` to check for inheritance from a set of candidates
+  (#100).
 * Fixed an error message in `checkChoice`.
 
 # Version 1.8.5

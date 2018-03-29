@@ -32,7 +32,8 @@ expect_class(x, classes, ordered = FALSE, null.ok = FALSE, info = NULL,
 Object to check.}
 
 \item{classes}{[\code{character}]\cr
-Class names to check for inheritance with \code{\link[base]{inherits}}.}
+Class names to check for inheritance with \code{\link[base]{inherits}}.
+\code{x} must inherit from all specified classes.}
 
 \item{ordered}{[\code{logical(1)}]\cr
 Expect \code{x} to be specialized in provided order.
@@ -99,8 +100,9 @@ assert(
 testClass(x, "bar", ordered = TRUE)
 }
 \seealso{
-\code{\link{checkR6}}
+Other attributes: \code{\link{checkMultiClass}},
+  \code{\link{checkNamed}}, \code{\link{checkNames}}
 
-Other attributes: \code{\link{checkNamed}},
-  \code{\link{checkNames}}
+Other classes: \code{\link{checkMultiClass}},
+  \code{\link{checkR6}}
 }
