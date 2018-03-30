@@ -7,7 +7,7 @@
 #include "any_missing.h"
 #include "any_infinite.h"
 #include "all_missing.h"
-#include "all_nchar.h"
+#include "find_min_nchar.h"
 #include "helper.h"
 #include "guess_type.h"
 
@@ -137,13 +137,13 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
 
         const double tmp = REAL_RO(lower)[0];
         const double *xp = REAL_RO(x);
-        const double * const xend = xp + xlength(x);
-        for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && *xp < tmp) {
+        const R_xlen_t n = length(x);
+        for (R_xlen_t i = 0; i < n; i++) {
+            if (!ISNAN(xp[i]) && xp[i] < tmp) {
                 char fmt[255];
                 fmt_posixct(fmt, lower);
                 UNPROTECT(2);
-                return message("All times must be >= %s", fmt);
+                return message("Element %i is not >= %s", i + 1, fmt);
             }
         }
         UNPROTECT(1);
@@ -161,13 +161,13 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
 
         const double tmp = REAL_RO(upper)[0];
         const double *xp = REAL_RO(x);
-        const double * const xend = xp + xlength(x);
-        for (; xp != xend; xp++) {
-            if (!ISNAN(*xp) && *xp > tmp) {
+        const R_xlen_t n = length(x);
+        for (R_xlen_t i = 0; i < n; i++) {
+            if (!ISNAN(xp[i]) && xp[i] > tmp) {
                 char fmt[255];
                 fmt_posixct(fmt, upper);
                 UNPROTECT(2);
-                return message("All times must be <= %s", fmt);
+                return message("Element %i is not <= %s", i + 1, fmt);
             }
         }
         UNPROTECT(1);
@@ -211,12 +211,26 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type);
     }
 
-    if (isNull(nn) || find_missing_string(nn) > 0 || !all_nchar(nn, 1, FALSE))
-        return message("%s must be named", what);
+    if (isNull(nn)) {
+        return message("%s must be named, but is NULL", what);
+    }
+
+    R_xlen_t pos = find_missing_string(nn);
+    if (pos > 0) {
+        return message("%s must be named, but name %i is NA", what, pos);
+    }
+
+    pos = find_min_nchar(nn, 1, FALSE);
+    if (pos > 0) {
+        return message("%s must be named, but name %i is empty", what, pos);
+    }
+
     if (checks >= T_UNIQUE) {
-        if (any_duplicated(nn, FALSE) != 0)
-            return message("%s must be uniquely named", what);
+        pos = any_duplicated(nn, FALSE);
+        if (pos > 0)
+            return message("%s must be uniquely named, but name %i is duplicated", what, pos);
         if (checks >= T_STRICT && !check_strict_names(nn)) {
+            // FIXME: pos
             return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
         }
     }
@@ -261,8 +275,11 @@ static Rboolean check_vector_missings(SEXP x, SEXP any_missing, SEXP all_missing
 }
 
 static Rboolean check_vector_unique(SEXP x, SEXP unique) {
-    if (asFlag(unique, "unique") && any_duplicated(x, FALSE) > 0)
-        return message("Contains duplicated values");
+    if (asFlag(unique, "unique")) {
+        R_xlen_t pos = any_duplicated(x, FALSE);
+        if (pos > 0)
+            return message("Contains duplicated values, position %i", pos);
+    }
     return TRUE;
 }
 
@@ -273,6 +290,7 @@ static Rboolean check_vector_names(SEXP x, SEXP names) {
 }
 
 static Rboolean check_vector_finite(SEXP x, SEXP finite) {
+    // FIXME: pos
     if (asFlag(finite, "finite") && any_infinite(x))
         return message("Must be finite");
     return TRUE;
@@ -385,7 +403,7 @@ SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
-        if (n > 0 && !all_nchar(x, n, TRUE))
+        if (n > 0 && find_min_nchar(x, n, TRUE) > 0)
             return result("All elements must have at least %i characters", n);
     }
     ASSERT_TRUE(check_vector_unique(x, unique));
@@ -639,7 +657,7 @@ SEXP attribute_hidden c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP nu
         return result("Must have length 1");
     if (!isNull(min_chars)) {
         R_xlen_t n = asCount(min_chars, "min.chars");
-        if (!all_nchar(x, n, TRUE))
+        if (find_min_nchar(x, n, TRUE) > 0)
             return result("Must have at least %i characters", n);
     }
 
