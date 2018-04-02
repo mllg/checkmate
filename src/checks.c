@@ -177,7 +177,7 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
     return TRUE;
 }
 
-static Rboolean check_strict_names(SEXP x) {
+static R_xlen_t check_strict_names(SEXP x) {
     const R_xlen_t nx = xlength(x);
     const char *str;
     for (R_xlen_t i = 0; i < nx; i++) {
@@ -185,13 +185,13 @@ static Rboolean check_strict_names(SEXP x) {
         while (*str == '.')
             str++;
         if (!isalpha(*str))
-            return FALSE;
+            return i + 1;
         for (; *str != '\0'; str++) {
             if (!isalnum(*str) && *str != '.' && *str != '_')
-                return FALSE;
+                return i + 1;
         }
     }
-    return TRUE;
+    return 0;
 }
 
 static Rboolean check_names(SEXP nn, const char * type, const char * what) {
@@ -229,8 +229,8 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         pos = any_duplicated(nn, FALSE);
         if (pos > 0)
             return message("%s must be uniquely named, but name %i is duplicated", what, pos);
-        if (checks >= T_STRICT && !check_strict_names(nn)) {
-            // FIXME: pos
+        if (checks >= T_STRICT) {
+            pos = check_strict_names(nn);
             return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
         }
     }
