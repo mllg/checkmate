@@ -231,7 +231,8 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
             return message("%s must be uniquely named, but name %i is duplicated", what, pos);
         if (checks >= T_STRICT) {
             pos = check_strict_names(nn);
-            return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
+            if (pos > 0)
+                return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
         }
     }
     return TRUE;
