@@ -1,13 +1,14 @@
 #include "is_integerish.h"
 #include <math.h>
 #include <limits.h>
+#include "backports.h"
 
 static inline Rboolean is_unconvertible(const double x, const double tol) {
     return (!ISNAN(x) && (x <= INT_MIN || x > INT_MAX || fabs(x - nearbyint(x)) >= tol));
 }
 
 static Rboolean is_integerish_double(SEXP x, const double tol) {
-    const double *xr = REAL(x);
+    const double *xr = REAL_RO(x);
     const double * const xend = xr + xlength(x);
 
     for (; xr != xend; xr++) {
@@ -18,7 +19,7 @@ static Rboolean is_integerish_double(SEXP x, const double tol) {
 }
 
 static Rboolean is_integerish_complex(SEXP x, const double tol) {
-    const Rcomplex * xc = COMPLEX(x);
+    const Rcomplex * xc = COMPLEX_RO(x);
     const Rcomplex * const xe = xc + xlength(x);
     for (; xc != xe; xc++) {
         if (fabs((*xc).i) >= tol || is_unconvertible((*xc).r, tol))
@@ -38,5 +39,5 @@ Rboolean isIntegerish(SEXP x, const double tol, Rboolean logicals_ok) {
 }
 
 SEXP attribute_hidden c_is_integerish(SEXP x, SEXP tolerance) {
-    return ScalarLogical(isIntegerish(x, REAL(tolerance)[0], FALSE));
+    return ScalarLogical(isIntegerish(x, REAL_RO(tolerance)[0], FALSE));
 }
