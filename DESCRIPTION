@@ -4,7 +4,7 @@ Title: Fast and Versatile Argument Checks
 Description: Tests and assertions to perform frequent argument checks. A
     substantial part of the package was written in C to minimize any worries
     about execution time overhead.
-Version: 1.8.5-9000
+Version: 1.8.6
 Authors@R: c(
     person("Michel", "Lang", NULL, "michellang@gmail.com",
       role = c("cre", "aut"), comment = c(ORCID = "0000-0001-9754-0393")),
@@ -37,7 +37,7 @@ Suggests:
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
-Collate: 
+Collate:
     'AssertCollection.R'
     'allMissing.R'
     'anyInfinite.R'
