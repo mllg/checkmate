@@ -432,12 +432,20 @@ SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missi
         ASSERT_TRUE_UNPROTECT(check_names(nn, asString(row_names, "row.names"), "Rows"), 1);
     }
 
-    if (!isNull(col_names))
+    if (!isNull(col_names)) {
         ASSERT_TRUE(check_named(x, asString(col_names, "col.names"), "Columns"));
-    if (!asFlag(any_missing, "any.missing") && any_missing_frame(x))
-        return result("Contains missing values");
-    if (!asFlag(all_missing, "all.missing") && all_missing_frame(x))
+    }
+    if (!asFlag(any_missing, "any.missing")) {
+        pos2d_t pos = find_missing_frame(x);
+        if (pos.i > 0) {
+            const char * nn = CHAR(STRING_ELT(getAttrib(x, R_NamesSymbol), pos.j));
+            return result("Contains missing values, first at column '%s', position %i", nn, pos.i);
+        }
+    }
+
+    if (!asFlag(all_missing, "all.missing") && all_missing_frame(x)) {
         return result("Contains only missing values");
+    }
     return ScalarLogical(TRUE);
 }
 
@@ -509,7 +517,17 @@ SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP a
             nn = VECTOR_ELT(nn, 1);
         ASSERT_TRUE_UNPROTECT(check_names(nn, asString(col_names, "col.names"), "Columns"), 1);
     }
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+
+    if (!asFlag(any_missing, "any.missing")) {
+        pos2d_t pos = find_missing_matrix(x);
+        if (pos.i > 0) {
+            return result("Contains missing values, first at column %i, position %i", pos.j, pos.i);
+        }
+    }
+
+    if (!asFlag(all_missing, "all.missing") && all_missing_atomic(x)) {
+        return result("Contains only missing values");
+    }
     return ScalarLogical(TRUE);
 }
 

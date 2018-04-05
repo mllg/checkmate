@@ -99,17 +99,31 @@ R_xlen_t attribute_hidden find_missing_list(SEXP x) {
     return 0;
 }
 
-Rboolean attribute_hidden any_missing_matrix(SEXP x) {
-    return find_missing_atomic(x) > 0;
+pos2d_t attribute_hidden find_missing_matrix(SEXP x) {
+    pos2d_t pos;
+    R_xlen_t ii = find_missing_atomic(x);
+    if (ii > 0) {
+        const R_xlen_t ncol = INTEGER(getAttrib(x, R_DimSymbol))[1];
+        ii--;
+        pos.i = ii % ncol + 1;
+        pos.j = (R_xlen_t)(ii / ncol) + 1;
+    } else {
+        pos.i = pos.j = 0;
+    }
+    return pos;
 }
 
-Rboolean attribute_hidden any_missing_frame(SEXP x) {
+pos2d_t attribute_hidden find_missing_frame(SEXP x) {
+    pos2d_t pos = { 0, 0 };
     const R_xlen_t nc = xlength(x);
-    for (R_xlen_t i = 0; i < nc; i++) {
-        if (find_missing_atomic(VECTOR_ELT(x, i)) > 0)
-            return TRUE;
+    for (R_xlen_t j = 0; j < nc; j++) {
+        R_xlen_t i = find_missing_atomic(VECTOR_ELT(x, j));
+        if (i > 0) {
+            pos.i = i; pos.j = j;
+            break;
+        }
     }
-    return FALSE;
+    return pos;
 }
 
 Rboolean any_missing(SEXP x) {
@@ -120,7 +134,12 @@ Rboolean any_missing(SEXP x) {
         case CPLXSXP: return find_missing_complex(x) > 0;
         case STRSXP:  return find_missing_string(x) > 0;
         case NILSXP:  return FALSE;
-        case VECSXP:  return isFrame(x) ? any_missing_frame(x) : find_missing_list(x) > 0;
+        case VECSXP:  if (isFrame(x)) {
+                        pos2d_t pos = find_missing_frame(x);
+                        return pos.i > 0;
+                      } else {
+                          return find_missing_list(x) > 0;
+                      }
         case RAWSXP:  return FALSE;
         default: error("Object of type '%s' not supported", type2char(TYPEOF(x)));
     }

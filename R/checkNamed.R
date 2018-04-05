@@ -22,7 +22,7 @@
 #' names(x) = letters[1:3]
 #' testNamed(x, "unique")
 checkNamed = function(x, type = "named") {
-  .Deprecated("checkNames", "checkmate")
+  .Deprecated(new = "checkNames", old = "checkNamed", package = "checkmate")
   .Call(c_check_named, x, type)
 }
 
