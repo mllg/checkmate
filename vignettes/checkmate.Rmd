@@ -219,8 +219,8 @@ autoplot(mb)
 
 ```{r,dev="svg",fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
 N = 10000
-x.altrep = seq_len(N) # this is internally an ALTREP in R version >= 3.5.0
-x.sexp = c(x.altrep)  # this is a regular SEXP again
+x.altrep = seq_len(N) # this is an ALTREP in R version >= 3.5.0
+x.sexp = c(x.altrep)  # this is a regular SEXP OTOH
 r = function(x) stopifnot(is.integer(x), !any(is.na(x)), !is.unsorted(x))
 cm = function(x) assertInteger(x, any.missing = FALSE, sorted = TRUE)
 mb = microbenchmark(r(x.sexp), cm(x.sexp), r(x.altrep), cm(x.altrep))
