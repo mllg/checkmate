@@ -1,7 +1,7 @@
 #include <math.h>
 #include "helper.h"
 #include "any_missing.h"
-#include "is_integerish.h"
+#include "integerish.h"
 #include "guess_type.h"
 #include "backports.h"
 

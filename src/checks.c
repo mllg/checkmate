@@ -2,7 +2,7 @@
 #include <string.h>
 #include "backports.h"
 #include "checks.h"
-#include "is_integerish.h"
+#include "integerish.h"
 #include "is_sorted.h"
 #include "any_missing.h"
 #include "any_infinite.h"
@@ -30,6 +30,25 @@ static char msg[255] = "";
             snprintf(msg, 255, "Must be of type '%s'%s, not '%s'", expected, asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); \
             return ScalarString(mkChar(msg)); \
         } \
+    }
+
+#define HANDLE_INTEGERISH_NULL(tol, null_ok) \
+    if (isNull((x))) { \
+        if (asFlag((null_ok), "null.ok")) \
+            return ScalarLogical(TRUE); \
+        snprintf(msg, 255, "Must be of type 'integerish', not 'NULL'"); \
+        return ScalarString(mkChar(msg)); \
+    } else { \
+        int_err_t ok = checkIntegerish(x, dtol, FALSE); \
+        if (ok.err != INT_OK) { \
+            switch(ok.err) { \
+                case INT_TYPE: snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); break; \
+                case INT_RANGE: snprintf(msg, 255, "Must be of type 'integerish', but element %i is not in integer range", ok.pos); break; \
+                case INT_TOL: snprintf(msg, 255, "Must be of type 'integerish', but element %i is not close to an integer", ok.pos); break; \
+                case INT_COMPLEX: snprintf(msg, 255, "Must be of type 'integerish', but element %i has an imaginary part", ok.pos); break; \
+            } \
+            return ScalarString(mkChar(msg)); \
+            } \
     }
 
 #define HANDLE_NA(x, na_ok) \
@@ -471,7 +490,7 @@ SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_m
 
 SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     double dtol = asNumber(tol, "tol");
-    HANDLE_TYPE_NULL(isIntegerish(x, dtol, FALSE) || all_missing_atomic(x), "integerish", null_ok);
+    HANDLE_INTEGERISH_NULL(dtol, null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));

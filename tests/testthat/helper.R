@@ -1,3 +1,5 @@
+library(testthat)
+
 expect_expectation_successful = function(expr, info = NULL, label = NULL) {
   res = tryCatch(expr, expectation = function(e) e)
   expect_is(res, "expectation_success", info = info, label = label)

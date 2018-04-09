@@ -2,7 +2,7 @@
 #include "helper.h"
 #include "guess_type.h"
 #include "any_missing.h"
-#include "is_integerish.h"
+#include "integerish.h"
 #include "backports.h"
 
 typedef enum {
