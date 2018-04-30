@@ -42,6 +42,7 @@ makeExpectation = function(x, res, info, label) {
 
 #' @rdname makeExpectation
 #' @template makeFunction
+#' @template include.ns
 #' @export
 makeExpectationFunction = function(check.fun, c.fun = NULL, include.ns = FALSE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun

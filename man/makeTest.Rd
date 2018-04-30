@@ -24,11 +24,6 @@ Useful if \code{check.fun} is just a simple wrapper.}
 
 \item{env}{[\code{environment}]\cr
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
-
-\item{include.ns}{[\code{logical(1)}]\cr
-Call functions of \pkg{checkmate} using its namespace explicitly.
-Can be set to \code{TRUE} so save some microseconds, but the package needs to be imported.
-Default is \code{FALSE}.}
 }
 \value{
 \code{makeTest} returns \code{TRUE} if the check is successful and \code{FALSE} otherwise.

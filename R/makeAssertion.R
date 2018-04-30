@@ -48,6 +48,7 @@ makeAssertion = function(x, res, var.name, collection) {
 
 #' @rdname makeAssertion
 #' @template makeFunction
+#' @template include.ns
 #' @export
 makeAssertionFunction = function(check.fun, c.fun = NULL, include.ns = TRUE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
