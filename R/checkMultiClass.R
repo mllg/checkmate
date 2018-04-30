@@ -36,7 +36,7 @@ check_multi_class = checkMultiClass
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkMultiClass
-assertMultiClass = makeAssertionFunction(checkMultiClass)
+assertMultiClass = makeAssertionFunction(checkMultiClass, include.ns = FALSE)
 
 #' @export
 #' @rdname checkMultiClass
@@ -55,4 +55,4 @@ test_multi_class = testMultiClass
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkMultiClass
-expect_multi_class = makeExpectationFunction(checkMultiClass)
+expect_multi_class = makeExpectationFunction(checkMultiClass, include.ns = FALSE)

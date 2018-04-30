@@ -43,14 +43,19 @@ makeExpectation = function(x, res, info, label) {
 #' @rdname makeExpectation
 #' @template makeFunction
 #' @export
-makeExpectationFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
+makeExpectationFunction = function(check.fun, c.fun = NULL, include.ns = FALSE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
   x = NULL
 
   new.fun = function() TRUE
-  formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = vname(x)))
-  tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
+  if (include.ns) {
+    formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = checkmate::vname(x)))
+    tmpl = "{ res = %s(%s); checkmate::makeExpectation(x, res, info, label) }"
+  } else {
+    formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = vname(x)))
+    tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
+  }
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
   } else {

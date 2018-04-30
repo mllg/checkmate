@@ -59,7 +59,7 @@ check_list = checkList
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkList
-assertList = makeAssertionFunction(checkList)
+assertList = makeAssertionFunction(checkList, include.ns = FALSE)
 
 #' @export
 #' @rdname checkList
@@ -78,4 +78,4 @@ test_list = testList
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkList
-expect_list = makeExpectationFunction(checkList)
+expect_list = makeExpectationFunction(checkList, include.ns = FALSE)

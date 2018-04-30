@@ -24,7 +24,7 @@ check_scalar = checkScalar
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkScalar
-assertScalar = makeAssertionFunction(checkScalar, c.fun = "c_check_scalar")
+assertScalar = makeAssertionFunction(checkScalar, c.fun = "c_check_scalar", include.ns = FALSE)
 
 #' @export
 #' @rdname checkScalar
@@ -43,4 +43,4 @@ test_scalar = testScalar
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkScalar
-expect_scalar = makeExpectationFunction(checkScalar, c.fun = "c_check_scalar")
+expect_scalar = makeExpectationFunction(checkScalar, c.fun = "c_check_scalar", include.ns = FALSE)

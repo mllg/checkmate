@@ -26,7 +26,7 @@ check_false = checkFALSE
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFALSE
-assertFALSE = makeAssertionFunction(checkFALSE)
+assertFALSE = makeAssertionFunction(checkFALSE, include.ns = FALSE)
 
 #' @export
 #' @rdname checkFALSE

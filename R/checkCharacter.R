@@ -56,7 +56,7 @@ check_character = checkCharacter
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkCharacter
-assertCharacter = makeAssertionFunction(checkCharacter)
+assertCharacter = makeAssertionFunction(checkCharacter, include.ns = FALSE)
 
 #' @export
 #' @rdname checkCharacter
@@ -75,4 +75,4 @@ test_character = testCharacter
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkCharacter
-expect_character = makeExpectationFunction(checkCharacter)
+expect_character = makeExpectationFunction(checkCharacter, include.ns = FALSE)

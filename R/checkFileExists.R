@@ -53,7 +53,7 @@ check_file_exists = checkFileExists
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFileExists
-assertFileExists = makeAssertionFunction(checkFileExists)
+assertFileExists = makeAssertionFunction(checkFileExists, include.ns = FALSE)
 
 #' @export
 #' @rdname checkFileExists
@@ -72,7 +72,7 @@ test_file_exists = testFileExists
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkFileExists
-expect_file_exists = makeExpectationFunction(checkFileExists)
+expect_file_exists = makeExpectationFunction(checkFileExists, include.ns = FALSE)
 
 #' @export
 #' @rdname checkFileExists

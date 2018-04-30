@@ -28,7 +28,7 @@ check_integer = checkInteger
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkInteger
-assertInteger = makeAssertionFunction(checkInteger, c.fun = "c_check_integer")
+assertInteger = makeAssertionFunction(checkInteger, c.fun = "c_check_integer", include.ns = FALSE)
 
 #' @export
 #' @rdname checkInteger
@@ -47,4 +47,4 @@ test_integer = testInteger
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkInteger
-expect_integer = makeExpectationFunction(checkInteger, c.fun = "c_check_integer")
+expect_integer = makeExpectationFunction(checkInteger, c.fun = "c_check_integer", include.ns = FALSE)

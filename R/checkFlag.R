@@ -27,7 +27,7 @@ check_flag = checkFlag
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFlag
-assertFlag = makeAssertionFunction(checkFlag, c.fun = "c_check_flag")
+assertFlag = makeAssertionFunction(checkFlag, c.fun = "c_check_flag", include.ns = FALSE)
 
 #' @export
 #' @rdname checkFlag
@@ -46,4 +46,4 @@ test_flag = testFlag
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkFlag
-expect_flag = makeExpectationFunction(checkFlag, c.fun = "c_check_flag")
+expect_flag = makeExpectationFunction(checkFlag, c.fun = "c_check_flag", include.ns = FALSE)

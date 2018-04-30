@@ -49,14 +49,20 @@ makeAssertion = function(x, res, var.name, collection) {
 #' @rdname makeAssertion
 #' @template makeFunction
 #' @export
-makeAssertionFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
+makeAssertionFunction = function(check.fun, c.fun = NULL, include.ns = TRUE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
   x = NULL
 
   new.fun = function() TRUE
-  formals(new.fun) = c(formals(check.fun), alist(.var.name = vname(x), add = NULL))
-  tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
+  if (include.ns) {
+    formals(new.fun) = c(formals(check.fun), alist(.var.name = checkmate::vname(x), add = NULL))
+    tmpl = "{ res = %s(%s); checkmate::makeAssertion(x, res, .var.name, add) }"
+  } else {
+    formals(new.fun) = c(formals(check.fun), alist(.var.name = vname(x), add = NULL))
+    tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
+  }
+
   if (is.null(c.fun)) {
     body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
   } else {

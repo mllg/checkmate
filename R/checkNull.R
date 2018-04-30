@@ -22,7 +22,7 @@ check_null = checkNull
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNull
-assertNull = makeAssertionFunction(checkNull)
+assertNull = makeAssertionFunction(checkNull, include.ns = FALSE)
 
 #' @export
 #' @rdname checkNull
@@ -42,4 +42,4 @@ test_null = testNull
 # #' @include makeExpectation.R
 # #' @template expect
 # #' @rdname checkNull
-expect_null = makeExpectationFunction(checkNull)
+expect_null = makeExpectationFunction(checkNull, include.ns = FALSE)

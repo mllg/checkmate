@@ -76,7 +76,7 @@ check_names = checkNames
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNames
-assertNames = makeAssertionFunction(checkNames)
+assertNames = makeAssertionFunction(checkNames, include.ns = FALSE)
 
 #' @export
 #' @rdname checkNames
@@ -95,4 +95,4 @@ test_names = testNames
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkNames
-expect_names = makeExpectationFunction(checkNames)
+expect_names = makeExpectationFunction(checkNames, include.ns = FALSE)

@@ -25,7 +25,7 @@ check_atomic = checkAtomic
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAtomic
-assertAtomic = makeAssertionFunction(checkAtomic, c.fun = "c_check_atomic")
+assertAtomic = makeAssertionFunction(checkAtomic, c.fun = "c_check_atomic", include.ns = FALSE)
 
 #' @export
 #' @rdname checkAtomic
@@ -44,4 +44,4 @@ test_atomic = testAtomic
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkAtomic
-expect_atomic = makeExpectationFunction(checkAtomic, c.fun = "c_check_atomic")
+expect_atomic = makeExpectationFunction(checkAtomic, c.fun = "c_check_atomic", include.ns = FALSE)

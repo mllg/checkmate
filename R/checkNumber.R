@@ -27,7 +27,7 @@ check_number = checkNumber
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNumber
-assertNumber = makeAssertionFunction(checkNumber, c.fun = "c_check_number")
+assertNumber = makeAssertionFunction(checkNumber, c.fun = "c_check_number", include.ns = FALSE)
 
 #' @export
 #' @rdname checkNumber
@@ -46,4 +46,4 @@ test_number = testNumber
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkNumber
-expect_number = makeExpectationFunction(checkNumber, c.fun = "c_check_number")
+expect_number = makeExpectationFunction(checkNumber, c.fun = "c_check_number", include.ns = FALSE)

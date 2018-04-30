@@ -45,7 +45,7 @@ check_atomic_vector = checkAtomicVector
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAtomicVector
-assertAtomicVector = makeAssertionFunction(checkAtomicVector, c.fun = "c_check_atomic_vector")
+assertAtomicVector = makeAssertionFunction(checkAtomicVector, c.fun = "c_check_atomic_vector", include.ns = FALSE)
 
 #' @export
 #' @rdname checkAtomicVector
@@ -64,4 +64,4 @@ test_atomic_vector = testAtomicVector
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkAtomicVector
-expect_atomic_vector = makeExpectationFunction(checkAtomicVector, c.fun = "c_check_atomic_vector")
+expect_atomic_vector = makeExpectationFunction(checkAtomicVector, c.fun = "c_check_atomic_vector", include.ns = FALSE)

@@ -29,7 +29,7 @@ check_double = checkDouble
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDouble
-assertDouble = makeAssertionFunction(checkDouble, c.fun = "c_check_double")
+assertDouble = makeAssertionFunction(checkDouble, c.fun = "c_check_double", include.ns = FALSE)
 
 #' @export
 #' @rdname checkDouble
@@ -48,4 +48,4 @@ test_double = testDouble
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkDouble
-expect_double = makeExpectationFunction(checkDouble, c.fun = "c_check_double")
+expect_double = makeExpectationFunction(checkDouble, c.fun = "c_check_double", include.ns = FALSE)

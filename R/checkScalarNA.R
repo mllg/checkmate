@@ -30,7 +30,7 @@ check_scalar_na = checkScalarNA
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkScalarNA
-assertScalarNA = makeAssertionFunction(checkScalarNA)
+assertScalarNA = makeAssertionFunction(checkScalarNA, include.ns = FALSE)
 
 #' @export
 #' @rdname checkScalarNA
@@ -49,4 +49,4 @@ test_scalar_na = testScalarNA
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkScalarNA
-expect_scalar_na = makeExpectationFunction(checkScalarNA)
+expect_scalar_na = makeExpectationFunction(checkScalarNA, include.ns = FALSE)

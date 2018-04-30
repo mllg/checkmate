@@ -49,7 +49,7 @@ check_matrix = checkMatrix
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkMatrix
-assertMatrix = makeAssertionFunction(checkMatrix, c.fun = "c_check_matrix")
+assertMatrix = makeAssertionFunction(checkMatrix, c.fun = "c_check_matrix", include.ns = FALSE)
 
 #' @export
 #' @rdname checkMatrix
@@ -68,4 +68,4 @@ test_matrix = testMatrix
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkMatrix
-expect_matrix = makeExpectationFunction(checkMatrix, c.fun = "c_check_matrix")
+expect_matrix = makeExpectationFunction(checkMatrix, c.fun = "c_check_matrix", include.ns = FALSE)

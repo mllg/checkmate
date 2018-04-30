@@ -49,7 +49,7 @@ check_choice = checkChoice
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkChoice
-assertChoice = makeAssertionFunction(checkChoice)
+assertChoice = makeAssertionFunction(checkChoice, include.ns = FALSE)
 
 #' @export
 #' @rdname checkChoice
@@ -68,4 +68,4 @@ test_choice = testChoice
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkChoice
-expect_choice = makeExpectationFunction(checkChoice)
+expect_choice = makeExpectationFunction(checkChoice, include.ns = FALSE)

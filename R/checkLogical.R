@@ -25,7 +25,7 @@ check_logical = checkLogical
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkLogical
-assertLogical = makeAssertionFunction(checkLogical, c.fun = "c_check_logical")
+assertLogical = makeAssertionFunction(checkLogical, c.fun = "c_check_logical", include.ns = FALSE)
 
 #' @export
 #' @rdname checkLogical
@@ -44,4 +44,4 @@ test_logical = testLogical
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkLogical
-expect_logical = makeExpectationFunction(checkLogical, c.fun = "c_check_logical")
+expect_logical = makeExpectationFunction(checkLogical, c.fun = "c_check_logical", include.ns = FALSE)

@@ -29,7 +29,7 @@ check_posixct = checkPOSIXct
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkPOSIXct
-assertPOSIXct = makeAssertionFunction(checkPOSIXct, c.fun = "c_check_posixct")
+assertPOSIXct = makeAssertionFunction(checkPOSIXct, c.fun = "c_check_posixct", include.ns = FALSE)
 
 #' @export
 #' @rdname checkPOSIXct
@@ -48,4 +48,4 @@ test_posixct = testPOSIXct
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkPOSIXct
-expect_posixct = makeExpectationFunction(checkPOSIXct, c.fun = "c_check_posixct")
+expect_posixct = makeExpectationFunction(checkPOSIXct, c.fun = "c_check_posixct", include.ns = FALSE)
