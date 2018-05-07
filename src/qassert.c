@@ -228,9 +228,14 @@ static int parse_class(checker_t *checker, const char *rule) {
 }
 
 static int parse_length(checker_t *checker, const char *rule) {
+    checker->len.fun = NULL;
+    checker->len.op = NONE;
+    checker->len.cmp = 0;
+
     switch(rule[0]) {
+        case '\0':
+            return 0;
         case '*':
-            checker->len.fun = NULL;
             return 1;
         case '?':
             checker->len.fun = &ii_le;
@@ -244,9 +249,6 @@ static int parse_length(checker_t *checker, const char *rule) {
             return 1;
         case '(':
         case '[':
-        case '\0':
-            checker->len.fun = NULL;
-            checker->len.op = NONE;
             return 0;
     }
 

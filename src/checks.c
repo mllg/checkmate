@@ -40,15 +40,13 @@ static char msg[255] = "";
         return ScalarString(mkChar(msg)); \
     } else { \
         int_err_t ok = checkIntegerish(x, dtol, FALSE); \
-        if (ok.err != INT_OK) { \
-            switch(ok.err) { \
-                case INT_TYPE: snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); break; \
-                case INT_RANGE: snprintf(msg, 255, "Must be of type 'integerish', but element %d is not in integer range", ok.pos); break; \
-                case INT_TOL: snprintf(msg, 255, "Must be of type 'integerish', but element %d is not close to an integer", ok.pos); break; \
-                case INT_COMPLEX: snprintf(msg, 255, "Must be of type 'integerish', but element %d has an imaginary part", ok.pos); break; \
-            } \
-            return ScalarString(mkChar(msg)); \
-            } \
+        switch(ok.err) { \
+            case INT_OK: break; \
+            case INT_TYPE: snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", asFlag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); return ScalarString(mkChar(msg)); \
+            case INT_RANGE: snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not in integer range", ok.pos); return ScalarString(mkChar(msg)); \
+            case INT_TOL: snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not close to an integer", ok.pos); return ScalarString(mkChar(msg)); \
+            case INT_COMPLEX: snprintf(msg, 255, "Must be of type 'integerish', but element %ld has an imaginary part", ok.pos); return ScalarString(mkChar(msg)); \
+        } \
     }
 
 #define HANDLE_NA(x, na_ok) \
