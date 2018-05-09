@@ -1,5 +1,3 @@
-#' @description
-#'
 #' @section Check scalars:
 #' \itemize{
 #'   \item{\code{\link{checkFlag}}}
