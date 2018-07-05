@@ -47,20 +47,21 @@ makeExpectation = function(x, res, info, label) {
 makeExpectationFunction = function(check.fun, c.fun = NULL, include.ns = FALSE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
+  fargs = formals(args(check.fun))
   x = NULL
 
   new.fun = function() TRUE
   if (include.ns) {
-    formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = checkmate::vname(x)))
+    formals(new.fun) = c(fargs, alist(info = NULL, label = checkmate::vname(x)))
     tmpl = "{ res = %s(%s); checkmate::makeExpectation(x, res, info, label) }"
   } else {
-    formals(new.fun) = c(formals(check.fun), alist(info = NULL, label = vname(x)))
+    formals(new.fun) = c(fargs, alist(info = NULL, label = vname(x)))
     tmpl = "{ res = %s(%s); makeExpectation(x, res, info, label) }"
   }
   if (is.null(c.fun)) {
-    body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(formals(check.fun)), collapse = ", ")))
+    body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(fargs), collapse = ", ")))
   } else {
-    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(formals(check.fun))), collapse = ", ")))
+    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(fargs)), collapse = ", ")))
   }
   environment(new.fun) = env
   return(new.fun)

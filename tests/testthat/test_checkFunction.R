@@ -40,3 +40,9 @@ test_that("checkFunction", {
   expect_true(testFunction(function() x^2, args = character(0)))
   expect_error(assertFunction(letters), "character")
 })
+
+test_that("checkFunction with Primitives", {
+  expect_true(testFunction(sqrt))
+  expect_true(testFunction(sqrt, args = "x"))
+  expect_true(testFunction(as.logical, nargs = 1)) # bug 144
+})
