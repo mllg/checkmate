@@ -24,6 +24,10 @@ test_that("checkList", {
 
   expect_true(testList(list(), names = "named"))
 
+  x = list(1, NULL)
+  expect_true(testList(x))
+  expect_false(testList(x, any.missing = FALSE))
+
   x = 1:3
   class(x) = "foo"
   x = list(x, 1:3)

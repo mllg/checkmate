@@ -287,7 +287,7 @@ static Rboolean check_vector_len(SEXP x, SEXP len, SEXP min_len, SEXP max_len) {
 
 static Rboolean check_vector_missings(SEXP x, SEXP any_missing, SEXP all_missing) {
     if (!asFlag(any_missing, "any.missing")) {
-        R_xlen_t pos = find_missing_atomic(x);
+        R_xlen_t pos = find_missing_vector(x);
         if (pos > 0)
             return message("Contains missing values (element %i)", pos);
     }
@@ -556,7 +556,7 @@ SEXP attribute_hidden c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d,
     HANDLE_TYPE_NULL(isArray(x), "array", null_ok);
     ASSERT_TRUE(check_storage(x, mode));
 
-    if (!asFlag(any_missing, "any.missing") && find_missing_atomic(x) > 0)
+    if (!asFlag(any_missing, "any.missing") && find_missing_vector(x) > 0)
         return result("Contains missing values");
 
     R_len_t ndim = length(getAttrib(x, R_DimSymbol));

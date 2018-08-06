@@ -186,13 +186,13 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.name = CL_COMPLEX;
             break;
         case 'A':
-            checker->missing.pos1d = &find_missing_atomic;
+            checker->missing.pos1d = &find_missing_vector;
         case 'a':
             checker->class.fun = &is_class_atomic;
             checker->class.name = CL_ATOMIC;
             break;
         case 'V':
-            checker->missing.pos1d = &find_missing_atomic;
+            checker->missing.pos1d = &find_missing_vector;
         case 'v':
             checker->class.fun = &is_class_atomic_vector;
             checker->class.name = CL_ATOMIC_VECTOR;

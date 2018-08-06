@@ -79,17 +79,6 @@ R_xlen_t attribute_hidden find_missing_string(SEXP x) {
     return 0;
 }
 
-R_xlen_t attribute_hidden find_missing_atomic(SEXP x) {
-    switch(TYPEOF(x)) {
-        case LGLSXP:  return find_missing_logical(x);
-        case INTSXP:  return find_missing_integer(x);
-        case REALSXP: return find_missing_double(x);
-        case CPLXSXP: return find_missing_complex(x);
-        case STRSXP:  return find_missing_string(x);
-        default:      return FALSE;
-    }
-}
-
 R_xlen_t attribute_hidden find_missing_list(SEXP x) {
     const R_xlen_t n = xlength(x);
     for (R_xlen_t i = 0; i < n; i++) {
@@ -99,9 +88,21 @@ R_xlen_t attribute_hidden find_missing_list(SEXP x) {
     return 0;
 }
 
+R_xlen_t attribute_hidden find_missing_vector(SEXP x) {
+    switch(TYPEOF(x)) {
+        case LGLSXP:  return find_missing_logical(x);
+        case INTSXP:  return find_missing_integer(x);
+        case REALSXP: return find_missing_double(x);
+        case CPLXSXP: return find_missing_complex(x);
+        case STRSXP:  return find_missing_string(x);
+        case VECSXP:  return find_missing_list(x);
+        default:      return FALSE;
+    }
+}
+
 pos2d_t attribute_hidden find_missing_matrix(SEXP x) {
     pos2d_t pos;
-    R_xlen_t ii = find_missing_atomic(x);
+    R_xlen_t ii = find_missing_vector(x);
     if (ii > 0) {
         const R_xlen_t ncol = INTEGER(getAttrib(x, R_DimSymbol))[1];
         ii--;
@@ -117,7 +118,7 @@ pos2d_t attribute_hidden find_missing_frame(SEXP x) {
     pos2d_t pos = { 0, 0 };
     const R_xlen_t nc = xlength(x);
     for (R_xlen_t j = 0; j < nc; j++) {
-        R_xlen_t i = find_missing_atomic(VECTOR_ELT(x, j));
+        R_xlen_t i = find_missing_vector(VECTOR_ELT(x, j));
         if (i > 0) {
             pos.i = i; pos.j = j;
             break;

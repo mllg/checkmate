@@ -15,7 +15,7 @@ R_xlen_t attribute_hidden find_missing_double(SEXP);
 R_xlen_t attribute_hidden find_missing_numeric(SEXP);
 R_xlen_t attribute_hidden find_missing_complex(SEXP);
 R_xlen_t attribute_hidden find_missing_string(SEXP);
-R_xlen_t attribute_hidden find_missing_atomic(SEXP);
+R_xlen_t attribute_hidden find_missing_vector(SEXP);
 R_xlen_t attribute_hidden find_missing_list(SEXP);
 pos2d_t attribute_hidden find_missing_matrix(SEXP);
 pos2d_t attribute_hidden find_missing_frame(SEXP);

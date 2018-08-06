@@ -121,13 +121,19 @@ Depending on the function prefix:
 Check if an argument is a list
 }
 \note{
-The test for uniqueness does differentiate between the different NA types in R.
-This is require to be consistent with \code{\link[base]{unique}} while checking
+Missingness is defined here as elements of the list being \code{NULL}, analogously to \code{\link{anyMissing}}.
+
+The test for uniqueness does differentiate between the different NA types which are built-in in R.
+This is required to be consistent with \code{\link[base]{unique}} while checking
 scalar missing values. Also see the example.
 }
 \examples{
 testList(list())
 testList(as.list(iris), types = c("numeric", "factor"))
+
+# Missingness
+testList(list(1, NA), any.missing = FALSE)
+testList(list(1, NULL), any.missing = FALSE)
 
 # Uniqueness differentiates between different NA types:
 testList(list(NA, NA), unique = TRUE)
