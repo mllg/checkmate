@@ -83,7 +83,7 @@ check_factor = checkFactor
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFactor
-assertFactor = makeAssertionFunction(checkFactor, include.ns = FALSE)
+assertFactor = makeAssertionFunction(checkFactor, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkFactor
@@ -102,4 +102,4 @@ test_factor = testFactor
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkFactor
-expect_factor = makeExpectationFunction(checkFactor, include.ns = FALSE)
+expect_factor = makeExpectationFunction(checkFactor, use.namespace = FALSE)

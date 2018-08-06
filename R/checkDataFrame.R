@@ -26,7 +26,7 @@ check_data_frame = checkDataFrame
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDataFrame
-assertDataFrame = makeAssertionFunction(checkDataFrame, include.ns = FALSE)
+assertDataFrame = makeAssertionFunction(checkDataFrame, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkDataFrame
@@ -45,4 +45,4 @@ test_data_frame = testDataFrame
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkDataFrame
-expect_data_frame = makeExpectationFunction(checkDataFrame, include.ns = FALSE)
+expect_data_frame = makeExpectationFunction(checkDataFrame, use.namespace = FALSE)

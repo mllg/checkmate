@@ -36,7 +36,7 @@ check_tibble = checkTibble
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkTibble
-assertTibble = makeAssertionFunction(checkTibble, include.ns = FALSE)
+assertTibble = makeAssertionFunction(checkTibble, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkTibble
@@ -55,4 +55,4 @@ test_tibble = testTibble
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkTibble
-expect_tibble = makeExpectationFunction(checkTibble, include.ns = FALSE)
+expect_tibble = makeExpectationFunction(checkTibble, use.namespace = FALSE)

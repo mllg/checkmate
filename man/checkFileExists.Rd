@@ -19,11 +19,11 @@ checkFileExists(x, access = "", extension = NULL)
 
 check_file_exists(x, access = "", extension = NULL)
 
-assertFileExists(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assertFileExists(x, access = "", extension = NULL,
+  .var.name = vname(x), add = NULL)
 
-assert_file_exists(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assert_file_exists(x, access = "", extension = NULL,
+  .var.name = vname(x), add = NULL)
 
 testFileExists(x, access = "", extension = NULL)
 
@@ -109,3 +109,4 @@ Other filesystem: \code{\link{checkAccess}},
   \code{\link{checkDirectoryExists}},
   \code{\link{checkPathForOutput}}
 }
+\concept{filesystem}

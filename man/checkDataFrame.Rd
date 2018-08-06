@@ -11,39 +11,42 @@
 \title{Check if an argument is a data frame}
 \usage{
 checkDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 check_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 assertDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 test_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE)
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE)
 
 expect_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL,
-  max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL,
-  col.names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
+  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
+  row.names = NULL, col.names = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -152,5 +155,8 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
+  \code{\link{checkVector}}
 }
+\concept{basetypes}
+\concept{compound}

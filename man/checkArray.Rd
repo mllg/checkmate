@@ -10,26 +10,29 @@
 \alias{expect_array}
 \title{Check if an argument is an array}
 \usage{
-checkArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE)
+checkArray(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE)
 
-check_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE)
+check_array(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE)
 
-assertArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertArray(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_array(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testArray(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE)
+testArray(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE)
 
-test_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE)
+test_array(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE)
 
-expect_array(x, mode = NULL, any.missing = TRUE, d = NULL, min.d = NULL,
-  max.d = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+expect_array(x, mode = NULL, any.missing = TRUE, d = NULL,
+  min.d = NULL, max.d = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -109,9 +112,12 @@ Other basetypes: \code{\link{checkAtomicVector}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
+  \code{\link{checkVector}}
 
 Other compound: \code{\link{checkDataFrame}},
   \code{\link{checkDataTable}}, \code{\link{checkMatrix}},
   \code{\link{checkTibble}}
 }
+\concept{basetypes}
+\concept{compound}

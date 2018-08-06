@@ -17,12 +17,12 @@ check_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps), null.ok = FALSE)
@@ -109,3 +109,4 @@ Other scalars: \code{\link{checkCount}},
   \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
   \code{\link{checkString}}
 }
+\concept{scalars}

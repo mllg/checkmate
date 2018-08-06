@@ -10,23 +10,25 @@
 \alias{expect_number}
 \title{Check if an argument is a single numeric value}
 \usage{
-checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+checkNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE, null.ok = FALSE)
 
 check_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   finite = FALSE, null.ok = FALSE)
 
 assertNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 assert_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  finite = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  finite = FALSE, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
-testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+testNumber(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE, null.ok = FALSE)
 
-test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE,
-  null.ok = FALSE)
+test_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
+  finite = FALSE, null.ok = FALSE)
 
 expect_number(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   finite = FALSE, null.ok = FALSE, info = NULL, label = vname(x))
@@ -101,3 +103,4 @@ Other scalars: \code{\link{checkCount}},
   \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
   \code{\link{checkString}}
 }
+\concept{scalars}

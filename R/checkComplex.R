@@ -24,7 +24,7 @@ check_complex = checkComplex
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkComplex
-assertComplex = makeAssertionFunction(checkComplex, c.fun = "c_check_complex", include.ns = FALSE)
+assertComplex = makeAssertionFunction(checkComplex, c.fun = "c_check_complex", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkComplex
@@ -43,4 +43,4 @@ test_complex = testComplex
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkComplex
-expect_complex = makeExpectationFunction(checkComplex, c.fun = "c_check_complex", include.ns = FALSE)
+expect_complex = makeExpectationFunction(checkComplex, c.fun = "c_check_complex", use.namespace = FALSE)

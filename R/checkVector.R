@@ -43,7 +43,7 @@ check_vector = checkVector
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkVector
-assertVector = makeAssertionFunction(checkVector, c.fun = "c_check_vector", include.ns = FALSE)
+assertVector = makeAssertionFunction(checkVector, c.fun = "c_check_vector", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkVector
@@ -62,4 +62,4 @@ test_vector = testVector
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkVector
-expect_vector = makeExpectationFunction(checkVector, c.fun = "c_check_vector", include.ns = FALSE)
+expect_vector = makeExpectationFunction(checkVector, c.fun = "c_check_vector", use.namespace = FALSE)

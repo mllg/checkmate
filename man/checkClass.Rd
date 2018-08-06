@@ -24,8 +24,8 @@ testClass(x, classes, ordered = FALSE, null.ok = FALSE)
 
 test_class(x, classes, ordered = FALSE, null.ok = FALSE)
 
-expect_class(x, classes, ordered = FALSE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_class(x, classes, ordered = FALSE, null.ok = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -106,3 +106,5 @@ Other attributes: \code{\link{checkMultiClass}},
 Other classes: \code{\link{checkMultiClass}},
   \code{\link{checkR6}}
 }
+\concept{attributes}
+\concept{classes}

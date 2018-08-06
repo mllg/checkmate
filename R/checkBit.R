@@ -74,7 +74,7 @@ check_bit = checkBit
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkBit
-assertBit = makeAssertionFunction(checkBit, include.ns = FALSE)
+assertBit = makeAssertionFunction(checkBit, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkBit
@@ -93,4 +93,4 @@ test_bit = testBit
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkBit
-expect_bit = makeExpectationFunction(checkBit, include.ns = FALSE)
+expect_bit = makeExpectationFunction(checkBit, use.namespace = FALSE)

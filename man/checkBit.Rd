@@ -10,26 +10,29 @@
 \alias{expect_bit}
 \title{Check if an argument is a bit vector}
 \usage{
-checkBit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE)
+checkBit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE)
 
-check_bit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE)
+check_bit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE)
 
-assertBit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertBit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_bit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_bit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testBit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE)
+testBit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE)
 
-test_bit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE)
+test_bit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE)
 
-expect_bit(x, len = NULL, min.len = NULL, max.len = NULL, min.0 = NULL,
-  min.1 = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+expect_bit(x, len = NULL, min.len = NULL, max.len = NULL,
+  min.0 = NULL, min.1 = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr

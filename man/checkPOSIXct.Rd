@@ -20,13 +20,13 @@ check_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
 
 assertPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_posixct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, sorted = FALSE, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testPOSIXct(x, lower = NULL, upper = NULL, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
@@ -123,5 +123,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkVector}}
+  \code{\link{checkRaw}}, \code{\link{checkVector}}
 }
+\concept{basetypes}

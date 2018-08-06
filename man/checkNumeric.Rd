@@ -11,39 +11,39 @@
 \title{Check that an argument is a vector of type numeric}
 \usage{
 checkNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 check_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 assertNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testNumeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 test_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE)
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE)
 
 expect_numeric(x, lower = -Inf, upper = Inf, finite = FALSE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+  any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -146,5 +146,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkPOSIXct}},
-  \code{\link{checkVector}}
+  \code{\link{checkRaw}}, \code{\link{checkVector}}
 }
+\concept{basetypes}

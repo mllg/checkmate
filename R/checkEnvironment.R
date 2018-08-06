@@ -39,7 +39,7 @@ check_environment = checkEnvironment
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkEnvironment
-assertEnvironment = makeAssertionFunction(checkEnvironment, include.ns = FALSE)
+assertEnvironment = makeAssertionFunction(checkEnvironment, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkEnvironment
@@ -58,4 +58,4 @@ test_environment = testEnvironment
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkEnvironment
-expect_environment = makeExpectationFunction(checkEnvironment, include.ns = FALSE)
+expect_environment = makeExpectationFunction(checkEnvironment, use.namespace = FALSE)

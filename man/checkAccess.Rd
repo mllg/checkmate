@@ -80,3 +80,4 @@ Other filesystem: \code{\link{checkDirectoryExists}},
   \code{\link{checkFileExists}},
   \code{\link{checkPathForOutput}}
 }
+\concept{filesystem}

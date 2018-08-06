@@ -17,12 +17,12 @@ check_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
   public = NULL, private = NULL, null.ok = FALSE)
 
 assertR6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  public = NULL, private = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  public = NULL, private = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testR6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
   public = NULL, private = NULL, null.ok = FALSE)
@@ -109,3 +109,4 @@ checkR6(x, "Bar", cloneable = TRUE, public = "a")
 Other classes: \code{\link{checkClass}},
   \code{\link{checkMultiClass}}
 }
+\concept{classes}

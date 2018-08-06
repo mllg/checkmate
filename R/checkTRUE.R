@@ -26,7 +26,7 @@ check_true = checkTRUE
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkTRUE
-assertTRUE = makeAssertionFunction(checkTRUE, include.ns = FALSE)
+assertTRUE = makeAssertionFunction(checkTRUE, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkTRUE

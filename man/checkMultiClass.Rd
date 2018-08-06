@@ -87,3 +87,5 @@ Other attributes: \code{\link{checkClass}},
 Other classes: \code{\link{checkClass}},
   \code{\link{checkR6}}
 }
+\concept{attributes}
+\concept{classes}

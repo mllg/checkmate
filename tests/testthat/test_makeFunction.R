@@ -2,12 +2,12 @@ context("makeXFunction")
 
 test_that("makeAssertion", {
   x = assertFlag
-  y = makeAssertionFunction(checkFlag, c.fun = "c_check_flag", include.ns = FALSE)
+  y = makeAssertionFunction(checkFlag, c.fun = "c_check_flag", use.namespace = FALSE)
   expect_identical(formals(x), formals(y))
   expect_equal(body(x), body(y))
 
   x = assertList
-  y = makeAssertionFunction(checkList, include.ns = FALSE)
+  y = makeAssertionFunction(checkList, use.namespace = FALSE)
   expect_identical(formals(x), formals(y))
   expect_equal(body(x), body(y))
 })
@@ -31,12 +31,12 @@ test_that("makeTest", {
 
 test_that("makeExpectation", {
   x = expect_flag
-  y = makeExpectationFunction(checkFlag, c.fun = "c_check_flag", include.ns = FALSE)
+  y = makeExpectationFunction(checkFlag, c.fun = "c_check_flag", use.namespace = FALSE)
   expect_identical(formals(x), formals(y))
   expect_equal(body(x), body(y))
 
   x = expect_list
-  y = makeExpectationFunction(checkList, include.ns = FALSE)
+  y = makeExpectationFunction(checkList, use.namespace = FALSE)
   expect_identical(formals(x), formals(y))
   expect_equal(body(x), body(y))
 })

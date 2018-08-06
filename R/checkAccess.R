@@ -56,7 +56,7 @@ check_access = checkAccess
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkAccess
-assertAccess = makeAssertionFunction(checkAccess, include.ns = FALSE)
+assertAccess = makeAssertionFunction(checkAccess, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkAccess
@@ -75,4 +75,4 @@ test_access = testAccess
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkAccess
-expect_access = makeExpectationFunction(checkAccess, include.ns = FALSE)
+expect_access = makeExpectationFunction(checkAccess, use.namespace = FALSE)

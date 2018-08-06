@@ -34,7 +34,7 @@ check_named = checkNamed
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNamed
-assertNamed = makeAssertionFunction(checkNamed, c.fun = "c_check_named", include.ns = FALSE)
+assertNamed = makeAssertionFunction(checkNamed, c.fun = "c_check_named", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkNamed
@@ -54,4 +54,4 @@ test_named = testNamed
 # #' @include makeExpectation.R
 # #' @template expect
 # #' @rdname checkNamed
-expect_named = makeExpectationFunction(checkNamed, c.fun = "c_check_named", include.ns = FALSE)
+expect_named = makeExpectationFunction(checkNamed, c.fun = "c_check_named", use.namespace = FALSE)

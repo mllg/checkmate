@@ -110,3 +110,4 @@ Other scalars: \code{\link{checkCount}},
   \code{\link{checkNumber}}, \code{\link{checkScalarNA}},
   \code{\link{checkScalar}}
 }
+\concept{scalars}

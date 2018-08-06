@@ -20,9 +20,9 @@ assertNames(x, type = "named", subset.of = NULL, must.include = NULL,
   permutation.of = NULL, identical.to = NULL, .var.name = vname(x),
   add = NULL)
 
-assert_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, .var.name = vname(x),
-  add = NULL)
+assert_names(x, type = "named", subset.of = NULL,
+  must.include = NULL, permutation.of = NULL, identical.to = NULL,
+  .var.name = vname(x), add = NULL)
 
 testNames(x, type = "named", subset.of = NULL, must.include = NULL,
   permutation.of = NULL, identical.to = NULL)
@@ -30,9 +30,9 @@ testNames(x, type = "named", subset.of = NULL, must.include = NULL,
 test_names(x, type = "named", subset.of = NULL, must.include = NULL,
   permutation.of = NULL, identical.to = NULL)
 
-expect_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, info = NULL,
-  label = vname(x))
+expect_names(x, type = "named", subset.of = NULL,
+  must.include = NULL, permutation.of = NULL, identical.to = NULL,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[\code{character} || \code{NULL}]\cr
@@ -112,3 +112,4 @@ assertNames(names(iris), permutation.of = cn)
 Other attributes: \code{\link{checkClass}},
   \code{\link{checkMultiClass}}, \code{\link{checkNamed}}
 }
+\concept{attributes}

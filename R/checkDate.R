@@ -54,7 +54,7 @@ check_date = checkDate
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDate
-assertDate = makeAssertionFunction(checkDate, include.ns = FALSE)
+assertDate = makeAssertionFunction(checkDate, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkDate
@@ -73,4 +73,4 @@ test_date = testDate
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkDate
-expect_date = makeExpectationFunction(checkDate, include.ns = FALSE)
+expect_date = makeExpectationFunction(checkDate, use.namespace = FALSE)

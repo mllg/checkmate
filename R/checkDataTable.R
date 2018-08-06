@@ -62,7 +62,7 @@ check_data_table = checkDataTable
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkDataTable
-assertDataTable = makeAssertionFunction(checkDataTable, include.ns = FALSE)
+assertDataTable = makeAssertionFunction(checkDataTable, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkDataTable
@@ -81,4 +81,4 @@ test_data_table = testDataTable
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkDataTable
-expect_data_table = makeExpectationFunction(checkDataTable, include.ns = FALSE)
+expect_data_table = makeExpectationFunction(checkDataTable, use.namespace = FALSE)

@@ -16,7 +16,8 @@ check_scalar_na(x, null.ok = FALSE)
 
 assertScalarNA(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_scalar_na(x, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_scalar_na(x, null.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 
 testScalarNA(x, null.ok = FALSE)
 
@@ -78,3 +79,4 @@ Other scalars: \code{\link{checkCount}},
   \code{\link{checkNumber}}, \code{\link{checkScalar}},
   \code{\link{checkString}}
 }
+\concept{scalars}

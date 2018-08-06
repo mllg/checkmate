@@ -32,7 +32,7 @@ check_count = checkCount
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkCount
-assertCount = makeAssertionFunction(checkCount, c.fun = "c_check_count", include.ns = FALSE)
+assertCount = makeAssertionFunction(checkCount, c.fun = "c_check_count", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkCount
@@ -51,4 +51,4 @@ test_count = testCount
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkCount
-expect_count = makeExpectationFunction(checkCount, c.fun = "c_check_count", include.ns = FALSE)
+expect_count = makeExpectationFunction(checkCount, c.fun = "c_check_count", use.namespace = FALSE)

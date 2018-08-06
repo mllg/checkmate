@@ -34,7 +34,7 @@ check_array = checkArray
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkArray
-assertArray = makeAssertionFunction(checkArray, c.fun = "c_check_array", include.ns = FALSE)
+assertArray = makeAssertionFunction(checkArray, c.fun = "c_check_array", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkArray
@@ -53,4 +53,4 @@ test_array = testArray
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkArray
-expect_array = makeExpectationFunction(checkArray, c.fun = "c_check_array", include.ns = FALSE)
+expect_array = makeExpectationFunction(checkArray, c.fun = "c_check_array", use.namespace = FALSE)

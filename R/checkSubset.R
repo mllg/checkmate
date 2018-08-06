@@ -52,7 +52,7 @@ check_subset = checkSubset
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkSubset
-assertSubset = makeAssertionFunction(checkSubset, include.ns = FALSE)
+assertSubset = makeAssertionFunction(checkSubset, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkSubset
@@ -71,4 +71,4 @@ test_subset = testSubset
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkSubset
-expect_subset = makeExpectationFunction(checkSubset, include.ns = FALSE)
+expect_subset = makeExpectationFunction(checkSubset, use.namespace = FALSE)

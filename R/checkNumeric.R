@@ -33,7 +33,7 @@ check_numeric = checkNumeric
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkNumeric
-assertNumeric = makeAssertionFunction(checkNumeric, c.fun = "c_check_numeric", include.ns = FALSE)
+assertNumeric = makeAssertionFunction(checkNumeric, c.fun = "c_check_numeric", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkNumeric
@@ -52,4 +52,4 @@ test_numeric = testNumeric
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkNumeric
-expect_numeric = makeExpectationFunction(checkNumeric, c.fun = "c_check_numeric", include.ns = FALSE)
+expect_numeric = makeExpectationFunction(checkNumeric, c.fun = "c_check_numeric", use.namespace = FALSE)

@@ -66,7 +66,7 @@ check_class = checkClass
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkClass
-assertClass = makeAssertionFunction(checkClass, include.ns = FALSE)
+assertClass = makeAssertionFunction(checkClass, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkClass
@@ -85,4 +85,4 @@ test_class = testClass
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkClass
-expect_class = makeExpectationFunction(checkClass, include.ns = FALSE)
+expect_class = makeExpectationFunction(checkClass, use.namespace = FALSE)

@@ -7,7 +7,7 @@
 \usage{
 makeAssertion(x, res, var.name, collection)
 
-makeAssertionFunction(check.fun, c.fun = NULL, include.ns = TRUE,
+makeAssertionFunction(check.fun, c.fun = NULL, use.namespace = TRUE,
   env = parent.frame())
 }
 \arguments{
@@ -35,10 +35,10 @@ If not \code{NULL}, instead of calling the function \code{check.fun}, use \code{
 set of parameters. The C function must be registered as a native symbol, see \code{\link[base]{.Call}}.
 Useful if \code{check.fun} is just a simple wrapper.}
 
-\item{include.ns}{[\code{logical(1)}]\cr
+\item{use.namespace}{[\code{logical(1)}]\cr
 Call functions of \pkg{checkmate} using its namespace explicitly.
-Can be set to \code{TRUE} so save some microseconds, but the package needs to be imported.
-Default is \code{FALSE}.}
+Can be set to \code{FALSE} so save some microseconds, but the checkmate package needs to be imported.
+Default is \code{TRUE}.}
 
 \item{env}{[\code{environment}]\cr
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}
@@ -72,3 +72,4 @@ print(assertFalse)
 Other CustomConstructors: \code{\link{makeExpectation}},
   \code{\link{makeTest}}
 }
+\concept{CustomConstructors}

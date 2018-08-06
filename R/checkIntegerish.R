@@ -36,7 +36,7 @@ check_integerish = checkIntegerish
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkIntegerish
-assertIntegerish = makeAssertionFunction(checkIntegerish, c.fun = "c_check_integerish", include.ns = FALSE)
+assertIntegerish = makeAssertionFunction(checkIntegerish, c.fun = "c_check_integerish", use.namespace = FALSE)
 
 #' @export
 #' @rdname checkIntegerish
@@ -55,4 +55,4 @@ test_integerish = testIntegerish
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkIntegerish
-expect_integerish = makeExpectationFunction(checkIntegerish, c.fun = "c_check_integerish", include.ns = FALSE)
+expect_integerish = makeExpectationFunction(checkIntegerish, c.fun = "c_check_integerish", use.namespace = FALSE)

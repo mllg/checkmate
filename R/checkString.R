@@ -29,7 +29,7 @@ check_string = checkString
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkString
-assertString = makeAssertionFunction(checkString, include.ns = FALSE)
+assertString = makeAssertionFunction(checkString, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkString
@@ -48,4 +48,4 @@ test_string = testString
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkString
-expect_string = makeExpectationFunction(checkString, include.ns = FALSE)
+expect_string = makeExpectationFunction(checkString, use.namespace = FALSE)

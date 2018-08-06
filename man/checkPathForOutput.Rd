@@ -88,3 +88,4 @@ Other filesystem: \code{\link{checkAccess}},
   \code{\link{checkDirectoryExists}},
   \code{\link{checkFileExists}}
 }
+\concept{filesystem}

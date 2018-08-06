@@ -1,10 +1,11 @@
-# Version 1.8.6
+# Version 1.9.0
 * Error messages now provide more information about error locations, e.g., the
   position of the first missing element in a vector.
 * Checks for missingness and sort order optimized for ALTREPs.
 * The calling frame reported in assertions is now identical to the calling
   frame reported by R's `stop()` function (#117).
 * Added `checkDouble` to explicitly check for non-integer numerics.
+* Added `checkRaw` to check raw vectors.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
   (#100).
 * New arguments `max.rows` and `max.cols` to check for maximum number
@@ -88,7 +89,7 @@
   checking nested lists.
 
 # Version 1.7.3
-* Added `checkDate()`.
+* Added `checkDate`.
 * Argument `.var.name` of assert functions now has \code{NULL} as default value
   (instead of missing).
 * Fixed a bug in `*OS` functions.
@@ -208,7 +209,7 @@
 * `assert()` now returns TRUE invisibly (as documented).
 * Fixed handling of zero-length arguments in `checkFunction()`.
 * Fixed error message if duplicated values where found.
-* Fixed a missing check for row names in `checkMatrix()` and `checkDataFrame()`.
+* Fixed a missing check for row names in `checkMatrix` and `checkDataFrame`.
 
 # Version 1.0
 * Initial release on CRAN.

@@ -23,14 +23,14 @@ check_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
 assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  sorted = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  sorted = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
   ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
@@ -154,5 +154,7 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkVector}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
+  \code{\link{checkVector}}
 }
+\concept{basetypes}

@@ -20,17 +20,17 @@ check_list(x, types = character(0L), any.missing = TRUE,
 
 assertList(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_list(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  unique = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-testList(x, types = character(0L), any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+testList(x, types = character(0L), any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE)
 
 test_list(x, types = character(0L), any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
@@ -145,5 +145,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkLogical}},
   \code{\link{checkMatrix}}, \code{\link{checkNull}},
   \code{\link{checkNumeric}}, \code{\link{checkPOSIXct}},
-  \code{\link{checkVector}}
+  \code{\link{checkRaw}}, \code{\link{checkVector}}
 }
+\concept{basetypes}

@@ -46,7 +46,7 @@ check_set_equal = checkSetEqual
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkSetEqual
-assertSetEqual = makeAssertionFunction(checkSetEqual, include.ns = FALSE)
+assertSetEqual = makeAssertionFunction(checkSetEqual, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkSetEqual
@@ -65,4 +65,4 @@ test_set_equal = testSetEqual
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkSetEqual
-expect_set_equal = makeExpectationFunction(checkSetEqual, include.ns = FALSE)
+expect_set_equal = makeExpectationFunction(checkSetEqual, use.namespace = FALSE)

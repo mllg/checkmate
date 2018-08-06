@@ -17,12 +17,12 @@ check_count(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 assertCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), null.ok = FALSE)
@@ -107,3 +107,4 @@ Other scalars: \code{\link{checkFlag}},
   \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
   \code{\link{checkString}}
 }
+\concept{scalars}

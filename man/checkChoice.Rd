@@ -24,8 +24,8 @@ testChoice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
 test_choice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-expect_choice(x, choices, null.ok = FALSE, fmatch = FALSE, info = NULL,
-  label = vname(x))
+expect_choice(x, choices, null.ok = FALSE, fmatch = FALSE,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -95,3 +95,4 @@ testChoice(1, as.integer(1))
 Other set: \code{\link{checkSetEqual}},
   \code{\link{checkSubset}}
 }
+\concept{set}

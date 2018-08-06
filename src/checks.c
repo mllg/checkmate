@@ -85,6 +85,10 @@ static Rboolean is_posixct(SEXP x) {
     return isReal(x) && inherits(x, "POSIXct");
 }
 
+static Rboolean is_raw(SEXP x) {
+    return TYPEOF(x) == RAWSXP;
+}
+
 static void fmt_posixct(char * out, SEXP x) {
     SEXP call = PROTECT(allocVector(LANGSXP, 2));
     SETCAR(call, install("format.POSIXct"));
@@ -625,6 +629,13 @@ SEXP attribute_hidden c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     ASSERT_TRUE(check_vector_unique(x, unique));
+    return ScalarLogical(TRUE);
+}
+
+SEXP attribute_hidden c_check_raw(SEXP x, SEXP len, SEXP min_len, SEXP max_len, SEXP names, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_raw(x), "raw", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
     return ScalarLogical(TRUE);
 }
 

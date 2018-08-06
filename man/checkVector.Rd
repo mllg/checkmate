@@ -10,33 +10,36 @@
 \alias{expect_vector}
 \title{Check if an argument is a vector}
 \usage{
-checkVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+checkVector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE)
 
-check_vector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+check_vector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE)
 
-assertVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertVector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
-assert_vector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_vector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
   len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
   names = NULL, null.ok = FALSE)
 
-test_vector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+test_vector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE)
 
-expect_vector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+expect_vector(x, strict = FALSE, any.missing = TRUE,
+  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
+  unique = FALSE, names = NULL, null.ok = FALSE, info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -125,8 +128,10 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkLogical}}, \code{\link{checkMatrix}},
   \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}
+  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}}
 
 Other atomicvector: \code{\link{checkAtomicVector}},
   \code{\link{checkAtomic}}
 }
+\concept{atomicvector}
+\concept{basetypes}

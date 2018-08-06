@@ -4,7 +4,8 @@
 \alias{matchArg}
 \title{Partial Argument Matching}
 \usage{
-matchArg(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL)
+matchArg(x, choices, several.ok = FALSE, .var.name = vname(x),
+  add = NULL)
 }
 \arguments{
 \item{x}{[character]\cr

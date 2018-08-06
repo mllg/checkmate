@@ -52,7 +52,7 @@ check_path_for_output = checkPathForOutput
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkPathForOutput
-assertPathForOutput = makeAssertionFunction(checkPathForOutput, include.ns = FALSE)
+assertPathForOutput = makeAssertionFunction(checkPathForOutput, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkPathForOutput
@@ -71,4 +71,4 @@ test_path_for_output = testPathForOutput
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkPathForOutput
-expect_path_for_output = makeExpectationFunction(checkPathForOutput, include.ns = FALSE)
+expect_path_for_output = makeExpectationFunction(checkPathForOutput, use.namespace = FALSE)

@@ -48,16 +48,16 @@ makeAssertion = function(x, res, var.name, collection) {
 
 #' @rdname makeAssertion
 #' @template makeFunction
-#' @template include.ns
+#' @template use.namespace
 #' @export
-makeAssertionFunction = function(check.fun, c.fun = NULL, include.ns = TRUE, env = parent.frame()) {
+makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
   fargs = formals(args(check.fun))
   x = NULL
 
   new.fun = function() TRUE
-  if (include.ns) {
+  if (use.namespace) {
     formals(new.fun) = c(fargs, alist(.var.name = checkmate::vname(x), add = NULL))
     tmpl = "{ res = %s(%s); checkmate::makeAssertion(x, res, .var.name, add) }"
   } else {

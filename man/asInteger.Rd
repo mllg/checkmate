@@ -6,10 +6,10 @@
 \alias{asInt}
 \title{Convert an argument to an integer}
 \usage{
-asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = Inf,
-  any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL,
-  max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL,
-  .var.name = vname(x))
+asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
+  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
+  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
+  names = NULL, .var.name = vname(x))
 
 asCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), .var.name = vname(x))

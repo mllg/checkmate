@@ -7,8 +7,8 @@
 \title{checkmate: Fast and Versatile Argument Checks}
 \description{
 Tests and assertions to perform frequent argument checks. A
-substantial part of the package was written in C to minimize any worries
-about execution time overhead.
+    substantial part of the package was written in C to minimize any worries
+    about execution time overhead.
 }
 \section{Check scalars}{
 

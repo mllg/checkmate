@@ -127,5 +127,6 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkInteger}}, \code{\link{checkList}},
   \code{\link{checkMatrix}}, \code{\link{checkNull}},
   \code{\link{checkNumeric}}, \code{\link{checkPOSIXct}},
-  \code{\link{checkVector}}
+  \code{\link{checkRaw}}, \code{\link{checkVector}}
 }
+\concept{basetypes}

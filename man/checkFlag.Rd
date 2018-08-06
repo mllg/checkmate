@@ -88,3 +88,4 @@ Other scalars: \code{\link{checkCount}},
   \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
   \code{\link{checkString}}
 }
+\concept{scalars}

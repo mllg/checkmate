@@ -13,40 +13,44 @@
 checkDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE)
 
 check_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE)
 
 assertDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 assert_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE, .var.name = vname(x), add = NULL)
 
 testDataTable(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE)
 
 test_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE)
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE)
 
 expect_data_table(x, key = NULL, index = NULL, types = character(0L),
   any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
   max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE,
-  info = NULL, label = vname(x))
+  ncols = NULL, row.names = NULL, col.names = NULL,
+  null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -154,3 +158,4 @@ Other compound: \code{\link{checkArray}},
   \code{\link{checkDataFrame}}, \code{\link{checkMatrix}},
   \code{\link{checkTibble}}
 }
+\concept{compound}

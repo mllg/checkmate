@@ -71,7 +71,7 @@ check_function = checkFunction
 #' @include makeAssertion.R
 #' @template assert
 #' @rdname checkFunction
-assertFunction = makeAssertionFunction(checkFunction, include.ns = FALSE)
+assertFunction = makeAssertionFunction(checkFunction, use.namespace = FALSE)
 
 #' @export
 #' @rdname checkFunction
@@ -90,4 +90,4 @@ test_function = testFunction
 #' @include makeExpectation.R
 #' @template expect
 #' @rdname checkFunction
-expect_function = makeExpectationFunction(checkFunction, include.ns = FALSE)
+expect_function = makeExpectationFunction(checkFunction, use.namespace = FALSE)

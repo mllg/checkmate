@@ -42,16 +42,16 @@ makeExpectation = function(x, res, info, label) {
 
 #' @rdname makeExpectation
 #' @template makeFunction
-#' @template include.ns
+#' @template use.namespace
 #' @export
-makeExpectationFunction = function(check.fun, c.fun = NULL, include.ns = FALSE, env = parent.frame()) {
+makeExpectationFunction = function(check.fun, c.fun = NULL, use.namespace = FALSE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
   fargs = formals(args(check.fun))
   x = NULL
 
   new.fun = function() TRUE
-  if (include.ns) {
+  if (use.namespace) {
     formals(new.fun) = c(fargs, alist(info = NULL, label = checkmate::vname(x)))
     tmpl = "{ res = %s(%s); checkmate::makeExpectation(x, res, info, label) }"
   } else {
