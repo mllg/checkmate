@@ -30,7 +30,7 @@
 qassertr = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE)
   if (!identical(res, TRUE))
-    mstop(qrmsg(x, res, .var.name))
+    mstop(qrmsg(x, res, .var.name), call. = sys.call(-1L))
   invisible(x)
 }
 

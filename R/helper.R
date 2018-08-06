@@ -1,4 +1,4 @@
-mstop = function(msg, ..., call. = sys.call(-3)) {
+mstop = function(msg, ..., call. = NULL) {
   stop(simpleError(sprintf(msg, ...), call.))
 }
 
