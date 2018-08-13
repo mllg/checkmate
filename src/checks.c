@@ -81,14 +81,6 @@ static SEXP result(const char *fmt, ...) {
     return ScalarString(mkChar(msg));
 }
 
-static Rboolean is_posixct(SEXP x) {
-    return isReal(x) && inherits(x, "POSIXct");
-}
-
-static Rboolean is_raw(SEXP x) {
-    return TYPEOF(x) == RAWSXP;
-}
-
 static void fmt_posixct(char * out, SEXP x) {
     SEXP call = PROTECT(allocVector(LANGSXP, 2));
     SETCAR(call, install("format.POSIXct"));
@@ -147,7 +139,7 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
     const Rboolean null_tz = isNull(tz);
 
     if (!isNull(lower)) {
-        if (!is_posixct(lower) || length(lower) != 1)
+        if (!is_class_posixct(lower) || length(lower) != 1)
             error("Argument 'lower' must be provided as single POSIXct time");
         SEXP lower_tz = PROTECT(getAttrib(lower, install("tzone")));
         if (null_tz != isNull(lower_tz) ||
@@ -171,7 +163,7 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
     }
 
     if (!isNull(upper)) {
-        if (!is_posixct(upper) || length(upper) != 1)
+        if (!is_class_posixct(upper) || length(upper) != 1)
             error("Argument 'upper' must be provided as single POSIXct time");
         SEXP upper_tz = PROTECT(getAttrib(upper, install("tzone")));
         if (null_tz != isNull(upper_tz) ||
@@ -374,7 +366,7 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
             if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
                 return message("Must store integerish values");
         } else if (strcmp(storage, "numeric") == 0) {
-            if (!isStrictlyNumeric(x))
+            if (!is_class_numeric(x))
                 return message("Must store numerics");
         } else if (strcmp(storage, "complex") == 0) {
             if (!isComplex(x))
@@ -383,7 +375,7 @@ static Rboolean check_storage(SEXP x, SEXP mode) {
             if (!isString(x))
                 return message("Must store characters");
         } else if (strcmp(storage, "list") == 0) {
-            if (!isRList(x))
+            if (!is_class_list(x))
                 return message("Must store a list");
         } else if (strcmp(storage, "atomic") == 0) {
             if (!isVectorAtomic(x))
@@ -419,7 +411,7 @@ static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
 SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isString(x) || all_missing_atomic(x), "character", null_ok);
+    HANDLE_TYPE_NULL(is_class_string(x) || all_missing_atomic(x), "character", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -434,7 +426,7 @@ SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing
 }
 
 SEXP attribute_hidden c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isComplex(x) || all_missing_atomic(x), "complex", null_ok);
+    HANDLE_TYPE_NULL(is_class_complex(x) || all_missing_atomic(x), "complex", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -443,7 +435,7 @@ SEXP attribute_hidden c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing
 }
 
 SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP max_rows, SEXP min_cols, SEXP max_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isFrame(x), "data.frame", null_ok);
+    HANDLE_TYPE_NULL(is_class_frame(x), "data.frame", null_ok);
     ASSERT_TRUE(check_matrix_dims(x, min_rows, max_rows, min_cols, max_cols, rows, cols));
 
     if (!isNull(row_names)) {
@@ -471,7 +463,7 @@ SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missi
 }
 
 SEXP attribute_hidden c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isFactor(x) || all_missing_atomic(x), "factor", null_ok);
+    HANDLE_TYPE_NULL(is_class_factor(x) || all_missing_atomic(x), "factor", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -480,7 +472,7 @@ SEXP attribute_hidden c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing,
 }
 
 SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isInteger(x) || all_missing_atomic(x), "integer", null_ok);
+    HANDLE_TYPE_NULL(is_class_integer(x) || all_missing_atomic(x), "integer", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -503,7 +495,7 @@ SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP uppe
 }
 
 SEXP attribute_hidden c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isRList(x), "list", null_ok)
+    HANDLE_TYPE_NULL(is_class_list(x), "list", null_ok)
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -512,7 +504,7 @@ SEXP attribute_hidden c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, S
 }
 
 SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isLogical(x) || all_missing_atomic(x), "logical", null_ok);
+    HANDLE_TYPE_NULL(is_class_logical(x) || all_missing_atomic(x), "logical", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -521,7 +513,7 @@ SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing
 }
 
 SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP all_missing, SEXP min_rows, SEXP max_rows, SEXP min_cols, SEXP max_cols, SEXP rows, SEXP cols, SEXP row_names, SEXP col_names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isMatrix(x), "matrix", null_ok);
+    HANDLE_TYPE_NULL(is_class_matrix(x), "matrix", null_ok);
     ASSERT_TRUE(check_storage(x, mode));
     ASSERT_TRUE(check_matrix_dims(x, min_rows, max_rows, min_cols, max_cols, rows, cols));
 
@@ -553,7 +545,7 @@ SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP a
 }
 
 SEXP attribute_hidden c_check_array(SEXP x, SEXP mode, SEXP any_missing, SEXP d, SEXP min_d, SEXP max_d, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isArray(x), "array", null_ok);
+    HANDLE_TYPE_NULL(is_class_array(x), "array", null_ok);
     ASSERT_TRUE(check_storage(x, mode));
 
     if (!asFlag(any_missing, "any.missing") && find_missing_vector(x) > 0)
@@ -596,7 +588,7 @@ SEXP attribute_hidden c_check_names(SEXP x, SEXP type) {
 
 
 SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isStrictlyNumeric(x) || all_missing_atomic(x), "numeric", null_ok);
+    HANDLE_TYPE_NULL(is_class_numeric(x) || all_missing_atomic(x), "numeric", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -608,7 +600,7 @@ SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finit
 }
 
 SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(isReal(x) || all_missing_atomic(x), "double", null_ok);
+    HANDLE_TYPE_NULL(is_class_double(x) || all_missing_atomic(x), "double", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -633,14 +625,14 @@ SEXP attribute_hidden c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP
 }
 
 SEXP attribute_hidden c_check_raw(SEXP x, SEXP len, SEXP min_len, SEXP max_len, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_raw(x), "raw", null_ok);
+    HANDLE_TYPE_NULL(is_class_raw(x), "raw", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     return ScalarLogical(TRUE);
 }
 
 SEXP attribute_hidden c_check_atomic(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    HANDLE_TYPE(isNull(x) || isVectorAtomic(x), "atomic");
+    HANDLE_TYPE(is_class_atomic(x), "atomic");
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -649,7 +641,7 @@ SEXP attribute_hidden c_check_atomic(SEXP x, SEXP any_missing, SEXP all_missing,
 }
 
 SEXP attribute_hidden c_check_atomic_vector(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names) {
-    HANDLE_TYPE(isAtomicVector(x), "atomic vector");
+    HANDLE_TYPE(is_class_atomic_vector(x), "atomic vector");
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -689,7 +681,7 @@ SEXP attribute_hidden c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SE
 
 SEXP attribute_hidden c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEXP null_ok) {
     HANDLE_NA(x, na_ok);
-    HANDLE_TYPE_NULL(isStrictlyNumeric(x), "number", null_ok);
+    HANDLE_TYPE_NULL(is_class_numeric(x), "number", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
     ASSERT_TRUE(check_vector_finite(x, finite));
@@ -720,7 +712,7 @@ SEXP attribute_hidden c_check_scalar(SEXP x, SEXP na_ok, SEXP null_ok) {
 }
 
 SEXP attribute_hidden c_check_posixct(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_posixct(x), "POSIXct", null_ok);
+    HANDLE_TYPE_NULL(is_class_posixct(x), "POSIXct", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
     ASSERT_TRUE(check_vector_unique(x, unique));

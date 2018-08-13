@@ -7,12 +7,12 @@
 
 typedef enum {
     CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_FACTOR, CL_LIST, CL_COMPLEX,
-    CL_ATOMIC, CL_ATOMIC_VECTOR, CL_MATRIX, CL_DATAFRAME, CL_FUNCTION, CL_ENVIRONMENT, CL_NULL, CL_NONE
+    CL_ATOMIC, CL_ATOMIC_VECTOR, CL_MATRIX, CL_DATAFRAME, CL_POSIX, CL_FUNCTION, CL_ENVIRONMENT, CL_NULL, CL_NONE
 } class_t;
 
 static const char * CLSTR[] = {
      "logical", "integer", "integerish", "numeric", "double", "string", "factor", "list", "complex",
-     "atomic", "atomic vector", "matrix", "data frame", "function", "environment", "NULL"
+     "atomic", "atomic vector", "matrix", "data frame", "POSIXct", "function", "environment", "NULL"
 };
 
 typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
@@ -56,21 +56,6 @@ static inline Rboolean dd_gt(const double x, const double y) { return x >  y; }
 static inline Rboolean dd_le(const double x, const double y) { return x <= y; }
 static inline Rboolean dd_ge(const double x, const double y) { return x >= y; }
 static inline Rboolean dd_ne(const double x, const double y) { return x != y; }
-static inline Rboolean is_class_logical(SEXP x) { return isLogical(x); }
-static inline Rboolean is_class_integer(SEXP x) { return isInteger(x); }
-static inline Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, INTEGERISH_DEFAULT_TOL, TRUE); }
-static inline Rboolean is_class_double(SEXP x) { return isReal(x); }
-static inline Rboolean is_class_numeric(SEXP x) { return isStrictlyNumeric(x); }
-static inline Rboolean is_class_complex(SEXP x) { return isComplex(x); }
-static inline Rboolean is_class_string(SEXP x) { return isString(x); }
-static inline Rboolean is_class_factor(SEXP x) { return isFactor(x); }
-static inline Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
-static inline Rboolean is_class_atomic_vector(SEXP x) { return isAtomicVector(x); }
-static inline Rboolean is_class_list(SEXP x) { return isRList(x); }
-static inline Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
-static inline Rboolean is_class_frame(SEXP x) { return isFrame(x); }
-static inline Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
-static inline Rboolean is_class_null(SEXP x) { return isNull(x); }
 
 static const msg_t MSGT = { .ok = TRUE };
 static const msg_t MSGF = { .ok = FALSE };
@@ -208,6 +193,12 @@ static int parse_class(checker_t *checker, const char *rule) {
         case 'd':
             checker->class.fun = &is_class_frame;
             checker->class.name = CL_DATAFRAME;
+            break;
+        case 'P':
+            checker->missing.pos1d = &find_missing_double;
+        case 'p':
+            checker->class.fun = &is_class_posixct;
+            checker->class.name = CL_POSIX;
             break;
         case 'e':
             checker->class.fun = &is_class_environment;
@@ -512,7 +503,7 @@ static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_
     const R_len_t nx = xlength(x);
     if (depth > 1) {
         for (R_xlen_t i = 0; i < nx; i++) {
-            if (isRList(VECTOR_ELT(x, i))) {
+            if (is_class_list(VECTOR_ELT(x, i))) {
                 if (!qtest_list(VECTOR_ELT(x, i), checker, nrules, depth - 1))
                     return FALSE;
             } else {

@@ -6,9 +6,6 @@
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>
 
-Rboolean attribute_hidden isStrictlyNumeric(SEXP);
-Rboolean attribute_hidden isAtomicVector(SEXP);
-Rboolean attribute_hidden isRList(SEXP);
 R_len_t attribute_hidden get_ncols(SEXP);
 R_len_t attribute_hidden get_nrows(SEXP);
 double attribute_hidden asNumber(SEXP, const char *);
@@ -16,5 +13,25 @@ const char attribute_hidden * asString(SEXP, const char *);
 R_len_t attribute_hidden asCount(SEXP, const char *);
 R_xlen_t attribute_hidden asLength(SEXP, const char *);
 Rboolean attribute_hidden asFlag(SEXP, const char *);
+
+Rboolean is_class_logical(SEXP x);
+Rboolean is_class_integer(SEXP x);
+Rboolean is_class_integerish(SEXP x);
+Rboolean is_class_double(SEXP x);
+Rboolean is_class_numeric(SEXP x);
+Rboolean is_class_complex(SEXP x);
+Rboolean is_class_string(SEXP x);
+Rboolean is_class_factor(SEXP x);
+Rboolean is_class_atomic(SEXP x);
+Rboolean is_class_atomic_vector(SEXP x);
+Rboolean is_class_list(SEXP x);
+Rboolean is_class_matrix(SEXP x);
+Rboolean is_class_array(SEXP x);
+Rboolean is_class_frame(SEXP x);
+Rboolean is_class_environment(SEXP x);
+Rboolean is_class_null(SEXP x);
+Rboolean is_class_posixct(SEXP x);
+Rboolean is_class_raw(SEXP x);
+
 
 #endif

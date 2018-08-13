@@ -5,33 +5,6 @@
 #include "guess_type.h"
 #include "backports.h"
 
-Rboolean attribute_hidden isStrictlyNumeric(SEXP x) {
-    switch(TYPEOF(x)) {
-        case REALSXP: return TRUE;
-        case INTSXP: return !inherits(x, "factor");
-    }
-    return FALSE;
-}
-
-Rboolean attribute_hidden isAtomicVector(SEXP x) {
-    if (!isVectorAtomic(x))
-        return FALSE;
-    return isNull(getAttrib(x, R_DimSymbol));
-}
-
-/* Checks for a regular list, i.e. not a data frame, not NULL */
-Rboolean attribute_hidden isRList(SEXP x) {
-    if (TYPEOF(x) == VECSXP) {
-        SEXP cl = getAttrib(x, R_ClassSymbol);
-        const R_len_t n = length(cl);
-        for (R_len_t i = 0; i < n; i++) {
-            if (strcmp(CHAR(STRING_ELT(cl, i)), "data.frame") == 0)
-                return FALSE;
-        }
-        return TRUE;
-    }
-    return FALSE;
-}
 
 /* ncols and nrows is bugged for data frames:
  * (a) data.frames are treated like lists and thus you get length() back
@@ -118,3 +91,44 @@ Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
     return xb;
 }
 
+
+Rboolean is_class_logical(SEXP x) { return isLogical(x); }
+Rboolean is_class_integer(SEXP x) { return isInteger(x); }
+Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, INTEGERISH_DEFAULT_TOL, TRUE); }
+Rboolean is_class_numeric(SEXP x) {
+    switch(TYPEOF(x)) {
+        case REALSXP: return TRUE;
+        case INTSXP: return !inherits(x, "factor");
+    }
+    return FALSE;
+}
+Rboolean is_class_double(SEXP x) { return isReal(x); }
+Rboolean is_class_complex(SEXP x) { return isComplex(x); }
+Rboolean is_class_string(SEXP x) { return isString(x); }
+Rboolean is_class_factor(SEXP x) { return isFactor(x); }
+Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
+Rboolean is_class_atomic_vector(SEXP x) {
+    if (!isVectorAtomic(x))
+        return FALSE;
+    return isNull(getAttrib(x, R_DimSymbol));
+}
+Rboolean is_class_list(SEXP x) {
+    if (TYPEOF(x) == VECSXP) {
+        SEXP cl = getAttrib(x, R_ClassSymbol);
+        const R_len_t n = length(cl);
+        for (R_len_t i = 0; i < n; i++) {
+            if (strcmp(CHAR(STRING_ELT(cl, i)), "data.frame") == 0)
+                return FALSE;
+        }
+        return TRUE;
+    }
+    return FALSE;
+}
+
+Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
+Rboolean is_class_array(SEXP x) { return isArray(x); }
+Rboolean is_class_frame(SEXP x) { return isFrame(x); }
+Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
+Rboolean is_class_null(SEXP x) { return isNull(x); }
+Rboolean is_class_posixct(SEXP x) { return isReal(x) && inherits(x, "POSIXct"); }
+Rboolean is_class_raw(SEXP x) { return TYPEOF(x) == RAWSXP; }

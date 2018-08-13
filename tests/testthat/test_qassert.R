@@ -9,6 +9,7 @@ xm = matrix(1:9, 3); xm[2, 3] = NA
 xd = data.frame(a=1:5, b=1:5); xd$b[3] = NA
 xf = factor(letters[1:10]); xf[5] = NA
 xe = new.env(); xe$foo = 1
+xp = as.POSIXct(Sys.time()) + 1:10; xp[5] = NA
 
 expect_succ_all = function(x, rules) {
   xn = deparse(substitute(x))
@@ -48,6 +49,8 @@ test_that("type and missingness", {
   expect_succ_all(xe, "e")
   expect_succ_all(xf, "f")
   expect_fail_all(xf, "F")
+  expect_succ_all(xp, "p")
+  expect_fail_all(xp, "P")
 
   expect_fail_all(xd, "b")
   expect_fail_all(xd, "i")
@@ -59,6 +62,7 @@ test_that("type and missingness", {
   expect_fail_all(xm, "r")
   expect_fail_all(xl, "d")
   expect_fail_all(xl, "f")
+  expect_fail_all(xd, "p")
 
   expect_fail_all(xl, c("f", "n"), "One of")
   expect_error(qassert(1, "O"), "Unknown class identifier")
