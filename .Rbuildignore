@@ -12,3 +12,4 @@
 ^docs$
 ^src/Makevars$
 ^inst/benchmarks
+^revdep$
