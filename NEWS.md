@@ -8,6 +8,7 @@
 * Added `checkRaw` to check raw vectors.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
   (#100).
+* Added `as_integer`, `as_int` and `as_count`.
 * New arguments `max.rows` and `max.cols` to check for maximum number
   of rows and columns for matrices, data.frames, tibbles and data.tables.
 * Fixed an error message in `checkChoice`.
