@@ -96,7 +96,7 @@ R_xlen_t attribute_hidden find_missing_vector(SEXP x) {
         case CPLXSXP: return find_missing_complex(x);
         case STRSXP:  return find_missing_string(x);
         case VECSXP:  return find_missing_list(x);
-        default:      return FALSE;
+        default:      return 0;
     }
 }
 
@@ -114,11 +114,24 @@ pos2d_t attribute_hidden find_missing_matrix(SEXP x) {
     return pos;
 }
 
+static R_xlen_t find_missing_atomic(SEXP x) {
+    switch(TYPEOF(x)) {
+        case LGLSXP:  return find_missing_logical(x);
+        case INTSXP:  return find_missing_integer(x);
+        case REALSXP: return find_missing_double(x);
+        case CPLXSXP: return find_missing_complex(x);
+        case STRSXP:  return find_missing_string(x);
+        default:      return 0;
+    }
+}
+
 pos2d_t attribute_hidden find_missing_frame(SEXP x) {
     pos2d_t pos = { 0, 0 };
     const R_xlen_t nc = xlength(x);
     for (R_xlen_t j = 0; j < nc; j++) {
-        R_xlen_t i = find_missing_vector(VECTOR_ELT(x, j));
+        // FIXME: This is a temp workaround for release to skip list columns in data frames.
+        // Change to find_missing_vector, remove find_missing_atomic and reverse dependency check.
+        R_xlen_t i = find_missing_atomic(VECTOR_ELT(x, j));
         if (i > 0) {
             pos.i = i; pos.j = j;
             break;
