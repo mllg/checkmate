@@ -6,6 +6,7 @@
   frame reported by R's `stop()` function (#117).
 * Added `checkDouble` to explicitly check for non-integer numerics.
 * Added `checkRaw` to check raw vectors.
+* Added `checkFormula` to check formula objects.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
   (#100).
 * Added `as_integer`, `as_int` and `as_count`.

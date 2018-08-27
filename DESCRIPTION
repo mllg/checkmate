@@ -69,6 +69,7 @@ Collate:
     'checkFactor.R'
     'checkFileExists.R'
     'checkFlag.R'
+    'checkFormula.R'
     'checkFunction.R'
     'checkInt.R'
     'checkInteger.R'

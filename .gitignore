@@ -4,3 +4,4 @@ src/*.so
 src/*.o
 inst/doc
 vignettes/*.html
+revdep

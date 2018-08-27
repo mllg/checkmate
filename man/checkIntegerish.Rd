@@ -146,11 +146,11 @@ Other basetypes: \code{\link{checkArray}},
   \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
   \code{\link{checkDate}}, \code{\link{checkDouble}},
   \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFunction}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+  \code{\link{checkFactor}}, \code{\link{checkFormula}},
+  \code{\link{checkFunction}}, \code{\link{checkInteger}},
+  \code{\link{checkList}}, \code{\link{checkLogical}},
+  \code{\link{checkMatrix}}, \code{\link{checkNull}},
+  \code{\link{checkNumeric}}, \code{\link{checkPOSIXct}},
+  \code{\link{checkRaw}}, \code{\link{checkVector}}
 }
 \concept{basetypes}
