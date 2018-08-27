@@ -81,3 +81,9 @@ test_that("asCount", {
   expect_error(asCount(0, positive = TRUE))
   expect_equal(asCount(1, positive = FALSE), 1L)
 })
+
+test_that("underscore functions are available", {
+  expect_true(is.integer(as_integer(5)))
+  expect_true(is.integer(as_int(5)))
+  expect_true(is.integer(as_count(5)))
+})
