@@ -45,7 +45,7 @@ test_that("checkDataTable", {
 test_that("list columns", {
   skip_if_not_physically_installed("data.table")
 
-  x = data.table(a = 1:2, b = list(3, 4))
+  x = data.table::data.table(a = 1:2, b = list(3, 4))
   expect_true(testDataTable(x, any.missing = FALSE))
 
   x$b = list(3, NULL)

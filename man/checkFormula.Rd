@@ -69,7 +69,7 @@ Check if an argument is a formula
 }
 \examples{
 f = Species ~ Sepal.Length + Sepal.Width
-checkFormula(f, response = TRUE)
+checkFormula(f)
 }
 \seealso{
 Other basetypes: \code{\link{checkArray}},

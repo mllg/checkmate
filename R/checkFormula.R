@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' f = Species ~ Sepal.Length + Sepal.Width
-#' checkFormula(f, response = TRUE)
+#' checkFormula(f)
 checkFormula = function(x, null.ok = FALSE) {
   if (is.null(x)) {
     if (null.ok)
