@@ -69,6 +69,7 @@ Rboolean attribute_hidden all_missing_atomic(SEXP x) {
         case REALSXP: return all_missing_double(x);
         case CPLXSXP: return all_missing_complex(x);
         case STRSXP: return all_missing_string(x);
+        case VECSXP: return all_missing_list(x);
         default: return FALSE;
     }
 }
@@ -85,7 +86,8 @@ Rboolean attribute_hidden all_missing_list(SEXP x) {
 Rboolean attribute_hidden all_missing_frame(SEXP x) {
     const R_xlen_t nc = xlength(x);
     for (R_xlen_t i = 0; i < nc; i++) {
-        if (all_missing_atomic(VECTOR_ELT(x, i)))
+        SEXP xi = VECTOR_ELT(x, i);
+        if (TYPEOF(xi) != VECSXP && all_missing_atomic(xi))
             return TRUE;
     }
     return FALSE;

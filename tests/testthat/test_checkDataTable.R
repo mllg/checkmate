@@ -41,3 +41,18 @@ test_that("checkDataTable", {
   expect_false(testDataTable(x, max.rows = 100))
   expect_false(testDataTable(x, max.cols = 3))
 })
+
+test_that("list columns", {
+  skip_if_not_physically_installed("data.table")
+
+  x = data.table(a = 1:2, b = list(3, 4))
+  expect_true(testDataTable(x, any.missing = FALSE))
+
+  x$b = list(3, NULL)
+  expect_true(testDataTable(x, any.missing = FALSE))
+  expect_true(testDataTable(x, all.missing = FALSE))
+
+  x$b = list(NULL, NULL)
+  expect_true(testDataTable(x, any.missing = FALSE))
+  expect_true(testDataTable(x, all.missing = FALSE))
+})

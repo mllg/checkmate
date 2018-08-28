@@ -34,3 +34,15 @@ test_that("checkList", {
   expect_true(testList(x, types = c("foo", "integerish")))
   expect_error(assertList(1), "list")
 })
+
+test_that("missingness in lists", {
+  x = list(1, NULL)
+  expect_true(testList(x))
+  expect_true(testList(x, all.missing = FALSE))
+  expect_false(testList(x, any.missing = FALSE))
+
+  x = list(NULL)
+  expect_true(testList(x))
+  expect_false(testList(x, all.missing = FALSE))
+  expect_false(testList(x, any.missing = FALSE))
+})

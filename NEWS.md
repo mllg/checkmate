@@ -14,6 +14,8 @@
   of rows and columns for matrices, data.frames, tibbles and data.tables.
 * Fixed an error message in `checkChoice`.
 * Fixed `*Function` to work properly with Primitives.
+* Fixed `*List` where the check for missingness was broken.
+
 
 # Version 1.8.5
 * Added `*POSIXct` to check POSIXct data-time objects in POSIXct format.
