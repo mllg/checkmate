@@ -103,7 +103,7 @@ An atomic vector is either \code{logical}, \code{integer}, \code{numeric},
 \code{complex}, \code{character} or \code{raw} and can have any attributes except a
 dimension attribute (like matrices).
 I.e., a \code{factor} is an atomic vector, but a matrix or \code{NULL} are not.
-In short, this is mostly equivalent to \code{is.atomic(x) && !is.null(x) && is.null(dim(x))}.
+In short, this is basically equivalent to \code{is.atomic(x) && !is.null(x) && is.null(dim(x))}.
 }
 \examples{
 testAtomicVector(letters, min.len = 1L, any.missing = FALSE)

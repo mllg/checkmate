@@ -46,8 +46,8 @@ expect_vector(x, strict = FALSE, any.missing = TRUE,
 Object to check.}
 
 \item{strict}{[\code{logical(1)}]\cr
-May the vector have additional attributes or perform a
-check for additional attributes like \code{\link[base]{is.vector}}?
+May the vector have additional attributes? If \code{TRUE}, mimics the behavior of
+\code{\link[base]{is.vector}}.
 Default is \code{FALSE} which allows e.g. \code{factor}s or \code{data.frame}s
 to be recognized as vectors.}
 

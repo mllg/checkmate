@@ -121,6 +121,9 @@ Depending on the function prefix:
 Check if an argument is a list
 }
 \note{
+Contrary to R's \code{\link[base]{is.list}}, objects of type \code{\link[base]{pairlist}} are not
+recognized as list.
+
 Missingness is defined here as elements of the list being \code{NULL}, analogously to \code{\link{anyMissing}}.
 
 The test for uniqueness does differentiate between the different NA types which are built-in in R.
