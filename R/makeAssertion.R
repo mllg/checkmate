@@ -49,27 +49,42 @@ makeAssertion = function(x, res, var.name, collection) {
 #' @rdname makeAssertion
 #' @template makeFunction
 #' @template use.namespace
+#' @param coerce [\code{logical(1)}]\cr
+#'  If \code{TRUE}, injects some lines of code to convert numeric values to integer after an successful assertion.
+#'  Currently used in \code{\link{assertCount}}, \code{\link{assertInt}} and \code{\link{assertIntegerish}}.
 #' @export
-makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, env = parent.frame()) {
+makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, coerce = FALSE, env = parent.frame()) {
   fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
   check.fun = match.fun(check.fun)
-  fargs = formals(args(check.fun))
+  cargs = fargs = formals(args(check.fun))
   x = NULL
 
-  new.fun = function() TRUE
-  if (use.namespace) {
-    formals(new.fun) = c(fargs, alist(.var.name = checkmate::vname(x), add = NULL))
-    tmpl = "{ res = %s(%s); checkmate::makeAssertion(x, res, .var.name, add) }"
+  if (is.null(c.fun)) {
+    c.call = sprintf("%s(%s)", fn.name, paste0(names(cargs), collapse = ", "))
   } else {
-    formals(new.fun) = c(fargs, alist(.var.name = vname(x), add = NULL))
-    tmpl = "{ res = %s(%s); makeAssertion(x, res, .var.name, add) }"
+    c.call = sprintf(".Call(%s)", paste0(c(c.fun, names(cargs)), collapse = ", "))
   }
 
-  if (is.null(c.fun)) {
-    body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(fargs), collapse = ", ")))
+  if (coerce) {
+    fargs = c(fargs, alist(coerce = FALSE))
+    coerce.call = "if (identical(coerce, TRUE) && identical(res, TRUE)) storage.mode(x) = \"integer\""
   } else {
-    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(fargs)), collapse = ", ")))
+    coerce.call = ""
   }
+
+  if (use.namespace) {
+    fargs = c(fargs, alist(.var.name = checkmate::vname(x), add = NULL))
+    assert.call = "checkmate::makeAssertion"
+  } else {
+    fargs = c(fargs, alist(.var.name = vname(x), add = NULL))
+    assert.call = "makeAssertion"
+  }
+
+
+  tmpl = "{ res = %s;%s; %s(x, res, .var.name, add) }"
+  new.fun = function() TRUE
+  formals(new.fun) = fargs
+  body(new.fun) = parse(text = sprintf(tmpl, c.call, coerce.call, assert.call))
   environment(new.fun) = env
   return(new.fun)
 }

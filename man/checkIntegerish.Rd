@@ -23,12 +23,14 @@ check_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
 assertIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  names = NULL, null.ok = FALSE, coerce = FALSE,
+  .var.name = vname(x), add = NULL)
 
 assert_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
   min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+  names = NULL, null.ok = FALSE, coerce = FALSE,
+  .var.name = vname(x), add = NULL)
 
 testIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
@@ -88,6 +90,9 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{coerce}{[\code{logical(1)}]\cr
+If \code{TRUE}, the input \code{x} is returned as integer after an successful assertion.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

@@ -2,11 +2,8 @@
 % Please edit documentation in R/asInteger.R
 \name{asInteger}
 \alias{asInteger}
-\alias{as_integer}
 \alias{asCount}
-\alias{as_count}
 \alias{asInt}
-\alias{as_int}
 \title{Convert an argument to an integer}
 \usage{
 asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
@@ -14,21 +11,10 @@ asInteger(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
   min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
   names = NULL, .var.name = vname(x))
 
-as_integer(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, .var.name = vname(x))
-
 asCount(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), .var.name = vname(x))
 
-as_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x))
-
 asInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), .var.name = vname(x))
-
-as_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
   tol = sqrt(.Machine$double.eps), .var.name = vname(x))
 }
 \arguments{
@@ -92,6 +78,11 @@ non-negative integers.
 Convertible are (a) atomic vectors with all elements \code{NA}
 and (b) double vectors with all elements being within \code{tol}
 range of an integer.
+
+Note that these functions may be deprecated in the future.
+Instead, it is advised to use \code{\link{assertCount}},
+\code{\link{assertInt}} or \code{\link{assertIntegerish}} with
+argument \code{coerce} set to \code{TRUE} instead.
 }
 \details{
 This function does not distinguish between

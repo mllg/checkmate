@@ -23,5 +23,8 @@ test_that("checkCount", {
   expect_true(testCount(NA_integer_, na.ok = TRUE))
   expect_false(testCount(1:2))
 
+  expect_false(is.integer(assertCount(5)))
+  expect_true(is.integer(assertCount(5, coerce = TRUE)))
+
   expect_error(assertCount(-1), ">= 0")
 })

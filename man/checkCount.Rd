@@ -17,11 +17,11 @@ check_count(x, na.ok = FALSE, positive = FALSE,
   tol = sqrt(.Machine$double.eps), null.ok = FALSE)
 
 assertCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
   .var.name = vname(x), add = NULL)
 
 assert_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE,
+  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
   .var.name = vname(x), add = NULL)
 
 testCount(x, na.ok = FALSE, positive = FALSE,
@@ -52,6 +52,9 @@ Default is \code{sqrt(.Machine$double.eps)}.}
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{coerce}{[\code{logical(1)}]\cr
+If \code{TRUE}, the input \code{x} is returned as integer after an successful assertion.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

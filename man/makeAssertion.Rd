@@ -8,7 +8,7 @@
 makeAssertion(x, res, var.name, collection)
 
 makeAssertionFunction(check.fun, c.fun = NULL, use.namespace = TRUE,
-  env = parent.frame())
+  coerce = FALSE, env = parent.frame())
 }
 \arguments{
 \item{x}{[any]\cr
@@ -39,6 +39,10 @@ Useful if \code{check.fun} is just a simple wrapper.}
 Call functions of \pkg{checkmate} using its namespace explicitly.
 Can be set to \code{FALSE} so save some microseconds, but the checkmate package needs to be imported.
 Default is \code{TRUE}.}
+
+\item{coerce}{[\code{logical(1)}]\cr
+If \code{TRUE}, injects some lines of code to convert numeric values to integer after an successful assertion.
+Currently used in \code{\link{assertCount}}, \code{\link{assertInt}} and \code{\link{assertIntegerish}}.}
 
 \item{env}{[\code{environment}]\cr
 The environment of the created function. Default is the \code{\link[base]{parent.frame}}.}

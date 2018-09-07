@@ -18,6 +18,9 @@ test_that("checkInt", {
   expect_false(testInt(1:2))
   expect_false(testInt(""))
 
+  expect_false(is.integer(assertInt(5)))
+  expect_true(is.integer(assertInt(5, coerce = TRUE)))
+
   expect_error(assertInt(2+3i), "integerish")
 })
 

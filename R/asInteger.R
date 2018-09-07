@@ -8,6 +8,11 @@
 #' and (b) double vectors with all elements being within \code{tol}
 #' range of an integer.
 #'
+#' Note that these functions may be deprecated in the future.
+#' Instead, it is advised to use \code{\link{assertCount}},
+#' \code{\link{assertInt}} or \code{\link{assertIntegerish}} with
+#' argument \code{coerce} set to \code{TRUE} instead.
+#'
 #' @param x [any]\cr
 #'  Object to convert.
 #' @template na-handling
@@ -28,10 +33,6 @@ asInteger = function(x, tol = sqrt(.Machine$double.eps), lower = -Inf, upper = I
 }
 
 #' @rdname asInteger
-#' @export
-as_integer = asInteger
-
-#' @rdname asInteger
 #' @param positive [\code{logical(1)}]\cr
 #'  Must \code{x} be positive (>= 1)?
 #'  Default is \code{FALSE}.
@@ -44,10 +45,6 @@ asCount = function(x, na.ok = FALSE, positive = FALSE, tol = sqrt(.Machine$doubl
 }
 
 #' @rdname asInteger
-#' @export
-as_count = asCount
-
-#' @rdname asInteger
 #' @template bounds
 #' @export
 asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), .var.name = vname(x)) {
@@ -55,7 +52,3 @@ asInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machin
   storage.mode(x) = "integer"
   x
 }
-
-#' @rdname asInteger
-#' @export
-as_int = asInt

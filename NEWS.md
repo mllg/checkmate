@@ -9,7 +9,10 @@
 * Added `checkFormula` to check formula objects.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
   (#100).
-* Added `as_integer`, `as_int` and `as_count`.
+* Added argument `coerce` to `assertCount`/`assert_count`,
+  `assertInt`/`assert_int` and `assertIntegerish`/`assert_integerish` which
+  optionally coerces `x` to integer after an successful assertion.
+  This supersedes the functions `asCount`, `asInt` and `asInteger` (#77).
 * New arguments `max.rows` and `max.cols` to check for maximum number
   of rows and columns for matrices, data.frames, tibbles and data.tables.
 * Fixed an error message in `checkChoice`.
