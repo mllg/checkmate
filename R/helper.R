@@ -3,7 +3,7 @@ mstop = function(msg, ..., call. = NULL) {
 }
 
 "%and%" = function(lhs, rhs) {
-  if (identical(lhs, TRUE)) rhs else lhs
+  if (isTRUE(lhs)) rhs else lhs
 }
 
 "%nin%" = function(x, y) {

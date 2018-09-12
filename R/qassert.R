@@ -103,7 +103,7 @@
 #' qtest(iris, "D+")
 qassert = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
-  if (!identical(res, TRUE))
+  if (!isTRUE(res))
     mstop(qmsg(res, .var.name), call. = sys.call(-1L))
   invisible(x)
 }
@@ -122,7 +122,7 @@ qtest = function(x, rules) {
 #' @export
 qexpect = function(x, rules, info = NULL, label = vname(x)) {
   res = .Call(c_qassert, x, rules, FALSE)
-  if (!identical(res, TRUE))
+  if (!isTRUE(res))
     res = qmsg(res, label)
   makeExpectation(x, res, info = info, label = label)
 }

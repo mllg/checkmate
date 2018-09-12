@@ -13,7 +13,7 @@
 #' testTRUE(FALSE)
 checkTRUE = function(x, na.ok = FALSE) {
   qassert(na.ok, "B1")
-  if (identical(x, TRUE) || (na.ok && length(x) == 1L && is.na(x)))
+  if (isTRUE(x) || (na.ok && length(x) == 1L && is.na(x)))
     return(TRUE)
   return("Must be TRUE")
 }

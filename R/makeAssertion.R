@@ -37,7 +37,7 @@
 #' assertFalse = makeAssertionFunction(checkFalse)
 #' print(assertFalse)
 makeAssertion = function(x, res, var.name, collection) {
-  if (!identical(res, TRUE)) {
+  if (!isTRUE(res)) {
     if (is.null(collection))
       mstop("Assertion on '%s' failed: %s.", var.name, res, call. = sys.call(-2L))
     assertClass(collection, "AssertCollection", .var.name = "add")
@@ -67,7 +67,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
 
   if (coerce) {
     fargs = c(fargs, alist(coerce = FALSE))
-    coerce.call = "if (identical(coerce, TRUE) && identical(res, TRUE)) storage.mode(x) = \"integer\""
+    coerce.call = "if (isTRUE(coerce) && isTRUE(res)) storage.mode(x) = \"integer\""
   } else {
     coerce.call = ""
   }

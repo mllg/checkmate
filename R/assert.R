@@ -33,7 +33,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
     msgs = character(length(dots))
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
-      if (identical(val, TRUE))
+      if (isTRUE(val))
         return(invisible(TRUE))
       msgs[i] = as.character(val)
     }
@@ -49,7 +49,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
   } else {
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
-      if (!identical(val, TRUE)) {
+      if (!isTRUE(val)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[1L]])[2L]
         mstop("Assertion on '%s' failed. %s.", .var.name, val)

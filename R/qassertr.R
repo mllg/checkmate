@@ -29,7 +29,7 @@
 #' qtestr(list(a = 1:3, b = rnorm(1), c = letters), c("N+", "S+"))
 qassertr = function(x, rules, .var.name = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE)
-  if (!identical(res, TRUE))
+  if (!isTRUE(res))
     mstop(qrmsg(x, res, .var.name), call. = sys.call(-1L))
   invisible(x)
 }
@@ -51,7 +51,7 @@ qtestr = function(x, rules, depth = 1L) {
 #' @export
 qexpectr = function(x, rules, info = NULL, label = vname(x)) {
   res = .Call(c_qassert, x, rules, TRUE)
-  if (!identical(res, TRUE))
+  if (!isTRUE(res))
     res = qrmsg(x, res, label)
   makeExpectation(x, res, info = info, label = label)
 }

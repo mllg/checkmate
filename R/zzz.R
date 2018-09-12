@@ -24,6 +24,7 @@
 #'   \item{\code{\link{checkVector}}}
 #'   \item{\code{\link{checkAtomic}}}
 #'   \item{\code{\link{checkAtomicVector}}}
+#'   \item{\code{\link{checkRaw}}}
 #' }
 #'
 #' @section Check attributes:
@@ -46,6 +47,7 @@
 #'   \item{\code{\link{checkDate}}}
 #'   \item{\code{\link{checkEnvironment}}}
 #'   \item{\code{\link{checkFunction}}}
+#'   \item{\code{\link{checkFormula}}}
 #'   \item{\code{\link{checkNull}}}
 #' }
 #'
@@ -121,7 +123,7 @@ checkmate$listtypefuns = list2env(list(
 ))
 
 .onLoad = function(libpath, pkgname) {
-  backports::import(pkgname, "dir.exists")
+  backports::import(pkgname, c("dir.exists", "isFALSE"))
 }
 
 .onUnload = function (libpath) {

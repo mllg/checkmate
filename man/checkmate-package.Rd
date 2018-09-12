@@ -39,6 +39,7 @@ Tests and assertions to perform frequent argument checks. A
   \item{\code{\link{checkVector}}}
   \item{\code{\link{checkAtomic}}}
   \item{\code{\link{checkAtomicVector}}}
+  \item{\code{\link{checkRaw}}}
 }
 }
 
@@ -67,6 +68,7 @@ Tests and assertions to perform frequent argument checks. A
   \item{\code{\link{checkDate}}}
   \item{\code{\link{checkEnvironment}}}
   \item{\code{\link{checkFunction}}}
+  \item{\code{\link{checkFormula}}}
   \item{\code{\link{checkNull}}}
 }
 }
