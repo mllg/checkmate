@@ -21,14 +21,20 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Check if an argument is a data frame — checkDataFrame" />
 
 <meta property="og:description" content="Check if an argument is a data frame" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -55,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -86,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -93,47 +100,57 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Check if an argument is a data frame</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkDataFrame.R'><code>R/checkDataFrame.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkDataFrame.R'><code>R/checkDataFrame.R</code></a></small>
+    <div class="hidden name"><code>checkDataFrame.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Check if an argument is a data frame</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>checkDataFrame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>check_data_frame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>assertDataFrame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>assert_data_frame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>testDataFrame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>test_data_frame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='fu'>expect_data_frame</span>(<span class='no'>x</span>, <span class='kw'>types</span> <span class='kw'>=</span> <span class='fu'>character</span>(<span class='fl'>0L</span>), <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>min.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.rows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>nrows</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ncols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -171,9 +188,19 @@ Are matrices with only missing values allowed? Default is <code>TRUE</code>.</p>
 Minimum number of rows.</p></td>
     </tr>
     <tr>
+      <th>max.rows</th>
+      <td><p>[<code>integer(1)</code>]<br />
+Maximum number of rows.</p></td>
+    </tr>
+    <tr>
       <th>min.cols</th>
       <td><p>[<code>integer(1)</code>]<br />
 Minimum number of columns.</p></td>
+    </tr>
+    <tr>
+      <th>max.cols</th>
+      <td><p>[<code>integer(1)</code>]<br />
+Maximum number of columns.</p></td>
     </tr>
     <tr>
       <th>nrows</th>
@@ -250,7 +277,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other compound: <code><a href='checkArray.html'>checkArray</a></code>,
+    <div class='dont-index'><p>Other compound: <code><a href='checkArray.html'>checkArray</a></code>,
   <code><a href='checkDataTable.html'>checkDataTable</a></code>, <code><a href='checkMatrix.html'>checkMatrix</a></code>,
   <code><a href='checkTibble.html'>checkTibble</a></code></p>
 <p>Other basetypes: <code><a href='checkArray.html'>checkArray</a></code>,
@@ -259,12 +286,14 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
   <code><a href='checkComplex.html'>checkComplex</a></code>, <code><a href='checkDate.html'>checkDate</a></code>,
   <code><a href='checkDouble.html'>checkDouble</a></code>,
   <code><a href='checkEnvironment.html'>checkEnvironment</a></code>,
-  <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFunction.html'>checkFunction</a></code>,
+  <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFormula.html'>checkFormula</a></code>,
+  <code><a href='checkFunction.html'>checkFunction</a></code>,
   <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
   <code><a href='checkInteger.html'>checkInteger</a></code>, <code><a href='checkList.html'>checkList</a></code>,
   <code><a href='checkLogical.html'>checkLogical</a></code>, <code><a href='checkMatrix.html'>checkMatrix</a></code>,
   <code><a href='checkNull.html'>checkNull</a></code>, <code><a href='checkNumeric.html'>checkNumeric</a></code>,
-  <code><a href='checkPOSIXct.html'>checkPOSIXct</a></code>, <code><a href='checkVector.html'>checkVector</a></code></p>
+  <code><a href='checkPOSIXct.html'>checkPOSIXct</a></code>, <code><a href='checkRaw.html'>checkRaw</a></code>,
+  <code><a href='checkVector.html'>checkVector</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -296,6 +325,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

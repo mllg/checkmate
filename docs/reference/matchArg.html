@@ -21,16 +21,22 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Partial Argument Matching — matchArg" />
 
 <meta property="og:description" content="This is an extensions to match.arg with support for AssertCollection.
 The behavior is very similar to match.arg, except that NULL is not
 a valid value for x." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -57,7 +63,7 @@ a valid value for x." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -88,6 +94,7 @@ a valid value for x." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,20 +102,24 @@ a valid value for x." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Partial Argument Matching</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/matchArg.R'><code>R/matchArg.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/matchArg.R'><code>R/matchArg.R</code></a></small>
+    <div class="hidden name"><code>matchArg.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This is an extensions to <code><a href='http://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg</a></code> with support for <code><a href='AssertCollection.html'>AssertCollection</a></code>.
 The behavior is very similar to <code><a href='http://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg</a></code>, except that <code>NULL</code> is not
 a valid value for <code>x</code>.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>matchArg</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>matchArg</span>(<span class='no'>x</span>, <span class='no'>choices</span>, <span class='kw'>several.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -173,6 +184,8 @@ Collection to store assertions. See <code><a href='AssertCollection.html'>Assert
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

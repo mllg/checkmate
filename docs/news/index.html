@@ -21,11 +21,17 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Changelog" />
+
 
 
 <!-- mathjax -->
@@ -52,7 +58,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -83,6 +89,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,22 +97,30 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
-    <div id="version-1-8-6" class="section level1">
+    <div id="version-1-9-0" class="section level1">
 <h1 class="page-header">
-<a href="#version-1-8-6" class="anchor"></a>Version 1.8.6<small> Unreleased </small>
+<a href="#version-1-9-0" class="anchor"></a>Version 1.9.0<small> Unreleased </small>
 </h1>
 <ul>
+<li>Error messages now provide more information about error locations, e.g., the position of the first missing element in a vector.</li>
+<li>Checks for missingness and sort order optimized for ALTREPs.</li>
+<li>The calling frame reported in assertions is now identical to the calling frame reported by R’s <code>stop()</code> function (<a href='https://github.com/mllg/checkmate/issues/117'>#117</a>).</li>
 <li>Added <code>checkDouble</code> to explicitly check for non-integer numerics.</li>
+<li>Added <code>checkRaw</code> to check raw vectors.</li>
+<li>Added <code>checkFormula</code> to check formula objects.</li>
+<li>Added <code>checkMultiClass</code> to check for inheritance from a set of candidates (<a href='https://github.com/mllg/checkmate/issues/100'>#100</a>).</li>
+<li>Added argument <code>coerce</code> to <code>assertCount</code>/<code>assert_count</code>, <code>assertInt</code>/<code>assert_int</code> and <code>assertIntegerish</code>/<code>assert_integerish</code> which optionally coerces <code>x</code> to integer after an successful assertion. This supersedes the functions <code>asCount</code>, <code>asInt</code> and <code>asInteger</code> (<a href='https://github.com/mllg/checkmate/issues/77'>#77</a>).</li>
+<li>New arguments <code>max.rows</code> and <code>max.cols</code> to check for maximum number of rows and columns for matrices, data.frames, tibbles and data.tables.</li>
 <li>Fixed an error message in <code>checkChoice</code>.</li>
+<li>Fixed <code>*Function</code> to work properly with Primitives.</li>
+<li>Fixed <code>*List</code> where the check for missingness was broken.</li>
 </ul>
 </div>
     <div id="version-1-8-5" class="section level1">
@@ -205,7 +220,7 @@
 <a href="#version-1-7-3" class="anchor"></a>Version 1.7.3<small> 2016-03-10 </small>
 </h1>
 <ul>
-<li>Added <code><a href="../reference/checkDate.html">checkDate()</a></code>.</li>
+<li>Added <code>checkDate</code>.</li>
 <li>Argument <code>.var.name</code> of assert functions now has \code{NULL} as default value (instead of missing).</li>
 <li>Fixed a bug in <code>*OS</code> functions.</li>
 <li>Fixed a bug in <code>*Directory</code> functions.</li>
@@ -378,7 +393,7 @@
 <code><a href="../reference/assert.html">assert()</a></code> now returns TRUE invisibly (as documented).</li>
 <li>Fixed handling of zero-length arguments in <code><a href="../reference/checkFunction.html">checkFunction()</a></code>.</li>
 <li>Fixed error message if duplicated values where found.</li>
-<li>Fixed a missing check for row names in <code><a href="../reference/checkMatrix.html">checkMatrix()</a></code> and <code><a href="../reference/checkDataFrame.html">checkDataFrame()</a></code>.</li>
+<li>Fixed a missing check for row names in <code>checkMatrix</code> and <code>checkDataFrame</code>.</li>
 </ul>
 </div>
     <div id="version-1-0" class="section level1">
@@ -389,14 +404,13 @@
 <li>Initial release on CRAN.</li>
 </ul>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-1-8-6">1.8.6</a></li>
+        <li><a href="#version-1-9-0">1.9.0</a></li>
         <li><a href="#version-1-8-5">1.8.5</a></li>
         <li><a href="#version-1-8-4">1.8.4</a></li>
         <li><a href="#version-1-8-3">1.8.3</a></li>
@@ -438,6 +452,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

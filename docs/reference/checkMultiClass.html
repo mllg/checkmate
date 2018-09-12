@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if a path is suited for creating an output file — checkPathForOutput • checkmate</title>
+<title>Check the class membership of an argument — checkMultiClass • checkmate</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,14 +30,9 @@
 
 
 
-<meta property="og:title" content="Check if a path is suited for creating an output file — checkPathForOutput" />
+<meta property="og:title" content="Check the class membership of an argument — checkMultiClass" />
 
-<meta property="og:description" content="Check if a file path can be used safely to create a file and write to it.
-This is checked:
-Does dirname(x) exist?
-Does no file under path x exist?
-Is dirname(x) writable?
-Paths are relative to the current working directory." />
+<meta property="og:description" content="Check the class membership of an argument" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,37 +103,32 @@ Paths are relative to the current working directory." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if a path is suited for creating an output file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkPathForOutput.R'><code>R/checkPathForOutput.R</code></a></small>
-    <div class="hidden name"><code>checkPathForOutput.Rd</code></div>
+    <h1>Check the class membership of an argument</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkMultiClass.R'><code>R/checkMultiClass.R</code></a></small>
+    <div class="hidden name"><code>checkMultiClass.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if a file path can be used safely to create a file and write to it.</p>
-<p>This is checked:</p><ul>
-<li><p>Does <code>dirname(x)</code> exist?</p></li>
-<li><p>Does no file under path <code>x</code> exist?</p></li>
-<li><p>Is <code>dirname(x)</code> writable?</p></li>
-</ul><p>Paths are relative to the current working directory.</p>
+    <p>Check the class membership of an argument</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>checkPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkMultiClass</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_multi_class</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+<span class='fu'>assertMultiClass</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+<span class='fu'>assert_multi_class</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testMultiClass</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_multi_class</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+<span class='fu'>expect_multi_class</span>(<span class='no'>x</span>, <span class='no'>classes</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -150,11 +140,16 @@ Paths are relative to the current working directory." />
 Object to check.</p></td>
     </tr>
     <tr>
-      <th>overwrite</th>
+      <th>classes</th>
+      <td><p>[<code>character</code>]<br />
+Class names to check for inheritance with <code><a href='http://www.rdocumentation.org/packages/base/topics/class'>inherits</a></code>.
+<code>x</code> must inherit from any of the specified classes.</p></td>
+    </tr>
+    <tr>
+      <th>null.ok</th>
       <td><p>[<code>logical(1)</code>]<br />
-If <code>TRUE</code>, an existing file in place is allowed if it
-it is both readable and writable.
-Default is <code>FALSE</code>.</p></td>
+If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
+In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
@@ -185,30 +180,32 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <p>Depending on the function prefix:
  If the check is successful, the functions 
- <code>assertPathForOutput</code>/<code>assert_path_for_output</code> return 
+ <code>assertMultiClass</code>/<code>assert_multi_class</code> return 
  <code>x</code> invisibly, whereas
- <code>checkPathForOutput</code>/<code>check_path_for_output</code> and 
- <code>testPathForOutput</code>/<code>test_path_for_output</code> return 
+ <code>checkMultiClass</code>/<code>check_multi_class</code> and 
+ <code>testMultiClass</code>/<code>test_multi_class</code> return 
  <code>TRUE</code>.
  If the check is not successful, 
- <code>assertPathForOutput</code>/<code>assert_path_for_output</code>
+ <code>assertMultiClass</code>/<code>assert_multi_class</code>
  throws an error message, 
- <code>testPathForOutput</code>/<code>test_path_for_output</code>
+ <code>testMultiClass</code>/<code>test_multi_class</code>
  returns <code>FALSE</code>,
- and <code>checkPathForOutput</code> returns a string with the error message.
- The function <code>expect_path_for_output</code> always returns an
+ and <code>checkMultiClass</code> returns a string with the error message.
+ The function <code>expect_multi_class</code> always returns an
  <code><a href='http://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
-  <code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>,
-  <code><a href='checkFileExists.html'>checkFileExists</a></code></p></div>
+    <div class='dont-index'><p>Other attributes: <code><a href='checkClass.html'>checkClass</a></code>,
+  <code><a href='checkNamed.html'>checkNamed</a></code>, <code><a href='checkNames.html'>checkNames</a></code></p>
+<p>Other classes: <code><a href='checkClass.html'>checkClass</a></code>,
+  <code><a href='checkR6.html'>checkR6</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Can we create a file in the tempdir?</span>
-<span class='fu'>testPathForOutput</span>(<span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"process.log"</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>
+<span class='fu'>class</span>(<span class='no'>x</span>) <span class='kw'>=</span> <span class='st'>"bar"</span>
+<span class='fu'>checkMultiClass</span>(<span class='no'>x</span>, <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>"bar"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>checkMultiClass</span>(<span class='no'>x</span>, <span class='fu'>c</span>(<span class='st'>"foo"</span>, <span class='st'>"foobar"</span>))</div><div class='output co'>#&gt; [1] "Must inherit from class 'foo'/'foobar', but has class 'bar'"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

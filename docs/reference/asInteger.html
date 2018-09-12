@@ -21,10 +21,15 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Convert an argument to an integer — asInteger" />
 
 <meta property="og:description" content="asInteger is intended to be used for vectors while asInt is
@@ -32,8 +37,13 @@ a specialization for scalar integers and asCount for scalar
 non-negative integers.
 Convertible are (a) atomic vectors with all elements NA
 and (b) double vectors with all elements being within tol
-range of an integer." />
+range of an integer.
+Note that these functions may be deprecated in the future.
+Instead, it is advised to use assertCount,
+assertInt or assertIntegerish with
+argument coerce set to TRUE instead." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -60,7 +70,7 @@ range of an integer." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -91,6 +101,7 @@ range of an integer." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -98,13 +109,15 @@ range of an integer." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Convert an argument to an integer</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/asInteger.R'><code>R/asInteger.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/asInteger.R'><code>R/asInteger.R</code></a></small>
+    <div class="hidden name"><code>asInteger.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p><code>asInteger</code> is intended to be used for vectors while <code>asInt</code> is
 a specialization for scalar integers and <code>asCount</code> for scalar
@@ -112,12 +125,17 @@ non-negative integers.
 Convertible are (a) atomic vectors with all elements <code>NA</code>
 and (b) double vectors with all elements being within <code>tol</code>
 range of an integer.</p>
+<p>Note that these functions may be deprecated in the future.
+Instead, it is advised to use <code><a href='checkCount.html'>assertCount</a></code>,
+<code><a href='checkInt.html'>assertInt</a></code> or <code><a href='checkIntegerish.html'>assertIntegerish</a></code> with
+argument <code>coerce</code> set to <code>TRUE</code> instead.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>asInteger</span>(<span class='no'>x</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
-  <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
+    <pre class="usage"><span class='fu'>asInteger</span>(<span class='no'>x</span>, <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>lower</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
+  <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sorted</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
 
 <span class='fu'>asCount</span>(<span class='no'>x</span>, <span class='kw'>na.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>positive</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>tol</span> <span class='kw'>=</span> <span class='fu'>sqrt</span>(<span class='no'>.Machine</span>$<span class='no'>double.eps</span>), <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))
@@ -250,6 +268,8 @@ Default is <code>FALSE</code>.</p></td>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

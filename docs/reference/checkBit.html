@@ -21,14 +21,20 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Check if an argument is a bit vector — checkBit" />
 
 <meta property="og:description" content="Check if an argument is a bit vector" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -55,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -86,6 +92,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -93,37 +100,43 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Check if an argument is a bit vector</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkBit.R'><code>R/checkBit.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkBit.R'><code>R/checkBit.R</code></a></small>
+    <div class="hidden name"><code>checkBit.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Check if an argument is a bit vector</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>checkBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assertBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assert_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+<span class='fu'>expect_bit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.1</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -210,7 +223,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>bit</span>)</div><div class='output co'>#&gt; <span class='message'>Attaching package bit</span></div><div class='output co'>#&gt; <span class='message'>package:bit (c) 2008-2012 Jens Oehlschlaegel (GPL-2)</span></div><div class='output co'>#&gt; <span class='message'>creators: bit bitwhich</span></div><div class='output co'>#&gt; <span class='message'>coercion: as.logical as.integer as.bit as.bitwhich which</span></div><div class='output co'>#&gt; <span class='message'>operator: ! &amp; | xor != ==</span></div><div class='output co'>#&gt; <span class='message'>querying: print length any all min max range sum summary</span></div><div class='output co'>#&gt; <span class='message'>bit access: length&lt;- [ [&lt;- [[ [[&lt;-</span></div><div class='output co'>#&gt; <span class='message'>for more help type ?bit</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'bit'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:base':</span>
+#&gt; <span class='message'>Attaching package: ‘bit’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    xor</span></div><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/bit/topics/as.bit'>as.bit</a></span>(<span class='fu'>replace</span>(<span class='fu'>logical</span>(<span class='fl'>10</span>), <span class='fu'>sample</span>(<span class='fl'>10</span>, <span class='fl'>5</span>), <span class='fl'>TRUE</span>))
 <span class='fu'>testBit</span>(<span class='no'>x</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>min.0</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
@@ -239,6 +252,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

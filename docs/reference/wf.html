@@ -21,15 +21,21 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Get the index of the first/last TRUE — wf" />
 
-<meta property="og:description" content="A quick C implementation for &#8220;which.first&#8221; (head(which(x), 1)) and
-&#8220;which.last&#8221; (tail(which(x), 1))." />
+<meta property="og:description" content="A quick C implementation for &amp;#8220;which.first&amp;#8221; (head(which(x), 1)) and
+&amp;#8220;which.last&amp;#8221; (tail(which(x), 1))." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -56,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -87,6 +93,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -94,17 +101,20 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the index of the first/last TRUE</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/wfwl.R'><code>R/wfwl.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/wfwl.R'><code>R/wfwl.R</code></a></small>
+    <div class="hidden name"><code>wf.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A quick C implementation for &#8220;which.first&#8221; (<code>head(which(x), 1)</code>) and
 &#8220;which.last&#8221; (<code>tail(which(x), 1)</code>).</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>wf</span>(<span class='no'>x</span>, <span class='kw'>use.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
@@ -160,6 +170,8 @@ named.</p></td>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

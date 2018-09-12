@@ -21,20 +21,26 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Combine multiple checks into one assertion — assert" />
 
 <meta property="og:description" content="You can call this function with an arbitrary number of of check*
 functions, i.e. functions provided by this package or your own functions which
 return TRUE on success and the error message as character(1) otherwise.
 The resulting assertion is successful, if combine is
-&#8220;or&#8221; (default) and at least one check evaluates to TRUE or
-combine is &#8220;and&#8221; and all checks evaluate to TRUE.
+&amp;#8220;or&amp;#8221; (default) and at least one check evaluates to TRUE or
+combine is &amp;#8220;and&amp;#8221; and all checks evaluate to TRUE.
 Otherwise, assert throws an informative error message." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -61,7 +67,7 @@ Otherwise, assert throws an informative error message." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.5.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.8.9.9000</span>
       </span>
     </div>
 
@@ -92,6 +98,7 @@ Otherwise, assert throws an informative error message." />
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -99,13 +106,15 @@ Otherwise, assert throws an informative error message." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Combine multiple checks into one assertion</h1>
-    <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/assert.R'><code>R/assert.R</code></a></small>
+    <div class="hidden name"><code>assert.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>You can call this function with an arbitrary number of of <code>check*</code>
 functions, i.e. functions provided by this package or your own functions which
@@ -115,6 +124,7 @@ The resulting assertion is successful, if <code>combine</code> is
 <code>combine</code> is &#8220;and&#8221; and all checks evaluate to <code>TRUE</code>.
 Otherwise, <code>assert</code> throws an informative error message.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>assert</span>(<span class='no'>...</span>, <span class='kw'>combine</span> <span class='kw'>=</span> <span class='st'>"or"</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -177,6 +187,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>
