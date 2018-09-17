@@ -67,7 +67,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
 
   if (coerce) {
     fargs = c(fargs, alist(coerce = FALSE))
-    coerce.call = "if (isTRUE(coerce) && isTRUE(res)) storage.mode(x) = \"integer\""
+    coerce.call = "if (isTRUE(coerce) && isTRUE(res)) x = as.integer(x)"
   } else {
     coerce.call = ""
   }
