@@ -1,7 +1,6 @@
 #ifndef CHECKMATE_ALL_MISSING_H_
 #define CHECKMATE_ALL_MISSING_H_
 
-#define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>

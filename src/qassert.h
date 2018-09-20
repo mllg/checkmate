@@ -1,7 +1,6 @@
 #ifndef CHECKMATE_QASSERT_H_
 #define CHECKMATE_QASSERT_H_
 
-#define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>

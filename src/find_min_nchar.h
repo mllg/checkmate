@@ -1,7 +1,6 @@
 #ifndef CHECKMATE_FIND_MIN_NCHAR_H_
 #define CHECKMATE_FIND_MIN_NCHAR_H_
 
-#define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
 
