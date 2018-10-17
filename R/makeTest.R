@@ -36,17 +36,17 @@ makeTest = function(res) {
 #' @template makeFunction
 #' @export
 makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
-  fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
+  fun.name = if (is.character(check.fun)) check.fun else deparse(substitute(check.fun))
   check.fun = match.fun(check.fun)
-  fargs = formals(args(check.fun))
+  fun.args = formals(args(check.fun))
 
   new.fun = function() TRUE
-  formals(new.fun) = fargs
+  formals(new.fun) = fun.args
   tmpl = "{ isTRUE(%s(%s)) }"
   if (is.null(c.fun)) {
-    body(new.fun) = parse(text = sprintf(tmpl, fn.name, paste0(names(fargs), collapse = ", ")))
+    body(new.fun) = parse(text = sprintf(tmpl, fun.name, paste0(names(fun.args), collapse = ", ")))
   } else {
-    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(fargs)), collapse = ", ")))
+    body(new.fun) = parse(text = sprintf(tmpl, ".Call", paste0(c(c.fun, names(fun.args)), collapse = ", ")))
   }
   environment(new.fun) = env
   return(new.fun)

@@ -54,37 +54,38 @@ makeAssertion = function(x, res, var.name, collection) {
 #'  Currently used in \code{\link{assertCount}}, \code{\link{assertInt}} and \code{\link{assertIntegerish}}.
 #' @export
 makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, coerce = FALSE, env = parent.frame()) {
-  fn.name = if (!is.character(check.fun)) deparse(substitute(check.fun)) else check.fun
+  fun.name = if (is.character(check.fun)) check.fun else deparse(substitute(check.fun))
   check.fun = match.fun(check.fun)
-  cargs = fargs = formals(args(check.fun))
-  x = NULL
+  check.args = fun.args = formals(args(check.fun))
+  x.name = names(fun.args[1L])
 
   if (is.null(c.fun)) {
-    c.call = sprintf("%s(%s)", fn.name, paste0(names(cargs), collapse = ", "))
+    check.call = sprintf("%s(%s)", fun.name, paste0(names(check.args), collapse = ", "))
   } else {
-    c.call = sprintf(".Call(%s)", paste0(c(c.fun, names(cargs)), collapse = ", "))
+    check.call = sprintf(".Call(%s)", paste0(c(c.fun, names(check.args)), collapse = ", "))
   }
 
   if (coerce) {
-    fargs = c(fargs, alist(coerce = FALSE))
-    coerce.call = "if (isTRUE(coerce) && isTRUE(res)) x = as.integer(x)"
+    fun.args = c(fun.args, alist(coerce = FALSE))
+    coerce.call = "if (isTRUE(coerce)) x = as.integer(x)"
   } else {
     coerce.call = ""
   }
 
   if (use.namespace) {
-    fargs = c(fargs, alist(.var.name = checkmate::vname(x), add = NULL))
+    extra.args = list(.var.name = bquote(checkmate::vname(.(as.name(x.name)))), add = NULL)
     assert.call = "checkmate::makeAssertion"
   } else {
-    fargs = c(fargs, alist(.var.name = vname(x), add = NULL))
+    extra.args = list(.var.name = bquote(vname(.(as.name(x.name)))), add = NULL)
     assert.call = "makeAssertion"
   }
+  fun.args = c(fun.args, extra.args)
 
 
-  tmpl = "{ res = %s;%s; %s(x, res, .var.name, add) }"
+  tmpl = "{ res = %s;%s; %s(%s, res, .var.name, add) }"
   new.fun = function() TRUE
-  formals(new.fun) = fargs
-  body(new.fun) = parse(text = sprintf(tmpl, c.call, coerce.call, assert.call))
+  formals(new.fun) = fun.args
+  body(new.fun) = parse(text = sprintf(tmpl, check.call, coerce.call, assert.call, x.name))
   environment(new.fun) = env
   return(new.fun)
 }
