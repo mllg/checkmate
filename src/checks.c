@@ -441,9 +441,12 @@ SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missi
 
     if (!isNull(row_names)) {
         SEXP nn = PROTECT(getAttrib(x, install("row.names")));
-        if (isInteger(nn))
-            nn = coerceVector(nn, STRSXP);
-        ASSERT_TRUE_UNPROTECT(check_names(nn, asString(row_names, "row.names"), "Rows"), 1);
+        int nprotect = 1;
+        if (isInteger(nn)) {
+            nn = PROTECT(coerceVector(nn, STRSXP));
+            nprotect++;
+        }
+        ASSERT_TRUE_UNPROTECT(check_names(nn, asString(row_names, "row.names"), "Rows"), nprotect);
     }
 
     if (!isNull(col_names)) {
