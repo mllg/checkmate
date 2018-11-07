@@ -88,6 +88,7 @@ static void fmt_posixct(char * out, SEXP x) {
     SEXP result = PROTECT(eval(call, R_GlobalEnv));
 
     strncpy(out, CHAR(STRING_ELT(result, 0)), 255);
+    out[255] = '\0';
     UNPROTECT(2);
 }
 
@@ -153,7 +154,7 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
         const R_xlen_t n = length(x);
         for (R_xlen_t i = 0; i < n; i++) {
             if (!ISNAN(xp[i]) && xp[i] < tmp) {
-                char fmt[255];
+                char fmt[256];
                 fmt_posixct(fmt, lower);
                 UNPROTECT(2);
                 return message("Element %i is not >= %s", i + 1, fmt);
@@ -177,7 +178,7 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
         const R_xlen_t n = length(x);
         for (R_xlen_t i = 0; i < n; i++) {
             if (!ISNAN(xp[i]) && xp[i] > tmp) {
-                char fmt[255];
+                char fmt[256];
                 fmt_posixct(fmt, upper);
                 UNPROTECT(2);
                 return message("Element %i is not <= %s", i + 1, fmt);

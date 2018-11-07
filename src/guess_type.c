@@ -11,7 +11,8 @@ const char * guess_type(SEXP x) {
         /* Constuct name using [class1]/[class2]/... */
         static char buf[512];
         const char * tmp = CHAR(STRING_ELT(attr, 0));
-        strncpy(buf, tmp, 512);
+        strncpy(buf, tmp, 511);
+        buf[511] = '\0';
         R_len_t written = strlen(tmp);
         for (R_len_t i = 1; i < n; i++) {
             tmp = CHAR(STRING_ELT(attr, i));
