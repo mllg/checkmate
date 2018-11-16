@@ -12,8 +12,14 @@
  * Here are our own wrappers
  * */
 R_len_t attribute_hidden get_nrows(SEXP x) {
-    if (isFrame(x))
-        return length(getAttrib(x, R_RowNamesSymbol));
+    if (isFrame(x)) {
+        if (inherits(x, "data.table")) {
+            /* c.f. https://github.com/Rdatatable/data.table/issues/3149 */
+            return (length(x) == 0) ? 0 : length(VECTOR_ELT(x, 0));
+        } else {
+            return length(getAttrib(x, R_RowNamesSymbol));
+        }
+    }
     SEXP dim = getAttrib(x, R_DimSymbol);
     return (dim == R_NilValue) ? length(x) : INTEGER_RO(dim)[0];
 }

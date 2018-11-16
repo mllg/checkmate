@@ -18,6 +18,8 @@
 * Fixed an error message in `checkChoice`.
 * Fixed `*Function` to work properly with Primitives.
 * Fixed `*List` where the check for missingness was broken.
+* Workaround for  `*DataTable` for the detection of the number of rows of
+  null data.tables: <https://github.com/Rdatatable/data.table/issues/3149>
 
 
 # Version 1.8.5
