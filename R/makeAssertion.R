@@ -67,7 +67,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
 
   if (coerce) {
     fun.args = c(fun.args, alist(coerce = FALSE))
-    coerce.call = "if (isTRUE(coerce)) x = as.integer(x)"
+    coerce.call = "if (isTRUE(coerce)) as.integer(x) else x"
   } else {
     coerce.call = ""
   }
@@ -82,10 +82,10 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
   fun.args = c(fun.args, extra.args)
 
 
-  tmpl = "{ res = %s;%s; %s(%s, res, .var.name, add) }"
+  tmpl = "{ res = %s; %s(%s, res, .var.name, add); %s }"
   new.fun = function() TRUE
   formals(new.fun) = fun.args
-  body(new.fun) = parse(text = sprintf(tmpl, check.call, coerce.call, assert.call, x.name))
+  body(new.fun) = parse(text = sprintf(tmpl, check.call, assert.call, x.name, coerce.call))
   environment(new.fun) = env
   return(new.fun)
 }

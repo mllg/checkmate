@@ -31,3 +31,9 @@ test_that("bounds of vectors with only missings are not checked", {
   expect_fail_all(Int, 0L, lower = 1L)
   expect_fail_all(Int, 100L, upper = 10L)
 })
+
+test_that("Coercion works", {
+  expect_identical(assertInt(2, coerce = TRUE), 2L)
+  expect_error(assertInt("lkajsd"), "single integerish")
+  expect_error(assertInt("lkajsd"), "not 'character'")
+})
