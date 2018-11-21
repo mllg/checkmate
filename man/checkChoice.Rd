@@ -92,7 +92,7 @@ testChoice(1, "1")
 testChoice(1, as.integer(1))
 }
 \seealso{
-Other set: \code{\link{checkSetEqual}},
-  \code{\link{checkSubset}}
+Other set: \code{\link{checkDisjunct}},
+  \code{\link{checkSetEqual}}, \code{\link{checkSubset}}
 }
 \concept{set}
