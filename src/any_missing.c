@@ -104,7 +104,7 @@ pos2d_t attribute_hidden find_missing_matrix(SEXP x) {
     pos2d_t pos;
     R_xlen_t ii = find_missing_vector(x);
     if (ii > 0) {
-        const R_xlen_t ncol = INTEGER(getAttrib(x, R_DimSymbol))[1];
+        const R_xlen_t ncol = INTEGER_RO(getAttrib(x, R_DimSymbol))[1];
         ii--;
         pos.i = ii % ncol + 1;
         pos.j = (R_xlen_t)(ii / ncol) + 1;
