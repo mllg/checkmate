@@ -56,6 +56,7 @@
 #'   \item{\code{\link{checkChoice}}}
 #'   \item{\code{\link{checkSubset}}}
 #'   \item{\code{\link{checkSetEqual}}}
+#'   \item{\code{\link{checkDisjunct}}}
 #' }
 #'
 #' @section File IO:
