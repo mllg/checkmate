@@ -27,6 +27,8 @@
 #' @param identical.to [\code{character}]\cr
 #'  Names provided in \code{x} must be identical to the vector \code{identical.to}.
 #'  Use this argument instead of \code{permutation.of} if the order of the names is relevant.
+#' @param disjunct.from [\code{character}]\cr
+#'  Names provided in \code{x} must may not be present in the vector \code{identical.to}.
 #' @template checker
 #' @useDynLib checkmate c_check_names
 #' @family attributes
@@ -39,12 +41,12 @@
 #'
 #' cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 #' assertNames(names(iris), permutation.of = cn)
-checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL) {
+checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL, disjunct.from = NULL) {
   .Call(c_check_names, x, type) %and%
-    checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to)
+    checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to, disjunct.from)
 }
 
-checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to) {
+checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
     if (anyMissing(match(x, subset.of)))
@@ -64,6 +66,10 @@ checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.t
     qassert(identical.to, "S")
     if (!identical(x, identical.to))
       return(sprintf("Must be a identical to (%s)", paste0(identical.to, collapse = ",")))
+  }
+  if (!is.null(disjunct.from)) {
+    if (any(x %in% disjunct.from))
+      return(sprintf("Must be disjunct from (%s)", paste0(disjunct.from, collapse = ",")))
   }
   return(TRUE)
 }

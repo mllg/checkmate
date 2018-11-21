@@ -95,6 +95,6 @@ testSetEqual(1, as.integer(1))
 }
 \seealso{
 Other set: \code{\link{checkChoice}},
-  \code{\link{checkSubset}}
+  \code{\link{checkDisjunct}}, \code{\link{checkSubset}}
 }
 \concept{set}

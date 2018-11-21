@@ -63,6 +63,7 @@ Collate:
     'checkDataTable.R'
     'checkDate.R'
     'checkDirectoryExists.R'
+    'checkDisjunct.R'
     'checkDouble.R'
     'checkEnvironment.R'
     'checkFALSE.R'

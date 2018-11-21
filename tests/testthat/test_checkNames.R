@@ -101,6 +101,15 @@ test_that("checkNames / must.include", {
   expect_true(testNames(character(0), must.include = NULL))
 })
 
+test_that("checkNames / disjunct.from", {
+  x = 1:3
+  names(x) = letters[1:3]
+
+  expect_true(testNames(names(x)))
+  expect_true(testNames(names(x), disjunct.from = "d"))
+  expect_false(testNames(names(x), disjunct.from = "b"))
+})
+
 test_that("checkNames / errors are useful", {
   foo = matrix(1:9)
   expect_error(
