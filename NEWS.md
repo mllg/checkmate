@@ -8,13 +8,14 @@
 * Added `checkRaw` to check raw vectors.
 * Added `checkFormula` to check formula objects.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
-  (#100).
+* Added `checkDisjunct` to check sets for being disjunct.
 * Added argument `coerce` to `assertCount`/`assert_count`,
   `assertInt`/`assert_int` and `assertIntegerish`/`assert_integerish` which
   optionally coerces `x` to integer after an successful assertion.
   This supersedes the functions `asCount`, `asInt` and `asInteger` (#77).
-* New arguments `max.rows` and `max.cols` to check for maximum number
+* Added arguments `max.rows` and `max.cols` to check for maximum number
   of rows and columns for matrices, data.frames, tibbles and data.tables.
+* Added argument `disjunct.from` to `*Names`.
 * Fixed an error message in `checkChoice`.
 * Fixed `*Function` to work properly with Primitives.
 * Fixed `*List` where the check for missingness was broken.
