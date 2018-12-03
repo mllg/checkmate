@@ -32,5 +32,5 @@ array_collapse = function(x) {
 set_collapse = function(x) {
   if (length(x) == 0L)
     return("{}")
-  sprintf("{'%s'}", paste0(sort(unique(x)), collapse = "','"))
+  sprintf("{'%s'}", paste0(unique(x), collapse = "','"))
 }
