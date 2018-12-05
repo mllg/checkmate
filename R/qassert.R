@@ -40,7 +40,7 @@
 #'      \code{[lL]} \tab List. Missingness is defined as \code{NULL} element.\cr
 #'      \code{[mM]} \tab Matrix.\cr
 #'      \code{[dD]} \tab Data.frame. Missingness is checked recursively on columns.\cr
-#'      \code{[pP]} \tab PosixCT date.\cr
+#'      \code{[pP]} \tab POSIXct date.\cr
 #'      \code{[e]}  \tab Environment.\cr
 #'      \code{[0]}  \tab \code{NULL}.\cr
 #'      \code{[*]}  \tab placeholder to allow any type.

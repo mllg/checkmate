@@ -9,6 +9,7 @@
 * Added `checkFormula` to check formula objects.
 * Added `checkMultiClass` to check for inheritance from a set of candidates
 * Added `checkDisjunct` to check sets for being disjunct.
+* Added abbreviation `"p"` to qassert to check for POSIXct objects.
 * Added argument `coerce` to `assertCount`/`assert_count`,
   `assertInt`/`assert_int` and `assertIntegerish`/`assert_integerish` which
   optionally coerces `x` to integer after an successful assertion.
