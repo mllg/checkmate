@@ -47,11 +47,16 @@ test_that("makeX with name for 'x' not 'x'", {
   achecker = makeAssertionFunction(checker)
   expect_identical(names(formals(achecker)), c("foo", "bar", ".var.name", "add"))
   expect_identical(as.character(formals(achecker)$.var.name)[2], "foo")
-  expect_equal(sum(grepl("foo", as.character(body(achecker)))), 2L)
+  expect_equal(sum(grepl("foo", as.character(body(achecker)))), 3L)
   expect_equal(sum(grepl("bar", as.character(body(achecker)))), 1L)
 
   tchecker = makeTestFunction(checker)
   expect_identical(names(formals(tchecker)), c("foo", "bar"))
-  expect_equal(sum(grepl("foo", as.character(body(tchecker)))), 1L)
+  expect_equal(sum(grepl("foo", as.character(body(tchecker)))), 2L)
   expect_equal(sum(grepl("bar", as.character(body(tchecker)))), 1L)
+
+  echecker = makeExpectationFunction(checker)
+  expect_identical(names(formals(echecker)), c("foo", "bar", "info", "label"))
+  expect_equal(sum(grepl("foo", as.character(body(echecker)))), 3L)
+  expect_equal(sum(grepl("bar", as.character(body(echecker)))), 1L)
 })

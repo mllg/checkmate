@@ -58,34 +58,35 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
   check.fun = match.fun(check.fun)
   check.args = fun.args = formals(args(check.fun))
   x.name = names(fun.args[1L])
+  new.fun = function() TRUE
+
+  body = sprintf("if (missing(%s)) stop(sprintf(\"Argument '%%s' is missing\", .var.name))", x.name)
 
   if (is.null(c.fun)) {
-    check.call = sprintf("%s(%s)", fun.name, paste0(names(check.args), collapse = ", "))
+    body = paste0(body, sprintf("; res = %s(%s)", fun.name, paste0(names(check.args), collapse = ", ")))
   } else {
-    check.call = sprintf(".Call(%s)", paste0(c(c.fun, names(check.args)), collapse = ", "))
+    body = paste0(body, sprintf("; res = .Call(%s)", paste0(c(c.fun, names(check.args)), collapse = ", ")))
   }
 
   if (coerce) {
     fun.args = c(fun.args, alist(coerce = FALSE))
-    coerce.call = "if (isTRUE(coerce)) as.integer(x) else x"
-  } else {
-    coerce.call = ""
   }
 
   if (use.namespace) {
-    extra.args = list(.var.name = bquote(checkmate::vname(.(as.name(x.name)))), add = NULL)
-    assert.call = "checkmate::makeAssertion"
+    fun.args = c(fun.args,  list(.var.name = bquote(checkmate::vname(.(as.name(x.name)))), add = NULL))
+    body = paste0(body, "; checkmate::makeAssertion")
   } else {
-    extra.args = list(.var.name = bquote(vname(.(as.name(x.name)))), add = NULL)
-    assert.call = "makeAssertion"
+    fun.args = c(fun.args, list(.var.name = bquote(vname(.(as.name(x.name)))), add = NULL))
+    body = paste0(body, "; makeAssertion")
   }
-  fun.args = c(fun.args, extra.args)
+  body = paste0(body, sprintf("(%s, res, .var.name, add)", x.name))
 
+  if (coerce) {
+    body = paste0(body, "; if (isTRUE(coerce)) as.integer(x) else x")
+  }
 
-  tmpl = "{ res = %s; %s(%s, res, .var.name, add); %s }"
-  new.fun = function() TRUE
   formals(new.fun) = fun.args
-  body(new.fun) = parse(text = sprintf(tmpl, check.call, assert.call, x.name, coerce.call))
+  body(new.fun) = parse(text = paste("{", body, "}"))
   environment(new.fun) = env
   return(new.fun)
 }

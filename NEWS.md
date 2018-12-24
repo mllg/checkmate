@@ -1,6 +1,9 @@
 # Version 1.9.0
 * Error messages now provide more information about error locations, e.g., the
   position of the first missing element in a vector.
+* If the object to check is missing, `assert`-functions now give a better error
+  message, `test`-functions are always `FALSE` and `expect`-functions always
+  raise an exception.
 * Checks for missingness and sort order optimized for ALTREPs.
 * The calling frame reported in assertions is now identical to the calling
   frame reported by R's `stop()` function (#117).
