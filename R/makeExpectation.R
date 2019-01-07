@@ -52,7 +52,7 @@ makeExpectationFunction = function(check.fun, c.fun = NULL, use.namespace = FALS
   x = NULL
 
   new.fun = function() TRUE
-  body = sprintf("if (missing(%s)) stop(sprintf(\"Argument '%%s' is missing\", .var.name))", x.name)
+  body = sprintf("if (missing(%s)) stop(sprintf(\"Argument '%%s' is missing\", label))", x.name)
 
   if (is.null(c.fun)) {
     body = paste0(body, sprintf("; res = %s(%s)", fun.name, paste0(names(check.args), collapse = ", ")))

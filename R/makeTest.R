@@ -43,12 +43,10 @@ makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
 
   new.fun = function() TRUE
   formals(new.fun) = fun.args
-  body = sprintf("if (missing(%s)) stop(sprintf(\"Argument '%%s' is missing\", .var.name))", x.name)
-  tmpl = "{ isTRUE(%s(%s)) }"
   if (is.null(c.fun)) {
-    body = paste0(body, "; isTRUE(", fun.name, "(", paste0(names(fun.args), collapse = ", "), "))")
+    body = paste0("isTRUE(", fun.name, "(", paste0(names(fun.args), collapse = ", "), "))")
   } else {
-    body = paste0(body, "; isTRUE(.Call(", paste0(c(c.fun, names(fun.args)), collapse = ", "), "))")
+    body = paste0("isTRUE(.Call(", paste0(c(c.fun, names(fun.args)), collapse = ", "), "))")
   }
 
   body(new.fun) = parse(text = paste("{", body, "}"))

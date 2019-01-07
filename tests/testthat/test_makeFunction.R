@@ -52,7 +52,7 @@ test_that("makeX with name for 'x' not 'x'", {
 
   tchecker = makeTestFunction(checker)
   expect_identical(names(formals(tchecker)), c("foo", "bar"))
-  expect_equal(sum(grepl("foo", as.character(body(tchecker)))), 2L)
+  expect_equal(sum(grepl("foo", as.character(body(tchecker)))), 1L)
   expect_equal(sum(grepl("bar", as.character(body(tchecker)))), 1L)
 
   echecker = makeExpectationFunction(checker)
