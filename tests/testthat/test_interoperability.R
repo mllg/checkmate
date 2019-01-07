@@ -15,7 +15,7 @@ test_that("tibble is supported", {
   myobj = as_tibble(iris)
   expect_succ_all(DataFrame, myobj)
   expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
-  expect_true(testDataFrame(data_frame()))
+  expect_true(testDataFrame(tibble()))
 })
 
 test_that("magrittr is supported", {
