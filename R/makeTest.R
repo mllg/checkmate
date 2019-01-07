@@ -39,7 +39,6 @@ makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
   fun.name = if (is.character(check.fun)) check.fun else deparse(substitute(check.fun))
   check.fun = match.fun(check.fun)
   fun.args = formals(args(check.fun))
-  x.name = names(fun.args[1L])
 
   new.fun = function() TRUE
   formals(new.fun) = fun.args
