@@ -97,3 +97,15 @@ test_that("missing values are detected", {
   expect_false(testDataFrame(x, any.missing = FALSE))
   expect_false(testDataFrame(x, all.missing = FALSE))
 })
+
+test_that("missing locations are reported correctly", {
+  x = data.frame(a = 1:2, b = 1:2); x$a[1] = NA
+  expect_true(grepl("column 'a', row 1", checkDataFrame(x, any.missing = FALSE)))
+  x = data.frame(a = 1:2, b = 1:2); x$b[1] = NA
+  expect_true(grepl("column 'b', row 1", checkDataFrame(x, any.missing = FALSE)))
+  x = data.frame(a = 1:2, b = 1:2); x$b[2] = NA
+  expect_true(grepl("column 'b', row 2", checkDataFrame(x, any.missing = FALSE)))
+
+  x = data.frame(a = 1:2, b = 1:2, c = 1:2); x$c[2] = NA
+  expect_true(grepl("column 'c', row 2", checkDataFrame(x, any.missing = FALSE)))
+})

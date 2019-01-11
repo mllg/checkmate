@@ -5,6 +5,8 @@
 #include <Rinternals.h>
 #include <R_ext/Visibility.h>
 
+R_len_t translate_row(R_len_t, R_len_t);
+R_len_t translate_col(R_len_t, R_len_t);
 R_len_t attribute_hidden get_ncols(SEXP);
 R_len_t attribute_hidden get_nrows(SEXP);
 double attribute_hidden asNumber(SEXP, const char *);

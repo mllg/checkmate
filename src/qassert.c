@@ -18,6 +18,7 @@ static const char * CLSTR[] = {
 typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
 static const char * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
 
+typedef R_xlen_t(*miss_fun_t)(SEXP);
 typedef Rboolean(*dd_cmp)(double, double);
 typedef Rboolean(*ll_cmp)(R_xlen_t, R_xlen_t);
 typedef struct { dd_cmp fun; double cmp; cmp_t op; } bound_t;
@@ -27,10 +28,7 @@ typedef struct {
         Rboolean(*fun)(SEXP);
         class_t name;
     } class;
-    union {
-        R_xlen_t(*pos1d)(SEXP);
-        pos2d_t(*pos2d)(SEXP);
-    } missing;
+    miss_fun_t missing_fun;
     struct {
         ll_cmp fun;
         R_xlen_t cmp;
@@ -113,89 +111,88 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
 /* First step: Parse string and built checker_t object                                                               */
 /*********************************************************************************************************************/
 static int parse_class(checker_t *checker, const char *rule) {
-    checker->missing.pos1d = NULL;
-    checker->missing.pos2d = NULL;
+    checker->missing_fun = NULL;
     switch(rule[0]) {
         case 'B':
-            checker->missing.pos1d = &find_missing_logical;
+            checker->missing_fun = &find_missing_logical;
         case 'b':
             checker->class.fun = &is_class_logical;
             checker->class.name = CL_LOGICAL;
             break;
         case 'I':
-            checker->missing.pos1d = &find_missing_integer;
+            checker->missing_fun = &find_missing_integer;
         case 'i':
             checker->class.fun = &is_class_integer;
             checker->class.name = CL_INTEGER;
             break;
         case 'X':
-            checker->missing.pos1d = &find_missing_integerish;
+            checker->missing_fun = &find_missing_integerish;
         case 'x':
             checker->class.fun = &is_class_integerish;
             checker->class.name = CL_INTEGERISH;
             break;
         case 'N':
-            checker->missing.pos1d = &find_missing_numeric;
+            checker->missing_fun = &find_missing_numeric;
         case 'n':
             checker->class.fun = &is_class_numeric;
             checker->class.name = CL_NUMERIC;
             break;
         case 'R':
-            checker->missing.pos1d = &find_missing_double;
+            checker->missing_fun = &find_missing_double;
         case 'r':
             checker->class.fun = &is_class_double;
             checker->class.name = CL_DOUBLE;
             break;
         case 'S':
-            checker->missing.pos1d = &find_missing_string;
+            checker->missing_fun = &find_missing_string;
         case 's':
             checker->class.fun = &is_class_string;
             checker->class.name = CL_STRING;
             break;
         case 'F':
-            checker->missing.pos1d = &find_missing_integer;
+            checker->missing_fun = &find_missing_integer;
         case 'f':
             checker->class.fun = &is_class_factor;
             checker->class.name = CL_FACTOR;
             break;
         case 'L':
-            checker->missing.pos1d = &find_missing_list;
+            checker->missing_fun = &find_missing_list;
         case 'l':
             checker->class.fun = &is_class_list;
             checker->class.name = CL_LIST;
             break;
         case 'C':
-            checker->missing.pos1d = &find_missing_complex;
+            checker->missing_fun = &find_missing_complex;
         case 'c':
             checker->class.fun = &is_class_complex;
             checker->class.name = CL_COMPLEX;
             break;
         case 'A':
-            checker->missing.pos1d = &find_missing_vector;
+            checker->missing_fun = &find_missing_vector;
         case 'a':
             checker->class.fun = &is_class_atomic;
             checker->class.name = CL_ATOMIC;
             break;
         case 'V':
-            checker->missing.pos1d = &find_missing_vector;
+            checker->missing_fun = &find_missing_vector;
         case 'v':
             checker->class.fun = &is_class_atomic_vector;
             checker->class.name = CL_ATOMIC_VECTOR;
             break;
         case 'M':
-            checker->missing.pos2d = &find_missing_matrix;
+            checker->missing_fun = &find_missing_matrix;
         case 'm':
             checker->class.fun = &is_class_matrix;
             checker->class.name = CL_MATRIX;
             break;
         case 'D':
-            checker->missing.pos2d = &find_missing_frame;
+            checker->missing_fun = &find_missing_frame;
         case 'd':
             checker->class.fun = &is_class_frame;
             checker->class.name = CL_DATAFRAME;
             break;
         case 'P':
-            checker->missing.pos1d = &find_missing_double;
+            checker->missing_fun = &find_missing_double;
         case 'p':
             checker->class.fun = &is_class_posixct;
             checker->class.name = CL_POSIX;
@@ -378,19 +375,22 @@ static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg
         return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guess_type(x)) : MSGF;
     }
 
-    if (checker->missing.pos2d != NULL) {
-        pos2d_t pos = checker->missing.pos2d(x);
-        if (pos.i > 0) {
-        return err_msg ?
-            message("May not contain missing values, first at column %i, element %i", pos.j, pos.i) :
-            MSGF;
-        }
-    }
-
-    if (checker->missing.pos1d != NULL) {
-        R_xlen_t pos = checker->missing.pos1d(x);
-        if (pos > 0)
+    if (checker->missing_fun != NULL) {
+        R_xlen_t pos = checker->missing_fun(x);
+        if (pos > 0) {
+            if (is_class_matrix(x)) {
+                R_len_t nrow = get_nrows(x);
+                return err_msg ? message("May not contain missing values, first at column %i, element %i",
+                        translate_col(pos, nrow) + 1, translate_row(pos, nrow) + 1) : MSGF;
+            }
+            if (is_class_frame(x)) {
+                R_len_t nrow = get_nrows(x);
+                const char * nn = CHAR(STRING_ELT(getAttrib(x, R_NamesSymbol), translate_col(pos, nrow)));
+                return err_msg ? message("May not contain missing values, first at column '%s', element %i",
+                        nn, translate_row(pos, nrow) + 1) : MSGF;
+            }
             return err_msg ? message("May not contain missing values, first at position %i", pos) : MSGF;
+        }
     }
 
     if (checker->len.fun != NULL && !checker->len.fun(xlength(x), checker->len.cmp)) {

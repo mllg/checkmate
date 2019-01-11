@@ -92,3 +92,12 @@ test_that("dimensions are reported correctly", {
   expect_true(grepl(42, checkMatrix(x, ncols = 43)))
   expect_true(grepl(42, checkMatrix(x, min.cols = 43)))
 })
+
+test_that("missing locations are reported correctly", {
+  x = matrix(1:12, ncol = 3); x[1, 1] = NA
+  expect_true(grepl("row 1, col 1", checkMatrix(x, any.missing = FALSE)))
+  x = matrix(1:12, ncol = 3); x[2, 3] = NA
+  expect_true(grepl("row 2, col 3", checkMatrix(x, any.missing = FALSE)))
+  x = matrix(1:12, ncol = 3); x[4, 3] = NA
+  expect_true(grepl("row 4, col 3", checkMatrix(x, any.missing = FALSE)))
+})

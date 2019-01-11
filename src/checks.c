@@ -453,10 +453,12 @@ SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missi
         ASSERT_TRUE(check_named(x, asString(col_names, "col.names"), "Columns"));
     }
     if (!asFlag(any_missing, "any.missing")) {
-        pos2d_t pos = find_missing_frame(x);
-        if (pos.i > 0) {
-            const char * nn = CHAR(STRING_ELT(getAttrib(x, R_NamesSymbol), pos.j));
-            return result("Contains missing values (column '%s', row %i)", nn, pos.i);
+        R_xlen_t pos = find_missing_frame(x);
+        if (pos > 0) {
+            R_xlen_t nrow = get_nrows(x);
+            const char * nn = CHAR(STRING_ELT(getAttrib(x, R_NamesSymbol), translate_col(pos, nrow)));
+            return result("Contains missing values (column '%s', row %i)",
+                    nn, translate_row(pos, nrow) + 1);
         }
     }
 
@@ -536,9 +538,11 @@ SEXP attribute_hidden c_check_matrix(SEXP x, SEXP mode, SEXP any_missing, SEXP a
     }
 
     if (!asFlag(any_missing, "any.missing")) {
-        pos2d_t pos = find_missing_matrix(x);
-        if (pos.i > 0) {
-            return result("Contains missing values (row %i, col %i)", pos.i, pos.j);
+        R_xlen_t pos = find_missing_matrix(x);
+        if (pos > 0) {
+            R_xlen_t nrow = get_nrows(x);
+            return result("Contains missing values (row %i, col %i)",
+                    translate_row(pos, nrow) + 1, translate_col(pos, nrow) + 1);
         }
     }
 

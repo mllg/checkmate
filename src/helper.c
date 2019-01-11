@@ -6,6 +6,14 @@
 #include "backports.h"
 
 
+R_len_t translate_row(R_len_t pos, R_len_t nrow) {
+    return (pos - 1) % nrow;
+}
+
+R_len_t translate_col(R_len_t pos, R_len_t nrow) {
+    return (R_len_t)((pos - 1) / nrow);
+}
+
 /* ncols and nrows is bugged for data frames:
  * (a) data.frames are treated like lists and thus you get length() back
  * (b) reports wrong dimension for zero-column data frames
