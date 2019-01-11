@@ -157,6 +157,7 @@ Better run the benchmark yourself to get unbiased results.
 ### Benchmark 1: Assert that `x` is a flag
 
 ```{r,dev="svg",fig.width=6,fig.height=4,dependson="init",eval=requireNamespace("microbenchmark", quietly = TRUE)}
+library(checkmate)
 library(ggplot2)
 library(microbenchmark)
 

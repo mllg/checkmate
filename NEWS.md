@@ -1,3 +1,7 @@
+# Version 1.9.1
+* Fix segfault on Solaris
+* Fix warnings reported by rchk
+
 # Version 1.9.0
 * Error messages now provide more information about error locations, e.g., the
   position of the first missing element in a vector.
