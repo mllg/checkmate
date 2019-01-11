@@ -22,10 +22,12 @@ SEXP attribute_hidden c_which_first(SEXP x, SEXP use_names) {
 
     for (R_xlen_t i = 0; i < n; i++) {
         if (xp[i] != NA_LOGICAL && xp[i]) {
-            if (LOGICAL_RO(use_names)[0])
-                return named_return(i, getAttrib(x, R_NamesSymbol));
-            else
+            if (LOGICAL_RO(use_names)[0]) {
+                SEXP nn = getAttrib(x, R_NamesSymbol);
+                return named_return(i, nn);
+            } else {
                 return ScalarInteger(i+1);
+            }
         }
     }
     return allocVector(INTSXP, 0);
@@ -40,10 +42,12 @@ SEXP attribute_hidden c_which_last(SEXP x, SEXP use_names) {
 
     for (R_xlen_t i = xlength(x) - 1; i >= 0; i--) {
         if (xp[i] != NA_LOGICAL && xp[i]) {
-            if (LOGICAL_RO(use_names)[0])
-                return named_return(i, getAttrib(x, R_NamesSymbol));
-            else
+            if (LOGICAL_RO(use_names)[0]) {
+                SEXP nn = getAttrib(x, R_NamesSymbol);
+                return named_return(i,nn);
+            } else {
                 return ScalarInteger(i+1);
+            }
         }
     }
     return allocVector(INTSXP, 0);
