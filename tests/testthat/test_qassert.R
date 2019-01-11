@@ -276,3 +276,8 @@ test_that("error messages are properly generated", {
   expect_error(qassert(Inf, "N[)"), "!= Inf")
   expect_error(qassert(-Inf, "N(]"), "!= -Inf")
 })
+
+
+test_that("multiple rules are correctly processed", {
+  expect_true(qtest(1, c("M", "F", "C", "N")))
+})

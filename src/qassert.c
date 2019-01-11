@@ -447,7 +447,7 @@ SEXP qassert(SEXP x, const char *rule, const char *name) {
 }
 
 SEXP attribute_hidden c_qassert(SEXP x, SEXP rules, SEXP recursive) {
-    const Rboolean nrules = length(rules);
+    const R_len_t nrules = length(rules);
     R_len_t failed;
     if (!isString(rules))
         error("Argument 'rules' must be a string");
