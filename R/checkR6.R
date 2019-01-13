@@ -48,16 +48,17 @@ checkR6Props = function(x, cloneable = NULL, public = NULL, private = NULL) {
     }
   }
 
-  if (!is.null(public)) {
+  if (!is.null(public) && length(private)) {
     qassert(public, "S")
     i = wf(public %nin% ls(x, all.names = TRUE))
     if (length(i) > 0L)
       return(sprintf("Must provide the public slot '%s'", public[i]))
   }
 
-  if (!is.null(private)) {
+  if (!is.null(private) && length(private)) {
     qassert(private, "S")
-    i = wf(private %nin% ls(x$.__enclos_env__[["private"]], all.names = TRUE))
+    penv = x$.__enclos_env__[["private"]]
+    i = if (is.null(penv)) 1L else wf(private %nin% ls(penv, all.names = TRUE))
     if (length(i) > 0L)
       return(sprintf("Must provide the private slot '%s'", private[i]))
   }
