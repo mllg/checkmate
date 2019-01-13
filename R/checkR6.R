@@ -48,7 +48,7 @@ checkR6Props = function(x, cloneable = NULL, public = NULL, private = NULL) {
     }
   }
 
-  if (!is.null(public) && length(private)) {
+  if (!is.null(public) && length(public)) {
     qassert(public, "S")
     i = wf(public %nin% ls(x, all.names = TRUE))
     if (length(i) > 0L)
