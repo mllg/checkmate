@@ -55,8 +55,8 @@ static inline Rboolean dd_le(const double x, const double y) { return x <= y; }
 static inline Rboolean dd_ge(const double x, const double y) { return x >= y; }
 static inline Rboolean dd_ne(const double x, const double y) { return x != y; }
 
-static const msg_t MSGT = { .ok = TRUE };
-static const msg_t MSGF = { .ok = FALSE };
+static msg_t MSGT = { .ok = TRUE };
+static msg_t MSGF = { .ok = FALSE };
 
 static msg_t message(const char *fmt, ...) {
     msg_t msg = { .ok = FALSE };
@@ -370,7 +370,7 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 /* Second step: check SEXP using a checker_t object                                                                  */
 /*********************************************************************************************************************/
-static msg_t check_rule(SEXP x, const checker_t *checker, const Rboolean err_msg) {
+static msg_t check_rule(SEXP x, const checker_t *checker, Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
         return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guess_type(x)) : MSGF;
     }
