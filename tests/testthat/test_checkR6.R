@@ -28,6 +28,7 @@ test_that("checkR6", {
   expect_true(checkR6(x, public = "a"))
   expect_true(checkR6(x, public = "c"))
   expect_true(checkR6(x, private = "b"))
+  expect_true(checkR6(x, private = character(0)))
 
   expect_error(assertR6(NULL, null.ok = FALSE), "NULL")
   expect_error(assertR6(x, cloneable = FALSE), "cloneable")
@@ -35,4 +36,16 @@ test_that("checkR6", {
   expect_error(assertR6(x, public = "b"), "public")
   expect_error(assertR6(x, private = "a"), "private")
   expect_error(assertR6(x, private = "c"), "private")
+})
+
+test_that("check contents of empty private", {
+  skip_if_not_physically_installed("R6")
+
+  x = R6::R6Class("Bar",
+    public = list(a = 5),
+    active = list(c = function() 99)
+    )$new()
+
+  expect_false(testR6(x, private = "b"))
+  expect_true(testR6(x, private = character(0)))
 })
