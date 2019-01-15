@@ -1,14 +1,20 @@
 #include "which_first.h"
 #include "backports.h"
 
-static inline SEXP named_return(R_xlen_t ind, SEXP names) {
-    if (isNull(names))
+static inline SEXP named_return(R_xlen_t ind, SEXP x, SEXP use_names) {
+    if (!LOGICAL_RO(use_names)[0]) {
         return ScalarInteger(ind + 1);
+    }
 
-    SEXP res;
-    PROTECT(res = ScalarInteger(ind + 1));
+    SEXP names = PROTECT(getAttrib(x, R_NamesSymbol));
+    if (isNull(names)) {
+        UNPROTECT(1);
+        return ScalarInteger(ind + 1);
+    }
+
+    SEXP res = PROTECT(ScalarInteger(ind + 1));
     setAttrib(res, R_NamesSymbol, ScalarString(STRING_ELT(names, ind)));
-    UNPROTECT(1);
+    UNPROTECT(2);
     return res;
 }
 
@@ -22,12 +28,7 @@ SEXP attribute_hidden c_which_first(SEXP x, SEXP use_names) {
 
     for (R_xlen_t i = 0; i < n; i++) {
         if (xp[i] != NA_LOGICAL && xp[i]) {
-            if (LOGICAL_RO(use_names)[0]) {
-                SEXP nn = getAttrib(x, R_NamesSymbol);
-                return named_return(i, nn);
-            } else {
-                return ScalarInteger(i+1);
-            }
+            return named_return(i, x, use_names);
         }
     }
     return allocVector(INTSXP, 0);
@@ -42,12 +43,7 @@ SEXP attribute_hidden c_which_last(SEXP x, SEXP use_names) {
 
     for (R_xlen_t i = xlength(x) - 1; i >= 0; i--) {
         if (xp[i] != NA_LOGICAL && xp[i]) {
-            if (LOGICAL_RO(use_names)[0]) {
-                SEXP nn = getAttrib(x, R_NamesSymbol);
-                return named_return(i,nn);
-            } else {
-                return ScalarInteger(i+1);
-            }
+            return named_return(i, x, use_names);
         }
     }
     return allocVector(INTSXP, 0);
