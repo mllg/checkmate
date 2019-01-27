@@ -36,4 +36,8 @@ test_that("Coercion works", {
   expect_identical(assertInt(2, coerce = TRUE), 2L)
   expect_error(assertInt("lkajsd"), "single integerish")
   expect_error(assertInt("lkajsd"), "not 'character'")
+
+  # check that names are not dropped (#157)
+  x = c("a" = 1)
+  expect_identical(assertInt(x, coerce = TRUE), setNames(1L, "a"))
 })

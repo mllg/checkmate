@@ -1,3 +1,6 @@
+# Version 1.9.2
+* `assert*(..., coerce = TRUE)` does not drop names during conversion
+
 # Version 1.9.1
 * Fix segfault on Solaris
 * Fix warnings reported by rchk
