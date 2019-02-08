@@ -2,6 +2,8 @@
 #'
 #' @templateVar fn DataFrame
 #' @template x
+#' @param all.missing [\code{logical(1)}]\cr
+#'  Are columns with only missing values allowed? Default is \code{TRUE}.
 #' @inheritParams checkMatrix
 #' @inheritParams checkList
 #' @template null.ok

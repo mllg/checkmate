@@ -93,6 +93,9 @@ test_that("missing values are detected", {
   x$b[1] = NA
   expect_false(testDataFrame(x, any.missing = FALSE))
   expect_true(testDataFrame(x, all.missing = FALSE))
+  x$a[1] = NA
+  expect_false(testDataFrame(x, any.missing = FALSE))
+  expect_true(testDataFrame(x, all.missing = FALSE))
   x$b[2] = NA
   expect_false(testDataFrame(x, any.missing = FALSE))
   expect_false(testDataFrame(x, all.missing = FALSE))

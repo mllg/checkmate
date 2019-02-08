@@ -66,7 +66,7 @@ Defaults to \code{character(0)} (no check).}
 Are missing values allowed? Default is \code{TRUE}.}
 
 \item{all.missing}{[\code{logical(1)}]\cr
-Are matrices with only missing values allowed? Default is \code{TRUE}.}
+Are columns with only missing values allowed? Default is \code{TRUE}.}
 
 \item{min.rows}{[\code{integer(1)}]\cr
 Minimum number of rows.}

@@ -1,5 +1,7 @@
 # Version 1.9.2
-* `assert*(..., coerce = TRUE)` does not drop names during conversion
+* `assert*(..., coerce = TRUE)` does not drop names during conversion (#157),
+  thanks to @mb706.
+* Fixed documentation in `checkDataFrame` (#159), thanks to @harvey131.
 
 # Version 1.9.1
 * Fix segfault on Solaris
