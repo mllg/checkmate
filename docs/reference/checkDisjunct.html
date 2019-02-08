@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if a path is suited for creating an output file — checkPathForOutput • checkmate</title>
+<title>Check if an argument is disjunct from a given set — checkDisjunct • checkmate</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,14 +30,9 @@
 
 
 
-<meta property="og:title" content="Check if a path is suited for creating an output file — checkPathForOutput" />
+<meta property="og:title" content="Check if an argument is disjunct from a given set — checkDisjunct" />
 
-<meta property="og:description" content="Check if a file path can be used safely to create a file and write to it.
-This is checked:
-Does dirname(x) exist?
-Does no file under path x exist?
-Is dirname(x) writable?
-Paths are relative to the current working directory." />
+<meta property="og:description" content="Check if an argument is disjunct from a given set" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,38 +105,32 @@ Paths are relative to the current working directory." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if a path is suited for creating an output file</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkPathForOutput.R'><code>R/checkPathForOutput.R</code></a></small>
-    <div class="hidden name"><code>checkPathForOutput.Rd</code></div>
+    <h1>Check if an argument is disjunct from a given set</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkDisjunct.R'><code>R/checkDisjunct.R</code></a></small>
+    <div class="hidden name"><code>checkDisjunct.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if a file path can be used safely to create a file and write to it.</p>
-<p>This is checked:</p><ul>
-<li><p>Does <code><a href='https://www.rdocumentation.org/packages/base/topics/basename'>dirname(x)</a></code> exist?</p></li>
-<li><p>Does no file under path <code>x</code> exist?</p></li>
-<li><p>Is <code><a href='https://www.rdocumentation.org/packages/base/topics/basename'>dirname(x)</a></code> writable?</p></li>
-</ul><p>Paths are relative to the current working directory.</p>
+    <p>Check if an argument is disjunct from a given set</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>checkPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkDisjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_disjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+<span class='fu'>assertDisjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
+<span class='fu'>assert_disjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
   <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testDisjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>test_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_disjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>expect_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+<span class='fu'>expect_disjunct</span>(<span class='no'>x</span>, <span class='no'>y</span>, <span class='kw'>fmatch</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,11 +141,17 @@ Paths are relative to the current working directory." />
 Object to check.</p></td>
     </tr>
     <tr>
-      <th>overwrite</th>
+      <th>y</th>
+      <td><p>[<code>atomic</code>]<br />
+Other Set.</p></td>
+    </tr>
+    <tr>
+      <th>fmatch</th>
       <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>]<br />
-If <code>TRUE</code>, an existing file in place is allowed if it
-it is both readable and writable.
-Default is <code>FALSE</code>.</p></td>
+Use the set operations implemented in <code><a href='https://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> in package <span class="pkg">fastmatch</span>.
+If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href='https://www.rdocumentation.org/packages/base/topics/match'>match</a></code>.
+<code><a href='https://www.rdocumentation.org/packages/fastmatch/topics/fmatch'>fmatch</a></code> modifies <code>y</code> by reference:
+A hash table is added as attribute which is used in subsequent calls.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
@@ -187,30 +182,35 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <p>Depending on the function prefix:
  If the check is successful, the functions 
- <code>assertPathForOutput</code>/<code>assert_path_for_output</code> return 
+ <code>assertDisjunct</code>/<code>assert_disjunct</code> return 
  <code>x</code> invisibly, whereas
- <code>checkPathForOutput</code>/<code>check_path_for_output</code> and 
- <code>testPathForOutput</code>/<code>test_path_for_output</code> return 
+ <code>checkDisjunct</code>/<code>check_disjunct</code> and 
+ <code>testDisjunct</code>/<code>test_disjunct</code> return 
  <code>TRUE</code>.
  If the check is not successful, 
- <code>assertPathForOutput</code>/<code>assert_path_for_output</code>
+ <code>assertDisjunct</code>/<code>assert_disjunct</code>
  throws an error message, 
- <code>testPathForOutput</code>/<code>test_path_for_output</code>
+ <code>testDisjunct</code>/<code>test_disjunct</code>
  returns <code>FALSE</code>,
- and <code>checkPathForOutput</code> returns a string with the error message.
- The function <code>expect_path_for_output</code> always returns an
+ and <code>checkDisjunct</code> returns a string with the error message.
+ The function <code>expect_disjunct</code> always returns an
  <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
+    
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>The object <code>x</code> must be of the same type as the set w.r.t. <code><a href='https://www.rdocumentation.org/packages/base/topics/typeof'>typeof</a></code>.
+Integers and doubles are both treated as numeric.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other filesystem: <code><a href='checkAccess.html'>checkAccess</a></code>,
-  <code><a href='checkDirectoryExists.html'>checkDirectoryExists</a></code>,
-  <code><a href='checkFileExists.html'>checkFileExists</a></code></p></div>
+    <div class='dont-index'><p>Other set: <code><a href='checkChoice.html'>checkChoice</a></code>,
+  <code><a href='checkSetEqual.html'>checkSetEqual</a></code>, <code><a href='checkSubset.html'>checkSubset</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Can we create a file in the tempdir?</span>
-<span class='fu'>testPathForOutput</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/file.path'>file.path</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempdir</a></span>(), <span class='st'>"process.log"</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>testDisjunct</span>(<span class='fl'>1L</span>, <span class='no'>letters</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testDisjunct</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"z"</span>), <span class='no'>letters</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='co'># x is not converted before the comparison (except for numerics)</span>
+<span class='fu'>testDisjunct</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a></span>(<span class='st'>"a"</span>), <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testDisjunct</span>(<span class='fl'>1</span>, <span class='st'>"1"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testDisjunct</span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/integer'>as.integer</a></span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -218,6 +218,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#note">Note</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
