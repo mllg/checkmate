@@ -8,5 +8,5 @@
 #' @return [\code{character(1)}] Variable name.
 #' @export
 vname = function(x) {
-  paste0(deparse(substitute(x, parent.frame(1L)), width.cutoff = 500), collapse = "\n")
+  paste0(deparse(eval.parent(substitute(substitute(x))), width.cutoff = 500L), collapse = "\n")
 }
