@@ -54,8 +54,9 @@ expect_succ_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   expect_identical(fun(x, ...), x, info = s, label = xn)
 
   s = paste0("expect_", lc)
-  fun = match.fun(s)
-  expect_expectation_successful(fun(x, ...), info = s, label = xn)
+  fun = get0(s, envir = asNamespace("checkmate"), inherits = FALSE)
+  if (!is.null(fun))
+    expect_expectation_successful(fun(x, ...), info = s, label = xn)
 
   invisible(TRUE)
 }
@@ -97,9 +98,11 @@ expect_fail_all = function(part, x, ..., cc = as.character(substitute(part)), lc
   expect_error(fun(x, ...), "'x'", info = s, label = xn)
 
   s = paste0("expect_", lc)
-  fun = match.fun(s)
-  expect_expectation_failed(fun(x, ...), pattern = "x", info = s, label = xn)
-  expect_expectation_failed(fun(x, ..., label = xn), pattern = xn, info = s, label = xn)
+  fun = get0(s, envir = asNamespace("checkmate"), inherits = FALSE)
+  if (!is.null(fun)) {
+    expect_expectation_failed(fun(x, ...), pattern = "x", info = s, label = xn)
+    expect_expectation_failed(fun(x, ..., label = xn), pattern = xn, info = s, label = xn)
+  }
 
   invisible(TRUE)
 }

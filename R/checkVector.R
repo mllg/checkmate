@@ -57,9 +57,3 @@ testVector = makeTestFunction(checkVector, c.fun = "c_check_vector")
 #' @export
 #' @rdname checkVector
 test_vector = testVector
-
-#' @export
-#' @include makeExpectation.R
-#' @template expect
-#' @rdname checkVector
-expect_vector = makeExpectationFunction(checkVector, c.fun = "c_check_vector", use.namespace = FALSE)

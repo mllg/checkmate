@@ -7,7 +7,6 @@
 \alias{assert_vector}
 \alias{testVector}
 \alias{test_vector}
-\alias{expect_vector}
 \title{Check if an argument is a vector}
 \usage{
 checkVector(x, strict = FALSE, any.missing = TRUE,
@@ -35,11 +34,6 @@ testVector(x, strict = FALSE, any.missing = TRUE, all.missing = TRUE,
 test_vector(x, strict = FALSE, any.missing = TRUE,
   all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
   unique = FALSE, names = NULL, null.ok = FALSE)
-
-expect_vector(x, strict = FALSE, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -84,14 +78,6 @@ the heuristic implemented in \code{\link{vname}}.}
 
 \item{add}{[\code{AssertCollection}]\cr
 Collection to store assertion messages. See \code{\link{AssertCollection}}.}
-
-\item{info}{[character(1)]\cr
-Extra information to be included in the message for the testthat reporter.
-See \code{\link[testthat]{expect_that}}.}
-
-\item{label}{[\code{character(1)}]\cr
-Name of the checked object to print in messages. Defaults to
-the heuristic implemented in \code{\link{vname}}.}
 }
 \value{
 Depending on the function prefix:

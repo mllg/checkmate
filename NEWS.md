@@ -1,3 +1,6 @@
+# Version 1.9.3
+* `expect_vector` removed due to a nameclash with package `testthat`.
+
 # Version 1.9.2
 * `assert*(..., coerce = TRUE)` does not drop names during conversion (#157),
   thanks to @mb706.
