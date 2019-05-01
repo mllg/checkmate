@@ -209,7 +209,7 @@ static R_xlen_t check_strict_names(SEXP x) {
 }
 
 static Rboolean check_names(SEXP nn, const char * type, const char * what) {
-    typedef enum { T_UNNAMED, T_NAMED, T_UNIQUE, T_STRICT } name_t;
+    typedef enum { T_UNNAMED, T_NAMED, T_UNIQUE, T_STRICT, T_IDS } name_t;
     name_t checks = T_UNNAMED;
 
     if (strcmp(type, "unnamed") == 0)
@@ -221,6 +221,8 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         checks = T_UNIQUE;
     } else if (strcmp(type, "strict") == 0) {
         checks = T_STRICT;
+    } else if (strcmp(type, "ids") == 0) {
+        checks = T_IDS;
     } else {
         error("Unknown type '%s' to specify check for names. Supported are 'unnamed', 'named', 'unique' and 'strict'.", type);
     }
@@ -239,15 +241,16 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         return message("%s must be named, but name %i is empty", what, pos);
     }
 
-    if (checks >= T_UNIQUE) {
+    if (checks == T_UNIQUE || checks == T_STRICT) {
         pos = any_duplicated(nn, FALSE);
         if (pos > 0)
             return message("%s must be uniquely named, but name %i is duplicated", what, pos);
-        if (checks >= T_STRICT) {
-            pos = check_strict_names(nn);
-            if (pos > 0)
-                return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
-        }
+    }
+
+    if (checks == T_STRICT || checks == T_IDS) {
+        pos = check_strict_names(nn);
+        if (pos > 0)
+            return message("%s must be named according to R's variable naming conventions and may not contain special characters", what);
     }
     return TRUE;
 }
@@ -594,6 +597,14 @@ SEXP attribute_hidden c_check_names(SEXP x, SEXP type) {
     return ScalarLogical(TRUE);
 }
 
+SEXP attribute_hidden c_check_ids(SEXP x, SEXP unique, SEXP len, SEXP min_len) {
+    if (!isString(x))
+        return result("Must be a character vector of ids");
+    const char * type = asFlag(unique, "unique") ? "strict" : "ids";
+    ASSERT_TRUE(check_names(x, type, "Ids"));
+    ASSERT_TRUE(check_vector_len(x, len, min_len, R_NilValue));
+    return ScalarLogical(TRUE);
+}
 
 SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(is_class_numeric(x) || all_missing_atomic(x), "numeric", null_ok);

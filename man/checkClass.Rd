@@ -100,8 +100,9 @@ assert(
 testClass(x, "bar", ordered = TRUE)
 }
 \seealso{
-Other attributes: \code{\link{checkMultiClass}},
-  \code{\link{checkNamed}}, \code{\link{checkNames}}
+Other attributes: \code{\link{checkIds}},
+  \code{\link{checkMultiClass}}, \code{\link{checkNamed}},
+  \code{\link{checkNames}}
 
 Other classes: \code{\link{checkMultiClass}},
   \code{\link{checkR6}}

@@ -1,4 +1,6 @@
 # Version 1.9.3
+* New argument `extension` for `checkPathForOutput()`.
+* Added `checkIds()` to check for string identifiers.
 * `expect_vector` removed due to a nameclash with package `testthat`.
 
 # Version 1.9.2

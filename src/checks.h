@@ -19,6 +19,7 @@ SEXP attribute_hidden c_check_logical(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, 
 SEXP attribute_hidden c_check_matrix(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_named(SEXP, SEXP);
 SEXP attribute_hidden c_check_names(SEXP, SEXP);
+SEXP attribute_hidden c_check_ids(SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 
