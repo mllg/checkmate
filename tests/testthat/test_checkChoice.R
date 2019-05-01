@@ -46,3 +46,8 @@ test_that("checkChoice / fastmatch", {
   expect_true(res)
   expect_class(attr(y, ".match.hash"), "match.hash")
 })
+
+test_that("checkChoice / NAs (#158)", {
+  expect_true(test_choice(NA_character_, NA))
+  expect_true(test_choice(NA, NA_character_))
+})

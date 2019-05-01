@@ -37,3 +37,8 @@ test_that("checkSubset / fastmatch", {
   expect_false(res)
   expect_class(attr(y, ".match.hash"), "match.hash")
 })
+
+test_that("checkDisjunct / NAs (#158)", {
+  expect_false(test_disjunct(NA_character_, NA))
+  expect_false(test_disjunct(NA, NA_character_))
+})

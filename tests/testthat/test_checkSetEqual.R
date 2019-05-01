@@ -48,3 +48,8 @@ test_that("checkSetEqual / fastmatch", {
   expect_true(res)
   expect_class(attr(y, ".match.hash"), "match.hash")
 })
+
+test_that("checkSetEqual / NAs (#158)", {
+  expect_true(test_set_equal(NA_character_, NA))
+  expect_true(test_set_equal(NA, NA_character_))
+})

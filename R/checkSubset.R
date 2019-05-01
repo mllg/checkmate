@@ -39,7 +39,7 @@ checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
     match = fastmatch::fmatch
 
-  if (!is.null(x) && (!isSameType(x, choices) || anyMissing(match(x, choices))))
+  if (!is.null(x) && ((!isSameType(x, choices) && !allMissing(x)) || anyMissing(match(x, choices))))
     return(sprintf("Must be a subset of %s, but is %s", set_collapse(choices), set_collapse(x)))
   return(TRUE)
 }

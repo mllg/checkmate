@@ -44,3 +44,8 @@ test_that("checkSubset / fastmatch", {
   expect_true(res)
   expect_class(attr(y, ".match.hash"), "match.hash")
 })
+
+test_that("checkSubset / NAs (#158)", {
+  expect_true(test_subset(NA_character_, NA))
+  expect_true(test_subset(NA, NA_character_))
+})

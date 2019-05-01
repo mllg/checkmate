@@ -30,7 +30,7 @@ checkChoice = function(x, choices, null.ok = FALSE, fmatch = FALSE) {
   qassert(choices, "a")
   if (!qtest(x, "a1"))
     return(sprintf("Must be element of set %s, but is not atomic scalar", set_collapse(choices)))
-  if (!isSameType(x, choices))
+  if (!isSameType(x, choices) && !allMissing(x))
     return(sprintf("Must be element of set %s, but types do not match (%s != %s)", set_collapse(choices), class(x)[1L], class(choices)[1L]))
 
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))

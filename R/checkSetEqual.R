@@ -32,7 +32,7 @@ checkSetEqual = function(x, y, ordered = FALSE, fmatch = FALSE) {
   } else {
     if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
       match = fastmatch::fmatch
-    if (!isSameType(x, y) || anyMissing(match(x, y)) || anyMissing(match(y, x)))
+    if ((!isSameType(x, y) && !allMissing(x)) || anyMissing(match(x, y)) || anyMissing(match(y, x)))
       return(sprintf("Must be equal to set %s, but is %s", set_collapse(y), set_collapse(x)))
   }
   return(TRUE)
