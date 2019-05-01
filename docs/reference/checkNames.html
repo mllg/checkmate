@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Check names to comply to specific rules — checkNames" />
 
-<meta property="og:description" content="Similar to checkNamed but you can pass the names directly." />
+<meta property="og:description" content="Performs various checks on character vectors, usually names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
 
     <div class="ref-description">
     
-    <p>Similar to <code><a href='checkNamed.html'>checkNamed</a></code> but you can pass the names directly.</p>
+    <p>Performs various checks on character vectors, usually names.</p>
     
     </div>
 
@@ -156,6 +156,7 @@ Type of formal check(s) to perform on the names.</p><dl class='dl-horizontal'>
 <dt>named:</dt><dd><p>Checks <code>x</code> for regular names which excludes names to be <code>NA</code> or empty (<code>""</code>).</p></dd>
 <dt>unique:</dt><dd><p>Performs checks like with &#8220;named&#8221; and additionally tests for non-duplicated names.</p></dd>
 <dt>strict:</dt><dd><p>Performs checks like with &#8220;unique&#8221; and additionally fails for names with UTF-8 characters and names which do not comply to R's variable name restrictions. As regular expression, this is &#8220;^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$&#8221;.</p></dd>
+<dt>ids:</dt><dd><p>Same as &#8220;strict&#8221;, but does not enforce uniqueness.</p></dd>
 </dl><p>Note that for zero-length <code>x</code>, all these name checks evaluate to <code>TRUE</code>.</p></td>
     </tr>
     <tr>
@@ -233,7 +234,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other attributes: <code><a href='checkClass.html'>checkClass</a></code>,
-  <code><a href='checkMultiClass.html'>checkMultiClass</a></code>, <code><a href='checkNamed.html'>checkNamed</a></code></p></div>
+  <code><a href='checkIds.html'>checkIds</a></code>, <code><a href='checkMultiClass.html'>checkMultiClass</a></code>,
+  <code><a href='checkNamed.html'>checkNamed</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

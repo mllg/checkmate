@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
       </span>
     </div>
 
@@ -140,12 +140,7 @@
 
 <span class='fu'>test_vector</span>(<span class='no'>x</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>expect_vector</span>(<span class='no'>x</span>, <span class='kw'>strict</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>any.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>all.missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>max.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -216,18 +211,6 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
       <th>add</th>
       <td><p>[<code>AssertCollection</code>]<br />
 Collection to store assertion messages. See <code><a href='AssertCollection.html'>AssertCollection</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>info</th>
-      <td><p>[character(1)]<br />
-Extra information to be included in the message for the testthat reporter.
-See <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>label</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
-Name of the checked object to print in messages. Defaults to
-the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
     </table>
     

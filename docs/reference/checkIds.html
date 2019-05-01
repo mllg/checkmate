@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if an argument is an environment — checkEnvironment • checkmate</title>
+<title>Check strings to be regular identifiers — checkIds • checkmate</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,12 @@
 
 
 
-<meta property="og:title" content="Check if an argument is an environment — checkEnvironment" />
+<meta property="og:title" content="Check strings to be regular identifiers — checkIds" />
 
-<meta property="og:description" content="Check if an argument is an environment" />
+<meta property="og:description" content="Similar to checkNames, but more geared towards string identifiers.
+Valid Ids are non-empty strings complying to the regular expression pattern
+&amp;#8220;^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$&amp;#8221;. This ensures that such ids can safely be
+used as variable names, column names or in formulas." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -105,32 +108,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if an argument is an environment</h1>
-    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkEnvironment.R'><code>R/checkEnvironment.R</code></a></small>
-    <div class="hidden name"><code>checkEnvironment.Rd</code></div>
+    <h1>Check strings to be regular identifiers</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mllg/checkmate/blob/master/R/checkIds.R'><code>R/checkIds.R</code></a></small>
+    <div class="hidden name"><code>checkIds.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if an argument is an environment</p>
+    <p>Similar to <code><a href='checkNames.html'>checkNames</a></code>, but more geared towards string identifiers.
+Valid Ids are non-empty strings complying to the regular expression pattern
+&#8220;^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$&#8221;. This ensures that such ids can safely be
+used as variable names, column names or in formulas.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>checkEnvironment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkIds</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>check_environment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_ids</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assertEnvironment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+<span class='fu'>assertIds</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_environment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+<span class='fu'>assert_ids</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testEnvironment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testIds</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>test_environment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_ids</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_environment</span>(<span class='no'>x</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(<span class='fl'>0L</span>), <span class='kw'>null.ok</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+<span class='fu'>expect_ids</span>(<span class='no'>x</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>min.len</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -138,20 +144,23 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>[any]<br />
-Object to check.</p></td>
+      <td><p>[<code>character</code> || <code>NULL</code>]<br />
+Ids to check.</p></td>
     </tr>
     <tr>
-      <th>contains</th>
-      <td><p>[<code>character</code>]<br />
-Vector of object names expected in the environment.
-Defaults to <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(0)</a></code>.</p></td>
+      <th>unique</th>
+      <td><p>[logical(1)]<br />
+Must the ids be unique? Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
-      <th>null.ok</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>]<br />
-If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
-In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></td>
+      <th>len</th>
+      <td><p>[integer(1)]<br />
+Exact length.</p></td>
+    </tr>
+    <tr>
+      <th>min.len</th>
+      <td><p>[integer(1)]<br />
+Minimum length.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
@@ -182,40 +191,31 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <p>Depending on the function prefix:
  If the check is successful, the functions 
- <code>assertEnvironment</code>/<code>assert_environment</code> return 
+ <code>assertIds</code>/<code>assert_ids</code> return 
  <code>x</code> invisibly, whereas
- <code>checkEnvironment</code>/<code>check_environment</code> and 
- <code>testEnvironment</code>/<code>test_environment</code> return 
+ <code>checkIds</code>/<code>check_ids</code> and 
+ <code>testIds</code>/<code>test_ids</code> return 
  <code>TRUE</code>.
  If the check is not successful, 
- <code>assertEnvironment</code>/<code>assert_environment</code>
+ <code>assertIds</code>/<code>assert_ids</code>
  throws an error message, 
- <code>testEnvironment</code>/<code>test_environment</code>
+ <code>testIds</code>/<code>test_ids</code>
  returns <code>FALSE</code>,
- and <code>checkEnvironment</code> returns a string with the error message.
- The function <code>expect_environment</code> always returns an
+ and <code>checkIds</code> returns a string with the error message.
+ The function <code>expect_ids</code> always returns an
  <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other basetypes: <code><a href='checkArray.html'>checkArray</a></code>,
-  <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>,
-  <code><a href='checkAtomic.html'>checkAtomic</a></code>, <code><a href='checkCharacter.html'>checkCharacter</a></code>,
-  <code><a href='checkComplex.html'>checkComplex</a></code>, <code><a href='checkDataFrame.html'>checkDataFrame</a></code>,
-  <code><a href='checkDate.html'>checkDate</a></code>, <code><a href='checkDouble.html'>checkDouble</a></code>,
-  <code><a href='checkFactor.html'>checkFactor</a></code>, <code><a href='checkFormula.html'>checkFormula</a></code>,
-  <code><a href='checkFunction.html'>checkFunction</a></code>,
-  <code><a href='checkIntegerish.html'>checkIntegerish</a></code>,
-  <code><a href='checkInteger.html'>checkInteger</a></code>, <code><a href='checkList.html'>checkList</a></code>,
-  <code><a href='checkLogical.html'>checkLogical</a></code>, <code><a href='checkMatrix.html'>checkMatrix</a></code>,
-  <code><a href='checkNull.html'>checkNull</a></code>, <code><a href='checkNumeric.html'>checkNumeric</a></code>,
-  <code><a href='checkPOSIXct.html'>checkPOSIXct</a></code>, <code><a href='checkRaw.html'>checkRaw</a></code>,
-  <code><a href='checkVector.html'>checkVector</a></code></p></div>
+    <div class='dont-index'><p>Other attributes: <code><a href='checkClass.html'>checkClass</a></code>,
+  <code><a href='checkMultiClass.html'>checkMultiClass</a></code>, <code><a href='checkNamed.html'>checkNamed</a></code>,
+  <code><a href='checkNames.html'>checkNames</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>ee</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.environment'>as.environment</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>))
-<span class='fu'>testEnvironment</span>(<span class='no'>ee</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testEnvironment</span>(<span class='no'>ee</span>, <span class='kw'>contains</span> <span class='kw'>=</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"foo"</span>, <span class='st'>"bar"</span>)
+<span class='fu'>checkIds</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>checkIds</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='no'>x</span>, <span class='no'>x</span>), <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "Ids must be uniquely named, but name 3 is duplicated"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -68,7 +68,7 @@ Paths are relative to the current working directory." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
       </span>
     </div>
 
@@ -126,22 +126,22 @@ Paths are relative to the current working directory." />
     
     </div>
 
-    <pre class="usage"><span class='fu'>checkPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>check_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>check_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
-  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assertPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>),
-  <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>assert_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>.var.name</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>), <span class='kw'>add</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>testPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>testPathForOutput</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>test_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>test_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>expect_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
+<span class='fu'>expect_path_for_output</span>(<span class='no'>x</span>, <span class='kw'>overwrite</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>extension</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,6 +157,11 @@ Object to check.</p></td>
 If <code>TRUE</code>, an existing file in place is allowed if it
 it is both readable and writable.
 Default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>extension</th>
+      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+Extension of the file, e.g. dQuotetxt or &#8220;tar.gz&#8221;.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>

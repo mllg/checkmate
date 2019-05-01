@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
       </span>
     </div>
 
@@ -106,6 +106,18 @@
       <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="version-193" class="section level1">
+<h1 class="page-header">
+<a href="#version-193" class="anchor"></a>Version 1.9.3<small> Unreleased </small>
+</h1>
+<ul>
+<li>New argument <code>extension</code> for <code><a href="../reference/checkPathForOutput.html">checkPathForOutput()</a></code> (<a href='https://github.com/mllg/checkmate/issues/162'>#162</a>).</li>
+<li>Added <code><a href="../reference/checkIds.html">checkIds()</a></code> to check for string identifiers (<a href='https://github.com/mllg/checkmate/issues/160'>#160</a>).</li>
+<li>Fixed handling of different NA types in all set functions (<a href='https://github.com/mllg/checkmate/issues/158'>#158</a>).</li>
+<li>
+<code>expect_vector</code> removed due to a nameclash with package <code>testthat</code>.</li>
+</ul>
+</div>
     <div id="version-192" class="section level1">
 <h1 class="page-header">
 <a href="#version-192" class="anchor"></a>Version 1.9.2<small> Unreleased </small>
@@ -114,6 +126,7 @@
 <li>
 <code>assert*(..., coerce = TRUE)</code> does not drop names during conversion (<a href='https://github.com/mllg/checkmate/issues/157'>#157</a>), thanks to <a href='https://github.com/mb706'>@mb706</a>.</li>
 <li>Fixed documentation in <code>checkDataFrame</code> (<a href='https://github.com/mllg/checkmate/issues/159'>#159</a>), thanks to <a href='https://github.com/harvey131'>@harvey131</a>.</li>
+<li>Changed heuristic in <code><a href="../reference/vname.html">vname()</a></code> to improve lookup of variable names.</li>
 </ul>
 </div>
     <div id="version-191" class="section level1">
@@ -438,6 +451,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#version-193">1.9.3</a></li>
         <li><a href="#version-192">1.9.2</a></li>
         <li><a href="#version-191">1.9.1</a></li>
         <li><a href="#version-190">1.9.0</a></li>
