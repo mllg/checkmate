@@ -1,6 +1,7 @@
 # Version 1.9.3
-* New argument `extension` for `checkPathForOutput()`.
-* Added `checkIds()` to check for string identifiers.
+* New argument `extension` for `checkPathForOutput()` (#162).
+* Added `checkIds()` to check for string identifiers (#160).
+* Fixed handling of different NA types in all set functions (#158).
 * `expect_vector` removed due to a nameclash with package `testthat`.
 
 # Version 1.9.2
