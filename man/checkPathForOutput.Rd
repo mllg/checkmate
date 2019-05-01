@@ -10,22 +10,22 @@
 \alias{expect_path_for_output}
 \title{Check if a path is suited for creating an output file}
 \usage{
-checkPathForOutput(x, overwrite = FALSE)
+checkPathForOutput(x, overwrite = FALSE, extension = NULL)
 
-check_path_for_output(x, overwrite = FALSE)
+check_path_for_output(x, overwrite = FALSE, extension = NULL)
 
-assertPathForOutput(x, overwrite = FALSE, .var.name = vname(x),
-  add = NULL)
+assertPathForOutput(x, overwrite = FALSE, extension = NULL,
+  .var.name = vname(x), add = NULL)
 
-assert_path_for_output(x, overwrite = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_path_for_output(x, overwrite = FALSE, extension = NULL,
+  .var.name = vname(x), add = NULL)
 
-testPathForOutput(x, overwrite = FALSE)
+testPathForOutput(x, overwrite = FALSE, extension = NULL)
 
-test_path_for_output(x, overwrite = FALSE)
+test_path_for_output(x, overwrite = FALSE, extension = NULL)
 
-expect_path_for_output(x, overwrite = FALSE, info = NULL,
-  label = vname(x))
+expect_path_for_output(x, overwrite = FALSE, extension = NULL,
+  info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -35,6 +35,9 @@ Object to check.}
 If \code{TRUE}, an existing file in place is allowed if it
 it is both readable and writable.
 Default is \code{FALSE}.}
+
+\item{extension}{[\code{character(1)}]\cr
+Extension of the file, e.g. dQuote{txt} or \dQuote{tar.gz}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

@@ -17,13 +17,15 @@
 #'  If \code{TRUE}, an existing file in place is allowed if it
 #'  it is both readable and writable.
 #'  Default is \code{FALSE}.
+#' @param extension [\code{character(1)}]\cr
+#'  Extension of the file, e.g. dQuote{txt} or \dQuote{tar.gz}.
 #' @template checker
 #' @family filesystem
 #' @export
 #' @examples
 #' # Can we create a file in the tempdir?
 #' testPathForOutput(file.path(tempdir(), "process.log"))
-checkPathForOutput = function(x, overwrite = FALSE) {
+checkPathForOutput = function(x, overwrite = FALSE, extension = NULL) {
   if (!qtest(x, "S+"))
     return("No path provided")
   qassert(overwrite, "B1")
@@ -40,6 +42,12 @@ checkPathForOutput = function(x, overwrite = FALSE) {
     if (overwrite)
       return(checkAccess(dn, "w") %and% checkAccess(x[w], "rw"))
     return(sprintf("File at path already exists: '%s'", x[w]))
+  }
+
+  if (!is.null(extension)) {
+    qassert(extension, "S1")
+    if (!endsWith(x, paste0(".", extension)))
+    return(sprintf("File must have extension '.%s'", extension))
   }
   return(checkAccess(dn, "w"))
 }

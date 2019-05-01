@@ -90,4 +90,7 @@ test_that("check_path_for_output", {
   expect_identical(assertPathForOutput(fn, overwrite = TRUE), fn)
   expect_true(testPathForOutput(c(fn, ff, dn), overwrite = TRUE))
   expect_false(testPathForOutput(c(fn, ff, dn), overwrite = FALSE))
+
+  expect_true(checkPathForOutput("a.txt", extension = "txt"))
+  expect_error(assertPathForOutput("a.R", extension = "txt"), "extension")
 })
