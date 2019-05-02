@@ -72,7 +72,6 @@ Collate:
     'checkFlag.R'
     'checkFormula.R'
     'checkFunction.R'
-    'checkIds.R'
     'checkInt.R'
     'checkInteger.R'
     'checkIntegerish.R'

@@ -114,7 +114,6 @@ assertNames(names(iris), permutation.of = cn)
 }
 \seealso{
 Other attributes: \code{\link{checkClass}},
-  \code{\link{checkIds}}, \code{\link{checkMultiClass}},
-  \code{\link{checkNamed}}
+  \code{\link{checkMultiClass}}, \code{\link{checkNamed}}
 }
 \concept{attributes}

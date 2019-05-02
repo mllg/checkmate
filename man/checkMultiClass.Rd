@@ -82,8 +82,7 @@ checkMultiClass(x, c("foo", "foobar"))
 }
 \seealso{
 Other attributes: \code{\link{checkClass}},
-  \code{\link{checkIds}}, \code{\link{checkNamed}},
-  \code{\link{checkNames}}
+  \code{\link{checkNamed}}, \code{\link{checkNames}}
 
 Other classes: \code{\link{checkClass}},
   \code{\link{checkR6}}

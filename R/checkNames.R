@@ -43,7 +43,7 @@
 #' cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 #' assertNames(names(iris), permutation.of = cn)
 checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL, disjunct.from = NULL) {
-  .Call(c_check_names, x, type) %and%
+  .Call(c_check_names, x, type, "Names") %and%
     checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to, disjunct.from)
 }
 

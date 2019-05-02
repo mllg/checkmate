@@ -590,19 +590,10 @@ SEXP attribute_hidden c_check_named(SEXP x, SEXP type) {
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_names(SEXP x, SEXP type) {
+SEXP attribute_hidden c_check_names(SEXP x, SEXP type, SEXP var_name) {
     if (!(isString(x) || isNull(x)))
         return result("Must be a character vector of names");
-    ASSERT_TRUE(check_names(x, asString(type, "type"), "Names"));
-    return ScalarLogical(TRUE);
-}
-
-SEXP attribute_hidden c_check_ids(SEXP x, SEXP unique, SEXP len, SEXP min_len) {
-    if (!isString(x))
-        return result("Must be a character vector of ids");
-    const char * type = asFlag(unique, "unique") ? "strict" : "ids";
-    ASSERT_TRUE(check_names(x, type, "Ids"));
-    ASSERT_TRUE(check_vector_len(x, len, min_len, R_NilValue));
+    ASSERT_TRUE(check_names(x, asString(type, "type"), asString(var_name, "var_name")));
     return ScalarLogical(TRUE);
 }
 
