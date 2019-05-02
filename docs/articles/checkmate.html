@@ -74,7 +74,7 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2019-05-01</h4>
+            <h4 class="date">2019-05-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd"><code>vignettes/checkmate.Rmd</code></a></small>
       <div class="hidden name"><code>checkmate.Rmd</code></div>
@@ -188,108 +188,113 @@
 <h3 class="hasAnchor">
 <a href="#benchmark-1-assert-that-x-is-a-flag" class="anchor"></a>Benchmark 1: Assert that <code>x</code> is a flag</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(checkmate)</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(microbenchmark)</a>
-<a class="sourceLine" id="cb6-4" title="4"></a>
-<a class="sourceLine" id="cb6-5" title="5">x =<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb6-6" title="6">r =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.ok =</span> <span class="ot">FALSE</span>) { <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/logical">is.logical</a></span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, na.ok <span class="op">||</span><span class="st"> </span><span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)) }</a>
-<a class="sourceLine" id="cb6-7" title="7">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkFlag.html">assertFlag</a></span>(x)</a>
-<a class="sourceLine" id="cb6-8" title="8">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"B1"</span>)</a>
-<a class="sourceLine" id="cb6-9" title="9">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a></code></pre></div>
+<pre><code>## Registered S3 methods overwritten by 'ggplot2':
+##   method         from 
+##   [.quosures     rlang
+##   c.quosures     rlang
+##   print.quosures rlang</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(microbenchmark)</a>
+<a class="sourceLine" id="cb8-2" title="2"></a>
+<a class="sourceLine" id="cb8-3" title="3">x =<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb8-4" title="4">r =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">na.ok =</span> <span class="ot">FALSE</span>) { <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/logical">is.logical</a></span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, na.ok <span class="op">||</span><span class="st"> </span><span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)) }</a>
+<a class="sourceLine" id="cb8-5" title="5">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkFlag.html">assertFlag</a></span>(x)</a>
+<a class="sourceLine" id="cb8-6" title="6">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"B1"</span>)</a>
+<a class="sourceLine" id="cb8-7" title="7">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq      mean median      uq       max neval
-##    r(x) 34.246 37.2380 275.48090 38.046 39.0400 23663.886   100
-##   cm(x)  2.698  3.1545  16.11669  3.529  3.7465  1126.935   100
-##  cmq(x)  1.804  2.2055  16.20025  2.469  2.5965  1281.700   100</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+##    expr   min     lq      mean median     uq       max neval
+##    r(x) 2.373 2.5335 116.07312 2.6290 2.7350 11325.724   100
+##   cm(x) 1.605 1.7435   8.31592 1.8605 1.9855   569.983   100
+##  cmq(x) 1.084 1.2185   8.44262 1.2790 1.3630   666.509   100</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
 </div>
 <div id="benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values" class="anchor"></a>Benchmark 2: Assert that <code>x</code> is a numeric of length 1000 with no missing nor NaN values</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb10-2" title="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">is.numeric</a></span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb10-3" title="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkNumeric.html">assertNumeric</a></span>(x, <span class="dt">len =</span> <span class="dv">1000</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb10-4" title="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"N1000[0,1]"</span>)</a>
-<a class="sourceLine" id="cb10-5" title="5">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb12-2" title="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">is.numeric</a></span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(x) <span class="op">==</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x) <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&gt;=</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>x <span class="op">&lt;=</span><span class="st"> </span><span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb12-3" title="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkNumeric.html">assertNumeric</a></span>(x, <span class="dt">len =</span> <span class="dv">1000</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb12-4" title="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"N1000[0,1]"</span>)</a>
+<a class="sourceLine" id="cb12-5" title="5">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min      lq      mean  median      uq      max neval
-##    r(x) 51.395 54.8905 109.31371 59.1375 66.8970 4619.054   100
-##   cm(x)  6.732  8.1810 114.35844  9.2740 10.7885 8424.542   100
-##  cmq(x)  7.874  8.8580  21.75579  9.4500 10.7025 1158.066   100</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+##    expr    min     lq     mean  median     uq      max neval
+##    r(x) 11.340 11.863 36.31494 12.1770 12.473 2406.044   100
+##   cm(x)  4.651  4.944 12.43458  5.1480  5.364  663.729   100
+##  cmq(x)  4.316  4.453 11.94624  4.6625  4.769  720.098   100</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
 </div>
 <div id="benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings" class="anchor"></a>Benchmark 3: Assert that <code>x</code> is a character vector with no missing values nor empty strings</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(letters, <span class="dv">10000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-2" title="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">is.character</a></span>(x), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nchar">nchar</a></span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</a>
-<a class="sourceLine" id="cb14-3" title="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkCharacter.html">assertCharacter</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">min.chars =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb14-4" title="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"S+[1,]"</span>)</a>
-<a class="sourceLine" id="cb14-5" title="5">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(letters, <span class="dv">10000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb16-2" title="2">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/character">is.character</a></span>(x), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)), <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/all">all</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nchar">nchar</a></span>(x) <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>))</a>
+<a class="sourceLine" id="cb16-3" title="3">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkCharacter.html">assertCharacter</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">min.chars =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-4" title="4">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(x, <span class="st">"S+[1,]"</span>)</a>
+<a class="sourceLine" id="cb16-5" title="5">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr      min        lq      mean   median        uq      max neval
-##    r(x) 1746.855 1767.2875 2106.9900 1793.560 2108.1805 6098.751   100
-##   cm(x)  118.036  121.1680  157.3329  125.631  140.9520 1220.138   100
-##  cmq(x)  133.885  141.3475  164.1013  145.279  149.3975 1132.825   100</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+##    expr      min       lq       mean    median        uq      max neval
+##    r(x) 1283.445 1311.867 1354.24094 1313.8405 1328.7465 3496.781   100
+##   cm(x)   65.531   65.847   74.49499   66.4700   67.1475  686.236   100
+##  cmq(x)   86.283   86.576   94.67478   86.9255   87.4580  676.426   100</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
 </div>
 <div id="benchmark-4-test-that-x-is-a-data-frame-with-no-missing-values" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-4-test-that-x-is-a-data-frame-with-no-missing-values" class="anchor"></a>Benchmark 4: Test that <code>x</code> is a data frame with no missing values</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">N =<span class="st"> </span><span class="dv">10000</span></a>
-<a class="sourceLine" id="cb18-2" title="2">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">a =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(N), <span class="dt">b =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], N, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">c =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), N, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb18-3" title="3">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(x, <span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x))))</a>
-<a class="sourceLine" id="cb18-4" title="4">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkDataFrame.html">testDataFrame</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb18-5" title="5">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(x, <span class="st">"D"</span>)</a>
-<a class="sourceLine" id="cb18-6" title="6">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">N =<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb20-2" title="2">x =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">a =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(N), <span class="dt">b =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>], N, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">c =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sample">sample</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>), N, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb20-3" title="3">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.data.frame">is.data.frame</a></span>(x) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">sapply</a></span>(x, <span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x))))</a>
+<a class="sourceLine" id="cb20-4" title="4">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkDataFrame.html">testDataFrame</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb20-5" title="5">cmq =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(x, <span class="st">"D"</span>)</a>
+<a class="sourceLine" id="cb20-6" title="6">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr     min       lq      mean   median      uq      max neval
-##    r(x) 177.947 184.1235 256.77319 191.5635 218.097 4411.649   100
-##   cm(x)  25.894  27.1765  47.59816  29.3490  31.706 1241.891   100
-##  cmq(x)  16.769  18.0540  32.66701  19.4780  21.614 1124.850   100</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+##    expr    min      lq     mean  median      uq      max neval
+##    r(x) 69.561 70.1770 93.24186 70.6150 71.0390 2223.673   100
+##   cm(x) 16.918 17.3495 25.32081 17.7250 18.1215  623.179   100
+##  cmq(x) 11.933 12.1565 18.26879 12.3845 12.5635  582.419   100</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="co"># checkmate tries to stop as early as possible</span></a>
-<a class="sourceLine" id="cb22-2" title="2">x<span class="op">$</span>a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb22-3" title="3">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
-<a class="sourceLine" id="cb22-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
-<pre><code>## Unit: microseconds
-##    expr     min       lq      mean   median       uq     max neval
-##    r(x) 126.787 168.8295 177.42384 171.9340 180.4740 306.687   100
-##   cm(x)   6.402   7.0735   9.10749   7.8565  10.4885  26.424   100
-##  cmq(x)   1.120   1.4230   2.29967   2.0240   3.0995  11.331   100</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="co"># checkmate tries to stop as early as possible</span></a>
+<a class="sourceLine" id="cb24-2" title="2">x<span class="op">$</span>a[<span class="dv">1</span>] =<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb24-3" title="3">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x), <span class="kw">cmq</span>(x))</a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<pre><code>## Unit: nanoseconds
+##    expr   min      lq     mean  median      uq    max neval
+##    r(x) 61007 61940.5 63191.97 62363.5 63091.0 105830   100
+##   cm(x)  3999  4231.5  4999.55  4850.5  5422.5  18401   100
+##  cmq(x)   773   908.0  1373.96  1247.0  1556.5  15468   100</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
 </div>
 <div id="benchmark-5-assert-that-x-is-an-increasing-sequence-of-integers-with-no-missing-values" class="section level3">
 <h3 class="hasAnchor">
 <a href="#benchmark-5-assert-that-x-is-an-increasing-sequence-of-integers-with-no-missing-values" class="anchor"></a>Benchmark 5: Assert that <code>x</code> is an increasing sequence of integers with no missing values</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">N =<span class="st"> </span><span class="dv">10000</span></a>
-<a class="sourceLine" id="cb26-2" title="2">x.altrep =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_len</a></span>(N) <span class="co"># this is an ALTREP in R version &gt;= 3.5.0</span></a>
-<a class="sourceLine" id="cb26-3" title="3">x.sexp =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(x.altrep)  <span class="co"># this is a regular SEXP OTOH</span></a>
-<a class="sourceLine" id="cb26-4" title="4">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">is.integer</a></span>(x), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/is.unsorted">is.unsorted</a></span>(x))</a>
-<a class="sourceLine" id="cb26-5" title="5">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkInteger.html">assertInteger</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">sorted =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb26-6" title="6">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x.sexp), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x.sexp), <span class="kw">r</span>(x.altrep), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x.altrep))</a>
-<a class="sourceLine" id="cb26-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">N =<span class="st"> </span><span class="dv">10000</span></a>
+<a class="sourceLine" id="cb28-2" title="2">x.altrep =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_len</a></span>(N) <span class="co"># this is an ALTREP in R version &gt;= 3.5.0</span></a>
+<a class="sourceLine" id="cb28-3" title="3">x.sexp =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(x.altrep)  <span class="co"># this is a regular SEXP OTOH</span></a>
+<a class="sourceLine" id="cb28-4" title="4">r =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/stopifnot">stopifnot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/integer">is.integer</a></span>(x), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/any">any</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(x)), <span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/is.unsorted">is.unsorted</a></span>(x))</a>
+<a class="sourceLine" id="cb28-5" title="5">cm =<span class="st"> </span><span class="cf">function</span>(x) <span class="kw"><a href="../reference/checkInteger.html">assertInteger</a></span>(x, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">sorted =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb28-6" title="6">mb =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/microbenchmark/topics/microbenchmark">microbenchmark</a></span>(<span class="kw">r</span>(x.sexp), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x.sexp), <span class="kw">r</span>(x.altrep), <span class="kw"><a href="https://www.rdocumentation.org/packages/grDevices/topics/cm">cm</a></span>(x.altrep))</a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(mb)</a></code></pre></div>
 <pre><code>## Unit: microseconds
-##          expr     min       lq      mean   median       uq      max neval
-##     r(x.sexp)  79.508 109.8050 145.67123 111.9875 116.4715 3179.428   100
-##    cm(x.sexp)  17.612  19.2195  20.73493  20.4935  21.5600   35.697   100
-##   r(x.altrep) 101.416 132.9310 139.92877 135.0225 138.6480  311.447   100
-##  cm(x.altrep)   4.017   4.9485  24.67642   7.1575   7.6980 1660.743   100</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
+##          expr    min      lq     mean  median      uq      max neval
+##     r(x.sexp) 26.415 26.8045 45.41207 27.0355 27.3335 1771.896   100
+##    cm(x.sexp) 11.359 11.8395 13.47408 12.0950 12.3080   70.042   100
+##   r(x.altrep) 29.860 30.2385 32.22732 30.4550 30.7385   72.296   100
+##  cm(x.altrep)  2.472  2.8285  9.42785  3.1960  3.4320  631.950   100</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(mb)</a></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
 </div>
@@ -298,29 +303,29 @@
 <h2 class="hasAnchor">
 <a href="#extending-checkmate" class="anchor"></a>Extending checkmate</h2>
 <p>To extend checkmate a custom <code>check*</code> function has to be written. For example, to check for a square matrix one can re-use parts of checkmate and extend the check with additional functionality:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">checkSquareMatrix =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">mode =</span> <span class="ot">NULL</span>) {</a>
-<a class="sourceLine" id="cb30-2" title="2">  <span class="co"># check functions must return TRUE on success</span></a>
-<a class="sourceLine" id="cb30-3" title="3">  <span class="co"># and a custom error message otherwise</span></a>
-<a class="sourceLine" id="cb30-4" title="4">  res =<span class="st"> </span><span class="kw"><a href="../reference/checkMatrix.html">checkMatrix</a></span>(x, <span class="dt">mode =</span> mode)</a>
-<a class="sourceLine" id="cb30-5" title="5">  <span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Logic">isTRUE</a></span>(res))</a>
-<a class="sourceLine" id="cb30-6" title="6">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(res)</a>
-<a class="sourceLine" id="cb30-7" title="7">  <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(x))</a>
-<a class="sourceLine" id="cb30-8" title="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(<span class="st">"Must be square"</span>)</a>
-<a class="sourceLine" id="cb30-9" title="9">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(<span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb30-10" title="10">}</a>
-<a class="sourceLine" id="cb30-11" title="11"></a>
-<a class="sourceLine" id="cb30-12" title="12"><span class="co"># a quick test:</span></a>
-<a class="sourceLine" id="cb30-13" title="13">X =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb30-14" title="14"><span class="kw">checkSquareMatrix</span>(X)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">checkSquareMatrix =<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">mode =</span> <span class="ot">NULL</span>) {</a>
+<a class="sourceLine" id="cb32-2" title="2">  <span class="co"># check functions must return TRUE on success</span></a>
+<a class="sourceLine" id="cb32-3" title="3">  <span class="co"># and a custom error message otherwise</span></a>
+<a class="sourceLine" id="cb32-4" title="4">  res =<span class="st"> </span><span class="kw"><a href="../reference/checkMatrix.html">checkMatrix</a></span>(x, <span class="dt">mode =</span> mode)</a>
+<a class="sourceLine" id="cb32-5" title="5">  <span class="cf">if</span> (<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Logic">isTRUE</a></span>(res))</a>
+<a class="sourceLine" id="cb32-6" title="6">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(res)</a>
+<a class="sourceLine" id="cb32-7" title="7">  <span class="cf">if</span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(x) <span class="op">!=</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(x))</a>
+<a class="sourceLine" id="cb32-8" title="8">    <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(<span class="st">"Must be square"</span>)</a>
+<a class="sourceLine" id="cb32-9" title="9">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/function">return</a></span>(<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb32-10" title="10">}</a>
+<a class="sourceLine" id="cb32-11" title="11"></a>
+<a class="sourceLine" id="cb32-12" title="12"><span class="co"># a quick test:</span></a>
+<a class="sourceLine" id="cb32-13" title="13">X =<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb32-14" title="14"><span class="kw">checkSquareMatrix</span>(X)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">checkSquareMatrix</span>(X, <span class="dt">mode =</span> <span class="st">"character"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">checkSquareMatrix</span>(X, <span class="dt">mode =</span> <span class="st">"character"</span>)</a></code></pre></div>
 <pre><code>## [1] "Must store characters"</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">checkSquareMatrix</span>(X[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">checkSquareMatrix</span>(X[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ])</a></code></pre></div>
 <pre><code>## [1] "Must be square"</code></pre>
 <p>The respective counterparts to the <code>check</code>-function can be created using the constructors <a href="https://mllg.github.io/checkmate/reference/makeAssertion">makeAssertionFunction</a>, <a href="https://mllg.github.io/checkmate/reference/makeTest">makeTestFunction</a> and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExpectationFunction</a>:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># For assertions:</span></a>
-<a class="sourceLine" id="cb36-2" title="2">assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span>(checkSquareMatrix)</a>
-<a class="sourceLine" id="cb36-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(assertSquareMatrix)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># For assertions:</span></a>
+<a class="sourceLine" id="cb38-2" title="2">assert_square_matrix =<span class="st"> </span>assertSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb38-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(assertSquareMatrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL, .var.name = checkmate::vname(x), add = NULL) 
 ## {
 ##     if (missing(x)) 
@@ -329,16 +334,16 @@
 ##     res = checkSquareMatrix(x, mode)
 ##     checkmate::makeAssertion(x, res, .var.name, add)
 ## }</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># For tests:</span></a>
-<a class="sourceLine" id="cb38-2" title="2">test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)</a>
-<a class="sourceLine" id="cb38-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(testSquareMatrix)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># For tests:</span></a>
+<a class="sourceLine" id="cb40-2" title="2">test_square_matrix =<span class="st"> </span>testSquareMatrix =<span class="st"> </span><span class="kw"><a href="../reference/makeTest.html">makeTestFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb40-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(testSquareMatrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL) 
 ## {
 ##     isTRUE(checkSquareMatrix(x, mode))
 ## }</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># For expectations:</span></a>
-<a class="sourceLine" id="cb40-2" title="2">expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)</a>
-<a class="sourceLine" id="cb40-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(expect_square_matrix)</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># For expectations:</span></a>
+<a class="sourceLine" id="cb42-2" title="2">expect_square_matrix =<span class="st"> </span><span class="kw"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span>(checkSquareMatrix)</a>
+<a class="sourceLine" id="cb42-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(expect_square_matrix)</a></code></pre></div>
 <pre><code>## function (x, mode = NULL, info = NULL, label = vname(x)) 
 ## {
 ##     if (missing(x)) 
@@ -352,8 +357,8 @@
 <h2 class="hasAnchor">
 <a href="#calling-checkmate-from-cc" class="anchor"></a>Calling checkmate from C/C++</h2>
 <p>The package registers two functions which can be used in other packages’ C/C++ code for argument checks.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1">SEXP <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(SEXP x, const char <span class="op">*</span>rule, const char <span class="op">*</span>name);</a>
-<a class="sourceLine" id="cb42-2" title="2">Rboolean <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(SEXP x, const char <span class="op">*</span>rule);</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">SEXP <span class="kw"><a href="../reference/qassert.html">qassert</a></span>(SEXP x, const char <span class="op">*</span>rule, const char <span class="op">*</span>name);</a>
+<a class="sourceLine" id="cb44-2" title="2">Rboolean <span class="kw"><a href="../reference/qassert.html">qtest</a></span>(SEXP x, const char <span class="op">*</span>rule);</a></code></pre></div>
 <p>These are the counterparts to <a href="https://mllg.github.io/checkmate/reference/qassert">qassert</a> and <a href="https://mllg.github.io/checkmate/reference/qassert">qtest</a>. Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.</p>
 <p>For detailed background information on the register mechanism, see the <a href="http://r-pkgs.had.co.nz/src.html#clang">Exporting C Code</a> section in Hadley’s Book “R Packages” or <a href="https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines">WRE</a>. Here is a step-by-step guide to get you started:</p>
 <ol style="list-style-type: decimal">
@@ -362,42 +367,47 @@
 <li>Include the provided header file <code>&lt;checkmate.h&gt;</code> in each compilation unit where you want to use checkmate.</li>
 </ol>
 <p>File contents for (2):</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co">#include &lt;checkmate.h&gt;</span></a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="co">#include &lt;checkmate_stub.c&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co">#include &lt;checkmate.h&gt;</span></a>
+<a class="sourceLine" id="cb45-2" title="2"><span class="co">#include &lt;checkmate_stub.c&gt;</span></a></code></pre></div>
 </div>
 <div id="session-info" class="section level2">
 <h2 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session Info</h2>
 <p>For the sake of completeness, here the <code><a href="https://www.rdocumentation.org/packages/utils/topics/sessionInfo">sessionInfo()</a></code> for the benchmark (but remember the note before on <code>knitr</code> possibly biasing the results).</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/sessionInfo">sessionInfo</a></span>()</a></code></pre></div>
-<pre><code>## R version 3.5.3 (2019-03-11)
-## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: macOS Mojave 10.14.4
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/sessionInfo">sessionInfo</a></span>()</a></code></pre></div>
+<pre><code>## R version 3.6.0 (2019-04-26)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Arch Linux
 ## 
 ## Matrix products: default
-## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
+## BLAS/LAPACK: /usr/lib/libopenblas_haswellp-r0.3.5.so
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+##  [1] LC_CTYPE=de_DE.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=de_DE.UTF-8        LC_COLLATE=de_DE.UTF-8    
+##  [5] LC_MONETARY=de_DE.UTF-8    LC_MESSAGES=de_DE.UTF-8   
+##  [7] LC_PAPER=de_DE.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=de_DE.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-6 ggplot2_3.1.1        checkmate_1.9.2-9000
+## [1] microbenchmark_1.4-6 ggplot2_3.1.1        checkmate_1.9.3     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.1       knitr_1.22       xml2_1.2.0       magrittr_1.5    
-##  [5] roxygen2_6.1.1   MASS_7.3-51.1    munsell_0.5.0    colorspace_1.4-1
-##  [9] R6_2.4.0         rlang_0.3.4      plyr_1.8.4       stringr_1.4.0   
-## [13] tools_3.5.3      grid_3.5.3       gtable_0.3.0     xfun_0.6        
-## [17] withr_2.1.2      htmltools_0.3.6  commonmark_1.7   lazyeval_0.2.2  
-## [21] yaml_2.2.0       digest_0.6.18    assertthat_0.2.1 rprojroot_1.3-2 
-## [25] tibble_2.1.1     pkgdown_1.3.0    crayon_1.3.4     fs_1.2.7        
-## [29] memoise_1.1.0    evaluate_0.13    rmarkdown_1.12   stringi_1.4.3   
-## [33] pillar_1.3.1     compiler_3.5.3   scales_1.0.0     desc_1.2.0      
-## [37] backports_1.1.4  pkgconfig_2.0.2</code></pre>
+##  [1] Rcpp_1.0.1       compiler_3.6.0   pillar_1.3.1     plyr_1.8.4      
+##  [5] tools_3.6.0      digest_0.6.18    evaluate_0.13    memoise_1.1.0   
+##  [9] tibble_2.1.1     gtable_0.3.0     pkgconfig_2.0.2  rlang_0.3.4     
+## [13] commonmark_1.7   yaml_2.2.0       pkgdown_1.3.0    xfun_0.6        
+## [17] withr_2.1.2      stringr_1.4.0    dplyr_0.8.0.1    roxygen2_6.1.1  
+## [21] xml2_1.2.0       knitr_1.22       desc_1.2.0       fs_1.2.7        
+## [25] rprojroot_1.3-2  grid_3.6.0       tidyselect_0.2.5 glue_1.3.1      
+## [29] R6_2.4.0         rmarkdown_1.12   purrr_0.3.2      magrittr_1.5    
+## [33] backports_1.1.4  scales_1.0.0     htmltools_0.3.6  MASS_7.3-51.4   
+## [37] assertthat_0.2.1 colorspace_1.4-1 stringi_1.4.3    lazyeval_0.2.2  
+## [41] munsell_0.5.0    crayon_1.3.4</code></pre>
 </div>
   </div>
 
