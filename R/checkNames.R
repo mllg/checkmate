@@ -30,6 +30,8 @@
 #'  Use this argument instead of \code{permutation.of} if the order of the names is relevant.
 #' @param disjunct.from [\code{character}]\cr
 #'  Names provided in \code{x} must may not be present in the vector \code{identical.to}.
+#' @param what [\code{character(1)}]\cr
+#'  Type of name vector to check, e.g. \dQuote{names} (default), \dQuote{colnames} or \dQuote{rownames}.
 #' @template checker
 #' @useDynLib checkmate c_check_names
 #' @family attributes
@@ -42,8 +44,8 @@
 #'
 #' cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 #' assertNames(names(iris), permutation.of = cn)
-checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL, disjunct.from = NULL) {
-  .Call(c_check_names, x, type, "Names") %and%
+checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL, disjunct.from = NULL, what = "names") {
+  .Call(c_check_names, x, type, what) %and%
     checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to, disjunct.from)
 }
 

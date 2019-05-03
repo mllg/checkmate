@@ -11,28 +11,34 @@
 \title{Check names to comply to specific rules}
 \usage{
 checkNames(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL)
+  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
+  what = "names")
 
 check_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL)
+  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
+  what = "names")
 
 assertNames(x, type = "named", subset.of = NULL, must.include = NULL,
   permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  .var.name = vname(x), add = NULL)
+  what = "names", .var.name = vname(x), add = NULL)
 
 assert_names(x, type = "named", subset.of = NULL,
   must.include = NULL, permutation.of = NULL, identical.to = NULL,
-  disjunct.from = NULL, .var.name = vname(x), add = NULL)
+  disjunct.from = NULL, what = "names", .var.name = vname(x),
+  add = NULL)
 
 testNames(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL)
+  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
+  what = "names")
 
 test_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL)
+  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
+  what = "names")
 
 expect_names(x, type = "named", subset.of = NULL,
   must.include = NULL, permutation.of = NULL, identical.to = NULL,
-  disjunct.from = NULL, info = NULL, label = vname(x))
+  disjunct.from = NULL, what = "names", info = NULL,
+  label = vname(x))
 }
 \arguments{
 \item{x}{[\code{character} || \code{NULL}]\cr
@@ -67,6 +73,9 @@ Use this argument instead of \code{permutation.of} if the order of the names is 
 
 \item{disjunct.from}{[\code{character}]\cr
 Names provided in \code{x} must may not be present in the vector \code{identical.to}.}
+
+\item{what}{[\code{character(1)}]\cr
+Type of name vector to check, e.g. \dQuote{names} (default), \dQuote{colnames} or \dQuote{rownames}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
