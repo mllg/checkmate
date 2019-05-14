@@ -53,3 +53,9 @@ test_that("sorted works", {
       expect_true(grepl("sorted", checkInteger(xu, sorted = TRUE), fixed = TRUE))
   }
 })
+
+
+test_that("factors are detected (#164)", {
+  x = factor(letters)
+  expect_error(assertInteger(x), "factor")
+})
