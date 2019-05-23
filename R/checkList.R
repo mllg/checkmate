@@ -46,7 +46,7 @@ checkList = function(x, types = character(0L), any.missing = TRUE, all.missing =
 }
 
 checkListTypes = function(x, types = character(0L)) {
-  if (is.null(x) || length(types) == 0L)
+  if (length(x) == 0L || length(types) == 0L)
     return(TRUE)
   qassert(types, "S")
 
