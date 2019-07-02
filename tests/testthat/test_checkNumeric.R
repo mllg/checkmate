@@ -72,3 +72,7 @@ test_that("sorted works", {
       expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
   }
 })
+
+test_that("names check works", {
+  expect_true(grepl("names", check_numeric(0:1, names = "unique")))
+})

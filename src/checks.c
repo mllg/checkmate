@@ -303,7 +303,7 @@ static Rboolean check_vector_unique(SEXP x, SEXP unique) {
 
 static Rboolean check_vector_names(SEXP x, SEXP names) {
     if (!isNull(names) && xlength(x) > 0)
-        return check_named(x, asString(names, "names"), "Vector");
+        return check_named(x, asString(names, "names"), "names");
     return TRUE;
 }
 
