@@ -83,3 +83,8 @@ test_that("informative error messages", {
   x = checkIntegerish(3 + 1i)
   expect_string(x, fixed = "imaginary part")
 })
+
+test_that("factors are detected (#164)", {
+  x = factor(letters)
+  expect_error(assertIntegerish(x), "factor")
+})

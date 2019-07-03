@@ -58,7 +58,7 @@ static int_err_t check_convertible_complex(SEXP x, const double tol) {
 int_err_t checkIntegerish(SEXP x, const double tol, Rboolean logicals_ok) {
     int_err_t res = { 0, INT_OK};
     switch(TYPEOF(x)) {
-        case INTSXP: break;
+        case INTSXP: if (inherits(x, "factor")) res.err = INT_TYPE; break;
         case LGLSXP: res = check_convertible_logical(x, logicals_ok); break;
         case REALSXP: res = check_convertible_double(x, tol); break;
         case CPLXSXP: res = check_convertible_complex(x, tol); break;
