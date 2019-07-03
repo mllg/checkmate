@@ -145,7 +145,7 @@ Useful links:
 
 Other contributors:
 \itemize{
-  \item Bernd Bischl \email{bernd_bischl@gmx.de} [contributor]
+  \item Bernd Bischl \email{bernd_bischl@gmx.net} [contributor]
 }
 
 }
