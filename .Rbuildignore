@@ -13,3 +13,4 @@
 ^src/Makevars$
 ^inst/benchmarks
 ^revdep$
+^revdepcheck.R$
