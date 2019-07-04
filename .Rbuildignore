@@ -10,7 +10,6 @@
 ^\.Rproj\.user$
 ^inst/autogen
 ^docs$
-^src/Makevars$
 ^inst/benchmarks
 ^revdep$
 ^revdepcheck.R$
