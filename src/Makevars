@@ -1,1 +1,1 @@
-PKG_CFLAGS=-Wall -pedantic -Wlto-type-mismatch -flto=4
+PKG_CFLAGS=-Wall -pedantic
