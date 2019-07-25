@@ -1,7 +1,9 @@
+# Version 1.9.5
+* Improved error message for type detection in `*List`.
+
 # Version 1.9.4
 * Fixed factors being detected as integerish.
 * Fixed error message for name checks of vectors.
-* Improved error message for type detection in `*List`.
 
 # Version 1.9.3
 * New argument `extension` for `checkPathForOutput()` (#162).
