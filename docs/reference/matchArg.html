@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -49,6 +51,7 @@ a valid value for x." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -65,7 +68,7 @@ a valid value for x." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.5</span>
       </span>
     </div>
 
@@ -73,7 +76,7 @@ a valid value for x." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -91,7 +94,7 @@ a valid value for x." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -102,6 +105,7 @@ a valid value for x." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -114,8 +118,8 @@ a valid value for x." />
 
     <div class="ref-description">
     
-    <p>This is an extensions to <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg</a></code> with support for <code><a href='AssertCollection.html'>AssertCollection</a></code>.
-The behavior is very similar to <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg</a></code>, except that <code>NULL</code> is not
+    <p>This is an extensions to <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg</a></code> with support for <code><a href='AssertCollection.html'>AssertCollection</a></code>.
+The behavior is very similar to <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg</a></code>, except that <code>NULL</code> is not
 a valid value for <code>x</code>.</p>
     
     </div>
@@ -139,11 +143,11 @@ Candidates to match <code>x</code> with.</p></td>
     <tr>
       <th>several.ok</th>
       <td><p>[logical(1)]<br />
-If <code>TRUE</code>, multiple matches are allowed, cf. <code><a href='https://www.rdocumentation.org/packages/base/topics/match.arg'>match.arg</a></code>.</p></td>
+If <code>TRUE</code>, multiple matches are allowed, cf. <code><a href='https://rdrr.io/r/base/match.arg.html'>match.arg</a></code>.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -160,7 +164,7 @@ Collection to store assertions. See <code><a href='AssertCollection.html'>Assert
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>matchArg</span>(<span class='st'>"k"</span>, <span class='kw'>choices</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"kendall"</span>, <span class='st'>"pearson"</span>))</div><div class='output co'>#&gt; [1] "kendall"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>matchArg</span>(<span class='st'>"k"</span>, <span class='kw'>choices</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"kendall"</span>, <span class='st'>"pearson"</span>))</div><div class='output co'>#&gt; [1] "kendall"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -175,19 +179,23 @@ Collection to store assertions. See <code><a href='AssertCollection.html'>Assert
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Michel Lang.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

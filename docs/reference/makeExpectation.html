@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -50,6 +52,7 @@ function based on a check function (see example)." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -66,7 +69,7 @@ function based on a check function (see example)." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.5</span>
       </span>
     </div>
 
@@ -74,7 +77,7 @@ function based on a check function (see example)." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -92,7 +95,7 @@ function based on a check function (see example)." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -103,6 +106,7 @@ function based on a check function (see example)." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -116,7 +120,7 @@ function based on a check function (see example)." />
     <div class="ref-description">
     
     <p><code>makeExpectation</code> is the internal function used to evaluate the result of a
-check and turn it into an <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.
+check and turn it into an <code><a href='https://rdrr.io/pkg/testthat/man/expectation.html'>expectation</a></code>.
 <code>makeExceptionFunction</code> can be used to automatically create an expectation
 function based on a check function (see example).</p>
     
@@ -125,7 +129,7 @@ function based on a check function (see example).</p>
     <pre class="usage"><span class='fu'>makeExpectation</span>(<span class='no'>x</span>, <span class='no'>res</span>, <span class='no'>info</span>, <span class='no'>label</span>)
 
 <span class='fu'>makeExpectationFunction</span>(<span class='no'>check.fun</span>, <span class='kw'>c.fun</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>use.namespace</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>parent.frame</a></span>())</pre>
+  <span class='kw'>env</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,19 +141,19 @@ Object to check.</p></td>
     </tr>
     <tr>
       <th>res</th>
-      <td><p>[<code>TRUE</code> | <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+      <td><p>[<code>TRUE</code> | <code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 The result of a check function: <code>TRUE</code> for successful checks,
 and an error message as string otherwise.</p></td>
     </tr>
     <tr>
       <th>info</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
-See <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code></p></td>
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+See <code><a href='https://rdrr.io/pkg/testthat/man/expect_that.html'>expect_that</a></code></p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
-See <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code></p></td>
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+See <code><a href='https://rdrr.io/pkg/testthat/man/expect_that.html'>expect_that</a></code></p></td>
     </tr>
     <tr>
       <th>check.fun</th>
@@ -158,14 +162,14 @@ Function which checks the input. Must return <code>TRUE</code> on success and a 
     </tr>
     <tr>
       <th>c.fun</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 If not <code>NULL</code>, instead of calling the function <code>check.fun</code>, use <code>.Call</code> to call a C function &#8220;c.fun&#8221; with the identical
-set of parameters. The C function must be registered as a native symbol, see <code><a href='https://www.rdocumentation.org/packages/base/topics/CallExternal'>.Call</a></code>.
+set of parameters. The C function must be registered as a native symbol, see <code><a href='https://rdrr.io/r/base/CallExternal.html'>.Call</a></code>.
 Useful if <code>check.fun</code> is just a simple wrapper.</p></td>
     </tr>
     <tr>
       <th>use.namespace</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical(1)</a></code>]<br />
+      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
 Call functions of <span class="pkg">checkmate</span> using its namespace explicitly.
 Can be set to <code>FALSE</code> so save some microseconds, but the checkmate package needs to be imported.
 Default is <code>TRUE</code>.</p></td>
@@ -173,7 +177,7 @@ Default is <code>TRUE</code>.</p></td>
     <tr>
       <th>env</th>
       <td><p>[<code>environment</code>]<br />
-The environment of the created function. Default is the <code><a href='https://www.rdocumentation.org/packages/base/topics/sys.parent'>parent.frame</a></code>.</p></td>
+The environment of the created function. Default is the <code><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></code>.</p></td>
     </tr>
     </table>
     
@@ -190,7 +194,7 @@ The environment of the created function. Default is the <code><a href='https://w
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Simple custom check function</span>
-<span class='no'>checkFalse</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='kw'>if</span> (!<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/identical'>identical</a></span>(<span class='no'>x</span>, <span class='fl'>FALSE</span>)) <span class='st'>"Must be FALSE"</span> <span class='kw'>else</span> <span class='fl'>TRUE</span>
+<span class='no'>checkFalse</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>) <span class='kw'>if</span> (!<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span>(<span class='no'>x</span>, <span class='fl'>FALSE</span>)) <span class='st'>"Must be FALSE"</span> <span class='kw'>else</span> <span class='fl'>TRUE</span>
 
 <span class='co'># Create the respective expect function</span>
 <span class='no'>expect_false</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>info</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>label</span> <span class='kw'>=</span> <span class='fu'><a href='vname.html'>vname</a></span>(<span class='no'>x</span>)) {
@@ -200,14 +204,14 @@ The environment of the created function. Default is the <code><a href='https://w
 
 <span class='co'># Alternative: Automatically create such a function</span>
 <span class='no'>expect_false</span> <span class='kw'>=</span> <span class='fu'>makeExpectationFunction</span>(<span class='no'>checkFalse</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>expect_false</span>)</div><div class='output co'>#&gt; function (x, info = NULL, label = vname(x)) 
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>expect_false</span>)</div><div class='output co'>#&gt; function (x, info = NULL, label = vname(x)) 
 #&gt; {
 #&gt;     if (missing(x)) 
 #&gt;         stop(sprintf("Argument '%s' is missing", label))
 #&gt;     res = checkFalse(x)
 #&gt;     makeExpectation(x, res, info, label)
 #&gt; }
-#&gt; &lt;environment: 0x561ee61f6750&gt;</div></pre>
+#&gt; &lt;environment: 0x556366bdc720&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -224,19 +228,23 @@ The environment of the created function. Default is the <code><a href='https://w
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Michel Lang.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

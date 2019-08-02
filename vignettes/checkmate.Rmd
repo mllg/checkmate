@@ -156,7 +156,7 @@ Better run the benchmark yourself to get unbiased results.
 
 ### Benchmark 1: Assert that `x` is a flag
 
-```{r,dev="svg",fig.width=6,fig.height=4,dependson="init",eval=requireNamespace("microbenchmark", quietly = TRUE)}
+```{r,fig.width=6,fig.height=4,dependson="init",eval=requireNamespace("microbenchmark", quietly = TRUE)}
 library(checkmate)
 library(ggplot2)
 library(microbenchmark)
@@ -173,7 +173,7 @@ autoplot(mb)
 
 ### Benchmark 2: Assert that `x` is a numeric of length 1000 with no missing nor NaN values
 
-```{r,dev="svg",fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
+```{r,fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
 x = runif(1000)
 r = function(x) stopifnot(is.numeric(x), length(x) == 1000, all(!is.na(x) & x >= 0 & x <= 1))
 cm = function(x) assertNumeric(x, len = 1000, any.missing = FALSE, lower = 0, upper = 1)
@@ -186,7 +186,7 @@ autoplot(mb)
 
 ### Benchmark 3: Assert that `x` is a character vector with no missing values nor empty strings
 
-```{r,dev="svg",fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
+```{r,fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
 x = sample(letters, 10000, replace = TRUE)
 r = function(x) stopifnot(is.character(x), !any(is.na(x)), all(nchar(x) > 0))
 cm = function(x) assertCharacter(x, any.missing = FALSE, min.chars = 1)
@@ -199,7 +199,7 @@ autoplot(mb)
 
 ### Benchmark 4: Test that `x` is a data frame with no missing values
 
-```{r,dev="svg",fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
+```{r,fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
 N = 10000
 x = data.frame(a = runif(N), b = sample(letters[1:5], N, replace = TRUE), c = sample(c(FALSE, TRUE), N, replace = TRUE))
 r = function(x) is.data.frame(x) && !any(sapply(x, function(x) any(is.na(x))))
@@ -218,7 +218,7 @@ autoplot(mb)
 
 ### Benchmark 5: Assert that `x` is an increasing sequence of integers with no missing values
 
-```{r,dev="svg",fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
+```{r,fig.width=6,fig.height=4,eval=requireNamespace("microbenchmark", quietly = TRUE)}
 N = 10000
 x.altrep = seq_len(N) # this is an ALTREP in R version >= 3.5.0
 x.sexp = c(x.altrep)  # this is a regular SEXP OTOH

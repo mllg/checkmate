@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -48,6 +50,7 @@ frequent argument checks by typing just a few letters." />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -64,7 +67,7 @@ frequent argument checks by typing just a few letters." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9.5</span>
       </span>
     </div>
 
@@ -72,7 +75,7 @@ frequent argument checks by typing just a few letters." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -90,7 +93,7 @@ frequent argument checks by typing just a few letters." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -101,6 +104,7 @@ frequent argument checks by typing just a few letters." />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -139,7 +143,7 @@ Set of rules. See details.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -147,11 +151,11 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
       <th>info</th>
       <td><p>[character(1)]<br />
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expect_that'>expect_that</a></code>.</p></td>
+See <code><a href='https://rdrr.io/pkg/testthat/man/expect_that.html'>expect_that</a></code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>[<code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character(1)</a></code>]<br />
+      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -164,84 +168,16 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
  otherwise.
  <code>qtest</code> behaves the same way but returns <code>FALSE</code> if none of the
  <code>rules</code> comply.
- <code>qexpect</code> is intended to be inside the unit test framework <code><a href='https://www.rdocumentation.org/packages/testthat/topics/testthat-package'>testthat</a></code> and
- returns an <code><a href='https://www.rdocumentation.org/packages/testthat/topics/expectation'>expectation</a></code>.</p>
+ <code>qexpect</code> is intended to be inside the unit test framework <code><a href='https://rdrr.io/pkg/testthat/man/testthat-package.html'>testthat</a></code> and
+ returns an <code><a href='https://rdrr.io/pkg/testthat/man/expectation.html'>expectation</a></code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The rule is specified in up to three parts.</p><ol>
-<li><p>Class and missingness check.
-   The first letter is an abbreviation for the class. If it is
-   provided uppercase, missing values are prohibited.
-   Supported abbreviations:
-   <table class='table'>
-<tr><td></td><td></td></tr>
-<tr><td><code>[bB]</code></td><td></td></tr>
-<tr><td>Bool / logical.</td><td></td></tr>
-<tr><td></td><td><code>[iI]</code></td></tr>
-<tr><td></td><td>Integer.</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[xX]</code></td><td></td></tr>
-<tr><td>Integerish (numeric convertible to integer, see</td><td><code><a href='checkIntegerish.html'>checkIntegerish</a></code></td></tr>
-<tr><td>).</td><td></td></tr>
-<tr><td></td><td><code>[rR]</code></td></tr>
-<tr><td></td><td>Real / double.</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[cC]</code></td><td></td></tr>
-<tr><td>Complex.</td><td></td></tr>
-<tr><td></td><td><code>[nN]</code></td></tr>
-<tr><td></td><td>Numeric (integer or double).</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[sS]</code></td><td></td></tr>
-<tr><td>String / character.</td><td></td></tr>
-<tr><td></td><td><code>[fF]</code></td></tr>
-<tr><td></td><td>Factor</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[aA]</code></td><td></td></tr>
-<tr><td>Atomic.</td><td></td></tr>
-<tr><td></td><td><code>[vV]</code></td></tr>
-<tr><td></td><td>Atomic vector (see</td></tr>
-<tr><td><code><a href='checkAtomicVector.html'>checkAtomicVector</a></code></td><td>).</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[lL]</code></td><td></td></tr>
-<tr><td>List. Missingness is defined as</td><td><code>NULL</code></td></tr>
-<tr><td>element.</td><td></td></tr>
-<tr><td></td><td><code>[mM]</code></td></tr>
-<tr><td></td><td>Matrix.</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[dD]</code></td><td></td></tr>
-<tr><td>Data.frame. Missingness is checked recursively on columns.</td><td></td></tr>
-<tr><td></td><td><code>[pP]</code></td></tr>
-<tr><td></td><td>POSIXct date.</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[e]</code></td><td></td></tr>
-<tr><td>Environment.</td><td></td></tr>
-<tr><td></td><td><code>[0]</code></td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>NULL</code></td><td>.</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[*]</code></td><td></td></tr>
-<tr><td>placeholder to allow any type.</td><td></td></tr>
-</table>
-    Note that the check for missingness does not distinguish between
-   <code>NaN</code> and <code>NA</code>. Infinite values are not treated as missing, but
-   can be caught using boundary checks (part 3).</p></li>
-<li><p>Length definition. This can be one of
-   <table class='table'>
-<tr><td></td><td></td></tr>
-<tr><td><code>[*]</code></td><td></td></tr>
-<tr><td>any length,</td><td></td></tr>
-<tr><td></td><td><code>[?]</code></td></tr>
-<tr><td></td><td>length of zero or one,</td></tr>
-<tr><td></td><td></td></tr>
-<tr><td><code>[+]</code></td><td></td></tr>
-<tr><td>length of at least one, or</td><td></td></tr>
-<tr><td></td><td><code>[0-9]+</code></td></tr>
-<tr><td></td><td>exact length specified as integer.</td></tr>
-<tr><td></td><td></td></tr>
-</table>
-    Preceding the exact length with one of the comparison operators <code>=</code>/<code>==</code>,
-   <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code> or <code>&gt;</code> is also supported.</p></li>
+<li><p>c("\n   Class and missingness check.\n   The first letter is an abbreviation for the class. If it is\n   provided uppercase, missing values are prohibited.\n   Supported abbreviations:\n   <table class='table'>\n<tr><td><code>[bB]</code></td><td>Bool / logical.</td></tr>\n<tr><td><code>[iI]</code></td><td>Integer.</td></tr>\n<tr><td><code>[xX]</code></td><td>Integerish (numeric convertible to integer, see <code><a href='checkIntegerish.html'>checkIntegerish</a></code>).</td></tr>\n<tr><td><code>[rR]</code></td><td>Real / double.</td></tr>\n<tr><td><code>[cC]</code></td><td>Complex.</td></tr>\n<tr><td><code>[nN]</code></td><td>Numeric (integer or double).</td></tr>\n<tr><td><code>[sS]</code></td><td>String / character.</td></tr>\n<tr><td><code>[fF]</code></td><td>Factor</td></tr>\n<tr><td><code>[aA]</code></td><td>Atomic.</td></tr>\n<tr><td><code>[vV]</code></td><td>Atomic vector (see <code><a href='checkAtomicVector.html'>checkAtomicVector</a></code>).</td></tr>\n<tr><td><code>[lL]</code></td><td>List. Missingness is defined as <code>NULL</code> element.</td></tr>\n<tr><td><code>[mM]</code></td><td>Matrix.</td></tr>\n<tr><td><code>[dD]</code></td><td>Data.frame. Missingness is checked recursively on columns.</td></tr>\n<tr><td><code>[pP]</code></td><td>POSIXct date.</td></tr>\n<tr><td><code>[e]</code></td><td>Environment.</td></tr>\n<tr><td><code>[0]</code></td><td><code>NULL</code>.</td></tr>\n<tr><td><code>[*]</code></td><td>placeholder to allow any type.</td></tr>\n</table>", 
+"   Note that the check for missingness does not distinguish between\n   <code>NaN</code> and <code>NA</code>. Infinite values are not treated as missing, but\n   can be caught using boundary checks (part 3).\n   ")</p></li>
+<li><p>c("\n   Length definition. This can be one of\n   <table class='table'>\n<tr><td><code>[*]</code></td><td>any length,</td></tr>\n<tr><td><code>[?]</code></td><td>length of zero or one,</td></tr>\n<tr><td><code>[+]</code></td><td>length of at least one, or</td></tr>\n<tr><td><code>[0-9]+</code></td><td>exact length specified as integer.</td></tr>\n</table>", "   Preceding the exact length with one of the comparison operators <code>=</code>/<code>==</code>,\n   <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code> or <code>&gt;</code> is also supported.\n "
+)</p></li>
 <li><p>Range check as two numbers separated by a comma, enclosed by square brackets
    (endpoint included) or parentheses (endpoint excluded).
    For example, &#8220;[0, 3)&#8221; results in <code>all(x &gt;= 0 &amp; x &lt; 3)</code>.
@@ -252,6 +188,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
    E.g., the rule &#8220;N1()&#8221; checks for a single finite numeric which is not NA,
    while &#8220;N1[)&#8221; allows <code>-Inf</code>.</p></li>
 </ol>
+
     
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
@@ -273,11 +210,11 @@ of list elements and data frame columns.</p></div>
 <span class='co'># logical of length 0 or 1, NA not allowed</span>
 <span class='fu'>qtest</span>(<span class='fl'>TRUE</span>, <span class='st'>"B?"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># numeric with length &gt; 0</span>
-<span class='fu'>qtest</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/Uniform'>runif</a></span>(<span class='fl'>10</span>), <span class='st'>"n+"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>qtest</span>(<span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>10</span>), <span class='st'>"n+"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># integer with length &gt; 0, NAs not allowed, all integers &gt;= 0 and &lt; Inf</span>
 <span class='fu'>qtest</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='st'>"I+[0,)"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># either an emtpy list or a character vector with &lt;=5 elements</span>
-<span class='fu'>qtest</span>(<span class='fl'>1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"l0"</span>, <span class='st'>"s&lt;=5"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>qtest</span>(<span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"l0"</span>, <span class='st'>"s&lt;=5"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># data frame with at least one column and no missing value in any column</span>
 <span class='fu'>qtest</span>(<span class='no'>iris</span>, <span class='st'>"D+"</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
@@ -300,19 +237,23 @@ of list elements and data frame columns.</p></div>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Michel Lang.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

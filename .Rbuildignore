@@ -13,3 +13,4 @@
 ^inst/benchmarks
 ^revdep$
 ^revdepcheck.R$
+^_pkgdown.yml$
