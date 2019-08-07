@@ -2,6 +2,10 @@
 #include "backports.h"
 
 R_xlen_t attribute_hidden find_missing_logical(SEXP x) {
+#if defined(R_VERSION) && R_VERSION >= R_Version(3, 5, 0)
+    if (LOGICAL_NO_NA(x))
+        return 0;
+#endif
     const R_xlen_t n = xlength(x);
     const int * xp = LOGICAL_RO(x);
     for (R_xlen_t i = 0; i < n; i++) {
