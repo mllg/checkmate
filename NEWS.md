@@ -1,4 +1,5 @@
 # Version 1.9.5
+* Coercion now only affects double vectors.
 * Improved error message for type detection in `*List`.
 
 # Version 1.9.4

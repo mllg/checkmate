@@ -82,7 +82,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
   body = paste0(body, sprintf("(%s, res, .var.name, add)", x.name))
 
   if (coerce) {
-    body = paste0(body, "; if (isTRUE(coerce)) storage.mode(x) = \"integer\"; invisible(x)")
+    body = paste0(body, "; if (isTRUE(coerce) && is.double(x)) storage.mode(x) = \"integer\"; invisible(x)")
   }
 
   formals(new.fun) = fun.args
