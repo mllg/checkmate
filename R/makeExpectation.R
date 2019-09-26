@@ -90,15 +90,15 @@ makeExpectation = function(x, res, info, label) {
       stop("Package 'tinytest' is required for checkmate's 'expect_*' extensions with backend 'tinytest'")
     call = sys.call(sys.parent(1L))
     if (isTRUE(res)) {
-      return(tinytest::tinytest(TRUE, call = call))
+      tinytest::tinytest(TRUE, call = call)
+    } else {
+      tinytest::tinytest(FALSE,
+        call = call,
+        diff = if (is.character(res)) res else "",
+        info = if (is.null(info)) NA_character_ else info,
+        short = "data"
+      )
     }
-
-    tinytest::tinytest(FALSE,
-      call = call,
-      diff = if (is.character(res)) res else "",
-      info = if (is.null(info)) NA_character_ else info,
-      short = "data"
-    )
   }
 }
 
