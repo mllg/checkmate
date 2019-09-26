@@ -1,3 +1,48 @@
+backend = new.env(parent = emptyenv())
+
+#' @title Select Backend for Unit Tests
+#'
+#' @description
+#' Allows to explicitly select a backend for the unit tests.
+#' Currently supported are \code{"testthat"} and \code{"tinytest"}.
+#' The respective package must be installed and are loaded (but not attached).
+#'
+#' If this function is not explicitly called, defaults to \code{"testthat"} unless
+#' the \code{"tinytest"}'s namespace is loaded.
+#'
+#' @param name [\code{character(1)}]\cr
+#'  \code{"testthat"} or \code{"tinytest"}.
+#' @return \code{NULL} (invisibly).
+#' @export
+register_test_backend = function(name) {
+  name = match.arg(name, c("testthat", "tinytest"))
+  if (name == "testthat") {
+    requireNamespace("testthat")
+    backend$name = "testthat"
+  } else {
+    requireNamespace("tinytest")
+    ns = getNamespace("checkmate")
+    expectations = names(ns)[grepl("^expect_", names(ns))]
+    tinytest::register_tinytest_extension("checkmate", expectations)
+    backend$name = "tinytest"
+  }
+  invisible(NULL)
+}
+
+detect_test_backend = function() {
+  if (isNamespaceLoaded("tinytest"))
+    return("tinytest")
+  return("testthat")
+}
+
+get_test_backend = function() {
+  if (is.null(backend$name)) {
+    backend$name = detect_test_backend()
+    register_test_backend(backend$name)
+  }
+  backend$name
+}
+
 #' @title Turn a Check into an Expectation
 #'
 #' @description
@@ -33,11 +78,28 @@
 #' expect_false = makeExpectationFunction(checkFalse)
 #' print(expect_false)
 makeExpectation = function(x, res, info, label) {
-  if (!requireNamespace("testthat", quietly = TRUE))
-    stop("Package 'testthat' is required for checkmate's 'expect_*' extensions")
-  info = if (is.null(info)) res else sprintf("%s\nAdditional info: %s", res, info)
-  testthat::expect_true(res, info = info, label = sprintf("Check on %s", label))
-  invisible(x)
+  backend = get_test_backend()
+  if (backend == "testthat") {
+    if (!requireNamespace("testthat", quietly = TRUE))
+      stop("Package 'testthat' is required for checkmate's 'expect_*' extensions with backend 'testthat'")
+    info = if (is.null(info)) res else sprintf("%s\nAdditional info: %s", res, info)
+    testthat::expect_true(res, info = info, label = sprintf("Check on %s", label))
+    invisible(x)
+  } else {
+    if (!requireNamespace("tinytest", quietly = TRUE))
+      stop("Package 'tinytest' is required for checkmate's 'expect_*' extensions with backend 'tinytest'")
+    call = sys.call(sys.parent(1L))
+    if (isTRUE(res)) {
+      return(tinytest::tinytest(TRUE, call = call))
+    }
+
+    tinytest::tinytest(FALSE,
+      call = call,
+      diff = if (is.character(res)) res else "",
+      info = if (is.null(info)) NA_character_ else info,
+      short = "data"
+    )
+  }
 }
 
 #' @rdname makeExpectation
