@@ -63,5 +63,5 @@ test_that("nrow for null data tables", {
   M = M[, integer(0)]
   DT = data.table::as.data.table(M) # null data table
 
-  expect_true(testDataTable(DT, nrow = 0))
+  expect_true(testDataTable(DT, nrows = 0))
 })

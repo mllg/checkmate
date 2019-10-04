@@ -25,7 +25,7 @@ expect_fail_all = function(x, rules, pattern = NULL) {
   xn = deparse(substitute(x))
   expect_false(qtest(x, rules),
     info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
-  expect_error(qassert(x, rules), regex = pattern,
+  expect_error(qassert(x, rules), regexp = pattern,
     info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
   expect_expectation_failed(qexpect(x, rules),
     info = sprintf("rules: %s", paste0(rules, collapse=",")), label = xn)
