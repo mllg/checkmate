@@ -5,7 +5,7 @@ test_that("data.table is supported", {
   library(data.table)
   myobj = as.data.table(iris)
   expect_succ_all(DataFrame, myobj)
-  expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
+  expect_true(testDataFrame(myobj, nrows = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
   expect_true(testDataFrame(data.table()))
 })
 
@@ -14,7 +14,7 @@ test_that("tibble is supported", {
   library(tibble)
   myobj = as_tibble(iris)
   expect_succ_all(DataFrame, myobj)
-  expect_true(testDataFrame(myobj, nrow = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
+  expect_true(testDataFrame(myobj, nrows = 150, min.cols = 2, any.missing = FALSE, col.names = "strict"))
   expect_true(testDataFrame(tibble()))
 })
 
