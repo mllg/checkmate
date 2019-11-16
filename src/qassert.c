@@ -254,7 +254,7 @@ static int parse_length(checker_t *checker, const char *rule) {
                 start += 2;
             } else {
                 checker->len.fun = &ii_lt;
-                checker->len.op = LE;
+                checker->len.op = LT;
                 start += 1;
             }
             break;
