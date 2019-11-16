@@ -10,36 +10,116 @@
 \alias{expect_integer}
 \title{Check if an argument is vector of type integer}
 \usage{
-checkInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
+checkInteger(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
+check_integer(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertInteger(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_integer(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testInteger(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
+testInteger(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE)
+test_integer(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_integer(x, lower = -Inf, upper = Inf, any.missing = TRUE,
-  all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL,
-  unique = FALSE, sorted = FALSE, names = NULL, null.ok = FALSE,
-  info = NULL, label = vname(x))
+expect_integer(
+  x,
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -129,18 +209,27 @@ testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
 \seealso{
 \code{\link{asInteger}}
 
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

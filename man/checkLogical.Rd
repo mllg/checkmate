@@ -10,33 +10,95 @@
 \alias{expect_logical}
 \title{Check if an argument is a vector of type logical}
 \usage{
-checkLogical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+checkLogical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_logical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+check_logical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertLogical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertLogical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_logical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_logical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testLogical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+testLogical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_logical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+test_logical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_logical(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+expect_logical(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -116,18 +178,27 @@ testLogical(TRUE, min.len = 1)
 \seealso{
 \code{\link{checkBit}}
 
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkMatrix}}, \code{\link{checkNull}},
-  \code{\link{checkNumeric}}, \code{\link{checkPOSIXct}},
-  \code{\link{checkRaw}}, \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

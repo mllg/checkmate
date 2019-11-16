@@ -19,31 +19,43 @@ checkFileExists(x, access = "", extension = NULL)
 
 check_file_exists(x, access = "", extension = NULL)
 
-assertFileExists(x, access = "", extension = NULL,
-  .var.name = vname(x), add = NULL)
+assertFileExists(
+  x,
+  access = "",
+  extension = NULL,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_file_exists(x, access = "", extension = NULL,
-  .var.name = vname(x), add = NULL)
+assert_file_exists(
+  x,
+  access = "",
+  extension = NULL,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testFileExists(x, access = "", extension = NULL)
 
 test_file_exists(x, access = "", extension = NULL)
 
-expect_file_exists(x, access = "", extension = NULL, info = NULL,
-  label = vname(x))
+expect_file_exists(
+  x,
+  access = "",
+  extension = NULL,
+  info = NULL,
+  label = vname(x)
+)
 
 checkFile(x, access = "", extension = NULL)
 
-assertFile(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assertFile(x, access = "", extension = NULL, .var.name = vname(x), add = NULL)
 
-assert_file(x, access = "", extension = NULL, .var.name = vname(x),
-  add = NULL)
+assert_file(x, access = "", extension = NULL, .var.name = vname(x), add = NULL)
 
 testFile(x, access = "", extension = NULL)
 
-expect_file(x, access = "", extension = NULL, info = NULL,
-  label = vname(x))
+expect_file(x, access = "", extension = NULL, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -105,8 +117,9 @@ testFileExists(file.path(R.home(), "COPYING"), access = "r")
 testFileExists(file.path(R.home(), "COPYING"), access = "rw")
 }
 \seealso{
-Other filesystem: \code{\link{checkAccess}},
-  \code{\link{checkDirectoryExists}},
-  \code{\link{checkPathForOutput}}
+Other filesystem: 
+\code{\link{checkAccess}()},
+\code{\link{checkDirectoryExists}()},
+\code{\link{checkPathForOutput}()}
 }
 \concept{filesystem}

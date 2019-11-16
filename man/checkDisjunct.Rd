@@ -14,11 +14,9 @@ checkDisjunct(x, y, fmatch = FALSE)
 
 check_disjunct(x, y, fmatch = FALSE)
 
-assertDisjunct(x, y, fmatch = FALSE, .var.name = vname(x),
-  add = NULL)
+assertDisjunct(x, y, fmatch = FALSE, .var.name = vname(x), add = NULL)
 
-assert_disjunct(x, y, fmatch = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_disjunct(x, y, fmatch = FALSE, .var.name = vname(x), add = NULL)
 
 testDisjunct(x, y, fmatch = FALSE)
 
@@ -88,7 +86,9 @@ testDisjunct(1, "1")
 testDisjunct(1, as.integer(1))
 }
 \seealso{
-Other set: \code{\link{checkChoice}},
-  \code{\link{checkSetEqual}}, \code{\link{checkSubset}}
+Other set: 
+\code{\link{checkChoice}()},
+\code{\link{checkSetEqual}()},
+\code{\link{checkSubset}()}
 }
 \concept{set}

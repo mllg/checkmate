@@ -14,18 +14,36 @@ checkChoice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
 check_choice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-assertChoice(x, choices, null.ok = FALSE, fmatch = FALSE,
-  .var.name = vname(x), add = NULL)
+assertChoice(
+  x,
+  choices,
+  null.ok = FALSE,
+  fmatch = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_choice(x, choices, null.ok = FALSE, fmatch = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_choice(
+  x,
+  choices,
+  null.ok = FALSE,
+  fmatch = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testChoice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
 test_choice(x, choices, null.ok = FALSE, fmatch = FALSE)
 
-expect_choice(x, choices, null.ok = FALSE, fmatch = FALSE,
-  info = NULL, label = vname(x))
+expect_choice(
+  x,
+  choices,
+  null.ok = FALSE,
+  fmatch = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -92,7 +110,9 @@ testChoice(1, "1")
 testChoice(1, as.integer(1))
 }
 \seealso{
-Other set: \code{\link{checkDisjunct}},
-  \code{\link{checkSetEqual}}, \code{\link{checkSubset}}
+Other set: 
+\code{\link{checkDisjunct}()},
+\code{\link{checkSetEqual}()},
+\code{\link{checkSubset}()}
 }
 \concept{set}

@@ -10,26 +10,43 @@
 \alias{expect_function}
 \title{Check if an argument is a function}
 \usage{
-checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE)
+checkFunction(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE)
 
-check_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE)
+check_function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE)
 
-assertFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertFunction(
+  x,
+  args = NULL,
+  ordered = FALSE,
+  nargs = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_function(
+  x,
+  args = NULL,
+  ordered = FALSE,
+  nargs = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testFunction(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE)
+testFunction(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE)
 
-test_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE)
+test_function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok = FALSE)
 
-expect_function(x, args = NULL, ordered = FALSE, nargs = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+expect_function(
+  x,
+  args = NULL,
+  ordered = FALSE,
+  nargs = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -93,18 +110,27 @@ testFunction(mean)
 testFunction(mean, args = "x")
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

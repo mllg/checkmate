@@ -90,10 +90,6 @@ assert_file = assert_file_exists
 #' @rdname checkFileExists
 testFile = testFileExists
 
-##' @export
-##' @rdname checkFileExists
-## test_file = test_file_exists
-
 #' @export
 #' @rdname checkFileExists
 expect_file = expect_file_exists
