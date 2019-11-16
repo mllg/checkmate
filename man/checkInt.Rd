@@ -10,29 +10,76 @@
 \alias{expect_int}
 \title{Check if an argument is a single integerish value}
 \usage{
-checkInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+checkInt(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-check_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+check_int(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-assertInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assertInt(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_int(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testInt(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+testInt(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-test_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+test_int(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-expect_int(x, na.ok = FALSE, lower = -Inf, upper = Inf,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_int(
+  x,
+  na.ok = FALSE,
+  lower = -Inf,
+  upper = Inf,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -107,9 +154,12 @@ testInt(1)
 testInt(-1, lower = 0)
 }
 \seealso{
-Other scalars: \code{\link{checkCount}},
-  \code{\link{checkFlag}}, \code{\link{checkNumber}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+Other scalars: 
+\code{\link{checkCount}()},
+\code{\link{checkFlag}()},
+\code{\link{checkNumber}()},
+\code{\link{checkScalarNA}()},
+\code{\link{checkScalar}()},
+\code{\link{checkString}()}
 }
 \concept{scalars}

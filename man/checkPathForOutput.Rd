@@ -14,18 +14,33 @@ checkPathForOutput(x, overwrite = FALSE, extension = NULL)
 
 check_path_for_output(x, overwrite = FALSE, extension = NULL)
 
-assertPathForOutput(x, overwrite = FALSE, extension = NULL,
-  .var.name = vname(x), add = NULL)
+assertPathForOutput(
+  x,
+  overwrite = FALSE,
+  extension = NULL,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_path_for_output(x, overwrite = FALSE, extension = NULL,
-  .var.name = vname(x), add = NULL)
+assert_path_for_output(
+  x,
+  overwrite = FALSE,
+  extension = NULL,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testPathForOutput(x, overwrite = FALSE, extension = NULL)
 
 test_path_for_output(x, overwrite = FALSE, extension = NULL)
 
-expect_path_for_output(x, overwrite = FALSE, extension = NULL,
-  info = NULL, label = vname(x))
+expect_path_for_output(
+  x,
+  overwrite = FALSE,
+  extension = NULL,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -87,8 +102,9 @@ Paths are relative to the current working directory.
 testPathForOutput(file.path(tempdir(), "process.log"))
 }
 \seealso{
-Other filesystem: \code{\link{checkAccess}},
-  \code{\link{checkDirectoryExists}},
-  \code{\link{checkFileExists}}
+Other filesystem: 
+\code{\link{checkAccess}()},
+\code{\link{checkDirectoryExists}()},
+\code{\link{checkFileExists}()}
 }
 \concept{filesystem}

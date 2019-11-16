@@ -14,18 +14,36 @@ checkClass(x, classes, ordered = FALSE, null.ok = FALSE)
 
 check_class(x, classes, ordered = FALSE, null.ok = FALSE)
 
-assertClass(x, classes, ordered = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertClass(
+  x,
+  classes,
+  ordered = FALSE,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_class(x, classes, ordered = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_class(
+  x,
+  classes,
+  ordered = FALSE,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testClass(x, classes, ordered = FALSE, null.ok = FALSE)
 
 test_class(x, classes, ordered = FALSE, null.ok = FALSE)
 
-expect_class(x, classes, ordered = FALSE, null.ok = FALSE,
-  info = NULL, label = vname(x))
+expect_class(
+  x,
+  classes,
+  ordered = FALSE,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -100,11 +118,14 @@ assert(
 testClass(x, "bar", ordered = TRUE)
 }
 \seealso{
-Other attributes: \code{\link{checkMultiClass}},
-  \code{\link{checkNamed}}, \code{\link{checkNames}}
+Other attributes: 
+\code{\link{checkMultiClass}()},
+\code{\link{checkNamed}()},
+\code{\link{checkNames}()}
 
-Other classes: \code{\link{checkMultiClass}},
-  \code{\link{checkR6}}
+Other classes: 
+\code{\link{checkMultiClass}()},
+\code{\link{checkR6}()}
 }
 \concept{attributes}
 \concept{classes}

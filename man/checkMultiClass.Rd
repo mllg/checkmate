@@ -14,18 +14,21 @@ checkMultiClass(x, classes, null.ok = FALSE)
 
 check_multi_class(x, classes, null.ok = FALSE)
 
-assertMultiClass(x, classes, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assertMultiClass(x, classes, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_multi_class(x, classes, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_multi_class(
+  x,
+  classes,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testMultiClass(x, classes, null.ok = FALSE)
 
 test_multi_class(x, classes, null.ok = FALSE)
 
-expect_multi_class(x, classes, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_multi_class(x, classes, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -81,11 +84,14 @@ checkMultiClass(x, c("foo", "bar"))
 checkMultiClass(x, c("foo", "foobar"))
 }
 \seealso{
-Other attributes: \code{\link{checkClass}},
-  \code{\link{checkNamed}}, \code{\link{checkNames}}
+Other attributes: 
+\code{\link{checkClass}()},
+\code{\link{checkNamed}()},
+\code{\link{checkNames}()}
 
-Other classes: \code{\link{checkClass}},
-  \code{\link{checkR6}}
+Other classes: 
+\code{\link{checkClass}()},
+\code{\link{checkR6}()}
 }
 \concept{attributes}
 \concept{classes}

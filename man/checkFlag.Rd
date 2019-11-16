@@ -14,18 +14,21 @@ checkFlag(x, na.ok = FALSE, null.ok = FALSE)
 
 check_flag(x, na.ok = FALSE, null.ok = FALSE)
 
-assertFlag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assertFlag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x), add = NULL)
 
-assert_flag(x, na.ok = FALSE, null.ok = FALSE, .var.name = vname(x),
-  add = NULL)
+assert_flag(
+  x,
+  na.ok = FALSE,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testFlag(x, na.ok = FALSE, null.ok = FALSE)
 
 test_flag(x, na.ok = FALSE, null.ok = FALSE)
 
-expect_flag(x, na.ok = FALSE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_flag(x, na.ok = FALSE, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -83,9 +86,12 @@ testFlag(TRUE)
 testFlag(1)
 }
 \seealso{
-Other scalars: \code{\link{checkCount}},
-  \code{\link{checkInt}}, \code{\link{checkNumber}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+Other scalars: 
+\code{\link{checkCount}()},
+\code{\link{checkInt}()},
+\code{\link{checkNumber}()},
+\code{\link{checkScalarNA}()},
+\code{\link{checkScalar}()},
+\code{\link{checkString}()}
 }
 \concept{scalars}

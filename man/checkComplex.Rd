@@ -10,33 +10,95 @@
 \alias{expect_complex}
 \title{Check if an argument is a vector of type complex}
 \usage{
-checkComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+checkComplex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_complex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+check_complex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertComplex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_complex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_complex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testComplex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+testComplex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_complex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE)
+test_complex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_complex(x, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, names = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+expect_complex(
+  x,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -114,19 +176,27 @@ testComplex(1)
 testComplex(1+1i)
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkDataFrame}}, \code{\link{checkDate}},
-  \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

@@ -10,35 +10,88 @@
 \alias{expect_names}
 \title{Check names to comply to specific rules}
 \usage{
-checkNames(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  what = "names")
+checkNames(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names"
+)
 
-check_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  what = "names")
+check_names(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names"
+)
 
-assertNames(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  what = "names", .var.name = vname(x), add = NULL)
+assertNames(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names",
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_names(x, type = "named", subset.of = NULL,
-  must.include = NULL, permutation.of = NULL, identical.to = NULL,
-  disjunct.from = NULL, what = "names", .var.name = vname(x),
-  add = NULL)
+assert_names(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names",
+  .var.name = vname(x),
+  add = NULL
+)
 
-testNames(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  what = "names")
+testNames(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names"
+)
 
-test_names(x, type = "named", subset.of = NULL, must.include = NULL,
-  permutation.of = NULL, identical.to = NULL, disjunct.from = NULL,
-  what = "names")
+test_names(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names"
+)
 
-expect_names(x, type = "named", subset.of = NULL,
-  must.include = NULL, permutation.of = NULL, identical.to = NULL,
-  disjunct.from = NULL, what = "names", info = NULL,
-  label = vname(x))
+expect_names(
+  x,
+  type = "named",
+  subset.of = NULL,
+  must.include = NULL,
+  permutation.of = NULL,
+  identical.to = NULL,
+  disjunct.from = NULL,
+  what = "names",
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[\code{character} || \code{NULL}]\cr
@@ -122,7 +175,9 @@ cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 assertNames(names(iris), permutation.of = cn)
 }
 \seealso{
-Other attributes: \code{\link{checkClass}},
-  \code{\link{checkMultiClass}}, \code{\link{checkNamed}}
+Other attributes: 
+\code{\link{checkClass}()},
+\code{\link{checkMultiClass}()},
+\code{\link{checkNamed}()}
 }
 \concept{attributes}

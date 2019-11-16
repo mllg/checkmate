@@ -21,9 +21,6 @@ register_test_backend = function(name) {
     backend$name = "testthat"
   } else {
     requireNamespace("tinytest")
-    ns = getNamespace("checkmate")
-    expectations = names(ns)[grepl("^expect_", names(ns))]
-    tinytest::register_tinytest_extension("checkmate", expectations)
     backend$name = "tinytest"
   }
   invisible(NULL)

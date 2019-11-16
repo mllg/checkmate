@@ -10,29 +10,81 @@
 \alias{expect_string}
 \title{Check if an argument is a string}
 \usage{
-checkString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+checkString(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE
+)
 
-check_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+check_string(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE
+)
 
-assertString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertString(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_string(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testString(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+testString(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE
+)
 
-test_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE)
+test_string(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE
+)
 
-expect_string(x, na.ok = FALSE, min.chars = NULL, pattern = NULL,
-  fixed = NULL, ignore.case = FALSE, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_string(
+  x,
+  na.ok = FALSE,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -105,9 +157,12 @@ testString("a")
 testString(letters)
 }
 \seealso{
-Other scalars: \code{\link{checkCount}},
-  \code{\link{checkFlag}}, \code{\link{checkInt}},
-  \code{\link{checkNumber}}, \code{\link{checkScalarNA}},
-  \code{\link{checkScalar}}
+Other scalars: 
+\code{\link{checkCount}()},
+\code{\link{checkFlag}()},
+\code{\link{checkInt}()},
+\code{\link{checkNumber}()},
+\code{\link{checkScalarNA}()},
+\code{\link{checkScalar}()}
 }
 \concept{scalars}

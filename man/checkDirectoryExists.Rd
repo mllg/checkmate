@@ -20,18 +20,15 @@ checkDirectoryExists(x, access = "")
 
 check_directory_exists(x, access = "")
 
-assertDirectoryExists(x, access = "", .var.name = vname(x),
-  add = NULL)
+assertDirectoryExists(x, access = "", .var.name = vname(x), add = NULL)
 
-assert_directory_exists(x, access = "", .var.name = vname(x),
-  add = NULL)
+assert_directory_exists(x, access = "", .var.name = vname(x), add = NULL)
 
 testDirectoryExists(x, access = "")
 
 test_directory_exists(x, access = "")
 
-expect_directory_exists(x, access = "", info = NULL,
-  label = vname(x))
+expect_directory_exists(x, access = "", info = NULL, label = vname(x))
 
 checkDirectory(x, access = "")
 
@@ -101,8 +98,9 @@ testDirectory(R.home(), "r")
 testDirectory(R.home(), "rw")
 }
 \seealso{
-Other filesystem: \code{\link{checkAccess}},
-  \code{\link{checkFileExists}},
-  \code{\link{checkPathForOutput}}
+Other filesystem: 
+\code{\link{checkAccess}()},
+\code{\link{checkFileExists}()},
+\code{\link{checkPathForOutput}()}
 }
 \concept{filesystem}

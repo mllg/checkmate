@@ -10,42 +10,125 @@
 \alias{expect_integerish}
 \title{Check if an object is an integerish vector}
 \usage{
-checkIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE)
+checkIntegerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE)
+check_integerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assertIntegerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_integerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testIntegerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE)
+testIntegerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE)
+test_integerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_integerish(x, tol = sqrt(.Machine$double.eps), lower = -Inf,
-  upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE,
-  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+expect_integerish(
+  x,
+  tol = sqrt(.Machine$double.eps),
+  lower = -Inf,
+  upper = Inf,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -145,17 +228,27 @@ testIntegerish(1.)
 testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}}, \code{\link{checkInteger}},
-  \code{\link{checkList}}, \code{\link{checkLogical}},
-  \code{\link{checkMatrix}}, \code{\link{checkNull}},
-  \code{\link{checkNumeric}}, \code{\link{checkPOSIXct}},
-  \code{\link{checkRaw}}, \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

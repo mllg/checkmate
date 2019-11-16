@@ -7,8 +7,13 @@
 \usage{
 makeAssertion(x, res, var.name, collection)
 
-makeAssertionFunction(check.fun, c.fun = NULL, use.namespace = TRUE,
-  coerce = FALSE, env = parent.frame())
+makeAssertionFunction(
+  check.fun,
+  c.fun = NULL,
+  use.namespace = TRUE,
+  coerce = FALSE,
+  env = parent.frame()
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -73,7 +78,8 @@ assertFalse = makeAssertionFunction(checkFalse)
 print(assertFalse)
 }
 \seealso{
-Other CustomConstructors: \code{\link{makeExpectation}},
-  \code{\link{makeTest}}
+Other CustomConstructors: 
+\code{\link{makeExpectation}()},
+\code{\link{makeTest}()}
 }
 \concept{CustomConstructors}

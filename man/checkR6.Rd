@@ -10,29 +10,81 @@
 \alias{expect_r6}
 \title{Check if an argument is a R6 class}
 \usage{
-checkR6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE)
+checkR6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE
+)
 
-check_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE)
+check_r6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE
+)
 
-assertR6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertR6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_r6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testR6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE)
+testR6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE
+)
 
-test_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE)
+test_r6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE
+)
 
-expect_r6(x, classes = NULL, ordered = FALSE, cloneable = NULL,
-  public = NULL, private = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_r6(
+  x,
+  classes = NULL,
+  ordered = FALSE,
+  cloneable = NULL,
+  public = NULL,
+  private = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -106,7 +158,8 @@ x = generator$new()
 checkR6(x, "Bar", cloneable = TRUE, public = "a")
 }
 \seealso{
-Other classes: \code{\link{checkClass}},
-  \code{\link{checkMultiClass}}
+Other classes: 
+\code{\link{checkClass}()},
+\code{\link{checkMultiClass}()}
 }
 \concept{classes}
