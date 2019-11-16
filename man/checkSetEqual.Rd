@@ -14,18 +14,36 @@ checkSetEqual(x, y, ordered = FALSE, fmatch = FALSE)
 
 check_set_equal(x, y, ordered = FALSE, fmatch = FALSE)
 
-assertSetEqual(x, y, ordered = FALSE, fmatch = FALSE,
-  .var.name = vname(x), add = NULL)
+assertSetEqual(
+  x,
+  y,
+  ordered = FALSE,
+  fmatch = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_set_equal(x, y, ordered = FALSE, fmatch = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_set_equal(
+  x,
+  y,
+  ordered = FALSE,
+  fmatch = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testSetEqual(x, y, ordered = FALSE, fmatch = FALSE)
 
 test_set_equal(x, y, ordered = FALSE, fmatch = FALSE)
 
-expect_set_equal(x, y, ordered = FALSE, fmatch = FALSE, info = NULL,
-  label = vname(x))
+expect_set_equal(
+  x,
+  y,
+  ordered = FALSE,
+  fmatch = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -94,7 +112,9 @@ testSetEqual(1, "1")
 testSetEqual(1, as.integer(1))
 }
 \seealso{
-Other set: \code{\link{checkChoice}},
-  \code{\link{checkDisjunct}}, \code{\link{checkSubset}}
+Other set: 
+\code{\link{checkChoice}()},
+\code{\link{checkDisjunct}()},
+\code{\link{checkSubset}()}
 }
 \concept{set}

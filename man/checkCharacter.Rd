@@ -10,43 +10,130 @@
 \alias{expect_character}
 \title{Check if an argument is a vector of type character}
 \usage{
-checkCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE)
+checkCharacter(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE)
+check_character(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertCharacter(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_character(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testCharacter(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE)
+testCharacter(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE)
+test_character(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_character(x, min.chars = NULL, pattern = NULL, fixed = NULL,
-  ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE,
-  len = NULL, min.len = NULL, max.len = NULL, unique = FALSE,
-  sorted = FALSE, names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_character(
+  x,
+  min.chars = NULL,
+  pattern = NULL,
+  fixed = NULL,
+  ignore.case = FALSE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  unique = FALSE,
+  sorted = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -143,19 +230,27 @@ testCharacter(letters, min.chars = 2)
 testCharacter("example", pattern = "xa")
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkComplex}},
-  \code{\link{checkDataFrame}}, \code{\link{checkDate}},
-  \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

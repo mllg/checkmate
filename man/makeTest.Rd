@@ -51,7 +51,8 @@ testFalse = makeTestFunction(checkFalse)
 print(testFalse)
 }
 \seealso{
-Other CustomConstructors: \code{\link{makeAssertion}},
-  \code{\link{makeExpectation}}
+Other CustomConstructors: 
+\code{\link{makeAssertion}()},
+\code{\link{makeExpectation}()}
 }
 \concept{CustomConstructors}

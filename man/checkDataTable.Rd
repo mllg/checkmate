@@ -10,47 +10,137 @@
 \alias{expect_data_table}
 \title{Check if an argument is a data table}
 \usage{
-checkDataTable(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE)
+checkDataTable(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-check_data_table(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE)
+check_data_table(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-assertDataTable(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertDataTable(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_data_table(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_data_table(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testDataTable(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE)
+testDataTable(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-test_data_table(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE)
+test_data_table(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-expect_data_table(x, key = NULL, index = NULL, types = character(0L),
-  any.missing = TRUE, all.missing = TRUE, min.rows = NULL,
-  max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL,
-  ncols = NULL, row.names = NULL, col.names = NULL,
-  null.ok = FALSE, info = NULL, label = vname(x))
+expect_data_table(
+  x,
+  key = NULL,
+  index = NULL,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -154,8 +244,10 @@ testDataTable(dt)
 testDataTable(dt, key = "Species", index = "Sepal.Length", any.missing = FALSE)
 }
 \seealso{
-Other compound: \code{\link{checkArray}},
-  \code{\link{checkDataFrame}}, \code{\link{checkMatrix}},
-  \code{\link{checkTibble}}
+Other compound: 
+\code{\link{checkArray}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkTibble}()}
 }
 \concept{compound}

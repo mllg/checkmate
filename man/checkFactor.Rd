@@ -10,47 +10,137 @@
 \alias{expect_factor}
 \title{Check if an argument is a factor}
 \usage{
-checkFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+checkFactor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-check_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+check_factor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-assertFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assertFactor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, .var.name = vname(x), add = NULL)
+assert_factor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testFactor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+testFactor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-test_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE)
+test_factor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE
+)
 
-expect_factor(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE,
-  any.missing = TRUE, all.missing = TRUE, len = NULL,
-  min.len = NULL, max.len = NULL, n.levels = NULL,
-  min.levels = NULL, max.levels = NULL, unique = FALSE,
-  names = NULL, null.ok = FALSE, info = NULL, label = vname(x))
+expect_factor(
+  x,
+  levels = NULL,
+  ordered = NA,
+  empty.levels.ok = TRUE,
+  any.missing = TRUE,
+  all.missing = TRUE,
+  len = NULL,
+  min.len = NULL,
+  max.len = NULL,
+  n.levels = NULL,
+  min.levels = NULL,
+  max.levels = NULL,
+  unique = FALSE,
+  names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -148,18 +238,27 @@ testFactor(x)
 testFactor(x, empty.levels.ok = FALSE)
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFormula}}, \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

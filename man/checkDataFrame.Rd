@@ -10,43 +10,123 @@
 \alias{expect_data_frame}
 \title{Check if an argument is a data frame}
 \usage{
-checkDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+checkDataFrame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-check_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+check_data_frame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-assertDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertDataFrame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_data_frame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testDataFrame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+testDataFrame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-test_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+test_data_frame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-expect_data_frame(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_data_frame(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -140,24 +220,34 @@ testDataFrame(iris)
 testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "named")
 }
 \seealso{
-Other compound: \code{\link{checkArray}},
-  \code{\link{checkDataTable}}, \code{\link{checkMatrix}},
-  \code{\link{checkTibble}}
+Other compound: 
+\code{\link{checkArray}()},
+\code{\link{checkDataTable}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkTibble}()}
 
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDate}},
-  \code{\link{checkDouble}},
-  \code{\link{checkEnvironment}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkEnvironment}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}
 \concept{compound}

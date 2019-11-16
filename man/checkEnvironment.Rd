@@ -14,18 +14,33 @@ checkEnvironment(x, contains = character(0L), null.ok = FALSE)
 
 check_environment(x, contains = character(0L), null.ok = FALSE)
 
-assertEnvironment(x, contains = character(0L), null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertEnvironment(
+  x,
+  contains = character(0L),
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_environment(x, contains = character(0L), null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_environment(
+  x,
+  contains = character(0L),
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
 testEnvironment(x, contains = character(0L), null.ok = FALSE)
 
 test_environment(x, contains = character(0L), null.ok = FALSE)
 
-expect_environment(x, contains = character(0L), null.ok = FALSE,
-  info = NULL, label = vname(x))
+expect_environment(
+  x,
+  contains = character(0L),
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -80,18 +95,27 @@ testEnvironment(ee)
 testEnvironment(ee, contains = "a")
 }
 \seealso{
-Other basetypes: \code{\link{checkArray}},
-  \code{\link{checkAtomicVector}},
-  \code{\link{checkAtomic}}, \code{\link{checkCharacter}},
-  \code{\link{checkComplex}}, \code{\link{checkDataFrame}},
-  \code{\link{checkDate}}, \code{\link{checkDouble}},
-  \code{\link{checkFactor}}, \code{\link{checkFormula}},
-  \code{\link{checkFunction}},
-  \code{\link{checkIntegerish}},
-  \code{\link{checkInteger}}, \code{\link{checkList}},
-  \code{\link{checkLogical}}, \code{\link{checkMatrix}},
-  \code{\link{checkNull}}, \code{\link{checkNumeric}},
-  \code{\link{checkPOSIXct}}, \code{\link{checkRaw}},
-  \code{\link{checkVector}}
+Other basetypes: 
+\code{\link{checkArray}()},
+\code{\link{checkAtomicVector}()},
+\code{\link{checkAtomic}()},
+\code{\link{checkCharacter}()},
+\code{\link{checkComplex}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDate}()},
+\code{\link{checkDouble}()},
+\code{\link{checkFactor}()},
+\code{\link{checkFormula}()},
+\code{\link{checkFunction}()},
+\code{\link{checkIntegerish}()},
+\code{\link{checkInteger}()},
+\code{\link{checkList}()},
+\code{\link{checkLogical}()},
+\code{\link{checkMatrix}()},
+\code{\link{checkNull}()},
+\code{\link{checkNumeric}()},
+\code{\link{checkPOSIXct}()},
+\code{\link{checkRaw}()},
+\code{\link{checkVector}()}
 }
 \concept{basetypes}

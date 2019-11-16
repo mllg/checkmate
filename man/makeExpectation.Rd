@@ -7,8 +7,12 @@
 \usage{
 makeExpectation(x, res, info, label)
 
-makeExpectationFunction(check.fun, c.fun = NULL, use.namespace = FALSE,
-  env = parent.frame())
+makeExpectationFunction(
+  check.fun,
+  c.fun = NULL,
+  use.namespace = FALSE,
+  env = parent.frame()
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -65,7 +69,8 @@ expect_false = makeExpectationFunction(checkFalse)
 print(expect_false)
 }
 \seealso{
-Other CustomConstructors: \code{\link{makeAssertion}},
-  \code{\link{makeTest}}
+Other CustomConstructors: 
+\code{\link{makeAssertion}()},
+\code{\link{makeTest}()}
 }
 \concept{CustomConstructors}

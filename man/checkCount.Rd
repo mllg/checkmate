@@ -10,29 +10,69 @@
 \alias{expect_count}
 \title{Check if an argument is a count}
 \usage{
-checkCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+checkCount(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-check_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+check_count(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-assertCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assertCount(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, coerce = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_count(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  coerce = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testCount(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+testCount(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-test_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE)
+test_count(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE
+)
 
-expect_count(x, na.ok = FALSE, positive = FALSE,
-  tol = sqrt(.Machine$double.eps), null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_count(
+  x,
+  na.ok = FALSE,
+  positive = FALSE,
+  tol = sqrt(.Machine$double.eps),
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -105,9 +145,12 @@ testCount(1)
 testCount(-1)
 }
 \seealso{
-Other scalars: \code{\link{checkFlag}},
-  \code{\link{checkInt}}, \code{\link{checkNumber}},
-  \code{\link{checkScalarNA}}, \code{\link{checkScalar}},
-  \code{\link{checkString}}
+Other scalars: 
+\code{\link{checkFlag}()},
+\code{\link{checkInt}()},
+\code{\link{checkNumber}()},
+\code{\link{checkScalarNA}()},
+\code{\link{checkScalar}()},
+\code{\link{checkString}()}
 }
 \concept{scalars}

@@ -10,43 +10,123 @@
 \alias{expect_tibble}
 \title{Check if an argument is a tibble}
 \usage{
-checkTibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+checkTibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-check_tibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+check_tibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-assertTibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assertTibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-assert_tibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE,
-  .var.name = vname(x), add = NULL)
+assert_tibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  .var.name = vname(x),
+  add = NULL
+)
 
-testTibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+testTibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-test_tibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE)
+test_tibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE
+)
 
-expect_tibble(x, types = character(0L), any.missing = TRUE,
-  all.missing = TRUE, min.rows = NULL, max.rows = NULL,
-  min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL,
-  row.names = NULL, col.names = NULL, null.ok = FALSE, info = NULL,
-  label = vname(x))
+expect_tibble(
+  x,
+  types = character(0L),
+  any.missing = TRUE,
+  all.missing = TRUE,
+  min.rows = NULL,
+  max.rows = NULL,
+  min.cols = NULL,
+  max.cols = NULL,
+  nrows = NULL,
+  ncols = NULL,
+  row.names = NULL,
+  col.names = NULL,
+  null.ok = FALSE,
+  info = NULL,
+  label = vname(x)
+)
 }
 \arguments{
 \item{x}{[any]\cr
@@ -142,8 +222,10 @@ testTibble(x)
 testTibble(x, nrow = 150, any.missing = FALSE)
 }
 \seealso{
-Other compound: \code{\link{checkArray}},
-  \code{\link{checkDataFrame}},
-  \code{\link{checkDataTable}}, \code{\link{checkMatrix}}
+Other compound: 
+\code{\link{checkArray}()},
+\code{\link{checkDataFrame}()},
+\code{\link{checkDataTable}()},
+\code{\link{checkMatrix}()}
 }
 \concept{compound}
