@@ -100,7 +100,7 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
                 if (!ISNAN(xp[i]) && xp[i] < tmp)
-                    return message("Element %i is not >= %g", i + i, tmp);
+                    return message("Element %i is not >= %g", i + 1, tmp);
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER_RO(x);
