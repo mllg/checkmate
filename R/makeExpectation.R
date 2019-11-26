@@ -1,4 +1,4 @@
-backend = new.env(parent = emptyenv())
+test_backend = new.env(parent = emptyenv())
 
 #' @title Select Backend for Unit Tests
 #'
@@ -18,10 +18,10 @@ register_test_backend = function(name) {
   name = match.arg(name, c("testthat", "tinytest"))
   if (name == "testthat") {
     requireNamespace("testthat")
-    backend$name = "testthat"
+    test_backend$name = "testthat"
   } else {
     requireNamespace("tinytest")
-    backend$name = "tinytest"
+    test_backend$name = "tinytest"
   }
   invisible(NULL)
 }
@@ -33,11 +33,11 @@ detect_test_backend = function() {
 }
 
 get_test_backend = function() {
-  if (is.null(backend$name)) {
-    backend$name = detect_test_backend()
-    register_test_backend(backend$name)
+  if (is.null(test_backend$name)) {
+    test_backend$name = detect_test_backend()
+    register_test_backend(test_backend$name)
   }
-  backend$name
+  test_backend$name
 }
 
 #' @title Turn a Check into an Expectation
