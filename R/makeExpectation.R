@@ -27,7 +27,7 @@ register_test_backend = function(name) {
 }
 
 detect_test_backend = function() {
-  if (isNamespaceLoaded("tinytest"))
+  if ("tinytest" %in% .packages())
     return("tinytest")
   return("testthat")
 }
