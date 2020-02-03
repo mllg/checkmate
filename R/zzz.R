@@ -130,7 +130,7 @@ register_tinytest = function() {
 }
 
 .onLoad = function(libpath, pkgname) {
-  backports::import(pkgname, c("dir.exists", "isFALSE"))
+  backports::import(pkgname)
   if ("tinytest" %in% loadedNamespaces())
     register_tinytest()
   setHook(packageEvent("tinytest", "onLoad"), function(...) register_tinytest(), action = "append")
