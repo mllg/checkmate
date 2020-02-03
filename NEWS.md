@@ -3,10 +3,9 @@
   `tinytest` is used as backend if it is attached, otherwise checkmate defaults
   to `testthat`.
   There is now also a vignette on how to setup `checkmate` for `tinytest`.
-
-# Version 1.9.5
 * Coercion now only affects double vectors.
 * Improved error message for type detection in `*List`.
+* Fixed documentation.
 
 # Version 1.9.4
 * Fixed factors being detected as integerish.

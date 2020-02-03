@@ -13,8 +13,6 @@
 #' @templateVar fn List
 #' @template x
 #' @inheritParams checkVector
-#' @param ... [any]\cr
-#'  Additional parameters used in a call of \code{\link{checkVector}}.
 #' @param types [\code{character}]\cr
 #'  Character vector of class names. Each list element must inherit
 #'  from at least one of the provided types.

@@ -162,9 +162,6 @@ See \code{\link[testthat]{expect_that}}.}
 \item{label}{[\code{character(1)}]\cr
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
-
-\item{...}{[any]\cr
-Additional parameters used in a call of \code{\link{checkVector}}.}
 }
 \value{
 Depending on the function prefix:
