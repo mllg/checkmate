@@ -14,7 +14,6 @@ jobs:
       - name: Install dependencies
         run: |
           Rscript -e 'install.packages("remotes")' \
-                  -e 'install.packages("svglite")' \
                   -e 'remotes::install_deps(dependencies = TRUE)' \
                   -e 'remotes::install_github("jimhester/pkgdown@github-actions-deploy")'
       - name: Install package

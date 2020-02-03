@@ -1,5 +1,0 @@
-figures:
-  dev: "svglite::svglite"
-  fig.ext: "svg"
-  dev.args:
-    pointsize: 12
