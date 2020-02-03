@@ -7,7 +7,6 @@
 #' @template null.ok
 #' @template checker
 #' @family basetypes
-#' @seealso \code{\link{checkBit}}
 #' @useDynLib checkmate c_check_logical
 #' @export
 #' @examples

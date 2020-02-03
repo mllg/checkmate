@@ -96,7 +96,6 @@ Tests and assertions to perform frequent argument checks. A
 \section{Popular data types of third party packages}{
 
 \itemize{
-  \item{\code{\link{checkBit}}}
   \item{\code{\link{checkDataTable}}}
   \item{\code{\link{checkR6}}}
   \item{\code{\link{checkTibble}}}
