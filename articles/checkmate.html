@@ -88,7 +88,7 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2020-02-03</h4>
+            <h4 class="date">2020-05-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd"><code>vignettes/checkmate.Rmd</code></a></small>
       <div class="hidden name"><code>checkmate.Rmd</code></div>
@@ -183,9 +183,9 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># file: tests/test-all.R</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(testthat)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(checkmate) <span class="co"># for testthat extensions</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="kw"><a href="https://rdrr.io/pkg/testthat/man/test_dir.html">test_check</a></span>(<span class="st">"mypkg"</span>)</span></code></pre></div>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw"><a href="https://testthat.r-lib.org/reference/test_dir.html">test_check</a></span>(<span class="st">"mypkg"</span>)</span></code></pre></div>
 <p>Now you are all set and can use more than 30 new expectations in your tests.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://rdrr.io/pkg/testthat/man/test_that.html">test_that</a></span>(<span class="st">"checkmate is a sweet extension for testthat"</span>, {</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://testthat.r-lib.org/reference/test_that.html">test_that</a></span>(<span class="st">"checkmate is a sweet extension for testthat"</span>, {</span>
 <span id="cb5-2"><a href="#cb5-2"></a>  x =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">100</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw"><a href="../reference/checkNumeric.html">expect_numeric</a></span>(x, <span class="dt">len =</span> <span class="dv">100</span>, <span class="dt">any.missing =</span> <span class="ot">FALSE</span>, <span class="dt">lower =</span> <span class="dv">0</span>, <span class="dt">upper =</span> <span class="dv">1</span>)</span>
 <span id="cb5-4"><a href="#cb5-4"></a>  <span class="co"># or, equivalent, using the lazy style:</span></span>
@@ -213,9 +213,9 @@
 <span id="cb6-10"><a href="#cb6-10"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr   min     lq      mean median     uq       max neval
-##    r(x) 4.230 4.4795 167.26440 4.6540 4.8810 16234.770   100
-##   cm(x) 2.754 2.9755  47.15484 3.1855 3.3835  4249.491   100
-##  cmq(x) 1.991 2.1485  13.60379 2.4060 2.5950  1065.022   100</code></pre>
+##    r(x) 5.763 8.2860 263.88481 8.4970 8.7625 25513.190   100
+##   cm(x) 3.774 5.8450  87.72985 6.0760 6.3170  7756.092   100
+##  cmq(x) 2.651 4.0585  26.90106 4.3295 4.5790  2128.648   100</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
@@ -230,10 +230,10 @@
 <span id="cb10-5"><a href="#cb10-5"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb10-6"><a href="#cb10-6"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr    min     lq     mean  median      uq      max neval
-##    r(x) 17.055 18.021 63.70866 18.4725 19.2395 4357.682   100
-##   cm(x)  7.034  7.853 21.16229  8.5270  9.4760 1090.613   100
-##  cmq(x)  7.210  7.719 21.01290  8.4730  8.9665 1188.070   100</code></pre>
+##    expr    min      lq     mean  median      uq      max neval
+##    r(x) 18.424 19.3285 91.62725 19.7025 21.5265 6927.511   100
+##   cm(x)  7.820  8.4300 25.07348  9.3550 10.0715 1365.612   100
+##  cmq(x)  7.505  7.9145 27.21689  8.8665  9.8005 1696.600   100</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
@@ -248,10 +248,10 @@
 <span id="cb14-5"><a href="#cb14-5"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb14-6"><a href="#cb14-6"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr      min        lq      mean    median        uq      max neval
-##    r(x) 1393.331 1455.4960 1718.3747 1521.8015 1896.7490 4571.122   100
-##   cm(x)  115.022  116.7355  145.2555  121.2930  140.8905 1161.565   100
-##  cmq(x)  126.414  128.5150  155.9785  131.0385  137.6595 1272.651   100</code></pre>
+##    expr      min        lq      mean   median        uq      max neval
+##    r(x) 1413.884 1446.6105 1996.4852 1754.044 2449.3095 5341.521   100
+##   cm(x)  104.254  107.7425  164.8167  122.615  159.0355 2262.238   100
+##  cmq(x)  117.001  120.9880  175.6146  143.345  189.4865 1417.066   100</code></pre>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
@@ -267,10 +267,10 @@
 <span id="cb18-6"><a href="#cb18-6"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb18-7"><a href="#cb18-7"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr     min       lq      mean   median       uq      max neval
-##    r(x) 190.990 193.4720 234.32338 195.4125 197.9555 3899.374   100
-##   cm(x)  32.155  33.6675  47.77250  35.5065  36.5825 1038.443   100
-##  cmq(x)  20.761  21.3670  32.30362  22.4165  22.7845 1011.242   100</code></pre>
+##    expr     min       lq      mean   median      uq      max neval
+##    r(x) 169.658 181.5935 281.06789 226.0450 243.972 5776.237   100
+##   cm(x)  47.630  50.8680  86.24092  75.5965  80.461 1614.439   100
+##  cmq(x)  35.275  37.2205  65.88127  50.5840  58.809 1491.062   100</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
@@ -279,10 +279,10 @@
 <span id="cb22-3"><a href="#cb22-3"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr     min       lq      mean   median       uq     max neval
-##    r(x) 160.622 209.3270 219.64302 227.8395 230.2460 292.887   100
-##   cm(x)   6.978  10.6880  12.90181  11.4180  15.4555  37.586   100
-##  cmq(x)   1.179   2.3715   3.32220   2.7950   4.6720   9.198   100</code></pre>
+##    expr    min       lq      mean   median       uq     max neval
+##    r(x) 97.567 155.4345 186.15054 198.7355 205.3665 377.545   100
+##   cm(x)  8.235  11.5460  13.72957  13.0335  16.3155  51.312   100
+##  cmq(x)  1.465   2.0105   3.39659   3.5450   4.1830   9.480   100</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
@@ -298,11 +298,11 @@
 <span id="cb26-6"><a href="#cb26-6"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x.sexp), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x.sexp), <span class="kw">r</span>(x.altrep), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x.altrep))</span>
 <span id="cb26-7"><a href="#cb26-7"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##          expr    min      lq     mean  median      uq      max neval
-##     r(x.sexp) 44.251 64.4095 93.43648 65.1230 65.7405 2906.619   100
-##    cm(x.sexp) 18.573 19.1585 33.10689 20.0405 21.7245 1278.884   100
-##   r(x.altrep) 80.723 83.3480 85.01623 84.2415 85.2595   99.486   100
-##  cm(x.altrep)  4.505  5.1570  7.80885  7.1830  7.8435  126.618   100</code></pre>
+##          expr    min      lq      mean  median      uq      max neval
+##     r(x.sexp) 47.615 66.3795  80.92679 70.4040 87.2945  284.736   100
+##    cm(x.sexp) 19.400 21.7130  39.73276 23.6785 32.4410 1213.552   100
+##   r(x.altrep) 57.824 77.6345 125.29334 85.9690 94.1890 3482.116   100
+##  cm(x.altrep)  5.413  6.4660  10.54300  8.8110 10.8960  139.034   100</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
@@ -384,13 +384,13 @@
 <a href="#session-info" class="anchor"></a>Session Info</h2>
 <p>For the sake of completeness, here the <code><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo()</a></code> for the benchmark (but remember the note before on <code>knitr</code> possibly biasing the results).</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="kw"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span>()</span></code></pre></div>
-<pre><code>## R version 3.6.2 (2019-12-12)
-## Platform: x86_64-apple-darwin15.6.0 (64-bit)
-## Running under: macOS Catalina 10.15.2
+<pre><code>## R version 4.0.0 (2020-04-24)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Catalina 10.15.4
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
-## LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
@@ -399,18 +399,19 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-7 ggplot2_3.2.1        checkmate_2.0.0     
+## [1] microbenchmark_1.4-7 ggplot2_3.3.0        checkmate_2.0.0     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_1.0.3         knitr_1.27         magrittr_1.5       MASS_7.3-51.4     
-##  [5] munsell_0.5.0      colorspace_1.4-1   R6_2.4.1           rlang_0.4.4       
-##  [9] stringr_1.4.0      tools_3.6.2        grid_3.6.2         gtable_0.3.0      
-## [13] xfun_0.12          withr_2.1.2        htmltools_0.4.0    lazyeval_0.2.2    
-## [17] yaml_2.2.1         assertthat_0.2.1   digest_0.6.23      rprojroot_1.3-2   
-## [21] tibble_2.1.3       lifecycle_0.1.0    pkgdown_1.4.1.9000 crayon_1.3.4      
-## [25] farver_2.0.3       fs_1.3.1           memoise_1.1.0      evaluate_0.14     
-## [29] rmarkdown_2.1      stringi_1.4.5      pillar_1.4.3       compiler_3.6.2    
-## [33] scales_1.1.0       desc_1.2.0         backports_1.1.5    pkgconfig_2.0.3</code></pre>
+##  [1] Rcpp_1.0.4.6       knitr_1.28         magrittr_1.5       MASS_7.3-51.5     
+##  [5] munsell_0.5.0      colorspace_1.4-1   R6_2.4.1           rlang_0.4.6       
+##  [9] stringr_1.4.0      tools_4.0.0        grid_4.0.0         gtable_0.3.0      
+## [13] xfun_0.13          withr_2.2.0        ellipsis_0.3.0     htmltools_0.4.0   
+## [17] yaml_2.2.1         assertthat_0.2.1   digest_0.6.25      rprojroot_1.3-2   
+## [21] tibble_3.0.1       lifecycle_0.2.0    pkgdown_1.4.1.9000 crayon_1.3.4      
+## [25] farver_2.0.3       vctrs_0.2.4        fs_1.4.1           glue_1.4.0        
+## [29] memoise_1.1.0      evaluate_0.14      rmarkdown_2.1      stringi_1.4.6     
+## [33] pillar_1.4.4       compiler_4.0.0     scales_1.1.0       desc_1.2.0        
+## [37] backports_1.1.6    pkgconfig_2.0.3</code></pre>
 </div>
   </div>
 

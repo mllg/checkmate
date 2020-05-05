@@ -307,7 +307,7 @@ Collection to store assertion messages. See <code><a href='AssertCollection.html
       <th>info</th>
       <td><p>[character(1)]<br />
 Extra information to be included in the message for the testthat reporter.
-See <code><a href='https://rdrr.io/pkg/testthat/man/expect_that.html'>expect_that</a></code>.</p></td>
+See <code><a href='https://testthat.r-lib.org/reference/expect_that.html'>expect_that</a></code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
@@ -333,11 +333,11 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
  returns <code>FALSE</code>,
  and <code>checkList</code> returns a string with the error message.
  The function <code>expect_list</code> always returns an
- <code><a href='https://rdrr.io/pkg/testthat/man/expectation.html'>expectation</a></code>.</p>
+ <code><a href='https://testthat.r-lib.org/reference/expectation.html'>expectation</a></code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Contrary to R's <code><a href='https://rdrr.io/r/base/list.html'>is.list</a></code>, objects of type <code><a href='https://rdrr.io/r/base/list.html'>pairlist</a></code> are not
-recognized as list.</p>
+    <p>Contrary to R's <code><a href='https://rdrr.io/r/base/list.html'>is.list</a></code>, objects of type <code><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></code>
+and <code><a href='https://rdrr.io/r/base/list.html'>pairlist</a></code> are not recognized as list.</p>
 <p>Missingness is defined here as elements of the list being <code>NULL</code>, analogously to <code><a href='anyMissing.html'>anyMissing</a></code>.</p>
 <p>The test for uniqueness does differentiate between the different NA types which are built-in in R.
 This is required to be consistent with <code><a href='https://rdrr.io/r/base/unique.html'>unique</a></code> while checking
