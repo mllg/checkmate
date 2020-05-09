@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0.9000</span>
       </span>
     </div>
 
@@ -88,7 +88,7 @@
       <h1>Checkmate</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2020-05-05</h4>
+            <h4 class="date">2020-05-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd"><code>vignettes/checkmate.Rmd</code></a></small>
       <div class="hidden name"><code>checkmate.Rmd</code></div>
@@ -212,10 +212,10 @@
 <span id="cb6-9"><a href="#cb6-9"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr   min     lq      mean median     uq       max neval
-##    r(x) 5.763 8.2860 263.88481 8.4970 8.7625 25513.190   100
-##   cm(x) 3.774 5.8450  87.72985 6.0760 6.3170  7756.092   100
-##  cmq(x) 2.651 4.0585  26.90106 4.3295 4.5790  2128.648   100</code></pre>
+##    expr   min    lq      mean median     uq       max neval
+##    r(x) 5.089 5.450 177.58938 5.6625 5.9000 17151.001   100
+##   cm(x) 3.507 3.784  15.90223 3.9915 4.2055  1076.514   100
+##  cmq(x) 2.432 2.627  48.32646 2.9560 3.1730  4450.976   100</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
@@ -231,9 +231,9 @@
 <span id="cb10-6"><a href="#cb10-6"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq      max neval
-##    r(x) 18.424 19.3285 91.62725 19.7025 21.5265 6927.511   100
-##   cm(x)  7.820  8.4300 25.07348  9.3550 10.0715 1365.612   100
-##  cmq(x)  7.505  7.9145 27.21689  8.8665  9.8005 1696.600   100</code></pre>
+##    r(x) 18.438 19.4215 74.36999 19.8030 20.1915 5404.607   100
+##   cm(x)  7.733  8.3725 22.40472  9.0905  9.5720 1241.136   100
+##  cmq(x)  7.269  7.6225 24.27592  8.1300  9.0175 1559.417   100</code></pre>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
@@ -248,10 +248,10 @@
 <span id="cb14-5"><a href="#cb14-5"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x), <span class="kw">cmq</span>(x))</span>
 <span id="cb14-6"><a href="#cb14-6"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr      min        lq      mean   median        uq      max neval
-##    r(x) 1413.884 1446.6105 1996.4852 1754.044 2449.3095 5341.521   100
-##   cm(x)  104.254  107.7425  164.8167  122.615  159.0355 2262.238   100
-##  cmq(x)  117.001  120.9880  175.6146  143.345  189.4865 1417.066   100</code></pre>
+##    expr      min       lq      mean    median        uq      max neval
+##    r(x) 1307.704 1401.592 1537.3180 1420.9100 1444.8400 4947.891   100
+##   cm(x)  101.090  103.147  124.1062  107.1635  111.5820 1264.135   100
+##  cmq(x)  113.876  115.053  136.7005  117.6845  121.1525 1430.452   100</code></pre>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
@@ -268,9 +268,9 @@
 <span id="cb18-7"><a href="#cb18-7"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr     min       lq      mean   median      uq      max neval
-##    r(x) 169.658 181.5935 281.06789 226.0450 243.972 5776.237   100
-##   cm(x)  47.630  50.8680  86.24092  75.5965  80.461 1614.439   100
-##  cmq(x)  35.275  37.2205  65.88127  50.5840  58.809 1491.062   100</code></pre>
+##    r(x) 165.558 172.2005 223.09126 175.0585 183.951 4292.032   100
+##   cm(x)  46.555  48.9040  67.30730  50.5815  52.422 1178.113   100
+##  cmq(x)  34.676  35.7100  49.17442  36.4970  37.531 1126.247   100</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
@@ -280,9 +280,9 @@
 <span id="cb22-4"><a href="#cb22-4"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min       lq      mean   median       uq     max neval
-##    r(x) 97.567 155.4345 186.15054 198.7355 205.3665 377.545   100
-##   cm(x)  8.235  11.5460  13.72957  13.0335  16.3155  51.312   100
-##  cmq(x)  1.465   2.0105   3.39659   3.5450   4.1830   9.480   100</code></pre>
+##    r(x) 98.314 154.8070 174.92921 158.8520 202.7485 301.883   100
+##   cm(x)  7.786   9.1965  13.34568  13.0575  14.1825  39.304   100
+##  cmq(x)  1.345   2.0330   3.28063   2.9790   4.0770   8.336   100</code></pre>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
@@ -298,11 +298,11 @@
 <span id="cb26-6"><a href="#cb26-6"></a>mb =<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span>(<span class="kw">r</span>(x.sexp), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x.sexp), <span class="kw">r</span>(x.altrep), <span class="kw"><a href="https://rdrr.io/r/grDevices/cm.html">cm</a></span>(x.altrep))</span>
 <span id="cb26-7"><a href="#cb26-7"></a><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(mb)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##          expr    min      lq      mean  median      uq      max neval
-##     r(x.sexp) 47.615 66.3795  80.92679 70.4040 87.2945  284.736   100
-##    cm(x.sexp) 19.400 21.7130  39.73276 23.6785 32.4410 1213.552   100
-##   r(x.altrep) 57.824 77.6345 125.29334 85.9690 94.1890 3482.116   100
-##  cm(x.altrep)  5.413  6.4660  10.54300  8.8110 10.8960  139.034   100</code></pre>
+##          expr    min      lq      mean median      uq      max neval
+##     r(x.sexp) 45.530 64.8270 103.43799 66.552 73.9245 3216.340   100
+##    cm(x.sexp) 18.788 19.4205  36.20952 20.324 22.4755 1404.584   100
+##   r(x.altrep) 56.489 75.0700  80.32624 76.512 79.6995  112.596   100
+##  cm(x.altrep)  5.123  6.0235   9.27054  8.063  8.7535  160.503   100</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot</a></span>(mb)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
@@ -399,7 +399,7 @@
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] microbenchmark_1.4-7 ggplot2_3.3.0        checkmate_2.0.0     
+## [1] microbenchmark_1.4-7 ggplot2_3.3.0        checkmate_2.0.0-9000
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Rcpp_1.0.4.6       knitr_1.28         magrittr_1.5       MASS_7.3-51.5     

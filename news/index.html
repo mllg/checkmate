@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0.9000</span>
       </span>
     </div>
 
@@ -125,6 +125,15 @@
       <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="version-210" class="section level1">
+<h1 class="page-header">
+<a href="#version-210" class="anchor"></a>Version 2.1.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> instead of <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;=</a></code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
+<li>Coercion of double to integer in <code><a href="../reference/checkInt.html">assertInt()</a></code> and <code><a href="../reference/checkIntegerish.html">assertIntegerish()</a></code> now round to the next integer instead of always rounding via <code><a href="https://rdrr.io/r/base/Round.html">trunc()</a></code>.</li>
+</ul>
+</div>
     <div id="version-200" class="section level1">
 <h1 class="page-header">
 <a href="#version-200" class="anchor"></a>Version 2.0.0<small> 2020-02-06 </small>
@@ -490,6 +499,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#version-210">2.1.0</a></li>
         <li><a href="#version-200">2.0.0</a></li>
         <li><a href="#version-194">1.9.4</a></li>
         <li><a href="#version-193">1.9.3</a></li>
