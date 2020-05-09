@@ -2,8 +2,8 @@
 #'
 #' @description
 #' An integerish value is defined as value safely convertible to integer.
-#' This includes integers and numeric values which are close to an integer
-#' w.r.t. a numeric tolerance.
+#' This includes integers and numeric values which sufficiently close to an
+#' integer w.r.t. a numeric tolerance `tol`.
 #'
 #' @note
 #' To convert from integerish to integer, use \code{\link{asInteger}}.

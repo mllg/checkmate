@@ -88,3 +88,13 @@ test_that("factors are detected (#164)", {
   x = factor(letters)
   expect_error(assertIntegerish(x), "factor")
 })
+
+test_that("0 tolerance works (#177)", {
+  expect_true(isIntegerish(1, tol = 0))
+})
+
+test_that("coerce rounds to next integer", {
+  x = 1 - sqrt(.Machine$double.eps) / 10
+  y = assert_integerish(x, coerce = TRUE)
+  expect_identical(y, 1L)
+})

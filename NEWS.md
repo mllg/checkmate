@@ -1,3 +1,10 @@
+# Version 2.1.0
+* Checks for integerish now compare the tolerance with the difference to the
+  nearest integer with `>` instead of `>=` to allow specifying a tolerance of
+  exactly `0` (#177).
+* Coercion of double to integer in `assertInt()` and `assertIntegerish()` now
+  round to the next integer instead of always rounding via `trunc()`.
+
 # Version 2.0.0
 * Expectations now optionally support the package `tinytest`.
   `tinytest` is used as backend if it is attached, otherwise checkmate defaults
