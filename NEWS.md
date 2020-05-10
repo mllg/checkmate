@@ -4,6 +4,8 @@
   exactly `0` (#177).
 * Coercion of double to integer in `assertInt()` and `assertIntegerish()` now
   round to the nearest integer instead of always rounding via `trunc()`.
+* Fixed an error message where the wrong variable name was reported by
+  `assert()` (#182).
 
 # Version 2.0.0
 * Expectations now optionally support the package `tinytest`.

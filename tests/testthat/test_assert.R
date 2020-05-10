@@ -31,3 +31,8 @@ test_that("bug #69", {
   res = assert(checkIntegerish(sub), checkLogical(sub, len = 150))
   expect_true(res)
 })
+
+test_that("correct variable is reported (#182)", {
+  f = function(a, b) assert(checkFunction(a), checkNumeric(b), combine = "and")
+  expect_error(f(identity, "a"), "'b'")
+})

@@ -51,7 +51,7 @@ assert = function(..., combine = "or", .var.name = NULL) {
       val = eval(dots[[i]], envir = env)
       if (!isTRUE(val)) {
         if (is.null(.var.name))
-          .var.name = as.character(dots[[1L]])[2L]
+          .var.name = as.character(dots[[i]])[2L]
         mstop("Assertion on '%s' failed. %s.", .var.name, val)
       }
     }
