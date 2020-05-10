@@ -6,6 +6,8 @@
   round to the nearest integer instead of always rounding via `trunc()`.
 * Fixed an error message where the wrong variable name was reported by
   `assert()` (#182).
+* Checks on POSIXct dates with storage mode integer should now work instead of
+  raising an exception (#175).
 
 # Version 2.0.0
 * Expectations now optionally support the package `tinytest`.

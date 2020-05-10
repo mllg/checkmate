@@ -192,7 +192,7 @@ static int parse_class(checker_t *checker, const char *rule) {
             checker->class.name = CL_DATAFRAME;
             break;
         case 'P':
-            checker->missing_fun = &find_missing_double;
+            checker->missing_fun = &find_missing_numeric;
         case 'p':
             checker->class.fun = &is_class_posixct;
             checker->class.name = CL_POSIX;

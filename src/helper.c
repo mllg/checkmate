@@ -144,5 +144,5 @@ Rboolean is_class_array(SEXP x) { return isArray(x); }
 Rboolean is_class_frame(SEXP x) { return isFrame(x); }
 Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 Rboolean is_class_null(SEXP x) { return isNull(x); }
-Rboolean is_class_posixct(SEXP x) { return isReal(x) && inherits(x, "POSIXct"); }
+Rboolean is_class_posixct(SEXP x) { return isNumeric(x) && inherits(x, "POSIXct"); }
 Rboolean is_class_raw(SEXP x) { return TYPEOF(x) == RAWSXP; }

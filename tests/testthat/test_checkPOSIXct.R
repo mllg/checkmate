@@ -45,3 +45,9 @@ test_that("checkPOSIXct", {
   expect_error(assertPOSIXct(now_est, upper = tomorrow_gmt), "Timezones")
   expect_true(testPOSIXct(now_gmt, lower = yesterday_gmt, upper = tomorrow_gmt))
 })
+
+test_that("integer posix (#175)", {
+  intSeq = seq(as.POSIXct("2000-01-01"), length.out = 31, by = "1 day")
+  expect_true(test_posixct(intSeq, any.missing = FALSE, lower = intSeq[1], upper = intSeq[31]))
+  expect_true(test_posixct(intSeq, any.missing = FALSE, lower = as.POSIXct("2000-01-01"), upper = as.POSIXct("2001-01-01")))
+})

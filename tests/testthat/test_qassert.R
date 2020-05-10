@@ -281,3 +281,8 @@ test_that("error messages are properly generated", {
 test_that("multiple rules are correctly processed", {
   expect_true(qtest(1, c("M", "F", "C", "N")))
 })
+
+test_that("integer posix (#175)", {
+  intSeq = seq(as.POSIXct("2000-01-01"), length.out = 31, by = "1 day")
+  expect_true(qtest(intSeq, "P+"))
+})

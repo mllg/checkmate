@@ -137,57 +137,65 @@ static Rboolean check_posix_bounds(SEXP x, SEXP lower, SEXP upper) {
         return TRUE;
 
     SEXP tz = PROTECT(getAttrib(x, install("tzone")));
+    R_len_t NPROTECT = 1;
     const Rboolean null_tz = isNull(tz);
+    double *xp;
+    if (isInteger(x)) {
+        SEXP xr = PROTECT(coerceVector(x, REALSXP));
+        NPROTECT++;
+        xp = REAL(xr);
+    } else {
+        xp = REAL(x);
+    }
+
 
     if (!isNull(lower)) {
         if (!is_class_posixct(lower) || length(lower) != 1)
             error("Argument 'lower' must be provided as single POSIXct time");
         SEXP lower_tz = PROTECT(getAttrib(lower, install("tzone")));
+        NPROTECT++;
         if (null_tz != isNull(lower_tz) ||
             (!null_tz && !isNull(lower_tz) && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(lower_tz, 0))) != 0)) {
-            UNPROTECT(2);
+            UNPROTECT(NPROTECT);
             return message("Timezones of 'x' and 'lower' must match");
         }
 
-        const double tmp = REAL_RO(lower)[0];
-        const double *xp = REAL_RO(x);
+        const double tmp = isInteger(lower) ? (double) INTEGER_RO(lower)[0] : REAL_RO(lower)[0];
         const R_xlen_t n = length(x);
         for (R_xlen_t i = 0; i < n; i++) {
             if (!ISNAN(xp[i]) && xp[i] < tmp) {
                 char fmt[256];
                 fmt_posixct(fmt, lower);
-                UNPROTECT(2);
+                UNPROTECT(NPROTECT);
                 return message("Element %i is not >= %s", i + 1, fmt);
             }
         }
-        UNPROTECT(1);
     }
 
     if (!isNull(upper)) {
         if (!is_class_posixct(upper) || length(upper) != 1)
             error("Argument 'upper' must be provided as single POSIXct time");
         SEXP upper_tz = PROTECT(getAttrib(upper, install("tzone")));
+        NPROTECT++;
         if (null_tz != isNull(upper_tz) ||
             (!null_tz && !isNull(upper_tz) && strcmp(CHAR(STRING_ELT(tz, 0)), CHAR(STRING_ELT(upper_tz, 0))) != 0)) {
-            UNPROTECT(2);
+            UNPROTECT(NPROTECT);
             return message("Timezones of 'x' and 'upper' must match");
         }
 
-        const double tmp = REAL_RO(upper)[0];
-        const double *xp = REAL_RO(x);
+        const double tmp = isInteger(upper) ? (double) INTEGER_RO(upper)[0] : REAL_RO(upper)[0];
         const R_xlen_t n = length(x);
         for (R_xlen_t i = 0; i < n; i++) {
             if (!ISNAN(xp[i]) && xp[i] > tmp) {
                 char fmt[256];
                 fmt_posixct(fmt, upper);
-                UNPROTECT(2);
+                UNPROTECT(NPROTECT);
                 return message("Element %i is not <= %s", i + 1, fmt);
             }
         }
-        UNPROTECT(1);
     }
 
-    UNPROTECT(1);
+    UNPROTECT(NPROTECT);
     return TRUE;
 }
 
