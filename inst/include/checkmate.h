@@ -13,6 +13,7 @@ extern "C" {
 
 Rboolean attribute_hidden qtest(SEXP x, const char *rule);
 SEXP attribute_hidden qassert(SEXP x, const char *rule, const char *name);
+SEXP attribute_hidden qcheck(SEXP x, const char *rule, const char *name);
 
 #ifdef __cplusplus
 }
