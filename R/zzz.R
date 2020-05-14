@@ -97,7 +97,8 @@
 #'   \item{\code{\link{wf}} (which.first and which.last)}
 #' }
 #'
-#' @importFrom utils head tail packageVersion getFromNamespace setNames
+#' @importFrom utils head tail packageVersion getFromNamespace
+#' @importFrom stats setNames
 "_PACKAGE"
 
 checkmate = new.env(parent = emptyenv())
