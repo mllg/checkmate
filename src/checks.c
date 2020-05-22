@@ -363,7 +363,8 @@ static Rboolean check_matrix_dims(SEXP x, SEXP min_rows, SEXP max_rows, SEXP min
 }
 
 static Rboolean check_storage(SEXP x, SEXP mode) {
-    if (!isNull(mode)) {
+    if (!isNull(mode) && !all_missing(x)) {
+
         const char * const storage = asString(mode, "mode");
         if (strcmp(storage, "logical") == 0) {
             if (!isLogical(x))

@@ -7,6 +7,8 @@
 * Fixed an error message where the wrong variable name was reported by
   `assert()` (#182).
 * Checks on POSIXct dates with storage mode integer should now work instead of
+* `*Matrix()` and `*Array()` now allow different storage types than the one
+  specified if all values are missing (#184).
   raising an exception (#175).
 
 # Version 2.0.0
