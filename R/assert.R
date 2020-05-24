@@ -14,20 +14,23 @@
 #' @param combine [\code{character(1)}]\cr
 #'  \dQuote{or} or \dQuote{and} to combine the check functions with an OR
 #'  or AND, respectively.
-#' @template var.name
-#' @return Throws an error if all checks fail and invisibly returns
-#'  \code{TRUE} otherwise.
+#' @template assert
+#' @return Throws an error (or pushes the error message to an 
+#'   \code{\link{AssertCollection}} if \code{add} is not \code{NULL}) 
+#'   if the checks fail and invisibly returns \code{TRUE} otherwise.
 #' @export
 #' @examples
 #' x = 1:10
 #' assert(checkNull(x), checkInteger(x, any.missing = FALSE))
-#' \dontrun{
-#' x = 1
-#' assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
-#' }
-assert = function(..., combine = "or", .var.name = NULL) {
+#' collection <- makeAssertCollection()
+#' assert(checkChoice(x, c("a", "b")), checkDataFrame(x), add = collection)
+#' collection$getMessages()
+#' 
+assert = function(..., combine = "or", .var.name = NULL, add = NULL) {
   assertChoice(combine, c("or", "and"))
+  assertClass(add, "AssertCollection", .var.name = "add", null.ok = TRUE)
   dots = match.call(expand.dots = FALSE)$...
+  assertCharacter(.var.name, null.ok = TRUE, min.len = 1L, max.len = length(dots))
   env = parent.frame()
   if (combine == "or") {
     msgs = character(length(dots))
@@ -42,19 +45,50 @@ assert = function(..., combine = "or", .var.name = NULL) {
     if (length(msgs) > 1L) {
       msgs = sprintf("%s(%s): %s", vapply(dots, function(x) as.character(x)[1L], FUN.VALUE = NA_character_), .var.name, msgs)
       msgs = paste0(c("One of the following must apply:", strwrap(msgs, prefix = " * ")), collapse = "\n")
-      mstop("Assertion failed. %s", msgs)
-    } else {
-      mstop("Assertion on '%s' failed. %s.", .var.name, msgs)
     }
+    mstopOrPush(res = msgs, v_name = .var.name, collection = add)
   } else {
     for (i in seq_along(dots)) {
       val = eval(dots[[i]], envir = env)
       if (!isTRUE(val)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[i]])[2L]
-        mstop("Assertion on '%s' failed. %s.", .var.name, val)
+        mstopOrPush(res = val, v_name = .var.name, collection = add)
       }
     }
   }
   invisible(TRUE)
+}
+
+# Error handling in assert()
+# 
+# Internal helper function to handle errors in assert().
+# @param res [character(1)}]\cr
+#   error message
+# @param v_name [\code{character}]\cr
+#   Name(s) of the variable(s) whose assertion failed.
+# @param collection [\code{AssertCollection} | \code{NULL}]\cr
+#   See AssertCollection.
+# @return mstopOrPush() throws an exception by calling 
+#   mstop() if 'collection' is NULL, or 
+#   pushes the error message to the collection otherwise.
+# @keywords internal
+mstopOrPush = function(res, v_name, collection = NULL) {
+  if (!is.null(collection)) {
+    v_name = sort(unique(v_name))
+    prefix =
+      if (length(v_name) > 1L) {
+        sprintf(
+          "Variables %s",
+          paste0(shQuote(v_name), collapse = ", ")
+        )
+      } else {
+        sprintf("Variable '%s'", v_name)
+      }
+    collection$push(sprintf("%s: %s.", prefix, res))
+  } else if (length(v_name) > 1L) {
+    mstop("Assertion failed. %s", res)
+  } else {
+    mstop("Assertion on '%s' failed: %s.", v_name, res)
+  }
 }

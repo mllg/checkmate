@@ -4,7 +4,7 @@
 \alias{assert}
 \title{Combine multiple checks into one assertion}
 \usage{
-assert(..., combine = "or", .var.name = NULL)
+assert(..., combine = "or", .var.name = NULL, add = NULL)
 }
 \arguments{
 \item{...}{[any]\cr
@@ -15,12 +15,16 @@ List of calls to check functions.}
 or AND, respectively.}
 
 \item{.var.name}{[\code{character(1)}]\cr
-Name of the checked object to print in error messages. Defaults to
+Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in \code{\link{vname}}.}
+
+\item{add}{[\code{AssertCollection}]\cr
+Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
-Throws an error if all checks fail and invisibly returns
- \code{TRUE} otherwise.
+Throws an error (or pushes the error message to an 
+  \code{\link{AssertCollection}} if \code{add} is not \code{NULL}) 
+  if the checks fail and invisibly returns \code{TRUE} otherwise.
 }
 \description{
 You can call this function with an arbitrary number of of \code{check*}
@@ -34,8 +38,8 @@ Otherwise, \code{assert} throws an informative error message.
 \examples{
 x = 1:10
 assert(checkNull(x), checkInteger(x, any.missing = FALSE))
-\dontrun{
-x = 1
-assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
-}
+collection <- makeAssertCollection()
+assert(checkChoice(x, c("a", "b")), checkDataFrame(x), add = collection)
+collection$getMessages()
+
 }
