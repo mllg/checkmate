@@ -98,6 +98,7 @@
 #' }
 #'
 #' @importFrom utils head tail packageVersion getFromNamespace
+#' @importFrom stats setNames
 "_PACKAGE"
 
 checkmate = new.env(parent = emptyenv())

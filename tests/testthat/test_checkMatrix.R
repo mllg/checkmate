@@ -32,7 +32,7 @@ test_that("checkMatrix", {
   expect_false(testMatrix(xs, "logical"))
   expect_false(testMatrix(xs, "integer"))
   expect_false(testMatrix(xs, "double"))
-  expect_false(testMatrix(xe, "logical"))
+  expect_true(testMatrix(xe, "logical")) # empty, so all are missing
   expect_false(testMatrix(xs, "numeric"))
   expect_false(testMatrix(xs, "complex"))
   expect_false(testMatrix(xl, "character"))
@@ -100,4 +100,9 @@ test_that("missing locations are reported correctly", {
   expect_true(grepl("row 2, col 3", checkMatrix(x, any.missing = FALSE)))
   x = matrix(1:12, ncol = 3); x[4, 3] = NA
   expect_true(grepl("row 4, col 3", checkMatrix(x, any.missing = FALSE)))
+})
+
+test_that("mode accepts all missing values (#184)", {
+  x = matrix(NA, nrow = 3, ncol = 3)
+  expect_true(test_matrix(x, mode = "double"))
 })
