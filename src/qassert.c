@@ -544,7 +544,8 @@ SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
         parse_rule(&checker[i], CHAR(STRING_ELT(rules, i)));
     }
 
-    if (LOGICAL_RO(recursive)[0])
-        return ScalarLogical(qtest_list(x, checker, nrules, asCount(depth, "depth")));
+    if (LOGICAL_RO(recursive)[0]) {
+        return ScalarLogical(qtest_list(x, checker, nrules, as_count(depth, "depth")));
+    }
     return ScalarLogical(qtest1(x, checker, nrules));
 }

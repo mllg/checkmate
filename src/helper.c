@@ -40,7 +40,7 @@ R_len_t attribute_hidden get_ncols(SEXP x) {
 }
 
 
-double attribute_hidden asNumber(SEXP x, const char *vname) {
+double attribute_hidden as_number(SEXP x, const char *vname) {
     if (!isNumeric(x))
         error("Argument '%s' must be a number, but is %s", vname, guess_type(x));
     if (xlength(x) != 1)
@@ -51,7 +51,7 @@ double attribute_hidden asNumber(SEXP x, const char *vname) {
     return xd;
 }
 
-const char attribute_hidden * asString(SEXP x, const char *vname) {
+const char attribute_hidden * as_string(SEXP x, const char *vname) {
     if (!isString(x) || xlength(x) != 1)
         error("Argument '%s' must be a string, but is %s", vname, guess_type(x));
     if (find_missing_string(x) > 0)
@@ -59,7 +59,7 @@ const char attribute_hidden * asString(SEXP x, const char *vname) {
     return CHAR(STRING_ELT(x, 0));
 }
 
-R_len_t attribute_hidden asCount(SEXP x, const char *vname) {
+R_len_t attribute_hidden as_count(SEXP x, const char *vname) {
     if (length(x) != 1)
         error("Argument '%x' must have length 1", vname);
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
@@ -72,7 +72,7 @@ R_len_t attribute_hidden asCount(SEXP x, const char *vname) {
     return xi;
 }
 
-R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
+R_xlen_t attribute_hidden as_length(SEXP x, const char *vname) {
     if (length(x) != 1)
         error("Argument '%x' must have length 1", vname);
     switch(TYPEOF(x)) {
@@ -96,7 +96,7 @@ R_xlen_t attribute_hidden asLength(SEXP x, const char *vname) {
     error("Argument '%s' must be a length, but is %s", vname, guess_type(x));
 }
 
-Rboolean attribute_hidden asFlag(SEXP x, const char *vname) {
+Rboolean attribute_hidden as_flag(SEXP x, const char *vname) {
     if (!isLogical(x) || xlength(x) != 1)
         error("Argument '%s' must be a flag, but is %s", vname, guess_type(x));
     Rboolean xb = LOGICAL_RO(x)[0];
