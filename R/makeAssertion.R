@@ -38,8 +38,11 @@
 #' print(assertFalse)
 makeAssertion = function(x, res, var.name, collection) {
   if (!isTRUE(res)) {
-    if (is.null(collection))
+    assertString(var.name, .var.name = ".var.name")
+
+    if (is.null(collection)) {
       mstop("Assertion on '%s' failed: %s.", var.name, res, call. = sys.call(-2L))
+    }
     assertClass(collection, "AssertCollection", .var.name = "add")
     collection$push(sprintf("Variable '%s': %s.", var.name, res))
   }
