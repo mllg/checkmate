@@ -61,7 +61,7 @@ const char attribute_hidden * as_string(SEXP x, const char *vname) {
 
 R_len_t attribute_hidden as_count(SEXP x, const char *vname) {
     if (length(x) != 1)
-        error("Argument '%x' must have length 1", vname);
+        error("Argument '%s' must have length 1", vname);
     if (!isIntegerish(x, INTEGERISH_DEFAULT_TOL, FALSE))
         error("Argument '%s' must be numeric and close to an integer", vname);
     int xi = asInteger(x);
@@ -74,7 +74,7 @@ R_len_t attribute_hidden as_count(SEXP x, const char *vname) {
 
 R_xlen_t attribute_hidden as_length(SEXP x, const char *vname) {
     if (length(x) != 1)
-        error("Argument '%x' must have length 1", vname);
+        error("Argument '%s' must have length 1", vname);
     switch(TYPEOF(x)) {
         case INTSXP:;
             int xi = INTEGER_RO(x)[0];
