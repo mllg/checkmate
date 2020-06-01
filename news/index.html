@@ -133,9 +133,10 @@
 <li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> instead of <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;=</a></code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
 <li>Coercion of double to integer in <code><a href="../reference/checkInt.html">assertInt()</a></code> and <code><a href="../reference/checkIntegerish.html">assertIntegerish()</a></code> now round to the nearest integer instead of always rounding via <code><a href="https://rdrr.io/r/base/Round.html">trunc()</a></code>.</li>
 <li>Fixed an error message where the wrong variable name was reported by <code><a href="../reference/assert.html">assert()</a></code> (<a href='https://github.com/mllg/checkmate/issues/182'>#182</a>).</li>
-<li>Checks on POSIXct dates with storage mode integer should now work instead of</li>
+<li>Checks on POSIXct dates with storage mode integer should now work instead of raising an exception (<a href='https://github.com/mllg/checkmate/issues/175'>#175</a>).</li>
 <li>
-<code>*Matrix()</code> and <code>*Array()</code> now allow different storage types than the one specified if all values are missing (<a href='https://github.com/mllg/checkmate/issues/184'>#184</a>). raising an exception (<a href='https://github.com/mllg/checkmate/issues/175'>#175</a>).</li>
+<code>*Matrix()</code> and <code>*Array()</code> now allow different storage types than the one specified if all values are missing (<a href='https://github.com/mllg/checkmate/issues/184'>#184</a>).</li>
+<li>Function <code><a href="../reference/assert.html">assert()</a></code> now supports collecting assertions via <code>AssertCollection</code> (<a href='https://github.com/mllg/checkmate/issues/112'>#112</a>).</li>
 </ul>
 </div>
     <div id="version-200" class="section level1">
