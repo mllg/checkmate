@@ -8,40 +8,40 @@
 typedef enum {
     CL_LOGICAL, CL_INTEGER, CL_INTEGERISH, CL_NUMERIC, CL_DOUBLE, CL_STRING, CL_FACTOR, CL_LIST, CL_COMPLEX,
     CL_ATOMIC, CL_ATOMIC_VECTOR, CL_MATRIX, CL_DATAFRAME, CL_POSIX, CL_FUNCTION, CL_ENVIRONMENT, CL_NULL, CL_NONE
-} class_t;
+} cm_class_t;
 
 static const char * CLSTR[] = {
      "logical", "integer", "integerish", "numeric", "double", "string", "factor", "list", "complex",
      "atomic", "atomic vector", "matrix", "data frame", "POSIXct", "function", "environment", "NULL"
 };
 
-typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cmp_t;
+typedef enum { LT, LE, EQ, GE, GT, NE, NONE } cm_cmp_t;
 static const char * CMPSTR[] = { "<", "<=", "==", ">=", ">", "!=" };
 
-typedef R_xlen_t(*miss_fun_t)(SEXP);
-typedef Rboolean(*dd_cmp)(double, double);
-typedef Rboolean(*ll_cmp)(R_xlen_t, R_xlen_t);
-typedef struct { dd_cmp fun; double cmp; cmp_t op; } bound_t;
+typedef R_xlen_t(*cm_miss_fun_t)(SEXP);
+typedef Rboolean(*cm_dd_cmp)(double, double);
+typedef Rboolean(*cm_ll_cmp)(R_xlen_t, R_xlen_t);
+typedef struct { cm_dd_cmp fun; double cmp; cm_cmp_t op; } bound_t;
 
 typedef struct {
     struct {
         Rboolean(*fun)(SEXP);
-        class_t name;
+        cm_class_t name;
     } class;
-    miss_fun_t missing_fun;
+    cm_miss_fun_t missing_fun;
     struct {
-        ll_cmp fun;
+        cm_ll_cmp fun;
         R_xlen_t cmp;
-        cmp_t op;
+        cm_cmp_t op;
     } len;
     bound_t lower;
     bound_t upper;
-} checker_t;
+} cm_checker_t;
 
 typedef struct {
     Rboolean ok;
     char msg[255];
-} msg_t;
+} cm_msg_t;
 
 
 static inline Rboolean ii_eq(const R_xlen_t x, const R_xlen_t y) { return x == y; }
@@ -55,11 +55,11 @@ static inline Rboolean dd_le(const double x, const double y) { return x <= y; }
 static inline Rboolean dd_ge(const double x, const double y) { return x >= y; }
 static inline Rboolean dd_ne(const double x, const double y) { return x != y; }
 
-static msg_t MSGT = { .ok = TRUE };
-static msg_t MSGF = { .ok = FALSE };
+static cm_msg_t MSGT = { .ok = TRUE };
+static cm_msg_t MSGF = { .ok = FALSE };
 
-static msg_t message(const char *fmt, ...) {
-    msg_t msg = { .ok = FALSE };
+static cm_msg_t message(const char *fmt, ...) {
+    cm_msg_t msg = { .ok = FALSE };
     va_list vargs;
     va_start(vargs, fmt);
     vsnprintf(msg.msg, 255, fmt, vargs);
@@ -70,7 +70,7 @@ static msg_t message(const char *fmt, ...) {
 /*********************************************************************************************************************/
 /* Some helper functions                                                                                             */
 /*********************************************************************************************************************/
-static msg_t check_bound(SEXP x, const bound_t bound) {
+static cm_msg_t check_bound(SEXP x, const bound_t bound) {
     if (isReal(x)) {
         const double *xp = REAL_RO(x);
         const double * const xend = xp + xlength(x);
@@ -110,7 +110,7 @@ static msg_t check_bound(SEXP x, const bound_t bound) {
 /*********************************************************************************************************************/
 /* First step: Parse string and built checker_t object                                                               */
 /*********************************************************************************************************************/
-static int parse_class(checker_t *checker, const char *rule) {
+static int parse_class(cm_checker_t *checker, const char *rule) {
     checker->missing_fun = NULL;
     switch(rule[0]) {
         case 'B':
@@ -215,7 +215,7 @@ static int parse_class(checker_t *checker, const char *rule) {
     return 1;
 }
 
-static int parse_length(checker_t *checker, const char *rule) {
+static int parse_length(cm_checker_t *checker, const char *rule) {
     checker->len.fun = NULL;
     checker->len.op = NONE;
     checker->len.cmp = 0;
@@ -288,7 +288,7 @@ static int parse_length(checker_t *checker, const char *rule) {
     return end - rule;
 }
 
-static int parse_bounds(checker_t *checker, const char *rule) {
+static int parse_bounds(cm_checker_t *checker, const char *rule) {
     switch(rule[0]) {
         case '\0':
             checker->lower.fun = NULL;
@@ -354,7 +354,7 @@ static int parse_bounds(checker_t *checker, const char *rule) {
     return end - rule + 1;
 }
 
-static void parse_rule(checker_t *checker, const char *rule) {
+static void parse_rule(cm_checker_t *checker, const char *rule) {
     const R_len_t nchars = strlen(rule);
     if (nchars == 0)
         error("Empty rule");
@@ -370,7 +370,7 @@ static void parse_rule(checker_t *checker, const char *rule) {
 /*********************************************************************************************************************/
 /* Second step: check SEXP using a checker_t object                                                                  */
 /*********************************************************************************************************************/
-static msg_t check_rule(SEXP x, const checker_t *checker, Rboolean err_msg) {
+static cm_msg_t check_rule(SEXP x, const cm_checker_t *checker, Rboolean err_msg) {
     if (checker->class.fun != NULL && !checker->class.fun(x)) {
         return err_msg ? message("Must be of class '%s', not '%s'", CLSTR[checker->class.name], guess_type(x)) : MSGF;
     }
@@ -398,13 +398,13 @@ static msg_t check_rule(SEXP x, const checker_t *checker, Rboolean err_msg) {
     }
 
     if (checker->lower.fun != NULL) {
-        msg_t msg = check_bound(x, checker->lower);
+        cm_msg_t msg = check_bound(x, checker->lower);
         if (!msg.ok)
             return msg;
     }
 
     if (checker->upper.fun != NULL) {
-        msg_t msg = check_bound(x, checker->upper);
+        cm_msg_t msg = check_bound(x, checker->upper);
         if (!msg.ok)
             return msg;
     }
@@ -415,7 +415,7 @@ static msg_t check_rule(SEXP x, const checker_t *checker, Rboolean err_msg) {
 /*********************************************************************************************************************/
 /* qassert stuff                                                                                                     */
 /*********************************************************************************************************************/
-static inline R_len_t qassert1(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
+static inline R_len_t qassert1(SEXP x, const cm_checker_t *checker, cm_msg_t *result, const R_len_t nrules) {
     for (R_len_t i = 0; i < nrules; i++) {
         result[i] = check_rule(x, &checker[i], result[i].ok);
         if (result[i].ok)
@@ -424,7 +424,7 @@ static inline R_len_t qassert1(SEXP x, const checker_t *checker, msg_t *result, 
     return 1;
 }
 
-static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *result, const R_len_t nrules) {
+static inline R_len_t qassert_list(SEXP x, const cm_checker_t *checker, cm_msg_t *result, const R_len_t nrules) {
     if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
@@ -438,9 +438,9 @@ static inline R_len_t qassert_list(SEXP x, const checker_t *checker, msg_t *resu
 
 /* exported for other packages */
 SEXP qassert(SEXP x, const char *rule, const char *name) {
-    checker_t checker;
+    cm_checker_t checker;
     parse_rule(&checker, rule);
-    msg_t result = check_rule(x, &checker, TRUE);
+    cm_msg_t result = check_rule(x, &checker, TRUE);
     if (!result.ok)
         error("Variable '%s': %s", name, result.msg);
     return x;
@@ -454,8 +454,8 @@ SEXP attribute_hidden c_qassert(SEXP x, SEXP rules, SEXP recursive) {
     if (nrules == 0)
         return ScalarLogical(TRUE);
 
-    msg_t result[nrules];
-    checker_t checker[nrules];
+    cm_msg_t result[nrules];
+    cm_checker_t checker[nrules];
     SEXP tmp;
     for (R_len_t i = 0; i < nrules; i++) {
         tmp = STRING_ELT(rules, i);
@@ -486,8 +486,8 @@ SEXP attribute_hidden c_qassert(SEXP x, SEXP rules, SEXP recursive) {
 /*********************************************************************************************************************/
 /* qtest stuff                                                                                                       */
 /*********************************************************************************************************************/
-static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nrules) {
-    msg_t result;
+static inline Rboolean qtest1(SEXP x, const cm_checker_t *checker, const R_len_t nrules) {
+    cm_msg_t result;
     for (R_len_t i = 0; i < nrules; i++) {
         result = check_rule(x, &checker[i], FALSE);
         if (result.ok)
@@ -496,7 +496,7 @@ static inline Rboolean qtest1(SEXP x, const checker_t *checker, const R_len_t nr
     return FALSE;
 }
 
-static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_t nrules, R_len_t depth) {
+static inline Rboolean qtest_list(SEXP x, const cm_checker_t *checker, const R_len_t nrules, R_len_t depth) {
     if (!isNewList(x) || isNull(x))
         error("Argument 'x' must be a list or data.frame");
 
@@ -522,7 +522,7 @@ static inline Rboolean qtest_list(SEXP x, const checker_t *checker, const R_len_
 
 /* exported for other packages */
 Rboolean qtest(SEXP x, const char *rule) {
-    checker_t checker;
+    cm_checker_t checker;
     parse_rule(&checker, rule);
     return qtest1(x, &checker, 1);
 }
@@ -535,7 +535,7 @@ SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     if (nrules == 0)
         return ScalarLogical(TRUE);
 
-    checker_t checker[nrules];
+    cm_checker_t checker[nrules];
     SEXP tmp;
     for (R_len_t i = 0; i < nrules; i++) {
         tmp = STRING_ELT(rules, i);

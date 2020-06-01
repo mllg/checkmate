@@ -39,7 +39,7 @@ static char msg[255] = "";
         snprintf(msg, 255, "Must be of type 'integerish', not 'NULL'"); \
         return ScalarString(mkChar(msg)); \
     } else { \
-        int_err_t ok = checkIntegerish(x, dtol, FALSE); \
+        cm_int_err_t ok = checkIntegerish(x, dtol, FALSE); \
         switch(ok.err) { \
             case INT_OK: break; \
             case INT_TYPE: snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", as_flag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); return ScalarString(mkChar(msg)); \
