@@ -36,3 +36,31 @@ test_that("correct variable is reported (#182)", {
   f = function(a, b) assert(checkFunction(a), checkNumeric(b), combine = "and")
   expect_error(f(identity, "a"), "'b'")
 })
+
+test_that("can push to collection", {
+  coll = makeAssertCollection()
+  x = NULL
+  expect_error(assert(checkNull(x), .var.name = c("a", "b"), add = coll), "length")
+  expect_error(assert(checkNull(x), add = "not_assert_coll"), "AssertCollection")
+  expect_true(assert(checkNull(x), add = coll))
+  expect_true(coll$isEmpty())
+  expect_true(assert(checkNull(x), checkDataFrame(x), add = coll))
+  expect_true(coll$isEmpty())
+  grepme = iris
+  expect_true(assert(checkNull(grepme), checkDataFrame(grepme), add = coll))
+  expect_true(coll$isEmpty())
+  assert(checkNull(grepme), checkNumeric(grepme), add = coll)
+  expect_match(
+    coll$getMessages(), "Variable.+One of")
+  assert(checkNull(grepme), checkNumeric(x), add = coll)
+  expect_match(
+    coll$getMessages()[2], "Variables.+grepme.+x.+One of")
+  assert(
+    checkNull(grepme), checkNumeric(x), .var.name = "TEST", add = coll)
+  expect_match(
+    coll$getMessages()[3], "Variable.+TEST.+One of")
+  assert(
+    checkNull(grepme), checkNumeric(x), .var.name = c("V1", "V2"), add = coll)
+  expect_match(
+    coll$getMessages()[4], "Variable.+V1.+V2.+One of")
+})
