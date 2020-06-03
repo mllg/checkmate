@@ -5,8 +5,9 @@ const char * guess_type(SEXP x) {
     SEXP attr = getAttrib(x, R_ClassSymbol);
     if (!isNull(attr)) {
         const R_len_t n = length(attr);
-        if (n == 1)
+        if (n == 1) {
             return CHAR(STRING_ELT(attr, 0));
+        }
 
         /* Constuct name using [class1]/[class2]/... */
         static char buf[512];

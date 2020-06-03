@@ -70,7 +70,7 @@ static Rboolean is_sorted_character(SEXP x) {
     return TRUE;
 }
 
-Rboolean isSorted(SEXP x) {
+Rboolean is_sorted(SEXP x) {
     switch(TYPEOF(x)) {
         case INTSXP: return is_sorted_integer(x);
         case REALSXP: return is_sorted_double(x);
