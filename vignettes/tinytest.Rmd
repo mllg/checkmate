@@ -23,7 +23,7 @@ Quick summary:
 
 1. Edit your `DESCRIPTION` and add `checkmate` to `Suggests` unless it is already listed in `Imports` for its assertions.
 2. In **each** test file which calls an expectation from `checkmate`, you must include the following lines at the beginning of the file:
-    ```{r}
+    ```{r,eval=FALSE}
     library("tinytest")
     library("checkmate")
     using("checkmate")
