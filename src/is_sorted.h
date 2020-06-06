@@ -5,6 +5,6 @@
 #include <Rinternals.h>
 #include <Rversion.h>
 
-Rboolean isSorted(SEXP x);
+Rboolean is_sorted(SEXP x);
 
 #endif

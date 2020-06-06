@@ -8,7 +8,9 @@ Version: 2.0.0-9000
 Authors@R: c(
     person("Michel", "Lang", NULL, "michellang@gmail.com",
       role = c("cre", "aut"), comment = c(ORCID = "0000-0001-9754-0393")),
-    person("Bernd", "Bischl", NULL, "bernd_bischl@gmx.net", role = "ctb")
+    person("Bernd", "Bischl", NULL, "bernd_bischl@gmx.net", role = "ctb"),
+    person("Dénes", "Tóth", NULL, "toth.denes@kogentum.hu", role = "ctb",
+      comment = c(ORCID = "0000-0003-4262-3217"))
     )
 URL: https://github.com/mllg/checkmate
 URLNote: https://github.com/mllg/checkmate

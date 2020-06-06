@@ -169,7 +169,7 @@ Performs various checks on character vectors, usually names.
 x = 1:3
 testNames(names(x), "unnamed")
 names(x) = letters[1:3]
-testNames(checkNames(x), "unique")
+testNames(names(x), "unique")
 
 cn = c("Species", "Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")
 assertNames(names(iris), permutation.of = cn)
