@@ -13,3 +13,10 @@ SEXP qassert(SEXP x, const char *rule, const char *name) {
     fun = (SEXP(*)(SEXP, const char *, const char *)) R_GetCCallable("checkmate", "qassert");
   return fun(x, rule, name);
 }
+
+SEXP qcheck(SEXP x, const char *rule, const char *name) {
+  static SEXP(*fun)(SEXP, const char *, const char *) = NULL;
+  if (fun == NULL)
+    fun = (SEXP(*)(SEXP, const char *, const char *)) R_GetCCallable("checkmate", "qcheck");
+  return fun(x, rule, name);
+}

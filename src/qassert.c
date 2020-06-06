@@ -549,3 +549,21 @@ SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
     }
     return ScalarLogical(qtest1(x, checker, nrules));
 }
+
+
+
+/*********************************************************************************************************************/
+/* qcheck stuff                                                                                                      */
+/*********************************************************************************************************************/
+/* exported for other packages */
+SEXP qcheck(SEXP x, const char *rule, const char *name) {
+    cm_checker_t checker;
+    parse_rule(&checker, rule);
+    cm_msg_t result = check_rule(x, &checker, TRUE);
+    if (!result.ok) {
+        char msg[512];
+        snprintf(msg, 512, "Variable '%s': %s", name, result.msg);
+        return ScalarString(mkChar(msg));
+    }
+    return ScalarLogical(TRUE);
+}

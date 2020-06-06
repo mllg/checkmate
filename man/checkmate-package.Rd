@@ -145,6 +145,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item Bernd Bischl \email{bernd_bischl@gmx.net} [contributor]
+  \item Dénes Tóth \email{toth.denes@kogentum.hu} (\href{https://orcid.org/0000-0003-4262-3217}{ORCID}) [contributor]
 }
 
 }
