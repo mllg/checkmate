@@ -557,9 +557,9 @@ SEXP attribute_hidden c_qtest(SEXP x, SEXP rules, SEXP recursive, SEXP depth) {
 /*********************************************************************************************************************/
 /* exported for other packages */
 SEXP qcheck(SEXP x, const char *rule, const char *name) {
-    checker_t checker;
+    cm_checker_t checker;
     parse_rule(&checker, rule);
-    msg_t result = check_rule(x, &checker, TRUE);
+    cm_msg_t result = check_rule(x, &checker, TRUE);
     if (!result.ok) {
         char msg[512];
         snprintf(msg, 512, "Variable '%s': %s", name, result.msg);

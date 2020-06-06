@@ -12,6 +12,7 @@
   specified if all values are missing (#184).
 * Function `assert()` now supports collecting assertions via `AssertCollection`
   (#112).
+* New exported C function `qcheck()` (#180).
 
 # Version 2.0.0
 * Expectations now optionally support the package `tinytest`.
