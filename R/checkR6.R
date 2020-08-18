@@ -1,4 +1,4 @@
-#' Check if an argument is a R6 class
+#' Check if an argument is an R6 class
 #'
 #' @templateVar fn Class
 #' @template x
