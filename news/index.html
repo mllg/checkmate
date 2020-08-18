@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -53,7 +57,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -67,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0-9000</span>
       </span>
     </div>
 
@@ -103,7 +107,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/mllg/checkmate">
+  <a href="https://github.com/mllg/checkmate/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -121,12 +125,12 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/mllg/checkmate/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="version-210" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.1.0">
 <a href="#version-210" class="anchor"></a>Version 2.1.0<small> Unreleased </small>
 </h1>
 <ul>
@@ -137,10 +141,11 @@
 <li>
 <code>*Matrix()</code> and <code>*Array()</code> now allow different storage types than the one specified if all values are missing (<a href='https://github.com/mllg/checkmate/issues/184'>#184</a>).</li>
 <li>Function <code><a href="../reference/assert.html">assert()</a></code> now supports collecting assertions via <code>AssertCollection</code> (<a href='https://github.com/mllg/checkmate/issues/112'>#112</a>).</li>
+<li>New exported C function <code>qcheck()</code> (<a href='https://github.com/mllg/checkmate/issues/180'>#180</a>).</li>
 </ul>
 </div>
     <div id="version-200" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="2.0.0">
 <a href="#version-200" class="anchor"></a>Version 2.0.0<small> 2020-02-06 </small>
 </h1>
 <ul>
@@ -152,7 +157,7 @@
 </ul>
 </div>
     <div id="version-194" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.4">
 <a href="#version-194" class="anchor"></a>Version 1.9.4<small> 2019-07-04 </small>
 </h1>
 <ul>
@@ -161,7 +166,7 @@
 </ul>
 </div>
     <div id="version-193" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.3">
 <a href="#version-193" class="anchor"></a>Version 1.9.3<small> 2019-05-03 </small>
 </h1>
 <ul>
@@ -172,7 +177,7 @@
 </ul>
 </div>
     <div id="version-192" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.2">
 <a href="#version-192" class="anchor"></a>Version 1.9.2<small> Unreleased </small>
 </h1>
 <ul>
@@ -183,7 +188,7 @@
 </ul>
 </div>
     <div id="version-191" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.1">
 <a href="#version-191" class="anchor"></a>Version 1.9.1<small> 2019-01-15 </small>
 </h1>
 <ul>
@@ -193,7 +198,7 @@
 </ul>
 </div>
     <div id="version-190" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.9.0">
 <a href="#version-190" class="anchor"></a>Version 1.9.0<small> 2019-01-09 </small>
 </h1>
 <ul>
@@ -218,7 +223,7 @@
 </ul>
 </div>
     <div id="version-185" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.5">
 <a href="#version-185" class="anchor"></a>Version 1.8.5<small> 2017-10-24 </small>
 </h1>
 <ul>
@@ -228,7 +233,7 @@
 </ul>
 </div>
     <div id="version-184" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.4">
 <a href="#version-184" class="anchor"></a>Version 1.8.4<small> 2017-09-25 </small>
 </h1>
 <ul>
@@ -242,7 +247,7 @@
 </ul>
 </div>
     <div id="version-183" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.3">
 <a href="#version-183" class="anchor"></a>Version 1.8.3<small> 2017-07-03 </small>
 </h1>
 <ul>
@@ -260,7 +265,7 @@
 </ul>
 </div>
     <div id="version-182" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.2">
 <a href="#version-182" class="anchor"></a>Version 1.8.2<small> 2016-11-02 </small>
 </h1>
 <ul>
@@ -274,7 +279,7 @@
 </ul>
 </div>
     <div id="version-181" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.1">
 <a href="#version-181" class="anchor"></a>Version 1.8.1<small> 2016-06-28 </small>
 </h1>
 <ul>
@@ -285,7 +290,7 @@
 </ul>
 </div>
     <div id="version-180" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.8.0">
 <a href="#version-180" class="anchor"></a>Version 1.8.0<small> 2016-06-06 </small>
 </h1>
 <ul>
@@ -296,7 +301,7 @@
 </ul>
 </div>
     <div id="version-174" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.4">
 <a href="#version-174" class="anchor"></a>Version 1.7.4<small> 2016-04-08 </small>
 </h1>
 <ul>
@@ -310,7 +315,7 @@
 </ul>
 </div>
     <div id="version-173" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.3">
 <a href="#version-173" class="anchor"></a>Version 1.7.3<small> 2016-03-10 </small>
 </h1>
 <ul>
@@ -322,7 +327,7 @@
 </ul>
 </div>
     <div id="version-172" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.2">
 <a href="#version-172" class="anchor"></a>Version 1.7.2<small> 2016-02-25 </small>
 </h1>
 <ul>
@@ -334,7 +339,7 @@
 </ul>
 </div>
     <div id="version-171" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.1">
 <a href="#version-171" class="anchor"></a>Version 1.7.1<small> 2016-02-02 </small>
 </h1>
 <ul>
@@ -343,7 +348,7 @@
 </ul>
 </div>
     <div id="version-170" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.7.0">
 <a href="#version-170" class="anchor"></a>Version 1.7.0<small> 2016-01-23 </small>
 </h1>
 <ul>
@@ -357,7 +362,7 @@
 </ul>
 </div>
     <div id="version-163" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.3">
 <a href="#version-163" class="anchor"></a>Version 1.6.3<small> 2015-10-23 </small>
 </h1>
 <ul>
@@ -368,7 +373,7 @@
 </ul>
 </div>
     <div id="version-162" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.2">
 <a href="#version-162" class="anchor"></a>Version 1.6.2<small> 2015-07-26 </small>
 </h1>
 <ul>
@@ -377,21 +382,21 @@
 </ul>
 </div>
     <div id="version-161" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.1">
 <a href="#version-161" class="anchor"></a>Version 1.6.1<small> 2015-07-17 </small>
 </h1>
 <ul>
-<li>New family of functions: <code>expect_*</code> is intended to be used in combination with testthat. But note that functions <code>expect_null()</code> and <code>expect_named()</code> are not provided to avoid name clashes with testthat.</li>
+<li>New family of functions: <code>expect_*</code> is intended to be used in combination with testthat. But note that functions <code><a href="https://rdrr.io/pkg/tinytest/man/expect_equal.html">expect_null()</a></code> and <code><a href="https://testthat.r-lib.org/reference/expect_named.html">expect_named()</a></code> are not provided to avoid name clashes with testthat.</li>
 <li>Added <code><a href="../reference/qassert.html">qexpect()</a></code> and <code><a href="../reference/qassertr.html">qexpectr()</a></code>.</li>
 <li>Added argument <code>all.missing</code> for checks of matricies and data frames.</li>
 <li>Added <code><a href="../reference/anyNaN.html">anyNaN()</a></code>.</li>
-<li>Clarified documentation for <code><a href="../reference/assert.html">assert()</a></code> and <code><a href="../reference/anyMissing.html">allMissing()</a></code>.</li>
+<li>Clarified documentation for <code><a href="../reference/assert.html">assert()</a></code> and <code><a href="../reference/allMissing.html">allMissing()</a></code>.</li>
 <li>Fixed a bug where bound checks were performed on missing values.</li>
 <li>Fixed a bug where missingness was not correctly detected in data frames.</li>
 </ul>
 </div>
     <div id="version-160" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.6.0">
 <a href="#version-160" class="anchor"></a>Version 1.6.0<small> 2015-06-19 </small>
 </h1>
 <ul>
@@ -402,7 +407,7 @@
 </ul>
 </div>
     <div id="version-153" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.3">
 <a href="#version-153" class="anchor"></a>Version 1.5.3<small> 2015-05-13 </small>
 </h1>
 <ul>
@@ -413,7 +418,7 @@
 </ul>
 </div>
     <div id="version-152" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.2">
 <a href="#version-152" class="anchor"></a>Version 1.5.2<small> 2015-03-20 </small>
 </h1>
 <ul>
@@ -424,7 +429,7 @@
 </ul>
 </div>
     <div id="version-151" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.1">
 <a href="#version-151" class="anchor"></a>Version 1.5.1<small> 2014-12-14 </small>
 </h1>
 <ul>
@@ -434,7 +439,7 @@
 </ul>
 </div>
     <div id="version-150" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.5.0">
 <a href="#version-150" class="anchor"></a>Version 1.5.0<small> 2014-10-19 </small>
 </h1>
 <ul>
@@ -446,7 +451,7 @@
 </ul>
 </div>
     <div id="version-14" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.4">
 <a href="#version-14" class="anchor"></a>Version 1.4<small> 2014-09-03 </small>
 </h1>
 <ul>
@@ -456,7 +461,7 @@
 </ul>
 </div>
     <div id="version-13" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.3">
 <a href="#version-13" class="anchor"></a>Version 1.3<small> 2014-08-15 </small>
 </h1>
 <ul>
@@ -467,7 +472,7 @@
 </ul>
 </div>
     <div id="version-12" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.2">
 <a href="#version-12" class="anchor"></a>Version 1.2<small> 2014-07-21 </small>
 </h1>
 <ul>
@@ -477,7 +482,7 @@
 </ul>
 </div>
     <div id="version-11" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.1">
 <a href="#version-11" class="anchor"></a>Version 1.1<small> 2014-06-28 </small>
 </h1>
 <ul>
@@ -491,7 +496,7 @@
 </ul>
 </div>
     <div id="version-10" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="1.0">
 <a href="#version-10" class="anchor"></a>Version 1.0<small> 2014-06-17 </small>
 </h1>
 <ul>
@@ -500,43 +505,10 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#version-210">2.1.0</a></li>
-        <li><a href="#version-200">2.0.0</a></li>
-        <li><a href="#version-194">1.9.4</a></li>
-        <li><a href="#version-193">1.9.3</a></li>
-        <li><a href="#version-192">1.9.2</a></li>
-        <li><a href="#version-191">1.9.1</a></li>
-        <li><a href="#version-190">1.9.0</a></li>
-        <li><a href="#version-185">1.8.5</a></li>
-        <li><a href="#version-184">1.8.4</a></li>
-        <li><a href="#version-183">1.8.3</a></li>
-        <li><a href="#version-182">1.8.2</a></li>
-        <li><a href="#version-181">1.8.1</a></li>
-        <li><a href="#version-180">1.8.0</a></li>
-        <li><a href="#version-174">1.7.4</a></li>
-        <li><a href="#version-173">1.7.3</a></li>
-        <li><a href="#version-172">1.7.2</a></li>
-        <li><a href="#version-171">1.7.1</a></li>
-        <li><a href="#version-170">1.7.0</a></li>
-        <li><a href="#version-163">1.6.3</a></li>
-        <li><a href="#version-162">1.6.2</a></li>
-        <li><a href="#version-161">1.6.1</a></li>
-        <li><a href="#version-160">1.6.0</a></li>
-        <li><a href="#version-153">1.5.3</a></li>
-        <li><a href="#version-152">1.5.2</a></li>
-        <li><a href="#version-151">1.5.1</a></li>
-        <li><a href="#version-150">1.5.0</a></li>
-        <li><a href="#version-14">1.4</a></li>
-        <li><a href="#version-13">1.3</a></li>
-        <li><a href="#version-12">1.2</a></li>
-        <li><a href="#version-11">1.1</a></li>
-        <li><a href="#version-10">1.0</a></li>
-      </ul>
-    </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -548,7 +520,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
