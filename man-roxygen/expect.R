@@ -1,4 +1,4 @@
-#' @param info [character(1)]\cr
+#' @param info [\code{character(1)}]\cr
 #'  Extra information to be included in the message for the testthat reporter.
 #'  See \code{\link[testthat]{expect_that}}.
 #' @param label [\code{character(1)}]\cr
