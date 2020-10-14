@@ -136,7 +136,8 @@ Note that you can use \code{\link{checkSubset}} to check for a specific set of n
 
 \item{typed.missing}{[\code{logical(1)}]\cr
 If set to \code{FALSE} (default), all types of missing values (\code{NA}, \code{NA_integer_},
-\code{NA_real_}, \code{NA_character_} and \code{NA_character_}) are allowed during type checking.
+\code{NA_real_}, \code{NA_character_} or \code{NA_character_}) as well as empty vectors are allowed
+while type-checking atomic input.
 Set to \code{FALSE} to enable strict type checking.}
 
 \item{null.ok}{[\code{logical(1)}]\cr
