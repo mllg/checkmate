@@ -476,6 +476,19 @@ SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite
     return ScalarLogical(TRUE);
 }
 
+SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_numeric(x) || check_typed_missing(x, typed_missing), "numeric", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_vector_finite(x, finite));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
+    return ScalarLogical(TRUE);
+}
+
+
 SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
     HANDLE_TYPE_NULL(is_class_string(x) || check_typed_missing(x, typed_missing), "character", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
@@ -625,18 +638,6 @@ SEXP attribute_hidden c_check_names(SEXP x, SEXP type, SEXP what) {
     if (!(isString(x) || isNull(x)))
         return result("Must be a character vector");
     ASSERT_TRUE(check_names(x, as_string(type, "type"), as_string(what, "what")));
-    return ScalarLogical(TRUE);
-}
-
-SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_numeric(x) || all_missing_atomic(x), "numeric", null_ok);
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
-    ASSERT_TRUE(check_vector_finite(x, finite));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 

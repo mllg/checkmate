@@ -27,7 +27,7 @@ extern SEXP c_check_matrix(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP,
 extern SEXP c_check_named(SEXP, SEXP);
 extern SEXP c_check_names(SEXP, SEXP, SEXP);
 extern SEXP c_check_number(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_double(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_scalar(SEXP, SEXP, SEXP);
 extern SEXP c_check_string(SEXP, SEXP, SEXP, SEXP);
@@ -64,7 +64,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_named",         (DL_FUNC) &c_check_named,          2},
     {"c_check_names",         (DL_FUNC) &c_check_names,          3},
     {"c_check_number",        (DL_FUNC) &c_check_number,         6},
-    {"c_check_numeric",       (DL_FUNC) &c_check_numeric,       13},
+    {"c_check_numeric",       (DL_FUNC) &c_check_numeric,       14},
     {"c_check_double",        (DL_FUNC) &c_check_double,        14},
     {"c_check_scalar",        (DL_FUNC) &c_check_scalar,         3},
     {"c_check_string",        (DL_FUNC) &c_check_string,         4},

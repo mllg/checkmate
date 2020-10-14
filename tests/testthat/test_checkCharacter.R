@@ -65,4 +65,8 @@ test_that("typed.missing", {
   expect_true(testCharacter(NA))
   expect_true(testCharacter(NA, typed.missing = FALSE))
   expect_false(testCharacter(NA, typed.missing = TRUE))
+
+  expect_true(testCharacter(logical()))
+  expect_true(testCharacter(logical(), typed.missing = FALSE))
+  expect_false(testCharacter(logical(), typed.missing = TRUE))
 })

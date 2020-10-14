@@ -74,4 +74,8 @@ test_that("typed.missing", {
   expect_true(testDouble(NA_character_))
   expect_true(testDouble(NA_character_, typed.missing = FALSE))
   expect_false(testDouble(NA_character_, typed.missing = TRUE))
+
+  expect_true(testDouble(character()))
+  expect_true(testDouble(character(), typed.missing = FALSE))
+  expect_false(testDouble(character(), typed.missing = TRUE))
 })

@@ -24,4 +24,8 @@ test_that("typed.missing", {
   expect_true(testLogical(NA_character_))
   expect_true(testLogical(NA_character_, typed.missing = FALSE))
   expect_false(testLogical(NA_character_, typed.missing = TRUE))
+
+  expect_true(testLogical(character()))
+  expect_true(testLogical(character(), typed.missing = FALSE))
+  expect_false(testLogical(character(), typed.missing = TRUE))
 })

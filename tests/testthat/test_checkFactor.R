@@ -51,4 +51,7 @@ test_that("checkFactor", {
 test_that("typed.missing", {
   expect_false(testFactor(NA))
   expect_false(testFactor(NA_integer_))
+
+  expect_true(testFactor(factor(levels = "a")))
+  expect_false(testFactor(character(0)))
 })
