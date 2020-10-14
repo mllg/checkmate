@@ -20,7 +20,7 @@ extern SEXP c_check_factor(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)
 extern SEXP c_check_flag(SEXP, SEXP, SEXP);
 extern SEXP c_check_int(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_integer(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_list(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_logical(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_matrix(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -57,7 +57,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_flag",          (DL_FUNC) &c_check_flag,           3},
     {"c_check_int",           (DL_FUNC) &c_check_int,            6},
     {"c_check_integer",       (DL_FUNC) &c_check_integer,       13},
-    {"c_check_integerish",    (DL_FUNC) &c_check_integerish,    13},
+    {"c_check_integerish",    (DL_FUNC) &c_check_integerish,    14},
     {"c_check_list",          (DL_FUNC) &c_check_list,           9},
     {"c_check_logical",       (DL_FUNC) &c_check_logical,       10},
     {"c_check_matrix",        (DL_FUNC) &c_check_matrix,        13},

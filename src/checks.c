@@ -32,23 +32,6 @@ static char msg[255] = "";
         } \
     }
 
-#define HANDLE_INTEGERISH_NULL(tol, null_ok) \
-    if (isNull((x))) { \
-        if (as_flag((null_ok), "null.ok")) \
-            return ScalarLogical(TRUE); \
-        snprintf(msg, 255, "Must be of type 'integerish', not 'NULL'"); \
-        return ScalarString(mkChar(msg)); \
-    } else { \
-        cm_int_err_t ok = checkIntegerish(x, dtol, FALSE); \
-        switch(ok.err) { \
-            case INT_OK: break; \
-            case INT_TYPE: snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", as_flag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x)); return ScalarString(mkChar(msg)); \
-            case INT_RANGE: snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not in integer range", ok.pos); return ScalarString(mkChar(msg)); \
-            case INT_TOL: snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not close to an integer", ok.pos); return ScalarString(mkChar(msg)); \
-            case INT_COMPLEX: snprintf(msg, 255, "Must be of type 'integerish', but element %ld has an imaginary part", ok.pos); return ScalarString(mkChar(msg)); \
-        } \
-    }
-
 #define HANDLE_NA(x, na_ok) \
     if (is_scalar_na((x))) { \
         if (as_flag((na_ok), "na.ok")) \
@@ -452,9 +435,39 @@ SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_m
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
+SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
     double dtol = as_number(tol, "tol");
-    HANDLE_INTEGERISH_NULL(dtol, null_ok);
+    if (isNull((x))) {
+        if (as_flag((null_ok), "null.ok"))
+            return ScalarLogical(TRUE);
+        snprintf(msg, 255, "Must be of type 'integerish', not 'NULL'");
+        return ScalarString(mkChar(msg));
+    } else {
+        cm_int_err_t ok = checkIntegerish(x, dtol, FALSE);
+        switch(ok.err) {
+            case INT_OK:
+                break;
+            case INT_TYPE:
+                if (!check_typed_missing(x, typed_missing)) {
+                    snprintf(msg, 255, "Must be of type 'integerish'%s, not '%s'", as_flag(null_ok, "null_ok") ? " (or 'NULL')" : "", guess_type(x));
+                    return ScalarString(mkChar(msg));
+                }
+                break;
+            case INT_RANGE:
+                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not in integer range", ok.pos);
+                return ScalarString(mkChar(msg));
+                break;
+            case INT_TOL:
+                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not close to an integer", ok.pos);
+                return ScalarString(mkChar(msg));
+                break;
+            case INT_COMPLEX:
+                snprintf(msg, 255, "Must be of type 'integerish', but element %ld has an imaginary part", ok.pos);
+                return ScalarString(mkChar(msg));
+                break;
+        }
+    }
+
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));

@@ -98,3 +98,13 @@ test_that("coerce rounds to next integer", {
   y = assert_integerish(x, coerce = TRUE)
   expect_identical(y, 1L)
 })
+
+test_that("typed.missing", {
+  expect_true(testIntegerish(NA_character_))
+  expect_true(testIntegerish(NA_character_, typed.missing = FALSE))
+  expect_false(testIntegerish(NA_character_, typed.missing = TRUE))
+
+  expect_true(testIntegerish(character()))
+  expect_true(testIntegerish(character(), typed.missing = FALSE))
+  expect_false(testIntegerish(character(), typed.missing = TRUE))
+})
