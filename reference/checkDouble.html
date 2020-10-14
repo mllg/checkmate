@@ -142,6 +142,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -158,6 +159,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -174,6 +176,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
   .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
   add <span class='op'>=</span> <span class='cn'>NULL</span>
@@ -192,6 +195,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
   .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
   add <span class='op'>=</span> <span class='cn'>NULL</span>
@@ -210,6 +214,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -226,6 +231,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span>
 
@@ -242,6 +248,7 @@
   unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
   sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
   names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  typed.missing <span class='op'>=</span> <span class='cn'>FALSE</span>,
   null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -311,6 +318,14 @@ Elements must be sorted in ascending order. Missing values are ignored.</p></td>
 Check for names. See <code><a href='checkNamed.html'>checkNamed</a></code> for possible values.
 Default is &#8220;any&#8221; which performs no check at all.
 Note that you can use <code><a href='checkSubset.html'>checkSubset</a></code> to check for a specific set of names.</p></td>
+    </tr>
+    <tr>
+      <th>typed.missing</th>
+      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+If set to <code>FALSE</code> (default), all types of missing values (<code>NA</code>, <code>NA_integer_</code>,
+<code>NA_real_</code>, <code>NA_character_</code> or <code>NA_character_</code>) as well as empty vectors are allowed
+while type-checking atomic input.
+Set to <code>FALSE</code> to enable strict type checking.</p></td>
     </tr>
     <tr>
       <th>null.ok</th>
