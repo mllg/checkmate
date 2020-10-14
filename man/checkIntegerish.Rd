@@ -23,6 +23,7 @@ checkIntegerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE
 )
 
@@ -39,6 +40,7 @@ check_integerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE
 )
 
@@ -55,6 +57,7 @@ assertIntegerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE,
   coerce = FALSE,
   .var.name = vname(x),
@@ -74,6 +77,7 @@ assert_integerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE,
   coerce = FALSE,
   .var.name = vname(x),
@@ -93,6 +97,7 @@ testIntegerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE
 )
 
@@ -109,6 +114,7 @@ test_integerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE
 )
 
@@ -125,6 +131,7 @@ expect_integerish(
   unique = FALSE,
   sorted = FALSE,
   names = NULL,
+  typed.missing = FALSE,
   null.ok = FALSE,
   info = NULL,
   label = vname(x)
@@ -169,6 +176,12 @@ Elements must be sorted in ascending order. Missing values are ignored.}
 Check for names. See \code{\link{checkNamed}} for possible values.
 Default is \dQuote{any} which performs no check at all.
 Note that you can use \code{\link{checkSubset}} to check for a specific set of names.}
+
+\item{typed.missing}{[\code{logical(1)}]\cr
+If set to \code{FALSE} (default), all types of missing values (\code{NA}, \code{NA_integer_},
+\code{NA_real_}, \code{NA_character_} or \code{NA_character_}) as well as empty vectors are allowed
+while type-checking atomic input.
+Set to \code{FALSE} to enable strict type checking.}
 
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.

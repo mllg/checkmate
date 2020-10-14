@@ -46,7 +46,6 @@ test_that("bounds of vectors with only missings are not checked", {
   expect_true(checkDouble(NA_character_, upper = 10))
 })
 
-
 test_that("sorted works", {
   xu = runif(10)
   while(!is.unsorted(xu))
@@ -69,4 +68,14 @@ test_that("sorted works", {
     else
       expect_true(grepl("sorted", checkDouble(xu, sorted = TRUE), fixed = TRUE))
   }
+})
+
+test_that("typed.missing", {
+  expect_true(testDouble(NA_character_))
+  expect_true(testDouble(NA_character_, typed.missing = FALSE))
+  expect_false(testDouble(NA_character_, typed.missing = TRUE))
+
+  expect_true(testDouble(character()))
+  expect_true(testDouble(character(), typed.missing = FALSE))
+  expect_false(testDouble(character(), typed.missing = TRUE))
 })

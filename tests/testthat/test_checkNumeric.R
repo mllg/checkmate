@@ -76,3 +76,14 @@ test_that("sorted works", {
 test_that("names check works", {
   expect_true(grepl("names", check_numeric(0:1, names = "unique")))
 })
+
+
+test_that("typed.missing", {
+  expect_true(testNumeric(NA))
+  expect_true(testNumeric(NA, typed.missing = FALSE))
+  expect_false(testNumeric(NA, typed.missing = TRUE))
+
+  expect_true(testNumeric(character()))
+  expect_true(testNumeric(character(), typed.missing = FALSE))
+  expect_false(testNumeric(character(), typed.missing = TRUE))
+})
