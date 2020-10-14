@@ -47,3 +47,8 @@ test_that("checkFactor", {
   expect_error(testFactor(x, n.levels = NA))
   expect_error(assertFactor(x, n.levels = 1), "exactly 1 level")
 })
+
+test_that("typed.missing", {
+  expect_false(testFactor(NA))
+  expect_false(testFactor(NA_integer_))
+})

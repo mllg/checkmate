@@ -60,3 +60,9 @@ test_that("Sorted strings", {
   expect_true(testCharacter(x, sorted = TRUE))
   expect_error(assertCharacter(rev(x), sorted = TRUE), "sorted")
 })
+
+test_that("typed.missing", {
+  expect_true(testCharacter(NA))
+  expect_true(testCharacter(NA, typed.missing = FALSE))
+  expect_false(testCharacter(NA, typed.missing = TRUE))
+})

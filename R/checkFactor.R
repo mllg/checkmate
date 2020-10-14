@@ -30,7 +30,7 @@
 #' x = factor("a", levels = c("a", "b"))
 #' testFactor(x)
 #' testFactor(x, empty.levels.ok = FALSE)
-checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, null.ok =  FALSE) {
+checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, n.levels = NULL, min.levels = NULL, max.levels = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
   .Call(c_check_factor, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
     checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }

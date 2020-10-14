@@ -421,11 +421,63 @@ static Rboolean check_vector_sorted(SEXP x, SEXP sorted) {
     return TRUE;
 }
 
+static Rboolean check_typed_missing(SEXP x, SEXP typed_missing) {
+    if (as_flag(typed_missing, "typed.missing")) {
+        return FALSE;
+    }
+
+    return TYPEOF(x) != VECSXP && all_missing_atomic(x);
+}
+
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
-SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_string(x) || all_missing_atomic(x), "character", null_ok);
+SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_logical(x) || check_typed_missing(x, typed_missing), "logical", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    return ScalarLogical(TRUE);
+}
+
+SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_integer(x) || check_typed_missing(x, typed_missing), "integer", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
+    return ScalarLogical(TRUE);
+}
+
+SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
+    double dtol = as_number(tol, "tol");
+    HANDLE_INTEGERISH_NULL(dtol, null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
+    return ScalarLogical(TRUE);
+}
+
+SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_double(x) || check_typed_missing(x, typed_missing), "double", null_ok);
+    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
+    ASSERT_TRUE(check_vector_names(x, names));
+    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
+    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_vector_finite(x, finite));
+    ASSERT_TRUE(check_vector_unique(x, unique));
+    ASSERT_TRUE(check_vector_sorted(x, sorted));
+    return ScalarLogical(TRUE);
+}
+
+SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_string(x) || check_typed_missing(x, typed_missing), "character", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -439,8 +491,8 @@ SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_complex(x) || all_missing_atomic(x), "complex", null_ok);
+SEXP attribute_hidden c_check_complex(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP typed_missing, SEXP null_ok) {
+    HANDLE_TYPE_NULL(is_class_complex(x) || check_typed_missing(x, typed_missing), "complex", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -482,7 +534,7 @@ SEXP attribute_hidden c_check_dataframe(SEXP x, SEXP any_missing, SEXP all_missi
 }
 
 SEXP attribute_hidden c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_factor(x) || all_missing_atomic(x), "factor", null_ok);
+    HANDLE_TYPE_NULL(is_class_factor(x), "factor", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -490,40 +542,9 @@ SEXP attribute_hidden c_check_factor(SEXP x, SEXP any_missing, SEXP all_missing,
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_integer(x) || all_missing_atomic(x), "integer", null_ok);
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    ASSERT_TRUE(check_vector_sorted(x, sorted));
-    return ScalarLogical(TRUE);
-}
-
-SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    double dtol = as_number(tol, "tol");
-    HANDLE_INTEGERISH_NULL(dtol, null_ok);
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    ASSERT_TRUE(check_vector_sorted(x, sorted));
-    return ScalarLogical(TRUE);
-}
 
 SEXP attribute_hidden c_check_list(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(is_class_list(x), "list", null_ok)
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    return ScalarLogical(TRUE);
-}
-
-SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_logical(x) || all_missing_atomic(x), "logical", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
@@ -619,17 +640,6 @@ SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finit
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_double(x) || all_missing_atomic(x), "double", null_ok);
-    ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
-    ASSERT_TRUE(check_vector_names(x, names));
-    ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
-    ASSERT_TRUE(check_vector_finite(x, finite));
-    ASSERT_TRUE(check_vector_unique(x, unique));
-    ASSERT_TRUE(check_vector_sorted(x, sorted));
-    return ScalarLogical(TRUE);
-}
 
 SEXP attribute_hidden c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isVector(x), "vector", null_ok);

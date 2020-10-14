@@ -59,3 +59,9 @@ test_that("factors are detected (#164)", {
   x = factor(letters)
   expect_error(assertInteger(x), "factor")
 })
+
+test_that("typed.missing", {
+  expect_true(testInteger(NA_character_))
+  expect_true(testInteger(NA_character_, typed.missing = FALSE))
+  expect_false(testInteger(NA_character_, typed.missing = TRUE))
+})

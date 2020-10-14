@@ -19,3 +19,9 @@ test_that("checkLogical", {
 
   expect_error(assertLogical(1), "logical")
 })
+
+test_that("typed.missing", {
+  expect_true(testLogical(NA_character_))
+  expect_true(testLogical(NA_character_, typed.missing = FALSE))
+  expect_false(testLogical(NA_character_, typed.missing = TRUE))
+})

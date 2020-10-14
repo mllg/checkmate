@@ -19,3 +19,9 @@ test_that("checkComplex", {
 
   expect_error(assertComplex(1), "complex")
 })
+
+test_that("typed.missing", {
+  expect_true(testComplex(NA))
+  expect_true(testComplex(NA, typed.missing = FALSE))
+  expect_false(testComplex(NA, typed.missing = TRUE))
+})

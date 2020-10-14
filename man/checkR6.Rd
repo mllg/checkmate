@@ -8,7 +8,7 @@
 \alias{testR6}
 \alias{test_r6}
 \alias{expect_r6}
-\title{Check if an argument is a R6 class}
+\title{Check if an argument is an R6 class}
 \usage{
 checkR6(
   x,
@@ -145,7 +145,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if an argument is a R6 class
+Check if an argument is an R6 class
 }
 \examples{
 library(R6)
