@@ -81,12 +81,6 @@ checkDouble." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -139,123 +133,123 @@ To explicitly check for real integer or double vectors, see <code><a href='check
 <code><a href='checkDouble.html'>checkDouble</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkNumeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+    <pre class="usage"><span class='fu'>checkNumeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>check_numeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>check_numeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>assertNumeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assertNumeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>assert_numeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assert_numeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>testNumeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>testNumeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>test_numeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>test_numeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_numeric</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='op'>-</span><span class='fl'>Inf</span>,
-  upper = <span class='fl'>Inf</span>,
-  finite = <span class='fl'>FALSE</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  names = <span class='kw'>NULL</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>)
-)</pre>
+<span class='fu'>expect_numeric</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>,
+  upper <span class='op'>=</span> <span class='cn'>Inf</span>,
+  finite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -401,7 +395,9 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 <code><a href='checkVector.html'>checkVector</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>testNumeric</span>(<span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testNumeric</span>(<span class='fl'>1</span>, min.len = <span class='fl'>1</span>, lower = <span class='fl'>0</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>testNumeric</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testNumeric</span><span class='op'>(</span><span class='fl'>1</span>, min.len <span class='op'>=</span> <span class='fl'>1</span>, lower <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -417,7 +413,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -135,17 +129,17 @@
     <p>Simply checks if an argument is <code>FALSE</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkFALSE</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>checkFALSE</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>check_false</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>)
+<span class='fu'>check_false</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>assertFALSE</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>, .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>), add = <span class='kw'>NULL</span>)
+<span class='fu'>assertFALSE</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>assert_false</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>, .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>), add = <span class='kw'>NULL</span>)
+<span class='fu'>assert_false</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, add <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>testFALSE</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>)
+<span class='fu'>testFALSE</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>test_false</span>(<span class='kw'>x</span>, na.ok = <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>test_false</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,7 +186,9 @@ Collection to store assertion messages. See <code><a href='AssertCollection.html
  <code><a href='https://testthat.r-lib.org/reference/expectation.html'>expectation</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>testFALSE</span>(<span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testFALSE</span>(<span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] FALSE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>testFALSE</span><span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testFALSE</span><span class='op'>(</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -208,7 +204,7 @@ Collection to store assertion messages. See <code><a href='AssertCollection.html
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

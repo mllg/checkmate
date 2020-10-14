@@ -84,12 +84,6 @@ Paths are relative to the current working directory." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -145,37 +139,37 @@ Paths are relative to the current working directory." />
 </ul><p>Paths are relative to the current working directory.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkPathForOutput</span>(<span class='kw'>x</span>, overwrite = <span class='fl'>FALSE</span>, extension = <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>checkPathForOutput</span><span class='op'>(</span><span class='va'>x</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, extension <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>check_path_for_output</span>(<span class='kw'>x</span>, overwrite = <span class='fl'>FALSE</span>, extension = <span class='kw'>NULL</span>)
+<span class='fu'>check_path_for_output</span><span class='op'>(</span><span class='va'>x</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, extension <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>assertPathForOutput</span>(
-  <span class='kw'>x</span>,
-  overwrite = <span class='fl'>FALSE</span>,
-  extension = <span class='kw'>NULL</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assertPathForOutput</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  extension <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>assert_path_for_output</span>(
-  <span class='kw'>x</span>,
-  overwrite = <span class='fl'>FALSE</span>,
-  extension = <span class='kw'>NULL</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assert_path_for_output</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  extension <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>testPathForOutput</span>(<span class='kw'>x</span>, overwrite = <span class='fl'>FALSE</span>, extension = <span class='kw'>NULL</span>)
+<span class='fu'>testPathForOutput</span><span class='op'>(</span><span class='va'>x</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, extension <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>test_path_for_output</span>(<span class='kw'>x</span>, overwrite = <span class='fl'>FALSE</span>, extension = <span class='kw'>NULL</span>)
+<span class='fu'>test_path_for_output</span><span class='op'>(</span><span class='va'>x</span>, overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>, extension <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>expect_path_for_output</span>(
-  <span class='kw'>x</span>,
-  overwrite = <span class='fl'>FALSE</span>,
-  extension = <span class='kw'>NULL</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>)
-)</pre>
+<span class='fu'>expect_path_for_output</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  extension <span class='op'>=</span> <span class='cn'>NULL</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -248,7 +242,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Can we create a file in the tempdir?</span>
-<span class='fu'>testPathForOutput</span>(<span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>"process.log"</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+<span class='fu'>testPathForOutput</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"process.log"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -264,7 +259,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

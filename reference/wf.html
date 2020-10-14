@@ -80,12 +80,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -137,9 +131,9 @@
 &#8220;which.last&#8221; (<code><a href='https://rdrr.io/r/utils/head.html'>tail(which(x), 1)</a></code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>wf</span>(<span class='kw'>x</span>, use.names = <span class='fl'>TRUE</span>)
+    <pre class="usage"><span class='fu'>wf</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>wl</span>(<span class='kw'>x</span>, use.names = <span class='fl'>TRUE</span>)</pre>
+<span class='fu'>wl</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,7 +158,10 @@ named.</p></td>
  an empty integer vector if none is found. NAs are ignored.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>wf</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>FALSE</span>, <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='fu'>wl</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>FALSE</span>, <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; integer(0)</div><div class='input'><span class='fu'>wf</span>(<span class='fl'>NA</span>)</div><div class='output co'>#&gt; integer(0)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>wf</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='fu'>wl</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; integer(0)</div><div class='input'><span class='fu'>wf</span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; integer(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -180,7 +177,7 @@ named.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

@@ -84,12 +84,6 @@ See the example on how to push custom messages or retrieve all stored messages."
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -145,9 +139,9 @@ the report function to a certain degree.
 See the example on how to push custom messages or retrieve all stored messages.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeAssertCollection</span>()
+    <pre class="usage"><span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>reportAssertions</span>(<span class='kw'>collection</span>)</pre>
+<span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>collection</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,15 +160,19 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
  collected).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='st'>"a"</span>
-<span class='kw'>coll</span> <span class='op'>=</span> <span class='fu'>makeAssertCollection</span>()
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='st'>"a"</span>
+<span class='va'>coll</span> <span class='op'>=</span> <span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span>())</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='checkNumeric.html'>assertNumeric</a></span>(<span class='kw'>x</span>, add = <span class='kw'>coll</span>)
-<span class='kw'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span>()</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='kw'>coll</span><span class='op'>$</span><span class='fu'>push</span>(<span class='st'>"Custom error message"</span>)
-<span class='kw'>coll</span><span class='op'>$</span><span class='fu'>getMessages</span>()</div><div class='output co'>#&gt; [1] "Variable 'x': Must be of type 'numeric', not 'character'."
-#&gt; [2] "Custom error message"                                     </div><div class='input'><span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='fu'>reportAssertions</span>(<span class='kw'>coll</span>)
-}</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='checkNumeric.html'>assertNumeric</a></span><span class='op'>(</span><span class='va'>x</span>, add <span class='op'>=</span> <span class='va'>coll</span><span class='op'>)</span>
+<span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='va'>coll</span><span class='op'>$</span><span class='fu'>push</span><span class='op'>(</span><span class='st'>"Custom error message"</span><span class='op'>)</span>
+<span class='va'>coll</span><span class='op'>$</span><span class='fu'>getMessages</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Variable 'x': Must be of type 'numeric', not 'character'."
+#&gt; [2] "Custom error message"                                     </div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>coll</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -190,7 +188,7 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

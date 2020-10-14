@@ -81,12 +81,6 @@ checks of list elements or data frame columns." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -139,11 +133,11 @@ checks of list elements or data frame columns." />
 checks of list elements or data frame columns.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>qassertr</span>(<span class='kw'>x</span>, <span class='kw'>rules</span>, .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>))
+    <pre class="usage"><span class='fu'>qassertr</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>rules</span>, .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span>
 
-<span class='fu'>qtestr</span>(<span class='kw'>x</span>, <span class='kw'>rules</span>, depth = <span class='fl'>1L</span>)
+<span class='fu'>qtestr</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>rules</span>, depth <span class='op'>=</span> <span class='fl'>1L</span><span class='op'>)</span>
 
-<span class='fu'>qexpectr</span>(<span class='kw'>x</span>, <span class='kw'>rules</span>, info = <span class='kw'>NULL</span>, label = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>))</pre>
+<span class='fu'>qexpectr</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>rules</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -194,13 +188,17 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># All list elements are integers with length &gt;= 1?</span>
-<span class='fu'>qtestr</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>), <span class='st'>"i+"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>qtestr</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>)</span>, <span class='st'>"i+"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># All list elements (i.e. data frame columns) are numeric?</span>
-<span class='fu'>qtestr</span>(<span class='kw'>iris</span>, <span class='st'>"n"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>qtestr</span><span class='op'>(</span><span class='va'>iris</span>, <span class='st'>"n"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># All list elements are numeric, w/o NAs?</span>
-<span class='fu'>qtestr</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b = <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>1</span>), c = <span class='kw'>letters</span>), <span class='st'>"N+"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>qtestr</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, c <span class='op'>=</span> <span class='va'>letters</span><span class='op'>)</span>, <span class='st'>"N+"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># All list elements are numeric OR character</span>
-<span class='fu'>qtestr</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(a = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b = <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span>(<span class='fl'>1</span>), c = <span class='kw'>letters</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"N+"</span>, <span class='st'>"S+"</span>))</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+<span class='fu'>qtestr</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, c <span class='op'>=</span> <span class='va'>letters</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"N+"</span>, <span class='st'>"S+"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -216,7 +214,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -135,109 +129,109 @@
     <p>Checks that an object is of class <code><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkPOSIXct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+    <pre class="usage"><span class='fu'>checkPOSIXct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>check_posixct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>check_posixct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>assertPOSIXct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assertPOSIXct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>assert_posixct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assert_posixct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>testPOSIXct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>testPOSIXct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>test_posixct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>
-)
+<span class='fu'>test_posixct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_posixct</span>(
-  <span class='kw'>x</span>,
-  lower = <span class='kw'>NULL</span>,
-  upper = <span class='kw'>NULL</span>,
-  any.missing = <span class='fl'>TRUE</span>,
-  all.missing = <span class='fl'>TRUE</span>,
-  len = <span class='kw'>NULL</span>,
-  min.len = <span class='kw'>NULL</span>,
-  max.len = <span class='kw'>NULL</span>,
-  unique = <span class='fl'>FALSE</span>,
-  sorted = <span class='fl'>FALSE</span>,
-  null.ok = <span class='fl'>FALSE</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>)
-)</pre>
+<span class='fu'>expect_posixct</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  lower <span class='op'>=</span> <span class='cn'>NULL</span>,
+  upper <span class='op'>=</span> <span class='cn'>NULL</span>,
+  any.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  all.missing <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  min.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.len <span class='op'>=</span> <span class='cn'>NULL</span>,
+  unique <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  sorted <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -380,7 +374,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

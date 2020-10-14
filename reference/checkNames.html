@@ -79,12 +79,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/checkmate.html">Get started</a>
 </li>
 <li>
@@ -135,88 +129,88 @@
     <p>Performs various checks on character vectors, usually names.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkNames</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>
-)
+    <pre class="usage"><span class='fu'>checkNames</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>
+<span class='op'>)</span>
 
-<span class='fu'>check_names</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>
-)
+<span class='fu'>check_names</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>
+<span class='op'>)</span>
 
-<span class='fu'>assertNames</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assertNames</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>assert_names</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>,
-  .var.name = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>),
-  add = <span class='kw'>NULL</span>
-)
+<span class='fu'>assert_names</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>,
+  .var.name <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>testNames</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>
-)
+<span class='fu'>testNames</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>
+<span class='op'>)</span>
 
-<span class='fu'>test_names</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>
-)
+<span class='fu'>test_names</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>
+<span class='op'>)</span>
 
-<span class='fu'>expect_names</span>(
-  <span class='kw'>x</span>,
-  type = <span class='st'>"named"</span>,
-  subset.of = <span class='kw'>NULL</span>,
-  must.include = <span class='kw'>NULL</span>,
-  permutation.of = <span class='kw'>NULL</span>,
-  identical.to = <span class='kw'>NULL</span>,
-  disjunct.from = <span class='kw'>NULL</span>,
-  what = <span class='st'>"names"</span>,
-  info = <span class='kw'>NULL</span>,
-  label = <span class='fu'><a href='vname.html'>vname</a></span>(<span class='kw'>x</span>)
-)</pre>
+<span class='fu'>expect_names</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  type <span class='op'>=</span> <span class='st'>"named"</span>,
+  subset.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  must.include <span class='op'>=</span> <span class='cn'>NULL</span>,
+  permutation.of <span class='op'>=</span> <span class='cn'>NULL</span>,
+  identical.to <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disjunct.from <span class='op'>=</span> <span class='cn'>NULL</span>,
+  what <span class='op'>=</span> <span class='st'>"names"</span>,
+  info <span class='op'>=</span> <span class='cn'>NULL</span>,
+  label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -322,11 +316,14 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 <code><a href='checkNamed.html'>checkNamed</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
-<span class='fu'>testNames</span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>x</span>), <span class='st'>"unnamed"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>x</span>) <span class='op'>=</span> <span class='kw'>letters</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>]
-<span class='fu'>testNames</span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>x</span>), <span class='st'>"unique"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='kw'>cn</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Species"</span>, <span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span>, <span class='st'>"Petal.Length"</span>, <span class='st'>"Petal.Width"</span>)
-<span class='fu'>assertNames</span>(<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='kw'>iris</span>), permutation.of = <span class='kw'>cn</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>
+<span class='fu'>testNames</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='st'>"unnamed"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>=</span> <span class='va'>letters</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span>
+<span class='fu'>testNames</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='st'>"unique"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='va'>cn</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Species"</span>, <span class='st'>"Sepal.Length"</span>, <span class='st'>"Sepal.Width"</span>, <span class='st'>"Petal.Length"</span>, <span class='st'>"Petal.Width"</span><span class='op'>)</span>
+<span class='fu'>assertNames</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span>, permutation.of <span class='op'>=</span> <span class='va'>cn</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -342,7 +339,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
