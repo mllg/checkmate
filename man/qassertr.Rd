@@ -28,7 +28,7 @@ the heuristic implemented in \code{\link{vname}}.}
 Maximum recursion depth. Defaults to \dQuote{1} to directly check list elements or
 data frame columns. Set to a higher value to check lists of lists of elements.}
 
-\item{info}{[character(1)]\cr
+\item{info}{[\code{character(1)}]\cr
 Extra information to be included in the message for the testthat reporter.
 See \code{\link[testthat]{expect_that}}.}
 

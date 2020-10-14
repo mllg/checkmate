@@ -94,3 +94,10 @@ test_that("check_path_for_output", {
   expect_true(checkPathForOutput("a.txt", extension = "txt"))
   expect_error(assertPathForOutput("a.R", extension = "txt"), "extension")
 })
+
+test_that("#195", {
+  x = tempfile(fileext = ".csv.gz")
+  file.create(x)
+  expect_true(test_file_exists(x, extension = ".gz"))
+  expect_true(test_file_exists(x, extension = ".csv.gz"))
+})

@@ -37,10 +37,11 @@ checkFileExists = function(x, access = "", extension = NULL) {
 checkFileExtension = function(x, extension = NULL) {
   if (!is.null(extension)) {
     qassert(extension, "S+")
-    pos = regexpr("\\.([[:alnum:]]+)$", x)
-    ext = ifelse(pos > -1L, tolower(substring(x, pos + 1L)), "")
-    if (any(ext %nin% tolower(extension)))
-      return(sprintf("File extension must be in {'%s'}", paste0(extension, collapse = "','")))
+    ii = Reduce(`|`, lapply(tolower(extension), endsWith, x = tolower(x)))
+    if (!all(ii))
+      return(sprintf("File extension must be in {'%s'} (case insensitive), but file name is '%s'",
+          paste0(extension, collapse = "','"),
+          x[wf(!ii)]))
   }
   return(TRUE)
 }
