@@ -23,7 +23,7 @@ checkDirectoryExists = function(x, access = "") {
 
   w = wf(!file.exists(x))
   if (length(w) > 0L)
-    return(sprintf("Directory '%s' does not exists", x[w]))
+    return(sprintf("Directory '%s' does not exist", x[w]))
 
   w = wf(!dir.exists(x))
   if (length(w) > 0L)
