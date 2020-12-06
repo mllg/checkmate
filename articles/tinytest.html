@@ -82,7 +82,7 @@
       <h1 data-toc-skip>Setup tinytest</h1>
                         <h4 class="author">Michel Lang</h4>
             
-            <h4 class="date">2020-10-14</h4>
+            <h4 class="date">2020-12-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/tinytest.Rmd"><code>vignettes/tinytest.Rmd</code></a></small>
       <div class="hidden name"><code>tinytest.Rmd</code></div>
@@ -109,10 +109,10 @@
 <li><p>Edit your <code>DESCRIPTION</code> and add <code>checkmate</code> to <code>Suggests</code> unless it is already listed in <code>Imports</code> for its assertions.</p></li>
 <li>
 <p>In <strong>each</strong> test file which calls an expectation from <code>checkmate</code>, you must include the following lines at the beginning of the file:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/markvanderloo/tinytest">"tinytest"</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/markvanderloo/tinytest">"tinytest"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/mllg/checkmate">"checkmate"</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/tinytest/man/using.html">using</a></span><span class="op">(</span><span class="st">"checkmate"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/tinytest/man/using.html">using</a></span><span class="op">(</span><span class="st">"checkmate"</span><span class="op">)</span></code></pre></div>
 <p>If you forget the last line, expectations will not get reported correctly in the summary. Also note that sourcing a file which includes <code><a href="https://rdrr.io/pkg/tinytest/man/using.html">using("checkmate")</a></code> is <strong>not</strong> sufficient.</p>
 </li>
 <li><p>Check if everything works with <code>R CMD check</code>.</p></li>
