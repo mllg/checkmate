@@ -44,6 +44,8 @@
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -55,9 +57,15 @@
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -102,7 +110,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mllg/checkmate/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -128,8 +136,8 @@
 <a href="#version-210" class="anchor"></a>Version 2.1.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;</a></code> instead of <code><a href="https://rdrr.io/r/base/Comparison.html">&gt;=</a></code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
-<li>Coercion of double to integer in <code><a href="../reference/checkInt.html">assertInt()</a></code> and <code><a href="../reference/checkIntegerish.html">assertIntegerish()</a></code> now round to the nearest integer instead of always rounding via <code><a href="https://rdrr.io/r/base/Round.html">trunc()</a></code>.</li>
+<li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code><a href="https://rdrr.io/r/base/Comparison.html" class="external-link">&gt;</a></code> instead of <code><a href="https://rdrr.io/r/base/Comparison.html" class="external-link">&gt;=</a></code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
+<li>Coercion of double to integer in <code><a href="../reference/checkInt.html">assertInt()</a></code> and <code><a href="../reference/checkIntegerish.html">assertIntegerish()</a></code> now round to the nearest integer instead of always rounding via <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc()</a></code>.</li>
 <li>Fixed an error message where the wrong variable name was reported by <code><a href="../reference/assert.html">assert()</a></code> (<a href='https://github.com/mllg/checkmate/issues/182'>#182</a>).</li>
 <li>Checks on POSIXct dates with storage mode integer should now work instead of raising an exception (<a href='https://github.com/mllg/checkmate/issues/175'>#175</a>).</li>
 <li>
@@ -199,7 +207,7 @@
 <li>Error messages now provide more information about error locations, e.g., the position of the first missing element in a vector.</li>
 <li>If the object to check is missing, <code>assert</code>-functions now give a better error message, <code>test</code>-functions are always <code>FALSE</code> and <code>expect</code>-functions always raise an exception.</li>
 <li>Checks for missingness and sort order optimized for ALTREPs.</li>
-<li>The calling frame reported in assertions is now identical to the calling frame reported by R’s <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> function (<a href='https://github.com/mllg/checkmate/issues/117'>#117</a>).</li>
+<li>The calling frame reported in assertions is now identical to the calling frame reported by R’s <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code> function (<a href='https://github.com/mllg/checkmate/issues/117'>#117</a>).</li>
 <li>Added <code>checkDouble</code> to explicitly check for non-integer numerics.</li>
 <li>Added <code>checkRaw</code> to check raw vectors.</li>
 <li>Added <code>checkFormula</code> to check formula objects.</li>
@@ -212,7 +220,7 @@
 <li>Fixed an error message in <code>checkChoice</code>.</li>
 <li>Fixed <code>*Function</code> to work properly with Primitives.</li>
 <li>Fixed <code>*List</code> where the check for missingness was broken.</li>
-<li>Workaround for <code>*DataTable</code> for the detection of the number of rows of null data.tables: <a href="https://github.com/Rdatatable/data.table/issues/3149" class="uri">https://github.com/Rdatatable/data.table/issues/3149</a>
+<li>Workaround for <code>*DataTable</code> for the detection of the number of rows of null data.tables: <a href="https://github.com/Rdatatable/data.table/issues/3149" class="external-link">https://github.com/Rdatatable/data.table/issues/3149</a>
 </li>
 </ul>
 </div>
@@ -223,7 +231,7 @@
 <ul>
 <li>Added <code>*POSIXct</code> to check POSIXct data-time objects in POSIXct format.</li>
 <li>The set functions optionally support the package <code>fastmatch</code> now.</li>
-<li>Argument <code>sorted = TRUE</code> is not passed to <code><a href="https://rdrr.io/r/base/ls.html">ls()</a></code> anymore to support R versions prior to v3.2.0.</li>
+<li>Argument <code>sorted = TRUE</code> is not passed to <code><a href="https://rdrr.io/r/base/ls.html" class="external-link">ls()</a></code> anymore to support R versions prior to v3.2.0.</li>
 </ul>
 </div>
     <div id="version-184" class="section level1">
@@ -314,7 +322,7 @@
 </h1>
 <ul>
 <li>Added <code>checkDate</code>.</li>
-<li>Argument <code>.var.name</code> of assert functions now has \code{NULL} as default value (instead of missing).</li>
+<li>Argument <code>.var.name</code> of assert functions now has  as default value (instead of missing).</li>
 <li>Fixed a bug in <code>*OS</code> functions.</li>
 <li>Fixed a bug in <code>*Directory</code> functions.</li>
 <li>New argument <code>extension</code> for the <code>*File</code> family of functions.</li>
@@ -329,7 +337,7 @@
 <li>Argument <code>fixed</code> for <code>*Character</code> functions now accepts a string instead of a boolean value and thus can directly be used for a substring search.</li>
 <li>New arguments <code>min.chars</code>, <code>pattern</code>, <code>fixed</code> and <code>ignore.case</code> for the <code>*String</code> family of functions.</li>
 <li>Exported helper functions <code>wf</code> (which.first) and <code>wl</code> (which.last).</li>
-<li>Now importing the new backports package for functions <code><a href="https://rdrr.io/r/base/lengths.html">lengths()</a></code> and <code>dir.exists</code>.</li>
+<li>Now importing the new backports package for functions <code><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths()</a></code> and <code>dir.exists</code>.</li>
 </ul>
 </div>
     <div id="version-171" class="section level1">
@@ -380,7 +388,7 @@
 <a href="#version-161" class="anchor"></a>Version 1.6.1<small> 2015-07-17 </small>
 </h1>
 <ul>
-<li>New family of functions: <code>expect_*</code> is intended to be used in combination with testthat. But note that functions <code><a href="https://rdrr.io/pkg/tinytest/man/expect_equal.html">expect_null()</a></code> and <code><a href="https://testthat.r-lib.org/reference/expect_named.html">expect_named()</a></code> are not provided to avoid name clashes with testthat.</li>
+<li>New family of functions: <code>expect_*</code> is intended to be used in combination with testthat. But note that functions <code><a href="https://rdrr.io/pkg/tinytest/man/expect_equal.html" class="external-link">expect_null()</a></code> and <code><a href="https://testthat.r-lib.org/reference/expect_named.html" class="external-link">expect_named()</a></code> are not provided to avoid name clashes with testthat.</li>
 <li>Added <code><a href="../reference/qassert.html">qexpect()</a></code> and <code><a href="../reference/qassertr.html">qexpectr()</a></code>.</li>
 <li>Added argument <code>all.missing</code> for checks of matricies and data frames.</li>
 <li>Added <code><a href="../reference/anyNaN.html">anyNaN()</a></code>.</li>
@@ -510,11 +518,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Michel Lang.</p>
+  <p><p>Developed by Michel Lang.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
 </div>
 
       </footer>
@@ -522,6 +530,8 @@
 
   
 
+
+  
 
   </body>
 </html>

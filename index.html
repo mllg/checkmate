@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -64,7 +66,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/mllg/checkmate/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -88,23 +90,23 @@
 <p>Ever used an R function that produced a not-very-helpful error message, just to discover after minutes of debugging that you simply passed a wrong argument?</p>
 <p>Blaming the laziness of the package author for not doing such standard checks (in a dynamically typed language such as R) is at least partially unfair, as R makes theses types of checks cumbersome and annoying. Well, that’s how it was in the past.</p>
 <p>Enter checkmate.</p>
-<p>Virtually <strong>every standard type of user error</strong> when passing arguments into function can be caught with a simple, readable line which produces an <strong>informative error message</strong> in case. A substantial part of the package was written in C to <strong>minimize any worries about execution time overhead</strong>. Furthermore, the package provides over 30 expectations to extend the popular <a href="https://cran.r-project.org/package=testthat">testthat package</a> for unit tests.</p>
+<p>Virtually <strong>every standard type of user error</strong> when passing arguments into function can be caught with a simple, readable line which produces an <strong>informative error message</strong> in case. A substantial part of the package was written in C to <strong>minimize any worries about execution time overhead</strong>. Furthermore, the package provides over 30 expectations to extend the popular <a href="https://cran.r-project.org/package=testthat" class="external-link">testthat package</a> for unit tests.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>For the stable release, just install the latest version from <a href="https://cran.r-project.org/package=checkmate">CRAN</a>:</p>
-<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("checkmate")</a></code></pre>
-<p>For the development version, use <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
-<pre class="{r}"><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("mllg/checkmate")</a></code></pre>
+<p>For the stable release, just install the latest version from <a href="https://cran.r-project.org/package=checkmate" class="external-link">CRAN</a>:</p>
+<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages("checkmate")</a></code></pre>
+<p>For the development version, use <a href="https://cran.r-project.org/package=devtools" class="external-link">devtools</a>:</p>
+<pre class="{r}"><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html" class="external-link">devtools::install_github("mllg/checkmate")</a></code></pre>
 </div>
 <div id="resources" class="section level2">
 <h2 class="hasAnchor">
 <a href="#resources" class="anchor"></a>Resources</h2>
 <ul>
-<li><a href="https://journal.r-project.org/archive/2017/RJ-2017-028/index.html">R Journal Paper</a></li>
-<li><a href="https://github.com/mllg/checkmate/blob/master/NEWS.md">NEWS</a></li>
-<li><a href="https://mllg.github.io/checkmate/">Documentation/Vignettes</a></li>
-<li><a href="https://mllg.github.io/checkmate/reference/checkmate-package">Grouped function reference</a></li>
+<li><a href="https://journal.r-project.org/archive/2017/RJ-2017-028/index.html" class="external-link">R Journal Paper</a></li>
+<li><a href="https://github.com/mllg/checkmate/blob/master/NEWS.md" class="external-link">NEWS</a></li>
+<li><a href="https://mllg.github.io/checkmate/" class="external-link">Documentation/Vignettes</a></li>
+<li><a href="https://mllg.github.io/checkmate/reference/checkmate-package" class="external-link">Grouped function reference</a></li>
 </ul>
 </div>
 </div>
@@ -112,7 +114,7 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=checkmate">https://​cloud.r-project.org/​package=checkmate</a>
 </li>
@@ -122,47 +124,54 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
 <a href="https://opensource.org/licenses/BSD-3-Clause">BSD_3_clause</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
+
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing checkmate</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Michel Lang <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0001-9754-0393" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://cran.r-project.org/package=checkmate"><img src="https://www.r-pkg.org/badges/version/checkmate" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://github.com/mllg/checkmate"><img src="https://github.com/mllg/checkmate/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://coveralls.io/r/mllg/checkmate?branch=master"><img src="https://img.shields.io/coveralls/mllg/checkmate.svg" alt="Coverage Status"></a></li>
-<li><a href="https://cran.r-project.org/package=checkmate"><img src="https://cranlogs.r-pkg.org/badges/checkmate" alt="Download Stats"></a></li>
+<li><a href="https://cran.r-project.org/package=checkmate" class="external-link"><img src="https://www.r-pkg.org/badges/version/checkmate" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://github.com/mllg/checkmate" class="external-link"><img src="https://github.com/mllg/checkmate/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://coveralls.io/r/mllg/checkmate?branch=master" class="external-link"><img src="https://img.shields.io/coveralls/mllg/checkmate.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=checkmate" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/checkmate" alt="Download Stats"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Michel Lang.</p>
+  <p></p>
+<p>Developed by Michel Lang.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
@@ -170,6 +179,8 @@
 
   
 
+
+  
 
   </body>
 </html>
