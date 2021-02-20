@@ -31,8 +31,8 @@ test_that("checkNames", {
   expect_false(testNames(".1", type = "strict"))
   expect_false(testNames("..1", type = "strict"))
   expect_false(testNames("x ", type = "strict"))
-  expect_false(testNames("ä", type = "strict"))
-  expect_false(testNames("ä", type = "ids"))
+  expect_false(testNames("\u00e4", type = "strict"))
+  expect_false(testNames("\u00e4", type = "ids"))
   expect_error(assertNames(c("a", "a"), "unique"), "unique")
 
   expect_error(assertNames(c("a", "a"), "strict"), "unique")
