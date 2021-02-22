@@ -2,7 +2,7 @@
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/checkmate)](https://cran.r-project.org/package=checkmate)
 [![R build status](https://github.com/mllg/checkmate/workflows/R-CMD-check/badge.svg)](https://github.com/mllg/checkmate)
-[![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/r/mllg/checkmate?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/github/mllg/checkmate)
 [![Download Stats](https://cranlogs.r-pkg.org/badges/checkmate)](https://cran.r-project.org/package=checkmate)
 
 Fast and versatile argument checks for R.
