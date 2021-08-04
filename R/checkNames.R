@@ -3,7 +3,7 @@
 #' @description
 #' Performs various checks on character vectors, usually names.
 #'
-#' @templateVar fn Named
+#' @templateVar fn Names
 #' @param x [\code{character} || \code{NULL}]\cr
 #'  Names to check using rules defined via \code{type}.
 #' @param type [character(1)]\cr
@@ -29,7 +29,7 @@
 #'  Names provided in \code{x} must be identical to the vector \code{identical.to}.
 #'  Use this argument instead of \code{permutation.of} if the order of the names is relevant.
 #' @param disjunct.from [\code{character}]\cr
-#'  Names provided in \code{x} must may not be present in the vector \code{identical.to}.
+#'  Names provided in \code{x} must may not be present in the vector \code{disjunct.from}.
 #' @param what [\code{character(1)}]\cr
 #'  Type of name vector to check, e.g. \dQuote{names} (default), \dQuote{colnames} or \dQuote{rownames}.
 #' @template checker
