@@ -137,7 +137,7 @@
     <p>A flag is defined as single logical value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkFlag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>checkFlag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>check_flag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
@@ -155,7 +155,7 @@
 
 <span class='fu'>test_flag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
-<span class='fu'>expect_flag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></pre>
+<span class='fu'>expect_flag</span><span class='op'>(</span><span class='va'>x</span>, na.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, null.ok <span class='op'>=</span> <span class='cn'>FALSE</span>, info <span class='op'>=</span> <span class='cn'>NULL</span>, label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,18 +167,18 @@ Object to check.</p></td>
     </tr>
     <tr>
       <th>na.ok</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Are missing values allowed? Default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>null.ok</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
 In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -189,13 +189,13 @@ Collection to store assertion messages. See <code><a href='AssertCollection.html
     </tr>
     <tr>
       <th>info</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Extra information to be included in the message for the testthat reporter.
 See <code><a href='https://testthat.r-lib.org/reference/expect_that.html'>expect_that</a></code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -234,9 +234,11 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 <code><a href='checkString.html'>checkString</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>testFlag</span><span class='op'>(</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testFlag</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>testFlag</span><span class='op'>(</span><span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='fu'>testFlag</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -252,7 +254,7 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

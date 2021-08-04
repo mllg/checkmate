@@ -84,7 +84,7 @@
       <h1 data-toc-skip>Setup tinytest</h1>
                         <h4 data-toc-skip class="author">Michel Lang</h4>
             
-            <h4 data-toc-skip class="date">2021-02-22</h4>
+            <h4 data-toc-skip class="date">2021-08-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/tinytest.Rmd" class="external-link"><code>vignettes/tinytest.Rmd</code></a></small>
       <div class="hidden name"><code>tinytest.Rmd</code></div>
@@ -95,17 +95,17 @@
     
 <div id="setup-tinytest" class="section level2">
 <h2 class="hasAnchor">
-<a href="#setup-tinytest" class="anchor"></a>Setup <code>tinytest</code>
+<a href="#setup-tinytest" class="anchor" aria-hidden="true"></a>Setup <code>tinytest</code>
 </h2>
 <p>Setting up the <code>tinytest</code> framework is covered in detail in the documentation of <a href="https://cran.r-project.org/package=tinytest" class="external-link">tinytest</a>. Quick summary:</p>
 <ol style="list-style-type: decimal">
-<li>In the package root directory, call <code><a href="https://rdrr.io/pkg/tinytest/man/setup_tinytest.html" class="external-link">tinytest::setup_tinytest(".")</a></code>.</li>
+<li>In the package root directory, call <code>tinytest::setup_tinytest(".")</code>.</li>
 <li>Edit/add R scripts with unit tests to the directory <code>inst/tinytest</code>.</li>
 </ol>
 </div>
 <div id="setup-checkmate" class="section level2">
 <h2 class="hasAnchor">
-<a href="#setup-checkmate" class="anchor"></a>Setup <code>checkmate</code>
+<a href="#setup-checkmate" class="anchor" aria-hidden="true"></a>Setup <code>checkmate</code>
 </h2>
 <ol style="list-style-type: decimal">
 <li><p>Edit your <code>DESCRIPTION</code> and add <code>checkmate</code> to <code>Suggests</code> unless it is already listed in <code>Imports</code> for its assertions.</p></li>
@@ -115,7 +115,7 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/markvanderloo/tinytest" class="external-link">"tinytest"</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/mllg/checkmate" class="external-link">"checkmate"</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tinytest/man/using.html" class="external-link">using</a></span><span class="op">(</span><span class="st">"checkmate"</span><span class="op">)</span></code></pre></div>
-<p>If you forget the last line, expectations will not get reported correctly in the summary. Also note that sourcing a file which includes <code><a href="https://rdrr.io/pkg/tinytest/man/using.html" class="external-link">using("checkmate")</a></code> is <strong>not</strong> sufficient.</p>
+<p>If you forget the last line, expectations will not get reported correctly in the summary. Also note that sourcing a file which includes <code>using("checkmate")</code> is <strong>not</strong> sufficient.</p>
 </li>
 <li><p>Check if everything works with <code>R CMD check</code>.</p></li>
 </ol>
@@ -139,7 +139,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>

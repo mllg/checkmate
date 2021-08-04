@@ -147,9 +147,9 @@ the report function to a certain degree.
 See the example on how to push custom messages or retrieve all stored messages.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>collection</span><span class='op'>)</span></pre>
+<span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>collection</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,19 +168,22 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
  collected).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>=</span> <span class='st'>"a"</span>
-<span class='va'>coll</span> <span class='op'>=</span> <span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='checkNumeric.html'>assertNumeric</a></span><span class='op'>(</span><span class='va'>x</span>, add <span class='op'>=</span> <span class='va'>coll</span><span class='op'>)</span>
-<span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='va'>coll</span><span class='op'>$</span><span class='fu'>push</span><span class='op'>(</span><span class='st'>"Custom error message"</span><span class='op'>)</span>
-<span class='va'>coll</span><span class='op'>$</span><span class='fu'>getMessages</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Variable 'x': Must be of type 'numeric', not 'character'."
-#&gt; [2] "Custom error message"                                     </div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>coll</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>x</span> <span class='op'>=</span> <span class='st'>"a"</span></span>
+<span class='r-in'><span class='va'>coll</span> <span class='op'>=</span> <span class='fu'>makeAssertCollection</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='fu'><a href='checkNumeric.html'>assertNumeric</a></span><span class='op'>(</span><span class='va'>x</span>, add <span class='op'>=</span> <span class='va'>coll</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>coll</span><span class='op'>$</span><span class='fu'>isEmpty</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+<span class='r-in'><span class='va'>coll</span><span class='op'>$</span><span class='fu'>push</span><span class='op'>(</span><span class='st'>"Custom error message"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>coll</span><span class='op'>$</span><span class='fu'>getMessages</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Variable 'x': Must be of type 'numeric', not 'character'."</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [2] "Custom error message"                                     </span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>reportAssertions</span><span class='op'>(</span><span class='va'>coll</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -196,7 +199,7 @@ Object of type &#8220;AssertCollection&#8221; (constructed via <code>makeAssertC
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

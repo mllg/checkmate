@@ -135,13 +135,13 @@
     </div>
 
     <div class="ref-description">
-    <p>A quick C implementation for &#8220;which.first&#8221; (<code><a href='https://rdrr.io/r/utils/head.html'>head(which(x), 1)</a></code>) and
-&#8220;which.last&#8221; (<code><a href='https://rdrr.io/r/utils/head.html'>tail(which(x), 1)</a></code>).</p>
+    <p>A quick C implementation for &#8220;which.first&#8221; (<code>head(which(x), 1)</code>) and
+&#8220;which.last&#8221; (<code>tail(which(x), 1)</code>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>wf</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>wf</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='fu'>wl</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+<span class='fu'>wl</span><span class='op'>(</span><span class='va'>x</span>, use.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,7 +153,7 @@ Logical vector.</p></td>
     </tr>
     <tr>
       <th>use.names</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 If <code>TRUE</code> and <code>x</code> is named, the result is also
 named.</p></td>
     </tr>
@@ -161,15 +161,18 @@ named.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>[<code><a href='https://rdrr.io/r/base/integer.html'>integer(1)</a></code> | <code><a href='https://rdrr.io/r/base/integer.html'>integer(0)</a></code>].
+    <p>[<code>integer(1)</code> | <code>integer(0)</code>].
  Returns the index of the first/last <code>TRUE</code> value in <code>x</code> or
  an empty integer vector if none is found. NAs are ignored.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>wf</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='fu'>wl</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; integer(0)</div><div class='input'><span class='fu'>wf</span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; integer(0)</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>wf</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2</span>
+<span class='r-in'><span class='fu'>wl</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>FALSE</span>, <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> integer(0)</span>
+<span class='r-in'><span class='fu'>wf</span><span class='op'>(</span><span class='cn'>NA</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> integer(0)</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -185,7 +188,7 @@ named.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

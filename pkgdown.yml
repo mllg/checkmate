@@ -1,8 +1,8 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1.9000
-pkgdown_sha: 86e9d1eddcc1c47e1ae61f5d4c3feb2d6f16f952
+pkgdown: 1.6.1.9001
+pkgdown_sha: ce9781a15c7ea07df9fb17a11295ba4abec0b54b
 articles:
   checkmate: checkmate.html
   tinytest: tinytest.html
-last_built: 2021-02-22T12:54Z
+last_built: 2021-08-04T16:44Z
 

@@ -137,7 +137,7 @@
     <p>Check if an argument is a subset of a given set</p>
     </div>
 
-    <pre class="usage"><span class='fu'>checkSubset</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>choices</span>, empty.ok <span class='op'>=</span> <span class='cn'>TRUE</span>, fmatch <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>checkSubset</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>choices</span>, empty.ok <span class='op'>=</span> <span class='cn'>TRUE</span>, fmatch <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
 <span class='fu'>check_subset</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>choices</span>, empty.ok <span class='op'>=</span> <span class='cn'>TRUE</span>, fmatch <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 
@@ -170,7 +170,7 @@
   fmatch <span class='op'>=</span> <span class='cn'>FALSE</span>,
   info <span class='op'>=</span> <span class='cn'>NULL</span>,
   label <span class='op'>=</span> <span class='fu'><a href='vname.html'>vname</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+<span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,13 +187,13 @@ Set of possible values. May be empty.</p></td>
     </tr>
     <tr>
       <th>empty.ok</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Treat zero-length <code>x</code> as subset of any set <code>choices</code> (this includes <code>NULL</code>)?
 Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>fmatch</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+      <td><p>[<code>logical(1)</code>]<br />
 Use the set operations implemented in <code><a href='https://rdrr.io/pkg/fastmatch/man/fmatch.html'>fmatch</a></code> in package <span class="pkg">fastmatch</span>.
 If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href='https://rdrr.io/r/base/match.html'>match</a></code>.
 <code><a href='https://rdrr.io/pkg/fastmatch/man/fmatch.html'>fmatch</a></code> modifies <code>y</code> by reference:
@@ -201,7 +201,7 @@ A hash table is added as attribute which is used in subsequent calls.</p></td>
     </tr>
     <tr>
       <th>.var.name</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -212,13 +212,13 @@ Collection to store assertion messages. See <code><a href='AssertCollection.html
     </tr>
     <tr>
       <th>info</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Extra information to be included in the message for the testthat reporter.
 See <code><a href='https://testthat.r-lib.org/reference/expect_that.html'>expect_that</a></code>.</p></td>
     </tr>
     <tr>
       <th>label</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
+      <td><p>[<code>character(1)</code>]<br />
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></td>
     </tr>
@@ -253,15 +253,21 @@ Integers and doubles are both treated as numeric.</p>
 <code><a href='checkSetEqual.html'>checkSetEqual</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='va'>letters</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>testSubset</span><span class='op'>(</span><span class='st'>"ab"</span>, <span class='va'>letters</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testSubset</span><span class='op'>(</span><span class='st'>"Species"</span>, <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='co'># x is not converted before the comparison (except for numerics)</span>
-<span class='fu'>testSubset</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"a"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"1"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"a"</span>, <span class='st'>"z"</span><span class='op'>)</span>, <span class='va'>letters</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='st'>"ab"</span>, <span class='va'>letters</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+<span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='st'>"Species"</span>, <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>iris</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># x is not converted before the comparison (except for numerics)</span></span>
+<span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='st'>"a"</span><span class='op'>)</span>, <span class='st'>"a"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+<span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fl'>1</span>, <span class='st'>"1"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] FALSE</span>
+<span class='r-in'><span class='fu'>testSubset</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -277,7 +283,7 @@ Integers and doubles are both treated as numeric.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
