@@ -134,7 +134,8 @@
     <div id="version-210" class="section level1">
 <h1 class="page-header" data-toc-text="2.1.0">
 <a href="#version-210" class="anchor" aria-hidden="true"></a>Version 2.1.0<small> Unreleased </small></h1>
-<ul><li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code>&gt;</code> instead of <code>&gt;=</code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
+<ul><li>New arguments <code>n.chars</code> and <code>max.chars</code> for <code><a href="../reference/checkCharacter.html">checkCharacter()</a></code> and <code><a href="../reference/checkString.html">checkString()</a></code>.</li>
+<li>Checks for integerish now compare the tolerance with the difference to the nearest integer with <code>&gt;</code> instead of <code>&gt;=</code> to allow specifying a tolerance of exactly <code>0</code> (<a href='https://github.com/mllg/checkmate/issues/177'>#177</a>).</li>
 <li>Coercion of double to integer in <code><a href="../reference/checkInt.html">assertInt()</a></code> and <code><a href="../reference/checkIntegerish.html">assertIntegerish()</a></code> now round to the nearest integer instead of always rounding via <code><a href="https://rdrr.io/r/base/Round.html" class="external-link">trunc()</a></code>.</li>
 <li>Fixed an error message where the wrong variable name was reported by <code><a href="../reference/assert.html">assert()</a></code> (<a href='https://github.com/mllg/checkmate/issues/182'>#182</a>).</li>
 <li>Checks on POSIXct dates with storage mode integer should now work instead of raising an exception (<a href='https://github.com/mllg/checkmate/issues/175'>#175</a>).</li>

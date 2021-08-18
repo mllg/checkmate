@@ -139,7 +139,9 @@
 
     <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>checkCharacter</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -157,7 +159,9 @@
 
 <span class='fu'>check_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -175,7 +179,9 @@
 
 <span class='fu'>assertCharacter</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -195,7 +201,9 @@
 
 <span class='fu'>assert_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -215,7 +223,9 @@
 
 <span class='fu'>testCharacter</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -233,7 +243,9 @@
 
 <span class='fu'>test_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -251,7 +263,9 @@
 
 <span class='fu'>expect_character</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  n.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   min.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
+  max.chars <span class='op'>=</span> <span class='cn'>NULL</span>,
   pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
   fixed <span class='op'>=</span> <span class='cn'>NULL</span>,
   ignore.case <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -278,9 +292,19 @@
 Object to check.</p></td>
     </tr>
     <tr>
+      <th>n.chars</th>
+      <td><p>[<code>integer(1)</code>]<br />
+Exact number of characters for each element of <code>x</code>.</p></td>
+    </tr>
+    <tr>
       <th>min.chars</th>
       <td><p>[<code>integer(1)</code>]<br />
 Minimum number of characters for each element of <code>x</code>.</p></td>
+    </tr>
+    <tr>
+      <th>max.chars</th>
+      <td><p>[<code>integer(1)</code>]<br />
+Maximum number of characters for each element of <code>x</code>.</p></td>
     </tr>
     <tr>
       <th>pattern</th>
