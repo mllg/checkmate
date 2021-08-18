@@ -81,7 +81,7 @@ makeExpectation = function(x, res, info, label) {
       stop("Package 'testthat' is required for checkmate's 'expect_*' extensions with backend 'testthat'")
 
     if (!is.null(info)) {
-      info = sprintf("%s\nAdditional info: %s", info)
+      info = sprintf("Additional info: %s", info)
     }
 
     if (isTRUE(res)) {
