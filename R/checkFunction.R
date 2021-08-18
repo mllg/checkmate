@@ -33,7 +33,7 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok 
 
   if (!is.null(args)) {
     qassert(args, "S")
-    fargs = names(formals(args(x))) %??% character(0L)
+    fargs = names(formals(args(x))) %??% character()
 
     if (length(args) == 0L) {
       if (length(fargs) > 0L)
@@ -43,7 +43,7 @@ checkFunction = function(x, args = NULL, ordered = FALSE, nargs = NULL, null.ok 
 
     qassert(ordered, "B1")
     if (ordered) {
-      if (any(args != head(fargs, length(args)))) {
+      if (length(fargs) < length(args) || any(args != head(fargs, length(args)))) {
         return(sprintf("Must have first formal arguments (ordered): %s", paste0(args, collapse = ",")))
       }
     } else {

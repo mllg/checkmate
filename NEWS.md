@@ -13,6 +13,7 @@
 * Function `assert()` now supports collecting assertions via `AssertCollection`
   (#112).
 * New exported C function `qcheck()` (#180).
+* Fixed a bug in `checkFunction(..., ordered = TRUE)` (#204).
 
 # Version 2.0.0
 * Expectations now optionally support the package `tinytest`.

@@ -46,3 +46,9 @@ test_that("checkFunction with Primitives", {
   expect_true(testFunction(sqrt, args = "x"))
   expect_true(testFunction(as.logical, nargs = 1)) # bug 144
 })
+
+test_that("ordered and no args (#204)", {
+  f = function() 0
+  expect_error(assertFunction(f, args = c("a", "b"), ordered = FALSE), "formal arguments")
+  expect_error(assertFunction(f, args = c("a", "b"), ordered = TRUE), "formal arguments")
+})
