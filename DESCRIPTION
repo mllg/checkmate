@@ -33,7 +33,7 @@ Suggests:
     magrittr,
     microbenchmark,
     rmarkdown,
-    testthat (>= 0.11.0),
+    testthat (>= 3.0.4),
     tinytest (>= 1.1.0),
     tibble
 License: BSD_3_clause + file LICENSE

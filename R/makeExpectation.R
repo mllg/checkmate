@@ -79,8 +79,16 @@ makeExpectation = function(x, res, info, label) {
   if (backend == "testthat") {
     if (!requireNamespace("testthat", quietly = TRUE))
       stop("Package 'testthat' is required for checkmate's 'expect_*' extensions with backend 'testthat'")
-    info = if (is.null(info)) res else sprintf("%s\nAdditional info: %s", res, info)
-    testthat::expect_true(res, info = info, label = sprintf("Check on %s", label))
+
+    if (!is.null(info)) {
+      info = sprintf("%s\nAdditional info: %s", info)
+    }
+
+    if (isTRUE(res)) {
+      testthat::succeed(info = info)
+    } else {
+      testthat::fail(sprintf("Check on '%s' failed: %s", label, res), info = info)
+    }
     invisible(x)
   } else {
     if (!requireNamespace("tinytest", quietly = TRUE))
