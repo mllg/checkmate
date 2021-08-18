@@ -7,7 +7,7 @@
 #include "any_missing.h"
 #include "any_infinite.h"
 #include "all_missing.h"
-#include "find_min_nchar.h"
+#include "find_nchar.h"
 #include "helper.h"
 #include "guess_type.h"
 
@@ -227,7 +227,7 @@ static Rboolean check_names(SEXP nn, const char * type, const char * what) {
         return message("Must have %s, but is NA at position %i", what, pos);
     }
 
-    pos = find_min_nchar(nn, 1, FALSE);
+    pos = find_min_nchar(nn, 1);
     if (pos > 0) {
         return message("Must have %s, but element %i is empty", what, pos);
     }
@@ -412,6 +412,37 @@ static Rboolean check_typed_missing(SEXP x, SEXP typed_missing) {
     return TYPEOF(x) != VECSXP && all_missing_atomic(x);
 }
 
+static Rboolean check_string_nchar(SEXP x, SEXP n_chars, SEXP min_chars, SEXP max_chars) {
+    if (!isNull(n_chars)) {
+        R_xlen_t n = as_count(n_chars, "n.chars");
+        R_xlen_t pos = find_nchar(x, n);
+        if (pos > 0) {
+            return message("All elements must have exactly %i characters, but element %i has %i chararacters",
+            n, pos, get_nchars(x, pos - 1));
+        }
+    }
+
+    if (!isNull(min_chars)) {
+        R_xlen_t n = as_count(min_chars, "min.chars");
+        R_xlen_t pos = find_min_nchar(x, n);
+        if (pos > 0) {
+            return message("All elements must have at least %i characters, but element %i has %i characters",
+            n, pos, get_nchars(x, pos - 1));
+        }
+    }
+
+    if (!isNull(max_chars)) {
+        R_xlen_t n = as_count(max_chars, "max.chars");
+        R_xlen_t pos = find_max_nchar(x, n);
+        if (pos > 0) {
+            return message("All elements must have at most %i characters, but element %i has %i characters",
+            n, pos, get_nchars(x, pos - 1));
+        }
+    }
+
+    return TRUE;
+}
+
 /*********************************************************************************************************************/
 /* Exported check functions                                                                                          */
 /*********************************************************************************************************************/
@@ -502,16 +533,12 @@ SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finit
 }
 
 
-SEXP attribute_hidden c_check_character(SEXP x, SEXP min_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+SEXP attribute_hidden c_check_character(SEXP x, SEXP n_chars, SEXP min_chars, SEXP max_chars, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
     HANDLE_TYPE_NULL(is_class_string(x) || check_typed_missing(x, typed_missing), "character", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    if (!isNull(min_chars)) {
-        R_xlen_t n = as_count(min_chars, "min.chars");
-        if (n > 0 && find_min_nchar(x, n, TRUE) > 0)
-            return result("All elements must have at least %i characters", n);
-    }
+    ASSERT_TRUE(check_string_nchar(x, n_chars, min_chars, max_chars));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
@@ -733,16 +760,12 @@ SEXP attribute_hidden c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper,
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_string(SEXP x, SEXP na_ok, SEXP min_chars, SEXP null_ok) {
+SEXP attribute_hidden c_check_string(SEXP x, SEXP na_ok, SEXP n_chars, SEXP min_chars, SEXP max_chars, SEXP null_ok) {
     HANDLE_NA(x, na_ok);
     HANDLE_TYPE_NULL(isString(x), "string", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
-    if (!isNull(min_chars)) {
-        R_xlen_t n = as_count(min_chars, "min.chars");
-        if (find_min_nchar(x, n, TRUE) > 0)
-            return result("Must have at least %i characters", n);
-    }
+    ASSERT_TRUE(check_string_nchar(x, n_chars, min_chars, max_chars));
 
     return ScalarLogical(TRUE);
 }

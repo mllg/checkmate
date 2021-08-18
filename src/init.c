@@ -12,7 +12,7 @@ extern SEXP c_any_nan(SEXP);
 extern SEXP c_check_array(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_atomic(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_atomic_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_complex(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_count(SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_dataframe(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -30,7 +30,7 @@ extern SEXP c_check_number(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_double(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_scalar(SEXP, SEXP, SEXP);
-extern SEXP c_check_string(SEXP, SEXP, SEXP, SEXP);
+extern SEXP c_check_string(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_raw(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 extern SEXP c_check_posixct(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -49,7 +49,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_array",         (DL_FUNC) &c_check_array,          7},
     {"c_check_atomic",        (DL_FUNC) &c_check_atomic,         8},
     {"c_check_atomic_vector", (DL_FUNC) &c_check_atomic_vector,  8},
-    {"c_check_character",     (DL_FUNC) &c_check_character,     12},
+    {"c_check_character",     (DL_FUNC) &c_check_character,     14},
     {"c_check_complex",       (DL_FUNC) &c_check_complex,       10},
     {"c_check_count",         (DL_FUNC) &c_check_count,          5},
     {"c_check_dataframe",     (DL_FUNC) &c_check_dataframe,     12},
@@ -67,7 +67,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"c_check_numeric",       (DL_FUNC) &c_check_numeric,       14},
     {"c_check_double",        (DL_FUNC) &c_check_double,        14},
     {"c_check_scalar",        (DL_FUNC) &c_check_scalar,         3},
-    {"c_check_string",        (DL_FUNC) &c_check_string,         4},
+    {"c_check_string",        (DL_FUNC) &c_check_string,         6},
     {"c_check_vector",        (DL_FUNC) &c_check_vector,        10},
     {"c_check_raw",           (DL_FUNC) &c_check_raw,            6},
     {"c_check_posixct",       (DL_FUNC) &c_check_posixct,       11},

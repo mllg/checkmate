@@ -13,8 +13,12 @@
 #'  All non-missing elements of \code{x} must contain this substring.
 #' @param ignore.case [\code{logical(1)}]\cr
 #'  See \code{\link[base]{grepl}}. Default is \code{FALSE}.
+#' @param n.chars [\code{integer(1)}]\cr
+#'  Exact number of characters for each element of \code{x}.
 #' @param min.chars [\code{integer(1)}]\cr
 #'  Minimum number of characters for each element of \code{x}.
+#' @param max.chars [\code{integer(1)}]\cr
+#'  Maximum number of characters for each element of \code{x}.
 #' @template sorted
 #' @template typed.missing
 #' @template null.ok
@@ -26,8 +30,8 @@
 #' testCharacter(letters, min.len = 1, any.missing = FALSE)
 #' testCharacter(letters, min.chars = 2)
 #' testCharacter("example", pattern = "xa")
-checkCharacter = function(x, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, typed.missing = FALSE, null.ok = FALSE) {
-  .Call(c_check_character, x, min.chars, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, typed.missing, null.ok) %and%
+checkCharacter = function(x, n.chars = NULL, min.chars = NULL, max.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, typed.missing = FALSE, null.ok = FALSE) {
+  .Call(c_check_character, x, n.chars, min.chars, max.chars, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, typed.missing, null.ok) %and%
   checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 

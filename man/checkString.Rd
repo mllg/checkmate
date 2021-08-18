@@ -13,7 +13,9 @@
 checkString(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -23,7 +25,9 @@ checkString(
 check_string(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -33,7 +37,9 @@ check_string(
 assertString(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -45,7 +51,9 @@ assertString(
 assert_string(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -57,7 +65,9 @@ assert_string(
 testString(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -67,7 +77,9 @@ testString(
 test_string(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -77,7 +89,9 @@ test_string(
 expect_string(
   x,
   na.ok = FALSE,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -93,8 +107,14 @@ Object to check.}
 \item{na.ok}{[\code{logical(1)}]\cr
 Are missing values allowed? Default is \code{FALSE}.}
 
+\item{n.chars}{[\code{integer(1)}]\cr
+Exact number of characters for each element of \code{x}.}
+
 \item{min.chars}{[\code{integer(1)}]\cr
 Minimum number of characters for each element of \code{x}.}
+
+\item{max.chars}{[\code{integer(1)}]\cr
+Maximum number of characters for each element of \code{x}.}
 
 \item{pattern}{[\code{character(1L)}]\cr
 Regular expression as used in \code{\link[base]{grepl}}.

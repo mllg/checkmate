@@ -16,8 +16,8 @@
 #' @examples
 #' testString("a")
 #' testString(letters)
-checkString = function(x, na.ok = FALSE, min.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, null.ok = FALSE) {
-  .Call(c_check_string, x, na.ok, min.chars, null.ok) %and%
+checkString = function(x, na.ok = FALSE, n.chars = NULL, min.chars = NULL, max.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, null.ok = FALSE) {
+  .Call(c_check_string, x, na.ok, n.chars, min.chars, max.chars, null.ok) %and%
   checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 

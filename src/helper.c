@@ -39,7 +39,6 @@ R_len_t attribute_hidden get_ncols(SEXP x) {
     return (length(dim) >= 2) ? INTEGER_RO(dim)[1] : 1;
 }
 
-
 double attribute_hidden as_number(SEXP x, const char *vname) {
     if (!isNumeric(x))
         error("Argument '%s' must be a number, but is %s", vname, guess_type(x));

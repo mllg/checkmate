@@ -12,7 +12,9 @@
 \usage{
 checkCharacter(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -30,7 +32,9 @@ checkCharacter(
 
 check_character(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -48,7 +52,9 @@ check_character(
 
 assertCharacter(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -68,7 +74,9 @@ assertCharacter(
 
 assert_character(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -88,7 +96,9 @@ assert_character(
 
 testCharacter(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -106,7 +116,9 @@ testCharacter(
 
 test_character(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -124,7 +136,9 @@ test_character(
 
 expect_character(
   x,
+  n.chars = NULL,
   min.chars = NULL,
+  max.chars = NULL,
   pattern = NULL,
   fixed = NULL,
   ignore.case = FALSE,
@@ -146,8 +160,14 @@ expect_character(
 \item{x}{[any]\cr
 Object to check.}
 
+\item{n.chars}{[\code{integer(1)}]\cr
+Exact number of characters for each element of \code{x}.}
+
 \item{min.chars}{[\code{integer(1)}]\cr
 Minimum number of characters for each element of \code{x}.}
+
+\item{max.chars}{[\code{integer(1)}]\cr
+Maximum number of characters for each element of \code{x}.}
 
 \item{pattern}{[\code{character(1L)}]\cr
 Regular expression as used in \code{\link[base]{grepl}}.

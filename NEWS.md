@@ -1,4 +1,6 @@
 # Version 2.1.0
+* New arguments `n.chars` and `max.chars` for `checkCharacter()` and
+  `checkString()`.
 * Checks for integerish now compare the tolerance with the difference to the
   nearest integer with `>` instead of `>=` to allow specifying a tolerance of
   exactly `0` (#177).
