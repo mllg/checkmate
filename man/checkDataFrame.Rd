@@ -208,7 +208,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testDataFrame}/\code{test_data_frame}
  returns \code{FALSE},
- and \code{checkDataFrame} returns a string with the error message.
+ and \code{checkDataFrame}/\code{check_data_frame} 
+ return a string with the error message.
  The function \code{expect_data_frame} always returns an
  \code{\link[testthat]{expectation}}.
 }

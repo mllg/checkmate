@@ -125,7 +125,8 @@ Defaults to \code{character(0)} (no check).}
 Are vectors with missing values allowed? Default is \code{TRUE}.}
 
 \item{all.missing}{[\code{logical(1)}]\cr
-Are vectors with only missing values allowed? Default is \code{TRUE}.}
+Are vectors with no non-missing values allowed? Default is \code{TRUE}.
+Note that empty vectors do not have non-missing values.}
 
 \item{len}{[\code{integer(1)}]\cr
 Exact expected length of \code{x}.}
@@ -176,7 +177,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testList}/\code{test_list}
  returns \code{FALSE},
- and \code{checkList} returns a string with the error message.
+ and \code{checkList}/\code{check_list} 
+ return a string with the error message.
  The function \code{expect_list} always returns an
  \code{\link[testthat]{expectation}}.
 }

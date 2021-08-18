@@ -70,7 +70,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testMultiClass}/\code{test_multi_class}
  returns \code{FALSE},
- and \code{checkMultiClass} returns a string with the error message.
+ and \code{checkMultiClass}/\code{check_multi_class} 
+ return a string with the error message.
  The function \code{expect_multi_class} always returns an
  \code{\link[testthat]{expectation}}.
 }

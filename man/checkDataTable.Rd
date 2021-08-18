@@ -228,7 +228,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testDataTable}/\code{test_data_table}
  returns \code{FALSE},
- and \code{checkDataTable} returns a string with the error message.
+ and \code{checkDataTable}/\code{check_data_table} 
+ return a string with the error message.
  The function \code{expect_data_table} always returns an
  \code{\link[testthat]{expectation}}.
 }

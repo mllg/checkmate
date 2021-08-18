@@ -65,7 +65,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testDisjunct}/\code{test_disjunct}
  returns \code{FALSE},
- and \code{checkDisjunct} returns a string with the error message.
+ and \code{checkDisjunct}/\code{check_disjunct} 
+ return a string with the error message.
  The function \code{expect_disjunct} always returns an
  \code{\link[testthat]{expectation}}.
 }

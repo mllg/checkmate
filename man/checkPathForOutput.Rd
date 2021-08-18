@@ -82,7 +82,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testPathForOutput}/\code{test_path_for_output}
  returns \code{FALSE},
- and \code{checkPathForOutput} returns a string with the error message.
+ and \code{checkPathForOutput}/\code{check_path_for_output} 
+ return a string with the error message.
  The function \code{expect_path_for_output} always returns an
  \code{\link[testthat]{expectation}}.
 }

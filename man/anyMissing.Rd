@@ -18,13 +18,15 @@ Object to check.}
  elements of \code{x} are missing (see details), \code{FALSE} otherwise.
 }
 \description{
+\code{anyMissing} checks for the presence of at least one missing value,
+\code{allMissing} checks for the presence of at least one non-missing value.
 Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 Missingness is defined as \code{NA} or \code{NaN} for atomic types and data frame columns,
 \code{NULL} is defined as missing for lists.\cr
 \code{allMissing} applied to a \code{data.frame} returns \code{TRUE} if at least one column has
-only non-missing values. If you want to perform the less frequent check that there is not a single
-non-missing observation present in the \code{data.frame}, use \code{all(sapply(df, allMissing))}
-instead.
+only non-missing values. If you want to perform the less frequent check that there is at least
+a single non-missing observation present in the \code{data.frame}, use
+\code{all(sapply(df, allMissing))} instead.
 }
 \examples{
 allMissing(1:2)

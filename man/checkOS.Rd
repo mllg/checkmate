@@ -57,7 +57,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testOS}/\code{test_os}
  returns \code{FALSE},
- and \code{checkOS} returns a string with the error message.
+ and \code{checkOS}/\code{check_os} 
+ return a string with the error message.
  The function \code{expect_os} always returns an
  \code{\link[testthat]{expectation}}.
 }

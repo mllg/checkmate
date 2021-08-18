@@ -144,7 +144,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testArray}/\code{test_array}
  returns \code{FALSE},
- and \code{checkArray} returns a string with the error message.
+ and \code{checkArray}/\code{check_array} 
+ return a string with the error message.
  The function \code{expect_array} always returns an
  \code{\link[testthat]{expectation}}.
 }

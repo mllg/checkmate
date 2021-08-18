@@ -165,7 +165,8 @@ See \code{\link[base]{grepl}}. Default is \code{FALSE}.}
 Are vectors with missing values allowed? Default is \code{TRUE}.}
 
 \item{all.missing}{[\code{logical(1)}]\cr
-Are vectors with only missing values allowed? Default is \code{TRUE}.}
+Are vectors with no non-missing values allowed? Default is \code{TRUE}.
+Note that empty vectors do not have non-missing values.}
 
 \item{len}{[\code{integer(1)}]\cr
 Exact expected length of \code{x}.}
@@ -225,7 +226,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testCharacter}/\code{test_character}
  returns \code{FALSE},
- and \code{checkCharacter} returns a string with the error message.
+ and \code{checkCharacter}/\code{check_character} 
+ return a string with the error message.
  The function \code{expect_character} always returns an
  \code{\link[testthat]{expectation}}.
 }

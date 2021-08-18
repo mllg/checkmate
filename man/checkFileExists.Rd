@@ -97,7 +97,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testFileExists}/\code{test_file_exists}
  returns \code{FALSE},
- and \code{checkFileExists} returns a string with the error message.
+ and \code{checkFileExists}/\code{check_file_exists} 
+ return a string with the error message.
  The function \code{expect_file_exists} always returns an
  \code{\link[testthat]{expectation}}.
 }

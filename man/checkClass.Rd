@@ -89,7 +89,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testClass}/\code{test_class}
  returns \code{FALSE},
- and \code{checkClass} returns a string with the error message.
+ and \code{checkClass}/\code{check_class} 
+ return a string with the error message.
  The function \code{expect_class} always returns an
  \code{\link[testthat]{expectation}}.
 }

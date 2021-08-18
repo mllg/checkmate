@@ -90,7 +90,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testChoice}/\code{test_choice}
  returns \code{FALSE},
- and \code{checkChoice} returns a string with the error message.
+ and \code{checkChoice}/\code{check_choice} 
+ return a string with the error message.
  The function \code{expect_choice} always returns an
  \code{\link[testthat]{expectation}}.
 }

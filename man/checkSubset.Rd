@@ -90,7 +90,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testSubset}/\code{test_subset}
  returns \code{FALSE},
- and \code{checkSubset} returns a string with the error message.
+ and \code{checkSubset}/\code{check_subset} 
+ return a string with the error message.
  The function \code{expect_subset} always returns an
  \code{\link[testthat]{expectation}}.
 }

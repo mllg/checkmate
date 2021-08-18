@@ -79,7 +79,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testDirectoryExists}/\code{test_directory_exists}
  returns \code{FALSE},
- and \code{checkDirectoryExists} returns a string with the error message.
+ and \code{checkDirectoryExists}/\code{check_directory_exists} 
+ return a string with the error message.
  The function \code{expect_directory_exists} always returns an
  \code{\link[testthat]{expectation}}.
 }

@@ -140,7 +140,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testString}/\code{test_string}
  returns \code{FALSE},
- and \code{checkString} returns a string with the error message.
+ and \code{checkString}/\code{check_string} 
+ return a string with the error message.
  The function \code{expect_string} always returns an
  \code{\link[testthat]{expectation}}.
 }

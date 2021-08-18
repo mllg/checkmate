@@ -45,7 +45,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testNull}/\code{test_null}
  returns \code{FALSE},
- and \code{checkNull} returns a string with the error message.
+ and \code{checkNull}/\code{check_null} 
+ return a string with the error message.
  The function \code{expect_null} always returns an
  \code{\link[testthat]{expectation}}.
 }

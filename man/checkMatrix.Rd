@@ -205,7 +205,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testMatrix}/\code{test_matrix}
  returns \code{FALSE},
- and \code{checkMatrix} returns a string with the error message.
+ and \code{checkMatrix}/\code{check_matrix} 
+ return a string with the error message.
  The function \code{expect_matrix} always returns an
  \code{\link[testthat]{expectation}}.
 }

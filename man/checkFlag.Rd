@@ -69,7 +69,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testFlag}/\code{test_flag}
  returns \code{FALSE},
- and \code{checkFlag} returns a string with the error message.
+ and \code{checkFlag}/\code{check_flag} 
+ return a string with the error message.
  The function \code{expect_flag} always returns an
  \code{\link[testthat]{expectation}}.
 }

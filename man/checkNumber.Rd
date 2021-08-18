@@ -127,7 +127,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testNumber}/\code{test_number}
  returns \code{FALSE},
- and \code{checkNumber} returns a string with the error message.
+ and \code{checkNumber}/\code{check_number} 
+ return a string with the error message.
  The function \code{expect_number} always returns an
  \code{\link[testthat]{expectation}}.
 }

@@ -82,7 +82,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testEnvironment}/\code{test_environment}
  returns \code{FALSE},
- and \code{checkEnvironment} returns a string with the error message.
+ and \code{checkEnvironment}/\code{check_environment} 
+ return a string with the error message.
  The function \code{expect_environment} always returns an
  \code{\link[testthat]{expectation}}.
 }

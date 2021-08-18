@@ -147,7 +147,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testAtomicVector}/\code{test_atomic_vector}
  returns \code{FALSE},
- and \code{checkAtomicVector} returns a string with the error message.
+ and \code{checkAtomicVector}/\code{check_atomic_vector} 
+ return a string with the error message.
  The function \code{expect_atomic_vector} always returns an
  \code{\link[testthat]{expectation}}.
 }

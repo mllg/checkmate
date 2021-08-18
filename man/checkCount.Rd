@@ -124,7 +124,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testCount}/\code{test_count}
  returns \code{FALSE},
- and \code{checkCount} returns a string with the error message.
+ and \code{checkCount}/\code{check_count} 
+ return a string with the error message.
  The function \code{expect_count} always returns an
  \code{\link[testthat]{expectation}}.
 }

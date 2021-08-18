@@ -60,7 +60,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testScalarNA}/\code{test_scalar_na}
  returns \code{FALSE},
- and \code{checkScalarNA} returns a string with the error message.
+ and \code{checkScalarNA}/\code{check_scalar_na} 
+ return a string with the error message.
  The function \code{expect_scalar_na} always returns an
  \code{\link[testthat]{expectation}}.
 }

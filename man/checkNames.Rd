@@ -125,7 +125,7 @@ Names provided in \code{x} must be identical to the vector \code{identical.to}.
 Use this argument instead of \code{permutation.of} if the order of the names is relevant.}
 
 \item{disjunct.from}{[\code{character}]\cr
-Names provided in \code{x} must may not be present in the vector \code{identical.to}.}
+Names provided in \code{x} must may not be present in the vector \code{disjunct.from}.}
 
 \item{what}{[\code{character(1)}]\cr
 Type of name vector to check, e.g. \dQuote{names} (default), \dQuote{colnames} or \dQuote{rownames}.}
@@ -148,18 +148,19 @@ the heuristic implemented in \code{\link{vname}}.}
 \value{
 Depending on the function prefix:
  If the check is successful, the functions 
- \code{assertNamed}/\code{assert_named} return 
+ \code{assertNames}/\code{assert_names} return 
  \code{x} invisibly, whereas
- \code{checkNamed}/\code{check_named} and 
- \code{testNamed}/\code{test_named} return 
+ \code{checkNames}/\code{check_names} and 
+ \code{testNames}/\code{test_names} return 
  \code{TRUE}.
  If the check is not successful, 
- \code{assertNamed}/\code{assert_named}
+ \code{assertNames}/\code{assert_names}
  throws an error message, 
- \code{testNamed}/\code{test_named}
+ \code{testNames}/\code{test_names}
  returns \code{FALSE},
- and \code{checkNamed} returns a string with the error message.
- The function \code{expect_named} always returns an
+ and \code{checkNames}/\code{check_names} 
+ return a string with the error message.
+ The function \code{expect_names} always returns an
  \code{\link[testthat]{expectation}}.
 }
 \description{

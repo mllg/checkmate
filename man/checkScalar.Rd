@@ -75,7 +75,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testScalar}/\code{test_scalar}
  returns \code{FALSE},
- and \code{checkScalar} returns a string with the error message.
+ and \code{checkScalar}/\code{check_scalar} 
+ return a string with the error message.
  The function \code{expect_scalar} always returns an
  \code{\link[testthat]{expectation}}.
 }

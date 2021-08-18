@@ -133,7 +133,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testInt}/\code{test_int}
  returns \code{FALSE},
- and \code{checkInt} returns a string with the error message.
+ and \code{checkInt}/\code{check_int} 
+ return a string with the error message.
  The function \code{expect_int} always returns an
  \code{\link[testthat]{expectation}}.
 }

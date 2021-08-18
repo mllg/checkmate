@@ -48,7 +48,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testTRUE.}/\code{test_true.}
  returns \code{FALSE},
- and \code{checkTRUE.} returns a string with the error message.
+ and \code{checkTRUE.}/\code{check_true.} 
+ return a string with the error message.
  The function \code{expect_true.} always returns an
  \code{\link[testthat]{expectation}}.
 }

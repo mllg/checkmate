@@ -129,7 +129,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testRaw}/\code{test_raw}
  returns \code{FALSE},
- and \code{checkRaw} returns a string with the error message.
+ and \code{checkRaw}/\code{check_raw} 
+ return a string with the error message.
  The function \code{expect_raw} always returns an
  \code{\link[testthat]{expectation}}.
 }

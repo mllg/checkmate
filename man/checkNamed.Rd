@@ -53,7 +53,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testNamed}/\code{test_named}
  returns \code{FALSE},
- and \code{checkNamed} returns a string with the error message.
+ and \code{checkNamed}/\code{check_named} 
+ return a string with the error message.
  The function \code{expect_named} always returns an
  \code{\link[testthat]{expectation}}.
 }

@@ -208,7 +208,8 @@ Depending on the function prefix:
  throws an error message, 
  \code{testTibble}/\code{test_tibble}
  returns \code{FALSE},
- and \code{checkTibble} returns a string with the error message.
+ and \code{checkTibble}/\code{check_tibble} 
+ return a string with the error message.
  The function \code{expect_tibble} always returns an
  \code{\link[testthat]{expectation}}.
 }
