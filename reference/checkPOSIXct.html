@@ -267,7 +267,8 @@ Are vectors with missing values allowed? Default is <code>TRUE</code>.</p></td>
     <tr>
       <th>all.missing</th>
       <td><p>[<code>logical(1)</code>]<br />
-Are vectors with only missing values allowed? Default is <code>TRUE</code>.</p></td>
+Are vectors with no non-missing values allowed? Default is <code>TRUE</code>.
+Note that empty vectors do not have non-missing values.</p></td>
     </tr>
     <tr>
       <th>len</th>
@@ -339,7 +340,8 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
  throws an error message, 
  <code>testAtomic</code>/<code>test_atomic</code>
  returns <code>FALSE</code>,
- and <code>checkAtomic</code> returns a string with the error message.
+ and <code>checkAtomic</code>/<code>check_atomic</code> 
+ return a string with the error message.
  The function <code>expect_atomic</code> always returns an
  <code><a href='https://testthat.r-lib.org/reference/expectation.html'>expectation</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

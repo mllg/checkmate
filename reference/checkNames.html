@@ -267,7 +267,7 @@ Use this argument instead of <code>permutation.of</code> if the order of the nam
     <tr>
       <th>disjunct.from</th>
       <td><p>[<code>character</code>]<br />
-Names provided in <code>x</code> must may not be present in the vector <code>identical.to</code>.</p></td>
+Names provided in <code>x</code> must may not be present in the vector <code>disjunct.from</code>.</p></td>
     </tr>
     <tr>
       <th>what</th>
@@ -303,18 +303,19 @@ the heuristic implemented in <code><a href='vname.html'>vname</a></code>.</p></t
 
     <p>Depending on the function prefix:
  If the check is successful, the functions 
- <code>assertNamed</code>/<code>assert_named</code> return 
+ <code>assertNames</code>/<code>assert_names</code> return 
  <code>x</code> invisibly, whereas
- <code>checkNamed</code>/<code>check_named</code> and 
- <code>testNamed</code>/<code>test_named</code> return 
+ <code>checkNames</code>/<code>check_names</code> and 
+ <code>testNames</code>/<code>test_names</code> return 
  <code>TRUE</code>.
  If the check is not successful, 
- <code>assertNamed</code>/<code>assert_named</code>
+ <code>assertNames</code>/<code>assert_names</code>
  throws an error message, 
- <code>testNamed</code>/<code>test_named</code>
+ <code>testNames</code>/<code>test_names</code>
  returns <code>FALSE</code>,
- and <code>checkNamed</code> returns a string with the error message.
- The function <code>expect_named</code> always returns an
+ and <code>checkNames</code>/<code>check_names</code> 
+ return a string with the error message.
+ The function <code>expect_names</code> always returns an
  <code><a href='https://testthat.r-lib.org/reference/expectation.html'>expectation</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
