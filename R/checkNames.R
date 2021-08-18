@@ -46,33 +46,53 @@
 #' assertNames(names(iris), permutation.of = cn)
 checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, permutation.of = NULL, identical.to = NULL, disjunct.from = NULL, what = "names") {
   .Call(c_check_names, x, type, what) %and%
-    checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to, disjunct.from)
+    checkNamesCmp(x, subset.of, must.include, permutation.of, identical.to, disjunct.from, what)
 }
 
-checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from) {
+checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from, what) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
-    if (anyMissing(match(x, subset.of)))
-      return(sprintf("Must be a subset of set {%s}", paste0(subset.of, collapse = ",")))
+    if (anyMissing(match(x, subset.of))) {
+      return(sprintf("%s must be a subset of set {%s}",
+          capitalize(what),
+          paste0(subset.of, collapse = ",")
+      ))
+    }
   }
   if (!is.null(must.include)) {
     qassert(must.include, "S")
-    if (anyMissing(match(must.include, x)))
-      return(sprintf("Must include the elements {%s}", paste0(must.include, collapse = ",")))
+    if (anyMissing(match(must.include, x))) {
+      return(sprintf("%s must include the elements {%s}",
+          capitalize(what),
+          paste0(must.include, collapse = ",")
+      ))
+    }
   }
   if (!is.null(permutation.of)) {
     permutation.of = unique(qassert(permutation.of, "S"))
-    if (length(x) != length(permutation.of) || !setequal(x, permutation.of))
-      return(sprintf("Must be a permutation of set {%s}", paste0(permutation.of, collapse = ",")))
+    if (length(x) != length(permutation.of) || !setequal(x, permutation.of)) {
+      return(sprintf("%s must be a permutation of set {%s}",
+          capitalize(what),
+          paste0(permutation.of, collapse = ",")
+      ))
+    }
   }
   if (!is.null(identical.to)) {
     qassert(identical.to, "S")
-    if (!identical(x, identical.to))
-      return(sprintf("Must be a identical to (%s)", paste0(identical.to, collapse = ",")))
+    if (!identical(x, identical.to)) {
+      return(sprintf("%s must be a identical to (%s)",
+          capitalize(what),
+          paste0(identical.to, collapse = ",")
+      ))
+    }
   }
   if (!is.null(disjunct.from)) {
-    if (any(x %in% disjunct.from))
-      return(sprintf("Must be disjunct from (%s)", paste0(disjunct.from, collapse = ",")))
+    if (any(x %in% disjunct.from)) {
+      return(sprintf("%s must be disjunct from (%s)",
+          capitalize(what),
+          paste0(disjunct.from, collapse = ",")
+      ))
+    }
   }
   return(TRUE)
 }
