@@ -278,7 +278,7 @@ Rboolean qtest(SEXP x, const char *rule);
 These are the counterparts to [qassert](https://mllg.github.io/checkmate/reference/qassert) and [qtest](https://mllg.github.io/checkmate/reference/qassert).
 Due to their simplistic interface, they perfectly suit the requirements of most type checks in C/C++.
 
-For detailed background information on the register mechanism, see the [Exporting C Code](https://r-pkgs.had.co.nz/src.html#clang) section in Hadley's Book "R Packages" or [WRE](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).
+For detailed background information on the register mechanism, see the [Exporting C Code](https://r-pkgs.org/src.html#c-export) section in Hadley's Book "R Packages" or [WRE](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-native-routines).
 Here is a step-by-step guide to get you started:
 
 1. Add `checkmate` to your "Imports" and "LinkingTo" sections in your DESCRIPTION file.
