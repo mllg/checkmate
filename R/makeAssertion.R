@@ -76,10 +76,12 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
   }
 
   if (use.namespace) {
-    fun.args = c(fun.args,  list(.var.name = bquote(checkmate::vname(.(as.name(x.name)))), add = NULL))
+    fun.args = c(fun.args,  list(.var.name = bquote(checkmate::vname(.(as.name(x.name)))), comment = NULL, add = NULL))
+    body = paste0(body, "; if (!isTRUE(res) & !is.null(comment)) {res = paste0(res, '. ', comment) }")
     body = paste0(body, "; checkmate::makeAssertion")
   } else {
-    fun.args = c(fun.args, list(.var.name = bquote(vname(.(as.name(x.name)))), add = NULL))
+    fun.args = c(fun.args, list(.var.name = bquote(vname(.(as.name(x.name)))), comment = NULL, add = NULL))
+    body = paste0(body, "; if (!isTRUE(res) & !is.null(comment)) {res = paste0(res, '. ', comment) }")
     body = paste0(body, "; makeAssertion")
   }
   body = paste0(body, sprintf("(%s, res, .var.name, add)", x.name))
