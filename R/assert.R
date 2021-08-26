@@ -26,7 +26,7 @@
 #' assert(checkChoice(x, c("a", "b")), checkDataFrame(x), add = collection)
 #' collection$getMessages()
 #' 
-assert = function(..., combine = "or", .var.name = NULL, add = NULL) {
+assert = function(..., combine = "or", .var.name = NULL, comment = NULL, add = NULL) {
   assertChoice(combine, c("or", "and"))
   assertClass(add, "AssertCollection", .var.name = "add", null.ok = TRUE)
   dots = match.call(expand.dots = FALSE)$...
@@ -46,6 +46,7 @@ assert = function(..., combine = "or", .var.name = NULL, add = NULL) {
       msgs = sprintf("%s(%s): %s", vapply(dots, function(x) as.character(x)[1L], FUN.VALUE = NA_character_), .var.name, msgs)
       msgs = paste0(c("One of the following must apply:", strwrap(msgs, prefix = " * ")), collapse = "\n")
     }
+    if (!is.null(comment)) {msgs = paste(paste0(msgs, '.'), comment, sep = "\n")}                                          
     mstopOrPush(res = msgs, v_name = .var.name, collection = add)
   } else {
     for (i in seq_along(dots)) {
@@ -53,6 +54,7 @@ assert = function(..., combine = "or", .var.name = NULL, add = NULL) {
       if (!isTRUE(val)) {
         if (is.null(.var.name))
           .var.name = as.character(dots[[i]])[2L]
+        if (!is.null(comment)) {val = paste0(val, '. ', comment)}
         mstopOrPush(res = val, v_name = .var.name, collection = add)
       }
     }
