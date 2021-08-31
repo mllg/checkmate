@@ -39,8 +39,17 @@ checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
     match = fastmatch::fmatch
 
-  if (!is.null(x) && ((!isSameType(x, choices) && !allMissing(x)) || anyMissing(match(x, choices))))
-    return(sprintf("Must be a subset of %s, but is %s", set_collapse(choices), set_collapse(x)))
+  if (!is.null(x)) {
+    if (!isSameType(x, choices) && !allMissing(x)) {
+      return(sprintf("Must be a subset of %s, but has different types", set_collapse(choices)))
+    }
+
+    extra = is.na(match(x, choices))
+    if (any(extra)) {
+      return(sprintf("Must be a subset of %s, but has additional elements %s", set_collapse(choices), set_collapse(x[extra])))
+    }
+  }
+
   return(TRUE)
 }
 
