@@ -52,45 +52,65 @@ checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, 
 checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from, what) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
-    if (anyMissing(match(x, subset.of))) {
-      return(sprintf("%s must be a subset of set {%s}",
+    ii = match(x, subset.of)
+    if (anyMissing(ii)) {
+      return(sprintf("%s must be a subset of set {%s}, but has extra elements {%s}",
           capitalize(what),
-          paste0(subset.of, collapse = ",")
+          paste0(subset.of, collapse = ","),
+          paste0(x[is.na(ii)], collapse = ",")
       ))
     }
   }
   if (!is.null(must.include)) {
     qassert(must.include, "S")
-    if (anyMissing(match(must.include, x))) {
-      return(sprintf("%s must include the elements {%s}",
+    ii = match(must.include, x)
+    if (anyMissing(ii)) {
+      return(sprintf("%s must include the elements {%s}, but is missing elements {%s}",
           capitalize(what),
-          paste0(must.include, collapse = ",")
+          paste0(must.include, collapse = ","),
+          paste0(must.include[is.na(ii)], collapse = ",")
       ))
     }
   }
   if (!is.null(permutation.of)) {
     permutation.of = unique(qassert(permutation.of, "S"))
-    if (length(x) != length(permutation.of) || !setequal(x, permutation.of)) {
-      return(sprintf("%s must be a permutation of set {%s}",
+
+    ii = match(x, permutation.of)
+    if (anyMissing(ii)) {
+      return(sprintf("%s must be a permutation of set {%s}, but has extra elements {%s}",
           capitalize(what),
-          paste0(permutation.of, collapse = ",")
+          paste0(permutation.of, collapse = ","),
+          paste0(x[is.na(ii)], collapse = ",")
+      ))
+    }
+
+    ii = match(permutation.of, x)
+    if (anyMissing(ii)) {
+      return(sprintf("%s must be a permutation of set {%s}, but is missing elements {%s}",
+          capitalize(what),
+          paste0(permutation.of, collapse = ","),
+          paste0(permutation.of[is.na(ii)], collapse = ",")
       ))
     }
   }
+
   if (!is.null(identical.to)) {
     qassert(identical.to, "S")
     if (!identical(x, identical.to)) {
-      return(sprintf("%s must be a identical to (%s)",
+      return(sprintf("%s must be a identical to (%s), but is (%s)",
           capitalize(what),
-          paste0(identical.to, collapse = ",")
+          paste0(identical.to, collapse = ","),
+          paste0(x, collapse = ",")
       ))
     }
   }
   if (!is.null(disjunct.from)) {
-    if (any(x %in% disjunct.from)) {
-      return(sprintf("%s must be disjunct from (%s)",
+    ii = which(x %in% disjunct.from)
+    if (length(ii)) {
+      return(sprintf("%s must be disjunct from {%s}, but has elements {%s}",
           capitalize(what),
-          paste0(disjunct.from, collapse = ",")
+          paste0(disjunct.from, collapse = ","),
+          paste0(x[ii], collapse = ",")
       ))
     }
   }
