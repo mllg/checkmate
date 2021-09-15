@@ -63,7 +63,7 @@ test_that("checkNames / subset.of", {
 
   expect_error(
     assert_names(names(x), subset.of = c("a", "b")),
-    "{c}", fixed = TRUE
+    "{'c'}", fixed = TRUE
   )
 })
 
@@ -83,7 +83,7 @@ test_that("checkNames / identical.to", {
 
   expect_error(
     assert_names(names(x), identical.to = c("a", "b")),
-    "(a,b,c)", fixed = TRUE
+    "{'a','b','c'}", fixed = TRUE
   )
 })
 
@@ -103,12 +103,12 @@ test_that("checkNames / permutation.of", {
 
   expect_error(
     assert_names(names(x), permutation.of = c("a", "b")),
-    "{c}", fixed = TRUE
+    "{'c'}", fixed = TRUE
   )
 
   expect_error(
     assert_names(names(x), permutation.of = c("a", "b", "c", "d")),
-    "{d}", fixed = TRUE
+    "{'d'}", fixed = TRUE
   )
 })
 
@@ -126,7 +126,7 @@ test_that("checkNames / must.include", {
 
   expect_error(
     assert_names(names(x), must.include = c("a", "b", "c", "d")),
-    "{d}", fixed = TRUE
+    "{'d'}", fixed = TRUE
   )
 })
 
@@ -140,7 +140,7 @@ test_that("checkNames / disjunct.from", {
 
   expect_error(
     assert_names(names(x), disjunct.from = c("c")),
-    "{c}", fixed = TRUE
+    "{'c'}", fixed = TRUE
   )
 })
 

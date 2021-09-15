@@ -29,28 +29,10 @@ checkSubset = function(x, choices, empty.ok = TRUE, fmatch = FALSE) {
     return(TRUE)
   }
 
-  qassert(choices, "a")
-  if (length(choices) == 0L) {
-    if (length(x) == 0L)
-      return(TRUE)
-    return("Must be a subset of the empty set, i.e. also empty")
-  }
-
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
     match = fastmatch::fmatch
 
-  if (!is.null(x)) {
-    if (!isSameType(x, choices) && !allMissing(x)) {
-      return(sprintf("Must be a subset of %s, but has different types", set_collapse(choices)))
-    }
-
-    extra = is.na(match(x, choices))
-    if (any(extra)) {
-      return(sprintf("Must be a subset of %s, but has additional elements %s", set_collapse(choices), set_collapse(x[extra])))
-    }
-  }
-
-  return(TRUE)
+  check_subset_internal(x, choices, match)
 }
 
 #' @export

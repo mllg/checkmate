@@ -52,68 +52,48 @@ checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, 
 checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from, what) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
-    ii = match(x, subset.of)
-    if (anyMissing(ii)) {
-      return(sprintf("%s must be a subset of set {%s}, but has extra elements {%s}",
-          capitalize(what),
-          paste0(subset.of, collapse = ","),
-          paste0(x[is.na(ii)], collapse = ",")
-      ))
-    }
+    msg = check_subset_internal(x, subset.of, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
+
   if (!is.null(must.include)) {
     qassert(must.include, "S")
     ii = match(must.include, x)
     if (anyMissing(ii)) {
-      return(sprintf("%s must include the elements {%s}, but is missing elements {%s}",
-          capitalize(what),
-          paste0(must.include, collapse = ","),
-          paste0(must.include[is.na(ii)], collapse = ",")
+      return(set_msg("must include the elements %s, but is missing elements %s",
+        what,
+        set_collapse(must.include),
+        set_collapse(must.include[is.na(ii)])
       ))
     }
   }
+
   if (!is.null(permutation.of)) {
     permutation.of = unique(qassert(permutation.of, "S"))
-
-    ii = match(x, permutation.of)
-    if (anyMissing(ii)) {
-      return(sprintf("%s must be a permutation of set {%s}, but has extra elements {%s}",
-          capitalize(what),
-          paste0(permutation.of, collapse = ","),
-          paste0(x[is.na(ii)], collapse = ",")
-      ))
-    }
-
-    ii = match(permutation.of, x)
-    if (anyMissing(ii)) {
-      return(sprintf("%s must be a permutation of set {%s}, but is missing elements {%s}",
-          capitalize(what),
-          paste0(permutation.of, collapse = ","),
-          paste0(permutation.of[is.na(ii)], collapse = ",")
-      ))
-    }
+    msg = check_set_equal_internal(x, permutation.of, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
 
   if (!is.null(identical.to)) {
     qassert(identical.to, "S")
     if (!identical(x, identical.to)) {
-      return(sprintf("%s must be a identical to (%s), but is (%s)",
-          capitalize(what),
-          paste0(identical.to, collapse = ","),
-          paste0(x, collapse = ",")
+      return(set_msg("must be a identical to set %s, but is %s",
+        what,
+        set_collapse(identical.to),
+        set_collapse(x)
       ))
     }
   }
+
   if (!is.null(disjunct.from)) {
-    ii = which(x %in% disjunct.from)
-    if (length(ii)) {
-      return(sprintf("%s must be disjunct from {%s}, but has elements {%s}",
-          capitalize(what),
-          paste0(disjunct.from, collapse = ","),
-          paste0(x[ii], collapse = ",")
-      ))
-    }
+    qassert(disjunct.from, "S")
+    msg = check_disjunct_internal(x, disjunct.from, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
+
   return(TRUE)
 }
 
