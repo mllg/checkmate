@@ -18,16 +18,13 @@
 #' testDisjunct(1, "1")
 #' testDisjunct(1, as.integer(1))
 checkDisjunct = function(x, y, fmatch = FALSE) {
-  if (length(x) == 0L || length(y) == 0)
-    return(TRUE)
+  qassert(x, "a")
   qassert(y, "a")
 
   if (isTRUE(fmatch) && requireNamespace("fastmatch", quietly = TRUE))
     match = fastmatch::fmatch
-  i = (match(x, y, 0L) > 0L)
-  if (any(i))
-    return(sprintf("Must be disjunct from set %s, but has %s", set_collapse(y), set_collapse(x[i])))
-  return(TRUE)
+
+  check_disjunct_internal(x, y, match)
 }
 
 #' @export

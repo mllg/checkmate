@@ -52,48 +52,48 @@ checkNames = function(x, type = "named", subset.of = NULL, must.include = NULL, 
 checkNamesCmp = function(x, subset.of, must.include, permutation.of, identical.to, disjunct.from, what) {
   if (!is.null(subset.of)) {
     qassert(subset.of, "S")
-    if (anyMissing(match(x, subset.of))) {
-      return(sprintf("%s must be a subset of set {%s}",
-          capitalize(what),
-          paste0(subset.of, collapse = ",")
-      ))
-    }
+    msg = check_subset_internal(x, subset.of, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
+
   if (!is.null(must.include)) {
     qassert(must.include, "S")
-    if (anyMissing(match(must.include, x))) {
-      return(sprintf("%s must include the elements {%s}",
-          capitalize(what),
-          paste0(must.include, collapse = ",")
+    ii = match(must.include, x)
+    if (anyMissing(ii)) {
+      return(set_msg("must include the elements %s, but is missing elements %s",
+        what,
+        set_collapse(must.include),
+        set_collapse(must.include[is.na(ii)])
       ))
     }
   }
+
   if (!is.null(permutation.of)) {
     permutation.of = unique(qassert(permutation.of, "S"))
-    if (length(x) != length(permutation.of) || !setequal(x, permutation.of)) {
-      return(sprintf("%s must be a permutation of set {%s}",
-          capitalize(what),
-          paste0(permutation.of, collapse = ",")
-      ))
-    }
+    msg = check_set_equal_internal(x, permutation.of, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
+
   if (!is.null(identical.to)) {
     qassert(identical.to, "S")
     if (!identical(x, identical.to)) {
-      return(sprintf("%s must be a identical to (%s)",
-          capitalize(what),
-          paste0(identical.to, collapse = ",")
+      return(set_msg("must be a identical to set %s, but is %s",
+        what,
+        set_collapse(identical.to),
+        set_collapse(x)
       ))
     }
   }
+
   if (!is.null(disjunct.from)) {
-    if (any(x %in% disjunct.from)) {
-      return(sprintf("%s must be disjunct from (%s)",
-          capitalize(what),
-          paste0(disjunct.from, collapse = ",")
-      ))
-    }
+    qassert(disjunct.from, "S")
+    msg = check_disjunct_internal(x, disjunct.from, match, what)
+    if (!isTRUE(msg))
+      return(msg)
   }
+
   return(TRUE)
 }
 
