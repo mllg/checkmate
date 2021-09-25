@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.0</span>
       </span>
     </div>
 
@@ -84,7 +84,7 @@
       <h1 data-toc-skip>Checkmate</h1>
                         <h4 data-toc-skip class="author">Michel Lang</h4>
             
-            <h4 data-toc-skip class="date">2021-09-24</h4>
+            <h4 data-toc-skip class="date">2021-09-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd" class="external-link"><code>vignettes/checkmate.Rmd</code></a></small>
       <div class="hidden name"><code>checkmate.Rmd</code></div>
@@ -214,10 +214,10 @@
 <span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr   min     lq     mean median    uq      max neval
-##    r(x) 5.599 5.8910 48.18573 6.0660 6.243 4195.646   100
-##   cm(x) 3.543 3.7515 16.18736 4.0155 4.227 1084.701   100
-##  cmq(x) 2.576 2.7925 19.17116 3.0590 3.283 1511.062   100</code></pre>
+##    expr   min    lq     mean median     uq      max neval
+##    r(x) 5.229 5.564 46.26727 5.7450 5.9540 4018.189   100
+##   cm(x) 3.256 3.558 18.90037 3.8250 4.1080 1323.953   100
+##  cmq(x) 2.465 2.621 14.66080 2.8625 3.0745 1112.820   100</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -235,9 +235,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr    min      lq     mean  median      uq      max neval
-##    r(x) 19.726 20.4800 75.02337 20.8835 21.3105 5380.509   100
-##   cm(x)  7.930  8.6030 24.13448  9.0785 10.0125 1382.334   100
-##  cmq(x)  7.555  7.9115 19.72734  8.5335  9.3310 1096.929   100</code></pre>
+##    r(x) 18.762 19.6815 66.72131 20.0330 20.4535 4630.152   100
+##   cm(x)  7.465  8.1465 23.86373  8.9710  9.6490 1378.021   100
+##  cmq(x)  7.267  7.6190 18.72506  8.0765  8.7865 1056.311   100</code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -255,9 +255,9 @@
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##    expr     min       lq     mean   median       uq      max neval
-##    r(x) 311.167 352.3720 428.4090 359.9880 383.5525 4007.555   100
-##   cm(x) 279.941 288.4725 314.5176 293.3965 298.1900 1785.457   100
-##  cmq(x) 126.840 128.8895 150.7996 130.2430 132.8405 1777.126   100</code></pre>
+##    r(x) 301.683 343.0505 402.6626 351.0025 367.8705 3935.661   100
+##   cm(x) 278.952 283.4690 309.4983 286.8985 300.4320 1438.576   100
+##  cmq(x) 124.744 126.1415 144.4248 128.4615 131.6715 1465.102   100</code></pre>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -275,10 +275,10 @@
 <span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr     min       lq      mean   median      uq      max neval
-##    r(x) 170.094 174.6245 274.72600 180.7785 231.799 4260.903   100
-##   cm(x)  51.049  52.0725  74.52792  53.8305  55.811 1590.462   100
-##  cmq(x)  37.792  38.5760  55.26060  39.5335  40.511 1440.564   100</code></pre>
+##    expr     min       lq     mean   median       uq      max neval
+##    r(x) 162.668 167.3590 217.8825 171.5415 176.5360 4354.055   100
+##   cm(x)  49.565  51.2295  66.2684  52.4570  54.1135 1143.613   100
+##  cmq(x)  36.908  38.1155  50.0714  39.1220  40.1710 1076.782   100</code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -289,10 +289,10 @@
 <span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##    expr     min      lq      mean   median       uq     max neval
-##    r(x) 101.883 153.677 185.75521 156.7880 166.2275 548.892   100
-##   cm(x)   7.962   8.953  12.25740  11.5440  12.7415  57.429   100
-##  cmq(x)   1.522   1.921   3.08681   2.6395   3.9345  26.670   100</code></pre>
+##    expr     min       lq      mean   median       uq     max neval
+##    r(x) 101.759 150.2320 153.73967 152.7040 159.1755 180.313   100
+##   cm(x)   7.663   8.5285  10.47704   9.4530  12.4080  29.319   100
+##  cmq(x)   1.438   1.8470   2.75309   2.0365   4.0145  13.534   100</code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -310,11 +310,11 @@
 <span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x.sexp</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x.sexp</span><span class="op">)</span>, <span class="fu">r</span><span class="op">(</span><span class="va">x.altrep</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x.altrep</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##          expr    min      lq      mean  median       uq      max neval
-##     r(x.sexp) 47.521 67.5230 155.50718 70.6750  88.7720 4692.631   100
-##    cm(x.sexp) 19.682 20.5245  50.16932 22.5750  24.3100 2246.526   100
-##   r(x.altrep) 66.228 84.1910 118.98505 89.1545 115.6690  447.998   100
-##  cm(x.altrep)  5.640  6.3635  10.30642  8.4635   9.6345  146.151   100</code></pre>
+##          expr    min      lq      mean  median      uq      max neval
+##     r(x.sexp) 62.562 64.5385  66.91566 65.8095 67.3900   82.845   100
+##    cm(x.sexp) 18.874 19.9965  21.50974 21.6615 22.3605   34.230   100
+##   r(x.altrep) 62.268 80.3885 116.31519 81.9930 83.5785 3434.169   100
+##  cm(x.altrep)  5.593  6.1950  20.35232  8.0895  8.5540 1154.803   100</code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></code></pre></div>
 <pre><code>## Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
@@ -425,7 +425,7 @@
 ## loaded via a namespace (and not attached):
 ##  [1] highr_0.9          bslib_0.3.0        compiler_4.1.1     pillar_1.6.2      
 ##  [5] jquerylib_0.1.4    tools_4.1.1        digest_0.6.28      jsonlite_1.7.2    
-##  [9] evaluate_0.14      memoise_2.0.0      lifecycle_1.0.0    tibble_3.1.4      
+##  [9] evaluate_0.14      memoise_2.0.0      lifecycle_1.0.1    tibble_3.1.4      
 ## [13] gtable_0.3.0       pkgconfig_2.0.3    rlang_0.4.11       yaml_2.2.1        
 ## [17] pkgdown_1.6.1.9001 xfun_0.26          fastmap_1.1.0      withr_2.4.2       
 ## [21] stringr_1.4.0      knitr_1.34         vctrs_0.3.8        desc_1.3.0        
