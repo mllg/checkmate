@@ -44,7 +44,7 @@ set_msg = function(msg, what, ...) {
   if (is.null(what)) {
     sprintf(capitalize(msg), ...)
   } else {
-    paste0(capitalize(what), sprintf(msg, ...))
+    paste(capitalize(what), sprintf(msg, ...))
   }
 }
 
