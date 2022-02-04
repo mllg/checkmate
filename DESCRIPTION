@@ -12,7 +12,7 @@ Authors@R: c(
     person("Dénes", "Tóth", NULL, "toth.denes@kogentum.hu", role = "ctb",
       comment = c(ORCID = "0000-0003-4262-3217"))
     )
-URL: https://github.com/mllg/checkmate
+URL: https://mllg.github.io/checkmate/, https://github.com/mllg/checkmate
 URLNote: https://github.com/mllg/checkmate
 BugReports: https://github.com/mllg/checkmate/issues
 NeedsCompilation: yes
