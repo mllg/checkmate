@@ -1,222 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://mllg.github.io/checkmate/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://mllg.github.io/checkmate/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/articles/checkmate.html</loc>
+    <loc>https://mllg.github.io/checkmate/articles/checkmate.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://mllg.github.io/checkmate/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/tinytest.html</loc>
+    <loc>https://mllg.github.io/checkmate/articles/tinytest.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://mllg.github.io/checkmate/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://mllg.github.io/checkmate/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://mllg.github.io/checkmate/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/AssertCollection.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/AssertCollection.html</loc>
   </url>
   <url>
-    <loc>/reference/anyInfinite.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/anyInfinite.html</loc>
   </url>
   <url>
-    <loc>/reference/anyMissing.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/anyMissing.html</loc>
   </url>
   <url>
-    <loc>/reference/anyNaN.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/anyNaN.html</loc>
   </url>
   <url>
-    <loc>/reference/asInteger.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/asInteger.html</loc>
   </url>
   <url>
-    <loc>/reference/assert.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/assert.html</loc>
   </url>
   <url>
-    <loc>/reference/checkAccess.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkAccess.html</loc>
   </url>
   <url>
-    <loc>/reference/checkArray.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkArray.html</loc>
   </url>
   <url>
-    <loc>/reference/checkAtomic.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkAtomic.html</loc>
   </url>
   <url>
-    <loc>/reference/checkAtomicVector.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkAtomicVector.html</loc>
   </url>
   <url>
-    <loc>/reference/checkCharacter.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkCharacter.html</loc>
   </url>
   <url>
-    <loc>/reference/checkChoice.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkChoice.html</loc>
   </url>
   <url>
-    <loc>/reference/checkClass.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkClass.html</loc>
   </url>
   <url>
-    <loc>/reference/checkComplex.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkComplex.html</loc>
   </url>
   <url>
-    <loc>/reference/checkCount.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkCount.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDataFrame.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDataFrame.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDataTable.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDataTable.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDate.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDate.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDirectoryExists.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDirectoryExists.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDisjunct.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDisjunct.html</loc>
   </url>
   <url>
-    <loc>/reference/checkDouble.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkDouble.html</loc>
   </url>
   <url>
-    <loc>/reference/checkEnvironment.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkEnvironment.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFALSE.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFALSE.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFactor.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFactor.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFileExists.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFileExists.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFlag.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFlag.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFormula.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFormula.html</loc>
   </url>
   <url>
-    <loc>/reference/checkFunction.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkFunction.html</loc>
   </url>
   <url>
-    <loc>/reference/checkInt.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkInt.html</loc>
   </url>
   <url>
-    <loc>/reference/checkInteger.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkInteger.html</loc>
   </url>
   <url>
-    <loc>/reference/checkIntegerish.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkIntegerish.html</loc>
   </url>
   <url>
-    <loc>/reference/checkList.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkList.html</loc>
   </url>
   <url>
-    <loc>/reference/checkLogical.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkLogical.html</loc>
   </url>
   <url>
-    <loc>/reference/checkMatrix.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkMatrix.html</loc>
   </url>
   <url>
-    <loc>/reference/checkMultiClass.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkMultiClass.html</loc>
   </url>
   <url>
-    <loc>/reference/checkNamed.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkNamed.html</loc>
   </url>
   <url>
-    <loc>/reference/checkNames.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkNames.html</loc>
   </url>
   <url>
-    <loc>/reference/checkNull.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkNull.html</loc>
   </url>
   <url>
-    <loc>/reference/checkNumber.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkNumber.html</loc>
   </url>
   <url>
-    <loc>/reference/checkNumeric.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkNumeric.html</loc>
   </url>
   <url>
-    <loc>/reference/checkOS.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkOS.html</loc>
   </url>
   <url>
-    <loc>/reference/checkPOSIXct.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkPOSIXct.html</loc>
   </url>
   <url>
-    <loc>/reference/checkPathForOutput.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkPathForOutput.html</loc>
   </url>
   <url>
-    <loc>/reference/checkR6.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkR6.html</loc>
   </url>
   <url>
-    <loc>/reference/checkRaw.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkRaw.html</loc>
   </url>
   <url>
-    <loc>/reference/checkScalar.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkScalar.html</loc>
   </url>
   <url>
-    <loc>/reference/checkScalarNA.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkScalarNA.html</loc>
   </url>
   <url>
-    <loc>/reference/checkSetEqual.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkSetEqual.html</loc>
   </url>
   <url>
-    <loc>/reference/checkString.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkString.html</loc>
   </url>
   <url>
-    <loc>/reference/checkSubset.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkSubset.html</loc>
   </url>
   <url>
-    <loc>/reference/checkTRUE.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkTRUE.html</loc>
   </url>
   <url>
-    <loc>/reference/checkTibble.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkTibble.html</loc>
   </url>
   <url>
-    <loc>/reference/checkVector.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkVector.html</loc>
   </url>
   <url>
-    <loc>/reference/checkmate-package.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/checkmate-package.html</loc>
   </url>
   <url>
-    <loc>/reference/coalesce.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/coalesce.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/makeAssertion.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/makeAssertion.html</loc>
   </url>
   <url>
-    <loc>/reference/makeExpectation.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/makeExpectation.html</loc>
   </url>
   <url>
-    <loc>/reference/makeTest.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/makeTest.html</loc>
   </url>
   <url>
-    <loc>/reference/matchArg.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/matchArg.html</loc>
   </url>
   <url>
-    <loc>/reference/qassert.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/qassert.html</loc>
   </url>
   <url>
-    <loc>/reference/qassertr.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/qassertr.html</loc>
   </url>
   <url>
-    <loc>/reference/register_test_backend.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/register_test_backend.html</loc>
   </url>
   <url>
-    <loc>/reference/vname.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/vname.html</loc>
   </url>
   <url>
-    <loc>/reference/wf.html</loc>
+    <loc>https://mllg.github.io/checkmate/reference/wf.html</loc>
   </url>
 </urlset>

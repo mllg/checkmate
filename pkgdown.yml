@@ -1,8 +1,11 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1.9001
-pkgdown_sha: 9ac9c8d5a6ca30325100205161441df8cf427035
+pkgdown: 2.0.2.9000
+pkgdown_sha: ae7363faac9040a473a54fb3d770decdfb8dfec1
 articles:
   checkmate: checkmate.html
   tinytest: tinytest.html
-last_built: 2021-09-25T20:42Z
+last_built: 2022-02-04T13:00Z
+urls:
+  reference: https://mllg.github.io/checkmate/reference
+  article: https://mllg.github.io/checkmate/articles
 
