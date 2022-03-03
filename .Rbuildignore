@@ -11,3 +11,4 @@
 ^revdepcheck.R$
 ^_pkgdown.yml$
 ^\.github/*
+^\.lintr$
