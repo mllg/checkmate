@@ -6,9 +6,7 @@
 \alias{checkmate-package}
 \title{checkmate: Fast and Versatile Argument Checks}
 \description{
-Tests and assertions to perform frequent argument checks. A
-    substantial part of the package was written in C to minimize any worries
-    about execution time overhead.
+Tests and assertions to perform frequent argument checks. A substantial part of the package was written in C to minimize any worries about execution time overhead.
 }
 \section{Check scalars}{
 
@@ -134,6 +132,7 @@ Tests and assertions to perform frequent argument checks. A
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://mllg.github.io/checkmate/}
   \item \url{https://github.com/mllg/checkmate}
   \item Report bugs at \url{https://github.com/mllg/checkmate/issues}
 }
