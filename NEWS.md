@@ -4,6 +4,7 @@
 * Checks for integerish now compare the tolerance with the difference to the
   nearest integer with `>` instead of `>=` to allow specifying a tolerance of
   exactly `0` (#177).
+* Checks for integerish now check for class `Date` an `POSIXt`.
 * Coercion of double to integer in `assertInt()` and `assertIntegerish()` now
   round to the nearest integer instead of always rounding via `trunc()`.
 * Fixed an error message where the wrong variable name was reported by

@@ -60,7 +60,13 @@ cm_int_err_t checkIntegerish(SEXP x, const double tol, Rboolean logicals_ok) {
     switch(TYPEOF(x)) {
         case INTSXP: if (inherits(x, "factor")) res.err = INT_TYPE; break;
         case LGLSXP: res = check_convertible_logical(x, logicals_ok); break;
-        case REALSXP: res = check_convertible_double(x, tol); break;
+        case REALSXP:
+            if (inherits(x, "Date") || inherits(x, "POSIXt")) {
+                res.err = INT_TYPE;
+            } else {
+                res = check_convertible_double(x, tol);
+            }
+            break;
         case CPLXSXP: res = check_convertible_complex(x, tol); break;
         default: res.err = INT_TYPE;
     }

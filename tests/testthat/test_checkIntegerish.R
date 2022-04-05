@@ -89,6 +89,16 @@ test_that("factors are detected (#164)", {
   expect_error(assertIntegerish(x), "factor")
 })
 
+test_that("Dates are detected (#223)", {
+  x = Sys.Date()
+  expect_error(assertIntegerish(x), "Date")
+})
+
+test_that("POSIXt is detected (#223)", {
+  x = Sys.time()
+  expect_error(assertIntegerish(x), "POSIX")
+})
+
 test_that("0 tolerance works (#177)", {
   expect_true(isIntegerish(1, tol = 0))
 })
