@@ -2,6 +2,7 @@
 #'
 #' @description
 #' A string is defined as a scalar character vector.
+#' To check for vectors of arbitrary length, see \code{\link{checkCharacter}}.
 #'
 #' @templateVar fn String
 #' @template x

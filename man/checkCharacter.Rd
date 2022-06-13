@@ -252,7 +252,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if an argument is a vector of type character
+To check for scalar strings, see \code{\link{checkString}}.
 }
 \details{
 This function does not distinguish between

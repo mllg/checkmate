@@ -1,5 +1,8 @@
 #' Check if an argument is a vector of type character
 #'
+#' @description
+#' To check for scalar strings, see \code{\link{checkString}}.
+#'
 #' @templateVar fn Character
 #' @template x
 #' @template na-handling
