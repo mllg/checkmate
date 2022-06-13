@@ -107,51 +107,85 @@
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to check.</p></dd>
+
+
 <dt>y</dt>
 <dd><p>[<code>atomic</code>]<br>
 Set to compare with.</p></dd>
+
+
 <dt>ordered</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Check <code>x</code> to have the same length and order as <code>y</code>, i.e.
 check using “==” while handling <code>NA</code>s nicely.
 Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>fmatch</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Use the set operations implemented in <code><a href="https://rdrr.io/pkg/fastmatch/man/fmatch.html" class="external-link">fmatch</a></code> in package <span class="pkg">fastmatch</span>.
 If <span class="pkg">fastmatch</span> is not installed, this silently falls back to <code><a href="https://rdrr.io/r/base/match.html" class="external-link">match</a></code>.
 <code><a href="https://rdrr.io/pkg/fastmatch/man/fmatch.html" class="external-link">fmatch</a></code> modifies <code>y</code> by reference:
 A hash table is added as attribute which is used in subsequent calls.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>add</dt>
 <dd><p>[<code>AssertCollection</code>]<br>
 Collection to store assertion messages. See <code><a href="AssertCollection.html">AssertCollection</a></code>.</p></dd>
+
+
 <dt>info</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Extra information to be included in the message for the testthat reporter.
 See <code><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></code>.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Depending on the function prefix:
- If the check is successful, the functions 
-<code>assertSubset</code>/<code>assert_subset</code> return 
-<code>x</code> invisibly, whereas
-<code>checkSubset</code>/<code>check_subset</code> and 
-<code>testSubset</code>/<code>test_subset</code> return 
-<code>TRUE</code>.
- If the check is not successful, 
-<code>assertSubset</code>/<code>assert_subset</code> throws an error message, 
-<code>testSubset</code>/<code>test_subset</code> returns <code>FALSE</code>,
- and <code>checkSubset</code>/<code>check_subset</code> return a string with the error message.
- The function <code>expect_subset</code> always returns an
-<code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
+    
+
+<p>Depending on the function prefix:
+ If the check is successful, the functions</p>
+<p></p>
+<p><code>assertSubset</code>/<code>assert_subset</code> return</p>
+<p></p>
+<p><code>x</code> invisibly, whereas</p>
+<p></p>
+<p><code>checkSubset</code>/<code>check_subset</code> and</p>
+<p></p>
+<p><code>testSubset</code>/<code>test_subset</code> return</p>
+<p></p>
+<p><code>TRUE</code>.
+ If the check is not successful,</p>
+<p></p>
+<p><code>assertSubset</code>/<code>assert_subset</code></p>
+
+
+<p>throws an error message,</p>
+<p></p>
+<p><code>testSubset</code>/<code>test_subset</code></p>
+
+
+<p>returns <code>FALSE</code>,
+ and <code>checkSubset</code>/<code>check_subset</code></p>
+ 
+
+<p>return a string with the error message.
+ The function <code>expect_subset</code> always returns an</p>
+<p></p>
+<p><code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -194,7 +228,7 @@ Integers and doubles are both treated as numeric.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

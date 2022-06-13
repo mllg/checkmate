@@ -155,6 +155,8 @@
     <dl><dt>x</dt>
 <dd><p>[<code>character</code> || <code>NULL</code>]<br>
 Names to check using rules defined via <code>type</code>.</p></dd>
+
+
 <dt>type</dt>
 <dd><p>[character(1)]<br>
 Type of formal check(s) to perform on the names.</p><dl><dt>unnamed:</dt>
@@ -174,59 +176,99 @@ Type of formal check(s) to perform on the names.</p><dl><dt>unnamed:</dt>
 
 
 </dl><p>Note that for zero-length <code>x</code>, all these name checks evaluate to <code>TRUE</code>.</p></dd>
+
+
 <dt>subset.of</dt>
 <dd><p>[<code>character</code>]<br>
 Names provided in <code>x</code> must be subset of the set <code>subset.of</code>.</p></dd>
+
+
 <dt>must.include</dt>
 <dd><p>[<code>character</code>]<br>
 Names provided in <code>x</code> must be a superset of the set <code>must.include</code>.</p></dd>
+
+
 <dt>permutation.of</dt>
 <dd><p>[<code>character</code>]<br>
 Names provided in <code>x</code> must be a permutation of the set <code>permutation.of</code>.
 Duplicated names in <code>permutation.of</code> are stripped out and duplicated names in <code>x</code>
 thus lead to a failed check.
 Use this argument instead of <code>identical.to</code> if the order of the names is not relevant.</p></dd>
+
+
 <dt>identical.to</dt>
 <dd><p>[<code>character</code>]<br>
 Names provided in <code>x</code> must be identical to the vector <code>identical.to</code>.
 Use this argument instead of <code>permutation.of</code> if the order of the names is relevant.</p></dd>
+
+
 <dt>disjunct.from</dt>
 <dd><p>[<code>character</code>]<br>
 Names provided in <code>x</code> must may not be present in the vector <code>disjunct.from</code>.</p></dd>
+
+
 <dt>what</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Type of name vector to check, e.g. “names” (default), “colnames” or “rownames”.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>add</dt>
 <dd><p>[<code>AssertCollection</code>]<br>
 Collection to store assertion messages. See <code><a href="AssertCollection.html">AssertCollection</a></code>.</p></dd>
+
+
 <dt>info</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Extra information to be included in the message for the testthat reporter.
 See <code><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></code>.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Depending on the function prefix:
- If the check is successful, the functions 
-<code>assertNames</code>/<code>assert_names</code> return 
-<code>x</code> invisibly, whereas
-<code>checkNames</code>/<code>check_names</code> and 
-<code>testNames</code>/<code>test_names</code> return 
-<code>TRUE</code>.
- If the check is not successful, 
-<code>assertNames</code>/<code>assert_names</code> throws an error message, 
-<code>testNames</code>/<code>test_names</code> returns <code>FALSE</code>,
- and <code>checkNames</code>/<code>check_names</code> return a string with the error message.
- The function <code>expect_names</code> always returns an
-<code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
+    
+
+<p>Depending on the function prefix:
+ If the check is successful, the functions</p>
+<p></p>
+<p><code>assertNames</code>/<code>assert_names</code> return</p>
+<p></p>
+<p><code>x</code> invisibly, whereas</p>
+<p></p>
+<p><code>checkNames</code>/<code>check_names</code> and</p>
+<p></p>
+<p><code>testNames</code>/<code>test_names</code> return</p>
+<p></p>
+<p><code>TRUE</code>.
+ If the check is not successful,</p>
+<p></p>
+<p><code>assertNames</code>/<code>assert_names</code></p>
+
+
+<p>throws an error message,</p>
+<p></p>
+<p><code>testNames</code>/<code>test_names</code></p>
+
+
+<p>returns <code>FALSE</code>,
+ and <code>checkNames</code>/<code>check_names</code></p>
+ 
+
+<p>return a string with the error message.
+ The function <code>expect_names</code> always returns an</p>
+<p></p>
+<p><code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -261,7 +303,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

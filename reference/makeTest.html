@@ -85,22 +85,32 @@ function based on a check function (see example).</p>
 <dd><p>[<code>TRUE</code> | <code>character(1)</code>]<br>
 The result of a check function: <code>TRUE</code> for successful checks,
 and an error message as string otherwise.</p></dd>
+
+
 <dt>check.fun</dt>
 <dd><p>[<code>function</code>]<br>
 Function which checks the input. Must return <code>TRUE</code> on success and a string with the error message otherwise.</p></dd>
+
+
 <dt>c.fun</dt>
 <dd><p>[<code>character(1)</code>]<br>
 If not <code>NULL</code>, instead of calling the function <code>check.fun</code>, use <code>.Call</code> to call a C function “c.fun” with the identical
 set of parameters. The C function must be registered as a native symbol, see <code><a href="https://rdrr.io/r/base/CallExternal.html" class="external-link">.Call</a></code>.
 Useful if <code>check.fun</code> is just a simple wrapper.</p></dd>
+
+
 <dt>env</dt>
 <dd><p>[<code>environment</code>]<br>
 The environment of the created function. Default is the <code><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>makeTest</code> returns <code>TRUE</code> if the check is successful and <code>FALSE</code> otherwise.
-<code>makeTestFunction</code> returns a <code>function</code>.</p>
+    
+
+<p><code>makeTest</code> returns <code>TRUE</code> if the check is successful and <code>FALSE</code> otherwise.</p>
+<p></p>
+<p><code>makeTestFunction</code> returns a <code>function</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -127,7 +137,7 @@ The environment of the created function. Default is the <code><a href="https://r
 <span class="r-out co"><span class="r-pr">#&gt;</span> {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     isTRUE(checkFalse(x))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7fcdb997c058&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7f840274c8d0&gt;</span>
 </code></pre></div>
     </div>
   </div>
@@ -142,7 +152,7 @@ The environment of the created function. Default is the <code><a href="https://r
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

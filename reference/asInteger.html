@@ -123,58 +123,89 @@ argument <code>coerce</code> set to <code>TRUE</code> instead.</p>
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to convert.</p></dd>
+
+
 <dt>tol</dt>
 <dd><p>[<code>double(1)</code>]<br>
 Numerical tolerance used to check whether a double or complex can be converted.
 Default is <code>sqrt(.Machine$double.eps)</code>.</p></dd>
+
+
 <dt>lower</dt>
 <dd><p>[<code>numeric(1)</code>]<br>
 Lower value all elements of <code>x</code> must be greater than or equal to.</p></dd>
+
+
 <dt>upper</dt>
 <dd><p>[<code>numeric(1)</code>]<br>
 Upper value all elements of <code>x</code> must be lower than or equal to.</p></dd>
+
+
 <dt>any.missing</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Are vectors with missing values allowed? Default is <code>TRUE</code>.</p></dd>
+
+
 <dt>all.missing</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Are vectors with no non-missing values allowed? Default is <code>TRUE</code>.
 Note that empty vectors do not have non-missing values.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Exact expected length of <code>x</code>.</p></dd>
+
+
 <dt>min.len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Minimal length of <code>x</code>.</p></dd>
+
+
 <dt>max.len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Maximal length of <code>x</code>.</p></dd>
+
+
 <dt>unique</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Must all values be unique? Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>sorted</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Elements must be sorted in ascending order. Missing values are ignored.</p></dd>
+
+
 <dt>names</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Check for names. See <code><a href="checkNamed.html">checkNamed</a></code> for possible values.
 Default is “any” which performs no check at all.
 Note that you can use <code><a href="checkSubset.html">checkSubset</a></code> to check for a specific set of names.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in error messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>na.ok</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Are missing values allowed? Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>positive</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Must <code>x</code> be positive (&gt;= 1)?
 Default is <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Converted <code>x</code>.</p>
+    
+
+<p>Converted <code>x</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -205,7 +236,7 @@ Default is <code>FALSE</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

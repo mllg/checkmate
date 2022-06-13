@@ -88,45 +88,65 @@ function based on a check function (see example).</p>
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to check.</p></dd>
+
+
 <dt>res</dt>
 <dd><p>[<code>TRUE</code> | <code>character(1)</code>]<br>
 The result of a check function: <code>TRUE</code> for successful checks,
 and an error message as string otherwise.</p></dd>
+
+
 <dt>var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 The custom name for <code>x</code> as passed to any <code>assert*</code> function.
 Defaults to a heuristic name lookup.</p></dd>
+
+
 <dt>collection</dt>
 <dd><p>[<code><a href="AssertCollection.html">AssertCollection</a></code>]<br>
 If an <code><a href="AssertCollection.html">AssertCollection</a></code> is provided, the error message is stored
 in it. If <code>NULL</code>, an exception is raised if <code>res</code> is not
 <code>TRUE</code>.</p></dd>
+
+
 <dt>check.fun</dt>
 <dd><p>[<code>function</code>]<br>
 Function which checks the input. Must return <code>TRUE</code> on success and a string with the error message otherwise.</p></dd>
+
+
 <dt>c.fun</dt>
 <dd><p>[<code>character(1)</code>]<br>
 If not <code>NULL</code>, instead of calling the function <code>check.fun</code>, use <code>.Call</code> to call a C function “c.fun” with the identical
 set of parameters. The C function must be registered as a native symbol, see <code><a href="https://rdrr.io/r/base/CallExternal.html" class="external-link">.Call</a></code>.
 Useful if <code>check.fun</code> is just a simple wrapper.</p></dd>
+
+
 <dt>use.namespace</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Call functions of <span class="pkg">checkmate</span> using its namespace explicitly.
 Can be set to <code>FALSE</code> so save some microseconds, but the checkmate package needs to be imported.
 Default is <code>TRUE</code>.</p></dd>
+
+
 <dt>coerce</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 If <code>TRUE</code>, injects some lines of code to convert numeric values to integer after an successful assertion.
 Currently used in <code><a href="checkCount.html">assertCount</a></code>, <code><a href="checkInt.html">assertInt</a></code> and <code><a href="checkIntegerish.html">assertIntegerish</a></code>.</p></dd>
+
+
 <dt>env</dt>
 <dd><p>[<code>environment</code>]<br>
 The environment of the created function. Default is the <code><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>makeAssertion</code> invisibly returns the checked object if the check was successful,
- and an exception is raised (or its message stored in the collection) otherwise.
-<code>makeAssertionFunction</code> returns a <code>function</code>.</p>
+    
+
+<p><code>makeAssertion</code> invisibly returns the checked object if the check was successful,
+ and an exception is raised (or its message stored in the collection) otherwise.</p>
+<p></p>
+<p><code>makeAssertionFunction</code> returns a <code>function</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -157,7 +177,7 @@ The environment of the created function. Default is the <code><a href="https://r
 <span class="r-out co"><span class="r-pr">#&gt;</span>     res = checkFalse(x)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     checkmate::makeAssertion(x, res, .var.name, add)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7fcdbd5aaf00&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7f83fd2231b0&gt;</span>
 </code></pre></div>
     </div>
   </div>
@@ -172,7 +192,7 @@ The environment of the created function. Default is the <code><a href="https://r
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

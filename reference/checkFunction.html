@@ -110,55 +110,91 @@
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to check.</p></dd>
+
+
 <dt>args</dt>
 <dd><p>[<code>character</code>]<br>
 Expected formal arguments. Checks that a function has no arguments if
 set to <code>character(0)</code>.
 Default is <code>NULL</code> (no check).</p></dd>
+
+
 <dt>ordered</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Flag whether the arguments provided in <code>args</code> must be the first
 <code>length(args)</code> arguments of the function in the specified order.
 Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>nargs</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Required number of arguments, without <code>...</code>.
 Default is <code>NULL</code> (no check).</p></dd>
+
+
 <dt>null.ok</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
 In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>add</dt>
 <dd><p>[<code>AssertCollection</code>]<br>
 Collection to store assertion messages. See <code><a href="AssertCollection.html">AssertCollection</a></code>.</p></dd>
+
+
 <dt>info</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Extra information to be included in the message for the testthat reporter.
 See <code><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></code>.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Depending on the function prefix:
- If the check is successful, the functions 
-<code>assertFunction</code>/<code>assert_function</code> return 
-<code>x</code> invisibly, whereas
-<code>checkFunction</code>/<code>check_function</code> and 
-<code>testFunction</code>/<code>test_function</code> return 
-<code>TRUE</code>.
- If the check is not successful, 
-<code>assertFunction</code>/<code>assert_function</code> throws an error message, 
-<code>testFunction</code>/<code>test_function</code> returns <code>FALSE</code>,
- and <code>checkFunction</code>/<code>check_function</code> return a string with the error message.
- The function <code>expect_function</code> always returns an
-<code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
+    
+
+<p>Depending on the function prefix:
+ If the check is successful, the functions</p>
+<p></p>
+<p><code>assertFunction</code>/<code>assert_function</code> return</p>
+<p></p>
+<p><code>x</code> invisibly, whereas</p>
+<p></p>
+<p><code>checkFunction</code>/<code>check_function</code> and</p>
+<p></p>
+<p><code>testFunction</code>/<code>test_function</code> return</p>
+<p></p>
+<p><code>TRUE</code>.
+ If the check is not successful,</p>
+<p></p>
+<p><code>assertFunction</code>/<code>assert_function</code></p>
+
+
+<p>throws an error message,</p>
+<p></p>
+<p><code>testFunction</code>/<code>test_function</code></p>
+
+
+<p>returns <code>FALSE</code>,
+ and <code>checkFunction</code>/<code>check_function</code></p>
+ 
+
+<p>return a string with the error message.
+ The function <code>expect_function</code> always returns an</p>
+<p></p>
+<p><code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -206,7 +242,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

@@ -86,41 +86,71 @@
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to check.</p></dd>
+
+
 <dt>null.ok</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
 In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>add</dt>
 <dd><p>[<code>AssertCollection</code>]<br>
 Collection to store assertion messages. See <code><a href="AssertCollection.html">AssertCollection</a></code>.</p></dd>
+
+
 <dt>info</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Extra information to be included in the message for the testthat reporter.
 See <code><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></code>.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Depending on the function prefix:
- If the check is successful, the functions 
-<code>assertFormula</code>/<code>assert_formula</code> return 
-<code>x</code> invisibly, whereas
-<code>checkFormula</code>/<code>check_formula</code> and 
-<code>testFormula</code>/<code>test_formula</code> return 
-<code>TRUE</code>.
- If the check is not successful, 
-<code>assertFormula</code>/<code>assert_formula</code> throws an error message, 
-<code>testFormula</code>/<code>test_formula</code> returns <code>FALSE</code>,
- and <code>checkFormula</code>/<code>check_formula</code> return a string with the error message.
- The function <code>expect_formula</code> always returns an
-<code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
+    
+
+<p>Depending on the function prefix:
+ If the check is successful, the functions</p>
+<p></p>
+<p><code>assertFormula</code>/<code>assert_formula</code> return</p>
+<p></p>
+<p><code>x</code> invisibly, whereas</p>
+<p></p>
+<p><code>checkFormula</code>/<code>check_formula</code> and</p>
+<p></p>
+<p><code>testFormula</code>/<code>test_formula</code> return</p>
+<p></p>
+<p><code>TRUE</code>.
+ If the check is not successful,</p>
+<p></p>
+<p><code>assertFormula</code>/<code>assert_formula</code></p>
+
+
+<p>throws an error message,</p>
+<p></p>
+<p><code>testFormula</code>/<code>test_formula</code></p>
+
+
+<p>returns <code>FALSE</code>,
+ and <code>checkFormula</code>/<code>check_formula</code></p>
+ 
+
+<p>return a string with the error message.
+ The function <code>expect_formula</code> always returns an</p>
+<p></p>
+<p><code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -167,7 +197,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

@@ -176,69 +176,117 @@
     <dl><dt>x</dt>
 <dd><p>[any]<br>
 Object to check.</p></dd>
+
+
 <dt>lower</dt>
 <dd><p>[<code><a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a></code>]<br>
 All non-missing dates in <code>x</code> must be &gt;= this POSIXct time. Must be provided in the same timezone as <code>x</code>.</p></dd>
+
+
 <dt>upper</dt>
 <dd><p>[<code><a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a></code>]<br>
 All non-missing dates in <code>x</code> must be &lt;= this POSIXct time. Must be provided in the same timezone as <code>x</code>.</p></dd>
+
+
 <dt>any.missing</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Are vectors with missing values allowed? Default is <code>TRUE</code>.</p></dd>
+
+
 <dt>all.missing</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Are vectors with no non-missing values allowed? Default is <code>TRUE</code>.
 Note that empty vectors do not have non-missing values.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Exact expected length of <code>x</code>.</p></dd>
+
+
 <dt>min.len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Minimal length of <code>x</code>.</p></dd>
+
+
 <dt>max.len</dt>
 <dd><p>[<code>integer(1)</code>]<br>
 Maximal length of <code>x</code>.</p></dd>
+
+
 <dt>unique</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Must all values be unique? Default is <code>FALSE</code>.</p></dd>
+
+
 <dt>sorted</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 Elements must be sorted in ascending order. Missing values are ignored.</p></dd>
+
+
 <dt>null.ok</dt>
 <dd><p>[<code>logical(1)</code>]<br>
 If set to <code>TRUE</code>, <code>x</code> may also be <code>NULL</code>.
 In this case only a type check of <code>x</code> is performed, all additional checks are disabled.</p></dd>
+
+
 <dt>.var.name</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in assertions. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
+
 <dt>add</dt>
 <dd><p>[<code>AssertCollection</code>]<br>
 Collection to store assertion messages. See <code><a href="AssertCollection.html">AssertCollection</a></code>.</p></dd>
+
+
 <dt>info</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Extra information to be included in the message for the testthat reporter.
 See <code><a href="https://testthat.r-lib.org/reference/expect_that.html" class="external-link">expect_that</a></code>.</p></dd>
+
+
 <dt>label</dt>
 <dd><p>[<code>character(1)</code>]<br>
 Name of the checked object to print in messages. Defaults to
 the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Depending on the function prefix:
- If the check is successful, the functions 
-<code>assertAtomic</code>/<code>assert_atomic</code> return 
-<code>x</code> invisibly, whereas
-<code>checkAtomic</code>/<code>check_atomic</code> and 
-<code>testAtomic</code>/<code>test_atomic</code> return 
-<code>TRUE</code>.
- If the check is not successful, 
-<code>assertAtomic</code>/<code>assert_atomic</code> throws an error message, 
-<code>testAtomic</code>/<code>test_atomic</code> returns <code>FALSE</code>,
- and <code>checkAtomic</code>/<code>check_atomic</code> return a string with the error message.
- The function <code>expect_atomic</code> always returns an
-<code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
+    
+
+<p>Depending on the function prefix:
+ If the check is successful, the functions</p>
+<p></p>
+<p><code>assertAtomic</code>/<code>assert_atomic</code> return</p>
+<p></p>
+<p><code>x</code> invisibly, whereas</p>
+<p></p>
+<p><code>checkAtomic</code>/<code>check_atomic</code> and</p>
+<p></p>
+<p><code>testAtomic</code>/<code>test_atomic</code> return</p>
+<p></p>
+<p><code>TRUE</code>.
+ If the check is not successful,</p>
+<p></p>
+<p><code>assertAtomic</code>/<code>assert_atomic</code></p>
+
+
+<p>throws an error message,</p>
+<p></p>
+<p><code>testAtomic</code>/<code>test_atomic</code></p>
+
+
+<p>returns <code>FALSE</code>,
+ and <code>checkAtomic</code>/<code>check_atomic</code></p>
+ 
+
+<p>return a string with the error message.
+ The function <code>expect_atomic</code> always returns an</p>
+<p></p>
+<p><code><a href="https://testthat.r-lib.org/reference/expectation.html" class="external-link">expectation</a></code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -278,7 +326,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>
