@@ -1,3 +1,7 @@
+# Version 2.1.1
+*
+*
+
 # Version 2.1.0
 * New arguments `n.chars` and `max.chars` for `checkCharacter()` and
   `checkString()`.

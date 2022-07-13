@@ -118,3 +118,7 @@ test_that("typed.missing", {
   expect_true(testIntegerish(character(), typed.missing = FALSE))
   expect_false(testIntegerish(character(), typed.missing = TRUE))
 })
+
+test_that("#226", {
+  expect_true(test_integerish(NA_character_, any.missing = TRUE, all.missing = TRUE))
+})
