@@ -70,11 +70,11 @@ checks of list elements or data frame columns.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">qassertr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">qtestr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, depth <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>
-
-<span class="fu">qexpectr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, info <span class="op">=</span> <span class="cn">NULL</span>, label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">qassertr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">qtestr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, depth <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">qexpectr</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, info <span class="op">=</span> <span class="cn">NULL</span>, label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -127,20 +127,20 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># All list elements are integers with length &gt;= 1?</span></span>
-<span class="r-in"><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"i+"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># All list elements are integers with length &gt;= 1?</span></span></span>
+<span class="r-in"><span><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"i+"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># All list elements (i.e. data frame columns) are numeric?</span></span>
-<span class="r-in"><span class="fu">qtestr</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"n"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># All list elements (i.e. data frame columns) are numeric?</span></span></span>
+<span class="r-in"><span><span class="fu">qtestr</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"n"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># All list elements are numeric, w/o NAs?</span></span>
-<span class="r-in"><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, c <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, <span class="st">"N+"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># All list elements are numeric, w/o NAs?</span></span></span>
+<span class="r-in"><span><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, c <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, <span class="st">"N+"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># All list elements are numeric OR character</span></span>
-<span class="r-in"><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, c <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"N+"</span>, <span class="st">"S+"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># All list elements are numeric OR character</span></span></span>
+<span class="r-in"><span><span class="fu">qtestr</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>, c <span class="op">=</span> <span class="va">letters</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"N+"</span>, <span class="st">"S+"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
@@ -156,7 +156,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

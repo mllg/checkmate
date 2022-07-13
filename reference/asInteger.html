@@ -84,38 +84,38 @@ argument <code>coerce</code> set to <code>TRUE</code> instead.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">asInteger</span><span class="op">(</span>
-  <span class="va">x</span>,
-  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,
-  lower <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,
-  upper <span class="op">=</span> <span class="cn">Inf</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  sorted <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">asCount</span><span class="op">(</span>
-  <span class="va">x</span>,
-  na.ok <span class="op">=</span> <span class="cn">FALSE</span>,
-  positive <span class="op">=</span> <span class="cn">FALSE</span>,
-  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">asInt</span><span class="op">(</span>
-  <span class="va">x</span>,
-  na.ok <span class="op">=</span> <span class="cn">FALSE</span>,
-  lower <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,
-  upper <span class="op">=</span> <span class="cn">Inf</span>,
-  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">asInteger</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,</span>
+<span>  lower <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>  upper <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  sorted <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">asCount</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  na.ok <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  positive <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">asInt</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  na.ok <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  lower <span class="op">=</span> <span class="op">-</span><span class="cn">Inf</span>,</span>
+<span>  upper <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  tol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">.Machine</span><span class="op">$</span><span class="va">double.eps</span><span class="op">)</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -216,11 +216,11 @@ Default is <code>FALSE</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">asInteger</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">asInteger</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1 2 3</span>
-<span class="r-in"><span class="fu">asCount</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">asCount</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu">asInt</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">asInt</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 </code></pre></div>
     </div>
@@ -236,7 +236,7 @@ Default is <code>FALSE</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

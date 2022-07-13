@@ -68,11 +68,11 @@ frequent argument checks by typing just a few letters.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">qassert</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">qtest</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span><span class="op">)</span>
-
-<span class="fu">qexpect</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, info <span class="op">=</span> <span class="cn">NULL</span>, label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">qassert</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">qtest</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">qexpect</span><span class="op">(</span><span class="va">x</span>, <span class="va">rules</span>, info <span class="op">=</span> <span class="cn">NULL</span>, label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -156,32 +156,32 @@ of list elements and data frame columns.</p></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># logical of length 1</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"b1"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># logical of length 1</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"b1"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># logical of length 1, NA not allowed</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"B1"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># logical of length 1, NA not allowed</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"B1"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># logical of length 0 or 1, NA not allowed</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"B?"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># logical of length 0 or 1, NA not allowed</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="cn">TRUE</span>, <span class="st">"B?"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># numeric with length &gt; 0</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"n+"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># numeric with length &gt; 0</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="st">"n+"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># integer with length &gt; 0, NAs not allowed, all integers &gt;= 0 and &lt; Inf</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="st">"I+[0,)"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># integer with length &gt; 0, NAs not allowed, all integers &gt;= 0 and &lt; Inf</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="st">"I+[0,)"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># either an emtpy list or a character vector with &lt;=5 elements</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"l0"</span>, <span class="st">"s&lt;=5"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># either an emtpy list or a character vector with &lt;=5 elements</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"l0"</span>, <span class="st">"s&lt;=5"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># data frame with at least one column and no missing value in any column</span></span>
-<span class="r-in"><span class="fu">qtest</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"D+"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># data frame with at least one column and no missing value in any column</span></span></span>
+<span class="r-in"><span><span class="fu">qtest</span><span class="op">(</span><span class="va">iris</span>, <span class="st">"D+"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
@@ -197,7 +197,7 @@ of list elements and data frame columns.</p></div>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

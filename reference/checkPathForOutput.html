@@ -75,37 +75,37 @@ Paths are relative to the current working directory."><!-- mathjax --><script sr
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">checkPathForOutput</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">check_path_for_output</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">assertPathForOutput</span><span class="op">(</span>
-  <span class="va">x</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  extension <span class="op">=</span> <span class="cn">NULL</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">assert_path_for_output</span><span class="op">(</span>
-  <span class="va">x</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  extension <span class="op">=</span> <span class="cn">NULL</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">testPathForOutput</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">test_path_for_output</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
-
-<span class="fu">expect_path_for_output</span><span class="op">(</span>
-  <span class="va">x</span>,
-  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
-  extension <span class="op">=</span> <span class="cn">NULL</span>,
-  info <span class="op">=</span> <span class="cn">NULL</span>,
-  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">checkPathForOutput</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">check_path_for_output</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assertPathForOutput</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extension <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_path_for_output</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extension <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">testPathForOutput</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">test_path_for_output</span><span class="op">(</span><span class="va">x</span>, overwrite <span class="op">=</span> <span class="cn">FALSE</span>, extension <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">expect_path_for_output</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  overwrite <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extension <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  info <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -195,8 +195,8 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Can we create a file in the tempdir?</span></span>
-<span class="r-in"><span class="fu">testPathForOutput</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"process.log"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Can we create a file in the tempdir?</span></span></span>
+<span class="r-in"><span><span class="fu">testPathForOutput</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"process.log"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
@@ -212,7 +212,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

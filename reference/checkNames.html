@@ -66,88 +66,88 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">checkNames</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>
-<span class="op">)</span>
-
-<span class="fu">check_names</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>
-<span class="op">)</span>
-
-<span class="fu">assertNames</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">assert_names</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">testNames</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>
-<span class="op">)</span>
-
-<span class="fu">test_names</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>
-<span class="op">)</span>
-
-<span class="fu">expect_names</span><span class="op">(</span>
-  <span class="va">x</span>,
-  type <span class="op">=</span> <span class="st">"named"</span>,
-  subset.of <span class="op">=</span> <span class="cn">NULL</span>,
-  must.include <span class="op">=</span> <span class="cn">NULL</span>,
-  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,
-  identical.to <span class="op">=</span> <span class="cn">NULL</span>,
-  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,
-  what <span class="op">=</span> <span class="st">"names"</span>,
-  info <span class="op">=</span> <span class="cn">NULL</span>,
-  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">checkNames</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">check_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assertNames</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">testNames</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">test_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">expect_names</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"named"</span>,</span>
+<span>  subset.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  must.include <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  permutation.of <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  identical.to <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  disjunct.from <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  what <span class="op">=</span> <span class="st">"names"</span>,</span>
+<span>  info <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -280,15 +280,15 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">x</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span>
-<span class="r-in"><span class="fu">testNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"unnamed"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">x</span> <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span></span></span>
+<span class="r-in"><span><span class="fu">testNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"unnamed"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span>
-<span class="r-in"><span class="fu">testNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"unique"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span></span></span>
+<span class="r-in"><span><span class="fu">testNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"unique"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">cn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">assertNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, permutation.of <span class="op">=</span> <span class="va">cn</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">cn</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Species"</span>, <span class="st">"Sepal.Length"</span>, <span class="st">"Sepal.Width"</span>, <span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">assertNames</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>, permutation.of <span class="op">=</span> <span class="va">cn</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -303,7 +303,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

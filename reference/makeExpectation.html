@@ -72,14 +72,14 @@ function based on a check function (see example).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">makeExpectation</span><span class="op">(</span><span class="va">x</span>, <span class="va">res</span>, <span class="va">info</span>, <span class="va">label</span><span class="op">)</span>
-
-<span class="fu">makeExpectationFunction</span><span class="op">(</span>
-  <span class="va">check.fun</span>,
-  c.fun <span class="op">=</span> <span class="cn">NULL</span>,
-  use.namespace <span class="op">=</span> <span class="cn">FALSE</span>,
-  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">makeExpectation</span><span class="op">(</span><span class="va">x</span>, <span class="va">res</span>, <span class="va">info</span>, <span class="va">label</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">makeExpectationFunction</span><span class="op">(</span></span>
+<span>  <span class="va">check.fun</span>,</span>
+<span>  c.fun <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  use.namespace <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  env <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -146,18 +146,18 @@ The environment of the created function. Default is the <code><a href="https://r
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Simple custom check function</span></span>
-<span class="r-in"><span class="va">checkFalse</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">x</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="st">"Must be FALSE"</span> <span class="kw">else</span> <span class="cn">TRUE</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Create the respective expect function</span></span>
-<span class="r-in"><span class="va">expect_false</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">info</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">label</span> <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">res</span> <span class="op">=</span> <span class="fu">checkFalse</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu">makeExpectation</span><span class="op">(</span><span class="va">x</span>, <span class="va">res</span>, info <span class="op">=</span> <span class="va">info</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Alternative: Automatically create such a function</span></span>
-<span class="r-in"><span class="va">expect_false</span> <span class="op">=</span> <span class="fu">makeExpectationFunction</span><span class="op">(</span><span class="va">checkFalse</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">expect_false</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Simple custom check function</span></span></span>
+<span class="r-in"><span><span class="va">checkFalse</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">x</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span> <span class="st">"Must be FALSE"</span> <span class="kw">else</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create the respective expect function</span></span></span>
+<span class="r-in"><span><span class="va">expect_false</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">info</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">label</span> <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">res</span> <span class="op">=</span> <span class="fu">checkFalse</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">makeExpectation</span><span class="op">(</span><span class="va">x</span>, <span class="va">res</span>, info <span class="op">=</span> <span class="va">info</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Alternative: Automatically create such a function</span></span></span>
+<span class="r-in"><span><span class="va">expect_false</span> <span class="op">=</span> <span class="fu">makeExpectationFunction</span><span class="op">(</span><span class="va">checkFalse</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">expect_false</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> function (x, info = NULL, label = vname(x)) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     if (missing(x)) </span>
@@ -165,7 +165,7 @@ The environment of the created function. Default is the <code><a href="https://r
 <span class="r-out co"><span class="r-pr">#&gt;</span>     res = checkFalse(x)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     makeExpectation(x, res, info, label)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7f83ff6da190&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x7fd303d913e0&gt;</span>
 </code></pre></div>
     </div>
   </div>
@@ -180,7 +180,7 @@ The environment of the created function. Default is the <code><a href="https://r
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>

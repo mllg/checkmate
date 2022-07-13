@@ -78,88 +78,88 @@ In short, this is basically equivalent to <code>is.atomic(x) &amp;&amp; !is.null
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">checkAtomicVector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">check_atomic_vector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">assertAtomicVector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">assert_atomic_vector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>,
-  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,
-  add <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">testAtomicVector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">test_atomic_vector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span>
-
-<span class="fu">expect_atomic_vector</span><span class="op">(</span>
-  <span class="va">x</span>,
-  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,
-  len <span class="op">=</span> <span class="cn">NULL</span>,
-  min.len <span class="op">=</span> <span class="cn">NULL</span>,
-  max.len <span class="op">=</span> <span class="cn">NULL</span>,
-  unique <span class="op">=</span> <span class="cn">FALSE</span>,
-  names <span class="op">=</span> <span class="cn">NULL</span>,
-  info <span class="op">=</span> <span class="cn">NULL</span>,
-  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">checkAtomicVector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">check_atomic_vector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assertAtomicVector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">assert_atomic_vector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .var.name <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">testAtomicVector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">test_atomic_vector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">expect_atomic_vector</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  any.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  all.missing <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  min.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  max.len <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  unique <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  info <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="vname.html">vname</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -294,7 +294,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">testAtomicVector</span><span class="op">(</span><span class="va">letters</span>, min.len <span class="op">=</span> <span class="fl">1L</span>, any.missing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">testAtomicVector</span><span class="op">(</span><span class="va">letters</span>, min.len <span class="op">=</span> <span class="fl">1L</span>, any.missing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
@@ -310,7 +310,7 @@ the heuristic implemented in <code><a href="vname.html">vname</a></code>.</p></d
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.9000.</p>
 </div>
 
       </footer></div>
