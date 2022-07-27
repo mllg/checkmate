@@ -34,8 +34,7 @@ checkPermutation = function(x, y, na.ok = TRUE) {
 
   # We can check for number of NAs by comparing lengths again as they are dropped by the sort
 
-
-  if (length(xs) != length(ys) || any(xs != ys, na.rm = TRUE)) {
+  if (length(xs) != length(ys) || any(xs != ys)) {
     return(sprintf("Must be permutation of %s, but is %s", array_collapse(ys), array_collapse(xs)))
   }
   return(TRUE)
