@@ -1,14 +1,19 @@
-#' Check if the arguments are permutations of each other
+#' Check if the arguments are permutations of each other.
+#' NAs are being treated as actual values by default.
 #' @templateVar fn Permutation
 #' @template x
 #' @param y [\code{atomic}]\cr
 #'  Vector to compare with. Atomic vector of type other than raw.
+#' @param na.ok [\code{logical(1)}]\cr
+#'  Are missing values allowed? Default is \code{TRUE}.
 #' @template checker
 #' @export
 #' @examples
 #' testPermutation(letters[1:2], letters[2:1])
 #' testPermutation(letters[c(1, 1, 2)], letters[1:2])
-checkPermutation = function(x, y) {
+#' testPermutation(c(NA, 1, 2), c(1, 2, NA))
+#' testPermutation(c(NA, 1, 2), c(1, 2, NA), na.ok = FALSE)
+checkPermutation = function(x, y, na.ok = TRUE) {
   qassert(x, "a")
   qassert(y, "a")
   # raws cannot be sorted
@@ -21,12 +26,17 @@ checkPermutation = function(x, y) {
     return(sprintf("Must be permutation of %s, but is %s", array_collapse(y), array_collapse(x)))
   }
 
-  x = sort(x)
-  y = sort(y)
+  if (!na.ok && (anyNA(x) || anyNA(y))) {
+    return("The parameter na.ok is set to FALSE but NAs were found.")
+  }
+  xs = sort(x)
+  ys = sort(y)
 
   # We can check for number of NAs by comparing lengths again as they are dropped by the sort
-  if (length(x) != length(y) || any(x != y, na.rm = TRUE)) {
-    return(sprintf("Must be permutation of %s, but is %s", array_collapse(y), array_collapse(x)))
+
+
+  if (length(xs) != length(ys) || any(xs != ys, na.rm = TRUE)) {
+    return(sprintf("Must be permutation of %s, but is %s", array_collapse(ys), array_collapse(xs)))
   }
   return(TRUE)
 }

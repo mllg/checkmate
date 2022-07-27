@@ -8,21 +8,22 @@
 \alias{testPermutation}
 \alias{test_permutation}
 \alias{expect_permutation}
-\title{Check if the arguments are permutations of each other}
+\title{Check if the arguments are permutations of each other.
+NAs are being treated as actual values by default.}
 \usage{
-checkPermutation(x, y)
+checkPermutation(x, y, na.ok = TRUE)
 
-check_permutation(x, y)
+check_permutation(x, y, na.ok = TRUE)
 
-assertPermutation(x, y, .var.name = vname(x), add = NULL)
+assertPermutation(x, y, na.ok = TRUE, .var.name = vname(x), add = NULL)
 
-assert_permutation(x, y, .var.name = vname(x), add = NULL)
+assert_permutation(x, y, na.ok = TRUE, .var.name = vname(x), add = NULL)
 
-testPermutation(x, y)
+testPermutation(x, y, na.ok = TRUE)
 
-test_permutation(x, y)
+test_permutation(x, y, na.ok = TRUE)
 
-expect_permutation(x, y, info = NULL, label = vname(x))
+expect_permutation(x, y, na.ok = TRUE, info = NULL, label = vname(x))
 }
 \arguments{
 \item{x}{[any]\cr
@@ -30,6 +31,9 @@ Object to check.}
 
 \item{y}{[\code{atomic}]\cr
 Vector to compare with. Atomic vector of type other than raw.}
+
+\item{na.ok}{[\code{logical(1)}]\cr
+Are missing values allowed? Default is \code{TRUE}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
@@ -65,9 +69,12 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if the arguments are permutations of each other
+Check if the arguments are permutations of each other.
+NAs are being treated as actual values by default.
 }
 \examples{
 testPermutation(letters[1:2], letters[2:1])
 testPermutation(letters[c(1, 1, 2)], letters[1:2])
+testPermutation(c(NA, 1, 2), c(1, 2, NA))
+testPermutation(c(NA, 1, 2), c(1, 2, NA), na.ok = FALSE)
 }
