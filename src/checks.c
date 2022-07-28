@@ -78,7 +78,7 @@ static void fmt_posixct(char * out, SEXP x) {
 static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     double tmp = as_number(lower, "lower");
     if (R_FINITE(tmp)) {
-        const R_xlen_t n = length(x);
+        const R_xlen_t n = xlength(x);
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
@@ -96,7 +96,7 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
 
     tmp = as_number(upper, "upper");
     if (R_FINITE(tmp)) {
-        const R_xlen_t n = length(x);
+        const R_xlen_t n = xlength(x);
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
