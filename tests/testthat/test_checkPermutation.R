@@ -31,4 +31,5 @@ test_that("checkPermutation", {
   expect_false(testPermutation(c("a", NA, "b", "b"), c(NA, NA, "b", "b", "a")))
 
   expect_false(testPermutation(c(1, NA), c(NA, 1), na.ok = FALSE))
+  expect_false(testPermutation(c(1, NA), c(1)))
 })
