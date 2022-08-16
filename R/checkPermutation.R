@@ -20,8 +20,7 @@ checkPermutation = function(x, y, na.ok = TRUE) {
   assert_false(is.raw(x))
   assert_false(is.raw(y))
 
-  # now this is checkSetEqual(..., ordered = TRUE) with additional sorting.
-  # Some properties can be checked before sorting
+  # These are the cheap checks that we perform seperately
   if (!isSameType(x, y) || length(x) != length(y)) {
     return(sprintf("Must be permutation of %s, but is %s", array_collapse(y), array_collapse(x)))
   }
@@ -29,10 +28,14 @@ checkPermutation = function(x, y, na.ok = TRUE) {
   if (!na.ok && (anyNA(x) || anyNA(y))) {
     return("The parameter na.ok is set to FALSE but NAs were found.")
   }
+  # This drops NAs
   xs = sort(x)
   ys = sort(y)
 
-  # We can check for number of NAs by comparing lengths again as they are dropped by the sort
+  # We handle NAs and the remaining non-NAs differently:
+  # * NA: If na.ok is TRUE, the two vector must have the same number of NAs, this is checked by
+  #       comparing the lengths, because the NAs are dropped in the sort above.
+  # * non-NA: We sort the vector and check for equality (without NAs)
 
   if (length(xs) != length(ys) || any(xs != ys)) {
     return(sprintf("Must be permutation of %s, but is %s", array_collapse(ys), array_collapse(xs)))
