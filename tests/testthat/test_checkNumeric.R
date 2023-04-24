@@ -91,6 +91,6 @@ test_that("typed.missing", {
 test_that("Inf bound checks", {
   expect_false(testNumeric(2, lower = Inf))
   expect_true(testNumeric(2, lower = -Inf))
+  expect_true(testNumeric(2, upper = Inf))
   expect_false(testNumeric(2, upper = -Inf))
-  expect_true(testNumeric(2, upper = -Inf))
 })

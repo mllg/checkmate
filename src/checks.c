@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <string.h>
+#include <inttypes.h>
 #include "backports.h"
 #include "checks.h"
 #include "integerish.h"
@@ -485,15 +486,15 @@ SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP uppe
                 }
                 break;
             case INT_RANGE:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not in integer range", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd is not in integer range", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
             case INT_TOL:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not close to an integer", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd is not close to an integer", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
             case INT_COMPLEX:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld has an imaginary part", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd has an imaginary part", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
         }
