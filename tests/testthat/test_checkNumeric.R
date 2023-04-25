@@ -87,3 +87,10 @@ test_that("typed.missing", {
   expect_true(testNumeric(character(), typed.missing = FALSE))
   expect_false(testNumeric(character(), typed.missing = TRUE))
 })
+
+test_that("Inf bound checks", {
+  expect_false(testNumeric(2, lower = Inf))
+  expect_true(testNumeric(2, lower = -Inf))
+  expect_true(testNumeric(2, upper = Inf))
+  expect_false(testNumeric(2, upper = -Inf))
+})

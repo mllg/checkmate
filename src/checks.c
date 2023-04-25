@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <string.h>
+#include <inttypes.h>
 #include "backports.h"
 #include "checks.h"
 #include "integerish.h"
@@ -77,8 +78,8 @@ static void fmt_posixct(char * out, SEXP x) {
 
 static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     double tmp = as_number(lower, "lower");
-    if (R_FINITE(tmp)) {
-        const R_xlen_t n = length(x);
+    if (R_FINITE(tmp) || tmp == R_PosInf) {
+        const R_xlen_t n = xlength(x);
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
@@ -95,8 +96,8 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
     }
 
     tmp = as_number(upper, "upper");
-    if (R_FINITE(tmp)) {
-        const R_xlen_t n = length(x);
+    if (R_FINITE(tmp) || tmp == R_NegInf) {
+        const R_xlen_t n = xlength(x);
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
@@ -485,15 +486,15 @@ SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP uppe
                 }
                 break;
             case INT_RANGE:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not in integer range", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd is not in integer range", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
             case INT_TOL:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld is not close to an integer", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd is not close to an integer", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
             case INT_COMPLEX:
-                snprintf(msg, 255, "Must be of type 'integerish', but element %ld has an imaginary part", ok.pos);
+                snprintf(msg, 255, "Must be of type 'integerish', but element %jd has an imaginary part", ok.pos);
                 return ScalarString(mkChar(msg));
                 break;
         }
