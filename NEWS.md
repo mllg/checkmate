@@ -1,6 +1,8 @@
-# Version 2.1.1
-*
-*
+# Version 2.2.0
+* Fixed C compiler warnings for windows
+* Added `checkPermutation` (#230).
+* Better handling of long vectors (#231).
+* Fixed a bounds check for numeric vectors and infinite bounds.
 
 # Version 2.1.0
 * New arguments `n.chars` and `max.chars` for `checkCharacter()` and
