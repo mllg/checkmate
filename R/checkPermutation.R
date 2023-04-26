@@ -1,5 +1,11 @@
 #' Check if the arguments are permutations of each other.
-#' NAs are being treated as actual values by default.
+#'
+#' @description
+#' In contrast to \code{\link{checkSetEqual()}}, the function tests for a true
+#' permutation of the two vectors and also considers duplicated values.
+#' Missing values are being treated as actual values by default.
+#' Does not work on raw values.
+#'
 #' @templateVar fn Permutation
 #' @template x
 #' @param y [\code{atomic}]\cr
@@ -7,6 +13,8 @@
 #' @param na.ok [\code{logical(1)}]\cr
 #'  Are missing values allowed? Default is \code{TRUE}.
 #' @template checker
+#' @template set
+#' @family set
 #' @export
 #' @examples
 #' testPermutation(letters[1:2], letters[2:1])
@@ -16,11 +24,12 @@
 checkPermutation = function(x, y, na.ok = TRUE) {
   qassert(x, "a")
   qassert(y, "a")
-  # raws cannot be sorted
-  assert_false(is.raw(x))
-  assert_false(is.raw(y))
 
-  # These are the cheap checks that we perform seperately
+  if (is.raw(x) || is.raw(y)) {
+    stop("Cannot check permutation on raw vectors")
+  }
+
+  # These are the cheap checks that we perform separately
   if (!isSameType(x, y) || length(x) != length(y)) {
     return(sprintf("Must be permutation of %s, but is %s", array_collapse(y), array_collapse(x)))
   }

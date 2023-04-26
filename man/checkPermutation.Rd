@@ -8,8 +8,7 @@
 \alias{testPermutation}
 \alias{test_permutation}
 \alias{expect_permutation}
-\title{Check if the arguments are permutations of each other.
-NAs are being treated as actual values by default.}
+\title{Check if the arguments are permutations of each other.}
 \usage{
 checkPermutation(x, y, na.ok = TRUE)
 
@@ -69,8 +68,14 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-Check if the arguments are permutations of each other.
-NAs are being treated as actual values by default.
+In contrast to \code{\link{checkSetEqual()}}, the function tests for a true
+permutation of the two vectors and also considers duplicated values.
+Missing values are being treated as actual values by default.
+Does not work on raw values.
+}
+\note{
+The object \code{x} must be of the same type as the set w.r.t. \code{\link[base]{typeof}}.
+Integers and doubles are both treated as numeric.
 }
 \examples{
 testPermutation(letters[1:2], letters[2:1])
@@ -78,3 +83,11 @@ testPermutation(letters[c(1, 1, 2)], letters[1:2])
 testPermutation(c(NA, 1, 2), c(1, 2, NA))
 testPermutation(c(NA, 1, 2), c(1, 2, NA), na.ok = FALSE)
 }
+\seealso{
+Other set: 
+\code{\link{checkChoice}()},
+\code{\link{checkDisjunct}()},
+\code{\link{checkSetEqual}()},
+\code{\link{checkSubset}()}
+}
+\concept{set}

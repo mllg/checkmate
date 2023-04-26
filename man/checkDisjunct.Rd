@@ -89,6 +89,7 @@ testDisjunct(1, as.integer(1))
 \seealso{
 Other set: 
 \code{\link{checkChoice}()},
+\code{\link{checkPermutation}()},
 \code{\link{checkSetEqual}()},
 \code{\link{checkSubset}()}
 }
