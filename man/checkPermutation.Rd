@@ -68,7 +68,7 @@ Depending on the function prefix:
  \code{\link[testthat]{expectation}}.
 }
 \description{
-In contrast to \code{\link{checkSetEqual()}}, the function tests for a true
+In contrast to \code{\link{checkSetEqual}}, the function tests for a true
 permutation of the two vectors and also considers duplicated values.
 Missing values are being treated as actual values by default.
 Does not work on raw values.
