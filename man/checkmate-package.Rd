@@ -78,6 +78,7 @@ Tests and assertions to perform frequent argument checks. A substantial part of 
   \item{\code{\link{checkSubset}}}
   \item{\code{\link{checkSetEqual}}}
   \item{\code{\link{checkDisjunct}}}
+  \item{\code{\link{checkPermutation}}}
 }
 }
 

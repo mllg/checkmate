@@ -113,6 +113,7 @@ testChoice(1, as.integer(1))
 \seealso{
 Other set: 
 \code{\link{checkDisjunct}()},
+\code{\link{checkPermutation}()},
 \code{\link{checkSetEqual}()},
 \code{\link{checkSubset}()}
 }
