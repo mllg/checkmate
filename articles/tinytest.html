@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.1.0-9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
       </span>
     </div>
 
@@ -78,13 +78,14 @@
 
       
 
-      </header><script src="tinytest_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Setup tinytest</h1>
-                        <h4 data-toc-skip class="author">Michel Lang</h4>
+                        <h4 data-toc-skip class="author">Michel
+Lang</h4>
             
-            <h4 data-toc-skip class="date">2022-07-28</h4>
+            <h4 data-toc-skip class="date">2023-04-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/HEAD/vignettes/tinytest.Rmd" class="external-link"><code>vignettes/tinytest.Rmd</code></a></small>
       <div class="hidden name"><code>tinytest.Rmd</code></div>
@@ -96,24 +97,35 @@
 <div class="section level2">
 <h2 id="setup-tinytest">Setup <code>tinytest</code><a class="anchor" aria-label="anchor" href="#setup-tinytest"></a>
 </h2>
-<p>Setting up the <code>tinytest</code> framework is covered in detail in the documentation of <a href="https://cran.r-project.org/package=tinytest" class="external-link">tinytest</a>. Quick summary:</p>
+<p>Setting up the <code>tinytest</code> framework is covered in detail
+in the documentation of <a href="https://cran.r-project.org/package=tinytest" class="external-link">tinytest</a>. Quick
+summary:</p>
 <ol style="list-style-type: decimal">
-<li>In the package root directory, call <code>tinytest::setup_tinytest(".")</code>.</li>
-<li>Edit/add R scripts with unit tests to the directory <code>inst/tinytest</code>.</li>
+<li>In the package root directory, call
+<code>tinytest::setup_tinytest(".")</code>.</li>
+<li>Edit/add R scripts with unit tests to the directory
+<code>inst/tinytest</code>.</li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="setup-checkmate">Setup <code>checkmate</code><a class="anchor" aria-label="anchor" href="#setup-checkmate"></a>
 </h2>
 <ol style="list-style-type: decimal">
-<li><p>Edit your <code>DESCRIPTION</code> and add <code>checkmate</code> to <code>Suggests</code> unless it is already listed in <code>Imports</code> for its assertions.</p></li>
+<li><p>Edit your <code>DESCRIPTION</code> and add <code>checkmate</code>
+to <code>Suggests</code> unless it is already listed in
+<code>Imports</code> for its assertions.</p></li>
 <li>
-<p>In <strong>each</strong> test file which calls an expectation from <code>checkmate</code>, you must include the following lines at the beginning of the file:</p>
+<p>In <strong>each</strong> test file which calls an expectation
+from <code>checkmate</code>, you must include the following lines at the
+beginning of the file:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/markvanderloo/tinytest" class="external-link">"tinytest"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://mllg.github.io/checkmate/">"checkmate"</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/tinytest/man/using.html" class="external-link">using</a></span><span class="op">(</span><span class="st">"checkmate"</span><span class="op">)</span></span></code></pre></div>
-<p>If you forget the last line, expectations will not get reported correctly in the summary. Also note that sourcing a file which includes <code>using("checkmate")</code> is <strong>not</strong> sufficient.</p>
+<p>If you forget the last line, expectations will not get reported
+correctly in the summary. Also note that sourcing a file which includes
+<code>using("checkmate")</code> is <strong>not</strong>
+sufficient.</p>
 </li>
 <li><p>Check if everything works with <code>R CMD check</code>.</p></li>
 </ol>
@@ -137,7 +149,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
