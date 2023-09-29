@@ -24,7 +24,9 @@ checkNumeric(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 check_numeric(
@@ -41,7 +43,9 @@ check_numeric(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 assertNumeric(
@@ -59,6 +63,8 @@ assertNumeric(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   .var.name = vname(x),
   add = NULL
 )
@@ -78,6 +84,8 @@ assert_numeric(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   .var.name = vname(x),
   add = NULL
 )
@@ -96,7 +104,9 @@ testNumeric(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 test_numeric(
@@ -113,7 +123,9 @@ test_numeric(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 expect_numeric(
@@ -131,6 +143,8 @@ expect_numeric(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   info = NULL,
   label = vname(x)
 )
@@ -184,6 +198,12 @@ Set to \code{TRUE} to enable strict type checking.}
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{lower.equal}{[\code{logical(1)}]\cr
+Should the lower value allow \code{x == lower}?}
+
+\item{upper.equal}{[\code{logical(1)}]\cr
+Should the upper value allow \code{x == upper}?}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to

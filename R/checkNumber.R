@@ -15,8 +15,8 @@
 #' @examples
 #' testNumber(1)
 #' testNumber(1:2)
-checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, null.ok = FALSE) {
-  .Call(c_check_number, x, na.ok, lower, upper, finite, null.ok)
+checkNumber = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, finite = FALSE, null.ok = FALSE, lower.equal = TRUE, upper.equal = TRUE) {
+  .Call(c_check_number, x, na.ok, lower, upper, finite, null.ok, lower.equal, upper.equal)
 }
 
 #' @export

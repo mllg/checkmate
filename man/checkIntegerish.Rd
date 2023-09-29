@@ -24,7 +24,9 @@ checkIntegerish(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 check_integerish(
@@ -41,7 +43,9 @@ check_integerish(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 assertIntegerish(
@@ -59,6 +63,8 @@ assertIntegerish(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   coerce = FALSE,
   .var.name = vname(x),
   add = NULL
@@ -79,6 +85,8 @@ assert_integerish(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   coerce = FALSE,
   .var.name = vname(x),
   add = NULL
@@ -98,7 +106,9 @@ testIntegerish(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 test_integerish(
@@ -115,7 +125,9 @@ test_integerish(
   sorted = FALSE,
   names = NULL,
   typed.missing = FALSE,
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 expect_integerish(
@@ -133,6 +145,8 @@ expect_integerish(
   names = NULL,
   typed.missing = FALSE,
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   info = NULL,
   label = vname(x)
 )
@@ -187,6 +201,12 @@ Set to \code{TRUE} to enable strict type checking.}
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{lower.equal}{[\code{logical(1)}]\cr
+Should the lower value allow \code{x == lower}?}
+
+\item{upper.equal}{[\code{logical(1)}]\cr
+Should the upper value allow \code{x == upper}?}
 
 \item{coerce}{[\code{logical(1)}]\cr
 If \code{TRUE}, the input \code{x} is returned as integer after an successful assertion.}

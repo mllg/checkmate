@@ -6,10 +6,10 @@
 #include <R_ext/Visibility.h>
 
 SEXP attribute_hidden c_check_logical(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_integer(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_double(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_integer(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_integerish(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_double(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_numeric(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_complex(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_character(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_factor(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
@@ -25,8 +25,8 @@ SEXP attribute_hidden c_check_vector(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, S
 
 SEXP attribute_hidden c_check_count(SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_flag(SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_int(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
-SEXP attribute_hidden c_check_number(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_int(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+SEXP attribute_hidden c_check_number(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_scalar(SEXP, SEXP, SEXP);
 SEXP attribute_hidden c_check_string(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 

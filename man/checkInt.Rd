@@ -16,7 +16,9 @@ checkInt(
   lower = -Inf,
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 check_int(
@@ -25,7 +27,9 @@ check_int(
   lower = -Inf,
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 assertInt(
@@ -35,6 +39,8 @@ assertInt(
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   coerce = FALSE,
   .var.name = vname(x),
   add = NULL
@@ -47,6 +53,8 @@ assert_int(
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   coerce = FALSE,
   .var.name = vname(x),
   add = NULL
@@ -58,7 +66,9 @@ testInt(
   lower = -Inf,
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 test_int(
@@ -67,7 +77,9 @@ test_int(
   lower = -Inf,
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
-  null.ok = FALSE
+  null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE
 )
 
 expect_int(
@@ -77,6 +89,8 @@ expect_int(
   upper = Inf,
   tol = sqrt(.Machine$double.eps),
   null.ok = FALSE,
+  lower.equal = TRUE,
+  upper.equal = TRUE,
   info = NULL,
   label = vname(x)
 )
@@ -101,6 +115,12 @@ Default is \code{sqrt(.Machine$double.eps)}.}
 \item{null.ok}{[\code{logical(1)}]\cr
 If set to \code{TRUE}, \code{x} may also be \code{NULL}.
 In this case only a type check of \code{x} is performed, all additional checks are disabled.}
+
+\item{lower.equal}{[\code{logical(1)}]\cr
+Should the lower value allow \code{x == lower}?}
+
+\item{upper.equal}{[\code{logical(1)}]\cr
+Should the upper value allow \code{x == upper}?}
 
 \item{coerce}{[\code{logical(1)}]\cr
 If \code{TRUE}, the input \code{x} is returned as integer after an successful assertion.}

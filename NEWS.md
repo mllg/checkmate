@@ -1,3 +1,7 @@
+# development version
+* Bounds checking allow option for checking open vs. closed intervals (less than
+  or equal to vs less than, and the same for greater) (#215)
+
 # Version 2.2.0
 * Fixed C compiler warnings for windows
 * Added `checkPermutation` (#230).

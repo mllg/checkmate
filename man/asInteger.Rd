@@ -90,6 +90,12 @@ Are missing values allowed? Default is \code{FALSE}.}
 \item{positive}{[\code{logical(1)}]\cr
 Must \code{x} be positive (>= 1)?
 Default is \code{FALSE}.}
+
+\item{lower.equal}{[\code{logical(1)}]\cr
+Should the lower value allow \code{x == lower}?}
+
+\item{upper.equal}{[\code{logical(1)}]\cr
+Should the upper value allow \code{x == upper}?}
 }
 \value{
 Converted \code{x}.

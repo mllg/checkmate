@@ -17,8 +17,8 @@
 #' testInteger(1L)
 #' testInteger(1.)
 #' testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
-checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, typed.missing = FALSE, null.ok = FALSE) {
-  .Call(c_check_integer, x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, typed.missing, null.ok)
+checkInteger = function(x, lower = -Inf, upper = Inf, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, typed.missing = FALSE, null.ok = FALSE, lower.equal = TRUE, upper.equal = TRUE) {
+  .Call(c_check_integer, x, lower, upper, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, typed.missing, null.ok, lower.equal, upper.equal)
 }
 
 #' @export
