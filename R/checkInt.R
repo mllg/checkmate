@@ -16,8 +16,8 @@
 #' @examples
 #' testInt(1)
 #' testInt(-1, lower = 0)
-checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), null.ok = FALSE) {
-  .Call(c_check_int, x, na.ok, lower, upper, tol, null.ok)
+checkInt = function(x, na.ok = FALSE, lower = -Inf, upper = Inf, tol = sqrt(.Machine$double.eps), null.ok = FALSE, lower.equal = TRUE, upper.equal = TRUE) {
+  .Call(c_check_int, x, na.ok, lower, upper, tol, null.ok, lower.equal, upper.equal)
 }
 
 #' @export

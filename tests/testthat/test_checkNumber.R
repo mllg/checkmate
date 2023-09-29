@@ -36,3 +36,8 @@ test_that("bounds of vectors with only missings are not checked", {
   expect_fail_all(Number, 0, lower = 1)
   expect_fail_all(Number, 100, upper = 10)
 })
+
+test_that("bounds allow equality or not based on lower.equal and upper.equal", {
+  expect_true(checkNumber(1, lower = 1, lower.equal = TRUE))
+  expect_false(checkNumber(1, lower = 1, lower.equal = TRUE))
+})

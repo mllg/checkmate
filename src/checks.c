@@ -76,21 +76,27 @@ static void fmt_posixct(char * out, SEXP x) {
     UNPROTECT(2);
 }
 
-static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
+static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper, SEXP lower_equal, SEXP upper_equal) {
     double tmp = as_number(lower, "lower");
     if (R_FINITE(tmp) || tmp == R_PosInf) {
         const R_xlen_t n = xlength(x);
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
-                if (!ISNAN(xp[i]) && xp[i] < tmp)
+                if (!ISNAN(xp[i]) && as_flag(lower_equal, "lower_equal") & xp[i] < tmp) {
                     return message("Element %i is not >= %g", i + 1, tmp);
+                } else if (!ISNAN(xp[i]) && !as_flag(lower_equal, "lower_equal") & xp[i] <= tmp) {
+                    return message("Element %i is not > %g", i + 1, tmp);
+                }
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
-                if (xp[i] != NA_INTEGER && xp[i] < tmp)
+                if (xp[i] != NA_INTEGER && as_flag(lower_equal, "lower_equal") && xp[i] < tmp) {
                     return message("Element %i is not >= %g", i + 1, tmp);
+                } else if (xp[i] != NA_INTEGER && !as_flag(lower_equal, "lower_equal") && xp[i] < tmp) {
+                    return message("Element %i is not > %g", i + 1, tmp);
+                }
             }
         }
     }
@@ -101,14 +107,20 @@ static Rboolean check_bounds(SEXP x, SEXP lower, SEXP upper) {
         if (isReal(x)) {
             const double *xp = REAL_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
-                if (!ISNAN(xp[i]) && xp[i] > tmp)
+                if (!ISNAN(xp[i]) && as_flag(upper_equal, "upper_equal") && xp[i] > tmp) {
                     return message("Element %i is not <= %g", i + 1, tmp);
+                } else if (!ISNAN(xp[i]) && !as_flag(upper_equal, "upper_equal") && xp[i] > tmp) {
+                    return message("Element %i is not < %g", i + 1, tmp);
+                }
             }
         } else if (isInteger(x)) {
             const int *xp = INTEGER_RO(x);
             for (R_xlen_t i = 0; i < n; i++) {
-                if (xp[i] != NA_INTEGER && xp[i] > tmp)
+                if (xp[i] != NA_INTEGER && as_flag(upper_equal, "upper_equal") && xp[i] > tmp) {
                     return message("Element %i is not <= %g", i + 1, tmp);
+                } else if (xp[i] != NA_INTEGER && !as_flag(upper_equal, "upper_equal") && xp[i] > tmp) {
+                    return message("Element %i is not < %g", i + 1, tmp);
+                }
             }
         }
     }
@@ -456,18 +468,18 @@ SEXP attribute_hidden c_check_logical(SEXP x, SEXP any_missing, SEXP all_missing
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+SEXP attribute_hidden c_check_integer(SEXP x, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     HANDLE_TYPE_NULL(is_class_integer(x) || check_typed_missing(x, typed_missing), "integer", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP upper, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     double dtol = as_number(tol, "tol");
     if (isNull((x))) {
         if (as_flag((null_ok), "null.ok"))
@@ -503,30 +515,30 @@ SEXP attribute_hidden c_check_integerish(SEXP x, SEXP tol, SEXP lower, SEXP uppe
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     HANDLE_TYPE_NULL(is_class_double(x) || check_typed_missing(x, typed_missing), "double", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     ASSERT_TRUE(check_vector_finite(x, finite));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_vector_sorted(x, sorted));
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
+SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     HANDLE_TYPE_NULL(is_class_numeric(x) || check_typed_missing(x, typed_missing), "numeric", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     ASSERT_TRUE(check_vector_finite(x, finite));
     ASSERT_TRUE(check_vector_unique(x, unique));
     ASSERT_TRUE(check_vector_sorted(x, sorted));
@@ -741,23 +753,23 @@ SEXP attribute_hidden c_check_count(SEXP x, SEXP na_ok, SEXP positive, SEXP tol,
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol, SEXP null_ok) {
+SEXP attribute_hidden c_check_int(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP tol, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     double dtol = as_number(tol, "tol");
     HANDLE_NA(x, na_ok);
     HANDLE_TYPE_NULL(isIntegerish(x, dtol, FALSE), "single integerish value", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     return ScalarLogical(TRUE);
 }
 
-SEXP attribute_hidden c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEXP null_ok) {
+SEXP attribute_hidden c_check_number(SEXP x, SEXP na_ok, SEXP lower, SEXP upper, SEXP finite, SEXP null_ok, SEXP lower_equal, SEXP upper_equal) {
     HANDLE_NA(x, na_ok);
     HANDLE_TYPE_NULL(is_class_numeric(x), "number", null_ok);
     if (xlength(x) != 1)
         return result("Must have length 1");
     ASSERT_TRUE(check_vector_finite(x, finite));
-    ASSERT_TRUE(check_bounds(x, lower, upper));
+    ASSERT_TRUE(check_bounds(x, lower, upper, lower_equal, upper_equal));
     return ScalarLogical(TRUE);
 }
 
