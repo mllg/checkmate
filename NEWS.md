@@ -2,6 +2,7 @@
 * `NULL` is not longer considered to be atomic to be consistent with future
   versions of R.
   See <https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html>.
+* Fixed a warning in `checkAtomic()` (#245).
 
 # Version 2.2.0
 * Fixed C compiler warnings for windows
