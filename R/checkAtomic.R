@@ -3,6 +3,9 @@
 #' @description
 #' For the definition of \dQuote{atomic}, see \code{\link[base]{is.atomic}}.
 #'
+#' Note that `NULL` is not recognized as atomic, starting with \CRANpkg{checkmate}
+#' version 2.3.0. For details, see \url{https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html}.
+#'
 #' @templateVar fn Atomic
 #' @template x
 #' @inheritParams checkVector

@@ -10,3 +10,10 @@ test_that("checkScalarNA", {
 
   expect_error(assertScalarNA(integer(0)), "missing value")
 })
+
+test_that("checkScalarNA on data.table (#245)", {
+  skip_if_not_physically_installed("data.table")
+
+  dt = data.table(x = 1:2)
+  expect_false(testScalarNA(dt))
+})
