@@ -1,3 +1,8 @@
+# Version 2.3.0
+* `NULL` is not longer considered to be atomic to be consistent with future
+  versions of R.
+  See <https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html>.
+
 # Version 2.2.0
 * Fixed C compiler warnings for windows
 * Added `checkPermutation` (#230).
