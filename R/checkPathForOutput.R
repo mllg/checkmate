@@ -18,7 +18,7 @@
 #'  it is both readable and writable.
 #'  Default is \code{FALSE}.
 #' @param extension [\code{character(1)}]\cr
-#'  Extension of the file, e.g. dQuote{txt} or \dQuote{tar.gz}.
+#'  Extension of the file, e.g. \dQuote{txt} or \dQuote{tar.gz}.
 #' @template checker
 #' @family filesystem
 #' @export
@@ -47,7 +47,7 @@ checkPathForOutput = function(x, overwrite = FALSE, extension = NULL) {
   if (!is.null(extension)) {
     qassert(extension, "S1")
     if (!endsWith(x, paste0(".", extension)))
-    return(sprintf("File must have extension '.%s'", extension))
+      return(sprintf("File must have extension '.%s'", extension))
   }
   return(checkAccess(dn, "w"))
 }

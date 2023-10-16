@@ -52,7 +52,7 @@ it is both readable and writable.
 Default is \code{FALSE}.}
 
 \item{extension}{[\code{character(1)}]\cr
-Extension of the file, e.g. dQuote{txt} or \dQuote{tar.gz}.}
+Extension of the file, e.g. \dQuote{txt} or \dQuote{tar.gz}.}
 
 \item{.var.name}{[\code{character(1)}]\cr
 Name of the checked object to print in assertions. Defaults to
