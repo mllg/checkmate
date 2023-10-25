@@ -8,13 +8,13 @@ test_that("checkChoice", {
 
   expect_false(testChoice(character(0), letters))
   expect_false(testChoice(NULL, letters))
-  expect_error(testChoice(1, NULL))
+  expect_false(testChoice(1, NULL))
   expect_error(testChoice(list(1), as.list(iris)), "atomic")
   expect_false(testChoice(factor("a"), letters))
   expect_true(testChoice(factor("a"), factor(letters)))
   expect_true(testChoice(1., 1:2))
 
-  expect_error(testChoice(NULL, NULL))
+  expect_false(testChoice(NULL, NULL))
   expect_false(testChoice(NULL, letters, null.ok = FALSE))
   expect_true(checkChoice(NULL, letters, null.ok = TRUE))
 

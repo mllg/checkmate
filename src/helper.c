@@ -119,7 +119,7 @@ Rboolean is_class_double(SEXP x) { return isReal(x); }
 Rboolean is_class_complex(SEXP x) { return isComplex(x); }
 Rboolean is_class_string(SEXP x) { return isString(x); }
 Rboolean is_class_factor(SEXP x) { return isFactor(x); }
-Rboolean is_class_atomic(SEXP x) { return isVectorAtomic(x); }
+Rboolean is_class_atomic(SEXP x) { return isNull(x) || isVectorAtomic(x); }
 Rboolean is_class_atomic_vector(SEXP x) {
     if (!isVectorAtomic(x))
         return FALSE;

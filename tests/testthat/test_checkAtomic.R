@@ -15,7 +15,7 @@ test_that("checkAtomic", {
   expect_fail_all(Atomic, myobj)
 
   expect_true(testAtomic(integer(0)))
-  expect_false(testAtomic(NULL))
+  expect_true(testAtomic(NULL))
   expect_true(testAtomic(1))
   expect_true(testAtomic(integer(0)))
   expect_true(testAtomic(factor(1)))
@@ -49,5 +49,5 @@ test_that("checkAtomic", {
 
   # handling of is.null for future versions of R, see
   # https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html
-  expect_equal(vlapply(li, function(x) is.atomic(x) && !is.null(x)), vlapply(li, testAtomic))
+  expect_equal(vlapply(li, function(x) is.atomic(x) || is.null(x)), vlapply(li, testAtomic))
 })

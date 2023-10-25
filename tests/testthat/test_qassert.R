@@ -166,7 +166,7 @@ test_that("non-atomic types", {
 })
 
 test_that("atomic types", {
-  expect_fail_all(NULL, "a")
+  expect_succ_all(NULL, "a")
   expect_succ_all(xb, "a+")
   expect_fail_all(xb, "A+")
   expect_succ_all(xi, "a+")
