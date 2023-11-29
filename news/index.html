@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">checkmate</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">2.3.0</span>
       </span>
     </div>
 
@@ -60,6 +60,12 @@
       <small>Source: <a href="https://github.com/mllg/checkmate/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="2.3.0" id="version-230">Version 2.3.0<small>2023-10-25</small><a class="anchor" aria-label="anchor" href="#version-230"></a></h2>
+<ul><li>
+<code>NULL</code> is not longer considered to be atomic in future versions of R (c.f. <a href="https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html" class="external-link uri">https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html</a>). To avoid breaking reverse dependencies, checkmate will stick to the old behavior until further notice.</li>
+<li>Fixed a warning in <code><a href="../reference/checkAtomic.html">checkAtomic()</a></code> (<a href="https://github.com/mllg/checkmate/issues/245" class="external-link">#245</a>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="2.2.0" id="version-220">Version 2.2.0<small>2023-04-27</small><a class="anchor" aria-label="anchor" href="#version-220"></a></h2>
 <ul><li>Fixed C compiler warnings for windows</li>
