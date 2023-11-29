@@ -17,7 +17,7 @@ checkScalarNA = function(x, null.ok = FALSE) {
       return(TRUE)
     return("Must be a scalar missing value, not 'NULL'")
   }
-  if (length(x) != 1L || !is.na(x))
+  if (!is.atomic(x) || length(x) != 1L || !is.na(x))
     return(paste0("Must be a scalar missing value", if (null.ok) " (or 'NULL')" else ""))
   return(TRUE)
 }

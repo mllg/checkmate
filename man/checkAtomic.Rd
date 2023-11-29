@@ -156,6 +156,9 @@ Depending on the function prefix:
 }
 \description{
 For the definition of \dQuote{atomic}, see \code{\link[base]{is.atomic}}.
+
+Note that `NULL` is recognized as a valid atomic value, as in R versions up to version 4.3.x.
+For details, see \url{https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html}.
 }
 \examples{
 testAtomic(letters, min.len = 1L, any.missing = FALSE)

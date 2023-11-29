@@ -47,5 +47,7 @@ test_that("checkAtomic", {
 
   expect_error(assertAtomic(iris), "atomic")
 
-  expect_equal(vlapply(li, is.atomic), vlapply(li, testAtomic))
+  # handling of is.null for future versions of R, see
+  # https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html
+  expect_equal(vlapply(li, function(x) is.atomic(x) || is.null(x)), vlapply(li, testAtomic))
 })
