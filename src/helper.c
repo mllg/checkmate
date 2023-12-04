@@ -43,7 +43,7 @@ double attribute_hidden as_number(SEXP x, const char *vname) {
     if (!isNumeric(x))
         error("Argument '%s' must be a number, but is %s", vname, guess_type(x));
     if (xlength(x) != 1)
-        error("Argument '%s' must have length 1, but has length %i", vname, xlength(x));
+        error("Argument '%s' must have length 1, but has length %g", vname, (double)xlength(x));
     double xd = asReal(x);
     if (ISNAN(xd))
         error("Argument '%s' may not be missing", vname);
