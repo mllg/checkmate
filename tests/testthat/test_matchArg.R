@@ -16,3 +16,12 @@ test_that("matchArg", {
   expect_error(matchArg(x[1:2], choices), "length")
   expect_error(matchArg(x[0], choices), "length 0")
 })
+
+test_that("matchArg detect formals when called within a function", {
+  fun <- function(x = c("pearson", "kendall", "spearman")) {
+    matchArg(x)
+  }
+
+  expect_error(fun("another"), "Must be element")
+  expect_equal(fun("spearman"), "spearman")
+})
