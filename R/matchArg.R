@@ -18,7 +18,7 @@
 #' @examples
 #' matchArg("k", choices = c("kendall", "pearson"))
 matchArg = function(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL) {
-  if (missing(choices)) {
+  if (missing(choices) && sys.parent() > 0) {
     formal.args <- formals(sys.function(sysP <- sys.parent()))
     formal_choices <- eval(
       formal.args[[as.character(substitute(x))]],
