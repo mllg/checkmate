@@ -18,11 +18,12 @@
 #' @examples
 #' matchArg("k", choices = c("kendall", "pearson"))
 matchArg = function(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL) {
-  if (missing(choices) && sys.parent() > 0) {
-    formal.args <- formals(sys.function(sysP <- sys.parent()))
+  if (missing(choices) && (sysP <- sys.parent()) > 0) {
+    formal.args <- formals(sys.function(sysP))
     formal_choices <- eval(
       formal.args[[as.character(substitute(x))]],
-      envir = sys.frame(sysP))
+      envir = sys.frame(sysP)
+    )
     if (!is.null(formal_choices)) {
       choices <- formal_choices
     }
