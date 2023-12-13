@@ -18,21 +18,37 @@
 #' @examples
 #' matchArg("k", choices = c("kendall", "pearson"))
 matchArg = function(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL) {
-  assertCharacter(choices, min.len = 1L)
-  assertFlag(several.ok)
+  if (missing(choices) && (sysP <- sys.parent()) > 0) {
+    formal.args <- formals(sys.function(sysP))
+    formal_choices <- eval(
+      formal.args[[as.character(substitute(x))]],
+      envir = sys.frame(sysP)
+    )
+    if (!is.null(formal_choices)) {
+      choices <- formal_choices
+    }
+  }
+
+  res <- checkCharacter(choices, min.len = 1L) %and% checkFlag(several.ok)
 
   if (several.ok) {
     if (identical(x, choices))
       return(x)
-    assertCharacter(x, min.len = 1L, .var.name = .var.name, add = add)
-    x = choices[pmatch(x, choices, nomatch = 0L, duplicates.ok = TRUE)]
-    assertSubset(x, choices, empty.ok = FALSE, .var.name = .var.name, add = add)
+    res <- res %ll% checkCharacter(x, min.len = 1L)
+    selected_x = choices[pmatch(x, choices, nomatch = 0L, duplicates.ok = TRUE)]
+    if (length(selected_x) > 0)
+      x <- selected_x
+    res <- res %and% checkSubset(x, choices, empty.ok = FALSE)
   } else {
     if (identical(x, choices))
       return(x[1L])
-    assertCharacter(x, len = 1L, .var.name = .var.name, add = add)
-    x = choices[pmatch(x, choices, nomatch = 0L, duplicates.ok = FALSE)]
-    assertChoice(x, choices, .var.name = .var.name, add = add)
+    res <- res %and% checkCharacter(x, len = 1L)
+    selected_x = choices[pmatch(x, choices, nomatch = 0L, duplicates.ok = FALSE)]
+    if (length(selected_x) > 0)
+      x <- selected_x
+    res <- res %and% checkChoice(x, choices)
   }
+
+  makeAssertion(x, res, var.name = .var.name, add)
   x
 }
