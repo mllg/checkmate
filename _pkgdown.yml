@@ -1,1 +1,4 @@
 url: https://mllg.github.io/checkmate/
+
+template:
+  bootstrap: 5
