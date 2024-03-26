@@ -84,7 +84,7 @@ R_xlen_t attribute_hidden as_length(SEXP x, const char *vname) {
             return (R_xlen_t) xi;
         case REALSXP:;
             double xr = REAL_RO(x)[0];
-            if (xr == NA_REAL)
+            if (ISNA(xr))
                 error("Argument '%s' may not be missing", vname);
             if (xr < 0)
                 error("Argument '%s' must be >= 0", vname);

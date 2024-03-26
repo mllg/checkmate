@@ -71,6 +71,8 @@ test_that("sorted works", {
     else
       expect_true(grepl("sorted", checkNumeric(xu, sorted = TRUE), fixed = TRUE))
   }
+  ## see https://github.com/mllg/checkmate/issues/258
+  expect_true(grepl("sorted", checkNumeric(c(3, NA, 2), sorted = TRUE), fixed = TRUE))
 })
 
 test_that("names check works", {
