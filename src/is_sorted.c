@@ -31,10 +31,10 @@ static Rboolean is_sorted_double(SEXP x) {
     R_xlen_t i = 0;
     const R_xlen_t n = xlength(x);
     const double * const xr = REAL_RO(x);
-    while(i < n && xr[i] == NA_REAL) i++;
+    while(i < n && ISNA(xr[i])) i++;
 
     for (R_xlen_t j = i + 1; j < n; j++) {
-        if (xr[j] != NA_REAL) {
+        if (!ISNA(xr[j])) {
             if (xr[i] > xr[j])
                 return FALSE;
             i = j;
