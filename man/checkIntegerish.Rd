@@ -245,8 +245,8 @@ testIntegerish(1:2, lower = 1L, upper = 2L, any.missing = FALSE)
 \seealso{
 Other basetypes: 
 \code{\link{checkArray}()},
-\code{\link{checkAtomicVector}()},
 \code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()},
 \code{\link{checkCharacter}()},
 \code{\link{checkComplex}()},
 \code{\link{checkDataFrame}()},

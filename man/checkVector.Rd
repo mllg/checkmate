@@ -163,8 +163,8 @@ testVector(letters, min.len = 1L, any.missing = FALSE)
 \seealso{
 Other basetypes: 
 \code{\link{checkArray}()},
-\code{\link{checkAtomicVector}()},
 \code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()},
 \code{\link{checkCharacter}()},
 \code{\link{checkComplex}()},
 \code{\link{checkDataFrame}()},
@@ -174,8 +174,8 @@ Other basetypes:
 \code{\link{checkFactor}()},
 \code{\link{checkFormula}()},
 \code{\link{checkFunction}()},
-\code{\link{checkIntegerish}()},
 \code{\link{checkInteger}()},
+\code{\link{checkIntegerish}()},
 \code{\link{checkList}()},
 \code{\link{checkLogical}()},
 \code{\link{checkMatrix}()},
@@ -185,8 +185,8 @@ Other basetypes:
 \code{\link{checkRaw}()}
 
 Other atomicvector: 
-\code{\link{checkAtomicVector}()},
-\code{\link{checkAtomic}()}
+\code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()}
 }
 \concept{atomicvector}
 \concept{basetypes}

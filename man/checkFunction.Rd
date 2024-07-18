@@ -113,8 +113,8 @@ testFunction(mean, args = "x")
 \seealso{
 Other basetypes: 
 \code{\link{checkArray}()},
-\code{\link{checkAtomicVector}()},
 \code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()},
 \code{\link{checkCharacter}()},
 \code{\link{checkComplex}()},
 \code{\link{checkDataFrame}()},
@@ -123,8 +123,8 @@ Other basetypes:
 \code{\link{checkEnvironment}()},
 \code{\link{checkFactor}()},
 \code{\link{checkFormula}()},
-\code{\link{checkIntegerish}()},
 \code{\link{checkInteger}()},
+\code{\link{checkIntegerish}()},
 \code{\link{checkList}()},
 \code{\link{checkLogical}()},
 \code{\link{checkMatrix}()},

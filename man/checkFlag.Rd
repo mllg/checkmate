@@ -91,8 +91,8 @@ Other scalars:
 \code{\link{checkCount}()},
 \code{\link{checkInt}()},
 \code{\link{checkNumber}()},
-\code{\link{checkScalarNA}()},
 \code{\link{checkScalar}()},
+\code{\link{checkScalarNA}()},
 \code{\link{checkString}()}
 }
 \concept{scalars}

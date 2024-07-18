@@ -157,8 +157,8 @@ checkArray(array(1:27, dim = c(3, 3, 3)), d = 3)
 }
 \seealso{
 Other basetypes: 
-\code{\link{checkAtomicVector}()},
 \code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()},
 \code{\link{checkCharacter}()},
 \code{\link{checkComplex}()},
 \code{\link{checkDataFrame}()},
@@ -168,8 +168,8 @@ Other basetypes:
 \code{\link{checkFactor}()},
 \code{\link{checkFormula}()},
 \code{\link{checkFunction}()},
-\code{\link{checkIntegerish}()},
 \code{\link{checkInteger}()},
+\code{\link{checkIntegerish}()},
 \code{\link{checkList}()},
 \code{\link{checkLogical}()},
 \code{\link{checkMatrix}()},

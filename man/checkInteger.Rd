@@ -226,8 +226,8 @@ testInteger(1:2, lower = 1, upper = 2, any.missing = FALSE)
 
 Other basetypes: 
 \code{\link{checkArray}()},
-\code{\link{checkAtomicVector}()},
 \code{\link{checkAtomic}()},
+\code{\link{checkAtomicVector}()},
 \code{\link{checkCharacter}()},
 \code{\link{checkComplex}()},
 \code{\link{checkDataFrame}()},
