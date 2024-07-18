@@ -58,6 +58,8 @@ test_that("list columns", {
 })
 
 test_that("nrow for null data tables", {
+  skip_if_not_physically_installed("data.table")
+
   # c.f. https://github.com/Rdatatable/data.table/issues/3149
   M = matrix(1:3, nrow = 3)
   M = M[, integer(0)]
