@@ -1,4 +1,4 @@
-linters: with_defaults(
+linters: linters_with_defaults(
     # lintr defaults: https://github.com/jimhester/lintr#available-linters
     # the following setup changes/removes certain linters
     assignment_linter = NULL, # do not force using <- for assignments
