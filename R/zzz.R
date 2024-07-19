@@ -138,6 +138,6 @@ register_tinytest = function() {
   setHook(packageEvent("tinytest", "onLoad"), function(...) register_tinytest(), action = "append")
 }
 
-.onUnload = function (libpath) {
+.onUnload = function(libpath) {
   library.dynam.unload("checkmate", libpath) # nocov
 }

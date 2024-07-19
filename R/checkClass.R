@@ -45,7 +45,7 @@ checkClass = function(x, classes, ordered = FALSE, null.ok = FALSE) {
   if (length(w) > 0L) {
     cl = class(x)
     return(sprintf("Must inherit from class '%s', but has class%s '%s'",
-        classes[w], if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
+      classes[w], if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
   }
   if (ordered) {
     w = wf(ord != seq_along(ord))

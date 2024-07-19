@@ -17,7 +17,7 @@
 #' testDataFrame(iris, types = c("numeric", "factor"), min.rows = 1, col.names = "named")
 checkDataFrame = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, min.rows = NULL, max.rows = NULL, min.cols = NULL, max.cols = NULL, nrows = NULL, ncols = NULL, row.names = NULL, col.names = NULL, null.ok = FALSE) {
   .Call(c_check_dataframe, x, any.missing, all.missing, min.rows, max.rows, min.cols, max.cols, nrows, ncols, row.names, col.names, null.ok) %and%
-  checkListTypes(x, types)
+    checkListTypes(x, types)
 }
 
 #' @export

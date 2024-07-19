@@ -39,9 +39,10 @@ checkFileExtension = function(x, extension = NULL) {
     qassert(extension, "S+")
     ii = Reduce(`|`, lapply(tolower(extension), endsWith, x = tolower(x)))
     if (!all(ii))
-      return(sprintf("File extension must be in {'%s'} (case insensitive), but file name is '%s'",
-          paste0(extension, collapse = "','"),
-          x[wf(!ii)]))
+      return(sprintf(
+        "File extension must be in {'%s'} (case insensitive), but file name is '%s'",
+        paste0(extension, collapse = "','"), x[wf(!ii)]
+      ))
   }
   return(TRUE)
 }

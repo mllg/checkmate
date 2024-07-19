@@ -35,7 +35,7 @@
 #' testCharacter("example", pattern = "xa")
 checkCharacter = function(x, n.chars = NULL, min.chars = NULL, max.chars = NULL, pattern = NULL, fixed = NULL, ignore.case = FALSE, any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, sorted = FALSE, names = NULL, typed.missing = FALSE, null.ok = FALSE) {
   .Call(c_check_character, x, n.chars, min.chars, max.chars, any.missing, all.missing, len, min.len, max.len, unique, sorted, names, typed.missing, null.ok) %and%
-  checkCharacterPattern(x, pattern, fixed, ignore.case)
+    checkCharacterPattern(x, pattern, fixed, ignore.case)
 }
 
 checkCharacterPattern = function(x, pattern = NULL, fixed = NULL, ignore.case = FALSE) {

@@ -76,20 +76,20 @@ check_subset_internal = function(x, choices, match, what = NULL) {
 check_set_equal_internal = function(x, y, match, what = NULL) {
   if ((!isSameType(x, y) && !allMissing(x))) {
     return(set_msg("Must be setequal to %s, but has different type",
-        what, set_collapse(y)))
+      what, set_collapse(y)))
   }
 
   ii = match(x, y)
   if (anyMissing(ii)) {
     return(set_msg("must be a permutation of set %s, but has extra elements %s",
-        what, set_collapse(y), set_collapse(x[is.na(ii)])
+      what, set_collapse(y), set_collapse(x[is.na(ii)])
     ))
   }
 
   ii = match(y, x)
   if (anyMissing(ii)) {
     return(set_msg("must be a set equal to %s, but is missing elements %s",
-        what, set_collapse(y), set_collapse(y[is.na(ii)])
+      what, set_collapse(y), set_collapse(y[is.na(ii)])
     ))
   }
 

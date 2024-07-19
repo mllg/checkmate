@@ -22,8 +22,10 @@ checkMultiClass = function(x, classes, null.ok = FALSE) {
     return(TRUE)
   if (!inherits(x, classes)) {
     cl = class(x)
-    return(sprintf("Must inherit from class '%s', but has class%s '%s'",
-        paste0(classes, collapse = "'/'"), if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")))
+    return(sprintf(
+      "Must inherit from class '%s', but has class%s '%s'",
+      paste0(classes, collapse = "'/'"), if (length(cl) > 1L) "es" else "", paste0(cl, collapse = "','")
+    ))
   }
   return(TRUE)
 }

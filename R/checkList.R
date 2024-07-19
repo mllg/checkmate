@@ -40,7 +40,7 @@
 #' testList(list(NA, NA_real_), unique = TRUE)
 checkList = function(x, types = character(0L), any.missing = TRUE, all.missing = TRUE, len = NULL, min.len = NULL, max.len = NULL, unique = FALSE, names = NULL, null.ok = FALSE) {
   .Call(c_check_list, x, any.missing, all.missing, len, min.len, max.len, unique, names, null.ok) %and%
-  checkListTypes(x, types)
+    checkListTypes(x, types)
 }
 
 checkListTypes = function(x, types = character(0L)) {

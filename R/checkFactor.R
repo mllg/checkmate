@@ -35,7 +35,7 @@ checkFactor = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, a
     checkFactorLevels(x, levels, ordered, empty.levels.ok, n.levels, min.levels, max.levels)
 }
 
-checkFactorLevels = function(x , levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
+checkFactorLevels = function(x, levels = NULL, ordered = NA, empty.levels.ok = TRUE, n.levels = NULL, min.levels = NULL, max.levels = NULL) {
   if (!is.null(x)) {
     if (!is.null(levels)) {
       qassert(levels, "S")
