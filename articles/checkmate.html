@@ -265,10 +265,10 @@ Better run the benchmark yourself to get unbiased results.</p>
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr   min     lq     mean median     uq      max neval</span></span>
-<span><span class="co">##    r(x) 3.437 3.5865 26.95365 3.6770 3.8020 2312.180   100</span></span>
-<span><span class="co">##   cm(x) 2.324 2.4750 13.43300 2.5450 2.7155  973.445   100</span></span>
-<span><span class="co">##  cmq(x) 1.533 1.6830  9.28277 1.7585 1.8430  714.141   100</span></span></code></pre>
+<span><span class="co">##    expr   min     lq     mean median    uq      max neval</span></span>
+<span><span class="co">##    r(x) 3.447 3.6065 27.07599  3.697 3.807 2323.389   100</span></span>
+<span><span class="co">##   cm(x) 2.344 2.4995 12.94580  2.595 2.720  928.700   100</span></span>
+<span><span class="co">##  cmq(x) 1.634 1.7135  9.35807  1.793 1.903  719.100   100</span></span></code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
@@ -285,10 +285,10 @@ with no missing nor NaN values<a class="anchor" aria-label="anchor" href="#bench
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr    min     lq     mean median      uq      max neval</span></span>
-<span><span class="co">##    r(x) 12.583 13.069 47.02451 13.305 13.6955 3338.824   100</span></span>
-<span><span class="co">##   cm(x)  5.450  5.661 14.56561  5.911  6.0565  801.754   100</span></span>
-<span><span class="co">##  cmq(x)  6.742  6.913 14.71175  7.043  7.2290  738.376   100</span></span></code></pre>
+<span><span class="co">##    expr    min      lq     mean  median      uq      max neval</span></span>
+<span><span class="co">##    r(x) 12.403 12.8890 47.15517 13.2950 13.6710 3348.539   100</span></span>
+<span><span class="co">##   cm(x)  5.430  5.6555 14.75520  5.8960  6.1360  819.327   100</span></span>
+<span><span class="co">##  cmq(x)  6.872  7.0330 14.60879  7.1635  7.3235  732.785   100</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
@@ -306,9 +306,9 @@ no missing values nor empty strings<a class="anchor" aria-label="anchor" href="#
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
 <span><span class="co">##    expr     min       lq     mean   median       uq      max neval</span></span>
-<span><span class="co">##    r(x) 279.441 281.2445 310.8717 281.6405 284.3805 2625.374   100</span></span>
-<span><span class="co">##   cm(x) 289.570 289.8760 301.5737 290.5315 291.8140 1092.967   100</span></span>
-<span><span class="co">##  cmq(x) 125.163 125.3640 135.7513 125.6045 126.1105 1041.551   100</span></span></code></pre>
+<span><span class="co">##    r(x) 280.623 281.1690 311.5695 281.6400 285.4320 2664.344   100</span></span>
+<span><span class="co">##   cm(x) 289.419 289.8755 303.8670 290.6620 291.8540 1103.265   100</span></span>
+<span><span class="co">##  cmq(x) 125.183 125.3635 135.4466 125.6145 126.0855 1055.347   100</span></span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
@@ -326,10 +326,10 @@ missing values<a class="anchor" aria-label="anchor" href="#benchmark-4-test-that
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr    min      lq     mean median      uq      max neval</span></span>
-<span><span class="co">##    r(x) 65.823 66.6995 95.24361 67.461 69.4145 2658.857   100</span></span>
-<span><span class="co">##   cm(x) 35.145 35.6370 48.00240 36.653 37.2150  974.406   100</span></span>
-<span><span class="co">##  cmq(x) 28.814 28.9940 36.38053 29.340 29.5200  713.951   100</span></span></code></pre>
+<span><span class="co">##    expr    min      lq     mean  median      uq      max neval</span></span>
+<span><span class="co">##    r(x) 66.114 66.9145 95.59066 67.5305 68.8740 2674.463   100</span></span>
+<span><span class="co">##   cm(x) 35.166 35.6365 47.79327 36.2230 37.4245  956.602   100</span></span>
+<span><span class="co">##  cmq(x) 28.804 28.9740 36.37325 29.3995 29.6100  713.039   100</span></span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
@@ -340,9 +340,9 @@ missing values<a class="anchor" aria-label="anchor" href="#benchmark-4-test-that
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
 <span><span class="co">##    expr    min      lq     mean  median      uq     max neval</span></span>
-<span><span class="co">##    r(x) 55.854 56.6010 58.69687 57.2120 59.0800 105.457   100</span></span>
-<span><span class="co">##   cm(x)  5.139  5.4555  6.69708  6.3620  6.9880  32.470   100</span></span>
-<span><span class="co">##  cmq(x)  1.082  1.2220  1.60086  1.3925  1.8635   5.771   100</span></span></code></pre>
+<span><span class="co">##    r(x) 55.974 57.0715 61.03693 57.9030 64.3295 106.328   100</span></span>
+<span><span class="co">##   cm(x)  5.089  5.4550  6.58323  6.3065  7.0985  29.445   100</span></span>
+<span><span class="co">##  cmq(x)  1.093  1.2325  1.65303  1.4220  1.9590   6.762   100</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
@@ -361,10 +361,10 @@ integers with no missing values<a class="anchor" aria-label="anchor" href="#benc
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
 <span><span class="co">##          expr    min      lq     mean  median      uq      max neval</span></span>
-<span><span class="co">##     r(x.sexp) 29.545 29.8905 51.18256 30.0560 30.3060 2115.523   100</span></span>
-<span><span class="co">##    cm(x.sexp) 11.411 11.7415 21.67879 11.9525 12.1780  962.174   100</span></span>
-<span><span class="co">##   r(x.altrep) 38.582 39.0730 39.97647 39.2430 39.5485   58.249   100</span></span>
-<span><span class="co">##  cm(x.altrep)  3.717  3.9720  5.12443  4.1930  4.4880   86.211   100</span></span></code></pre>
+<span><span class="co">##     r(x.sexp) 29.595 29.8505 51.72024 30.1315 30.4715 2162.530   100</span></span>
+<span><span class="co">##    cm(x.sexp) 11.412 11.7170 22.44680 11.8975 12.1630 1040.128   100</span></span>
+<span><span class="co">##   r(x.altrep) 38.752 39.0380 39.88193 39.2680 39.5835   58.068   100</span></span>
+<span><span class="co">##  cm(x.altrep)  3.687  3.9420  5.09191  4.1380  4.3535   93.485   100</span></span></code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
