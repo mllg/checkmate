@@ -419,7 +419,7 @@ static Rboolean check_string_nchar(SEXP x, SEXP n_chars, SEXP min_chars, SEXP ma
         R_xlen_t pos = find_nchar(x, n);
         if (pos > 0) {
             return message("All elements must have exactly %i characters, but element %i has %i chararacters",
-            n, pos, get_nchars(x, pos - 1));
+            n, pos, length(STRING_ELT(x, pos - 1)));
         }
     }
 
@@ -428,7 +428,7 @@ static Rboolean check_string_nchar(SEXP x, SEXP n_chars, SEXP min_chars, SEXP ma
         R_xlen_t pos = find_min_nchar(x, n);
         if (pos > 0) {
             return message("All elements must have at least %i characters, but element %i has %i characters",
-            n, pos, get_nchars(x, pos - 1));
+            n, pos, length(STRING_ELT(x, pos - 1)));
         }
     }
 
@@ -437,7 +437,7 @@ static Rboolean check_string_nchar(SEXP x, SEXP n_chars, SEXP min_chars, SEXP ma
         R_xlen_t pos = find_max_nchar(x, n);
         if (pos > 0) {
             return message("All elements must have at most %i characters, but element %i has %i characters",
-            n, pos, get_nchars(x, pos - 1));
+            n, pos, length(STRING_ELT(x, pos - 1)));
         }
     }
 

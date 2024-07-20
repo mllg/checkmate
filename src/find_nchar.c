@@ -5,10 +5,6 @@ static inline Rboolean ii_eq(const R_xlen_t x, const R_xlen_t y) { return x == y
 static inline Rboolean ii_le(const R_xlen_t x, const R_xlen_t y) { return x <= y; }
 static inline Rboolean ii_ge(const R_xlen_t x, const R_xlen_t y) { return x >= y; }
 
-R_xlen_t get_nchars(SEXP x, R_xlen_t i) {
-   return R_nchar(STRING_ELT(x, i), Chars, TRUE, TRUE, "character vector");
-}
-
 static R_xlen_t check_nchar(SEXP x, R_xlen_t n, cm_ll_cmp cmp) {
     if (!isString(x)) {
         SEXP xs = PROTECT(coerceVector(x, STRSXP));
@@ -19,8 +15,8 @@ static R_xlen_t check_nchar(SEXP x, R_xlen_t n, cm_ll_cmp cmp) {
 
     const R_xlen_t nx = xlength(x);
     for (R_xlen_t i = 0; i < nx; i++) {
-        R_xlen_t nchars = get_nchars(x, i);
-        if (nchars != NA_INTEGER && !(*cmp)(nchars, n)) {
+        SEXP tmp = STRING_ELT(x, i);
+        if (tmp != NA_STRING && !(*cmp)(length(tmp), n)) {
             return i + 1;
         }
     }

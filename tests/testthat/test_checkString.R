@@ -26,4 +26,9 @@ test_that("checkString", {
   expect_true(testString(NA_character_, min.chars = 1, na.ok = TRUE))
   expect_true(testString(NA_real_, min.chars = 1, na.ok = TRUE))
   expect_error(assertString(1))
+
+  expect_true(testString("a", n.chars = 1))
+  expect_false(testString("", n.chars = 1))
+  expect_true(testString("a", max.chars = 1))
+  expect_false(testString("ab", max.chars = 1))
 })
