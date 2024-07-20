@@ -22,8 +22,8 @@ the heuristic implemented in \code{\link{vname}}.}
 Collection to store assertion messages. See \code{\link{AssertCollection}}.}
 }
 \value{
-Throws an error (or pushes the error message to an 
-  \code{\link{AssertCollection}} if \code{add} is not \code{NULL}) 
+Throws an error (or pushes the error message to an
+  \code{\link{AssertCollection}} if \code{add} is not \code{NULL})
   if the checks fail and invisibly returns \code{TRUE} otherwise.
 }
 \description{
@@ -41,5 +41,4 @@ assert(checkNull(x), checkInteger(x, any.missing = FALSE))
 collection <- makeAssertCollection()
 assert(checkChoice(x, c("a", "b")), checkDataFrame(x), add = collection)
 collection$getMessages()
-
 }

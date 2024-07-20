@@ -103,7 +103,8 @@ Type of formal check(s) to perform on the names.
 \item{unnamed:}{Checks \code{x} to be \code{NULL}.}
 \item{named:}{Checks \code{x} for regular names which excludes names to be \code{NA} or empty (\code{""}).}
 \item{unique:}{Performs checks like with \dQuote{named} and additionally tests for non-duplicated names.}
-\item{strict:}{Performs checks like with \dQuote{unique} and additionally fails for names with UTF-8 characters and names which do not comply to R's variable name restrictions. As regular expression, this is \dQuote{^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$}.}
+\item{strict:}{Performs checks like with \dQuote{unique} and additionally fails for names with UTF-8 characters and names which do not comply to R's variable name restrictions.
+  As regular expression, this is \dQuote{^[.]*[a-zA-Z]+[a-zA-Z0-9._]*$}.}
 \item{ids:}{Same as \dQuote{strict}, but does not enforce uniqueness.}
 }
 Note that for zero-length \code{x}, all these name checks evaluate to \code{TRUE}.}
