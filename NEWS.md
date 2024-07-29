@@ -1,5 +1,7 @@
-# Version 2.3.1
-* Fixed a sortedness check bug for numeric vectors with NAs (#258).
+# Version 2.3.2
+* Removed calls to deprecated / internal C routines.
+* Fixed compiler warnings regarding sprintf format strings.
+* Fixed an issue regarding sortedness and missing numeric values (#259, thanks to @tdeenes)
 
 # Version 2.3.1
 * Fixed a sprintf format string for long integers.
