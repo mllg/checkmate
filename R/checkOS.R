@@ -1,7 +1,7 @@
 #' Check the operating system
 #'
 #' @templateVar fn OS
-#' @param os [\code{character(1)}]\cr
+#' @param os [\code{character}]\cr
 #'  Check the operating system to be in a set with possible elements \dQuote{windows},
 #'  \dQuote{mac}, \dQuote{linux} and \dQuote{solaris}.
 #' @template checker
