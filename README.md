@@ -21,19 +21,23 @@ caught with a simple, readable line which produces an **informative error messag
 A substantial part of the package was written in C to **minimize any worries about execution time overhead**.
 Furthermore, the package provides over 30 expectations to extend the popular [testthat package](https://cran.r-project.org/package=testthat) for unit tests.
 
-
 ## Installation
+
 For the stable release, just install the latest version from [CRAN](https://cran.r-project.org/package=checkmate):
-```{R}
+
+```r
 install.packages("checkmate")
 ```
+
 For the development version, use [devtools](https://cran.r-project.org/package=devtools):
-```{R}
+
+```r
 devtools::install_github("mllg/checkmate")
 ```
 
 ## Resources
-* [R Journal Paper](https://journal.r-project.org/archive/2017/RJ-2017-028/index.html)
-* [NEWS](https://github.com/mllg/checkmate/blob/master/NEWS.md)
-* [Documentation/Vignettes](https://mllg.github.io/checkmate/)
-* [Grouped function reference](https://mllg.github.io/checkmate/reference/checkmate-package)
+
+- [R Journal Paper](https://journal.r-project.org/archive/2017/RJ-2017-028/index.html)
+- [NEWS](https://github.com/mllg/checkmate/blob/master/NEWS.md)
+- [Documentation/Vignettes](https://mllg.github.io/checkmate/)
+- [Grouped function reference](https://mllg.github.io/checkmate/reference/checkmate-package)
