@@ -27,6 +27,16 @@ checkAccess = function(x, access = "") {
 
     if ("r" %in% access || is.root) {
       w = wf(file.access(x, 4L) != 0L)
+
+      if (length(w) > 0L) {
+        w = wf(
+          sapply(X = x, FUN = function(x_i) {
+            tryCatch({readBin(x_i, what = raw(), n = 1L); return(FALSE)},
+                     error = function(e) return(TRUE))
+          })
+        )
+      }
+
       if (length(w) > 0L)
         return(sprintf("'%s' not readable", x[w]))
     }
