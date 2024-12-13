@@ -14,6 +14,6 @@
 #' @examples
 #' print(NULL %??% 1 %??% 2)
 #' print(names(iris) %??% letters[seq_len(ncol(iris))])
-"%??%" = function(lhs, rhs) {
+`%??%` = function(lhs, rhs) {
   if (missing(lhs) || is.null(lhs)) rhs else lhs
 }
