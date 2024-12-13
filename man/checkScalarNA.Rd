@@ -25,7 +25,7 @@ test_scalar_na(x, null.ok = FALSE)
 expect_scalar_na(x, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{null.ok}{[\code{logical(1)}]\cr

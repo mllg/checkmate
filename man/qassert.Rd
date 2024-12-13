@@ -13,7 +13,7 @@ qtest(x, rules)
 qexpect(x, rules, info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object the check.}
 
 \item{rules}{[\code{character}]\cr

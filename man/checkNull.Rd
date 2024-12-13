@@ -22,7 +22,7 @@ testNull(x)
 test_null(x)
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{.var.name}{[\code{character(1)}]\cr

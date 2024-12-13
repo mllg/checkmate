@@ -22,10 +22,10 @@ testNamed(x, type = "named")
 test_named(x, type = "named")
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
-\item{type}{[character(1)]\cr
+\item{type}{[\code{character(1)}]\cr
 Select the check(s) to perform.
 \dQuote{unnamed} checks \code{x} to be unnamed.
 \dQuote{named} (default) checks \code{x} to be named which excludes names to be \code{NA} or empty (\code{""}).

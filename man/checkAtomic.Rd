@@ -94,7 +94,7 @@ expect_atomic(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{any.missing}{[\code{logical(1)}]\cr

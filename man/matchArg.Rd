@@ -7,13 +7,13 @@
 matchArg(x, choices, several.ok = FALSE, .var.name = vname(x), add = NULL)
 }
 \arguments{
-\item{x}{[character]\cr
+\item{x}{[\code{character}]\cr
 User provided argument to match.}
 
-\item{choices}{[character()]\cr
+\item{choices}{[\code{character}]\cr
 Candidates to match \code{x} with.}
 
-\item{several.ok}{[logical(1)]\cr
+\item{several.ok}{[\code{logical(1)}]\cr
 If \code{TRUE}, multiple matches are allowed, cf. \code{\link[base]{match.arg}}.}
 
 \item{.var.name}{[\code{character(1)}]\cr

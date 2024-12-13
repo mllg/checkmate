@@ -5,11 +5,11 @@
 #' The behavior is very similar to \code{\link[base]{match.arg}}, except that \code{NULL} is not
 #' a valid value for \code{x}.
 #'
-#' @param x [character]\cr
+#' @param x [\code{character}]\cr
 #'  User provided argument to match.
-#' @param choices [character()]\cr
+#' @param choices [\code{character}]\cr
 #'  Candidates to match \code{x} with.
-#' @param several.ok [logical(1)]\cr
+#' @param several.ok [\code{logical(1)}]\cr
 #'  If \code{TRUE}, multiple matches are allowed, cf. \code{\link[base]{match.arg}}.
 #' @template add
 #' @template var.name

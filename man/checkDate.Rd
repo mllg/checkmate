@@ -108,7 +108,7 @@ expect_date(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{lower}{[\code{\link[base]{Date}}]\cr

@@ -46,7 +46,7 @@ expect_class(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{classes}{[\code{character}]\cr

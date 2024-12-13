@@ -43,7 +43,7 @@ expect_environment(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{contains}{[\code{character}]\cr

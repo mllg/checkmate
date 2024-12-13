@@ -138,7 +138,7 @@ expect_integerish(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{tol}{[\code{double(1)}]\cr

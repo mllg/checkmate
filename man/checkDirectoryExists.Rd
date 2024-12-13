@@ -43,7 +43,7 @@ test_directory(x, access = "")
 expect_directory(x, access = "", info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{access}{[\code{character(1)}]\cr

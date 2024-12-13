@@ -4,7 +4,7 @@
 #' The provided functions parse rules which allow to express some of the most
 #' frequent argument checks by typing just a few letters.
 #'
-#' @param x [any]\cr
+#' @param x [\code{any}]\cr
 #'  Object the check.
 #' @param rules [\code{character}]\cr
 #'   Set of rules. See details.

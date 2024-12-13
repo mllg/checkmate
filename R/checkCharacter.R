@@ -7,7 +7,7 @@
 #' @template x
 #' @template na-handling
 #' @inheritParams checkVector
-#' @param pattern [\code{character(1L)}]\cr
+#' @param pattern [\code{character(1)}]\cr
 #'  Regular expression as used in \code{\link[base]{grepl}}.
 #'  All non-missing elements of \code{x} must comply to this pattern.
 #' @param fixed [\code{character(1)}]\cr

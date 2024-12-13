@@ -10,7 +10,7 @@ allMissing(x)
 anyMissing(x)
 }
 \arguments{
-\item{x}{[\code{ANY}]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 }
 \value{

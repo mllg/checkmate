@@ -9,7 +9,7 @@
 #' \code{combine} is \dQuote{and} and all checks evaluate to \code{TRUE}.
 #' Otherwise, \code{assert} throws an informative error message.
 #'
-#' @param ... [any]\cr
+#' @param ... [\code{any}]\cr
 #'  List of calls to check functions.
 #' @param combine [\code{character(1)}]\cr
 #'  \dQuote{or} or \dQuote{and} to combine the check functions with an OR
@@ -62,7 +62,7 @@ assert = function(..., combine = "or", .var.name = NULL, add = NULL) {
 # Error handling in assert()
 #
 # Internal helper function to handle errors in assert().
-# @param res [character(1)}]\cr
+# @param res [\code{character(1)}]\cr
 #   error message
 # @param v_name [\code{character}]\cr
 #   Name(s) of the variable(s) whose assertion failed.

@@ -3,7 +3,7 @@
 #' Tries to heuristically determine the variable name of \code{x} in the parent frame
 #' with a combination of \code{\link[base]{deparse}} and \code{\link[base]{substitute}}.
 #' Used for checkmate's error messages.
-#' @param x [ANY]\cr
+#' @param x [\code{any}]\cr
 #'   Object.
 #' @return [\code{character(1)}] Variable name.
 #' @export

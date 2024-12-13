@@ -87,7 +87,7 @@ expect_array(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{mode}{[\code{character(1)}]\cr

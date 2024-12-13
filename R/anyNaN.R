@@ -3,7 +3,7 @@
 #' @description
 #' Supported are atomic types (see \code{\link[base]{is.atomic}}), lists and data frames.
 #'
-#' @param x [\code{ANY}]\cr
+#' @param x [\code{any}]\cr
 #'  Object to check.
 #' @return [\code{logical(1)}] Returns \code{TRUE} if any element is \code{NaN}.
 #' @useDynLib checkmate c_any_nan

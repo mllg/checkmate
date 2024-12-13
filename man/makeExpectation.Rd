@@ -15,7 +15,7 @@ makeExpectationFunction(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{res}{[\code{TRUE} | \code{character(1)}]\cr
