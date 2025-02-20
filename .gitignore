@@ -6,3 +6,4 @@ src/*.dll
 inst/doc
 vignettes/*.html
 revdep
+.Rhistory
