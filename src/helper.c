@@ -20,7 +20,7 @@ R_len_t translate_col(R_len_t pos, R_len_t nrow) {
  * Here are our own wrappers
  * */
 R_len_t attribute_hidden get_nrows(SEXP x) {
-    if (isFrame(x)) {
+    if (isDataFrame(x)) {
         if (inherits(x, "data.table")) {
             /* c.f. https://github.com/Rdatatable/data.table/issues/3149 */
             return (length(x) == 0) ? 0 : length(VECTOR_ELT(x, 0));
@@ -33,7 +33,7 @@ R_len_t attribute_hidden get_nrows(SEXP x) {
 }
 
 R_len_t attribute_hidden get_ncols(SEXP x) {
-    if (isFrame(x))
+    if (isDataFrame(x))
         return length(x);
     SEXP dim = getAttrib(x, R_DimSymbol);
     return (length(dim) >= 2) ? INTEGER_RO(dim)[1] : 1;
@@ -140,7 +140,7 @@ Rboolean is_class_list(SEXP x) {
 
 Rboolean is_class_matrix(SEXP x) { return isMatrix(x); }
 Rboolean is_class_array(SEXP x) { return isArray(x); }
-Rboolean is_class_frame(SEXP x) { return isFrame(x); }
+Rboolean is_class_frame(SEXP x) { return isDataFrame(x); }
 Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 Rboolean is_class_null(SEXP x) { return isNull(x); }
 Rboolean is_class_posixct(SEXP x) { return isNumeric(x) && inherits(x, "POSIXct"); }

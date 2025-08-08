@@ -130,7 +130,7 @@ Rboolean any_missing(SEXP x) {
         case CPLXSXP: return find_missing_complex(x) > 0;
         case STRSXP:  return find_missing_string(x) > 0;
         case NILSXP:  return FALSE;
-        case VECSXP:  if (isFrame(x)) {
+        case VECSXP:  if (isDataFrame(x)) {
                         return find_missing_frame(x) > 0;
                       } else {
                           return find_missing_list(x) > 0;
