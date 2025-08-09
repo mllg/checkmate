@@ -47,7 +47,7 @@ Rboolean attribute_hidden all_missing_complex(SEXP x) {
     const Rcomplex * xp = COMPLEX_RO(x);
     const Rcomplex * const xe = xp + xlength(x);
     for (; xp != xe; xp++) {
-        if (!ISNAN((*xp).r) || !ISNAN((*xp).i))
+        if (!ISNAN((*xp).r) && !ISNAN((*xp).i))
             return FALSE;
     }
     return TRUE;
