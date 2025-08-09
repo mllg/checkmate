@@ -82,7 +82,7 @@ expect_int(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr

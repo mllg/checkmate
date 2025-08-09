@@ -49,7 +49,7 @@ expect_function(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{args}{[\code{character}]\cr

@@ -13,7 +13,7 @@
 #' \code{\link{assertInt}} or \code{\link{assertIntegerish}} with
 #' argument \code{coerce} set to \code{TRUE} instead.
 #'
-#' @param x [any]\cr
+#' @param x [\code{any}]\cr
 #'  Object to convert.
 #' @template na-handling
 #' @inheritParams checkInteger

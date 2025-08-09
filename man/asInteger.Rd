@@ -40,7 +40,7 @@ asInt(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to convert.}
 
 \item{tol}{[\code{double(1)}]\cr

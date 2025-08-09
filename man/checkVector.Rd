@@ -92,7 +92,7 @@ test_vector(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{strict}{[\code{logical(1)}]\cr

@@ -1,2 +1,2 @@
-#' @param x [any]\cr
+#' @param x [\code{any}]\cr
 #'  Object to check.

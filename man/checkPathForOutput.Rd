@@ -43,7 +43,7 @@ expect_path_for_output(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{overwrite}{[\code{logical(1)}]\cr

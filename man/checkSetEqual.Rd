@@ -46,7 +46,7 @@ expect_set_equal(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{y}{[\code{atomic}]\cr

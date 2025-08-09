@@ -7,7 +7,7 @@
 vname(x)
 }
 \arguments{
-\item{x}{[ANY]\cr
+\item{x}{[\code{any}]\cr
 Object.}
 }
 \value{

@@ -97,7 +97,7 @@ expect_names(
 \item{x}{[\code{character} || \code{NULL}]\cr
 Names to check using rules defined via \code{type}.}
 
-\item{type}{[character(1)]\cr
+\item{type}{[\code{character(1)}]\cr
 Type of formal check(s) to perform on the names.
 \describe{
 \item{unnamed:}{Checks \code{x} to be \code{NULL}.}

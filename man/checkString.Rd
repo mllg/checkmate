@@ -101,7 +101,7 @@ expect_string(
 )
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{na.ok}{[\code{logical(1)}]\cr
@@ -116,7 +116,7 @@ Minimum number of characters for each element of \code{x}.}
 \item{max.chars}{[\code{integer(1)}]\cr
 Maximum number of characters for each element of \code{x}.}
 
-\item{pattern}{[\code{character(1L)}]\cr
+\item{pattern}{[\code{character(1)}]\cr
 Regular expression as used in \code{\link[base]{grepl}}.
 All non-missing elements of \code{x} must comply to this pattern.}
 

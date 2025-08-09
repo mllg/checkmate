@@ -25,7 +25,7 @@ test_permutation(x, y, na.ok = TRUE)
 expect_permutation(x, y, na.ok = TRUE, info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{y}{[\code{atomic}]\cr

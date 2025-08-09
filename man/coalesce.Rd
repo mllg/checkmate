@@ -7,10 +7,10 @@
 lhs \%??\% rhs
 }
 \arguments{
-\item{lhs}{[any]\cr
+\item{lhs}{[\code{any}]\cr
 Left hand side of the operator. Is returned if not missing or \code{NULL}.}
 
-\item{rhs}{[any]\cr
+\item{rhs}{[\code{any}]\cr
 Right hand side of the operator. Is returned if \code{lhs} is missing or \code{NULL}.}
 }
 \value{

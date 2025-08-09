@@ -7,7 +7,7 @@
 assert(..., combine = "or", .var.name = NULL, add = NULL)
 }
 \arguments{
-\item{...}{[any]\cr
+\item{...}{[\code{any}]\cr
 List of calls to check functions.}
 
 \item{combine}{[\code{character(1)}]\cr

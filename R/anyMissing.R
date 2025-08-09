@@ -11,7 +11,7 @@
 #' a single non-missing observation present in the \code{data.frame}, use
 #' \code{all(sapply(df, allMissing))} instead.
 #'
-#' @param x [\code{ANY}]\cr
+#' @param x [\code{any}]\cr
 #'  Object to check.
 #' @return [\code{logical(1)}] Returns \code{TRUE} if any (\code{anyMissing}) or all (\code{allMissing})
 #'  elements of \code{x} are missing (see details), \code{FALSE} otherwise.

@@ -58,7 +58,7 @@ testFile(x, access = "", extension = NULL)
 expect_file(x, access = "", extension = NULL, info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{access}{[\code{character(1)}]\cr

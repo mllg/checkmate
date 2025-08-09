@@ -2,7 +2,7 @@
 #'
 #' @templateVar fn Named
 #' @template x
-#' @param type [character(1)]\cr
+#' @param type [\code{character(1)}]\cr
 #'  Select the check(s) to perform.
 #'  \dQuote{unnamed} checks \code{x} to be unnamed.
 #'  \dQuote{named} (default) checks \code{x} to be named which excludes names to be \code{NA} or empty (\code{""}).

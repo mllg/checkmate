@@ -31,7 +31,7 @@ test_multi_class(x, classes, null.ok = FALSE)
 expect_multi_class(x, classes, null.ok = FALSE, info = NULL, label = vname(x))
 }
 \arguments{
-\item{x}{[any]\cr
+\item{x}{[\code{any}]\cr
 Object to check.}
 
 \item{classes}{[\code{character}]\cr
