@@ -2,11 +2,11 @@ mstop = function(msg, ..., call. = NULL) {
   stop(simpleError(sprintf(msg, ...), call.))
 }
 
-"%and%" = function(lhs, rhs) {
+`%and%` = function(lhs, rhs) {
   if (isTRUE(lhs)) rhs else lhs
 }
 
-"%nin%" = function(x, y) {
+`%nin%` = function(x, y) {
   !match(x, y, nomatch = 0L)
 }
 
