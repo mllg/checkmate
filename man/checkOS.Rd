@@ -25,7 +25,7 @@ test_os(os)
 expect_os(os, info = NULL, label = NULL)
 }
 \arguments{
-\item{os}{[\code{character(1)}]\cr
+\item{os}{[\code{character}]\cr
 Check the operating system to be in a set with possible elements \dQuote{windows},
 \dQuote{mac}, \dQuote{linux} and \dQuote{solaris}.}
 
