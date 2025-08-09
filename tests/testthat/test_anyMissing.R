@@ -93,3 +93,18 @@ test_that("anyMissing and allMissing work correctly with data.frames", {
   expect_true(allMissing(df))
   expect_false(all(vlapply(df, allMissing)))
 })
+
+test_that("anyMissing and allMissing work correctly with complex numbers where one part is only NA", {
+  xc = 2 + 2i
+  expect_false(anyMissing(xc))
+  expect_false(allMissing(xc))
+
+  xc = NA + 2i
+  expect_true(anyMissing(xc))
+  expect_true(allMissing(xc))
+
+  xc = complex(1, 2, NA)
+  expect_equal(Re(xc), 2)
+  expect_true(anyMissing(xc))
+  expect_true(allMissing(xc))
+})
