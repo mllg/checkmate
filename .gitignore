@@ -2,6 +2,8 @@ checkmate.Rcheck
 .DS_Store
 src/*.so
 src/*.o
+src/*.dll
 inst/doc
 vignettes/*.html
 revdep
+.Rhistory
