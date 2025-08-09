@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   checkmate: checkmate.html
   tinytest: tinytest.html
-last_built: 2025-08-09T07:02Z
+last_built: 2025-08-09T07:05Z
 urls:
   reference: https://mllg.github.io/checkmate/reference
   article: https://mllg.github.io/checkmate/articles
