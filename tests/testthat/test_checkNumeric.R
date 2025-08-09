@@ -28,7 +28,7 @@ test_that("checkNumeric", {
   expect_false(testNumeric(1:3, any.missing=FALSE, len=5))
   expect_true(testNumeric(1:3, lower = 1L, upper = 3L))
   expect_false(testNumeric(1:3, lower = 5))
-
+  expect_false(testNumeric(matrix(1:3)))
   expect_error(assertNumeric("a"), "numeric")
 })
 

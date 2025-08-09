@@ -522,7 +522,7 @@ SEXP attribute_hidden c_check_double(SEXP x, SEXP lower, SEXP upper, SEXP finite
 }
 
 SEXP attribute_hidden c_check_numeric(SEXP x, SEXP lower, SEXP upper, SEXP finite, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP sorted, SEXP names, SEXP typed_missing, SEXP null_ok) {
-    HANDLE_TYPE_NULL(is_class_numeric(x) || check_typed_missing(x, typed_missing), "numeric", null_ok);
+    HANDLE_TYPE_NULL(!is_class_matrix(x) && is_class_numeric(x) || check_typed_missing(x, typed_missing), "numeric", null_ok);
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
     ASSERT_TRUE(check_vector_missings(x, any_missing, all_missing));
