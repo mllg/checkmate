@@ -65,11 +65,7 @@ makeAssertionFunction = function(check.fun, c.fun = NULL, use.namespace = TRUE, 
 
   body = sprintf("if (missing(%s)) stop(sprintf(\"argument \\\"%%s\\\" is missing, with no default\", .var.name))", x.name)
 
-  if (is.null(c.fun)) {
-    body = paste0(body, sprintf("; res = %s(%s)", fun.name, paste0(names(check.args), collapse = ", ")))
-  } else {
-    body = paste0(body, sprintf("; res = .Call(%s)", paste0(c(c.fun, names(check.args)), collapse = ", ")))
-  }
+  body = paste0(body, "; res = ", call_check_string(fun.name, c.fun, check.args))
 
   if (coerce) {
     fun.args = c(fun.args, alist(coerce = FALSE))

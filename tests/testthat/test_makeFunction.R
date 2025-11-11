@@ -67,3 +67,24 @@ test_that("makeX with name for 'x' not 'x'", {
   expect_equal(sum(grepl("foo", as.character(body(echecker)))), 3L)
   expect_equal(sum(grepl("bar", as.character(body(echecker)))), 1L)
 })
+
+
+test_that("makeXFunction works with named args trailing `...`", {
+
+  checker <- function(x, ..., should.pass =  TRUE) if (should.pass) TRUE else "FAIL"
+  expect_true(checker("foo", should.pass = TRUE))
+  expect_equal(checker("foo", should.pass = FALSE), "FAIL")
+
+  achecker <- checkmate::makeAssertionFunction(checker)
+  expect_equal(expect_no_error(achecker("foo", should.pass = TRUE)), "foo")
+  expect_error(achecker("foo", should.pass = FALSE), "Assertion on '\"foo\"' failed: FAIL.")
+
+  tchecker <- checkmate::makeTestFunction(checker)
+  expect_true(tchecker("foo", should.pass = TRUE))
+  expect_false(tchecker("foo", should.pass = FALSE))
+
+  echecker <- checkmate::makeExpectationFunction(checker)
+  expect_equal(echecker("foo", should.pass = TRUE), "foo")
+  expect_error(echecker("foo", should.pass = FALSE), "Check on '\"foo\"' failed: FAIL")
+
+})

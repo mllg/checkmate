@@ -42,11 +42,8 @@ makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
 
   new.fun = function() TRUE
   formals(new.fun) = fun.args
-  if (is.null(c.fun)) {
-    body = paste0("isTRUE(", fun.name, "(", paste0(names(fun.args), collapse = ", "), "))")
-  } else {
-    body = paste0("isTRUE(.Call(", paste0(c(c.fun, names(fun.args)), collapse = ", "), "))")
-  }
+
+  body = paste0("isTRUE(", call_check_string(fun.name, c.fun, fun.args), ")")
 
   body(new.fun) = parse(text = paste("{", body, "}"))
   environment(new.fun) = env

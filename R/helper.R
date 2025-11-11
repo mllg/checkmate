@@ -112,3 +112,25 @@ check_disjunct_internal = function(x, y, match, what = NULL) {
 
   return(TRUE)
 }
+
+
+# Generates the call to the check function that goes
+# in the body of functions produced by makeXFunction
+call_check_string <- function(fun.name, c.fun, check.args) {
+  args <- vapply(names(check.args), \(name) {
+    if (identical(
+      as.character(check.args[[name]]),
+      # ideally, below should be a representation of
+      # empty arg and above should not have `as.character`
+      # but could not figure out how to generate this representation
+      character(1)
+    )) name
+    else paste(name, "=", name)
+  }, character(1))
+
+  if (!is.null(c.fun)) {
+    fun.name <- ".Call"
+    args <- c(c.fun, args)
+  }
+  sprintf("%s(%s)", fun.name, paste0(args, collapse = ", "))
+}
