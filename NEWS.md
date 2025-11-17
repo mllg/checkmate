@@ -1,3 +1,7 @@
+# Version 2.3.4
+* Refactored `makeXFunction` variants (`makeAssertionFunction`, `makeTestFunction`,
+  `makeExpectationFunction`) to fix #281, #283, and #284.
+
 # Version 2.3.3
 * Fixed a minor bug in `allMissing()` for complex numbers where either the real
   part or the imaginary part was missing while the other part was not missing

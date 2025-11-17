@@ -34,21 +34,6 @@ makeTest = function(res) {
 
 #' @rdname makeTest
 #' @template makeFunction
+#' @include makeXFunction.R
 #' @export
-makeTestFunction = function(check.fun, c.fun = NULL, env = parent.frame()) {
-  fun.name = if (is.character(check.fun)) check.fun else deparse(substitute(check.fun))
-  check.fun = match.fun(check.fun)
-  fun.args = formals(args(check.fun))
-
-  new.fun = function() TRUE
-  formals(new.fun) = fun.args
-  if (is.null(c.fun)) {
-    body = paste0("isTRUE(", fun.name, "(", paste0(names(fun.args), collapse = ", "), "))")
-  } else {
-    body = paste0("isTRUE(.Call(", paste0(c(c.fun, names(fun.args)), collapse = ", "), "))")
-  }
-
-  body(new.fun) = parse(text = paste("{", body, "}"))
-  environment(new.fun) = env
-  return(new.fun)
-}
+makeTestFunction = makeXFunctionFactory("test")
