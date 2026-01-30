@@ -34,7 +34,8 @@ R_xlen_t attribute_hidden find_missing_integerish(SEXP x) {
         case LGLSXP: return find_missing_logical(x);
         case INTSXP: return find_missing_integer(x);
         case REALSXP: return find_missing_double(x);
-        default: error("Error in find_missing_integerish: x must be logical or numeric");
+        case CPLXSXP: return find_missing_complex(x);
+        default: error("Error in find_missing_integerish: x must be logical, numeric, or complex");
     }
 }
 
