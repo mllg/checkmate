@@ -119,5 +119,5 @@ print(assertFalse)
 #>     res = checkFalse(x)
 #>     checkmate::makeAssertion(x, res, .var.name, add)
 #> }
-#> <environment: 0x5600c099a4a8>
+#> <environment: 0x55f48c835b48>
 ```

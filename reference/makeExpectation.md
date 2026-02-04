@@ -105,5 +105,5 @@ print(expect_false)
 #>     res = checkFalse(x)
 #>     makeExpectation(x, res, info, label)
 #> }
-#> <environment: 0x5600be711be8>
+#> <environment: 0x55f48fc08890>
 ```

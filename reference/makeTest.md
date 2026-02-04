@@ -74,5 +74,5 @@ print(testFalse)
 #> {
 #>     isTRUE(checkFalse(x))
 #> }
-#> <environment: 0x5600c0fca7c0>
+#> <environment: 0x55f48d0070b0>
 ```

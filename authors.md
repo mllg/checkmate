@@ -12,7 +12,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/mllg/checkmate/blob/master/inst/CITATION)
+[`inst/CITATION`](https://github.com/mllg/checkmate/blob/v2.3.4/inst/CITATION)
 
 Lang M (2017). “checkmate: Fast Argument Checks for Defensive R
 Programming.” *The R Journal*, **9**(1), 437–445.
