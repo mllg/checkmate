@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">checkmate</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.3.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.3.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,9 @@
                         <h4 data-toc-skip class="author">Michel
 Lang</h4>
             
-            <h4 data-toc-skip class="date">2025-08-20</h4>
+            <h4 data-toc-skip class="date">2026-02-04</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/v2.3.3/vignettes/checkmate.Rmd" class="external-link"><code>vignettes/checkmate.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mllg/checkmate/blob/master/vignettes/checkmate.Rmd" class="external-link"><code>vignettes/checkmate.Rmd</code></a></small>
       <div class="d-none name"><code>checkmate.Rmd</code></div>
     </div>
 
@@ -265,19 +265,28 @@ Better run the benchmark yourself to get unbiased results.</p>
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr   min     lq     mean median     uq      max neval</span></span>
-<span><span class="co">##    r(x) 3.516 3.7070 26.56654 3.8225 3.9425 2257.920   100</span></span>
-<span><span class="co">##   cm(x) 2.374 2.5045 14.02344 2.6050 2.7350 1015.284   100</span></span>
-<span><span class="co">##  cmq(x) 1.672 1.7630  9.83211 1.8380 1.9540  758.544   100</span></span></code></pre>
+<span><span class="co">##    expr   min    lq      mean median     uq       max neval</span></span>
+<span><span class="co">##    r(x) 3.396 3.557 112.88434  3.647 3.7770 10906.359   100</span></span>
+<span><span class="co">##   cm(x) 2.364 2.465  34.21290  2.540 2.6850  3026.725   100</span></span>
+<span><span class="co">##  cmq(x) 1.643 1.743  10.78292  1.804 1.8635   857.530   100</span></span></code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" width="576"></p>
+<pre><code><span><span class="co">## Warning: `aes_string()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use tidy evaluation idioms with `aes()`.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> See also `vignette("ggplot2-in-packages")` for more information.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">microbenchmark</span> package.</span></span>
+<span><span class="co">##   Please report the issue at</span></span>
+<span><span class="co">##   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/joshuaulrich/microbenchmark/issues/&gt;</span>.</span></span>
+<span><span class="co">## <span style="color: #555555;">This warning is displayed once per session.</span></span></span>
+<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-7-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values">Benchmark 2: Assert that <code>x</code> is a numeric of length 1000
 with no missing nor NaN values<a class="anchor" aria-label="anchor" href="#benchmark-2-assert-that-x-is-a-numeric-of-length-1000-with-no-missing-nor-nan-values"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="va">r</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1000</span>, <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">x</span> <span class="op">&lt;=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">cm</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="../reference/checkNumeric.html">assertNumeric</a></span><span class="op">(</span><span class="va">x</span>, len <span class="op">=</span> <span class="fl">1000</span>, any.missing <span class="op">=</span> <span class="cn">FALSE</span>, lower <span class="op">=</span> <span class="fl">0</span>, upper <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
@@ -285,19 +294,19 @@ with no missing nor NaN values<a class="anchor" aria-label="anchor" href="#bench
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr    min      lq     mean median      uq      max neval</span></span>
-<span><span class="co">##    r(x) 12.313 12.7690 47.17160 13.064 13.4550 3341.310   100</span></span>
-<span><span class="co">##   cm(x)  5.470  5.6905 14.80563  5.876  6.1315  823.716   100</span></span>
-<span><span class="co">##  cmq(x)  6.352  6.5320 14.29508  6.618  6.7720  745.340   100</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<span><span class="co">##    expr    min     lq     mean  median      uq      max neval</span></span>
+<span><span class="co">##    r(x) 12.323 13.069 49.96042 13.3345 13.6905 3540.263   100</span></span>
+<span><span class="co">##   cm(x)  5.681  5.986 15.70318  6.1965  6.3520  855.204   100</span></span>
+<span><span class="co">##  cmq(x)  7.153  7.329 15.84275  7.4590  7.6045  821.472   100</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings">Benchmark 3: Assert that <code>x</code> is a character vector with
 no missing values nor empty strings<a class="anchor" aria-label="anchor" href="#benchmark-3-assert-that-x-is-a-character-vector-with-no-missing-values-nor-empty-strings"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span>, <span class="fl">10000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">r</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">is.character</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nchar.html" class="external-link">nchar</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">cm</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="../reference/checkCharacter.html">assertCharacter</a></span><span class="op">(</span><span class="va">x</span>, any.missing <span class="op">=</span> <span class="cn">FALSE</span>, min.chars <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
@@ -305,19 +314,19 @@ no missing values nor empty strings<a class="anchor" aria-label="anchor" href="#
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr     min      lq      mean   median      uq      max neval</span></span>
-<span><span class="co">##    r(x) 280.963 283.373 330.90018 294.2535 329.409 2640.894   100</span></span>
-<span><span class="co">##   cm(x)  79.588  80.080  92.31835  80.9555  82.409  901.320   100</span></span>
-<span><span class="co">##  cmq(x)  88.204  88.425  99.62972  88.7100  89.562 1063.824   100</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<span><span class="co">##    expr     min       lq      mean  median       uq      max neval</span></span>
+<span><span class="co">##    r(x) 274.622 275.6995 308.10923 276.285 285.2370 2598.486   100</span></span>
+<span><span class="co">##   cm(x)  85.560  86.1010  97.79024  86.872  87.6380  896.983   100</span></span>
+<span><span class="co">##  cmq(x)  94.397  94.5915 105.71358  94.977  95.6435 1048.785   100</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" width="576"></p>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-9-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="benchmark-4-test-that-x-is-a-data-frame-with-no-missing-values">Benchmark 4: Test that <code>x</code> is a data frame with no
 missing values<a class="anchor" aria-label="anchor" href="#benchmark-4-test-that-x-is-a-data-frame-with-no-missing-values"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">N</span> <span class="op">=</span> <span class="fl">10000</span></span>
 <span><span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span>, b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">N</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, c <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">N</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">r</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">is.data.frame</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -326,32 +335,32 @@ missing values<a class="anchor" aria-label="anchor" href="#benchmark-4-test-that
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr    min      lq     mean  median      uq      max neval</span></span>
-<span><span class="co">##    r(x) 66.424 67.5560 96.75351 68.1720 69.2945 2738.657   100</span></span>
-<span><span class="co">##   cm(x) 32.701 33.1820 46.45316 34.1935 34.6950 1028.438   100</span></span>
-<span><span class="co">##  cmq(x) 25.758 26.0735 34.65435 26.3790 26.5600  755.618   100</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
+<span><span class="co">##    expr    min      lq     mean  median     uq      max neval</span></span>
+<span><span class="co">##    r(x) 66.615 68.0570 99.05511 68.7935 70.587 2824.207   100</span></span>
+<span><span class="co">##   cm(x) 35.396 36.0425 50.08555 36.9090 37.726 1064.145   100</span></span>
+<span><span class="co">##  cmq(x) 28.803 29.0390 37.29141 29.3700 29.575  778.072   100</span></span></code></pre>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-10-1.png" class="r-plt" alt="" width="576"></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># checkmate tries to stop as early as possible</span></span>
 <span><span class="va">x</span><span class="op">$</span><span class="va">a</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">=</span> <span class="cn">NA</span></span>
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="fu">cmq</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##    expr    min      lq     mean  median      uq     max neval</span></span>
-<span><span class="co">##    r(x) 56.886 57.7825 63.33123 58.2190 60.0725 360.603   100</span></span>
-<span><span class="co">##   cm(x)  5.100  5.4750  6.49079  6.3920  6.8580  30.206   100</span></span>
-<span><span class="co">##  cmq(x)  1.082  1.2020  1.55610  1.3125  1.8685   6.622   100</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<span><span class="co">##    expr    min      lq     mean median      uq     max neval</span></span>
+<span><span class="co">##    r(x) 56.285 57.0865 59.78932 57.868 60.2670 107.461   100</span></span>
+<span><span class="co">##   cm(x)  4.950  5.3505  6.52122  6.177  6.8430  35.716   100</span></span>
+<span><span class="co">##  cmq(x)  1.052  1.1870  1.56346  1.418  1.8085   6.432   100</span></span></code></pre>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" width="576"></p>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-10-2.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="benchmark-5-assert-that-x-is-an-increasing-sequence-of-integers-with-no-missing-values">Benchmark 5: Assert that <code>x</code> is an increasing sequence of
 integers with no missing values<a class="anchor" aria-label="anchor" href="#benchmark-5-assert-that-x-is-an-increasing-sequence-of-integers-with-no-missing-values"></a>
 </h3>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">N</span> <span class="op">=</span> <span class="fl">10000</span></span>
 <span><span class="va">x.altrep</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="va">N</span><span class="op">)</span> <span class="co"># this is an ALTREP in R version &gt;= 3.5.0</span></span>
 <span><span class="va">x.sexp</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">x.altrep</span><span class="op">)</span>  <span class="co"># this is a regular SEXP OTOH</span></span>
@@ -360,14 +369,14 @@ integers with no missing values<a class="anchor" aria-label="anchor" href="#benc
 <span><span class="va">mb</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html" class="external-link">microbenchmark</a></span><span class="op">(</span><span class="fu">r</span><span class="op">(</span><span class="va">x.sexp</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x.sexp</span><span class="op">)</span>, <span class="fu">r</span><span class="op">(</span><span class="va">x.altrep</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/cm.html" class="external-link">cm</a></span><span class="op">(</span><span class="va">x.altrep</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Unit: microseconds</span></span>
-<span><span class="co">##          expr    min      lq     mean  median      uq      max neval</span></span>
-<span><span class="co">##     r(x.sexp) 29.676 30.0765 52.29055 30.2515 30.6070 2191.417   100</span></span>
-<span><span class="co">##    cm(x.sexp) 12.964 13.2545 24.53272 13.4600 13.7210 1106.794   100</span></span>
-<span><span class="co">##   r(x.altrep) 38.792 39.1130 40.24417 39.3390 39.6495   56.455   100</span></span>
-<span><span class="co">##  cm(x.altrep)  3.636  3.8875  5.26275  4.0525  4.4080  110.446   100</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<span><span class="co">##          expr    min     lq     mean median     uq      max neval</span></span>
+<span><span class="co">##     r(x.sexp) 26.299 26.890 48.98459 27.121 27.381 2181.989   100</span></span>
+<span><span class="co">##    cm(x.sexp) 11.492 11.782 22.84224 12.012 12.273 1078.451   100</span></span>
+<span><span class="co">##   r(x.altrep) 33.072 35.942 37.01636 36.188 36.458   59.922   100</span></span>
+<span><span class="co">##  cm(x.altrep)  3.616  3.952  5.36762  4.203  4.488   96.440   100</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">mb</span><span class="op">)</span></span></code></pre></div>
-<p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
+<p><img src="checkmate_files/figure-html/unnamed-chunk-11-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -376,7 +385,7 @@ integers with no missing values<a class="anchor" aria-label="anchor" href="#benc
 <p>To extend checkmate a custom <code>check*</code> function has to be
 written. For example, to check for a square matrix one can re-use parts
 of checkmate and extend the check with additional functionality:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">checkSquareMatrix</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">mode</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># check functions must return TRUE on success</span></span>
 <span>  <span class="co"># and a custom error message otherwise</span></span>
@@ -392,17 +401,17 @@ of checkmate and extend the check with additional functionality:</p>
 <span><span class="va">X</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu">checkSquareMatrix</span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">checkSquareMatrix</span><span class="op">(</span><span class="va">X</span>, mode <span class="op">=</span> <span class="st">"character"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Must store characters"</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">checkSquareMatrix</span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Must be square"</span></span></code></pre>
 <p>The respective counterparts to the <code>check</code>-function can be
 created using the constructors <a href="https://mllg.github.io/checkmate/reference/makeAssertion">makeAssertionFunction</a>,
 <a href="https://mllg.github.io/checkmate/reference/makeTest">makeTestFunction</a>
 and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExpectationFunction</a>:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># For assertions:</span></span>
 <span><span class="va">assert_square_matrix</span> <span class="op">=</span> <span class="va">assertSquareMatrix</span> <span class="op">=</span> <span class="fu"><a href="../reference/makeAssertion.html">makeAssertionFunction</a></span><span class="op">(</span><span class="va">checkSquareMatrix</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">assertSquareMatrix</span><span class="op">)</span></span></code></pre></div>
@@ -414,7 +423,7 @@ and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExp
 <span><span class="co">##     res = checkSquareMatrix(x, mode)</span></span>
 <span><span class="co">##     checkmate::makeAssertion(x, res, .var.name, add)</span></span>
 <span><span class="co">## }</span></span></code></pre>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># For tests:</span></span>
 <span><span class="va">test_square_matrix</span> <span class="op">=</span> <span class="va">testSquareMatrix</span> <span class="op">=</span> <span class="fu"><a href="../reference/makeTest.html">makeTestFunction</a></span><span class="op">(</span><span class="va">checkSquareMatrix</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">testSquareMatrix</span><span class="op">)</span></span></code></pre></div>
@@ -422,7 +431,7 @@ and <a href="https://mllg.github.io/checkmate/reference/makeExpectation">makeExp
 <span><span class="co">## {</span></span>
 <span><span class="co">##     isTRUE(checkSquareMatrix(x, mode))</span></span>
 <span><span class="co">## }</span></span></code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># For expectations:</span></span>
 <span><span class="va">expect_square_matrix</span> <span class="op">=</span> <span class="fu"><a href="../reference/makeExpectation.html">makeExpectationFunction</a></span><span class="op">(</span><span class="va">checkSquareMatrix</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">expect_square_matrix</span><span class="op">)</span></span></code></pre></div>
@@ -445,8 +454,8 @@ negative impact on the runtime).</p>
 </h2>
 <p>The package registers two functions which can be used in other
 packages’ C/C++ code for argument checks.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>SEXP <span class="fu">qassert</span>(SEXP x, const char <span class="sc">*</span>rule, const char <span class="sc">*</span>name);</span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>Rboolean <span class="fu">qtest</span>(SEXP x, const char <span class="sc">*</span>rule);</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>SEXP <span class="fu">qassert</span>(SEXP x, const char <span class="sc">*</span>rule, const char <span class="sc">*</span>name);</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>Rboolean <span class="fu">qtest</span>(SEXP x, const char <span class="sc">*</span>rule);</span></code></pre></div>
 <p>These are the counterparts to <a href="https://mllg.github.io/checkmate/reference/qassert">qassert</a>
 and <a href="https://mllg.github.io/checkmate/reference/qassert">qtest</a>. Due
 to their simplistic interface, they perfectly suit the requirements of
@@ -464,7 +473,7 @@ below.</li>
 each compilation unit where you want to use checkmate.</li>
 </ol>
 <p>File contents for (2):</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#include &lt;checkmate.h&gt;</span></span>
 <span><span class="co">#include &lt;checkmate_stub.c&gt;</span></span></code></pre></div>
 </div>
@@ -474,11 +483,11 @@ each compilation unit where you want to use checkmate.</li>
 <p>For the sake of completeness, here the <code><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo()</a></code> for
 the benchmark (but remember the note before on <code>knitr</code>
 possibly biasing the results).</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## R version 4.5.1 (2025-06-13)</span></span>
+<pre><code><span><span class="co">## R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">## Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">## Running under: Ubuntu 24.04.2 LTS</span></span>
+<span><span class="co">## Running under: Ubuntu 24.04.3 LTS</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
 <span><span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -497,19 +506,19 @@ possibly biasing the results).</p>
 <span><span class="co">## [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">## [1] microbenchmark_1.5.0 ggplot2_3.5.2        checkmate_2.3.3     </span></span>
+<span><span class="co">## [1] microbenchmark_1.5.0 ggplot2_4.0.2        checkmate_2.3.4     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##  [1] vctrs_0.6.5        cli_3.6.5          knitr_1.50         rlang_1.1.6       </span></span>
-<span><span class="co">##  [5] xfun_0.53          textshaping_1.0.1  jsonlite_2.0.0     glue_1.8.0        </span></span>
-<span><span class="co">##  [9] backports_1.5.0    htmltools_0.5.8.1  ragg_1.4.0         sass_0.4.10       </span></span>
-<span><span class="co">## [13] scales_1.4.0       rmarkdown_2.29     grid_4.5.1         tibble_3.3.0      </span></span>
-<span><span class="co">## [17] evaluate_1.0.4     jquerylib_0.1.4    fastmap_1.2.0      yaml_2.3.10       </span></span>
-<span><span class="co">## [21] lifecycle_1.0.4    compiler_4.5.1     RColorBrewer_1.1-3 fs_1.6.6          </span></span>
-<span><span class="co">## [25] pkgconfig_2.0.3    htmlwidgets_1.6.4  farver_2.1.2       systemfonts_1.2.3 </span></span>
-<span><span class="co">## [29] digest_0.6.37      R6_2.6.1           pillar_1.11.0      magrittr_2.0.3    </span></span>
-<span><span class="co">## [33] bslib_0.9.0        withr_3.0.2        gtable_0.3.6       tools_4.5.1       </span></span>
-<span><span class="co">## [37] pkgdown_2.1.3      cachem_1.1.0       desc_1.4.3</span></span></code></pre>
+<span><span class="co">##  [1] vctrs_0.7.1        cli_3.6.5          knitr_1.51         rlang_1.1.7       </span></span>
+<span><span class="co">##  [5] xfun_0.56          otel_0.2.0         S7_0.2.1           textshaping_1.0.4 </span></span>
+<span><span class="co">##  [9] jsonlite_2.0.0     glue_1.8.0         backports_1.5.0    htmltools_0.5.9   </span></span>
+<span><span class="co">## [13] ragg_1.5.0         sass_0.4.10        scales_1.4.0       rmarkdown_2.30    </span></span>
+<span><span class="co">## [17] grid_4.5.2         evaluate_1.0.5     jquerylib_0.1.4    fastmap_1.2.0     </span></span>
+<span><span class="co">## [21] yaml_2.3.12        lifecycle_1.0.5    compiler_4.5.2     RColorBrewer_1.1-3</span></span>
+<span><span class="co">## [25] fs_1.6.6           htmlwidgets_1.6.4  farver_2.1.2       systemfonts_1.3.1 </span></span>
+<span><span class="co">## [29] digest_0.6.39      R6_2.6.1           pillar_1.11.1      bslib_0.10.0      </span></span>
+<span><span class="co">## [33] withr_3.0.2        gtable_0.3.6       tools_4.5.2        pkgdown_2.2.0     </span></span>
+<span><span class="co">## [37] cachem_1.1.0       desc_1.4.3</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -522,7 +531,7 @@ possibly biasing the results).</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

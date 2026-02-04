@@ -1,0 +1,5 @@
+# License
+
+    YEAR: 2023
+    COPYRIGHT HOLDER: Michel Lang
+    ORGANIZATION: copyright holder
