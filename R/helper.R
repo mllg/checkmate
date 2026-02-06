@@ -64,8 +64,8 @@ check_subset_internal = function(x, choices, match, what = NULL) {
     ii = match(x, choices)
     if (anyMissing(ii)) {
       return(set_msg(
-        "must be a subset of %s, but has additional elements %s",
-        what, set_collapse(choices), set_collapse(x[is.na(ii)])
+        "has additional elements %s, but must be a subset of %s",
+        what, set_collapse(x[is.na(ii)]), set_collapse(choices)
       ))
     }
   }
