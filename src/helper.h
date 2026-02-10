@@ -33,5 +33,6 @@ Rboolean is_class_environment(SEXP x);
 Rboolean is_class_null(SEXP x);
 Rboolean is_class_posixct(SEXP x);
 Rboolean is_class_raw(SEXP x);
+Rboolean has_attributes(SEXP x);
 
 #endif

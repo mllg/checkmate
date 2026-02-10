@@ -2,7 +2,6 @@
 
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/checkmate)](https://cran.r-project.org/package=checkmate)
 [![R build status](https://github.com/mllg/checkmate/workflows/R-CMD-check/badge.svg)](https://github.com/mllg/checkmate)
-[![Coverage Status](https://img.shields.io/coveralls/mllg/checkmate.svg)](https://coveralls.io/github/mllg/checkmate)
 [![Download Stats](https://cranlogs.r-pkg.org/badges/checkmate)](https://cran.r-project.org/package=checkmate)
 
 Fast and versatile argument checks for R.
@@ -37,7 +36,7 @@ devtools::install_github("mllg/checkmate")
 
 ## Resources
 
-- [R Journal Paper](https://journal.r-project.org/archive/2017/RJ-2017-028/index.html)
+- [R Journal Paper](https://doi.org/10.32614/RJ-2017-028)
 - [NEWS](https://github.com/mllg/checkmate/blob/master/NEWS.md)
 - [Documentation/Vignettes](https://mllg.github.io/checkmate/)
 - [Grouped function reference](https://mllg.github.io/checkmate/reference/checkmate-package)

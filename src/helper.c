@@ -145,3 +145,16 @@ Rboolean is_class_environment(SEXP x) { return isEnvironment(x); }
 Rboolean is_class_null(SEXP x) { return isNull(x); }
 Rboolean is_class_posixct(SEXP x) { return isNumeric(x) && inherits(x, "POSIXct"); }
 Rboolean is_class_raw(SEXP x) { return TYPEOF(x) == RAWSXP; }
+
+
+#if R_VERSION < R_Version(4, 6, 0)
+Rboolean has_attributes(SEXP x) {
+    SEXP attr = ATTRIB(x);
+    return( (length(attr) == 0 || (TAG(attr) == R_NamesSymbol)) && CDR(attr) == R_NilValue );
+}
+#else
+Rboolean has_attributes(SEXP x) {
+    R_xlen_t n = R_getAttribCount(x);
+    return( n == 0 || (n == 1 && getAttrib(x, R_NamesSymbol) != R_NilValue) );
+}
+#endif

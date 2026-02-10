@@ -686,8 +686,7 @@ SEXP attribute_hidden c_check_names(SEXP x, SEXP type, SEXP what) {
 SEXP attribute_hidden c_check_vector(SEXP x, SEXP strict, SEXP any_missing, SEXP all_missing, SEXP len, SEXP min_len, SEXP max_len, SEXP unique, SEXP names, SEXP null_ok) {
     HANDLE_TYPE_NULL(isVector(x), "vector", null_ok);
     if (as_flag(strict, "strict")) {
-        SEXP attr = ATTRIB(x);
-        HANDLE_TYPE( (length(attr) == 0 || (TAG(attr) == R_NamesSymbol)) && CDR(attr) == R_NilValue, "vector");
+        HANDLE_TYPE( has_attributes(x), "vector");
     }
     ASSERT_TRUE(check_vector_len(x, len, min_len, max_len));
     ASSERT_TRUE(check_vector_names(x, names));
