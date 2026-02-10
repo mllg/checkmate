@@ -75,6 +75,8 @@ test_that("integerish", {
   expect_fail_all(xi, "X")
   expect_succ_all(xr, "x")
   expect_fail_all(xr, "X")
+  expect_succ_all(xc, "x")
+  expect_fail_all(xc, "X")
   expect_fail_all(1:3+.0001, "x")
   expect_fail_all(xd, "x")
 })
