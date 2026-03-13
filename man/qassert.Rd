@@ -120,7 +120,7 @@ qtest(runif(10), "n+")
 # integer with length > 0, NAs not allowed, all integers >= 0 and < Inf
 qtest(1:3, "I+[0,)")
 
-# either an emtpy list or a character vector with <=5 elements
+# either an empty list or a character vector with <=5 elements
 qtest(1, c("l0", "s<=5"))
 
 # data frame with at least one column and no missing value in any column

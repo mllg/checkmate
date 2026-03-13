@@ -418,7 +418,7 @@ static Rboolean check_string_nchar(SEXP x, SEXP n_chars, SEXP min_chars, SEXP ma
         R_xlen_t n = as_count(n_chars, "n.chars");
         R_xlen_t pos = find_nchar(x, n);
         if (pos > 0) {
-            return message("All elements must have exactly %i characters, but element %i has %i chararacters",
+            return message("All elements must have exactly %i characters, but element %i has %i characters",
             n, pos, length(STRING_ELT(x, pos - 1)));
         }
     }

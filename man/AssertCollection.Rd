@@ -23,7 +23,7 @@ Object of type \dQuote{AssertCollection} (constructed via \code{makeAssertCollec
 The function \code{makeAssertCollection()} returns a simple stack-like
 closure you can pass to all functions of the \code{assert*}-family.
 All messages get collected and can be reported with \code{reportAssertions()}.
-Alternatively, you can easily write your own report function or customize the the output of
+Alternatively, you can easily write your own report function or customize the output of
 the report function to a certain degree.
 See the example on how to push custom messages or retrieve all stored messages.
 }

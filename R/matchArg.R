@@ -1,7 +1,7 @@
 #' Partial Argument Matching
 #'
 #' @description
-#' This is an extensions to \code{\link[base]{match.arg}} with support for \code{\link{AssertCollection}}.
+#' This is an extension to \code{\link[base]{match.arg}} with support for \code{\link{AssertCollection}}.
 #' The behavior is very similar to \code{\link[base]{match.arg}}, except that \code{NULL} is not
 #' a valid value for \code{x}.
 #'

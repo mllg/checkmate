@@ -1,7 +1,7 @@
 #' Combine multiple checks into one assertion
 #'
 #' @description
-#' You can call this function with an arbitrary number of of \code{check*}
+#' You can call this function with an arbitrary number of \code{check*}
 #' functions, i.e. functions provided by this package or your own functions which
 #' return \code{TRUE} on success and the error message as \code{character(1)} otherwise.
 #' The resulting assertion is successful, if \code{combine} is
