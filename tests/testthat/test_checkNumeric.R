@@ -10,6 +10,8 @@ test_that("checkNumeric", {
   expect_false(testNumeric(NULL))
   expect_false(testNumeric(TRUE))
   expect_false(testNumeric(FALSE))
+  expect_false(testNumeric(as.Date("2000-01-01")))
+  expect_false(testNumeric(as.POSIXct("2000-01-01")))
   expect_true(testNumeric(NA_character_))
   expect_true(testNumeric(NA_real_))
   expect_true(testNumeric(NaN))

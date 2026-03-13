@@ -110,7 +110,7 @@ Rboolean is_class_integer(SEXP x) { return isInteger(x); }
 Rboolean is_class_integerish(SEXP x) { return isIntegerish(x, INTEGERISH_DEFAULT_TOL, TRUE); }
 Rboolean is_class_numeric(SEXP x) {
     switch(TYPEOF(x)) {
-        case REALSXP: return TRUE;
+        case REALSXP: return !(inherits(x, "Date") || inherits(x, "POSIXt"));
         case INTSXP: return !inherits(x, "factor");
     }
     return FALSE;

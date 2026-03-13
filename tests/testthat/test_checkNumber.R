@@ -11,6 +11,8 @@ test_that("checkNumber", {
 
   expect_false(testNumber(TRUE))
   expect_false(testNumber(FALSE))
+  expect_false(testNumber(as.Date("2000-01-01")))
+  expect_false(testNumber(as.POSIXct("2000-01-01")))
   expect_true(testNumber(1L))
   expect_true(testNumber(1.))
   expect_false(testNumber(NA))
