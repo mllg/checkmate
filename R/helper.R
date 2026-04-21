@@ -20,7 +20,7 @@ guessType = function(x) {
 }
 
 isSameType = function(x, y) {
-  identical(typeof(x), typeof(y)) || (is.numeric(x) && is.numeric(y))
+  typeof(x) == typeof(y) || (is.numeric(x) && is.numeric(y))
 }
 
 array_collapse = function(x) {
