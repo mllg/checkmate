@@ -3,7 +3,7 @@ context("registered c functions")
 test_that("include of registered C functions works", {
   skip_on_cran()
   skip_on_travis()
-  devtools::install_github("mllg/checkmate-test-include")
+  remotes::install_github("mllg/checkmate-test-include")
   library(checkmate.test.include)
 
   expect_true(reexported_qtest(1, "N1"))
