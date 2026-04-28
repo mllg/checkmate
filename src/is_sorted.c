@@ -57,6 +57,7 @@ static Rboolean is_sorted_character(SEXP x) {
         xi = STRING_ELT(x, i);
         if (xi != NA_STRING)
             break;
+        i++;
     }
 
     for (R_xlen_t j = i + 1; j < n; j++) {
