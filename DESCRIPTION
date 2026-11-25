@@ -23,7 +23,7 @@ Depends: R (>= 3.0.0)
 Imports: backports (>= 1.1.0), utils
 Suggests: R6, fastmatch, data.table (>= 1.9.8), devtools, ggplot2,
         knitr, magrittr, microbenchmark, rmarkdown, testthat (>=
-        3.0.4), tinytest (>= 1.1.0), tibble
+        3.0.4), tinytest (>= 1.1.0), tibble, pak
 License: BSD_3_clause + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 7.3.3
