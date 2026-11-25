@@ -28,10 +28,10 @@ For the stable release, just install the latest version from [CRAN](https://cran
 install.packages("checkmate")
 ```
 
-For the development version, use [devtools](https://cran.r-project.org/package=devtools):
+For the development version, use [pak](https://cran.r-project.org/package=pak) to install from GitHub:
 
 ```r
-devtools::install_github("mllg/checkmate")
+pak::pak("mllg/checkmate")
 ```
 
 ## Resources
